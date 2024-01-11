@@ -3,16 +3,9 @@
 </script>
 
 <template>
-  <header>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
 
-      <nav>
-
-      </nav>
-    </div>
-  </header>
+<h1>123</h1>
 
 
 </template>
