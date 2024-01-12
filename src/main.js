@@ -1,6 +1,5 @@
-import '../node_modules/bootstrap/scss/bootstrap.scss';
 import './assets/main.scss'
-import '../node_modules/bootstrap'
+
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
@@ -18,3 +17,5 @@ app.use(createPinia())
 // app.use(router)
 
 app.mount('#app')
+
+

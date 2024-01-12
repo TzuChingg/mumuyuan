@@ -15,9 +15,11 @@
     "bootstrap": "^5.3.2",
     "express": "^4.18.2",
     "git-cz": "^4.9.0",
+    "jquery": "^3.7.1",
     "json-server": "^1.0.0-alpha.17",
     "json-server-auth": "^2.1.0",
     "pinia": "^2.1.7",
+    "popper.js": "^1.16.1",
     "vue": "^3.3.11",
     "vue-axios": "^3.5.2",
     "vue-router": "^4.2.5"

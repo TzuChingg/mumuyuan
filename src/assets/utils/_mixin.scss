@@ -1,0 +1,30 @@
+@mixin xxl{
+    @media (min-width:map-get($grid-breakpoints,xxl)) {
+        @content;
+    }
+}
+@mixin xl{
+    @media (min-width:map-get($grid-breakpoints,xl)) {
+        @content;
+    }
+}
+@mixin lg{
+    @media (min-width:map-get($grid-breakpoints,lg)) {
+        @content;
+    }
+}
+@mixin md{
+    @media (min-width:map-get($grid-breakpoints,md)) {
+        @content;
+    }
+}
+@mixin sm{
+    @media (min-width:map-get($grid-breakpoints,sm)) {
+        @content;
+    }
+}
+@mixin respond-to($media){
+    @media ($media) {
+        @content;
+    }
+}

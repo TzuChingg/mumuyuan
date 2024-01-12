@@ -1,5 +1,11 @@
-<script setup>
+<script>
+import Modal from '../src/components/eric/UseTest.vue';
 
+export default {
+  components: {
+    Modal,
+  },
+};
 </script>
 
 <template>
@@ -42,7 +48,9 @@
   </div>
 </div>
 <button class="btn btn-primary">22222</button>
+{{ showModal }}
 
+<Modal></Modal>
 </template>
 
 <style scoped>
