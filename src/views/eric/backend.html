@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<style>
+    :root{
+        --sidebar-width:280px;
+    }
+
+    /* 手機版 */
+    /* .sidebar{
+        width: var(--sidebar-width);
+        margin-left: -var(--sidebar-width);
+        transition: margin-left .25;
+    }
+    .main{
+        width: 100%;
+    }
+    .sidebar-toggled{
+        .sidebar{
+            margin-left: 0;
+        }
+    } */
+    
+
+
+
+    .sidebar {
+    width: 280px;
+    overflow: hidden;
+    transition: width 0.5s; /* 將過渡效果應用於.sidebar */
+    .sidebar-link {
+        color: rgb(2, 2, 1);
+        display: block;
+        text-decoration: none;
+        padding-top: 0.875rem;
+        padding-bottom: 0.875rem;
+            &:hover {
+            background-color: red;
+            transition: background-color 0.5s;
+            }
+        }
+        .sidebar-link.active {
+        position: relative;
+        color: white;
+        background-color: blueviolet;
+            &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 2px;
+            height: 100%;
+            width: 3px;
+            background: blue;
+            }
+        } 
+    }
+
+    .main {
+    width: 100%;
+    transition: width 0.5s, margin-left 0.5s; /* 將過渡效果應用於.main */
+    }
+    .sidebar:not(:hover) {
+        width: 0;
+
+  
+    }
+    .sidebar:hover {
+        width: 280px;
+        .main{
+            width: calc(100vw - var(--sidebar-width));
+            /* margin-left: 0; */
+            
+        }
+    }
+
+    i {
+    transition: transform 0.1s ease-in-out; /* 根據需要更改屬性和持續時間 */
+    }
+
+    
+</style>
+<body>
+    <div class="d-flex">
+        <aside class="sidebar vh-100 border-5  pt-3 border-end d-flex bg-white flex-column ">
+            <div class="ps-4 pb-3 ">
+                <strong class="text-nowrap ">木木苑後台系統</strong>
+            </div>
+
+
+            <div class="overflow-auto">
+                <div>
+                    <a href="#menu-order" class="sidebar-link active icon" data-bs-toggle="collapse">
+                        <div class="d-flex  justify-content-between px-4 ">
+                            <p class="mb-0 text-nowrap">
+                                訂單狀態
+                            </p>
+                            <i class="bi bi-caret-left-fill"></i>
+                        </div>
+                    </a>
+                    <div class="collapse" id="menu-order">
+                        <a href="" class="sidebar-link ">
+                            <div class="ps-5">
+                                待接受
+                            </div>
+                        </a>
+                    </div>
+                    <div class="collapse" id="menu-order">
+                        <a href="" class="sidebar-link ">
+                            <div class="ps-5">
+                                已完成
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <a href="#user-order" class="sidebar-link icon" data-bs-toggle="collapse">
+                        <div class="d-flex  justify-content-between px-4 ">
+                            <p class="mb-0 text-nowrap">
+                                會員資料
+                            </p>
+                            <i class="bi bi-caret-left-fill"></i>
+                        </div>
+                    </a>
+                    <div class="collapse" id="user-order">
+                        <a href="" class="sidebar-link ">
+                            <div class="ps-5">
+                                一般會員
+                            </div>
+                        </a>
+                    </div>
+                    <div class="collapse" id="user-order">
+                        <a href="" class="sidebar-link ">
+                            <div class="ps-5">
+                                黑名單
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <a href="" class="sidebar-link ">
+                        <div class="ps-4 text-nowrap">
+                            銷售統計
+                        </div>
+                    </a>
+                </div>
+                
+                <div>
+                    <a href="#product-order" class="sidebar-link icon" data-bs-toggle="collapse">
+                        <div class="d-flex  justify-content-between px-4 ">
+                            <p class="mb-0 text-nowrap">
+                                編輯商品
+                            </p>
+                            <i class="bi bi-caret-left-fill"></i>
+                        </div>
+                    </a>
+                    <div class="collapse" id="product-order">
+                        <a href="" class="sidebar-link ">
+                            <div class="ps-5">
+                                商品
+                            </div>
+                        </a>
+                    </div>
+                    <div class="collapse" id="product-order">
+                        <a href="" class="sidebar-link ">
+                            <div class="ps-5">
+                                商品下架區
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <a href="#position-order" class="sidebar-link icon" data-bs-toggle="collapse">
+                        <div class="d-flex  justify-content-between px-4 ">
+                            <p class="mb-0 text-nowrap">
+                                定位管理
+                            </p>
+                            <i class="bi bi-caret-left-fill"></i>
+                        </div>
+                    </a>
+                    <div class="collapse" id="position-order">
+                        <a href="" class="sidebar-link ">
+                            <div class="ps-5">
+                                尚未確認
+                            </div>
+                        </a>
+                    </div>
+                    <div class="collapse" id="position-order">
+                        <a href="" class="sidebar-link ">
+                            <div class="ps-5">
+                                已確認歷史紀錄
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <a href="#activity-order" class="sidebar-link icon" data-bs-toggle="collapse">
+                        <div class="d-flex  justify-content-between px-4 ">
+                            <p class="mb-0 text-nowrap">
+                                活動管理
+                            </p>
+                            <i class="bi bi-caret-left-fill"></i>
+                        </div>
+                    </a>
+                    <div class="collapse" id="activity-order">
+                        <a href="" class="sidebar-link ">
+                            <div class="ps-5">
+                                優惠券
+                            </div>
+                        </a>
+                    </div>
+                    <div class="collapse" id="activity-order">
+                        <a href="" class="sidebar-link ">
+                            <div class="ps-5">
+                                優惠券下架區
+                            </div>
+                        </a>
+                    </div>
+                    <div class="collapse" id="activity-order">
+                        <a href="" class="sidebar-link ">
+                            <div class="ps-5">
+                                活動
+                            </div>
+                        </a>
+                    </div>
+                    <div class="collapse" id="activity-order">
+                        <a href="" class="sidebar-link ">
+                            <div class="ps-5">
+                                活動下架區
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+ 
+            <a href="#" class="mt-auto  text-nowrap sidebar-link">
+                <div class="ps-4 ">
+                    登出
+                </div>
+            </a>
+        </aside>
+        <main class="main">
+
+        </main>
+    </div>
+    <script>
+        const icons = document.querySelectorAll('.icon');
+        icons.forEach((icon) => {
+            const i = icon.querySelector('i');
+            icon.addEventListener("click", () => {
+                    i.classList.toggle('bi-caret-left-fill');
+                    i.classList.toggle('bi-caret-down-fill');
+            });
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+</body>
+</html>
