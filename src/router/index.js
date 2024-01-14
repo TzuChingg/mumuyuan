@@ -1,16 +1,30 @@
+//工具
+import { createRouter, createWebHashHistory } from 'vue-router'
+
+//頁面
+import mumuyuan from '/src/views/ching/mumuyuan.vue'
 import PageIndex from '/src/views/eric/PageIndex.vue'
-import { createRouter, createWebHistory } from 'vue-router'
+
+//Router
+import loginRouter from './loginRouter';
 
 const routes = [
   {
-    path:'/2',
-    component:PageIndex,
+    path: '/',
+    component: mumuyuan,
+  },
+  {
+    path: '/2',
+    component: PageIndex,
+  },
+  {
+    ...loginRouter
   },
 ]
 
 
 const router = createRouter({
-  history:createWebHistory(),
+  history: createWebHashHistory(),
   routes,
 });
 
