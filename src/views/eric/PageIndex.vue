@@ -1,29 +1,33 @@
 <template>
-    <div class="card">
-        <div class="title">
-            <slot name="title"></slot>
-        </div>
-        <div class="content">
-            <slot name="content">默認內容</slot>
-        </div>
-    </div>
+    <article v-for="(post,index) in blogPosts" :key="index">
+        <h2><router-link :to="`/${post.id}`">{{ post.title }}</router-link></h2>
+        <p>{{ post.content }}</p>
+    </article>
 </template>
 
 <script>
-export default{
-
+import {getAllPosts} from '../eric/data'
+export default{ 
+    data() {
+        return {
+            blogPosts:[]
+        }
+    },  
+    created(){
+        this.blogPosts = getAllPosts()
+    }
 }
 </script>
 
 <style scoped>
-.card{
-    border: 2px solid #ced;
-    padding: 20px;
-    border-radius:8px;
+article{
+    max-width: 700px;
 }
-.title{
-    font-size: 1.5em;
-    font-weight: bold;
-    margin-bottom: 12px;
+footer{
+    margin-top: 48px;
+}
+
+footer a{
+    background: linear-gradient(80deg,#ff0000, #0000ff);
 }
 </style>
