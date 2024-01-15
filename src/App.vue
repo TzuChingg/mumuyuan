@@ -1,9 +1,8 @@
 <script>
 //VUE3 CLI 默認導入模塊，所以不用加type="module"
-import BackendFunctions from './components/eric/BackendFunctions.vue';
 export default {
   components: {
-    BackendFunctions,
+   
   },
 };
 </script>
@@ -12,9 +11,6 @@ export default {
   <div class="container">
     <navbarComponent />
     <router-view></router-view>
-    <BackendFunctions></BackendFunctions>
-      <!-- <router-link to="/2">go</router-link>
-      <router-view></router-view> -->
   </div>
 </template>
 
