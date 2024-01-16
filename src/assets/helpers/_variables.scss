@@ -411,10 +411,18 @@ $spacer: 1rem !default;
 $spacers: (
   0: 0,
   1: $spacer * .25,
+  11: $spacer * .035,
   2: $spacer * .5,
   3: $spacer,
   4: $spacer * 1.5,
   5: $spacer * 3,
+  6: $spacer * 4,
+  7: $spacer * 5,
+  8: $spacer * 8,
+  9: $spacer * 10,
+  10: $spacer * 11,
+  12: $spacer * 11.43,
+
 ) !default;
 // scss-docs-end spacer-variables-maps
 
@@ -645,7 +653,8 @@ $font-sizes: (
   3: $h3-font-size,
   4: $h4-font-size,
   5: $h5-font-size,
-  6: $h6-font-size
+  6: $h6-font-size,
+  7: calc(#{$h6-font-size} / 2)
 ) !default;
 // scss-docs-end font-sizes
 

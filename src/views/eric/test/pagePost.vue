@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { getPostById} from '../eric/data'
+import { getPostById} from '../test/data'
 export default{
 data() {
     return {
@@ -25,4 +25,4 @@ created(){
 
 <style scoped>
 
-</style>
+</style>./test/data

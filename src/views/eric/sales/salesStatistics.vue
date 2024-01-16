@@ -3,26 +3,31 @@
       <aside class="sidebar  border-5  pt-3 border-end d-flex bg-white flex-column ">
         <BackendFunctions></BackendFunctions>  
       </aside>
-      <main class="main container">
-        <div class="row p-3 row-cols-3">
-          <div class="col">
-            <div class="card shadow-sm">
+      <main class="main ">
+        <div class="container">
+          <div class="row p-3 ">
+          <div class="col-3">
+            <div class="card shadow-sm h-100">
               <div class="card-body">
-                <h2 class="display-6">當日訂位人數</h2>
-                <p class="display-4">13,213</p>
+                <my-radia></my-radia>
               </div>
             </div>
           </div>
-          <div class="col">
+          <div class="col-3">
+            <div class="card shadow-sm h-100">
+              <div class="card-body">
+                <my-radiasm></my-radiasm>
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
             <div class="card shadow-sm">
               <div class="card-body">
                 <h2 class="display-6">當日訂單數</h2>
                 <p class="display-4">90,213</p>
               </div>
             </div>
-          </div>
-          <div class="col">
-            <div class="card shadow-sm">
+            <div class="card shadow-sm mt-1">
               <div class="card-body text-end">
                 <h2 class="display-6 ">當日營業額</h2>
                 <p><span class="fs-3">NT$</span><span class="display-4">980,655</span></p>
@@ -30,23 +35,33 @@
             </div>
           </div>
         </div>
-        
         <div class="row p-2">
-          <div class="col-6">
+          <div class="col-4">
             <div class="card shadow-sm h-100">
-              <div class="card-body bar">
-                <my-chart ></my-chart>
+              <div class="card-body mt-5">
+                <my-pie ></my-pie>
               </div>
             </div>
           </div>
-          <div class="col-6">
+          <div class="col-8">
             <div class="card shadow-sm h-100">
               <div class="card-body">
-                <my-line></my-line>
+                <my-bar></my-bar>
               </div>
             </div>
           </div>
         </div>
+        <div class="row p-2">
+          <div class="col">
+            <div class="card shadow-sm h-100">
+              <div class="card-body">
+                <my-line ></my-line>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+
       </main>
   </div>
   
@@ -54,14 +69,20 @@
 
 <script>
 import BackendFunctions from '/src/components/eric/BackendFunctions.vue';
-import MyChart from '/src/components/eric/MyChart.vue';
-import MyLine from '/src/components/eric/MyLine.vue';
+import myLine from '/src/components/eric/myLine.vue';
+import myBar from '/src/components/eric/myBar.vue';
+import myPie from '/src/components/eric/myPie.vue';
+import myRadia from '/src/components/eric/myRadia.vue';
+import myRadiasm from '/src/components/eric/myRadiasm.vue';
 export default {
 
 components: {
   BackendFunctions,
-  MyChart,
-  MyLine,
+  myLine,
+  myBar,
+  myPie,
+  myRadia,
+  myRadiasm,
 },
 };
 </script>
