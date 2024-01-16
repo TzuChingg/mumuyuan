@@ -1,11 +1,14 @@
 <template>
-
-            <div class="ps-4 pb-3 ">
+            <div class="p-3 ">
+                <button v-if="open" type="btn" class="btn btn-success w-100" @click="open=!open">開店</button>
+                <button v-else type="btn" class="btn btn-danger w-100" @click="open=!open">關店</button>
+            </div>
+            <div class="p-2 d-flex justify-content-center ">
                 <strong class="text-nowrap ">木木苑後台系統</strong>
             </div>
             <div class="overflow-auto">
                 <div v-for="(menu,index) in menuItems" :key="index">
-                    <a :href="'#menu-order-' + index" class="sidebar-link  icon" data-bs-toggle="collapse" @click.prevent="toggler(index)">
+                    <a :href="'#menu-order-' + index" class="sidebar-link  icon py-2" data-bs-toggle="collapse" @click.prevent="toggler(index)">
                         <div class="d-flex  justify-content-between px-4 ">
                             <p class="mb-0 text-nowrap">
                                 {{menu.label}}
@@ -15,12 +18,12 @@
                             </div>
                         </div>
                     </a>
-                    <div  class="collapse" :id="'menu-order-' + index">
-                        <a href="" class="sidebar-link " v-for="(subMenuItem, subIndex) in menu.subMenu" :key="subIndex">
+                    <div class="collapse" :id="'menu-order-' + index" v-for="(subMenuItem, subIndex) in menu.subMenu" :key="subIndex">
+                        <router-link :to="subMenuItem.path" class="sidebar-link py-2" :class="{active:subMenuItem.at}">
                             <div class="ps-5">
-                                {{subMenuItem}}
+                                {{subMenuItem.title}}
                             </div>
-                        </a>
+                        </router-link>
                     </div>
                 </div>
             </div>
@@ -40,13 +43,43 @@ export default {
 data() {
     return {
         menuItems:[
-            {label:"訂單狀態",expend:false,subMenu:['待接受', '已完成'],icon:"bi-caret-left-fill"},
-            {label:"會員資料",expend:false,subMenu:['一般會員', '黑名單'],icon:"bi-caret-left-fill"},
-            {label:"銷售統計",expend:false,subMenu:[],icon:"bi-caret-left-fill"},
-            {label:"編輯商品",expend:false,subMenu:['商品', ' 商品下架區'],icon:"bi-caret-left-fill"},
-            {label:"訂位管理",expend:false,subMenu:['尚未確認', '已確認歷史紀錄'],icon:"bi-caret-left-fill"},
-            {label:"活動管理",expend:false,subMenu:['優惠券', '優惠券下架區','活動','活動下架區'],icon:"bi-caret-left-fill"},
+            {   label:"訂單狀態",
+                expend:false,
+                subMenu:[{title:'待接受',path:'/order',at:false}, {title:'待完成',path:'/unOrder',at:false}],
+                icon:"bi-caret-left-fill",
+            },
+            {   label:"會員資料",
+                expend:false,
+                subMenu:[{title:'一般會員',path:'/member',at:false}, {title:'黑名單',path:'/badMember',at:false}],
+                icon:"bi-caret-left-fill"
+            },
+            {   label:"銷售統計",
+                expend:false,
+                subMenu:[{title:'統計',path:'/sales',at:false}],
+                icon:"bi-caret-left-fill"
+            },
+            {   label:"編輯商品",
+                expend:false,
+                subMenu:[{title:'商品',path:'/product',at:false}, {title:'商品下架區',path:'/downProduct',at:false}],
+                icon:"bi-caret-left-fill"
+            },
+            {   label:"訂位管理",
+                expend:false,
+                subMenu:[{title:'尚未確認',path:'/booking',at:false}, {title:'已確認歷史紀錄',path:'/finishBooking',at:false}],
+                icon:"bi-caret-left-fill"
+            },
+            {   label:"活動管理",
+                expend:false,
+                subMenu:[   
+                            {title:'優惠券',path:'/discount',at:false}, 
+                            {title:'優惠券下架區',path:'/downDiscount',at:false},
+                            {title:'活動',path:'/journey',at:false},
+                            {title:'活動下架區',path:'/downJourney',at:false}
+                        ],
+                icon:"bi-caret-left-fill"
+            },
         ],
+        open:true
         
     }
 },
@@ -59,7 +92,20 @@ methods:{
             this.menuItems[index].icon = "bi-caret-left-fill"
         }
     },
-}
+}, 
+
+mounted() {
+
+    const url = this.$route.path
+    this.menuItems.forEach(item => {
+      item.subMenu.forEach(item=>{
+        
+        if(url==item.path)
+        item.at = true
+      })
+    });
+    
+  },
 
 }
 </script>
@@ -73,28 +119,36 @@ methods:{
     text-decoration: none;
     padding-top: 0.875rem;
     padding-bottom: 0.875rem;
-
+    a{
+        text-decoration: none;
+     }
     &:hover {
-    background-color: red;
+    color: #fff;    
+    background-color: rgb(2, 2, 1);
     transition: background-color 0.5s;
+    a{
+        color: #fff;   
+    }
     }
 }
 
 .sidebar-link.active {
     position: relative;
     color: white;
-    background-color: blueviolet;
+    background-color: gray;
 
     &::after {
     content: "";
     position: absolute;
     top: 0;
-    left: 2px;
+    left: 0px;
     height: 100%;
-    width: 3px;
-    background: blue;
+    width: 7px;
+    background: rgb(2, 2, 1);
     }
 }
+
+
 
 
 

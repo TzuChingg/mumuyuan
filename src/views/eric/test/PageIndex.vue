@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import {getAllPosts} from '../eric/data'
+import {getAllPosts} from './data'
 export default{ 
     data() {
         return {
@@ -30,4 +30,4 @@ footer{
 footer a{
     background: linear-gradient(80deg,#ff0000, #0000ff);
 }
-</style>
+</style>./test/data
