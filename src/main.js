@@ -1,26 +1,37 @@
+//BS框架
 import './assets/main.scss'
 import '/node_modules/bootstrap-icons/font/bootstrap-icons.css'
 
-import { createApp } from 'vue'
-import { createPinia } from 'pinia'
+//框架、狀態管理
+import { createApp } from 'vue';
+import { createPinia } from 'pinia';
 
+//API
+import axios from 'axios';
+import VueAxios from 'vue-axios';
 
-import App from './App.vue'
+//路由器
 import router from './router'
-import axios from 'axios'
-import VueAxios from 'vue-axios'
+
+//全域組件
+import navbarComponent from "./components/global/navbarComponent.vue";
+
+//套件工具
 import VueApexCharts from "vue3-apexcharts";
 import ApexCharts from 'apexcharts';
-const app = createApp(App)
+
+//網站起始點掛載
+import App from './App.vue';
+
+const app = createApp(App);
 
 app.config.globalProperties.$apexcharts = ApexCharts;
+app.component('navbarComponent', navbarComponent);
 
 app.use(VueApexCharts);
-app.use(VueAxios, axios)
-app.use(createPinia())
-app.use(router)
+app.use(VueAxios, axios);
+app.use(createPinia());
+app.use(router);
 
 
-app.mount('#app')
-
-
+app.mount('#app');

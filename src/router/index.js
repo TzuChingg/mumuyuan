@@ -1,7 +1,12 @@
-// import PageIndex from '/src/views/eric/PageIndex.vue'
+//工具
+import { createRouter, createWebHashHistory } from 'vue-router'
+
+//Router
+import loginRouter from './loginRouter';
+
+//頁面
 import pagePost from '/src/views/eric/test/pagePost.vue'
 import IndexTest from '/src/views/eric/IndexTest.vue'
-////////////////////////////////////////////////////////
 import orderManage from '/src/views/eric/order/orderManage.vue'
 import memberManage from '/src/views/eric/member/memberManage.vue'
 import salesStatistics from '/src/views/eric/sales/salesStatistics.vue'
@@ -17,7 +22,6 @@ import downDiscountManage from '/src/views/eric/discount/downDiscountManage.vue'
 import journeyManage from '/src/views/eric/discount/journeyManage.vue'
 import downJourneyManage from '/src/views/eric/discount/downJourneyManage.vue'
 
-import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
   {path:'/',component:IndexTest,},
@@ -35,11 +39,12 @@ const routes = [
   {path:'/downDiscount',component:downDiscountManage,},
   {path:'/journey',component:journeyManage,},
   {path:'/downJourney',component:downJourneyManage,},
+  {...loginRouter},
 ]
 
 
 const router = createRouter({
-  history:createWebHistory(),
+  history: createWebHashHistory(),
   routes,
 });
 

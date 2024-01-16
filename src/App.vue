@@ -1,4 +1,5 @@
 <script>
+//VUE3 CLI 默認導入模塊，所以不用加type="module"
 export default {
   components: {
    
@@ -7,10 +8,10 @@ export default {
 </script>
 
 <template>
-<!-- <BackendFunctions></BackendFunctions> -->
-<router-view></router-view>
+  <div class="container">
+    <navbarComponent />
+    <router-view></router-view>
+  </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped lang="scss"></style>
