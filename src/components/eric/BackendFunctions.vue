@@ -1,6 +1,7 @@
 <template>
             <div class="p-3 ">
-                <button type="btn" class="btn btn-primary w-100">開店</button>
+                <button v-if="open" type="btn" class="btn btn-success w-100" @click="open=!open">開店</button>
+                <button v-else type="btn" class="btn btn-danger w-100" @click="open=!open">關店</button>
             </div>
             <div class="p-2 d-flex justify-content-center ">
                 <strong class="text-nowrap ">木木苑後台系統</strong>
@@ -44,7 +45,7 @@ data() {
         menuItems:[
             {   label:"訂單狀態",
                 expend:false,
-                subMenu:[{title:'待接受',path:'/order',at:false}, {title:'已完成',path:'/unOrder',at:false}],
+                subMenu:[{title:'待接受',path:'/order',at:false}, {title:'待完成',path:'/unOrder',at:false}],
                 icon:"bi-caret-left-fill",
             },
             {   label:"會員資料",
@@ -78,6 +79,7 @@ data() {
                 icon:"bi-caret-left-fill"
             },
         ],
+        open:true
         
     }
 },

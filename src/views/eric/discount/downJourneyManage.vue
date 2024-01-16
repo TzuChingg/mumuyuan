@@ -5,9 +5,51 @@
       <aside class="sidebar  border-5  pt-3 border-end d-flex bg-white flex-column ">
         <BackendFunctions></BackendFunctions>  
       </aside>
-      <main class="main ">
-        <h1>訂單</h1>
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+      <main class="main mt-4">
+          <div class="container ">
+            <div class="row row-cols-4">
+            <div class="col">
+              <div class="card ">
+                <div class="cardbody">
+                      <h4 class=" text-center mt-4">全面9折</h4>
+                      <div class="m-4">
+                            <button type="button" class="btn btn-danger w-100">上架</button>
+                       </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card ">
+                <div class="cardbody">
+                      <h4 class=" text-center mt-4">全面9折</h4>
+                      <div class="m-4">
+                            <button type="button" class="btn btn-danger w-100">上架</button>
+                       </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card ">
+                <div class="cardbody">
+                      <h4 class=" text-center mt-4">全面9折</h4>
+                      <div class="m-4">
+                            <button type="button" class="btn btn-danger w-100">上架</button>
+                       </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card ">
+                <div class="cardbody">
+                      <h4 class=" text-center mt-4">全面9折</h4>
+                      <div class="m-4">
+                            <button type="button" class="btn btn-danger w-100">上架</button>
+                       </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
       </main>
   </div>
   

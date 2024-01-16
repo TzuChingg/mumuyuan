@@ -5,9 +5,26 @@
       <aside class="sidebar  border-5  pt-3 border-end d-flex bg-white flex-column ">
         <BackendFunctions></BackendFunctions>  
       </aside>
-      <main class="main ">
-        <h1>訂單</h1>
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+      <main class="main container">
+        <div class="input-group mt-5 w-25">
+          <span class="input-group-text border-0 bg-white pe-0">
+            <i class="bi bi-search"></i>
+          </span>
+          <input type="search" placeholder="search" class=" form-control border-0 shadow-none">
+        </div>
+        <div class="card mt-2 shadow-sm w-100" >
+          <div class="card-body">
+            <div class="row ">
+              <div class="col-4">
+                <strong>蔡先生</strong>
+                <span class="ms-6 ">2位</span><p class="m-0">日期:2024/01/01</p>
+              </div>
+              <div class="col-4">
+                <strong class="m-0">電話:0900000000</strong><p class="m-0">時間:17:00</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </main>
   </div>
   

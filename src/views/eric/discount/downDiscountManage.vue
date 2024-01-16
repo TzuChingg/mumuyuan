@@ -5,9 +5,83 @@
       <aside class="sidebar  border-5  pt-3 border-end d-flex bg-white flex-column ">
         <BackendFunctions></BackendFunctions>  
       </aside>
-      <main class="main ">
-        <h1>訂單</h1>
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+      <main class="main mt-4">
+          <div class="container ">
+            <div class="row row-cols-4">
+            <div class="col">
+              <div class="card ">
+                <div class="cardbody">
+                      <h4 class=" text-center mt-4">折10元</h4>
+                      <div class="row px-3 text-center align-items-center py-1">
+                        <div class="col-6 fs-4 ">
+                            <label for="money" class="ms-5">點數:</label>
+                        </div>
+                        <div class="col-6 mt-2 ">
+                            <h4 class="me-6">50</h4>
+                        </div>
+                    </div>
+                      <div class="m-3">
+                            <button type="button" class="btn btn-danger w-100">上架</button>
+                       </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card ">
+                <div class="cardbody">
+                      <h4 class=" text-center mt-4">折10元</h4>
+                      <div class="row px-3 text-center align-items-center py-1">
+                        <div class="col-6 fs-4 ">
+                            <label for="money" class="ms-5">點數:</label>
+                        </div>
+                        <div class="col-6 mt-2 ">
+                            <h4 class="me-6">50</h4>
+                        </div>
+                    </div>
+                      <div class="m-3">
+                            <button type="button" class="btn btn-danger w-100">上架</button>
+                       </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card ">
+                <div class="cardbody">
+                      <h4 class=" text-center mt-4">折10元</h4>
+                      <div class="row px-3 text-center align-items-center py-1">
+                        <div class="col-6 fs-4 ">
+                            <label for="money" class="ms-5">點數:</label>
+                        </div>
+                        <div class="col-6 mt-2 ">
+                            <h4 class="me-6">50</h4>
+                        </div>
+                    </div>
+                      <div class="m-3">
+                            <button type="button" class="btn btn-danger w-100">上架</button>
+                       </div>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card ">
+                <div class="cardbody">
+                      <h4 class=" text-center mt-4">折10元</h4>
+                      <div class="row px-3 text-center align-items-center py-1">
+                        <div class="col-6 fs-4 ">
+                            <label for="money" class="ms-5">點數:</label>
+                        </div>
+                        <div class="col-6 mt-2 ">
+                            <h4 class="me-6">50</h4>
+                        </div>
+                    </div>
+                      <div class="m-3">
+                            <button type="button" class="btn btn-danger w-100">上架</button>
+                       </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </main>
   </div>
   

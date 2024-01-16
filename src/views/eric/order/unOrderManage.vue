@@ -6,14 +6,6 @@
         </aside>
         <main class="main container">
           <div class="card mt-5 shadow-sm w-100">
-            <div class="card-header bg-transparent">
-                <div class="input-group">
-                  <span class="input-group-text border-0 bg-white pe-0">
-                    <i class="bi bi-search"></i>
-                  </span>
-                  <input type="search" placeholder="search" class=" form-control border-0 shadow-none">
-                </div>
-            </div>
             <div class="card-body  " >
               <div class="accordion accordion-flush " id="accordionFlushExample">
                     <div class="accordion-item " >
@@ -108,8 +100,8 @@
                                         </tr>
                                       </tbody>
                                     </table>
-                                      <button type="btn" class="btn btn-primary w-100 mb-1">接受</button>
-                                      <button type="btn" class="btn btn-primary w-100 mt-1">拒絕</button>
+                                      
+                                      <button type="btn" class="btn btn-primary w-100 mt-1">完成</button>
                                   </div>
                                   </div>         
 
