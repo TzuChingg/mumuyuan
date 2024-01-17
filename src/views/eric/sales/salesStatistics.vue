@@ -60,6 +60,11 @@
             </div>
           </div>
         </div>
+        <div class="card shadow-sm h-100">
+              <div class="card-body">
+                <my-hat></my-hat>
+              </div>
+            </div>
         </div>
 
       </main>
@@ -74,6 +79,7 @@ import myBar from '/src/components/eric/myBar.vue';
 import myPie from '/src/components/eric/myPie.vue';
 import myRadia from '/src/components/eric/myRadia.vue';
 import myRadiasm from '/src/components/eric/myRadiasm.vue';
+import myHat from '/src/components/eric/myHat.vue'
 export default {
 
 components: {
@@ -83,6 +89,7 @@ components: {
   myPie,
   myRadia,
   myRadiasm,
+  myHat,
 },
 };
 </script>

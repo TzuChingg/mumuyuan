@@ -12,25 +12,15 @@
                   <span class="input-group-text border-0 bg-white pe-0">
                     <i class="bi bi-search"></i>
                   </span>
-                  <input type="search" placeholder="search" class=" form-control border-0 shadow-none">
+                  <input type="search" placeholder="search" class=" form-control border-0 shadow-none" v-model="search">
                 </div>
             </div>
             <div class="card-body">
               <table class=" table table-hover align-middle table-sm reduce-spacing">
-                <tbody class="fs-4 text-nowrap ">
+                <tbody class="fs-4 text-nowrap" v-for="(user ,index) in filteredUser" :key="index">
                   <tr>
-                      <td>黃先生</td>
-                      <td>手機:0000000000</td>
-                      <td class="text-end "><button class="btn btn-primary me-5">原諒你</button></td>
-                  </tr>
-                  <tr>
-                      <td>黃先生</td>
-                      <td>手機:0000000000</td>
-                      <td class="text-end "><button class="btn btn-primary me-5">原諒你</button></td>
-                  </tr>
-                  <tr>
-                      <td>黃先生</td>
-                      <td>手機:0000000000</td>
+                      <td>{{user.name}}</td>
+                      <td>手機:{{user.phone}}</td>
                       <td class="text-end "><button class="btn btn-primary me-5">原諒你</button></td>
                   </tr>
                 </tbody>
@@ -45,9 +35,36 @@
 <script>
 import BackendFunctions from '/src/components/eric/BackendFunctions.vue';
 export default {
+  data() {
+    return {
+      badusers:[
+        {
+          name:"蔡先生",
+          phone:"09252525225"
+        },
+        {
+          name:"黃先生",
+          phone:"09111111111"
+        },
+      ],
+      search:""
+    }
+  },
 components: {
   BackendFunctions,
 },
+
+computed:{
+  
+  filteredUser(){
+    if(this.search){
+        return this.badusers.filter((name)=>name.phone.includes(this.search));
+    } else {
+        return this.badusers
+    }
+  }
+
+}
 };
 </script>
 

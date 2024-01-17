@@ -14,7 +14,7 @@ import VueAxios from 'vue-axios';
 import router from './router'
 
 //全域組件
-import navbarComponent from "./components/global/navbarComponent.vue";
+// import navbarComponent from "./components/global/navbarComponent.vue";
 
 //套件工具
 import VueApexCharts from "vue3-apexcharts";
@@ -26,7 +26,7 @@ import App from './App.vue';
 const app = createApp(App);
 
 app.config.globalProperties.$apexcharts = ApexCharts;
-app.component('navbarComponent', navbarComponent);
+// app.component('navbarComponent', navbarComponent);
 
 app.use(VueApexCharts);
 app.use(VueAxios, axios);
