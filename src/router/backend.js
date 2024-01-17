@@ -16,17 +16,17 @@ import downJourneyManage from '/src/views/eric/discount/downJourneyManage.vue'
 
 
 export default [
-    { path: '/order', component: orderManage,meta:{transition:"fade"} },
-    { path: '/unOrder', component: unOrderManage ,meta:{transition:"fade"}},
-    { path: '/member', component: memberManage,meta:{transition:"fade"} },
-    { path: '/badMember', component: badMemberManage ,meta:{transition:"fade"}},
-    { path: '/sales', component: salesStatistics ,meta:{transition:"fade"}},
-    { path: '/product', component: productManage,meta:{transition:"fade"} },
-    { path: '/downProduct', component: downProductManage ,meta:{transition:"fade"}},
-    { path: '/booking', component: bookingManage,meta:{transition:"fade"} },
-    { path: '/finishBooking', component: finishBookingManage,meta:{transition:"fade"} },
-    { path: '/discount', component: discountManage ,meta:{transition:"fade"}},
-    { path: '/downDiscount', component: downDiscountManage ,meta:{transition:"fade"}},
-    { path: '/journey', component: journeyManage ,meta:{transition:"fade"}},
-    { path: '/downJourney', component: downJourneyManage ,meta:{transition:"fade"}}
+    { path: '/order', component: orderManage, },
+    { path: '/unOrder', component: unOrderManage ,},
+    { path: '/member', component: memberManage, },
+    { path: '/badMember', component: badMemberManage ,},
+    { path: '/sales', component: salesStatistics ,},
+    { path: '/product', component: productManage, },
+    { path: '/downProduct', component: downProductManage ,},
+    { path: '/booking', component: bookingManage, },
+    { path: '/finishBooking', component: finishBookingManage, },
+    { path: '/discount', component: discountManage ,},
+    { path: '/downDiscount', component: downDiscountManage ,},
+    { path: '/journey', component: journeyManage ,},
+    { path: '/downJourney', component: downJourneyManage ,}
   ];
