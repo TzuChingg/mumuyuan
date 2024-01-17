@@ -11,7 +11,7 @@
             <router-link to="/login/forget" class="fotgetPassword fs-6 text-decoration-none">忘記密碼?</router-link>
         </div>
     </div>
-    <button type="type" class="btn btn-dark d-block mx-auto w-100 pt-2 mb-3" @click="userlogin">登入</button>
+    <button type="type" class="bb btn btn-dark d-block mx-auto w-100 pt-2 mb-3" @click="userlogin">登入</button>
     <div class="text-center">
         <span class="text-center fs-6">還沒加入會員嗎?</span>
         <router-link to="/login/signin" class="signin mx-2 text-decoration-none">註冊</router-link>
@@ -40,7 +40,7 @@ export default {
             this.$http.post('http://localhost:3000/login', {
                 ...this.userInput
             }).then((response) => {
-                console.log(response)
+                console.log(response);
                 this.$router.push({ path: '/' });
             })
         }
@@ -49,11 +49,14 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import '../../assets/main.scss';
 .fotgetPassword {
     color: #f00000;
     cursor: pointer;
 }
-
+.bb{
+    color: $red-700;
+}
 .signin {
     color: #0a0ae4;
     cursor: pointer;

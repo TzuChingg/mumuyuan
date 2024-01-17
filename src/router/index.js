@@ -3,6 +3,7 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 
 //Router
 import loginRouter from './loginRouter';
+import reserveRouter from './reserveRouter';
 
 //頁面
 import pagePost from '/src/views/eric/test/pagePost.vue'
@@ -40,6 +41,7 @@ const routes = [
   {path:'/journey',component:journeyManage,},
   {path:'/downJourney',component:downJourneyManage,},
   {...loginRouter},
+  {...reserveRouter},
 ]
 
 

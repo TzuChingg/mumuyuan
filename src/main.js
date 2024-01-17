@@ -1,10 +1,10 @@
-//BS框架
-import './assets/main.scss'
-import '/node_modules/bootstrap-icons/font/bootstrap-icons.css'
-
 //框架、狀態管理
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
+
+//BS框架
+import './assets/main.scss';
+import 'bootstrap-icons/font/bootstrap-icons.css'
 
 //API
 import axios from 'axios';

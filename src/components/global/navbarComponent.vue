@@ -4,7 +4,7 @@
             <router-link to="/" class="nav-link border border-secondary rounded-3 fw-bolder">回首頁</router-link>
         </li>
         <li class="nav-item">
-            <router-link to="/" class="nav-link border border-secondary rounded-3 fw-bolder">未定義</router-link>
+            <router-link to="/reserve" class="nav-link border border-secondary rounded-3 fw-bolder">即刻訂位</router-link>
         </li>
         <li class="nav-item">
             <router-link to="/2" class="nav-link border border-secondary rounded-3 fw-bolder">/2</router-link>
