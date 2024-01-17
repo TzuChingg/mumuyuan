@@ -21,7 +21,7 @@ export default [
     { path: '/member', component: memberManage, },
     { path: '/badMember', component: badMemberManage ,},
     { path: '/sales', component: salesStatistics ,},
-    { path: '/product', component: productManage, },
+    { path: '/product',component:productManage},
     { path: '/downProduct', component: downProductManage ,},
     { path: '/booking', component: bookingManage, },
     { path: '/finishBooking', component: finishBookingManage, },

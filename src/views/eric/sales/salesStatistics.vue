@@ -4,7 +4,7 @@
         <BackendFunctions></BackendFunctions>  
       </aside>
       <main class="main ">
-        <div class="container">
+        <div class="container  mx-auto px-0 ">
           <div class="row p-3 ">
           <div class="col-3">
             <div class="card shadow-sm h-100">
@@ -30,7 +30,7 @@
             <div class="card shadow-sm mt-1">
               <div class="card-body text-end">
                 <h2 class="display-6 ">當日營業額</h2>
-                <p><span class="fs-3">NT$</span><span class="display-4">980,655</span></p>
+                <p><span class="fs-3">NT$</span><span class="display-4 text-success">980,655</span></p>
               </div>
             </div>
           </div>

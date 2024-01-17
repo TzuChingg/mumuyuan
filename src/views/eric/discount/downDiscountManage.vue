@@ -8,79 +8,30 @@
       <main class="main mt-4">
           <div class="container ">
             <div class="row row-cols-4">
-            <div class="col">
-              <div class="card ">
+            <div class="col" v-for="(down ,index) in thisPage" :key="index">
+              <div class="card my-2">
                 <div class="cardbody">
-                      <h4 class=" text-center mt-4">折10元</h4>
+                      <h4 class=" text-center mt-4">{{down.title}}</h4>
                       <div class="row px-3 text-center align-items-center py-1">
                         <div class="col-6 fs-4 ">
                             <label for="money" class="ms-5">點數:</label>
                         </div>
                         <div class="col-6 mt-2 ">
-                            <h4 class="me-6">50</h4>
+                            <h4 class="me-6">{{down.point}}</h4>
                         </div>
                     </div>
                       <div class="m-3">
                             <button type="button" class="btn btn-danger w-100">上架</button>
-                       </div>
+                      </div>
                 </div>
               </div>
             </div>
-            <div class="col">
-              <div class="card ">
-                <div class="cardbody">
-                      <h4 class=" text-center mt-4">折10元</h4>
-                      <div class="row px-3 text-center align-items-center py-1">
-                        <div class="col-6 fs-4 ">
-                            <label for="money" class="ms-5">點數:</label>
-                        </div>
-                        <div class="col-6 mt-2 ">
-                            <h4 class="me-6">50</h4>
-                        </div>
-                    </div>
-                      <div class="m-3">
-                            <button type="button" class="btn btn-danger w-100">上架</button>
-                       </div>
-                </div>
-              </div>
             </div>
-            <div class="col">
-              <div class="card ">
-                <div class="cardbody">
-                      <h4 class=" text-center mt-4">折10元</h4>
-                      <div class="row px-3 text-center align-items-center py-1">
-                        <div class="col-6 fs-4 ">
-                            <label for="money" class="ms-5">點數:</label>
-                        </div>
-                        <div class="col-6 mt-2 ">
-                            <h4 class="me-6">50</h4>
-                        </div>
-                    </div>
-                      <div class="m-3">
-                            <button type="button" class="btn btn-danger w-100">上架</button>
-                       </div>
-                </div>
-              </div>
+            <div class="d-flex justify-content-center h-25 mt-3">
+                        <button class="btn btn-primary" @click="prevPage" :disabled="page === 1">上一页</button>
+                        <strong class="fs-3 text-primary mx-3 "> {{ page }} </strong>
+                        <button class="btn btn-primary" @click="nextPage" :disabled="thisPage.length < pg">下一页</button>
             </div>
-            <div class="col">
-              <div class="card ">
-                <div class="cardbody">
-                      <h4 class=" text-center mt-4">折10元</h4>
-                      <div class="row px-3 text-center align-items-center py-1">
-                        <div class="col-6 fs-4 ">
-                            <label for="money" class="ms-5">點數:</label>
-                        </div>
-                        <div class="col-6 mt-2 ">
-                            <h4 class="me-6">50</h4>
-                        </div>
-                    </div>
-                      <div class="m-3">
-                            <button type="button" class="btn btn-danger w-100">上架</button>
-                       </div>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </main>
   </div>
@@ -92,6 +43,63 @@ import BackendFunctions from '/src/components/eric/BackendFunctions.vue';
 export default {
 components: {
   BackendFunctions,
+},
+
+data() {
+  return {
+    downDiscount:[
+      {title:"折10元",point:30},
+      {title:"折10元",point:30},
+      {title:"折10元",point:30},
+      {title:"折10元",point:30},
+      {title:"折10元",point:30},
+      {title:"折10元",point:30},
+      {title:"折10元",point:30},
+      {title:"折10元",point:30},
+      {title:"折10元",point:30},
+      {title:"折10元",point:30},
+      {title:"折10元",point:30},
+      {title:"折10元",point:30},
+      {title:"折10元",point:30},
+      {title:"折10元",point:30},
+      {title:"折10元",point:30},
+      {title:"折10元",point:30},
+      {title:"折10元",point:30},
+      {title:"折10元",point:30},
+    ],
+    thisPage: [],
+    page: 1,
+    pg: 16, 
+  }
+},
+
+computed: {
+    startIndex() {
+      return (this.page - 1) * this.pg;
+    },
+    endIndex() {
+      return this.startIndex + this.pg;
+    },
+  },
+methods: {
+  prevPage() {
+    if (this.page > 1) {
+      this.page--;
+      this.updateThisPage();
+    }
+  },
+  nextPage() {
+    if (this.thisPage.length >= this.pg) {
+      this.page++;
+      this.updateThisPage();
+    }
+  },
+  updateThisPage() {
+    this.thisPage = this.downDiscount.slice(this.startIndex, this.endIndex);
+  },
+},
+created() {
+  this.updateThisPage();
 },
 };
 </script>

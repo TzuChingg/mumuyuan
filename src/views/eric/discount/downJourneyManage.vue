@@ -8,47 +8,22 @@
       <main class="main mt-4">
           <div class="container ">
             <div class="row row-cols-4">
-            <div class="col">
+            <div class="col" v-for="(dj ,index) in thisPage" :key="index">
               <div class="card ">
                 <div class="cardbody">
-                      <h4 class=" text-center mt-4">全面9折</h4>
+                      <h4 class=" text-center mt-4">{{dj.title}}</h4>
                       <div class="m-4">
                             <button type="button" class="btn btn-danger w-100">上架</button>
                        </div>
                 </div>
               </div>
             </div>
-            <div class="col">
-              <div class="card ">
-                <div class="cardbody">
-                      <h4 class=" text-center mt-4">全面9折</h4>
-                      <div class="m-4">
-                            <button type="button" class="btn btn-danger w-100">上架</button>
-                       </div>
-                </div>
-              </div>
             </div>
-            <div class="col">
-              <div class="card ">
-                <div class="cardbody">
-                      <h4 class=" text-center mt-4">全面9折</h4>
-                      <div class="m-4">
-                            <button type="button" class="btn btn-danger w-100">上架</button>
-                       </div>
-                </div>
-              </div>
+            <div class="d-flex justify-content-center h-25 mt-3">
+                        <button class="btn btn-primary" @click="prevPage" :disabled="page === 1">上一页</button>
+                        <strong class="fs-3 text-primary mx-3 "> {{ page }} </strong>
+                        <button class="btn btn-primary" @click="nextPage" :disabled="thisPage.length < pg">下一页</button>
             </div>
-            <div class="col">
-              <div class="card ">
-                <div class="cardbody">
-                      <h4 class=" text-center mt-4">全面9折</h4>
-                      <div class="m-4">
-                            <button type="button" class="btn btn-danger w-100">上架</button>
-                       </div>
-                </div>
-              </div>
-            </div>
-          </div>
           </div>
       </main>
   </div>
@@ -60,6 +35,61 @@ import BackendFunctions from '/src/components/eric/BackendFunctions.vue';
 export default {
 components: {
   BackendFunctions,
+},
+
+data() {
+  return {
+    downJourney:[
+      {title:"優惠券在這邊"},
+      {title:"優惠券在這邊"},
+      {title:"優惠券在這邊"},
+      {title:"優惠券在這邊"},
+      {title:"優惠券在這邊"},
+      {title:"優惠券在這邊"},
+      {title:"優惠券在這邊"},
+      {title:"優惠券在這邊"},
+      {title:"優惠券在這邊"},
+      {title:"優惠券在這邊"},
+      {title:"優惠券在這邊"},
+      {title:"優惠券在這邊"},
+      {title:"優惠券在這邊"},
+      {title:"優惠券在這邊"},
+      {title:"優惠券在這邊"},
+      {title:"優惠券在這邊"},
+      {title:"優惠券在這邊"},
+    ],
+    thisPage: [],
+    page: 1,
+    pg: 16, 
+  }
+},
+computed: {
+    startIndex() {
+      return (this.page - 1) * this.pg;
+    },
+    endIndex() {
+      return this.startIndex + this.pg;
+    },
+  },
+methods: {
+  prevPage() {
+    if (this.page > 1) {
+      this.page--;
+      this.updateThisPage();
+    }
+  },
+  nextPage() {
+    if (this.thisPage.length >= this.pg) {
+      this.page++;
+      this.updateThisPage();
+    }
+  },
+  updateThisPage() {
+    this.thisPage = this.downJourney.slice(this.startIndex, this.endIndex);
+  },
+},
+created() {
+  this.updateThisPage();
 },
 };
 </script>
