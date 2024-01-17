@@ -98,10 +98,10 @@
             </select>
           </div>
           <!-- 切換區 -->
-          <div class="d-flex justify-content-end mb-3">
-            <div class="form-check form-check-inline">
+          <div class="row mb-3 d-flex justify-content-end">
+            <div class="col-2 col-form-label">
               <input
-                class="form-check-input"
+                class="form-check-input me-1"
                 type="radio"
                 name="inlineRadioOptions"
                 id="inlineRadio1"
@@ -109,9 +109,9 @@
               />
               <label class="form-check-label" for="inlineRadio1">現金</label>
             </div>
-            <div class="form-check form-check-inline">
+            <div class="col-2 col-form-label">
               <input
-                class="form-check-input"
+                class="form-check-input me-1"
                 type="radio"
                 name="inlineRadioOptions"
                 id="inlineRadio2"
@@ -119,9 +119,9 @@
               />
               <label class="form-check-label" for="inlineRadio2">信用卡</label>
             </div>
-            <div class="form-check form-check-inline">
+            <div class="col-2 col-form-label">
               <input
-                class="form-check-input"
+                class="form-check-input me-1"
                 type="radio"
                 name="inlineRadioOptions"
                 id="inlineRadio3"
@@ -137,11 +137,65 @@
           </div>
           <div class="mb-3 d-flex justify-content-between mb-3">
             <button type="button" class="btn btn-outline-primary">返回</button>
-            <button type="submit" class="btn btn-outline-primary">送出</button>
+            <button
+              type="button"
+              class="btn btn-outline-primary"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
+            >
+              送出訂單
+            </button>
           </div>
         </form>
       </div>
+      <!-- modal -->
 
+      <!-- Modal -->
+      <div
+        class="modal fade"
+        id="exampleModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body mx-5">
+              <!-- 切換區 -->
+              <div class="row mb-3">
+                <input type="text" class="form-control col" placeholder="信用卡號碼" />
+              </div>
+              <div class="row mb-3 d-flex justify-content-between">
+                <input type="text" class="form-control col me-3" placeholder="月月/年年" />
+                <input
+                  type="text"
+                  class="form-control col ms-3"
+                  placeholder="信用卡認證編號(CVC)"
+                />
+              </div>
+              <div class="row mb-3">
+                <input type="text" class="form-control col" placeholder="持卡人姓名" />
+              </div>
+              <!-- 切換區 -->
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- /modal -->
       <!-- footer -->
       <footer>FOOTER</footer>
     </div>
