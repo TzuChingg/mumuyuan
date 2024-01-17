@@ -1,23 +1,29 @@
-// import { createRouter, createWebHistory } from 'vue-router'
-// // import HomeView from '../views/HomeView.vue'
+//工具
+import { createRouter, createWebHashHistory,createWebHistory } from 'vue-router'
 
-// const router = createRouter({
-//   history: createWebHistory(import.meta.env.BASE_URL),
-//   routes: [
-//     // {
-//     //   path: '/',
-//     //   name: 'home',
-//     //   component: HomeView
-//     // },
-//     // {
-//     //   path: '/about',
-//     //   name: 'about',
-//     //   // route level code-splitting
-//     //   // this generates a separate chunk (About.[hash].js) for this route
-//     //   // which is lazy-loaded when the route is visited.
-//     //   component: () => import('../views/AboutView.vue')
-//     // }
-//   ]
-// })
+//Router
+import loginRouter from './loginRouter';
+import backend   from './backend';
+//測試
+import pagePost from '/src/views/eric/test/pagePost.vue'
+//主頁
+import IndexTest from '/src/views/eric/IndexTest.vue'
 
-// export default router
+
+
+
+const routes = [
+  {path:'/',component:IndexTest,},
+  {path:'/:postId',component:pagePost,},
+  ...backend,
+  {...loginRouter},
+]
+
+
+const router = createRouter({
+  history:  createWebHashHistory(),
+  routes,
+});
+
+
+export default router

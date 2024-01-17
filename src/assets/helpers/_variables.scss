@@ -298,7 +298,7 @@ $cyans: (
 // fusv-enable
 
 // scss-docs-start theme-color-variables
-$primary:       $black !default;
+$primary:       $purple !default;
 $secondary:     $gray-600 !default;
 $success:       $green !default;
 $info:          $cyan !default;
@@ -411,10 +411,18 @@ $spacer: 1rem !default;
 $spacers: (
   0: 0,
   1: $spacer * .25,
+  11: $spacer * .035,
   2: $spacer * .5,
   3: $spacer,
   4: $spacer * 1.5,
   5: $spacer * 3,
+  6: $spacer * 4,
+  7: $spacer * 5,
+  8: $spacer * 8,
+  9: $spacer * 10,
+  10: $spacer * 11,
+  12: $spacer * 11.43,
+
 ) !default;
 // scss-docs-end spacer-variables-maps
 
@@ -549,7 +557,7 @@ $border-radius-sm:            .25rem !default;
 $border-radius-lg:            .5rem !default;
 $border-radius-xl:            1rem !default;
 $border-radius-xxl:           2rem !default;
-$border-radius-pill:          50rem !default;
+$border-radius-pill:          .75rem !default;
 // scss-docs-end border-radius-variables
 // fusv-disable
 $border-radius-2xl:           $border-radius-xxl !default; // Deprecated in v5.3.0
@@ -645,7 +653,8 @@ $font-sizes: (
   3: $h3-font-size,
   4: $h4-font-size,
   5: $h5-font-size,
-  6: $h6-font-size
+  6: $h6-font-size,
+  7: calc(#{$h6-font-size} / 2)
 ) !default;
 // scss-docs-end font-sizes
 
@@ -1346,7 +1355,7 @@ $card-title-color:                  null !default;
 $card-subtitle-color:               null !default;
 $card-border-width:                 var(--#{$prefix}border-width) !default;
 $card-border-color:                 var(--#{$prefix}border-color-translucent) !default;
-$card-border-radius:                var(--#{$prefix}border-radius) !default;
+$card-border-radius:                $border-radius-pill; //var(--#{$prefix}border-radius) !default;
 $card-box-shadow:                   null !default;
 $card-inner-border-radius:          subtract($card-border-radius, $card-border-width) !default;
 $card-cap-padding-y:                $card-spacer-y * .5 !default;
