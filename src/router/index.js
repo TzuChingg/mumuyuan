@@ -4,6 +4,7 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 //Router
 import loginRouter from './loginRouter';
 import reserveRouter from './reserveRouter';
+import searchRouter from './searchRouter';
 
 //頁面
 import pagePost from '/src/views/eric/test/pagePost.vue'
@@ -42,6 +43,7 @@ const routes = [
   {path:'/downJourney',component:downJourneyManage,},
   {...loginRouter},
   {...reserveRouter},
+  {...searchRouter},
 ]
 
 

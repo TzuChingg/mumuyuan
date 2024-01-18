@@ -179,15 +179,22 @@ export default {
                 </div>
             </div>
             <div class="notice w-50 py-4 m-auto">
-                <p class="my-0">注意事項</p>
-                <ul class="list">
+                <p class="my-0 fs-5">注意事項</p>
+                <ul class="list fs-5">
                     <li>現場保留時間為10分，請客人盡早準時抵達</li>
                     <li>人數異動、臨時取消，請提前告知店家，避免影響雙方權益</li>
                     <li>響應食材不浪費，離開前如有浪費食物疑慮，即額外收取相關費用</li>
                 </ul>
-                <input type="checkbox" name="agree" id="agree" class="me-2">
-                <label for="agree">本人已詳細閱讀注意事項，並遵守用餐相關規定。</label>
-                <button type="button" class="d-block btn btn-dark mx-auto my-5">送出預定</button>
+                <div class="d-flex align-items-center">
+                    <input type="checkbox" name="agree" id="agree" class="agree d-inline-block mx-2">
+                    <label class="my-4 fs-5 d-inline-block" for="agree">本人已詳細閱讀注意事項，並遵守用餐相關規定。</label>
+                </div>
+                <button type="button" class="d-block btn btn-dark mx-auto my-5 py-2 px-3">送出預定</button>
+            </div>
+            <div class="imgContent py-5">
+                <img src="https://picsum.photos/id/10/700/300" alt="" class="col-4">
+                <img src="https://picsum.photos/id/20/700/300" alt="" class="col-4">
+                <img src="https://picsum.photos/id/30/700/300" alt="" class="col-4">
             </div>
         </div>
     </div>
@@ -206,6 +213,13 @@ export default {
 
         .list {
             list-style-type: auto;
+        }
+        .agree{
+            width: 20px;
+            height: 20px;
+        }
+        .imgWidth {
+            width: 25%;
         }
     }
 }
