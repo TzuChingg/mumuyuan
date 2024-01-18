@@ -12,7 +12,7 @@ export default {
 }
 </script>
 <template>
-    <div class="row login">
+    <div class="row login mx-0">
         <div class="col-8 imgContent">
         </div>
         <div class="col-4 signinContent d-flex">

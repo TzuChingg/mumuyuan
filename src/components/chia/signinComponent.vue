@@ -10,7 +10,7 @@ export default {
             this.noUsed = !this.noUsed;
         },
         finishSignin(){
-            this.$http.post('http://localhost:3000/login', {
+            this.$http.post('http://localhost:3000/users', {
                 ...this.userInput
             }).then((response) => {
                 console.log(response)
