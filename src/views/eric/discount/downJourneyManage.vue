@@ -6,10 +6,10 @@
         <BackendFunctions></BackendFunctions>  
       </aside>
       <main class="main mt-4">
-          <div class="container ">
+          <div class="container mt-6">
             <div class="row row-cols-4">
             <div class="col" v-for="(dj ,index) in thisPage" :key="index">
-              <div class="card ">
+              <div class="card my-2">
                 <div class="cardbody">
                       <h4 class=" text-center mt-4">{{dj.title}}</h4>
                       <div class="m-4">

@@ -6,10 +6,10 @@
         <BackendFunctions></BackendFunctions>  
       </aside>
       <main class="main mt-3">
-          <div class="container ">
+          <div class="container mt-6">
             <div class="my-3">
-              <button type="button" class="btn btn-primary">新增活動</button>
-          </div>
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">新增活動</button>
+            </div>
             <div class="row row-cols-4">
             <div class="col" v-for="(journey ,index) in thisPage" :key="index">
               <div class="card my-2">
@@ -27,10 +27,41 @@
               </div>
             </div>
             </div>
-            <div class="d-flex justify-content-center h-25 mt-3">
+            <div class="d-flex justify-content-center h-25 mt-4">
                         <button class="btn btn-primary" @click="prevPage" :disabled="page === 1">上一页</button>
                         <strong class="fs-3 text-primary mx-3 "> {{ page }} </strong>
                         <button class="btn btn-primary" @click="nextPage" :disabled="thisPage.length < pg">下一页</button>
+            </div>
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                      <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title " id="exampleModalLabel">活動內容</h5>
+                          </div>
+                          <div class="modal-body">
+                            <div class="card border-0">
+                              <div class="cardbody mt-4">
+                                <div class="d-flex h-25 justify-content-center my-2">
+                                  <btn class="btn btn-primary" @click="$refs.fileInput.click()">上傳檔案</btn>
+                                  <input type="file" style="display: none" ref="fileInput" @change="uploadFile">
+                                </div>
+                                <div class="d-flex h-25 justify-content-center mt-5 mb-2">
+                                  <label for="title" class="fs-3 me-2">活動名:</label>
+                                  <input type="text" id="title" placeholder="牛肉" class=" form-control border-1 shadow-none  w-50" >
+                                </div>
+                                <div class="d-flex h-25 justify-content-center mb-2">
+                                  <label for="title" class="fs-3 me-2">詳細內容:</label>
+                                  <input type="text" id="title" placeholder="" class=" form-control border-1 shadow-none  w-50" >
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
+                            <button type="button" class="btn btn-primary">新增</button>
+                          </div>
+                    </div>
+                </div>
             </div>
           </div>
       </main>
@@ -95,6 +126,14 @@ methods: {
   updateThisPage() {
     this.thisPage = this.journey.slice(this.startIndex, this.endIndex);
   },
+
+  uploadFile () {
+      const file = this.$refs.fileInput.files[0]
+      const form = new FormData()
+      form.append('file', file)
+      form.append('userId', 'test1234')
+      // axios.post('https://後端網址', form)
+    }
 },
 created() {
   this.updateThisPage();
