@@ -1,7 +1,7 @@
 <template>
     <div class="mb-3">
-        <label for="mumuyuanPhone" class="form-label fw-bolder fs-5">帳號</label>
-        <input type="email" class="form-control" id="mumuyuanPhone" placeholder="user phone" v-model="userInput.email">
+        <label for="mumuyuanMail" class="form-label fw-bolder fs-5">信箱</label>
+        <input type="email" class="form-control" id="mumuyuanMail" placeholder="user mail" v-model="userInput.email">
     </div>
     <div class="mb-4">
         <label for="mumuyuanPassword" class="form-label fw-bolder fs-5">密碼</label>
@@ -40,7 +40,7 @@ export default {
             this.$http.post('http://localhost:3000/login', {
                 ...this.userInput
             }).then((response) => {
-                console.log(response)
+                console.log(response);
                 this.$router.push({ path: '/' });
             })
         }
