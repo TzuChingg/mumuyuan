@@ -1,5 +1,5 @@
 <template>
-  <div class="about">
+  
     <div class="d-flex">
         <aside class="sidebar  border-5  border-end d-flex bg-white flex-column">
           <BackendFunctions></BackendFunctions>  
@@ -41,6 +41,9 @@
                                         <td class="fs-5"><strong>付款方式:</strong>{{order.payment}}</td>
                                       </tr>
                                       <tr>
+                                        <td class="fs-5"><strong>總金額:</strong>{{order.total}}</td>
+                                      </tr>
+                                      <tr>
                                         <td class="fs-5"><strong>備註:</strong>{{ order.remark }}</td>
                                       </tr>
                                     </tbody>
@@ -59,7 +62,7 @@
           </div>
         </main>
     </div>
-  </div>
+  
 
 </template>
 <!--   -->
@@ -83,6 +86,7 @@ export default {
             time:"17:00",
             payment:"現金", //可以用數字呈現
             remark:"烤熟一點",
+            total:600
           },
           {
             name:"eric",
@@ -94,6 +98,7 @@ export default {
             time:"17:00",
             payment:"現金", //可以用數字呈現
             remark:"烤熟一點",
+            total:600
           },
         ]
     }
