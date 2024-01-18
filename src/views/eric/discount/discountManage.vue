@@ -5,8 +5,11 @@
       <aside class="sidebar  border-5  pt-3 border-end d-flex bg-white flex-column ">
         <BackendFunctions></BackendFunctions>  
       </aside>
-      <main class="main mt-4">
+      <main class="main mt-3">
           <div class="container ">
+            <div class="my-3">
+              <button type="button" class="btn btn-primary">新增優惠券</button>
+          </div>
             <div class="row row-cols-4">
             <div class="col">
               <div class="card ">

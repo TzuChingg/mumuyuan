@@ -1,9 +1,11 @@
 <template>
-            <div class="p-3 ">
-                <button v-if="open" type="btn" class="btn btn-success w-100" @click="open=!open">開店</button>
-                <button v-else type="btn" class="btn btn-danger w-100" @click="open=!open">關店</button>
+            <div class="p-3 text-nowrap">
+                <Transition name="shop" mode="out-in">
+                    <button v-if="open" type="btn" class="btn btn-success w-100 "  @click="open=!open">開店</button>
+                    <button v-else type="btn" class="btn btn-danger w-100 " @click="open=!open" >關店</button>
+                </Transition>
             </div>
-            <div class="p-2 d-flex justify-content-center ">
+            <div class="p-2 d-flex justify-content-center text-nowrap">
                 <strong class="text-nowrap ">木木苑後台系統</strong>
             </div>
             <div class="overflow-auto">
@@ -39,6 +41,7 @@
 <script>
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
+
 export default {
 data() {
     return {
@@ -65,7 +68,7 @@ data() {
             },
             {   label:"訂位管理",
                 expend:false,
-                subMenu:[{title:'尚未確認',path:'/booking',at:false}, {title:'已確認歷史紀錄',path:'/finishBooking',at:false}],
+                subMenu:[{title:'尚未確認',path:'/booking',at:false}, {title:'已到場歷史紀錄',path:'/finishBooking',at:false}],
                 icon:"bi-caret-left-fill"
             },
             {   label:"活動管理",
@@ -113,25 +116,26 @@ mounted() {
 
 <style scoped lang="scss">
 
+@import '/src/assets/main.scss'; 
 .sidebar-link {
+    
     color: rgb(2, 2, 1);
     display: block;
     text-decoration: none;
     padding-top: 0.875rem;
     padding-bottom: 0.875rem;
-    a{
-        text-decoration: none;
-     }
+    transition: all 0.35s ease-in-out;
+    
+
     &:hover {
     color: #fff;    
-    background-color: rgb(2, 2, 1);
-    transition: background-color 0.5s;
-    a{
-        color: #fff;   
-    }
+    // background-color: plum;
+    background: linear-gradient(to right, $blue, $purple);
     }
 }
-
+a{     
+        text-decoration: none;
+     }
 .sidebar-link.active {
     position: relative;
     color: white;
@@ -151,9 +155,27 @@ mounted() {
 
 
 
+.shop-enter-from,
+.shop-leave-to {
+    opacity: 0;
+}
 
+.shop-enter-to,
+.shop-leave-from {
+    opacity: 1;
+}
+
+.shop-enter-active {
+    transition: opacity 0.3s ease-in-out;
+}
+
+.shop-leave-active {
+    transition: opacity 0.5s ease-in-out;
+}
 
 i {
 transition: transform 0.1s ease-in-out;
 }
+
+
 </style>

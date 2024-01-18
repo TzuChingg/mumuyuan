@@ -5,88 +5,22 @@
       <aside class="sidebar  border-5  pt-3 border-end d-flex bg-white flex-column ">
         <BackendFunctions></BackendFunctions>  
       </aside>
-      <main class="main mt-4">
+      <main class="main mt-3">
         <div class="container ">
-          <div class="row row-cols-4">
-          <div class="col">
-            <div class="card ">
-              <div class="cardbody">
-                    <h4 class=" text-center mt-4">青椒</h4>
-                    <div class="row px-3 justify-content-center align-items-center py-3">
-                        <div class="col-4 fs-4 ">
-                            <label for="money" class="ms-3">價錢:</label>
-                        </div>
-                        <div class="col-6 ">
-                            <input type="number" id="money" class="form-control shadow-none">
-                        </div>
-                    </div>
-                    <div class="row text-center align-items-center py-3">
-                        <div class="col-6  ">
-                            <button type="button" class="btn btn-danger ms-6">下架</button>
-                        </div>
-                        <div class="col-6 ">
-                            <button type="button" class="btn btn-primary me-6">修改</button>
-                        </div>
-                    </div>
-              </div>
-            </div>
+          <div class="mt-2">
+              <button type="button" class="btn btn-primary">新增商品</button>
           </div>
-          <div class="col">
-            <div class="card ">
+          <div class="row row-cols-4" >
+          <div class="col" v-for="(product,index) in product" :key="index">
+            <div class="card mt-3" >
               <div class="cardbody">
-                    <h4 class=" text-center mt-4">青椒</h4>
+                    <h4 class=" text-center mt-4">{{product.title}}</h4>
                     <div class="row px-3 justify-content-center align-items-center py-3">
                         <div class="col-4 fs-4 ">
                             <label for="money" class="ms-3">價錢:</label>
                         </div>
                         <div class="col-6 ">
-                            <input type="number" id="money" class="form-control shadow-none">
-                        </div>
-                    </div>
-                    <div class="row text-center align-items-center py-3">
-                        <div class="col-6  ">
-                            <button type="button" class="btn btn-danger ms-6">下架</button>
-                        </div>
-                        <div class="col-6 ">
-                            <button type="button" class="btn btn-primary me-6">修改</button>
-                        </div>
-                    </div>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card ">
-              <div class="cardbody">
-                    <h4 class=" text-center mt-4">青椒</h4>
-                    <div class="row px-3 justify-content-center align-items-center py-3">
-                        <div class="col-4 fs-4 ">
-                            <label for="money" class="ms-3">價錢:</label>
-                        </div>
-                        <div class="col-6 ">
-                            <input type="number" id="money" class="form-control shadow-none">
-                        </div>
-                    </div>
-                    <div class="row text-center align-items-center py-3">
-                        <div class="col-6  ">
-                            <button type="button" class="btn btn-danger ms-6">下架</button>
-                        </div>
-                        <div class="col-6 ">
-                            <button type="button" class="btn btn-primary me-6">修改</button>
-                        </div>
-                    </div>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card ">
-              <div class="cardbody">
-                    <h4 class=" text-center mt-4">青椒</h4>
-                    <div class="row px-3 justify-content-center align-items-center py-3">
-                        <div class="col-4 fs-4 ">
-                            <label for="money" class="ms-3">價錢:</label>
-                        </div>
-                        <div class="col-6 ">
-                            <input type="number" id="money" class="form-control shadow-none">
+                            <input type="number" id="money" class="form-control shadow-none" :placeholder="product.money">
                         </div>
                     </div>
                     <div class="row text-center align-items-center py-3">
@@ -111,6 +45,33 @@
 <script>
 import BackendFunctions from '/src/components/eric/BackendFunctions.vue';
 export default {
+
+data() {
+  return {
+    product:[
+      {
+        title:"青椒",
+        money:50,
+      },
+      {
+        title:"牛肉",
+        money:90,
+      },
+      {
+        title:"甜不辣",
+        money:45,
+      },
+      {
+        title:"甜不辣",
+        money:45,
+      },
+      {
+        title:"甜不辣",
+        money:45,
+      },
+    ]
+  }
+},
 components: {
   BackendFunctions,
 },

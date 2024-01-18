@@ -8,70 +8,16 @@
       <main class="main mt-4">
         <div class="container ">
           <div class="row row-cols-4">
-          <div class="col">
-            <div class="card">
+          <div class="col px-2" v-for="(down ,index) in downProduct" :key="index">
+            <div class="card mt-3 ">
               <div class="cardbody">
-                    <h4 class=" text-center mt-3">青椒</h4>
+                    <h4 class=" text-center mt-3">{{down.title}}</h4>
                     <div class="row px-3 text-center align-items-center py-1">
                         <div class="col-6 fs-4 ">
                             <label for="money" class="ms-5">價錢:</label>
                         </div>
                         <div class="col-6 mt-2 ">
-                            <h4 class="me-6">50</h4>
-                        </div>
-                    </div>
-                    <div class="m-3">
-                            <button type="button" class="btn btn-danger w-100">上架</button>
-                    </div>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card ">
-              <div class="cardbody">
-                    <h4 class=" text-center mt-3">青椒</h4>
-                    <div class="row px-3 text-center align-items-center py-1">
-                        <div class="col-6 fs-4 ">
-                            <label for="money" class="ms-5">價錢:</label>
-                        </div>
-                        <div class="col-6 mt-2 ">
-                            <h4 class="me-6">50</h4>
-                        </div>
-                    </div>
-                    <div class="m-3">
-                            <button type="button" class="btn btn-danger w-100">上架</button>
-                    </div>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card ">
-              <div class="cardbody">
-                    <h4 class=" text-center mt-3">青椒</h4>
-                    <div class="row px-3 text-center align-items-center py-1">
-                        <div class="col-6 fs-4 ">
-                            <label for="money" class="ms-5">價錢:</label>
-                        </div>
-                        <div class="col-6 mt-2 ">
-                            <h4 class="me-6">50</h4>
-                        </div>
-                    </div>
-                    <div class="m-3">
-                            <button type="button" class="btn btn-danger w-100">上架</button>
-                    </div>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card ">
-              <div class="cardbody">
-                    <h4 class=" text-center mt-3">青椒</h4>
-                    <div class="row px-3 text-center align-items-center py-1">
-                        <div class="col-6 fs-4 ">
-                            <label for="money" class="ms-5">價錢:</label>
-                        </div>
-                        <div class="col-6 mt-2 ">
-                            <h4 class="me-6">50</h4>
+                            <h4 class="me-6">{{down.money}}</h4>
                         </div>
                     </div>
                     <div class="m-3">
@@ -93,6 +39,33 @@ import BackendFunctions from '/src/components/eric/BackendFunctions.vue';
 export default {
 components: {
   BackendFunctions,
+},
+
+data() {
+  return {
+    downProduct:[
+      {
+        title:"青椒",
+        money:50,
+      },
+      {
+        title:"牛肉",
+        money:90,
+      },
+      {
+        title:"甜不辣",
+        money:45,
+      },
+      {
+        title:"甜不辣",
+        money:45,
+      },
+      {
+        title:"甜不辣",
+        money:45,
+      },
+    ]
+  }
 },
 };
 </script>
