@@ -1,16 +1,25 @@
 <template>
-   
-
   <div class="d-flex">
       <aside class="sidebar  border-5  pt-3 border-end d-flex bg-white flex-column ">
         <BackendFunctions></BackendFunctions>  
       </aside>
-      <main class="main mt-3">
-          <div class="container ">
-            <div class="my-3">
-              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">新增優惠券</button>
+      <transition name="fade" mode="out-in">
+        <main v-if="select==1" class="main ">
+          <div class="container mt-5">
+            <div class="mt-3">
+              <div class="row justify-content-between">
+                <div class="col-2">
+                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">新增優惠券</button>
+                </div>
+                <div class="col-2">
+                  <select class="form-select border-0 shadow-sm bg-primary text-white" id="select" aria-label="Default select example" v-model="select">
+                        <option selected :value="'1'" >優惠券管理</option>
+                        <option :value="'2'">下架優惠券</option>
+                  </select>
+                </div>
+              </div>
             </div>
-            <div class="row row-cols-4">
+            <div class="row row-cols-4 mt-2">
             <div class="col" v-for="(discount,index) in thisPage" :key="index">
               <div class="card my-2">
                 <div class="cardbody">
@@ -72,7 +81,48 @@
                 </div>
             </div>
         </div>
-      </main>
+        </main>
+        <main v-else-if="select==2" class="main ">
+          <div class="container mt-5">
+            <div class="my-3">
+              <div class="row justify-content-end">
+                <div class="col-2">
+                  <select class="form-select border-0 shadow-sm bg-primary text-white" id="select" aria-label="Default select example" v-model="select">
+                        <option selected :value="'1'" >優惠券管理</option>
+                        <option :value="'2'">下架優惠券</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row row-cols-4">
+            <div class="col" v-for="(down ,index) in thisPage2" :key="index">
+              <div class="card my-2">
+                <div class="cardbody">
+                      <h4 class=" text-center mt-4">{{down.title}}</h4>
+                      <div class="row px-3 text-center align-items-center py-1">
+                        <div class="col-6 fs-4 ">
+                            <label for="money" class="ms-5">點數:</label>
+                        </div>
+                        <div class="col-6 mt-2 ">
+                            <h4 class="me-6">{{down.point}}</h4>
+                        </div>
+                    </div>
+                      <div class="m-3">
+                            <button type="button" class="btn btn-danger w-100">上架</button>
+                      </div>
+                </div>
+              </div>
+            </div>
+            </div>
+            <div class="d-flex justify-content-center h-25 mt-3">
+                        <button class="btn btn-primary" @click="prevPage" :disabled="page === 1">上一页</button>
+                        <strong class="fs-3 text-primary mx-3 "> {{ page }} </strong>
+                        <button class="btn btn-primary" @click="nextPage" :disabled="thisPage.length < pg">下一页</button>
+            </div>
+        </div>
+        </main>
+      </transition>
+
   </div>
   
 </template>
@@ -87,6 +137,26 @@ components: {
 data() {
   return {
     discount:[
+      {title:"折10元",point:40},
+      {title:"折10元",point:40},
+      {title:"折10元",point:40},
+      {title:"折10元",point:40},
+      {title:"折10元",point:40},
+      {title:"折10元",point:40},
+      {title:"折10元",point:40},
+      {title:"折10元",point:40},
+      {title:"折10元",point:40},
+      {title:"折10元",point:40},
+      {title:"折10元",point:40},
+      {title:"折10元",point:40},
+      {title:"折10元",point:40},
+      {title:"折10元",point:40},
+      {title:"折10元",point:40},
+      {title:"折10元",point:40},
+      {title:"折10元",point:40},
+      {title:"折10元",point:40},
+    ],
+    downDiscount:[
       {title:"折10元",point:30},
       {title:"折10元",point:30},
       {title:"折10元",point:30},
@@ -107,8 +177,10 @@ data() {
       {title:"折10元",point:30},
     ],
     thisPage: [],
+    thisPage2: [],
     page: 1,
     pg: 16, 
+    select:"1",
   }
 },
 computed: {
@@ -123,17 +195,28 @@ methods: {
   prevPage() {
     if (this.page > 1) {
       this.page--;
-      this.updateThisPage();
+      if(this.select==1){
+        this.updateThisPage();
+      }else if(this.select==2){
+        this.updatePage()
+      }
     }
   },
   nextPage() {
     if (this.thisPage.length >= this.pg) {
       this.page++;
-      this.updateThisPage();
+      if(this.select==1){
+        this.updateThisPage();
+      }else if(this.select==2){
+        this.updatePage()
+      }
     }
   },
   updateThisPage() {
     this.thisPage = this.discount.slice(this.startIndex, this.endIndex);
+  },
+  updatePage() {
+    this.thisPage2 = this.downDiscount.slice(this.startIndex, this.endIndex);
   },
 
   uploadFile () {
@@ -146,6 +229,7 @@ methods: {
 },
 created() {
   this.updateThisPage();
+  this.updatePage()
 },
 };
 </script>
@@ -182,5 +266,15 @@ width: 280px;
   width: calc(100vw - var(--sidebar-width));
   /* margin-left: 0; */
 }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.4s;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>

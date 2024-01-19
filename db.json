@@ -1,0 +1,101 @@
+{
+"users": [
+        {
+        "name":"joker",
+        "email": "joker@gmail.com",
+        "password": "$2a$10$l0l6eHyGFe.CSc4CFWuxh.GLmFJpRpDHj7/ZiPQw19Jk8gB.xmk32",
+        "copyPassword": "123456",
+        "phone":"093333333",
+        "identity": "user",
+        "couponId":[1,2],
+        "point":30,
+        "id": 1
+        },
+        {
+        "name":"test",
+        "email": "test@gmail.com",
+        "password": "$2a$10$EaQOKGeA7Hs45ymXBFpIG.39.e283yFCR8Brcx3H9l26NQiAtI6m6",
+        "copyPassword": "123456",
+        "phone":"09222222222",
+        "identity": "user",
+        "couponId":[1,2],
+        "point":30,
+        "id": 2
+        },
+        {
+        "name":"admin",
+        "email": "admin@gmail.com",
+        "password": "$2a$10$pbkX8jgDZHTDNP3YMgTKlelUwrm9dEAXAv8hHnZXoGrAgz1gKL/Uq",
+        "copyPassword": "123456",
+        "phone":"0911111111",
+        "identity": "admin",
+        "couponId":[1,2],
+        "point":30,
+        "id": 3
+        }
+],
+"products":[
+    {
+        "productName":"牛肉串",
+        "category":"肉類",
+        "image":"",
+        "count":10,
+        "price":50,
+        "description":"",
+        "isLook":true,
+        "id":1
+    }
+],
+"orders":[
+    {
+        "isMember":true,
+        "name":"eric",
+        "phone":"094563131",
+        "orderId":1235464,
+        "day":"2024/01/01",
+        "product":["牛肉串","豬肉串","雞肉串"],
+        "price":300,
+        "status":1, 
+        "userId":1,
+        "type":true,
+        "couponId":[1],
+        "payment":1,
+        "pickTime":"17:00",
+        "comment":"",
+        "catch":true,
+        "orderScore":1,
+        "id":1
+    }
+],
+"news":[
+    {
+        "newsImage":"",
+        "newsTitle":"",
+        "newsContent":"",
+        "couponId":1,
+        "isLook":true,
+        "id":1
+    }
+],
+"bookingfrom":[
+    {
+        "name":"eric",
+        "phone":"0911111111",
+        "day":"2024/01/01",
+        "time":"18:00",
+        "personCount":5,
+        "id":1
+    }
+],
+"coupons":[
+    {
+        "name":"折10塊",
+        "image":"",
+        "point":30,
+        "isLook":true,
+        "category":"",
+        "description":"",
+        "id":1
+    }
+]
+} 

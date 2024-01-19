@@ -14,9 +14,9 @@ export default {
 </script>
 
 <template>
-  <div class="container">
+  <!-- <div class="container">
     <navbarComponent v-if="identity === 'user'" />
-  </div>
+  </div> -->
     <router-view v-slot="{ Component }">
       <transition name="fade" mode="out-in">
         <component :is="Component"></component>
