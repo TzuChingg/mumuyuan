@@ -1,8 +1,8 @@
 <template>
             <div class="p-3 text-nowrap">
                 <Transition name="shop" mode="out-in">
-                    <button v-if="open" type="btn" class="btn btn-success w-100 "  @click="open=!open">開店</button>
-                    <button v-else type="btn" class="btn btn-danger w-100 " @click="open=!open" >關店</button>
+                    <button v-if="open" type="button" class="btn btn-success w-100 "  @click="open=!open">開店</button>
+                    <button v-else type="button" class="btn btn-danger w-100 " @click="open=!open" >關店</button>
                 </Transition>
             </div>
             <div class="p-2 d-flex justify-content-center text-nowrap">
@@ -10,23 +10,31 @@
             </div>
             <div class="overflow-auto">
                 <div v-for="(menu,index) in menuItems" :key="index">
-                    <a :href="'#menu-order-' + index" class="sidebar-link  icon py-2" data-bs-toggle="collapse" @click.prevent="toggler(index)">
+                    <router-link v-if="!menu.subMenu" :to="menu.path" class="sidebar-link py-2" :class="{active:menu.at}">
                         <div class="d-flex  justify-content-between px-4 ">
                             <p class="mb-0 text-nowrap">
                                 {{menu.label}}
                             </p>
-                            <div v-if="menu.subMenu.length > 0">
-                                <i class="bi" :class="menu.icon"></i>
+                        </div>
+                    </router-link>
+                    <a v-else :href="'#menu-order-' + index" class="sidebar-link  icon py-2" data-bs-toggle="collapse" @click.prevent="toggler(index)"> 
+                        <div class="d-flex  justify-content-between px-4 ">
+                            <p class="mb-0 text-nowrap">
+                                {{menu.label}}
+                            </p>
+                            <div >
+                                <i  class="bi" :class="menu.icon"></i>
                             </div>
                         </div>
                     </a>
-                    <div class="collapse" :id="'menu-order-' + index" v-for="(subMenuItem, subIndex) in menu.subMenu" :key="subIndex">
-                        <router-link :to="subMenuItem.path" class="sidebar-link py-2" :class="{active:subMenuItem.at}">
-                            <div class="ps-5">
-                                {{subMenuItem.title}}
-                            </div>
-                        </router-link>
-                    </div>
+                        <div class="collapse" :id="'menu-order-' + index" v-for="(subMenuItem, subIndex) in menu.subMenu" :key="subIndex">
+                            <router-link :to="subMenuItem.path" class="sidebar-link py-2" :class="{active:subMenuItem.at}">
+                                <div class="ps-5">
+                                    {{ subMenuItem.title }}
+                                </div>
+                            </router-link>
+                        </div>
+                    
                 </div>
             </div>
             <a href="#" class="mt-auto   text-nowrap sidebar-link">
@@ -48,36 +56,39 @@ data() {
         menuItems:[
             {   label:"訂單狀態",
                 expend:false,
-                subMenu:[{title:'待接受',path:'/order',at:false}, {title:'待完成',path:'/unOrder',at:false}],
+                path:'/order',
+                at:false,
                 icon:"bi-caret-left-fill",
             },
             {   label:"會員資料",
                 expend:false,
-                subMenu:[{title:'一般會員',path:'/member',at:false}, {title:'黑名單',path:'/badMember',at:false}],
+                path:'/member',
+                at:false,
                 icon:"bi-caret-left-fill"
             },
             {   label:"銷售統計",
                 expend:false,
-                subMenu:[{title:'統計',path:'/sales',at:false}],
+                path:'/sales',
+                at:false,
                 icon:"bi-caret-left-fill"
             },
             {   label:"編輯商品",
                 expend:false,
-                subMenu:[{title:'商品',path:'/product',at:false}, {title:'商品下架區',path:'/downProduct',at:false}],
+                path:'/product',
+                at:false,
                 icon:"bi-caret-left-fill"
             },
             {   label:"訂位管理",
                 expend:false,
-                subMenu:[{title:'尚未確認',path:'/booking',at:false}, {title:'已到場歷史紀錄',path:'/finishBooking',at:false}],
+                path:'/booking',
+                at:false,
                 icon:"bi-caret-left-fill"
             },
             {   label:"活動管理",
                 expend:false,
                 subMenu:[   
                             {title:'優惠券',path:'/discount',at:false}, 
-                            {title:'優惠券下架區',path:'/downDiscount',at:false},
                             {title:'活動',path:'/journey',at:false},
-                            {title:'活動下架區',path:'/downJourney',at:false}
                         ],
                 icon:"bi-caret-left-fill"
             },
@@ -101,14 +112,19 @@ mounted() {
 
     const url = this.$route.path
     this.menuItems.forEach(item => {
-      item.subMenu.forEach(item=>{
-        
         if(url==item.path)
         item.at = true
-      })
+    });
+    this.menuItems.forEach(item => {
+        if(item.subMenu){
+            item.subMenu.forEach(item =>{
+                if(url==item.path)
+                item.at = true
+            })
+        }
     });
     
-  },
+},
 
 }
 </script>
