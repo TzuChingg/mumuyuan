@@ -1,4 +1,5 @@
 <template>
+  <div>
     <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">
@@ -86,6 +87,7 @@
         <li class="nav-item"><a href="" class="nav-link px-2 text-muted">About</a></li>
       </ul>
     </footer>
+  </div>
   </template>
   
   <style lang="scss">
