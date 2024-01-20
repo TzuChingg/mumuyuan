@@ -62,7 +62,7 @@ data() {
             },
             {   label:"會員資料",
                 expend:false,
-                path:'/member',
+                path:'/memberMange',
                 at:false,
                 icon:"bi-caret-left-fill"
             },

@@ -1,5 +1,6 @@
 <template>
     <div>
+      <!-- 時段訂單 -->
       <apexchart
         width="100%"
         height="300"
