@@ -34,8 +34,8 @@
                   <div class="accordion mb-4" id="accordionExample">
                     <div class="accordion-item">
                       <h2 class="accordion-header" id="headingOne">
-                        <button class="itemImg accordion-button" type="button" data-bs-toggle="collapse"
-                          data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <button class="itemImg accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                           <img src="/14.jpg" alt="" />
                           <div class="row ms-2">
                             <div class="col-12">6 份餐點 $637 <span class="ms-5">已完成</span></div>
@@ -45,7 +45,7 @@
                           </div>
                         </button>
                       </h2>
-                      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
                         data-bs-parent="#accordionExample">
                         <div class="accordion-body">
                           <table class="table table-sm">
@@ -113,9 +113,9 @@
                   <!-- accordion 2 -->
                   <div class="accordion mb-4" id="accordionExample2">
                     <div class="accordion-item">
-                      <h2 class="accordion-header" id="headingOne">
-                        <button class="itemImg accordion-button" type="button" data-bs-toggle="collapse"
-                          data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                      <h2 class="accordion-header" id="headingTwo">
+                        <button class="itemImg accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                          data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                           <img src="/11.jpg" alt="" />
                           <div class="row ms-2">
                             <div class="col-12">4 份餐點 $290 <span class="ms-5">已完成</span></div>
@@ -125,7 +125,7 @@
                           </div>
                         </button>
                       </h2>
-                      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
                         data-bs-parent="#accordionExample2">
                         <div class="accordion-body">
                           <table class="table table-sm">
@@ -204,5 +204,4 @@ button:hover {
 
 .questionIcon:hover {
   cursor: pointer;
-}
-</style>
+}</style>
