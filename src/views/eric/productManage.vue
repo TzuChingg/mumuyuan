@@ -135,7 +135,6 @@
 
 <script>
 import BackendFunctions from '/src/components/eric/BackendFunctions.vue';
-
 export default {
 data() {
   return {
@@ -235,6 +234,16 @@ created() {
 components: {
   BackendFunctions,
 },
+
+mounted() {
+    this.$axios.get('/products')
+      .then(response => {
+        console.log(response.data)
+      })
+      .catch(error => {
+        console.error(error)
+      })
+  }
 };
 </script>
 
