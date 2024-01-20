@@ -1,10 +1,10 @@
-//BS框架
-import './assets/main.scss'
-import '/node_modules/bootstrap-icons/font/bootstrap-icons.css'
-
 //框架、狀態管理
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
+
+//BS框架
+import './assets/main.scss';
+import 'bootstrap-icons/font/bootstrap-icons.css'
 
 //API
 import axios from 'axios';
@@ -14,7 +14,8 @@ import VueAxios from 'vue-axios';
 import router from './router'
 
 //全域組件
-// import navbarComponent from "./components/global/navbarComponent.vue";
+import navbarComponent from "./components/global/navbarComponent.vue";
+import footerComponent from "./components/global/footerComponent.vue";
 
 //套件工具
 import VueApexCharts from "vue3-apexcharts";
@@ -24,9 +25,12 @@ import ApexCharts from 'apexcharts';
 import App from './App.vue';
 
 const app = createApp(App);
-
+app.config.globalProperties.$axios = axios.create({
+    baseURL: 'http://localhost:3000',
+  })
 app.config.globalProperties.$apexcharts = ApexCharts;
-// app.component('navbarComponent', navbarComponent);
+app.component('navbarComponent', navbarComponent);
+app.component('footerComponent', footerComponent);
 
 app.use(VueApexCharts);
 app.use(VueAxios, axios);

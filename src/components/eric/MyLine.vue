@@ -1,8 +1,6 @@
-
-
-
- <template>
+<template>
   <div>
+    <!-- 當月營業額 -->
     <apexchart
       width="100%"
       height="500"
