@@ -41,6 +41,17 @@
       ],
       "point": 30,
       "id": 3
+    },
+    {
+      "email": "jack@gmail.com",
+      "password": "$2a$10$tZwmn3m9HMk4eOE/cCNySeBc7JcfwihUAJCWXRWTThuaks/CVCGfK",
+      "copyPassword": "jack123456",
+      "name": "傑克",
+      "phone": "0911224455",
+      "identity": "",
+      "couponId": [],
+      "point": 0,
+      "id": 4
     }
   ],
   "products": [

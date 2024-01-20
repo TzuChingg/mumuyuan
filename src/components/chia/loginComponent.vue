@@ -40,8 +40,11 @@ export default {
             this.$axios.post('/signin', {
                 ...this.userInput
             }).then((response) => {
-                console.log(response);
-                this.$router.push({ path: '/' });
+                if (response.statusText === "OK") {
+                    const { accessToken } = response.data;
+                    document.cookie = `token=${accessToken};expires=${new Date().getTime() + 24 * 60 * 60 * 1000};`;
+                    this.$router.push({ path: '/' });
+                }
             })
         }
     }

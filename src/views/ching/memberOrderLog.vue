@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container">
+    <div class="memberorder container">
       <div class="row justify-content-center ">
         <div class="col-9">
           <div class="row">
@@ -10,30 +10,16 @@
               </div>
               <div class="btn-group-vertical d-flex justify-content-center">
                 <button class="btn btn-outline-primary" type="button">
-                  <a href="#/memberCenter" class="d-block link-underline link-underline-opacity-0"
-                    >會員中心</a
-                  >
+                  <a href="#/memberCenter" class="d-block link-underline link-underline-opacity-0">會員中心</a>
                 </button>
                 <button class="btn btn-outline-primary active" type="button">
-                  <a
-                    href="#/member/orderLog"
-                    class="d-block text-light link-underline link-underline-opacity-0"
-                    >歷史訂單</a
-                  >
+                  <a href="#/member/orderLog" class="d-block text-light link-underline link-underline-opacity-0">歷史訂單</a>
                 </button>
                 <button class="btn btn-outline-primary" type="button">
-                  <a
-                    href="#/member/discount"
-                    class="d-block link-underline link-underline-opacity-0"
-                    >我的優惠券</a
-                  >
+                  <a href="#/member/discount" class="d-block link-underline link-underline-opacity-0">我的優惠券</a>
                 </button>
                 <button class="btn btn-outline-primary" type="button">
-                  <a
-                    href="#/member/exchange"
-                    class="d-block link-underline link-underline-opacity-0"
-                    >點數兌換</a
-                  >
+                  <a href="#/member/exchange" class="d-block link-underline link-underline-opacity-0">點數兌換</a>
                 </button>
               </div>
             </div>
@@ -55,12 +41,17 @@
 </template>
 
 <style lang="scss">
-button:hover {
-  a {
-    color: white;
+.memberorder {
+  min-height: calc(100vh - 174px);
+
+  button:hover {
+    a {
+      color: white;
+    }
   }
-}
-.questionIcon:hover {
-  cursor: pointer;
+
+  .questionIcon:hover {
+    cursor: pointer;
+  }
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container">
+    <div class="memberdiscount container">
       <div class="row justify-content-center">
         <div class="col-9">
           <div class="row">
@@ -10,9 +10,7 @@
               </div>
               <div class="btn-group-vertical d-flex justify-content-center">
                 <button class="btn btn-outline-primary" type="button">
-                  <a href="#/memberCenter" class="d-block link-underline link-underline-opacity-0 "
-                    >會員中心</a
-                  >
+                  <a href="#/memberCenter" class="d-block link-underline link-underline-opacity-0 ">會員中心</a>
                 </button>
                 <button class="btn btn-outline-primary" type="button">
                   <a href="#/member/orderLog" class="d-block link-underline link-underline-opacity-0">歷史訂單</a>
@@ -40,16 +38,21 @@
       </div>
     </div>
   </div>
-  </template>
+</template>
   
-  <style lang="scss">
+<style lang="scss">
+.memberdiscount {
+  min-height: calc(100vh - 174px);
+
   button:hover {
     a {
       color: white;
     }
   }
+
   .questionIcon:hover {
     cursor: pointer;
   }
-  </style>
+}
+</style>
   
