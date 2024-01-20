@@ -15,13 +15,13 @@ export default {
 
 <template>
   <div>
-    <navbarComponent v-if="identity === 'user'" />
+    <!-- <navbarComponent v-if="identity === 'user'" /> -->
     <router-view v-slot="{ Component }">
       <transition name="fade" mode="out-in">
         <component :is="Component"></component>
       </transition>
     </router-view>
-    <footerComponent v-if="identity === 'user'" />
+    <!-- <footerComponent v-if="identity === 'user'" /> -->
   </div>
 </template>
 

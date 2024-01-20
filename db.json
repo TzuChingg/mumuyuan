@@ -147,8 +147,39 @@
       "day": "2024/01/01",
       "time": "18:00",
       "periodId": 1,
-      "personCount": 5,
+      "personCount": 5,  
+      "isCheck": false,
       "id": 1
+    },
+    {
+      "name": "alan",
+      "phone": "09274375343",
+      "day": "2024/01/30",
+      "time": "19:00",
+      "periodId": 1,
+      "personCount": 10,  
+      "isCheck": true,
+      "id": 2
+    },
+    {
+      "name": "alan",
+      "phone": "090000000000",
+      "day": "2024/01/30",
+      "time": "19:00",
+      "periodId": 1,
+      "personCount": 10,  
+      "isCheck": true,
+      "id": 3
+    },
+    {
+      "name": "alan",
+      "phone": "090000000000",
+      "day": "2024/01/30",
+      "time": "19:00",
+      "periodId": 1,
+      "personCount": 10,  
+      "isCheck": false,
+      "id": 4
     }
   ],
   "periods": [
