@@ -14,7 +14,7 @@ export default {
 </script>
 
 <template>
-  <div>
+  <div class="indexheigth d-flex flex-column">
     <navbarComponent v-if="identity === 'user'" />
     <router-view v-slot="{ Component }">
       <transition name="fade" mode="out-in">
@@ -34,5 +34,8 @@ export default {
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
+}
+.indexheigth{
+  min-height: 100vh;
 }
 </style>
