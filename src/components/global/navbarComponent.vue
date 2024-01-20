@@ -47,12 +47,19 @@ import { docCookies } from '../../assets/cookie';
 export default {
   data() {
     return {
-      // hasToken: false
+      hasToken: false
     }
   },
   computed: {
-    hasToken() {
-      return docCookies.hasItem("token");
+    // hasToken() {
+    //   return docCookies.hasItem("token");
+    // }
+  },
+  watch: {
+    '$route'(newRoute, oldRoute) {
+      if (newRoute.fullPath === '/') {
+        this.hasToken = docCookies.hasItem("token");
+      }
     }
   }
 }
