@@ -41,6 +41,28 @@
       ],
       "point": 30,
       "id": 3
+    },
+    {
+      "email": "jack@gmail.com",
+      "password": "$2a$10$tZwmn3m9HMk4eOE/cCNySeBc7JcfwihUAJCWXRWTThuaks/CVCGfK",
+      "copyPassword": "jack123456",
+      "name": "傑克",
+      "phone": "0911224455",
+      "identity": "",
+      "couponId": [],
+      "point": 0,
+      "id": 4
+    },
+    {
+      "email": "tina@gmail.com",
+      "password": "$2a$10$OdIPYk8rM.Tzm8dRnXTss.UTZkw0RsvO7F1uYbOiXE22admcARJH2",
+      "copyPassword": "tina123456",
+      "name": "緹娜",
+      "phone": "0900999999",
+      "identity": "",
+      "couponId": [],
+      "point": 0,
+      "id": 5
     }
   ],
   "products": [

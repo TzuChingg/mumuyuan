@@ -5,7 +5,3 @@
     </div>
 
 </template>
-
-<script>
-
-</script>

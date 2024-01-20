@@ -1,4 +1,6 @@
 <script>
+// test
+import CategoryComponent from './components/claire/CategoryComponent.vue'
 //VUE3 CLI 默認導入模塊，所以不用加type="module"
 import { Transition } from 'vue'
 export default {
@@ -8,7 +10,8 @@ export default {
     }
   },
   components: {
-    Transition
+    Transition,
+    CategoryComponent
   }
 }
 </script>
@@ -16,6 +19,8 @@ export default {
 <template>
   <div>
     <!-- <navbarComponent v-if="identity === 'user'" /> -->
+  <div class="indexheigth d-flex flex-column">
+    <navbarComponent v-if="identity === 'user'" />
     <router-view v-slot="{ Component }">
       <transition name="fade" mode="out-in">
         <component :is="Component"></component>
@@ -34,5 +39,8 @@ export default {
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
+}
+.indexheigth {
+  min-height: 100vh;
 }
 </style>
