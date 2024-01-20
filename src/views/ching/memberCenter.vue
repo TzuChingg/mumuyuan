@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container ">
+    <div class="membercenter container">
       <div class="row justify-content-center">
         <div class="col-9">
           <div class="row">
@@ -10,9 +10,7 @@
               </div>
               <div class="btn-group-vertical d-flex justify-content-center">
                 <button class="btn btn-outline-primary active" type="button">
-                  <a href="#/memberCenter" class="d-block text-light link-underline link-underline-opacity-0 "
-                    >會員中心</a
-                  >
+                  <a href="#/memberCenter" class="d-block text-light link-underline link-underline-opacity-0 ">會員中心</a>
                 </button>
                 <button class="btn btn-outline-primary" type="button">
                   <a href="#/member/orderLog" class="d-block link-underline link-underline-opacity-0">歷史訂單</a>
@@ -55,12 +53,8 @@
                     <div class="col-sm-9">
                       <p class="mt-2">
                         10點
-                        <span
-                          class="questionIcon ms-3 bi-question-circle-fill"
-                          data-bs-toggle="tooltip"
-                          data-bs-placement="right"
-                          title="每消費100元集一點，用於優惠券兌換。"
-                        ></span>
+                        <span class="questionIcon ms-3 bi-question-circle-fill" data-bs-toggle="tooltip"
+                          data-bs-placement="right" title="每消費100元集一點，用於優惠券兌換。"></span>
                       </p>
                     </div>
                   </div>
@@ -103,12 +97,17 @@
 </template>
 
 <style lang="scss">
-button:hover {
-  a {
-    color: white;
+.membercenter {
+  min-height: calc(100vh - 174px);
+
+  button:hover {
+    a {
+      color: white;
+    }
   }
-}
-.questionIcon:hover {
-  cursor: pointer;
+
+  .questionIcon:hover {
+    cursor: pointer;
+  }
 }
 </style>

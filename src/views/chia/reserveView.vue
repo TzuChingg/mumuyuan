@@ -191,7 +191,7 @@ export default {
                 </div>
                 <button type="button" class="d-block btn btn-dark mx-auto my-5 py-2 px-3">送出預定</button>
             </div>
-            <div class="imgContent py-5">
+            <div class="imgContent pt-5">
                 <img src="https://picsum.photos/id/10/700/300" alt="" class="col-4">
                 <img src="https://picsum.photos/id/20/700/300" alt="" class="col-4">
                 <img src="https://picsum.photos/id/30/700/300" alt="" class="col-4">
@@ -204,8 +204,7 @@ export default {
     cursor: default;
 
     .reserveContent {
-        // height: 100vh;
-        background: #918a8a;
+        background: #d8d0ae;
 
         .timeContent {
             width: 65%;
@@ -214,10 +213,12 @@ export default {
         .list {
             list-style-type: auto;
         }
-        .agree{
+
+        .agree {
             width: 20px;
             height: 20px;
         }
+
         .imgWidth {
             width: 25%;
         }

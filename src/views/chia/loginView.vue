@@ -26,9 +26,10 @@ export default {
 <style scoped lang="scss">
 .login {
     cursor: default;
+
     .signinContent {
-        height: calc(100vh - 174px);
-        background: #918a8a;
+        min-height: calc(100vh - 174px);
+        background: #d8d0ae;
     }
 }
 </style>

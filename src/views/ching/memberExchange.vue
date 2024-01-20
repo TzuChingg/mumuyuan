@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container">
+    <div class="memberexchange container">
       <div class="row justify-content-center">
         <div class="col-9">
           <div class="row">
@@ -10,9 +10,7 @@
               </div>
               <div class="btn-group-vertical d-flex justify-content-center">
                 <button class="btn btn-outline-primary" type="button">
-                  <a href="#/memberCenter" class="d-block link-underline link-underline-opacity-0 "
-                    >會員中心</a
-                  >
+                  <a href="#/memberCenter" class="d-block link-underline link-underline-opacity-0 ">會員中心</a>
                 </button>
                 <button class="btn btn-outline-primary" type="button">
                   <a href="#/member/orderLog" class="d-block link-underline link-underline-opacity-0">歷史訂單</a>
@@ -45,7 +43,8 @@
                         <p class=" card-text text-end mb-0"> 2 點</p>
                         <div class="row d-flex justify-content-center">
                           <div class="col-auto">
-                            <button type="button" class="btn btn-primary items-center" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <button type="button" class="btn btn-primary items-center" data-bs-toggle="modal"
+                              data-bs-target="#exampleModal">
                               兌換
                             </button>
                           </div>
@@ -64,7 +63,8 @@
                         <p class=" card-text text-end mb-0"> 4 點</p>
                         <div class="row d-flex justify-content-center">
                           <div class="col-auto">
-                            <button type="button" class="btn btn-primary items-center" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <button type="button" class="btn btn-primary items-center" data-bs-toggle="modal"
+                              data-bs-target="#exampleModal">
                               兌換
                             </button>
                           </div>
@@ -83,7 +83,8 @@
                         <p class=" card-text text-end mb-0"> 5 點</p>
                         <div class="row d-flex justify-content-center">
                           <div class="col-auto">
-                            <button type="button" class="btn btn-primary items-center" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <button type="button" class="btn btn-primary items-center" data-bs-toggle="modal"
+                              data-bs-target="#exampleModal">
                               兌換
                             </button>
                           </div>
@@ -91,8 +92,8 @@
                       </div>
                     </div>
                     <!-- card 3 end -->
-                      <!-- card 4  -->
-                      <div class="card mb-4 me-3" style="width: 13rem">
+                    <!-- card 4  -->
+                    <div class="card mb-4 me-3" style="width: 13rem">
                       <img src="/37.jpg" class="card-img-top" alt="..." />
                       <div class="card-body">
                         <h5 class="card-title">花椰菜 2 串</h5>
@@ -102,7 +103,8 @@
                         <p class=" card-text text-end mb-0"> 2 點</p>
                         <div class="row d-flex justify-content-center">
                           <div class="col-auto">
-                            <button type="button" class="btn btn-primary items-center" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <button type="button" class="btn btn-primary items-center" data-bs-toggle="modal"
+                              data-bs-target="#exampleModal">
                               兌換
                             </button>
                           </div>
@@ -111,9 +113,9 @@
                     </div>
                     <!-- card 4 end -->
                   </div>
-  
-  
-  
+
+
+
 
 
                   <!-- Modal -->
@@ -143,22 +145,27 @@
       </div>
     </div>
   </div>
-  </template>
+</template>
   
-  <style lang="scss">
+<style lang="scss">
+.memberexchange {
+  min-height: calc(100vh - 174px);
+
   button:hover {
     a {
       color: white;
     }
   }
+
   .questionIcon:hover {
     cursor: pointer;
   }
-  .card{
-    img{
+
+  .card {
+    img {
       object-fit: cover;
       height: 150px;
     }
   }
-  </style>
+}</style>
   

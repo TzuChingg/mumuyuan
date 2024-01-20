@@ -61,10 +61,9 @@ export default {
 <style scoped lang="scss">
 .search {
     cursor: default;
-    min-height: 100vh;
 
     .searchContent {
-        background: #918a8a;
+        background: #d8d0ae;
 
         #exampleRadios1,
         #exampleRadios2 {

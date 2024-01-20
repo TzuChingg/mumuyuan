@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container">
+    <div class="memberdiscount container">
       <div class="row justify-content-center">
         <div class="col-9">
           <div class="row">
@@ -86,6 +86,25 @@
     </div>
   </div>
 </template>
+<<<<<<< HEAD
+  
+<style lang="scss">
+.memberdiscount {
+  min-height: calc(100vh - 174px);
+
+  button:hover {
+    a {
+      color: white;
+    }
+  }
+
+  .questionIcon:hover {
+    cursor: pointer;
+  }
+}
+</style>
+  
+=======
 
 <style lang="scss">
 button:hover {
@@ -98,3 +117,4 @@ button:hover {
   cursor: pointer;
 }
 </style>
+>>>>>>> origin
