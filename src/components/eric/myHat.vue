@@ -1,5 +1,6 @@
 <template>
     <div>
+      <!-- 產品庫存 -->
       <apexchart
         width="100%"
         height="500"

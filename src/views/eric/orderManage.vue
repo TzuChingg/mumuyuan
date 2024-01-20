@@ -1,5 +1,4 @@
 <template>
-  
     <div class="d-flex">
         <aside class="sidebar  border-5  border-end d-flex bg-white flex-column">
           <BackendFunctions></BackendFunctions>  
@@ -18,20 +17,23 @@
                 <div class="accordion-item " >
                     <h2 class="accordion-header " :id="'flush-heading' + index">
                       <button class="accordion-button collapsed shadow-none" type="button" data-bs-toggle="collapse" :data-bs-target="'#flush-collapseOne'+ index" aria-expanded="false" aria-controls="flush-collapseOne">
-                          <strong class="me-5 fs-4">{{order.name}}</strong> <span class="ms-5 mt-11 fs-4">手機:{{order.phone}}</span>
+                          <strong class="me-5 fs-4">{{order.name}}</strong> <span class="ms-5 mt-11 fs-4">手機:{{order.phone}}</span><span class="ms-5 mt-11 fs-4">日期:{{order.day}}</span>
                       </button>
                     </h2>
                     <div :id="'flush-collapseOne'+index" class="accordion-collapse collapse " :aria-labelledby="'flush-heading' + index" data-bs-parent="#accordionFlushExample" >
                         <div class="accordion-body" >     
                           <div class="row row-cols-2 " >
                             <div class="col d-flex flex-wrap h-25" >  
-                                <div class="row row-cols-4 text-center  h-25" >
-                                  <div class="col fs-3" v-for="(food,index) in order.food" :key="index">{{food}}</div>
+                                <div class="row  text-center  h-25 w-100" >
+                                  <div class="col-3 fs-3 text-nowrap" v-for="(food,index) in order.food" :key="index">{{food}}</div>
                                 </div>   
                               </div> 
                               <div class="col">
                                   <table class=" table table-striped align-middle table-sm h-100">
                                     <tbody>
+                                      <tr>
+                                        <td class="fs-5 "><strong>口味:</strong>{{ order.flavor}}</td>
+                                      </tr>
                                       <tr>
                                         <td class="fs-5 "><strong>是否要餐具:</strong>{{ order.tableware ? "要":"不要" }}</td>
                                       </tr>
@@ -39,13 +41,13 @@
                                         <td class="fs-5"><strong>是否要加購提袋:</strong>{{order.bags ? "要":"不要"}}</td>
                                       </tr>
                                       <tr>
-                                        <td class="fs-5"><strong>訂購方式:</strong>{{order.way}}</td>
+                                        <td class="fs-5"><strong>訂購方式:</strong>{{order.way ? "外帶":"自取"}}</td>
                                       </tr>
                                       <tr>
                                         <td class="fs-5"><strong>預計取餐時間:</strong><span class="text-danger">{{order.time}}</span></td>
                                       </tr>
                                       <tr>
-                                        <td class="fs-5"><strong>付款方式:</strong>{{order.payment}}</td>
+                                        <td class="fs-5"><strong>付款方式:</strong>{{order.payment ? "現金":"線上付款"}}</td>
                                       </tr>
                                       <tr>
                                         <td class="fs-5"><strong>總金額:</strong>{{order.total}}</td>
@@ -55,8 +57,8 @@
                                       </tr>
                                     </tbody>
                                     <tfoot>
-                                      <button type="btn" class="btn btn-primary w-100 mb-1">接受</button>
-                                    <button type="btn" class="btn btn-primary w-100 mt-1">拒絕</button>
+                                      <button type="btn" class="btn btn-primary w-100 mb-1" @click="ok(order.id)">接受</button>
+                                    <button type="btn" class="btn btn-primary w-100 mt-1" @click="reject(order.id)">拒絕</button>
                                     </tfoot>
                                   </table>
                               </div>
@@ -88,13 +90,16 @@
                         <div class="accordion-body" >     
                           <div class="row row-cols-2 " >
                             <div class="col d-flex flex-wrap h-25" >  
-                                <div class="row row-cols-4 text-center  h-25" >
-                                  <div class="col fs-3" v-for="(food, foodIndex) in order.foods" :key="foodIndex">{{food}}</div>
+                                <div class="row row-cols-4 text-center  h-25 w-100" >
+                                  <div class="col fs-3 text-nowrap" v-for="(food, foodIndex) in order.food" :key="foodIndex">{{food}}</div>
                                 </div>   
                               </div> 
                               <div class="col">
                                   <table class=" table table-striped align-middle table-sm h-100">
                                     <tbody>
+                                      <tr>
+                                        <td class="fs-5 "><strong>口味:</strong>{{ order.flavor}}</td>
+                                      </tr>
                                       <tr>
                                         <td class="fs-5 "><strong>是否要餐具:</strong>{{ order.tableware ? "要":"不要" }}</td>
                                       </tr>
@@ -102,13 +107,13 @@
                                         <td class="fs-5"><strong>是否要加購提袋:</strong>{{order.bags ? "要":"不要"}}</td>
                                       </tr>
                                       <tr>
-                                        <td class="fs-5"><strong>訂購方式:</strong>{{order.way}}</td>
+                                        <td class="fs-5"><strong>訂購方式:</strong>{{order.way ? "外帶":"自取"}}</td>
                                       </tr>
                                       <tr>
                                         <td class="fs-5"><strong>預計取餐時間:</strong><span class="text-danger">{{order.time}}</span></td>
                                       </tr>
                                       <tr>
-                                        <td class="fs-5"><strong>付款方式:</strong>{{order.payment}}</td>
+                                        <td class="fs-5"><strong>付款方式:</strong>{{order.payment ? "現金":"線上付款"}}</td>
                                       </tr>
                                       <tr>
                                           <td class="fs-5"><strong>總金額:</strong>{{order.total}}</td>
@@ -119,7 +124,7 @@
                                     </tbody>
                                     <tfoot>
                                       
-                                      <button type="btn" class="btn btn-primary w-100 mt-1">完成</button>
+                                      <button type="btn" class="btn btn-primary w-100 mt-1" @click="finish(order.id)">完成</button>
 
                                     </tfoot>
                                   </table>
@@ -135,8 +140,6 @@
         </transition>
 
     </div>
-  
-
 </template>
 <!--   -->
 <script>
@@ -148,58 +151,8 @@ export default {
   // 
   data() {
     return {
-        order:[
-          {
-            name:"eric",
-            phone:"09111111111",
-            food:["牛肉","豬肉","青椒","豬血糕","百頁豆腐","雞肉","雞心","七里香","田不辣","小豆干","玉米","香腸","貢丸","棉花糖","番薯","麻糬","草蝦","蛤蠣","干貝"],
-            tableware:true,
-            bags:true,
-            way:"自取", //可以用數字呈現
-            time:"17:00",
-            payment:"現金", //可以用數字呈現
-            remark:"烤熟一點",
-            total:600
-          },
-          {
-            name:"eric",
-            phone:"09111111111",
-            food:["牛肉","豬肉","青椒","豬血糕","百頁豆腐","雞肉","雞心","七里香","田不辣","小豆干","玉米","香腸","貢丸","棉花糖","番薯","麻糬","草蝦","蛤蠣","干貝"],
-            tableware:true,
-            bags:true,
-            way:"自取", //可以用數字呈現
-            time:"17:00",
-            payment:"現金", //可以用數字呈現
-            remark:"烤熟一點",
-            total:600
-          },
-        ],
-        finishorder:[
-        {
-            name:"eric",
-            phone:"09111111111",
-            foods:["牛肉","豬肉","青椒","豬血糕","百頁豆腐","雞肉","雞心","七里香","田不辣","小豆干","玉米","香腸","貢丸","棉花糖","番薯","麻糬","草蝦","蛤蠣","干貝"],
-            tableware:true,
-            bags:true,
-            way:"自取", //可以用數字呈現
-            time:"17:00",
-            payment:"現金", //可以用數字呈現
-            remark:"烤熟一點",
-            total:600,
-        },
-        {
-            name:"eric",
-            phone:"09111111111",
-            foods:["牛肉","豬肉","青椒","豬血糕","百頁豆腐","雞肉","雞心","七里香","田不辣","小豆干","玉米","香腸","貢丸","棉花糖","番薯","麻糬","草蝦","蛤蠣","干貝"],
-            tableware:true,
-            bags:true,
-            way:"自取", //可以用數字呈現
-            time:"17:00",
-            payment:"現金", //可以用數字呈現
-            remark:"烤熟一點",
-            total:600,
-        }
-      ],
+        order:[],
+        finishorder:[],
         select:"1"
     }
   },
@@ -207,8 +160,88 @@ export default {
 
   },
   methods:{
+    ok(id){
+      const data = { status: 2 };
+      this.$axios.patch(`/orders/${id}`, data)
+      location.reload();
+    },
+    reject(id){
+      this.$axios.delete(`/orders/${id}`)
+      location.reload();
+    },
+    finish(id){
+      const data = { status: 3 };
+      this.$axios.patch(`/orders/${id}`, data)
+      location.reload();
+    }
+  },
 
-  }
+  mounted() {
+      this.$axios.get('/orders')
+      .then(res => {
+        res.data.forEach(element => {
+          const foods = []
+          let taste = ""
+
+          element.product.forEach(item=>{
+              foods.push(item.name+"X"+item.quantity)
+          })
+
+          if(element.flavor == 1){
+            taste = "正常"
+          }else if(element.flavor == 2){
+            taste = "重口味"
+          }else if(element.flavor == 3){
+            taste = "辣"
+          }
+
+          if(element.status == 1){
+            this.order.push({
+            name:element.name,
+            phone:element.phone,
+            tableware:element.tableware,
+            bags:element.bags,
+            way:element.type,
+            time:element.pickTime,
+            payment:element.payment,
+            remark:element.comment,
+            total:element.price,
+            food:foods,
+            flavor:taste,
+            day:element.day,
+            id:element.id,
+
+            status:element.status,
+            isMember:element.isMember,
+            userId:element.userId,
+            orderScore:element.orderScore,
+            })
+          }else if(element.status == 2){
+            this.finishorder.push({
+            name:element.name,
+            phone:element.phone,
+            tableware:element.tableware,
+            bags:element.bags,
+            way:element.type,
+            time:element.pickTime,
+            payment:element.payment,
+            remark:element.comment,
+            total:element.price,
+            food:foods,
+            flavor:taste,
+            day:element.day,
+            id:element.id,
+
+            status:element.status,
+            isMember:element.isMember,
+            userId:element.userId,
+            orderScore:element.orderScore,
+            })
+          }
+
+        });
+      })
+  },
 };
 </script>
 

@@ -1,5 +1,6 @@
 <template>
     <div>
+      <!-- 口味取向 -->
       <apexchart
         width="100%"
         height="500"

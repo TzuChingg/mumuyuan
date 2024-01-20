@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "start json-server db.json ./node_modules/json-server-auth & vite ",
+    "dev": "start json-server-auth db.json & vite ",
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
@@ -19,7 +19,7 @@
     "express": "^4.18.2",
     "git-cz": "^4.9.0",
     "jquery": "^3.7.1",
-    "json-server": "^1.0.0-alpha.17",
+    "json-server": "^0.17.4",
     "json-server-auth": "^2.1.0",
     "pinia": "^2.1.7",
     "popper.js": "^1.16.1",
