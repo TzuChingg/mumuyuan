@@ -1,6 +1,6 @@
 <script>
 //VUE3 CLI 默認導入模塊，所以不用加type="module"
-import { Transition } from 'vue';
+import { Transition } from 'vue'
 export default {
   data() {
     return {
@@ -9,19 +9,20 @@ export default {
   },
   components: {
     Transition
-  },
-};
+  }
+}
 </script>
 
 <template>
-  <!-- <div class="container">
+  <div>
     <navbarComponent v-if="identity === 'user'" />
-  </div> -->
     <router-view v-slot="{ Component }">
       <transition name="fade" mode="out-in">
         <component :is="Component"></component>
       </transition>
     </router-view>
+    <footerComponent v-if="identity === 'user'" />
+  </div>
 </template>
 
 <style scoped lang="scss">

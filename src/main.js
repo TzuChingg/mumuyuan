@@ -15,6 +15,7 @@ import router from './router'
 
 //全域組件
 import navbarComponent from "./components/global/navbarComponent.vue";
+import footerComponent from "./components/global/footerComponent.vue";
 
 //套件工具
 import VueApexCharts from "vue3-apexcharts";
@@ -29,6 +30,7 @@ app.config.globalProperties.$axios = axios.create({
   })
 app.config.globalProperties.$apexcharts = ApexCharts;
 app.component('navbarComponent', navbarComponent);
+app.component('footerComponent', footerComponent);
 
 app.use(VueApexCharts);
 app.use(VueAxios, axios);

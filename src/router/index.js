@@ -12,6 +12,7 @@ import backend   from './backend';
 import pagePost from '/src/views/eric/test/pagePost.vue'
 //主頁
 import IndexTest from '/src/views/eric/IndexTest.vue'
+import memberRouter from './memberRouter';
 
 
 
@@ -23,6 +24,7 @@ const routes = [
   {...loginRouter},
   {...reserveRouter},
   {...searchRouter},
+  ...memberRouter
 ]
 
 
