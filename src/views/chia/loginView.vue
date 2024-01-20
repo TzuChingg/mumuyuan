@@ -1,11 +1,11 @@
 <script>
 export default {
-    computed:{
-        pageStatus(){
+    computed: {
+        pageStatus() {
             return {
-                '/login':'木木苑登入',
-                '/login/signin':'木木苑註冊',
-                '/login/forget':'密碼找回'
+                '/login': '木木苑登入',
+                '/login/signin': '木木苑註冊',
+                '/login/forget': '密碼找回'
             }[this.$route.path];
         }
     }
@@ -27,7 +27,7 @@ export default {
 .login {
     cursor: default;
     .signinContent {
-        height: 100vh;
+        height: calc(100vh - 174px);
         background: #918a8a;
     }
 }

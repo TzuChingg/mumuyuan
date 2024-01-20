@@ -1,5 +1,5 @@
 <template>
-    <footer class="footer d-flex flex-wrap justify-content-between align-items-center py-3 border-top">
+    <footer class="footer d-flex flex-wrap justify-content-between align-items-center py-3 border-top bg-light">
       <p class="col-md-4 ms-5 text-muted my-auto">© 2023 Company, Inc</p>
       <ul class="nav col-md-4 justify-content-end">
         <li class="nav-item"><a href="" class="nav-link px-2 text-muted">Home</a></li>
@@ -19,9 +19,9 @@ export default {
 
 <style>
     .footer{
-        position: fixed;
+        /* position: fixed;
         bottom: 0px;
         left: 0px;
-        right: 0px;
+        right: 0px; */
     }
 </style>
