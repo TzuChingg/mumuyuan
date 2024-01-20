@@ -25,9 +25,9 @@ export default {
       </transition>
     </router-view>
     <!-- menu -->
-    <br />
+    <!-- <br />
     <router-link :to="{ name: '線上點餐' }">線上點餐頁面</router-link>
-    <br />
+    <br /> -->
     <footerComponent v-if="identity === 'user'" />
   </div>
 </template>
