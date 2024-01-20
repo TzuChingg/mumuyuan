@@ -1,5 +1,6 @@
 <template>
     <div>
+      <!-- 目標營業額差距 -->
       <apexchart
         width="100%"
         height="300"

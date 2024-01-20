@@ -12,7 +12,7 @@
                 <div class="col-8 mb-0 ms-2">
                   <div class="d-flex h-50">
                     <label for="search"><i class="bi bi-search fs-4 "></i></label>
-                    <input type="search" placeholder="search" id="search" class=" form-control border-0 shadow-none mt-2 fs-4" v-model="search">
+                    <input type="search" placeholder="search" id="search" @input="filteredUser"  class=" form-control border-0 shadow-none mt-2 fs-4" v-model="search">
                   </div>
                 </div>
                 <div class="col-2  ">
@@ -24,13 +24,23 @@
               </div>
             </div>
             <div class="card  shadow-sm w-100">
-                <div class="card-body" >
-                  <table class=" table table-hover align-middle table-sm reduce-spacing" >
-                    <tbody class="fs-4 text-nowrap" v-for="(user,index) in filteredUser" :key="index" >
+              <div class="card-body" >
+                <div v-if="isLoading">
+                  <div class="spinner-border" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                  </div>
+                </div>
+                  <table  v-if="!isLoading" class=" table table-hover align-middle table-sm reduce-spacing" >
+                    <tbody class="fs-4 text-nowrap">
+                      <tr v-if="this.filteredUsersList.length == 0">
+                        <td>查無此人</td>
+                      </tr>
+                    </tbody>
+                    <tbody class="fs-4 text-nowrap" v-for="(user,index) in filteredUsersList" :key="index" >
                       <tr >
                           <td>{{user.name}}</td>
                           <td>手機:{{user.phone}}</td>
-                          <td class="text-end "><button class="btn btn-outline-primary me-5">黑名單</button></td>
+                          <td class="text-end "><button class="btn btn-outline-primary me-5" @click="goBad(user.id)">黑名單</button></td>
                       </tr>
                     </tbody>
                   </table>
@@ -43,7 +53,7 @@
                 <div class="col-8 mb-0 ms-2">
                   <div class="d-flex h-50">
                     <label for="search"><i class="bi bi-search fs-4 "></i></label>
-                    <input type="search" placeholder="search" id="search" class=" form-control border-0 shadow-none mt-2 fs-4" v-model="search">
+                    <input type="search" placeholder="search" id="search" @input="filteredBadUser" class=" form-control border-0 shadow-none mt-2 fs-4" v-model="search">
                   </div>
                 </div>
                 <div class="col-2  ">
@@ -56,12 +66,22 @@
           </div>
           <div class="card  shadow-sm w-100">
             <div class="card-body">
-              <table class=" table table-hover align-middle table-sm reduce-spacing">
-                <tbody class="fs-4 text-nowrap" v-for="(user ,index) in filteredBadUser" :key="index">
+              <div v-if="isLoading">
+                  <div class="spinner-border" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                  </div>
+                </div>
+              <table v-if="!isLoading" class=" table table-hover align-middle table-sm reduce-spacing">
+                <tbody class="fs-4 text-nowrap">
+                      <tr v-if="this.filteredBadUsersList.length == 0">
+                        <td>查無此人</td>
+                      </tr>
+                </tbody>
+                <tbody  class="fs-4 text-nowrap" v-for="(user ,index) in filteredBadUsersList" :key="index">
                   <tr>
                       <td>{{user.name}}</td>
                       <td>手機:{{user.phone}}</td>
-                      <td class="text-end "><button class="btn btn-primary me-5">原諒你</button></td>
+                      <td class="text-end "><button class="btn btn-primary me-5" @click="goGood(user.id)">原諒你</button></td>
                   </tr>
                 </tbody>
               </table>
@@ -77,54 +97,97 @@
 import BackendFunctions from '/src/components/eric/BackendFunctions.vue';
 export default {
 
-  data() {
-    return {
-      users:[
-        {
-          name:"蔡先生",
-          phone:"09252525225"
-        },
-        {
-          name:"黃先生",
-          phone:"09777777777"
-        },
-      ],
-      badusers:[
-        {
-          name:"蔡先生",
-          phone:"09252525225"
-        },
-        {
-          name:"黃先生",
-          phone:"09111111111"
-        },
-      ],
-      search:"",
-      select:"1"
+data() {
+  return {
+    users:[],
+    badusers:[],
+    search:"",
+    filteredUsersList: [],
+    filteredBadUsersList: [],
+    select:"1",
+    isLoading : false,
+  }
+},
+methods:{
+  filteredUser(){
+    if (this.search) {
+        this.isLoading = true; 
+        setTimeout(() => {
+            // if( this.filteredUsersList.length == 0){
+            //   this.filteredUsersList.push({name:"差無此人",phone:""})
+            // }else if(this.filteredUsersList.length != 0){
+            this.filteredUsersList = this.users.filter(name => name.phone.includes(this.search));
+            this.isLoading = false; 
+            // }
+        }, 500);
+
+    } else {
+      this.isLoading = true;
+      setTimeout(() => {
+        this.filteredUsersList = this.users;
+        this.isLoading = false;
+      },500)
     }
   },
 
+  filteredBadUser(){
+    if(this.search){
+      this.isLoading = true; 
+      setTimeout(() => {
+        this.filteredBadUsersList = this.badusers.filter((name)=>name.phone.includes(this.search));
+        this.isLoading = false;
+      }, 500);
+    } else {
+      this.isLoading = true;
+      setTimeout(() => {
+        this.filteredBadUsersList = this.badusers
+        this.isLoading = false;
+      },500)
+    }
+  },
 
-components: {
-  BackendFunctions,
+  goBad(id){
+      const data = { identity: "baduser" };
+      this.$axios.patch(`/users/${id}`, data)
+      .then(res => {
+        
+      })
+      location.reload();
+    },
+  goGood(id){
+    const data = { identity: "user" };
+    this.$axios.patch(`/users/${id}`, data)
+    .then(res => {
+    })
+    location.reload();
+  },
 },
 
 computed:{
-  filteredUser(){
-    if(this.search){
-        return this.users.filter((name)=>name.phone.includes(this.search));
-    } else {
-        return this.users
-    }
-  },
-  filteredBadUser(){
-    if(this.search){
-        return this.badusers.filter((name)=>name.phone.includes(this.search));
-    } else {
-        return this.badusers
-    }
-  }
-}
+},
+
+mounted() {
+  this.$axios.get('/users')
+  .then(res => {
+    res.data.forEach(element => {
+      if(element.identity=='user'){
+          this.users.push({name:element.name,phone:element.phone,id:element.id})
+      }else if(element.identity=='baduser'){
+        this.badusers.push({name:element.name,phone:element.phone,id:element.id})
+      }
+    });
+  })
+  .catch(error => {
+    console.error(error)
+  })
+
+
+  this.filteredUsersList = this.users;
+  this.filteredBadUsersList = this.badusers;
+},
+components: {
+  BackendFunctions,
+},
 };
 </script>
 

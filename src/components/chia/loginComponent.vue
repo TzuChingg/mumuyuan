@@ -37,7 +37,7 @@ export default {
             //     console.log(response)
             //     this.$router.push({ path: '/' });
             // })
-            this.$http.post('http://localhost:3000/login', {
+            this.$axios.post('/signin', {
                 ...this.userInput
             }).then((response) => {
                 console.log(response);

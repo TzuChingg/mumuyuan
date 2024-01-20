@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- 產品銷售排名 -->
     <apexchart
       width="100%"
       height="500"
@@ -33,7 +34,7 @@ export default {
           enabled: false,
         },
         theme: {
-        palette: 'palette3' // upto palette10
+        palette: 'palette6' // upto palette10
       },
       },
 

@@ -24,7 +24,9 @@ import ApexCharts from 'apexcharts';
 import App from './App.vue';
 
 const app = createApp(App);
-
+app.config.globalProperties.$axios = axios.create({
+    baseURL: 'http://localhost:3000',
+  })
 app.config.globalProperties.$apexcharts = ApexCharts;
 app.component('navbarComponent', navbarComponent);
 
