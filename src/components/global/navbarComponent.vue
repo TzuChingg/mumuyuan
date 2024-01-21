@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="showNav">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">
@@ -30,7 +30,7 @@
               <a class="nav-link" href="#/login">登入/註冊</a>
             </li>
             <li class="nav-item" style="width: 60px;" v-else>
-              <a class="nav-link" :href="identity">
+              <a class="nav-link" :href="identityHref">
                 <img style="margin: 0 auto;height: 40px; border-radius: 50%;background-color: rgb(238, 231, 193);"
                   src="/user.png" alt="">
               </a>
@@ -48,7 +48,9 @@ export default {
   data() {
     return {
       hasToken: false,
-      identity: "#/memberCenter"
+      identityHref: "#/memberCenter",
+      identity: 'user',
+      showNav: true,
     }
   },
   computed: {
@@ -58,11 +60,19 @@ export default {
   },
   watch: {
     currentRoute(newRoute, oldRoute) {
-      this.identity = (docCookies.getItem("identity") === "admin") ? "#/order" : "#/memberCenter";
+      this.identityHref = (docCookies.getItem("identity") === "admin") ? "#/order" : "#/memberCenter";
       if (newRoute.fullPath === '/') {
         this.hasToken = docCookies.hasItem("token");
       }
-    }
+      this.showNav = ((docCookies.getItem("identity") === "admin") &&
+        (newRoute.fullPath === '/order' ||
+          newRoute.fullPath === '/memberMange' ||
+          newRoute.fullPath === '/sales' ||
+          newRoute.fullPath === '/product' ||
+          newRoute.fullPath === '/booking' ||
+          newRoute.fullPath === '/discount' ||
+          newRoute.fullPath === '/journey')) ? false : true;
+    },
   }
 }
 </script>
