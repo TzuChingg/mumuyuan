@@ -17,6 +17,8 @@ export default {
 </script>
 
 <template>
+  
+    <!-- <navbarComponent v-if="identity === 'user'" /> -->
   <div class="indexheigth d-flex flex-column">
     <navbarComponent v-if="identity === 'user'" />
     <router-view v-slot="{ Component }">

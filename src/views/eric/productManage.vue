@@ -1,7 +1,7 @@
 <template>
   <div class="d-flex ">
       <aside class="sidebar  border-5  pt-3 border-end d-flex bg-white flex-column ">
-        <BackendFunctions></BackendFunctions>  
+        <BackendFunctions v-once></BackendFunctions>  
       </aside>
       <transition name="fade" mode="out-in">
         <main v-if="select==1" class="main ">
@@ -11,35 +11,64 @@
               <div class="col-2">
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">新增商品</button>
               </div>
+              <div class="col-6 ">
+                <ul class="nav nav-pills ">
+                  <li class="nav-item mx-2">
+                    <input type="radio" class="btn-check" name="options" id="option1" :value=1  v-model="category">
+                    <label class="btn btn-outline-primary" for="option1">固定套餐</label>
+                  </li>
+                  <li class="nav-item mx-2">
+                    <input type="radio" class="btn-check" name="options" id="option2" :value=2  v-model="category">
+                    <label class="btn btn-outline-primary" for="option2">秘捲</label>
+                  </li>
+                  <li class="nav-item mx-2">
+                    <input type="radio" class="btn-check" name="options" id="option3" :value=3  v-model="category">
+                    <label class="btn btn-outline-primary" for="option3">肉品</label>
+                  </li>
+                  <li class="nav-item mx-2">
+                    <input type="radio" class="btn-check" name="options" id="option4" :value=4  v-model="category">
+                    <label class="btn btn-outline-primary " for="option4">海鮮</label>
+                  </li>
+                  <li class="nav-item mx-2">
+                    <input type="radio" class="btn-check" name="options" id="option5" :value=5  v-model="category">
+                    <label class="btn btn-outline-primary " for="option5">酒食</label>
+                  </li>
+                  <li class="nav-item mx-2">
+                    <input type="radio" class="btn-check" name="options" id="option6" :value=6  v-model="category">
+                    <label class="btn btn-outline-primary " for="option6">經典</label>
+                  </li>
+                  <li class="nav-item mx-2">
+                    <input type="radio" class="btn-check" name="options" id="option7" :value=7  v-model="category">
+                    <label class="btn btn-outline-primary " for="option7">蔬菜</label>
+                  </li>
+                </ul>
+              </div>
               <div class="col-2">
-                <select class="form-select border-0 shadow-sm bg-primary text-white" id="select" aria-label="Default select example" v-model="select">
-                      <option selected :value="'1'" >商品管理</option>
-                      <option :value="'2'">下架商品</option>
-              </select>
+                <select-list :options="options" @updata="get" v-once></select-list>
               </div>
             </div>
           </div>
             <div class="row row-cols-4 mb-4" >
-              <div class="col" v-for="(product,index) in thisPage" :key="index">
+              <div class="col" v-for="(product,index) in categoryProduct" :key="index">
                 <div class="card mt-3" >
                     <div class="cardbody">
-                                    <h4 class=" text-center mt-4">{{product.title}}</h4>
-                                    <div class="row px-3 justify-content-center align-items-center py-3">
-                                        <div class="col-4 fs-4 ">
-                                            <label for="money" class="ms-3">價錢:</label>
-                                        </div>
-                                        <div class="col-6 ">
-                                            <input type="number" id="money" class="form-control shadow-none" :placeholder="product.money">
-                                        </div>
-                                    </div>
-                                    <div class="row text-center align-items-center py-3">
-                                        <div class="col-6  ">
-                                            <button type="button" class="btn btn-danger ms-6">下架</button>
-                                        </div>
-                                        <div class="col-6 ">
-                                            <button type="button" class="btn btn-primary me-6">修改</button>
-                                        </div>
-                                    </div>
+                      <h4 class=" text-center mt-4">{{product.title}}</h4>
+                      <div class="row px-3 justify-content-center align-items-center py-3">
+                          <div class="col-4 fs-4 ">
+                              <label for="money" class="ms-3">價錢:</label>
+                          </div>
+                          <div class="col-6 ">
+                              <input type="number" id="money" class="form-control shadow-none" :placeholder="product.money">
+                          </div>
+                      </div>
+                      <div class="row text-center align-items-center py-3">
+                          <div class="col-6  ">
+                              <button type="button" class="btn btn-danger ms-6">下架</button>
+                          </div>
+                          <div class="col-6 ">
+                              <button type="button" class="btn btn-primary me-6">修改</button>
+                          </div>
+                      </div>
                     </div>
                 </div>
               </div>
@@ -73,6 +102,14 @@
                       <input type="text" id="title" placeholder="100" class=" form-control border-1 shadow-none  w-50" >
                     </div>
                     <div class="d-flex h-25 justify-content-center mb-2">
+                      <label for="title" class="fs-3 me-2">庫存:</label>
+                      <input type="text" id="title" placeholder="100" class=" form-control border-1 shadow-none  w-50" >
+                    </div>
+                    <div class="d-flex h-25 justify-content-center mb-2">
+                      <label for="title" class="fs-3 me-2">分類:</label>
+                      <input type="text" id="title" placeholder="從左往右數" class=" form-control border-1 shadow-none  w-50" >
+                    </div>
+                    <div class="d-flex h-25 justify-content-center mb-2">
                       <label for="title" class="fs-3 me-2">介紹:</label>
                       <input type="text" id="title" placeholder="多汁" class=" form-control border-1 shadow-none  w-50" >
                     </div>
@@ -92,16 +129,13 @@
             <div class="mt-2">
               <div class="row justify-content-end">
                 <div class="col-2">
-                  <select class="form-select border-0 shadow-sm bg-primary text-white" id="select" aria-label="Default select example" v-model="select">
-                        <option selected :value="'1'" >商品管理</option>
-                        <option :value="'2'">下架商品</option>
-                </select>
+                  <select-list :options="options2" @updata="get" v-once></select-list>
                 </div>
               </div>
             </div>
             <div class="row row-cols-4 mb-4">
               <div class="col px-2" v-for="(down ,index) in thisPage2" :key="index">
-                <div class="card mt-3 ">
+                <div class="card my-3 ">
                   <div class="cardbody">
                     <h4 class=" text-center mt-3">{{down.title}}</h4>
                     <div class="row px-3 text-center align-items-center py-1">
@@ -112,8 +146,13 @@
                                 <h4 class="me-6">{{down.money}}</h4>
                               </div>
                             </div>
-                            <div class="m-3">
-                              <button type="button" class="btn btn-danger w-100">上架</button>
+                            <div class="row text-center align-items-center py-3">
+                              <div class="col-6  ">
+                                <button type="button" class="btn btn-primary ms-6">上架</button>
+                              </div>
+                              <div class="col-6 ">
+                                <button type="button" class="btn btn-danger me-6">刪除</button>
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -127,35 +166,38 @@
           </div>
         </main>
       </transition>
-
   </div>
-
-  
 </template>
 
 <script>
+import selectList from '/src/components/eric/selectList.vue';
 import BackendFunctions from '/src/components/eric/BackendFunctions.vue';
 export default {
+components: {
+  BackendFunctions,
+  selectList,
+},
+
 data() {
   return {
     product:[
-      {id:1,title:"青椒",money:50,},
-      {id:2,title:"牛肉",money:90,},
-      {id:3,title:"貢丸",money:900,},
-      {id:4,title:"小豆干",money:900,},
-      {id:5,title:"干貝",money:900,},
-      {id:6,title:"草蝦",money:900,},
-      {id:7,title:"百頁豆腐",money:900,},
-      {id:8,title:"雞肉丸",money:900,},
-      {id:9,title:"豬肉",money:900,},
-      {id:10,title:"豬血糕",money:900,},
-      {id:11,title:"魷魚",money:900,},
-      {id:12,title:"雞蛋豆腐",money:45,},
-      {id:13,title:"雞蛋豆腐",money:45,},
-      {id:14,title:"雞蛋豆腐",money:45,},
-      {id:15,title:"雞蛋豆腐",money:45,},
-      {id:16,title:"雞蛋豆腐",money:45,},
-      {id:17,title:"雞蛋豆腐",money:45,},
+      {id:1,title:"青椒",money:50,category:1,},
+      {id:2,title:"牛肉",money:90,category:1,},
+      {id:3,title:"貢丸",money:900,category:1,},
+      {id:4,title:"小豆干",money:900,category:1,},
+      {id:5,title:"干貝",money:900,category:1,},
+      {id:6,title:"草蝦",money:900,category:1,},
+      {id:7,title:"百頁豆腐",money:900,category:1,},
+      {id:8,title:"雞肉丸",money:900,category:1,},
+      {id:9,title:"豬肉",money:900,category:1,},
+      {id:10,title:"豬血糕",money:900,category:1,},
+      {id:11,title:"魷魚",money:900,category:1,},
+      {id:12,title:"雞蛋豆腐",money:45,category:2,},
+      {id:13,title:"雞蛋豆腐",money:45,category:2,},
+      {id:14,title:"雞蛋豆腐",money:45,category:2,},
+      {id:15,title:"雞蛋豆腐",money:45,category:2,},
+      {id:16,title:"雞蛋豆腐",money:45,category:2,},
+      {id:17,title:"雞蛋豆腐",money:45,category:2,},
     ],
     downProduct:[
       {id:1,title:"青椒",money:50,},
@@ -177,12 +219,27 @@ data() {
       {id:17,title:"雞蛋豆腐",money:900,},
     ],
     thisPage: [],
+    categoryPage:[],
     thisPage2:[],
+    category:1,
     page: 1,
-    pg: 16, 
+    pg: 12, 
     select:"1",
+    options: [
+          { value: '1', label: '商品管理' },
+          { value: '2', label: '下架商品' },
+        ],
+        options2: [
+          { value: '2', label: '下架商品' },
+          { value: '1', label: '商品管理' },
+        ],
   }
 },
+watch: {
+    category() {
+      this.updateThisPage();
+    }
+  },
 computed: {
     startIndex() {
       return (this.page - 1) * this.pg;
@@ -190,6 +247,9 @@ computed: {
     endIndex() {
       return this.startIndex + this.pg;
     },
+    categoryProduct() {
+      return this.thisPage.filter(item => item.category === this.category);
+    }
   },
 methods: {
   prevPage() {
@@ -213,36 +273,66 @@ methods: {
     }
   },
   updateThisPage() {
-    this.thisPage = this.product.slice(this.startIndex, this.endIndex);
+    this.thisPage = this.product
+      .filter(item => item.category === this.category)
+      .slice(this.startIndex, this.endIndex);
   },
   updatePage() {
     this.thisPage2 = this.downProduct.slice(this.startIndex, this.endIndex);
   },
-
   uploadFile () {
       const file = this.$refs.fileInput.files[0]
       const form = new FormData()
       form.append('file', file)
       form.append('userId', 'test1234')
       // axios.post('https://後端網址', form)
-    }
+  },
+
+  get(data){
+       this.select = data
+  },
 },
 created() {
   this.updateThisPage();
   this.updatePage()
 },
-components: {
-  BackendFunctions,
-},
+
 
 mounted() {
     this.$axios.get('/products')
-      .then(response => {
-        console.log(response.data)
-      })
-      .catch(error => {
-        console.error(error)
-      })
+    .then(res => {
+      res.data.forEach(element => {
+      if(element.isLook == false){
+        this.product.push({
+        title:element.productName,
+        category:element.category,
+        money:element.price,
+        count:element.count,
+        description:element.description,
+        isLook:element.isLook,
+        id:element.id,
+
+        image:element.image
+        })
+      }else{
+        this.downProduct.push({
+        title:element.productName,
+        category:element.category,
+        money:element.price,
+        count:element.count,
+        description:element.description,
+        isLook:element.isLook,
+        id:element.id,
+
+        image:element.image
+        })
+      }
+    })
+    this.updateThisPage();
+    })
+    .catch(error => {
+      console.error(error)
+    })
   }
 };
 </script>

@@ -1,46 +1,82 @@
 <template>
   <div class="d-flex">
       <aside class="sidebar  border-5  pt-3 border-end d-flex bg-white flex-column ">
-        <BackendFunctions></BackendFunctions>  
+        <BackendFunctions v-once></BackendFunctions>  
       </aside>
       <transition name="fade" mode="out-in">
         <main v-if="select==1" class="main container">
-        <div class=" mt-5 ">
-          <div class="row justify-content-between">
-            <div class="col-8 mb-0 ms-2">
-              <div class="d-flex h-50">
-                <label for="search"><i class="bi bi-search fs-4 "></i></label>
-                <input type="search" placeholder="search" id="search" class=" form-control border-0 shadow-none mt-2 fs-4" v-model="search">
+          <div class=" mt-5 ">
+            <div class="row justify-content-between">
+              <div class="col-8 mb-0 ms-2">
+                <div class="d-flex h-50">
+                  <label for="search"><i class="bi bi-search fs-4 "></i></label>
+                  <input type="search" placeholder="search" id="search" @input="currentDate" class=" form-control border-0 shadow-none mt-2 fs-4" v-model="search">
+                </div>
               </div>
-            </div>
-            <div class="col-2  ">
-                <select class="form-select border-0 shadow-sm" id="select" aria-label="Default select example" v-model="select">
-                <option selected :value="'1'">待確認訂位</option>
-                <option :value="'2'">已確認訂位</option>
-              </select>
-            </div>
-          </div>
-        </div>
-        <div class="card mb-2 shadow-sm w-100" :class="{out:book.timeout}" v-for="(book ,index) in  currentDate.data" :key="index">
-          <div class="card-body" >
-            <div class="row ">
-              <div class="col-4">
-                <strong>{{book.name}}</strong>
-                <span class="ms-6 ">{{book.people}}位</span><p class="m-0">日期:{{book.data}}</p>
-              </div>
-              <div class="col-4">
-                <strong class="m-0">電話:{{book.phone}}</strong><p class="m-0">時間:{{book.time}}</p>
-              </div>
-              <div class="col-2">
-                <p class="mt-2 fs-5 " :class="{timeout:!book.timeout}">已過期</p>
-              </div>
-              <div class="col ">
-                <i class="bi bi-x-square fs-3 float-end mt-1 me-3" ></i>
-                <i class="bi bi-check-square fs-3 float-end mt-1 me-3" :class="{timeout:book.timeout}"></i>
+              <div class="col-2  ">
+                <select-list :options="options" @updata="get" v-once></select-list>
               </div>
             </div>
           </div>
-        </div>
+          <div v-if="isLoading">
+              <div class="spinner-border" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+          </div>
+          <div v-if="!isLoading">
+            <div v-if="this.filteredBookingList.length == 0" class="card ">
+                <h5 class="card-body fs-4 ">查無此訂位</h5>
+            </div>
+            <div  class="card mb-2 shadow-sm w-100" :class="{out:book.timeout}" v-for="(book ,index) in  filteredBookingList" :key="index">
+              <div class="card-body" >
+                <div  class="row ">
+                  <div class="col-4">
+                    <strong>{{book.name}}</strong>
+                    <span class="ms-6 ">{{book.people}}位</span><p class="m-0">日期:{{book.data}}</p>
+                  </div>
+                  <div class="col-4">
+                    <strong class="m-0">電話:{{book.phone}}</strong><p class="m-0">時間:{{book.time}}</p>
+                  </div>
+                  <div class="col-2">
+                    <p class="mt-2 fs-5 " :class="{timeout:!book.timeout}">已過期</p>
+                  </div>
+                  <div class="col ">
+                    <i class="fs-3 float-end mt-1 me-3"  :class="book.CancelIcon" @mouseover="handleMouseOver(book.id)" @mouseleave="handleMouseLeave(book.id)" data-bs-toggle="modal" data-bs-target="#Cancel"></i>
+                    <i class=" fs-3 float-end mt-1 me-3" :class="{ timeout: book.timeout, [book.CheckIcon]: true }" @mouseover="handleMouseOver2(book.id)" @mouseleave="handleMouseLeave2(book.id)" data-bs-toggle="modal" data-bs-target="#check"></i>
+                  </div>
+                </div>
+              </div>
+              <!-- model -->
+              <div class="modal fade" id="Cancel" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                      <div class="modal-body fs-3">
+                      是否確認刪除?
+                      </div>
+                      <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                      <button type="button" class="btn btn-primary"  data-bs-dismiss="modal"  @click="Cancel(book.id)" >確認</button>
+                      </div>
+                  </div>
+                </div>
+              </div> 
+              <!-- model -->
+              <div class="modal fade" id="check" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                      <div class="modal-body fs-3">
+                      是否確認接受?
+                      </div>
+                      <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                      <button type="button" class="btn btn-primary"  data-bs-dismiss="modal"  @click="check(book.id)" >確認</button>
+                      </div>
+                  </div>
+                </div>
+              </div> 
+            </div>
+          </div>   
+
         </main>
         <main v-else-if="select==2" class="main container">
           <div class=" mt-5 ">
@@ -48,30 +84,38 @@
             <div class="col-8 mb-0 ms-2">
               <div class="d-flex h-50">
                 <label for="search"><i class="bi bi-search fs-4 "></i></label>
-                <input type="search" placeholder="search" id="search" class=" form-control border-0 shadow-none mt-2 fs-4" v-model="search">
+                <input type="search" placeholder="search" @input="filteredFinishBooking" id="search" class=" form-control border-0 shadow-none mt-2 fs-4" v-model="search">
               </div>
             </div>
             <div class="col-2  ">
-                <select class="form-select border-0 shadow-sm" id="select" aria-label="Default select example" v-model="select">
-                <option selected :value="'1'">待確認訂位</option>
-                <option :value="'2'">已確認訂位</option>
-              </select>
+              <select-list :options="options2" @updata="get" v-once></select-list>
             </div>
           </div>
           </div>
-        <div class="card mb-2 shadow-sm w-100" v-for="(finish,index) in filteredUser" :key="index">
-          <div class="card-body" >
-            <div class="row ">
-              <div class="col-4">
-                <strong>{{finish.name}}</strong>
-                <span class="ms-6 ">{{finish.people}}位</span><p class="m-0">日期:{{finish.data}}</p>
-              </div>
-              <div class="col-4">
-                <strong class="m-0">電話:{{finish.phone}}</strong><p class="m-0">時間:{{finish.time}}</p>
+          <div v-if="isLoading">
+                <div class="spinner-border" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+          </div>
+          <div v-if="!isLoading" >
+            <div v-if="this.filteredFinishBookingList.length == 0" class="card ">
+                <h5 class="card-body fs-4 ">查無此訂位</h5>
+            </div>
+            <div  class="card mb-2 shadow-sm w-100" v-for="(finish,index) in filteredFinishBookingList" :key="index">
+            <div  class="card-body" >
+              <div  class="row ">
+                <div class="col-4">
+                  <strong>{{finish.name}}</strong>
+                  <span class="ms-6 ">{{finish.people}}位</span><p class="m-0">日期:{{finish.data}}</p>
+                </div>
+                <div class="col-4">
+                  <strong class="m-0">電話:{{finish.phone}}</strong><p class="m-0">時間:{{finish.time}}</p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+          </div>
+
         </main>
       </transition>
 
@@ -79,104 +123,149 @@
 </template>
 
 <script>
+import selectList from '/src/components/eric/selectList.vue';
 import BackendFunctions from '/src/components/eric/BackendFunctions.vue';
 export default {
 components: {
   BackendFunctions,
+  selectList,
 },
 
 data() {
   return {
-    booking:[
-      {
-        name:"蔡先生",
-        people:2,
-        phone:"0966654545",
-        data:"2024/01/18",
-        time:"2:38",
-        timeout:false,
-      },
-      {
-        name:"黃先生",
-        people:5,
-        phone:"0911111111",
-        data:"2024/01/15",
-        time:"2:38",
-        timeout:false,
-      },
-    ],
-    finishBooking:[
-      {
-        name:"蔡先生",
-        people:2,
-        phone:"0966654545",
-        data:"2024/01/18",
-        time:"2:38",
-        timeout:false,
-      },
-      {
-        name:"黃先生",
-        people:5,
-        phone:"0911111111",
-        data:"2024/01/15",
-        time:"2:38",
-        timeout:false,
-      },
-      {
-        name:"蔡先生",
-        people:2,
-        phone:"0966654545",
-        data:"2024/01/18",
-        time:"2:38",
-        timeout:false,
-      },
-    ],
+    booking:[],
+    finishBooking:[],
+    filteredBookingList: [],
+    filteredFinishBookingList: [],
     search:"",
-    select:"1"
+    select:"1",
+    isLoading:false,
+    options: [
+      { value: '1', label: '待確認訂位' },
+      { value: '2', label: '已確認訂位' },
+    ],
+    options2: [
+      { value: '2', label: '已確認訂位' },
+      { value: '1', label: '待確認訂位' },
+    ],
   }
 },
-
-computed: {
+methods:{
+  filteredFinishBooking(){
+    if(this.search){
+      this.isLoading = true; 
+      setTimeout(()=>{
+        this.filteredFinishBookingList = this.finishBooking.filter((name)=>name.phone.includes(this.search));
+        this.isLoading = false; 
+      },500)
+    } else {
+      this.isLoading = true;
+      setTimeout(()=>{
+        this.filteredFinishBookingList = this.finishBooking
+        this.isLoading = false;
+      },500)
+    }
+  },
   currentDate() {
-    const copiedData = this.booking.slice();
+    if(this.search){
+      this.isLoading = true; 
+      setTimeout(()=>{
+        this.filteredBookingList = this.booking.filter((name)=>name.phone.includes(this.search))
+        this.isLoading = false; 
+      },500)
+    } else {
+      this.isLoading = true; 
+      setTimeout(()=>{
+        this.filteredBookingList = this.booking
+        this.isLoading = false; 
+      },500)
+    }
+  },
+  handleMouseOver(index) {
+    const foundIndex = this.booking.findIndex(element => element.id === index);
+    this.booking[foundIndex].CancelIcon = 'bi bi-x-square-fill';
+    },
+  handleMouseLeave(index) {
+    const foundIndex = this.booking.findIndex(element => element.id === index);
+    this.booking[foundIndex].CancelIcon = 'bi bi-x-square';
+  },
+  handleMouseOver2(index) {
+    const foundIndex = this.booking.findIndex(element => element.id === index);
+    this.booking[foundIndex].CheckIcon = 'bi bi-check-square-fill';
+    },
+  handleMouseLeave2(index) {
+    const foundIndex = this.booking.findIndex(element => element.id === index);
+    this.booking[foundIndex].CheckIcon = 'bi bi-check-square';
+  },
+  check(id){
+    const data = { isCheck: true };
+    this.$axios.patch(`/bookingfrom/${id}`,data)
+    location.reload();
+  },
+  Cancel(id){
+    this.$axios.delete(`/bookingfrom/${id}`)
+    location.reload();
+  },
+
+  
+  get(data){
+       this.select = data
+    }
+},
+computed: {
+},
+mounted(){
+  this.$axios.get('/bookingfrom')
+  .then(res => {
+    let timeout=false
     const date = new Date();
     const year = date.getFullYear();
     const month = date.getMonth() + 1;
     const day = date.getDate();
-    // const hours = date.getHours();
-    // const minutes = date.getMinutes(); 
-   
-    copiedData.forEach(data => {
-      const thisYear = data.data.split("/")[0];
-      const thisMonth = data.data.split("/")[1];
-      const thisDay = data.data.split("/")[2];
-      // const thishour = data.time.split(":")[0]
-      // const thismin = data.time.split(":")[1]
+  // const hours = date.getHours();
+  // const minutes = date.getMinutes(); 
+    res.data.forEach(element => {
+      const thisYear = element.day.split("/")[0];
+      const thisMonth = element.day.split("/")[1];
+      const thisDay = element.day.split("/")[2];
+    // const thishour = data.time.split(":")[0]
+    // const thismin = data.time.split(":")[1]
       if (thisYear >= year && thisMonth >= month && thisDay >= day ) {
-        data.timeout = false;
+        timeout = false;
       } else {
-        data.timeout = true;
+        timeout = true;
+      }
+      if(element.isCheck == false){
+        this.booking.push({
+          name:element.name,
+          phone:element.phone,
+          people:element.personCount,
+          data:element.day,
+          time:element.time,
+          isCheck:element.isCheck,
+          id:element.id,
+          timeout:timeout,
+          CheckIcon:"bi bi-check-square",
+          CancelIcon:"bi bi-x-square",
+        })
+      }else{
+        this.finishBooking.push({
+          name:element.name,
+          phone:element.phone,
+          people:element.personCount,
+          data:element.day,
+          time:element.time,
+          isCheck:element.isCheck,
+          id:element.id,
+        })
       }
     });
-
-    if(this.search){
-        return {data: copiedData.filter((name)=>name.phone.includes(this.search))};
-    } else {
-        return {data: copiedData,}
-    }
-  },
-
-  filteredUser(){
-    if(this.search){
-        return this.finishBooking.filter((name)=>name.phone.includes(this.search));
-    } else {
-        return this.finishBooking
-    }
-  },
+  })
+  this.filteredBookingList = this.booking
+  this.filteredFinishBookingList = this.finishBooking
 }
 }
 </script>
-
 
 <style lang="scss" scoped>
 
@@ -217,6 +306,8 @@ width: 280px;
   /* margin-left: 0; */
 }
 }
+
+
 
 .fade-enter-active,
 .fade-leave-active {

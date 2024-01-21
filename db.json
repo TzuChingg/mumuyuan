@@ -6,7 +6,7 @@
       "password": "$2a$10$l0l6eHyGFe.CSc4CFWuxh.GLmFJpRpDHj7/ZiPQw19Jk8gB.xmk32",
       "copyPassword": "123456",
       "phone": "093333333",
-      "identity": "baduser",
+      "identity": "user",
       "couponId": [
         1,
         2
@@ -20,7 +20,7 @@
       "password": "$2a$10$EaQOKGeA7Hs45ymXBFpIG.39.e283yFCR8Brcx3H9l26NQiAtI6m6",
       "copyPassword": "123456",
       "phone": "09222222222",
-      "identity": "user",
+      "identity": "baduser",
       "couponId": [
         1,
         2
@@ -48,7 +48,7 @@
       "copyPassword": "jack123456",
       "name": "傑克",
       "phone": "0911224455",
-      "identity": "",
+      "identity": "user",
       "couponId": [],
       "point": 0,
       "id": 4
@@ -59,7 +59,7 @@
       "copyPassword": "tina123456",
       "name": "緹娜",
       "phone": "0900999999",
-      "identity": "",
+      "identity": "user",
       "couponId": [],
       "point": 0,
       "id": 5
@@ -70,7 +70,7 @@
       "copyPassword": "apple",
       "name": "catcat",
       "phone": "0900111111",
-      "identity": "",
+      "identity": "user",
       "couponId": [],
       "point": 0,
       "id": 6
@@ -79,12 +79,12 @@
   "products": [
     {
       "productName": "牛肉串",
-      "category": "肉類",
+      "category": 1,
       "image": "",
       "count": 10,
       "price": 50,
       "description": "",
-      "isLook": true,
+      "isLook": false,
       "id": 1
     }
   ],
@@ -113,7 +113,7 @@
         }
       ],
       "price": 300,
-      "status": 3,
+      "status": 2,
       "userId": 1,
       "type": true,
       "tableware": true,
@@ -149,7 +149,7 @@
         }
       ],
       "price": 300,
-      "status": 1,
+      "status": 2,
       "userId": 1,
       "type": true,
       "tableware": true,
@@ -175,13 +175,34 @@
   ],
   "bookingfrom": [
     {
-      "name": "eric",
-      "phone": "0911111111",
-      "day": "2024/01/01",
-      "time": "18:00",
+      "name": "alan",
+      "phone": "09274375343",
+      "day": "2024/01/30",
+      "time": "19:00",
       "periodId": 1,
-      "personCount": 5,
-      "id": 1
+      "personCount": 10,
+      "isCheck": true,
+      "id": 2
+    },
+    {
+      "name": "alan",
+      "phone": "090000000000",
+      "day": "2024/01/30",
+      "time": "19:00",
+      "periodId": 1,
+      "personCount": 10,
+      "isCheck": true,
+      "id": 3
+    },
+    {
+      "name": "alan",
+      "phone": "090000000000",
+      "day": "2024/01/30",
+      "time": "19:00",
+      "periodId": 1,
+      "personCount": 10,
+      "isCheck": false,
+      "id": 4
     }
   ],
   "periods": [
