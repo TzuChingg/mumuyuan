@@ -8,7 +8,7 @@ export default {
                 copyPassword: "",
                 name: "",
                 phone: "",
-                identity: "",
+                identity: "user",
                 couponId: [],
                 point: 0,
             },

@@ -41,8 +41,9 @@ export default {
                 ...this.userInput
             }).then((response) => {
                 if (response.statusText === "OK") {
-                    const { accessToken } = response.data;
+                    const { user, accessToken } = response.data;
                     document.cookie = `token=${accessToken};expires=${new Date().getTime() + 24 * 60 * 60 * 1000};`;
+                    document.cookie = `identity=${user.identity};expires=${new Date().getTime() + 24 * 60 * 60 * 1000};`;
                     this.$router.push({ path: '/' });
                 }
             })

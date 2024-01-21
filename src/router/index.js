@@ -2,9 +2,10 @@
 import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router'
 
 //Router
-import loginRouter from './loginRouter'
-import reserveRouter from './reserveRouter'
-import searchRouter from './searchRouter'
+import loginRouter from './loginRouter' //登入
+import reserveRouter from './reserveRouter' //訂位
+import searchRouter from './searchRouter' //查詢
+import memberRouter from './memberRouter' //會員中心
 
 //頁面
 import backend from './backend'
@@ -12,23 +13,21 @@ import backend from './backend'
 import pagePost from '/src/views/eric/test/pagePost.vue'
 //主頁
 import IndexTest from '/src/views/eric/IndexTest.vue'
-import memberRouter from './memberRouter'
-// import views
+
+//線上點餐
 import MenuPage from '/src/views/claire/MenuPage.vue'
 import CartPage from '/src/views/claire/CartPage.vue'
 
 const routes = [
   { path: '/', component: IndexTest },
   { path: '/:postId', component: pagePost },
-  ...backend,
+  { path: '/menu', component: MenuPage },
+  { path: '/cart', component: CartPage },
   { ...loginRouter },
   { ...reserveRouter },
   { ...searchRouter },
-  ...memberRouter,
-  // add MenuPage router
-  { path: '/menu', name: '線上點餐', component: MenuPage },
-  // add CartPage router
-  { path: '/cart', name: '購物車', component: CartPage }
+  ...backend,
+  ...memberRouter
 ]
 
 const router = createRouter({

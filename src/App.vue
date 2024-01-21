@@ -26,7 +26,11 @@ export default {
         <component :is="Component"></component>
       </transition>
     </router-view>
-    <!-- <footerComponent v-if="identity === 'user'" /> -->
+    <!-- menu -->
+    <!-- <br />
+    <router-link :to="{ name: '線上點餐' }">線上點餐頁面</router-link>
+    <br /> -->
+    <footerComponent v-if="identity === 'user'" />
   </div>
 </template>
 
