@@ -1,7 +1,7 @@
 <template>
   <div class="d-flex">
       <aside class="sidebar  border-5  pt-3 border-end d-flex bg-white flex-column ">
-        <BackendFunctions></BackendFunctions>  
+        <BackendFunctions v-once></BackendFunctions>  
       </aside>
       <transition name="fade" mode="out-in">
         <main v-if="select==1" class="main container">
@@ -44,13 +44,42 @@
                     <p class="mt-2 fs-5 " :class="{timeout:!book.timeout}">已過期</p>
                   </div>
                   <div class="col ">
-                    <i class="bi bi-x-square fs-3 float-end mt-1 me-3" ></i>
-                    <i class="bi bi-check-square fs-3 float-end mt-1 me-3" :class="{timeout:book.timeout}"></i>
+                    <i class="fs-3 float-end mt-1 me-3"  :class="book.CancelIcon" @mouseover="handleMouseOver(book.id)" @mouseleave="handleMouseLeave(book.id)" data-bs-toggle="modal" data-bs-target="#Cancel"></i>
+                    <i class=" fs-3 float-end mt-1 me-3" :class="{ timeout: book.timeout, [book.CheckIcon]: true }" @mouseover="handleMouseOver2(book.id)" @mouseleave="handleMouseLeave2(book.id)" data-bs-toggle="modal" data-bs-target="#check"></i>
                   </div>
                 </div>
               </div>
-          </div>
-          </div>    
+              <!-- model -->
+              <div class="modal fade" id="Cancel" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                      <div class="modal-body fs-3">
+                      是否確認刪除?
+                      </div>
+                      <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                      <button type="button" class="btn btn-primary"  data-bs-dismiss="modal"  @click="Cancel(book.id)" >確認</button>
+                      </div>
+                  </div>
+                </div>
+              </div> 
+              <!-- model -->
+              <div class="modal fade" id="check" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                      <div class="modal-body fs-3">
+                      是否確認接受?
+                      </div>
+                      <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                      <button type="button" class="btn btn-primary"  data-bs-dismiss="modal"  @click="check(book.id)" >確認</button>
+                      </div>
+                  </div>
+                </div>
+              </div> 
+            </div>
+          </div>   
+
         </main>
         <main v-else-if="select==2" class="main container">
           <div class=" mt-5 ">
@@ -114,7 +143,7 @@ data() {
     filteredFinishBookingList: [],
     search:"",
     select:"1",
-    isLoading:false
+    isLoading:false,
   }
 },
 methods:{
@@ -133,7 +162,6 @@ methods:{
       },500)
     }
   },
-
   currentDate() {
     if(this.search){
       this.isLoading = true; 
@@ -149,9 +177,33 @@ methods:{
       },500)
     }
   },
+  handleMouseOver(index) {
+    const foundIndex = this.booking.findIndex(element => element.id === index);
+    this.booking[foundIndex].CancelIcon = 'bi bi-x-square-fill';
+    },
+  handleMouseLeave(index) {
+    const foundIndex = this.booking.findIndex(element => element.id === index);
+    this.booking[foundIndex].CancelIcon = 'bi bi-x-square';
+  },
+  handleMouseOver2(index) {
+    const foundIndex = this.booking.findIndex(element => element.id === index);
+    this.booking[foundIndex].CheckIcon = 'bi bi-check-square-fill';
+    },
+  handleMouseLeave2(index) {
+    const foundIndex = this.booking.findIndex(element => element.id === index);
+    this.booking[foundIndex].CheckIcon = 'bi bi-check-square';
+  },
+  check(id){
+    const data = { isCheck: true };
+    this.$axios.patch(`/bookingfrom/${id}`,data)
+    location.reload();
+  },
+  Cancel(id){
+    this.$axios.delete(`/bookingfrom/${id}`)
+    location.reload();
+  }
 },
 computed: {
-
 },
 mounted(){
   this.$axios.get('/bookingfrom')
@@ -184,6 +236,8 @@ mounted(){
           isCheck:element.isCheck,
           id:element.id,
           timeout:timeout,
+          CheckIcon:"bi bi-check-square",
+          CancelIcon:"bi bi-x-square",
         })
       }else{
         this.finishBooking.push({
@@ -202,9 +256,7 @@ mounted(){
   this.filteredFinishBookingList = this.finishBooking
 }
 }
-
 </script>
-
 
 <style lang="scss" scoped>
 
@@ -245,6 +297,8 @@ width: 280px;
   /* margin-left: 0; */
 }
 }
+
+
 
 .fade-enter-active,
 .fade-leave-active {

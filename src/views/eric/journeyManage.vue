@@ -3,7 +3,7 @@
 
   <div class="d-flex">
       <aside class="sidebar  border-5  pt-3 border-end d-flex bg-white flex-column ">
-        <BackendFunctions></BackendFunctions>  
+        <BackendFunctions v-once></BackendFunctions>  
       </aside>
       <transition name="fade" mode="out-in">
         <main v-if="select==1" class="main ">

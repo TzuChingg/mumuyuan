@@ -1,7 +1,7 @@
 <template>
   <div class="d-flex">
       <aside class="sidebar  border-5  pt-3 border-end d-flex bg-white flex-column ">
-        <BackendFunctions></BackendFunctions>  
+        <BackendFunctions v-once></BackendFunctions>  
       </aside>
       <main class="main ">
         <div class="container  mx-auto px-0 ">
@@ -74,12 +74,12 @@
 
 <script>
 import BackendFunctions from '/src/components/eric/BackendFunctions.vue';
-import myLine from '/src/components/eric/myLine.vue';
-import myBar from '/src/components/eric/myBar.vue';
-import myPie from '/src/components/eric/myPie.vue';
-import myRadia from '/src/components/eric/myRadia.vue';
-import myRadiasm from '/src/components/eric/myRadiasm.vue';
-import myHat from '/src/components/eric/myHat.vue'
+import myLine from '/src/components/eric/charts/myLine.vue';
+import myBar from '/src/components/eric/charts/myBar.vue';
+import myPie from '/src/components/eric/charts/myPie.vue';
+import myRadia from '/src/components/eric/charts/myRadia.vue';
+import myRadiasm from '/src/components/eric/charts/myRadiasm.vue';
+import myHat from '/src/components/eric/charts/myHat.vue'
 export default {
 
 components: {

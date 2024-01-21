@@ -3,7 +3,7 @@
 
   <div class="d-flex">
       <aside class="sidebar  border-5  pt-3 border-end d-flex bg-white flex-column ">
-        <BackendFunctions></BackendFunctions>  
+        <BackendFunctions v-once></BackendFunctions>  
       </aside>
       <transition name="fade" mode="out-in">
         <main v-if="select==1" class="main container">
@@ -40,12 +40,28 @@
                       <tr >
                           <td>{{user.name}}</td>
                           <td>手機:{{user.phone}}</td>
-                          <td class="text-end "><button class="btn btn-outline-primary me-5" @click="goBad(user.id)">黑名單</button></td>
+                          <td class="text-end "><button class="btn btn-outline-primary me-5" data-bs-toggle="modal" data-bs-target="#goBad">黑名單</button></td>
                       </tr>
+                        <!-- model -->
+                        <div class="modal fade" id="goBad" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
+                          <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-body fs-3">
+                                是否加入黑名單?
+                                </div>
+                                <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                                <button type="button" class="btn btn-primary"  data-bs-dismiss="modal"  @click="goBad(user.id)" >確認</button>
+                                </div>
+                            </div>
+                          </div>
+                        </div> 
                     </tbody>
                   </table>
                 </div>
             </div>
+
+
         </main>
         <main v-else-if="select==2" class="main container">
           <div class=" mt-5 ">
@@ -66,7 +82,7 @@
           </div>
           <div class="card  shadow-sm w-100">
             <div class="card-body">
-              <div v-if="isLoading">
+                <div v-if="isLoading">
                   <div class="spinner-border" role="status">
                     <span class="visually-hidden">Loading...</span>
                   </div>
@@ -81,8 +97,22 @@
                   <tr>
                       <td>{{user.name}}</td>
                       <td>手機:{{user.phone}}</td>
-                      <td class="text-end "><button class="btn btn-primary me-5" @click="goGood(user.id)">原諒你</button></td>
+                      <td class="text-end "><button class="btn btn-primary me-5" data-bs-toggle="modal" data-bs-target="#goGood">原諒你</button></td>
                   </tr>
+                  <!-- model -->
+                  <div class="modal fade" id="goGood" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                          <div class="modal-body fs-3">
+                          是否原諒他?
+                          </div>
+                          <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                          <button type="button" class="btn btn-primary"  data-bs-dismiss="modal"  @click="goGood(user.id)" >確認</button>
+                          </div>
+                      </div>
+                    </div>
+                  </div> 
                 </tbody>
               </table>
             </div>
@@ -113,12 +143,8 @@ methods:{
     if (this.search) {
         this.isLoading = true; 
         setTimeout(() => {
-            // if( this.filteredUsersList.length == 0){
-            //   this.filteredUsersList.push({name:"差無此人",phone:""})
-            // }else if(this.filteredUsersList.length != 0){
             this.filteredUsersList = this.users.filter(name => name.phone.includes(this.search));
             this.isLoading = false; 
-            // }
         }, 500);
 
     } else {
