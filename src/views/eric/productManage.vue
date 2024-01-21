@@ -44,10 +44,7 @@
                 </ul>
               </div>
               <div class="col-2">
-                <select class="form-select border-0 shadow-sm bg-primary text-white" id="select" aria-label="Default select example" v-model="select">
-                      <option selected :value="'1'" >商品管理</option>
-                      <option :value="'2'">下架商品</option>
-              </select>
+                <select-list :options="options" @updata="get" v-once></select-list>
               </div>
             </div>
           </div>
@@ -105,6 +102,14 @@
                       <input type="text" id="title" placeholder="100" class=" form-control border-1 shadow-none  w-50" >
                     </div>
                     <div class="d-flex h-25 justify-content-center mb-2">
+                      <label for="title" class="fs-3 me-2">庫存:</label>
+                      <input type="text" id="title" placeholder="100" class=" form-control border-1 shadow-none  w-50" >
+                    </div>
+                    <div class="d-flex h-25 justify-content-center mb-2">
+                      <label for="title" class="fs-3 me-2">分類:</label>
+                      <input type="text" id="title" placeholder="從左往右數" class=" form-control border-1 shadow-none  w-50" >
+                    </div>
+                    <div class="d-flex h-25 justify-content-center mb-2">
                       <label for="title" class="fs-3 me-2">介紹:</label>
                       <input type="text" id="title" placeholder="多汁" class=" form-control border-1 shadow-none  w-50" >
                     </div>
@@ -124,10 +129,7 @@
             <div class="mt-2">
               <div class="row justify-content-end">
                 <div class="col-2">
-                  <select class="form-select border-0 shadow-sm bg-primary text-white" id="select" aria-label="Default select example" v-model="select">
-                        <option selected :value="'1'" >商品管理</option>
-                        <option :value="'2'">下架商品</option>
-                </select>
+                  <select-list :options="options2" @updata="get" v-once></select-list>
                 </div>
               </div>
             </div>
@@ -144,8 +146,13 @@
                                 <h4 class="me-6">{{down.money}}</h4>
                               </div>
                             </div>
-                            <div class="m-3">
-                              <button type="button" class="btn btn-danger w-100">上架</button>
+                            <div class="row text-center align-items-center py-3">
+                              <div class="col-6  ">
+                                <button type="button" class="btn btn-primary ms-6">上架</button>
+                              </div>
+                              <div class="col-6 ">
+                                <button type="button" class="btn btn-danger me-6">刪除</button>
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -163,8 +170,14 @@
 </template>
 
 <script>
+import selectList from '/src/components/eric/selectList.vue';
 import BackendFunctions from '/src/components/eric/BackendFunctions.vue';
 export default {
+components: {
+  BackendFunctions,
+  selectList,
+},
+
 data() {
   return {
     product:[
@@ -212,6 +225,14 @@ data() {
     page: 1,
     pg: 12, 
     select:"1",
+    options: [
+          { value: '1', label: '商品管理' },
+          { value: '2', label: '下架商品' },
+        ],
+        options2: [
+          { value: '2', label: '下架商品' },
+          { value: '1', label: '商品管理' },
+        ],
   }
 },
 watch: {
@@ -265,15 +286,17 @@ methods: {
       form.append('file', file)
       form.append('userId', 'test1234')
       // axios.post('https://後端網址', form)
-    }
+  },
+
+  get(data){
+       this.select = data
+  },
 },
 created() {
   this.updateThisPage();
   this.updatePage()
 },
-components: {
-  BackendFunctions,
-},
+
 
 mounted() {
     this.$axios.get('/products')

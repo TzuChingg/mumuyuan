@@ -16,10 +16,7 @@
                   </div>
                 </div>
                 <div class="col-2  ">
-                    <select class="form-select border-0 shadow-sm" id="select" aria-label="Default select example" v-model="select">
-                      <option selected :value="'1'" >會員資料</option>
-                      <option :value="'2'">黑名單</option>
-                    </select>
+                    <select-list :options="options" @updata="get" v-once></select-list>
                 </div>
               </div>
             </div>
@@ -73,10 +70,7 @@
                   </div>
                 </div>
                 <div class="col-2  ">
-                    <select class="form-select border-0 shadow-sm" id="select" aria-label="Default select example" v-model="select">
-                      <option selected :value="'1'" >會員資料</option>
-                      <option :value="'2'">黑名單</option>
-                    </select>
+                    <select-list :options="options2" @updata="get" v-once></select-list>
                 </div>
               </div>
           </div>
@@ -124,9 +118,14 @@
 </template>
 
 <script>
+import selectList from '/src/components/eric/selectList.vue';
 import BackendFunctions from '/src/components/eric/BackendFunctions.vue';
-export default {
 
+export default {
+components: {
+  BackendFunctions,
+  selectList,
+},
 data() {
   return {
     users:[],
@@ -136,6 +135,14 @@ data() {
     filteredBadUsersList: [],
     select:"1",
     isLoading : false,
+    options: [
+      { value: '1', label: '會員資料' },
+      { value: '2', label: '黑名單' },
+    ],
+    options2: [
+      { value: '2', label: '黑名單' },
+      { value: '1', label: '會員資料' },
+    ],
   }
 },
 methods:{
@@ -187,6 +194,10 @@ methods:{
     })
     location.reload();
   },
+
+  get(data){
+       this.select = data
+    }
 },
 
 computed:{
@@ -211,9 +222,7 @@ mounted() {
   this.filteredUsersList = this.users;
   this.filteredBadUsersList = this.badusers;
 },
-components: {
-  BackendFunctions,
-},
+
 };
 </script>
 

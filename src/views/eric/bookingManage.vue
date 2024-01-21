@@ -14,10 +14,7 @@
                 </div>
               </div>
               <div class="col-2  ">
-                  <select class="form-select border-0 shadow-sm" id="select" aria-label="Default select example" v-model="select">
-                  <option selected :value="'1'">待確認訂位</option>
-                  <option :value="'2'">已確認訂位</option>
-                </select>
+                <select-list :options="options" @updata="get" v-once></select-list>
               </div>
             </div>
           </div>
@@ -91,10 +88,7 @@
               </div>
             </div>
             <div class="col-2  ">
-                <select class="form-select border-0 shadow-sm" id="select" aria-label="Default select example" v-model="select">
-                <option selected :value="'1'">待確認訂位</option>
-                <option :value="'2'">已確認訂位</option>
-              </select>
+              <select-list :options="options2" @updata="get" v-once></select-list>
             </div>
           </div>
           </div>
@@ -129,10 +123,12 @@
 </template>
 
 <script>
+import selectList from '/src/components/eric/selectList.vue';
 import BackendFunctions from '/src/components/eric/BackendFunctions.vue';
 export default {
 components: {
   BackendFunctions,
+  selectList,
 },
 
 data() {
@@ -144,6 +140,14 @@ data() {
     search:"",
     select:"1",
     isLoading:false,
+    options: [
+      { value: '1', label: '待確認訂位' },
+      { value: '2', label: '已確認訂位' },
+    ],
+    options2: [
+      { value: '2', label: '已確認訂位' },
+      { value: '1', label: '待確認訂位' },
+    ],
   }
 },
 methods:{
@@ -201,7 +205,12 @@ methods:{
   Cancel(id){
     this.$axios.delete(`/bookingfrom/${id}`)
     location.reload();
-  }
+  },
+
+  
+  get(data){
+       this.select = data
+    }
 },
 computed: {
 },

@@ -4,7 +4,7 @@
           <BackendFunctions v-once></BackendFunctions>  
         </aside>
         <transition name="fade" mode="out-in">
-          <main v-if="selectedOption==1" class="main container">
+          <main v-if="select==1" class="main container">
             <div class="w-25 mt-5">              
               <select-list :options="options" @updata="get" v-once></select-list>
             </div>  
@@ -96,7 +96,7 @@
               </div>
             </div>
           </main>
-          <main v-else-if="selectedOption==2" class="main container">
+          <main v-else-if="select==2" class="main container">
             <div class="w-25 mt-5">
               <select-list :options="options2" @updata="get" v-once></select-list>
             </div>  
@@ -190,13 +190,13 @@ export default {
     return {
         order:[],
         finishorder:[],
-        selectedOption: "1",
+        select: "1",
         options: [
           { value: '1', label: '待確認訂單' },
           { value: '2', label: '待完成訂單' },
         ],
         options2: [
-          { value: '0', label: '待完成訂單' },
+          { value: '2', label: '待完成訂單' },
           { value: '1', label: '待確認訂單' },
         ],
     }
@@ -220,8 +220,8 @@ export default {
       location.reload();
     },
     get(data){
-       this.selectedOption = data
-    }
+       this.select = data
+    },
   },
 
   mounted() {

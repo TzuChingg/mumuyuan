@@ -12,10 +12,7 @@
                   <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">新增優惠券</button>
                 </div>
                 <div class="col-2">
-                  <select class="form-select border-0 shadow-sm bg-primary text-white" id="select" aria-label="Default select example" v-model="select">
-                        <option selected :value="'1'" >優惠券管理</option>
-                        <option :value="'2'">下架優惠券</option>
-                  </select>
+                  <select-list :options="options" @updata="get" v-once></select-list>
                 </div>
               </div>
             </div>
@@ -87,10 +84,7 @@
             <div class="my-3">
               <div class="row justify-content-end">
                 <div class="col-2">
-                  <select class="form-select border-0 shadow-sm bg-primary text-white" id="select" aria-label="Default select example" v-model="select">
-                        <option selected :value="'1'" >優惠券管理</option>
-                        <option :value="'2'">下架優惠券</option>
-                  </select>
+                  <select-list :options="options2" @updata="get" v-once></select-list>
                 </div>
               </div>
             </div>
@@ -128,10 +122,12 @@
 </template>
 
 <script>
+import selectList from '/src/components/eric/selectList.vue';
 import BackendFunctions from '/src/components/eric/BackendFunctions.vue';
 export default {
 components: {
   BackendFunctions,
+  selectList,
 },
 
 data() {
@@ -179,8 +175,16 @@ data() {
     thisPage: [],
     thisPage2: [],
     page: 1,
-    pg: 16, 
+    pg: 12, 
     select:"1",
+    options: [
+      { value: '1', label: '優惠券管理' },
+      { value: '2', label: '下架優惠券' },
+    ],
+    options2: [
+      { value: '2', label: '下架優惠券' },
+      { value: '1', label: '優惠券管理' },
+    ],
   }
 },
 computed: {
@@ -225,7 +229,10 @@ methods: {
       form.append('file', file)
       form.append('userId', 'test1234')
       // axios.post('https://後端網址', form)
-    }
+  },
+  get(data){
+      this.select = data
+  }  
 },
 created() {
   this.updateThisPage();

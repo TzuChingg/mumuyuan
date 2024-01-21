@@ -9,8 +9,7 @@ import memberRouter from './memberRouter' //會員中心
 
 //頁面
 import backend from './backend'
-//測試
-import pagePost from '/src/views/eric/test/pagePost.vue'
+
 //主頁
 import IndexTest from '/src/views/eric/IndexTest.vue'
 
@@ -20,7 +19,6 @@ import CartPage from '/src/views/claire/CartPage.vue'
 
 const routes = [
   { path: '/', component: IndexTest },
-  { path: '/:postId', component: pagePost },
   { path: '/menu', component: MenuPage },
   { path: '/cart', component: CartPage },
   { ...loginRouter },
