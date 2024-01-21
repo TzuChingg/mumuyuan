@@ -63,6 +63,17 @@
       "couponId": [],
       "point": 0,
       "id": 5
+    },
+    {
+      "email": "cat@gmail.com",
+      "password": "$2a$10$jVinxMlKMRj4Lh/K49UU4.ZPNdBRbkB87CEeSSRw8IUuv/IfT5K6m",
+      "copyPassword": "apple",
+      "name": "catcat",
+      "phone": "0900111111",
+      "identity": "",
+      "couponId": [],
+      "point": 0,
+      "id": 6
     }
   ],
   "products": [

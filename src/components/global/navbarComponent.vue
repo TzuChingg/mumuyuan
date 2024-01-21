@@ -15,7 +15,7 @@
               <a class="nav-link" aria-current="page" href="#">首頁(暫時放後台)</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">線上點餐(claire放這)</a>
+              <a class="nav-link" href="#/menu">線上點餐</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#/reserve">立即訂位</a>
@@ -24,13 +24,13 @@
               <a class="nav-link" href="#/search">訂位/訂單查詢</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">常見問題(未做)</a>
+              <a class="nav-link" href="#">常見問題(往下滾)</a>
             </li>
             <li class="nav-item" v-if="!hasToken">
               <a class="nav-link" href="#/login">登入/註冊</a>
             </li>
             <li class="nav-item" style="width: 60px;" v-else>
-              <a class="nav-link" href="#/memberCenter">
+              <a class="nav-link" :href="identity">
                 <img style="margin: 0 auto;height: 40px; border-radius: 50%;background-color: rgb(238, 231, 193);"
                   src="/user.png" alt="">
               </a>
@@ -47,16 +47,18 @@ import { docCookies } from '../../assets/cookie';
 export default {
   data() {
     return {
-      hasToken: false
+      hasToken: false,
+      identity: "#/memberCenter"
     }
   },
   computed: {
-    // hasToken() {
-    //   return docCookies.hasItem("token");
-    // }
+    currentRoute() {
+      return this.$route;
+    }
   },
   watch: {
-    '$route'(newRoute, oldRoute) {
+    currentRoute(newRoute, oldRoute) {
+      this.identity = (docCookies.getItem("identity") === "admin") ? "#/order" : "#/memberCenter";
       if (newRoute.fullPath === '/') {
         this.hasToken = docCookies.hasItem("token");
       }
