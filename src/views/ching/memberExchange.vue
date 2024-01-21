@@ -21,6 +21,9 @@
                 <button class="btn btn-outline-primary active" type="button">
                   <a href="#/member/exchange" class="d-block text-light link-underline link-underline-opacity-0">點數兌換</a>
                 </button>
+                <button class="btn btn-outline-primary" type="button">
+                  <a href="#" class="d-block link-underline link-underline-opacity-0" @click="signOut">登出</a>
+                </button>
               </div>
             </div>
             <div class="col-9">
@@ -146,7 +149,18 @@
     </div>
   </div>
 </template>
-  
+<script>
+import { docCookies } from '../../assets/cookie';
+
+export default {
+  methods: {
+    signOut() {
+      docCookies.removeItem("token");
+      docCookies.removeItem("identity");
+    }
+  }
+}
+</script>
 <style lang="scss">
 .memberexchange {
   min-height: calc(100vh - 174px);
