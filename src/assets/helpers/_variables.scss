@@ -60,10 +60,10 @@ $colors: (
   "green":      $green,
   "teal":       $teal,
   "cyan":       $cyan,
-  "black":      $black,
+  "black":      #2D2D2D,
   "white":      $white,
   "gray":       $gray-600,
-  "gray-dark":  $gray-800
+  "gray-dark":  #4F4F4F
 ) !default;
 // scss-docs-end colors-map
 
@@ -298,14 +298,14 @@ $cyans: (
 // fusv-enable
 
 // scss-docs-start theme-color-variables
-$primary:       $purple !default;
-$secondary:     $gray-600 !default;
+$primary:     #B2815A !default;
+$secondary:     #F1EEE9 !default;
 $success:       $green !default;
 $info:          $cyan !default;
 $warning:       $yellow !default;
 $danger:        $red !default;
 $light:         $gray-100 !default;
-$dark:          $gray-900 !default;
+$dark:          #A86A46 !default;
 // scss-docs-end theme-color-variables
 
 // scss-docs-start theme-colors-map
