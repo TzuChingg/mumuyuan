@@ -10,19 +10,23 @@
               </div>
               <div class="btn-group-vertical d-flex justify-content-center">
                 <button class="btn btn-outline-primary" type="button">
-                  <a href="#/memberCenter" class="d-block link-underline link-underline-opacity-0">會員中心</a>
+                  <router-link to="/memberCenter"
+                    class="d-block link-underline link-underline-opacity-0 ">會員中心</router-link>
                 </button>
                 <button class="btn btn-outline-primary" type="button">
-                  <a href="#/member/orderLog" class="d-block link-underline link-underline-opacity-0">歷史訂單</a>
+                  <router-link to="/member/orderLog"
+                    class="d-block link-underline link-underline-opacity-0">歷史訂單</router-link>
                 </button>
                 <button class="btn btn-outline-primary active" type="button">
-                  <a href="#/member/discount" class="d-block text-light link-underline link-underline-opacity-0">我的優惠券</a>
+                  <router-link to="/member/discount"
+                    class="d-block text-light link-underline link-underline-opacity-0">我的優惠券</router-link>
                 </button>
                 <button class="btn btn-outline-primary" type="button">
-                  <a href="#/member/exchange" class="d-block link-underline link-underline-opacity-0">點數兌換</a>
+                  <router-link to="/member/exchange"
+                    class="d-block link-underline link-underline-opacity-0">點數兌換</router-link>
                 </button>
                 <button class="btn btn-outline-primary" type="button">
-                  <a href="#" class="d-block link-underline link-underline-opacity-0" @click="signOut">登出</a>
+                  <router-link to="/" class="d-block link-underline link-underline-opacity-0">登出</router-link>
                 </button>
               </div>
             </div>
@@ -67,8 +71,8 @@
                       </div>
                     </div>
                     <!-- card 3 end -->
-                      <!-- card 4  -->
-                      <div class="card mb-4 me-3" style="width: 13rem">
+                    <!-- card 4  -->
+                    <div class="card mb-4 me-3" style="width: 13rem">
                       <img src="/37.jpg" class="card-img-top" alt="..." />
                       <div class="card-body">
                         <h5 class="card-title">花椰菜 2 串</h5>
@@ -114,5 +118,4 @@ export default {
   .questionIcon:hover {
     cursor: pointer;
   }
-}
-</style>
+}</style>
