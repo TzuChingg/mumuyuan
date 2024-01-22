@@ -10,7 +10,6 @@
             <div class="row justify-content-between">
               <div class="col-2">
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">新增商品</button>
-                <button type="button" class="btn btn-primary ms-3" data-bs-toggle="modal" data-bs-target="#exampleModal">進貨</button>
               </div>
               <div class="col-6 ">
                 <ul class="nav nav-pills ">
@@ -56,16 +55,16 @@
                       <h4 class=" text-center mt-4">{{product.title}}</h4>
                       <div class="row px-3 justify-content-center align-items-center py-3">
                           <div class="col-2 fs-6 ">
-                              <label for="money" class="ms-2 text-nowrap">價錢:</label>
+                              <label for="money" class="ms-1 text-nowrap">價錢:</label>
                           </div>
                           <div class="col-4 ">
                               <input v-model="product.money" type="number" id="money" class="form-control shadow-none" :placeholder="product.money">
                           </div>
-                          <div class="col-3 fs-6 ">
-                              <label for="money" class="ms-3 text-nowrap">庫存:</label>
+                          <div class="col-2 fs-6 ">
+                              <label for="count" class="ms-1 text-nowrap">庫存:</label>
                           </div>
-                          <div class="col-3 ">
-                              <span>{{product.count}}</span>
+                          <div class="col-4 ">
+                              <input v-model="product.count" type="number" id="count" class="form-control shadow-none" :placeholder="product.count">
                           </div>
                       </div>
                       <div class="row text-center align-items-center py-3">
@@ -101,7 +100,7 @@
                           </div>
                           <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
-                          <button type="button" class="btn btn-primary"  data-bs-dismiss="modal"  @click="updatePrice(product.id,product.money)">確認</button>
+                          <button type="button" class="btn btn-primary"  data-bs-dismiss="modal"  @click="update(product.id,product.money,product.count)">確認</button>
                           </div>
                       </div>
                     </div>
@@ -122,38 +121,46 @@
             <h5 class="modal-title " id="exampleModalLabel">商品內容</h5>
           </div>
           <div class="modal-body">
-            <div class="card border-0">
-              <div class="cardbody">
-                <div class="d-flex h-25 justify-content-center my-5">
-                  <btn class="btn btn-primary" @click="$refs.fileInput.click()">上傳檔案</btn>
-                  <input type="file" style="display: none" ref="fileInput" @change="uploadFile">
-                </div>
-                <div class="d-flex h-25 justify-content-center mt-6 mb-2">
-                  <label for="title" class="fs-3 me-2">品名:</label>
-                  <input type="text" id="title" placeholder="牛肉" class=" form-control border-1 shadow-none  w-50" >
-                </div>
-                <div class="d-flex h-25 justify-content-center mb-2">
-                  <label for="title" class="fs-3 me-2">價格:</label>
-                  <input type="text" id="title" placeholder="100" class=" form-control border-1 shadow-none  w-50" >
-                </div>
-                <div class="d-flex h-25 justify-content-center mb-2">
-                  <label for="title" class="fs-3 me-2">庫存:</label>
-                  <input type="text" id="title" placeholder="100" class=" form-control border-1 shadow-none  w-50" >
-                </div>
-                <div class="d-flex h-25 justify-content-center mb-2">
-                  <label for="title" class="fs-3 me-2">分類:</label>
-                  <input type="text" id="title" placeholder="從左往右數" class=" form-control border-1 shadow-none  w-50" >
-                </div>
-                <div class="d-flex h-25 justify-content-center mb-2">
-                  <label for="title" class="fs-3 me-2">介紹:</label>
-                  <input type="text" id="title" placeholder="多汁" class=" form-control border-1 shadow-none  w-50" >
+            <form>
+              <div class="card border-0">
+                <div class="cardbody">
+                    <div class="d-flex h-25 justify-content-center mt-3">
+                    <input class="form-control w-50 " type="file" id="formFile" @change="uploadFile">
+                  </div>
+                  <div class="d-flex h-25 justify-content-center mt-3 mb-2">
+                    <label for="title" class="fs-3 me-2 form-label">品名:</label>
+                    <input type="text" id="title" placeholder="牛肉" class=" form-control border-1 shadow-none  w-50" v-model="dataForm.productName">
+                  </div>
+                  <div class="d-flex h-25 justify-content-center mb-2">
+                    <label for="price" class="fs-3 me-2 form-label">價格:</label>
+                    <input type="text" id="price" placeholder="100" class=" form-control border-1 shadow-none  w-50" v-model="dataForm.price">
+                  </div>
+                  <div class="d-flex h-25 justify-content-center mb-2">
+                    <label for="count" class="fs-3 me-2 form-label">庫存:</label>
+                    <input type="text" id="count" placeholder="100" class=" form-control border-1 shadow-none  w-50" v-model="dataForm.count">
+                  </div>
+                  <div class="d-flex h-25 justify-content-center mb-2">
+                    <label for="description" class="fs-3 me-2 form-label">介紹:</label>
+                    <input type="text" id="description" placeholder="多汁" class=" form-control border-1 shadow-none  w-50" v-model="dataForm.description">
+                  </div>
+                  <div class="d-flex h-25 justify-content-center mt-3 mb-2">
+                    <select class="form-select w-50 shadow-none" aria-label="Default select example" v-model="dataForm.category">
+                      <option :value=1>固定套餐</option>
+                      <option :value=2>秘捲</option>
+                      <option :value=3>肉品</option>
+                      <option :value=4>海鮮</option>
+                      <option :value=5>酒食</option>
+                      <option :value=6>蔬菜</option>
+                      <option :value=7>經典</option>
+                    </select>
+                  </div>
                 </div>
               </div>
-            </div>
+            </form>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
-            <button type="button" class="btn btn-primary">新增</button>
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="pushData()">新增</button>
           </div>
         </div>
         </div>
@@ -233,7 +240,6 @@ components: {
   BackendFunctions,
   selectList,
 },
-
 data() {
   return {
     product:[],
@@ -253,6 +259,15 @@ data() {
           { value: '2', label: '下架商品' },
           { value: '1', label: '商品管理' },
         ],
+    dataForm:{
+      productName: "",
+      category: 1,
+      image: "",
+      count: 1,
+      price: "20",
+      description: "",
+      isLook: false,
+    }
   }
 },
 watch: {
@@ -300,14 +315,10 @@ methods: {
   updatePage() {
     this.thisPage2 = this.downProduct.slice(this.startIndex, this.endIndex);
   },
-  uploadFile () {
-      const file = this.$refs.fileInput.files[0]
-      const form = new FormData()
-      form.append('file', file)
-      form.append('userId', 'test1234')
-      // axios.post('https://後端網址', form)
+  uploadFile (event) {
+      const file = event.target.files[0];
+      this.dataForm.image = file;
   },
-
   goDown(id){
     const data = { isLook: true };
       this.$axios.patch(`/products/${id}`, data)
@@ -322,11 +333,14 @@ methods: {
       this.$axios.delete(`/products/${id}`)
       location.reload();
   },
-  updatePrice(id,money){
-    const data = { price:`${money}` };
+  update(id,money,count){
+    const data = {price:`${money}` ,
+                  count:`${count}`};
     this.$axios.patch(`/products/${id}`, data)
   },
-
+  pushData(){
+    this.$axios.post('/products', this.dataForm)
+  },
   get(data){
       this.select = data
   },
