@@ -555,54 +555,72 @@
   ],
   "bookingfrom": [
     {
-      "name": "alan",
+      "name": "joker",
+      "mail": "joker@gmail.com",
       "phone": "09274375343",
-      "day": "2024/01/30",
-      "time": "19:00",
+      "day": "2024/01/24",
       "periodId": 1,
-      "personCount": 10,
+      "personCount": 3,
       "isCheck": true,
       "id": 2
     },
     {
-      "name": "alan",
+      "name": "joker",
+      "mail": "joker@gmail.com",
       "phone": "090000000000",
-      "day": "2024/01/30",
-      "time": "19:00",
+      "day": "2024/01/24",
+      "personCount": 4,
       "periodId": 1,
-      "personCount": 10,
       "isCheck": true,
       "id": 3
     },
     {
-      "name": "alan",
+      "name": "joker",
+      "mail": "joker@gmail.com",
       "phone": "090000000000",
-      "day": "2024/01/30",
-      "time": "19:00",
+      "day": "2024/01/24",
       "periodId": 1,
-      "personCount": 10,
+      "personCount": 8,
+      "isCheck": true,
+      "id": 4
+    },
+    {
+      "name": "湯姆",
+      "personCount": 6,
+      "phone": "0911223344",
+      "mail": "tom@gmail.com",
+      "day": "2024/01/24",
+      "periodId": 2,
       "isCheck": false,
-      "id": 4
+      "id": 6
+    },
+    {
+      "name": "瑪莉",
+      "personCount": 3,
+      "phone": "0233445566",
+      "mail": "mary@gmail.com",
+      "day": "2024/01/25",
+      "periodId": 2,
+      "isCheck": false,
+      "id": 7
+    },
+    {
+      "name": "linlin",
+      "personCount": 9,
+      "phone": "0423333333",
+      "mail": "linlin@gmial.com",
+      "day": "2024/01/24",
+      "periodId": 3,
+      "isCheck": false,
+      "id": 8
     }
   ],
-  "periods": [
-    {
-      "personCount": 10,
-      "id": 1
-    },
-    {
-      "personCount": 20,
-      "id": 2
-    },
-    {
-      "personCount": 30,
-      "id": 3
-    },
-    {
-      "personCount": 20,
-      "id": 4
-    }
-  ],
+  "periods": {
+    "1": 10,
+    "2": 20,
+    "3": 30,
+    "4": 20
+  },
   "coupons": [
     {
       "name": "折10塊",
