@@ -180,24 +180,19 @@ methods:{
   },
 
   goBad(id){
-      const data = { identity: "baduser" };
-      this.$axios.patch(`/users/${id}`, data)
-      .then(res => {
-        
-      })
-      location.reload();
-    },
+    const data = { identity: "baduser" };
+    this.$axios.patch(`/users/${id}`, data)
+    location.reload();
+  },
   goGood(id){
     const data = { identity: "user" };
     this.$axios.patch(`/users/${id}`, data)
-    .then(res => {
-    })
     location.reload();
   },
 
   get(data){
-       this.select = data
-    }
+    this.select = data
+  }
 },
 
 computed:{
