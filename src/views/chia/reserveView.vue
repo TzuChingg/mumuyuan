@@ -26,8 +26,8 @@ export default {
         }
     },
     created() {
-        this.getReserveDay();
-        this.getpersonCount();
+        this.getReserveDay(); //抓往後3天
+        this.getpersonCount(); //抓區段最多人數
     },
     methods: {
         getReserveDay() {
