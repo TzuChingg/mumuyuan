@@ -1,6 +1,6 @@
 <template>
   <div class="d-flex ">
-      <aside class="sidebar  border-5  pt-3 border-end d-flex bg-white flex-column ">
+      <aside class="sidebar  border-5  pt-3 border-end d-flex bg-secondary flex-column ">
         <BackendFunctions v-once></BackendFunctions>  
       </aside>
       <transition name="fade" mode="out-in">
@@ -50,7 +50,7 @@
           </div>
             <div class="row row-cols-4 mb-4" >
               <div class="col" v-for="(product,index) in categoryProduct" :key="index">
-                <div class="card mt-3" >
+                <div class="card mt-3 bg-light" >
                     <div class="cardbody">
                       <h4 class=" text-center mt-4">{{product.title}}</h4>
                       <div class="row px-3 justify-content-center align-items-center py-3">
@@ -80,11 +80,11 @@
                 <!-- model -->
                 <div class="modal fade" id="goDown" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
                     <div class="modal-dialog">
-                      <div class="modal-content">
+                      <div class="modal-content border-0">
                           <div class="modal-body fs-3">
                           是否下架產品?
                           </div>
-                          <div class="modal-footer">
+                          <div class="modal-footer border-0">
                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
                           <button type="button" class="btn btn-primary"  data-bs-dismiss="modal"  @click="goDown(product.id)" >確認</button>
                           </div>
@@ -94,11 +94,11 @@
                 <!-- model -->
                 <div class="modal fade" id="updatePrice" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
                     <div class="modal-dialog">
-                      <div class="modal-content">
+                      <div class="modal-content border-0">
                           <div class="modal-body fs-3">
                           是否修改 {{product.title}} 產品價錢?
                           </div>
-                          <div class="modal-footer">
+                          <div class="modal-footer border-0">
                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
                           <button type="button" class="btn btn-primary"  data-bs-dismiss="modal"  @click="update(product.id,product.money,product.count)">確認</button>
                           </div>
@@ -116,15 +116,15 @@
         <!-- Button trigger modal -->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
+        <div class="modal-content border-0">
+          <div class="modal-header border-0">
             <h5 class="modal-title " id="exampleModalLabel">商品內容</h5>
           </div>
-          <div class="modal-body">
+          <div class="modal-body bg-secondary">
             <form>
-              <div class="card border-0">
-                <div class="cardbody">
-                    <div class="d-flex h-25 justify-content-center mt-3">
+              <div class="card border-0 ">
+                <div class="cardbody bg-secondary">
+                  <div class="d-flex h-25 justify-content-center mt-3">
                     <input class="form-control w-50 " type="file" id="formFile" @change="uploadFile">
                   </div>
                   <div class="d-flex h-25 justify-content-center mt-3 mb-2">
@@ -158,7 +158,7 @@
               </div>
             </form>
           </div>
-          <div class="modal-footer">
+          <div class="modal-footer border-0">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
             <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="pushData()">新增</button>
           </div>
@@ -177,7 +177,7 @@
             </div>
             <div class="row row-cols-4 mb-4">
               <div class="col px-2" v-for="(down ,index) in thisPage2" :key="index">
-                <div class="card my-3 ">
+                <div class="card my-3 bg-light">
                   <div class="cardbody">
                     <h4 class=" text-center mt-3">{{down.title}}</h4>
                     <div class="row text-center align-items-center py-3">
@@ -194,11 +194,11 @@
                 <!-- model -->
                 <div class="modal fade" id="goon" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
                     <div class="modal-dialog">
-                      <div class="modal-content">
+                      <div class="modal-content border-0">
                           <div class="modal-body fs-3">
                           是否上架產品?
                           </div>
-                          <div class="modal-footer">
+                          <div class="modal-footer border-0">
                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
                           <button type="button" class="btn btn-primary"  data-bs-dismiss="modal"  @click="goon(down.id)" >確認</button>
                           </div>
@@ -208,11 +208,11 @@
                 <!-- model -->
                 <div class="modal fade" id="del" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
                     <div class="modal-dialog">
-                      <div class="modal-content">
+                      <div class="modal-content border-0">
                           <div class="modal-body fs-3">
                           是否刪除產品?
                           </div>
-                          <div class="modal-footer">
+                          <div class="modal-footer border-0">
                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
                           <button type="button" class="btn btn-primary"  data-bs-dismiss="modal"  @click="del(down.id)" >確認</button>
                           </div>
@@ -357,14 +357,12 @@ mounted() {
         category:element.category,
         money:element.price,
         count:element.count,
-        isLook:element.isLook,
         id:element.id,
         })
       }else if(element.isLook == true){
         this.downProduct.push({
         id:element.id,
         title:element.productName,
-        isLook:element.isLook,
         })
       }
     })
@@ -380,8 +378,9 @@ mounted() {
 
 
 <style lang="scss" scoped>
-
+@import '/src/assets/main.scss'; 
 .d-flex {
+  background: $secondary;
   height: 100vh;
 }
 

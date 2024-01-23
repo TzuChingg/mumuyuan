@@ -1,6 +1,6 @@
 <template>
     <div class="d-flex">
-        <aside class="sidebar  border-5  border-end d-flex bg-white flex-column">
+        <aside class="sidebar  border-5  border-end d-flex bg-secondary flex-column">
           <BackendFunctions v-once></BackendFunctions>  
         </aside>
         <transition name="fade" mode="out-in">
@@ -68,11 +68,11 @@
                 <!-- model -->
                 <div class="modal fade" id="ok" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
                   <div class="modal-dialog">
-                    <div class="modal-content">
+                    <div class="modal-content border-0">
                         <div class="modal-body fs-3">
                         是否接受訂單?
                         </div>
-                        <div class="modal-footer">
+                        <div class="modal-footer border-0">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
                         <button type="button" class="btn btn-primary"  data-bs-dismiss="modal"  @click="ok(order.id)" >確認</button>
                         </div>
@@ -82,11 +82,11 @@
                 <!-- model -->
                 <div class="modal fade" id="reject" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
                   <div class="modal-dialog">
-                    <div class="modal-content">
+                    <div class="modal-content border-0">
                         <div class="modal-body fs-3">
                         是否拒絕訂單?
                         </div>
-                        <div class="modal-footer">
+                        <div class="modal-footer border-0">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
                         <button type="button" class="btn btn-primary"  data-bs-dismiss="modal"  @click="reject(order.id)" >確認</button>
                         </div>
@@ -158,11 +158,11 @@
                 <!-- model -->
                 <div class="modal fade" id="finish" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
                   <div class="modal-dialog">
-                    <div class="modal-content">
+                    <div class="modal-content border-0">
                         <div class="modal-body fs-3">
                         是否完成訂單?
                         </div>
-                        <div class="modal-footer">
+                        <div class="modal-footer border-0">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
                         <button type="button" class="btn btn-primary"  data-bs-dismiss="modal"  @click="finish(order.id)" >確認</button>
                         </div>
@@ -296,8 +296,11 @@ export default {
 
 
 <style lang="scss" scoped>
+@import '/src/assets/main.scss'; 
+
 
 .d-flex {
+    background: $secondary;
     height: 100vh;
 }
 
@@ -305,6 +308,7 @@ td {
   white-space: pre-line;
 }
 .sidebar {
+
 flex: 0 0 auto;
 width: 280px;
 overflow: hidden;
@@ -312,6 +316,7 @@ transition: width 0.5s;
 }
 
 .main {
+
 flex: 1; /* 让主要内容区域占据剩余的所有可用空间 */
 overflow-y: auto;
 width: 100%;
@@ -323,6 +328,7 @@ width: 0;
 }
 
 .sidebar:hover {
+
 width: 280px;
 
 .main {
@@ -335,7 +341,7 @@ width: 280px;
         padding: 0px; /* 调整需要的内边距 */
     }
 
-    .fade-enter-active,
+.fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.4s;
 }

@@ -1,6 +1,6 @@
 <template>
   <div class="d-flex">
-      <aside class="sidebar  border-5  pt-3 border-end d-flex bg-white flex-column ">
+      <aside class="sidebar  border-5  pt-3 border-end d-flex bg-secondary flex-column ">
         <BackendFunctions v-once></BackendFunctions>  
       </aside>
       <transition name="fade" mode="out-in">
@@ -18,7 +18,7 @@
             </div>
             <div class="row row-cols-4 mt-2">
             <div class="col" v-for="(discount,index) in thisPage" :key="index">
-              <div class="card my-2">
+              <div class="card my-2 bg-light">
                 <div class="cardbody">
                       <h4 class=" text-center mt-4">{{discount.title}}</h4>
                       <div class="row px-3 justify-content-center align-items-center py-3">
@@ -26,19 +26,47 @@
                               <label for="money" class="ms-3">點數:</label>
                           </div>
                           <div class="col-6 ">
-                              <input type="number" id="money" class="form-control shadow-none" :placeholder="discount.point">
+                              <input v-model="discount.point" type="number" id="money" class="form-control shadow-none" :placeholder="discount.point">
                           </div>
                       </div>
                       <div class="row text-center align-items-center py-3">
                           <div class="col-6  ">
-                              <button type="button" class="btn btn-danger ms-6">下架</button>
+                              <button type="button" class="btn btn-danger ms-6" data-bs-toggle="modal" data-bs-target="#goDown">下架</button>
                           </div>
                           <div class="col-6 ">
-                              <button type="button" class="btn btn-primary me-6">修改</button>
+                              <button type="button" class="btn btn-primary me-6" data-bs-toggle="modal" data-bs-target="#update">修改</button>
                           </div>
                       </div>
                 </div>
               </div>
+              <!-- model -->
+              <div class="modal fade" id="goDown" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
+                    <div class="modal-dialog">
+                      <div class="modal-content border-0">
+                          <div class="modal-body fs-3">
+                          是否下架折價券?
+                          </div>
+                          <div class="modal-footer border-0">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                          <button type="button" class="btn btn-primary"  data-bs-dismiss="modal"  @click="goDown(discount.id)" >確認</button>
+                          </div>
+                      </div>
+                    </div>
+              </div> 
+              <!-- model -->
+              <div class="modal fade" id="update" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
+                    <div class="modal-dialog">
+                      <div class="modal-content border-0">
+                          <div class="modal-body fs-3">
+                          是否修改 {{discount.title}} 產品價錢?
+                          </div>
+                          <div class="modal-footer border-0">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                          <button type="button" class="btn btn-primary"  data-bs-dismiss="modal"  @click="update(discount.id,discount.point)">確認</button>
+                          </div>
+                      </div>
+                    </div>
+                </div>
             </div>
             </div>
             <div class="d-flex justify-content-center h-25 mt-3">
@@ -52,27 +80,30 @@
                           <div class="modal-header">
                             <h5 class="modal-title " id="exampleModalLabel">折價券內容</h5>
                           </div>
-                          <div class="modal-body">
-                            <div class="card border-0">
-                              <div class="cardbody mt-4">
-                                <div class="d-flex h-25 justify-content-center my-2">
-                                  <btn class="btn btn-primary" @click="$refs.fileInput.click()">上傳檔案</btn>
-                                  <input type="file" style="display: none" ref="fileInput" @change="uploadFile">
+                          <div class="modal-body bg-secondary">
+                            <div class="card border-0 bg-secondary">
+                              <div class="cardbody mt-4 ">
+                                <div class="d-flex h-25 justify-content-center mt-3">
+                                  <input class="form-control w-50 " type="file" id="formFile" @change="uploadFile">
                                 </div>
                                 <div class="d-flex h-25 justify-content-center mt-5 mb-2">
                                   <label for="title" class="fs-3 me-2">券名:</label>
-                                  <input type="text" id="title" placeholder="牛肉" class=" form-control border-1 shadow-none  w-50" >
+                                  <input type="text" id="title" placeholder="牛肉" class=" form-control border-1 shadow-none  w-50" v-model="dataForm.name">
                                 </div>
                                 <div class="d-flex h-25 justify-content-center mb-2">
-                                  <label for="title" class="fs-3 me-2">點數:</label>
-                                  <input type="text" id="title" placeholder="100" class=" form-control border-1 shadow-none  w-50" >
+                                  <label for="point" class="fs-3 me-2">點數:</label>
+                                  <input type="text" id="point" placeholder="100" class=" form-control border-1 shadow-none  w-50" v-model="dataForm.point">
+                                </div>
+                                <div class="d-flex h-25 justify-content-center mb-2">
+                                  <label for="de" class="fs-3 me-2">介紹:</label>
+                                  <input type="text" id="de" placeholder="" class=" form-control border-1 shadow-none  w-50" v-model="dataForm.description">
                                 </div>
                               </div>
                             </div>
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
-                            <button type="button" class="btn btn-primary">新增</button>
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="pushData()">新增</button>
                           </div>
                     </div>
                 </div>
@@ -90,7 +121,7 @@
             </div>
             <div class="row row-cols-4">
             <div class="col" v-for="(down ,index) in thisPage2" :key="index">
-              <div class="card my-2">
+              <div class="card my-2 bg-light">
                 <div class="cardbody">
                       <h4 class=" text-center mt-4">{{down.title}}</h4>
                       <div class="row px-3 text-center align-items-center py-1">
@@ -102,10 +133,24 @@
                         </div>
                     </div>
                       <div class="m-3">
-                            <button type="button" class="btn btn-danger w-100">上架</button>
+                            <button type="button" class="btn btn-danger w-100" data-bs-toggle="modal" data-bs-target="#goon">上架</button>
                       </div>
                 </div>
               </div>
+              <!-- model -->
+              <div class="modal fade" id="goon" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
+                    <div class="modal-dialog">
+                      <div class="modal-content border-0">
+                          <div class="modal-body fs-3">
+                          是否上架折價券?
+                          </div>
+                          <div class="modal-footer border-0">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                          <button type="button" class="btn btn-primary"  data-bs-dismiss="modal"  @click="goon(down.id)" >確認</button>
+                          </div>
+                  </div>
+                </div>
+              </div> 
             </div>
             </div>
             <div class="d-flex justify-content-center h-25 mt-3">
@@ -132,46 +177,8 @@ components: {
 
 data() {
   return {
-    discount:[
-      {title:"折10元",point:40},
-      {title:"折10元",point:40},
-      {title:"折10元",point:40},
-      {title:"折10元",point:40},
-      {title:"折10元",point:40},
-      {title:"折10元",point:40},
-      {title:"折10元",point:40},
-      {title:"折10元",point:40},
-      {title:"折10元",point:40},
-      {title:"折10元",point:40},
-      {title:"折10元",point:40},
-      {title:"折10元",point:40},
-      {title:"折10元",point:40},
-      {title:"折10元",point:40},
-      {title:"折10元",point:40},
-      {title:"折10元",point:40},
-      {title:"折10元",point:40},
-      {title:"折10元",point:40},
-    ],
-    downDiscount:[
-      {title:"折10元",point:30},
-      {title:"折10元",point:30},
-      {title:"折10元",point:30},
-      {title:"折10元",point:30},
-      {title:"折10元",point:30},
-      {title:"折10元",point:30},
-      {title:"折10元",point:30},
-      {title:"折10元",point:30},
-      {title:"折10元",point:30},
-      {title:"折10元",point:30},
-      {title:"折10元",point:30},
-      {title:"折10元",point:30},
-      {title:"折10元",point:30},
-      {title:"折10元",point:30},
-      {title:"折10元",point:30},
-      {title:"折10元",point:30},
-      {title:"折10元",point:30},
-      {title:"折10元",point:30},
-    ],
+    discount:[],
+    downDiscount:[],
     thisPage: [],
     thisPage2: [],
     page: 1,
@@ -185,6 +192,13 @@ data() {
       { value: '2', label: '下架優惠券' },
       { value: '1', label: '優惠券管理' },
     ],
+    dataForm:{
+      name: "",
+      image: "",
+      point: "1",
+      isLook: false,
+      description: "",
+    }
   }
 },
 computed: {
@@ -222,29 +236,67 @@ methods: {
   updatePage() {
     this.thisPage2 = this.downDiscount.slice(this.startIndex, this.endIndex);
   },
-
-  uploadFile () {
-      const file = this.$refs.fileInput.files[0]
-      const form = new FormData()
-      form.append('file', file)
-      form.append('userId', 'test1234')
-      // axios.post('https://後端網址', form)
+  uploadFile (event) {
+      const file = event.target.files[0];
+      this.dataForm.image = file;
   },
   get(data){
       this.select = data
-  }  
+  },
+  pushData(){
+    this.$axios.post('/coupons', this.dataForm)
+  },  
+  goDown(id){
+    const data = { isLook: true };
+      this.$axios.patch(`/coupons/${id}`, data)
+      location.reload();
+  },
+  goon(id){
+    const data = { isLook: false };
+      this.$axios.patch(`/coupons/${id}`, data)
+      location.reload();
+  }, 
+  update(id,point){
+    const data = {point:`${point}`};
+    this.$axios.patch(`/coupons/${id}`, data)
+  },
 },
 created() {
-  this.updateThisPage();
-  this.updatePage()
+
 },
+mounted(){
+  this.$axios.get('/coupons')
+  .then(res=>{
+    res.data.forEach(element =>{
+      if(element.isLook == false){
+        this.discount.push({
+          title:element.name,
+          point:element.point,
+          id:element.id
+        })
+      }else{
+        this.downDiscount.push({
+          title:element.name,
+          point:element.point,
+          id:element.id
+        })
+      }
+      this.updateThisPage();
+      this.updatePage()
+    })
+  })
+
+
+}
 };
 </script>
 
 
 <style lang="scss" scoped>
 
+@import '/src/assets/main.scss'; 
 .d-flex {
+  background: $secondary;
   height: 100vh;
 }
 

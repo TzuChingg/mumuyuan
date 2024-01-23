@@ -15,7 +15,7 @@ export const docCookies = {
         );
     },
     setItem: function (sKey, sValue, vEnd, sPath, sDomain, bSecure) {
-        if (!sKey || /^(?:expires|max\-age|path|domain|secure)$/i.test(sKey)) {
+        if (!sKey || /^(?:expires|max\\-age|path|domain|secure)$/i.test(sKey)) {
             return false;
         }
         var sExpires = "";
@@ -65,8 +65,8 @@ export const docCookies = {
     },
     keys: /* optional method: you can safely remove it! */ function () {
         var aKeys = document.cookie
-            .replace(/((?:^|\s*;)[^\=]+)(?=;|$)|^\s*|\s*(?:\=[^;]*)?(?:\1|$)/g, "")
-            .split(/\s*(?:\=[^;]*)?;\s*/);
+            .replace(/((?:^|\s*;)[^\\=]+)(?=;|$)|^\s*|\s*(?:\\=[^;]*)?(?:|$)/g, "")
+            .split(/\s*(?:\\=[^;]*)?;\s*/);
         for (var nIdx = 0; nIdx < aKeys.length; nIdx++) {
             aKeys[nIdx] = decodeURIComponent(aKeys[nIdx]);
         }

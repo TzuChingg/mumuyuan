@@ -1,6 +1,6 @@
 <template>
   <div class="d-flex">
-      <aside class="sidebar  border-5  pt-3 border-end d-flex bg-white flex-column ">
+      <aside class="sidebar  border-5  pt-3 border-end d-flex bg-secondary flex-column ">
         <BackendFunctions v-once></BackendFunctions>  
       </aside>
       <main class="main ">
@@ -96,8 +96,9 @@ components: {
 
 
 <style lang="scss" scoped>
-
+@import '/src/assets/main.scss'; 
 .d-flex {
+  background: $secondary;
   height: 100vh;
 }
 

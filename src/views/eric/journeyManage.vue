@@ -2,7 +2,7 @@
    
 
   <div class="d-flex">
-      <aside class="sidebar  border-5  pt-3 border-end d-flex bg-white flex-column ">
+      <aside class="sidebar  border-5  pt-3 border-end d-flex bg-secondary flex-column ">
         <BackendFunctions v-once></BackendFunctions>  
       </aside>
       <transition name="fade" mode="out-in">
@@ -20,7 +20,7 @@
             </div>
             <div class="row row-cols-4 mt-2">
             <div class="col" v-for="(journey ,index) in thisPage" :key="index">
-              <div class="card my-4">
+              <div class="card my-4 bg-light">
                 <div class="cardbody">
                       <h4 class=" text-center mt-4">{{journey.title}}</h4>
                       <div class="row text-center align-items-center py-3">
@@ -46,8 +46,8 @@
                           <div class="modal-header">
                             <h5 class="modal-title " id="exampleModalLabel">活動內容</h5>
                           </div>
-                          <div class="modal-body">
-                            <div class="card border-0">
+                          <div class="modal-body bg-secondary">
+                            <div class="card border-0 bg-secondary">
                               <div class="cardbody mt-4">
                                 <div class="d-flex h-25 justify-content-center my-2">
                                   <btn class="btn btn-primary" @click="$refs.fileInput.click()">上傳檔案</btn>
@@ -84,7 +84,7 @@
             </div>
             <div class="row row-cols-4">
             <div class="col" v-for="(dj ,index) in thisPage2" :key="index">
-              <div class="card my-4">
+              <div class="card my-4 bg-light">
                 <div class="cardbody">
                       <h4 class=" text-center mt-4">{{dj.title}}</h4>
                       <div class="m-4">
@@ -226,7 +226,9 @@ created() {
 
 <style lang="scss" scoped>
 
+@import '/src/assets/main.scss'; 
 .d-flex {
+  background: $secondary;
   height: 100vh;
 }
 
