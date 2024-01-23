@@ -127,7 +127,7 @@ export default {
             deep: true,
             handler(newVal, oldVal) {
                 if (newVal !== '') this.regexStatus.day = true;
-                this.$http.get(`http://localhost:3000/bookingfrom?_expand=period&day=${newVal}`)
+                this.$http.get(`http://localhost:3000/bookingfrom?_expand=period&day=${newVal}&isCheck=true`)
                     .then((response) => {
                         console.log(response.data);
                         if (response.status === 200) {
@@ -187,7 +187,6 @@ export default {
                                 {{ `${i.date} (${i.day})` }}
                             </option>
                         </select>
-                        {{ remainPeople }}
                         <div v-if="list.day != ''">
                             <span v-if="regexStatus.day" class="text-success">✔</span>
                             <span v-else class="text-danger">✘</span>
