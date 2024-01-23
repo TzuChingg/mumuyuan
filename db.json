@@ -555,7 +555,7 @@
   ],
   "bookingfrom": [
     {
-      "name": "alan",
+      "name": "ericn",
       "phone": "09274375343",
       "day": "2024/01/30",
       "time": "19:00",
@@ -571,17 +571,17 @@
       "time": "19:00",
       "periodId": 1,
       "personCount": 10,
-      "isCheck": true,
+      "isCheck": false,
       "id": 3
     },
     {
-      "name": "alan",
+      "name": "ben",
       "phone": "090000000000",
       "day": "2024/01/30",
       "time": "19:00",
       "periodId": 1,
       "personCount": 10,
-      "isCheck": false,
+      "isCheck": true,
       "id": 4
     }
   ],
