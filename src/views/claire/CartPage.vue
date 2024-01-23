@@ -6,14 +6,16 @@ export default { components: { CartComponent, ModalComponent } }
 </script>
 
 <template>
-  <div class="container main my-5">
-    <div class="row">
-      <main class="col">
-        <!--cart-->
-        <CartComponent></CartComponent>
-      </main>
+  <div>
+    <div class="container main my-5">
+      <div class="row">
+        <main class="col">
+          <!--cart-->
+          <CartComponent></CartComponent>
+        </main>
+      </div>
     </div>
+    <!-- modal -->
+    <ModalComponent></ModalComponent>
   </div>
-  <!-- modal -->
-  <ModalComponent></ModalComponent>
 </template>

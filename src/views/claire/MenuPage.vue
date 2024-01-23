@@ -1,14 +1,13 @@
 <script>
-import TitleComponent from '../../components/claire/TitleComponent.vue'
+
 import CategoryComponent from '../../components/claire/CategoryComponent.vue'
 import MenuComponent from '../../components/claire/MenuComponent.vue'
-export default { components: { TitleComponent, CategoryComponent, MenuComponent } }
+export default { components: {  CategoryComponent, MenuComponent } }
 </script>
 
 <template>
-  <div class="wrapper">
-    <!--title-->
-    <TitleComponent></TitleComponent>
+  <div>
+    <h1 class="my-4 text-center">線上點餐</h1>
     <!--category-->
     <CategoryComponent></CategoryComponent>
     <!--title-->
