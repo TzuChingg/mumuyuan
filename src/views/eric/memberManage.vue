@@ -2,7 +2,7 @@
    
 
   <div class="d-flex">
-      <aside class="sidebar  border-5  pt-3 border-end d-flex bg-white flex-column ">
+      <aside class="sidebar  border-5  pt-3 border-end d-flex bg-secondary flex-column ">
         <BackendFunctions v-once></BackendFunctions>  
       </aside>
       <transition name="fade" mode="out-in">
@@ -12,7 +12,7 @@
                 <div class="col-8 mb-0 ms-2">
                   <div class="d-flex h-50">
                     <label for="search"><i class="bi bi-search fs-4 "></i></label>
-                    <input type="search" placeholder="search" id="search" @input="filteredUser"  class=" form-control border-0 shadow-none mt-2 fs-4" v-model="search">
+                    <input type="search" placeholder="search" id="search" @input="filteredUser"  class=" form-control border-0 shadow-none mt-2 fs-4 bg-secondary" v-model="search">
                   </div>
                 </div>
                 <div class="col-2  ">
@@ -20,7 +20,7 @@
                 </div>
               </div>
             </div>
-            <div class="card  shadow-sm w-100">
+            <div class="card  shadow-sm w-100 bg-light ">
               <div class="card-body" >
                 <div v-if="isLoading">
                   <div class="spinner-border" role="status">
@@ -28,7 +28,7 @@
                   </div>
                 </div>
                   <table  v-if="!isLoading" class=" table table-hover align-middle table-sm reduce-spacing" >
-                    <tbody class="fs-4 text-nowrap">
+                    <tbody class="fs-4 text-nowrap ">
                       <tr v-if="this.filteredUsersList.length == 0">
                         <td>查無此人</td>
                       </tr>
@@ -42,11 +42,11 @@
                         <!-- model -->
                         <div class="modal fade" id="goBad" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
                           <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-body fs-3">
+                            <div class="modal-content border-0">
+                                <div class="modal-body fs-3 ">
                                 是否加入黑名單?
                                 </div>
-                                <div class="modal-footer">
+                                <div class="modal-footer border-0">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
                                 <button type="button" class="btn btn-primary"  data-bs-dismiss="modal"  @click="goBad(user.id)" >確認</button>
                                 </div>
@@ -66,7 +66,7 @@
                 <div class="col-8 mb-0 ms-2">
                   <div class="d-flex h-50">
                     <label for="search"><i class="bi bi-search fs-4 "></i></label>
-                    <input type="search" placeholder="search" id="search" @input="filteredBadUser" class=" form-control border-0 shadow-none mt-2 fs-4" v-model="search">
+                    <input type="search" placeholder="search" id="search" @input="filteredBadUser" class=" form-control border-0 shadow-none mt-2 fs-4 bg-secondary" v-model="search">
                   </div>
                 </div>
                 <div class="col-2  ">
@@ -74,8 +74,8 @@
                 </div>
               </div>
           </div>
-          <div class="card  shadow-sm w-100">
-            <div class="card-body">
+          <div class="card  shadow-sm w-100 bg-light">
+            <div class="card-body ">
                 <div v-if="isLoading">
                   <div class="spinner-border" role="status">
                     <span class="visually-hidden">Loading...</span>
@@ -96,11 +96,11 @@
                   <!-- model -->
                   <div class="modal fade" id="goGood" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
                     <div class="modal-dialog">
-                      <div class="modal-content">
-                          <div class="modal-body fs-3">
+                      <div class="modal-content border-0">
+                          <div class="modal-body fs-3 ">
                           是否原諒他?
                           </div>
-                          <div class="modal-footer">
+                          <div class="modal-footer border-0">
                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
                           <button type="button" class="btn btn-primary"  data-bs-dismiss="modal"  @click="goGood(user.id)" >確認</button>
                           </div>
@@ -223,8 +223,9 @@ mounted() {
 
 
 <style lang="scss" scoped>
-
+@import '/src/assets/main.scss'; 
 .d-flex {
+  background: $secondary;
   height: 100vh;
 }
 
