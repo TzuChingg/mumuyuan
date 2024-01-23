@@ -35,19 +35,33 @@
                     <span class="ms-6 ">{{book.people}}位</span><p class="m-0">日期:{{book.data}}</p>
                   </div>
                   <div class="col-4">
-                    <strong class="m-0">電話:{{book.phone}}</strong><p class="m-0">時間:{{book.time}}</p>
+                    <strong class="m-0">電話:{{book.phone}}</strong><p class="m-0">要改</p>
                   </div>
                   <div class="col-2">
                     <p class="mt-2 fs-5 " :class="{timeout:!book.timeout}">已過期</p>
                   </div>
                   <div class="col ">
-                    <i class="fs-3 float-end mt-1 me-3"  :class="book.CancelIcon" @mouseover="handleMouseOver(book.id)" @mouseleave="handleMouseLeave(book.id)" data-bs-toggle="modal" data-bs-target="#Cancel"></i>
-                    <i class=" fs-3 float-end mt-1 me-3" :class="{ timeout: book.timeout, [book.CheckIcon]: true }" @mouseover="handleMouseOver2(book.id)" @mouseleave="handleMouseLeave2(book.id)" data-bs-toggle="modal" data-bs-target="#check"></i>
+                    <i class="fs-3 float-end mt-1 me-3"  :class="book.CancelIcon" @mouseover="handleMouseOver(book.id)" @mouseleave="handleMouseLeave(book.id)" data-bs-toggle="modal" :data-bs-target="'#CancelModal' + index"></i>
+                    <i class=" fs-3 float-end mt-1 me-3" :class="{ timeout: book.timeout, [book.CheckIcon]: true }" @mouseover="handleMouseOver2(book.id)" @mouseleave="handleMouseLeave2(book.id)" data-bs-toggle="modal" :data-bs-target="'#checkModal' + index"></i>
                   </div>
                 </div>
               </div>
               <!-- model -->
-              <div class="modal fade" id="Cancel" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
+              <!-- model -->
+              <div class="modal fade" :id="'checkModal' + index" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
+                <div class="modal-dialog">
+                  <div class="modal-content border-0">
+                      <div class="modal-body fs-3" >
+                      是否確認接受?
+                      </div>
+                      <div class="modal-footer border-0" >
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                      <button type="button" class="btn btn-primary"  data-bs-dismiss="modal"  @click="check(book.id)" >確認</button>
+                      </div>
+                  </div>
+                </div>
+              </div> 
+              <div class="modal fade" :id="'CancelModal' + index"   data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
                 <div class="modal-dialog">
                   <div class="modal-content border-0">
                       <div class="modal-body fs-3">
@@ -60,20 +74,7 @@
                   </div>
                 </div>
               </div> 
-              <!-- model -->
-              <div class="modal fade" id="check" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
-                <div class="modal-dialog">
-                  <div class="modal-content border-0">
-                      <div class="modal-body fs-3">
-                      是否確認接受?
-                      </div>
-                      <div class="modal-footer border-0">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
-                      <button type="button" class="btn btn-primary"  data-bs-dismiss="modal"  @click="check(book.id)" >確認</button>
-                      </div>
-                  </div>
-                </div>
-              </div> 
+
             </div>
           </div>   
 
@@ -109,7 +110,7 @@
                   <span class="ms-6 ">{{finish.people}}位</span><p class="m-0">日期:{{finish.data}}</p>
                 </div>
                 <div class="col-4">
-                  <strong class="m-0">電話:{{finish.phone}}</strong><p class="m-0">時間:{{finish.time}}</p>
+                  <strong class="m-0">電話:{{finish.phone}}</strong><p class="m-0">要改</p>
                 </div>
               </div>
             </div>
@@ -241,7 +242,6 @@ mounted(){
           phone:element.phone,
           people:element.personCount,
           data:element.day,
-          time:element.time,
           id:element.id,
           timeout:timeout,
           CheckIcon:"bi bi-check-square",
@@ -253,7 +253,6 @@ mounted(){
           phone:element.phone,
           people:element.personCount,
           data:element.day,
-          time:element.time,
           id:element.id,
         })
       }
