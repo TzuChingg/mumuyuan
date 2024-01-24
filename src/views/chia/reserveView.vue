@@ -2,16 +2,24 @@
 export default {
     data() {
         return {
-            periodId: ['中餐', '下午茶', '晚餐', '宵夜'],
-            remainPeople: { '1': 0, '2': 0, '3': 0, '4': 0 },
-            periods: {},
+            periods: [], //按紐時段
+            maxPeople: { //每個時段最多20位(可更改)
+                '11:00': 20, '12:00': 20, '13:00': 20, '14:00': 20, '15:00': 20,
+                '18:00': 20, '19:00': 20, '20:00': 20, '21:00': 20, '22:00': 20,
+                '23:00': 20, '00:00': 20, '01:00': 20, '02:00': 20, '03:00': 20
+            },
+            remainPeople: { //各時段預定人數
+                '11:00': 0, '12:00': 0, '13:00': 0, '14:00': 0, '15:00': 0,
+                '18:00': 0, '19:00': 0, '20:00': 0, '21:00': 0, '22:00': 0,
+                '23:00': 0, '00:00': 0, '01:00': 0, '02:00': 0, '03:00': 0
+            },
             regexStatus: {
                 name: false,
                 personCount: false,
                 phone: false,
                 mail: false,
                 day: false,
-                periodId: false,
+                time: false,
                 agree: false
             },
             list: {
@@ -20,14 +28,15 @@ export default {
                 phone: '',
                 mail: '',
                 day: '',
-                periodId: '',
+                time: '',
                 isCheck: false
-            }
+            },
+            ageinCheck: false // 送出前再次確認
         }
     },
     created() {
         this.getReserveDay(); //抓往後3天
-        this.getpersonCount(); //抓區段最多人數
+        this.getPeriods(); //抓各時段
     },
     methods: {
         getReserveDay() {
@@ -57,11 +66,11 @@ export default {
             };
             this.day = getThreeDays();
         },
-        getpersonCount() {
+        getPeriods() {
             this.$http.get(`http://localhost:3000/periods`)
                 .then((response) => {
                     if (response.status === 200) {
-                        this.periods = { ...response.data };
+                        this.periods = [...response.data];
                     };
                 })
         },
@@ -71,8 +80,20 @@ export default {
                 this.list.phone = currentInput.replace(/\D/g, "");
             }
         },
-        goReserve() {
-            if (this.allTrue) return;
+        async goReserve() {
+            try {
+                const check = await this.$http.get(`http://localhost:3000/bookingfrom?day=${this.list.day}&time=${this.list.time}`);
+                const count = this.maxPeople[this.list.time]; // 當天該時段最多用餐人數
+                const reduceCounnt = check.data.reduce((acc, cur) => { // 當天該時段已預定人數
+                    return acc + cur["personCount"]
+                }, 0);
+                this.ageinCheck = (this.list.personCount - (count - reduceCounnt) <= 0) ? true : false;
+            } catch (error) {
+                this.ageinCheck = false;
+                console.log(error);
+            }
+
+            if (this.allTrue || !this.ageinCheck) return;
             this.$http.post('http://localhost:3000/bookingfrom', {
                 ...this.list
             }).then((response) => {
@@ -90,7 +111,7 @@ export default {
                 this.regexStatus.phone &&
                 this.regexStatus.mail &&
                 this.regexStatus.day &&
-                this.regexStatus.periodId &&
+                this.regexStatus.time &&
                 this.regexStatus.agree) ? false : true;
         },
     },
@@ -127,28 +148,31 @@ export default {
             deep: true,
             handler(newVal, oldVal) {
                 if (newVal !== '') this.regexStatus.day = true;
-                this.$http.get(`http://localhost:3000/bookingfrom?_expand=period&day=${newVal}&isCheck=true`)
+                this.$http.get(`http://localhost:3000/bookingfrom?day=${newVal}`)
                     .then((response) => {
-                        console.log(response.data);
                         if (response.status === 200) {
-                            this.remainPeople = { '1': 0, '2': 0, '3': 0, '4': 0 };
+                            this.remainPeople = {
+                                '11:00': 0, '12:00': 0, '13:00': 0, '14:00': 0, '15:00': 0,
+                                '18:00': 0, '19:00': 0, '20:00': 0, '21:00': 0, '22:00': 0,
+                                '23:00': 0, '00:00': 0, '01:00': 0, '02:00': 0, '03:00': 0
+                            }
+
                             response.data.reduce((acc, curr) => {
-                                const periodId = curr.periodId;
+                                const time = curr.time;
                                 const personCount = curr.personCount;
 
-                                acc[periodId] = (acc[periodId] || 0) + personCount;
+                                acc[time] = (acc[time] || 0) + personCount;
 
                                 return acc;
                             }, this.remainPeople);
                         }
-                        console.log(this.remainPeople);
                     })
             }
         },
-        "list.periodId": {
+        "list.time": {
             deep: true,
             handler(newVal, oldVal) {
-                if (newVal !== '') this.regexStatus.periodId = true;
+                if (newVal !== '') this.regexStatus.time = true;
             }
         }
     }
@@ -220,19 +244,19 @@ export default {
                 </div>
             </form>
             <div class="timeContent m-auto py-3">
-                <p class="">剩餘座位</p>
+                <p class="fs-3 fw-bolder text-dark">剩餘座位</p>
                 <div class="row" role="group" aria-label="Basic radio toggle button group">
-                    <div class="col-lg-3 col-sm-6 text-center my-3" v-for="(time, idx) in periodId">
-                        <input type="radio" class="btn-check" name="time" :id="time" :value="idx + 1"
-                            v-model="list.periodId" autocomplete="off">
-                        <label class="btn btn-outline-dark w-75" :for="time">{{ time }}{{ `(${periods[idx + 1]-remainPeople[idx + 1]})` }}</label>
+                    <div class="col-lg-3 col-sm-6 text-center my-3" v-for="(time, idx) in periods">
+                        <input type="radio" class="btn-check" name="time" :id="time" :value="time" v-model="list.time"
+                            autocomplete="off">
+                        <label class="btn btn-outline-dark w-75" :for="time">{{ time }}
+                            ({{ maxPeople[time] - remainPeople[time] }})</label>
                     </div>
                 </div>
             </div>
             <div class="notice w-50 py-4 m-auto">
-                <p class="my-0 fs-5">注意事項</p>
+                <p class="my-1 fs-5">注意事項</p>
                 <ul class="list fs-5">
-                    <li>中餐(11:00-13:00) / 下午茶(14:00-16:00) / 晚餐(18:00-22:00) / 宵夜(22:00-02:00)</li>
                     <li>現場保留時間為10分，請客人盡早準時抵達</li>
                     <li>人數異動、臨時取消，請提前告知店家，避免影響雙方權益</li>
                     <li>響應食材不浪費，離開前如有浪費食物疑慮，即額外收取相關費用</li>
