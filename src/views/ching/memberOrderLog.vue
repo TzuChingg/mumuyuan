@@ -206,7 +206,7 @@ export default {
   }
 }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .memberorder {
   min-height: calc(100vh - 174px);
 

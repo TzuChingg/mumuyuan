@@ -114,7 +114,7 @@ export default {
   }
 }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .membercenter {
   min-height: calc(100vh - 174px);
 
