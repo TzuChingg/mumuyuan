@@ -105,7 +105,7 @@ export default {
   }
 }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .memberdiscount {
   min-height: calc(100vh - 174px);
 

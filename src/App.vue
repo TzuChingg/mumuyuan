@@ -20,7 +20,7 @@ export default {
   
     <!-- <navbarComponent v-if="identity === 'user'" /> -->
   <div class="indexheigth d-flex flex-column">
-    <navbarComponent v-if="identity === 'user'" />
+    <!-- <navbarComponent v-if="identity === 'user'" /> -->
     <router-view v-slot="{ Component }">
       <transition name="fade" mode="out-in">
         <component :is="Component"></component>
@@ -30,7 +30,7 @@ export default {
     <!-- <br />
     <router-link :to="{ name: '線上點餐' }">線上點餐頁面</router-link>
     <br /> -->
-    <footerComponent v-if="identity === 'user'" />
+    <!-- <footerComponent v-if="identity === 'user'" /> -->
   </div>
 </template>
 
