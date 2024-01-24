@@ -54,8 +54,8 @@
                                         </tr>
                                       </tbody>
                                       <tfoot>
-                                        <button type="btn" class="btn btn-primary w-100 mb-1"  data-bs-toggle="modal" data-bs-target="#ok">接受</button>
-                                      <button type="btn" class="btn btn-primary w-100 mt-1" data-bs-toggle="modal" data-bs-target="#reject">拒絕</button>
+                                        <button type="btn" class="btn btn-primary w-100 mb-1"  data-bs-toggle="modal" :data-bs-target="'#ok'+index">接受</button>
+                                      <button type="btn" class="btn btn-primary w-100 mt-1" data-bs-toggle="modal" :data-bs-target="'#reject'+index">拒絕</button>
                                       </tfoot>
                                     </table>
                                 </div>
@@ -66,7 +66,7 @@
                 </div>
 
                 <!-- model -->
-                <div class="modal fade" id="ok" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
+                <div class="modal fade" :id="'ok'+index" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
                   <div class="modal-dialog">
                     <div class="modal-content border-0">
                         <div class="modal-body fs-3">
@@ -80,7 +80,7 @@
                   </div>
                 </div>
                 <!-- model -->
-                <div class="modal fade" id="reject" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
+                <div class="modal fade" :id="'reject'+index" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
                   <div class="modal-dialog">
                     <div class="modal-content border-0">
                         <div class="modal-body fs-3">
@@ -146,7 +146,7 @@
                                         </tr>
                                       </tbody>
                                       <tfoot>
-                                        <button type="btn" class="btn btn-primary w-100 mt-1" data-bs-toggle="modal" data-bs-target="#finish">完成</button>
+                                        <button type="btn" class="btn btn-primary w-100 mt-1" data-bs-toggle="modal" :data-bs-target="'#finish'+index">完成</button>
                                       </tfoot>
                                     </table>
                                 </div>
@@ -156,7 +156,7 @@
                   </div>
                 </div>
                 <!-- model -->
-                <div class="modal fade" id="finish" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
+                <div class="modal fade" :id="'finish'+index" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
                   <div class="modal-dialog">
                     <div class="modal-content border-0">
                         <div class="modal-body fs-3">

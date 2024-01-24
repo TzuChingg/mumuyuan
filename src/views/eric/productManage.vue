@@ -69,16 +69,16 @@
                       </div>
                       <div class="row text-center align-items-center py-3">
                           <div class="col-6  ">
-                              <button type="button" class="btn btn-danger ms-6" data-bs-toggle="modal" data-bs-target="#goDown">下架</button>
+                              <button type="button" class="btn btn-danger ms-6" data-bs-toggle="modal" :data-bs-target="'#goDown'+index">下架</button>
                           </div>
                           <div class="col-6 ">
-                              <button type="button" class="btn btn-primary me-6" data-bs-toggle="modal" data-bs-target="#updatePrice">修改</button>
+                              <button type="button" class="btn btn-primary me-6" data-bs-toggle="modal" :data-bs-target="'#updatePrice'+index">修改</button>
                           </div>
                       </div>
                     </div>
                 </div>
                 <!-- model -->
-                <div class="modal fade" id="goDown" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
+                <div class="modal fade" :id="'goDown'+index" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
                     <div class="modal-dialog">
                       <div class="modal-content border-0">
                           <div class="modal-body fs-3">
@@ -92,7 +92,7 @@
                     </div>
                 </div> 
                 <!-- model -->
-                <div class="modal fade" id="updatePrice" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
+                <div class="modal fade" :id="'updatePrice'+index" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
                     <div class="modal-dialog">
                       <div class="modal-content border-0">
                           <div class="modal-body fs-3">
@@ -182,17 +182,17 @@
                     <h4 class=" text-center mt-3">{{down.title}}</h4>
                     <div class="row text-center align-items-center py-3">
                       <div class="col-6  ">
-                        <button type="button" class="btn btn-primary ms-6"  data-bs-toggle="modal" data-bs-target="#goon">上架</button>
+                        <button type="button" class="btn btn-primary ms-6"  data-bs-toggle="modal" :data-bs-target="'#goon'+index">上架</button>
                       </div>
                       <div class="col-6 ">
-                        <button type="button" class="btn btn-danger me-6" data-bs-toggle="modal" data-bs-target="#del">刪除</button>
+                        <button type="button" class="btn btn-danger me-6" data-bs-toggle="modal" :data-bs-target="'#del'+index">刪除</button>
                       </div>
                     </div>
                   </div>
                 </div>
 
                 <!-- model -->
-                <div class="modal fade" id="goon" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
+                <div class="modal fade" :id="'goon'+index" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
                     <div class="modal-dialog">
                       <div class="modal-content border-0">
                           <div class="modal-body fs-3">
@@ -206,7 +206,7 @@
                     </div>
                 </div> 
                 <!-- model -->
-                <div class="modal fade" id="del" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
+                <div class="modal fade" :id="'del'+index" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
                     <div class="modal-dialog">
                       <div class="modal-content border-0">
                           <div class="modal-body fs-3">
