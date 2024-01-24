@@ -47,7 +47,6 @@
                 </div>
               </div>
               <!-- model -->
-              <!-- model -->
               <div class="modal fade" :id="'checkModal' + index" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
                 <div class="modal-dialog">
                   <div class="modal-content border-0">
@@ -61,6 +60,7 @@
                   </div>
                 </div>
               </div> 
+              <!-- model -->
               <div class="modal fade" :id="'CancelModal' + index"   data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
                 <div class="modal-dialog">
                   <div class="modal-content border-0">
