@@ -4,7 +4,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-12">
-                        <nav class="navbar navbar-expand-lg navbar-light mt-4 mb-4">
+                        <!-- <nav class="navbar navbar-expand-lg navbar-light mt-4 mb-4">
                             <div class="container-fluid">
                                 <router-link to="/">
                                     <img src="/首頁圖片/logo.png" alt="" />
@@ -43,7 +43,7 @@
                                     </ul>
                                 </div>
                             </div>
-                        </nav>
+                        </nav> -->
                     </div>
                 </div>
             </div>
@@ -60,20 +60,20 @@
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <router-link to="/" class="d-flex">
-                                <img src="/首頁圖片/hero-desktop-1.png" class="d-block w-50" alt="..." />
-                                <img src="/首頁圖片/hero-desktop-2.png" class="d-block w-50" alt="..." />
+                                <img src="/首頁圖片/hero-desktop-1.png" class="d-block w-50" alt="食物照片1" />
+                                <img src="/首頁圖片/hero-desktop-2.png" class="d-block w-50" alt="食物照片2" />
                             </router-link>
                         </div>
                         <div class="carousel-item">
                             <router-link to="/" class="d-flex">
-                                <img src="/首頁圖片/hero-desktop-3.png" class="d-block w-50" alt="..." />
-                                <img src="/首頁圖片/hero-desktop-4.png" class="d-block w-50" alt="..." />
+                                <img src="/首頁圖片/hero-desktop-3.png" class="d-block w-50" alt="食物照片3" />
+                                <img src="/首頁圖片/hero-desktop-4.png" class="d-block w-50" alt="食物照片4" />
                             </router-link>
                         </div>
                         <div class="carousel-item">
                             <router-link to="/" class="d-flex">
-                                <img src="/首頁圖片/hero-desktop-5.png" class="d-block w-50" alt="..." />
-                                <img src="/首頁圖片/hero-desktop-6.png" class="d-block w-50" alt="..." />
+                                <img src="/首頁圖片/hero-desktop-5.png" class="d-block w-50" alt="食物照片5" />
+                                <img src="/首頁圖片/hero-desktop-6.png" class="d-block w-50" alt="食物照片6" />
                             </router-link>
                         </div>
                     </div>
@@ -93,8 +93,8 @@
                             平&nbsp;&nbsp;價&nbsp;&nbsp;美&nbsp;&nbsp;食&nbsp;&nbsp;，&nbsp;&nbsp;種&nbsp;&nbsp;類&nbsp;&nbsp;多&nbsp;&nbsp;樣
                         </p>
                     </div>
-                    <div class="sloganButton position-absolute">
-                        <button type="button" class="btn btn-dark bg-light bg-opacity-75 fs-2 boi">
+                    <div class="sloganButton position-absolute start-50 translate-middle">
+                        <button type="button" class="btn btn-dark bg-light bg-opacity-75 fs-2">
                             <strong>立即點餐</strong>
                         </button>
                     </div>
@@ -105,9 +105,9 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="mt-5 mb-5 d-flex justify-content-center">
-                            <img src="/首頁圖片/illustration-left.png" alt="" />
+                            <img src="/首頁圖片/illustration-left.png" alt="icon-left" />
                             <h2 class="text-light text-center ms-3 me-3 my-auto">好評推薦</h2>
-                            <img src="/首頁圖片/illustration-right.png" alt="" />
+                            <img src="/首頁圖片/illustration-right.png" alt="icon-right" />
                         </div>
                         <div id="ratingCarouse" class="carousel slide" data-bs-ride="carousel" data-bs-pause="false">
                             <div class="carousel-indicators">
@@ -123,21 +123,21 @@
                                     <!-- 上排 -->
                                     <div class="d-flex mb-5">
                                         <div class="position-relative me-5">
-                                            <img src="/首頁圖片/rating-left.png" alt="" />
+                                            <img src="/首頁圖片/rating-left.png" alt="評價框" />
                                             <div
                                                 class="ratingText position-absolute fs-5 text-light text-wrap text-truncate d-inline-block">
                                                 <p>外酥內嫩，<br />火侯掌握得很好～</p>
                                             </div>
                                         </div>
                                         <div class="position-relative me-5">
-                                            <img src="/首頁圖片/rating-left.png" alt="" />
+                                            <img src="/首頁圖片/rating-left.png" alt="評價框" />
                                             <div
                                                 class="ratingText position-absolute fs-5 text-light text-wrap text-truncate d-inline-block">
                                                 <p>店內與食材區都很整齊，乾乾淨淨的很舒服！</p>
                                             </div>
                                         </div>
                                         <div class="position-relative me-5">
-                                            <img src="/首頁圖片/rating-left.png" alt="" />
+                                            <img src="/首頁圖片/rating-left.png" alt="評價框" />
                                             <div
                                                 class="ratingText position-absolute fs-5 text-light text-wrap text-truncate d-inline-block">
                                                 <p>外帶會依照不同味道分開裝，超用心！</p>
@@ -147,21 +147,21 @@
                                     <!-- 下排 -->
                                     <div class="d-flex mb-5 justify-content-end">
                                         <div class="position-relative me-5">
-                                            <img src="/首頁圖片/rating-right.png" alt="" />
+                                            <img src="/首頁圖片/rating-right.png" alt="評價框" />
                                             <div
                                                 class="ratingText position-absolute fs-5 text-light text-wrap text-truncate d-inline-block">
                                                 <p>種類很多，<br />比居酒屋還好吃～</p>
                                             </div>
                                         </div>
                                         <div class="position-relative me-5">
-                                            <img src="/首頁圖片/rating-right.png" alt="" />
+                                            <img src="/首頁圖片/rating-right.png" alt="評價框" />
                                             <div
                                                 class="ratingText position-absolute fs-5 text-light text-wrap text-truncate d-inline-block">
                                                 <p>烤串烤得很精緻，老闆非常親切。</p>
                                             </div>
                                         </div>
                                         <div class="position-relative me-5">
-                                            <img src="/首頁圖片/rating-right.png" alt="" />
+                                            <img src="/首頁圖片/rating-right.png" alt="評價框" />
                                             <div
                                                 class="ratingText position-absolute fs-5 text-light text-wrap text-truncate d-inline-block">
                                                 <p>空間明亮有氣氛，<br />適合小聚～</p>
@@ -173,21 +173,21 @@
                                     <!-- 上排 -->
                                     <div class="d-flex mb-5">
                                         <div class="position-relative me-5">
-                                            <img src="/首頁圖片/rating-left.png" alt="" />
+                                            <img src="/首頁圖片/rating-left.png" alt="評價框" />
                                             <div
                                                 class="ratingText position-absolute fs-5 text-light text-wrap text-truncate d-inline-block">
                                                 <p>燒烤不會太鹹又很香！烤功一流！大腸有處理得很好！整體非常喜歡。</p>
                                             </div>
                                         </div>
                                         <div class="position-relative me-5">
-                                            <img src="/首頁圖片/rating-left.png" alt="" />
+                                            <img src="/首頁圖片/rating-left.png" alt="評價框" />
                                             <div
                                                 class="ratingText position-absolute fs-5 text-light text-wrap text-truncate d-inline-block">
                                                 <p>肉串都還不錯吃，外酥裡嫩，調味得宜</p>
                                             </div>
                                         </div>
                                         <div class="position-relative me-5">
-                                            <img src="/首頁圖片/rating-left.png" alt="" />
+                                            <img src="/首頁圖片/rating-left.png" alt="評價框" />
                                             <div
                                                 class="ratingText position-absolute fs-5 text-light text-wrap text-truncate d-inline-block">
                                                 <p>非常非常非常好吃👍 …</p>
@@ -197,21 +197,21 @@
                                     <!-- 下排 -->
                                     <div class="d-flex mb-5 justify-content-end">
                                         <div class="position-relative me-5">
-                                            <img src="/首頁圖片/rating-right.png" alt="" />
+                                            <img src="/首頁圖片/rating-right.png" alt="評價框" />
                                             <div
                                                 class="ratingText position-absolute fs-5 text-light text-wrap text-truncate d-inline-block">
                                                 <p>豬五花、剝皮辣椒豬、牛肉干貝捲，真的好好吃</p>
                                             </div>
                                         </div>
                                         <div class="position-relative me-5">
-                                            <img src="/首頁圖片/rating-right.png" alt="" />
+                                            <img src="/首頁圖片/rating-right.png" alt="評價框" />
                                             <div
                                                 class="ratingText position-absolute fs-5 text-light text-wrap text-truncate d-inline-block">
                                                 <p>餐點衛生都很優，店內位置不多，但是真心推薦內用～</p>
                                             </div>
                                         </div>
                                         <div class="position-relative me-5">
-                                            <img src="/首頁圖片/rating-right.png" alt="" />
+                                            <img src="/首頁圖片/rating-right.png" alt="評價框" />
                                             <div
                                                 class="ratingText position-absolute fs-5 text-light text-wrap text-truncate d-inline-block">
                                                 <p>推推，好吃，價格小貴但還可以接受</p>
@@ -223,21 +223,21 @@
                                     <!-- 上排 -->
                                     <div class="d-flex mb-5">
                                         <div class="position-relative me-5">
-                                            <img src="/首頁圖片/rating-left.png" alt="" />
+                                            <img src="/首頁圖片/rating-left.png" alt="評價框" />
                                             <div
                                                 class="ratingText position-absolute fs-5 text-light text-wrap text-truncate d-inline-block">
                                                 <p>燒烤稍微偏甜，食材跟價位cp值高，師傅的烤工一流。</p>
                                             </div>
                                         </div>
                                         <div class="position-relative me-5">
-                                            <img src="/首頁圖片/rating-left.png" alt="" />
+                                            <img src="/首頁圖片/rating-left.png" alt="評價框" />
                                             <div
                                                 class="ratingText position-absolute fs-5 text-light text-wrap text-truncate d-inline-block">
                                                 <p>口味適中，食材本身的鮮味，感受得出來非常用心。</p>
                                             </div>
                                         </div>
                                         <div class="position-relative me-5">
-                                            <img src="/首頁圖片/rating-left.png" alt="" />
+                                            <img src="/首頁圖片/rating-left.png" alt="評價框" />
                                             <div
                                                 class="ratingText position-absolute fs-5 text-light text-wrap text-truncate d-inline-block">
                                                 <p>外帶會依照不同味道分開裝，超用心！</p>
@@ -247,21 +247,21 @@
                                     <!-- 下排 -->
                                     <div class="d-flex mb-5 justify-content-end">
                                         <div class="position-relative me-5">
-                                            <img src="/首頁圖片/rating-right.png" alt="" />
+                                            <img src="/首頁圖片/rating-right.png" alt="評價框" />
                                             <div
                                                 class="ratingText position-absolute fs-5 text-light text-wrap text-truncate d-inline-block">
                                                 <p>推推推👍食材多種美味～</p>
                                             </div>
                                         </div>
                                         <div class="position-relative me-5">
-                                            <img src="/首頁圖片/rating-right.png" alt="" />
+                                            <img src="/首頁圖片/rating-right.png" alt="評價框" />
                                             <div
                                                 class="ratingText position-absolute fs-5 text-light text-wrap text-truncate d-inline-block">
                                                 <p>牛五花蔥、茄子、玉米筍、烤雞翅好好吃👍</p>
                                             </div>
                                         </div>
                                         <div class="position-relative me-5">
-                                            <img src="/首頁圖片/rating-right.png" alt="" />
+                                            <img src="/首頁圖片/rating-right.png" alt="評價框" />
                                             <div
                                                 class="ratingText position-absolute fs-5 text-light text-wrap text-truncate d-inline-block">
                                                 <p>好吃到不行，醬料獨特而且烤的很讚😎重點4他的辣粉超好吃的啦！！ …</p>
@@ -279,9 +279,9 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="mt-5 mb-5 d-flex justify-content-center">
-                        <img src="/首頁圖片/title-illustration-left-brown.png" alt="" />
+                        <img src="/首頁圖片/title-illustration-left-brown.png" alt="icon-left" />
                         <h2 class="text-primary text-center ms-3 me-3 my-auto">木木苑特色</h2>
-                        <img src="/首頁圖片/title-illustration-right-brown.png" alt="" />
+                        <img src="/首頁圖片/title-illustration-right-brown.png" alt="icon-right" />
                     </div>
                 </div>
             </div>
@@ -289,35 +289,35 @@
                 <div class="row">
                     <div class="col-sm-12 d-flex justify-content-center flex-wrap mb-5">
                         <div class="feature position-relative">
-                            <img class="m-2 position-relative" src="/首頁圖片/feature1.png" alt="" />
+                            <img class="m-2 position-relative" src="/首頁圖片/feature1.png" alt="直火燒烤不油炸" />
                             <div class="featureText position-absolute">
                                 <p class="featureNum display-3 text-center text-light">01</p>
                                 <p class="fs-3 text-light">直火燒烤不油炸</p>
                             </div>
                         </div>
                         <div class="feature position-relative">
-                            <img class="m-2 position-relative" src="/首頁圖片/feature2.png" alt="" />
+                            <img class="m-2 position-relative" src="/首頁圖片/feature2.png" alt="富含膠原蛋白的秘密醬汁" />
                             <div class="featureText2 position-absolute">
                                 <p class="featureNum display-3 text-center text-light">02</p>
                                 <p class="fs-3 text-light">富含膠原蛋白的秘密醬汁</p>
                             </div>
                         </div>
                         <div class="feature position-relative">
-                            <img class="m-2 position-relative" src="/首頁圖片/feature3.png" alt="" />
+                            <img class="m-2 position-relative" src="/首頁圖片/feature3.png" alt="餐點種類多樣化" />
                             <div class="featureText position-absolute">
                                 <p class="featureNum display-3 text-center text-light">03</p>
                                 <p class="fs-3 text-light">餐點種類多樣化</p>
                             </div>
                         </div>
                         <div class="feature position-relative">
-                            <img class="m-2 position-relative" src="/首頁圖片/feature4.png" alt="" />
+                            <img class="m-2 position-relative" src="/首頁圖片/feature4.png" alt="乾淨明亮的空間" />
                             <div class="featureText position-absolute">
                                 <p class="featureNum display-3 text-center text-light">04</p>
                                 <p class="fs-3 text-light">乾淨明亮的空間</p>
                             </div>
                         </div>
                         <div class="feature position-relative">
-                            <img class="m-2 position-relative" src="/首頁圖片/feature5.png" alt="" />
+                            <img class="m-2 position-relative" src="/首頁圖片/feature5.png" alt="優惠的價格 餐廳的享受" />
                             <div class="featureText5 position-absolute">
                                 <p class="featureNum display-3 text-center text-light">05</p>
                                 <p class="fs-3 text-light">優惠的價格 餐廳的享受</p>
@@ -330,9 +330,9 @@
         <div class="container-fluid bg-primary">
             <div class="row">
                 <div class="pt-5 mb-5 d-flex justify-content-center">
-                    <img src="/首頁圖片/illustration-left.png" alt="" />
+                    <img src="/首頁圖片/illustration-left.png" alt="icon-left" />
                     <h2 class="text-light text-center ms-3 me-3 my-auto">好評推薦</h2>
-                    <img src="/首頁圖片/illustration-right.png" alt="" />
+                    <img src="/首頁圖片/illustration-right.png" alt="icon-right" />
                 </div>
             </div>
             <div class="container pb-5 ">
@@ -386,9 +386,9 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="mt-5 mb-5 d-flex justify-content-center">
-                        <img src="/首頁圖片/title-illustration-left-brown.png" alt="" />
+                        <img src="/首頁圖片/title-illustration-left-brown.png" alt="icon-left" />
                         <h2 class="text-primary text-center ms-3 me-3 my-auto">門市地圖</h2>
-                        <img src="/首頁圖片/title-illustration-right-brown.png" alt="" />
+                        <img src="/首頁圖片/title-illustration-right-brown.png" alt="icon-right" />
                     </div>
                 </div>
             </div>
@@ -396,7 +396,7 @@
                 <div class="row">
                     <div class="address col-5 bg-primary d-flex flex-wrap justify-content-center align-content-center p-0 m-0">
                         <div class="info">
-                            <img class="mb-3" src="/首頁圖片/logo-sm.png" alt="" srcset="">
+                            <img class="mb-3" src="/首頁圖片/logo-sm.png" alt="木木苑logo" srcset="">
                             <p class="fs-4 text-light">店址：臺中市北屯區太原路三段500號</p>
                             <p class="fs-4 text-light" >營業時間：17:00 - 00:00</p>
                         </div>
@@ -407,7 +407,7 @@
                 </div>
             </div>
         </div>
-        <div class="container-fluid bg-primary">
+        <!-- <div class="container-fluid bg-primary">
             <div class="container">
                 <div class="row">
                     <nav class="navbar navbar-expand-lg navbar-light mt-4">
@@ -441,7 +441,7 @@
                         <p class="text-light">#5-木木苑串燒專門店 ©2023 Copyrights All Rights Reserved</p>
                     </div>
                 </div>
-        </div>
+        </div> -->
     </div>
 </template>
 
@@ -454,6 +454,7 @@
 .bg-image {
     background-image: url('/首頁圖片/bg-shape.png');
     background-size: cover;
+    background-position:bottom;
 }
 
 .slogan {
@@ -461,7 +462,6 @@
         margin: 0%;
         padding: 0%;
     }
-
     writing-mode: vertical-lr;
     top: 17%;
     right: 22%;
@@ -473,10 +473,7 @@
     left: 22%;
 }
 .sloganButton {
-    width: 176px;
-    top: 66%;
-    left: 46%;
-    right: 46%;
+    top: 70%;
 }
 .ratingText {
     height: 60px;

@@ -26,7 +26,7 @@
                     class="d-block link-underline link-underline-opacity-0">點數兌換</router-link>
                 </button>
                 <button class="btn btn-outline-primary" type="button">
-                  <router-link to="/" class="d-block link-underline link-underline-opacity-0">登出</router-link>
+                  <router-link to="/" class="d-block link-underline link-underline-opacity-0"  @click="signOut">登出</router-link>
                 </button>
               </div>
             </div>
