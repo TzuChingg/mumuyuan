@@ -152,7 +152,6 @@ mounted() {
 
     &:hover {
     color: #fff;    
-    // background-color: plum;
     background: linear-gradient(to right, $primary, $secondary);
     }
 }
