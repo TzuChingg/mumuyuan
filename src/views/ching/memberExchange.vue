@@ -10,19 +10,23 @@
               </div>
               <div class="btn-group-vertical d-flex justify-content-center">
                 <button class="btn btn-outline-primary" type="button">
-                  <a href="#/memberCenter" class="d-block link-underline link-underline-opacity-0 ">會員中心</a>
+                  <router-link to="/memberCenter"
+                    class="d-block link-underline link-underline-opacity-0 ">會員中心</router-link>
                 </button>
                 <button class="btn btn-outline-primary" type="button">
-                  <a href="#/member/orderLog" class="d-block link-underline link-underline-opacity-0">歷史訂單</a>
+                  <router-link to="/member/orderLog"
+                    class="d-block link-underline link-underline-opacity-0">歷史訂單</router-link>
                 </button>
                 <button class="btn btn-outline-primary" type="button">
-                  <a href="#/member/discount" class="d-block link-underline link-underline-opacity-0">我的優惠券</a>
+                  <router-link to="/member/discount"
+                    class="d-block link-underline link-underline-opacity-0">我的優惠券</router-link>
                 </button>
                 <button class="btn btn-outline-primary active" type="button">
-                  <a href="#/member/exchange" class="d-block text-light link-underline link-underline-opacity-0">點數兌換</a>
+                  <router-link to="/member/exchange"
+                    class="d-block text-light link-underline link-underline-opacity-0">點數兌換</router-link>
                 </button>
                 <button class="btn btn-outline-primary" type="button">
-                  <a href="#" class="d-block link-underline link-underline-opacity-0" @click="signOut">登出</a>
+                  <router-link to="/" class="d-block link-underline link-underline-opacity-0"  @click="signOut">登出</router-link>
                 </button>
               </div>
             </div>
@@ -161,7 +165,7 @@ export default {
   }
 }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .memberexchange {
   min-height: calc(100vh - 174px);
 

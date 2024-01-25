@@ -22,16 +22,47 @@
             <div class="col" v-for="(journey ,index) in thisPage" :key="index">
               <div class="card my-4 bg-light">
                 <div class="cardbody">
-                      <h4 class=" text-center mt-4">{{journey.title}}</h4>
+                      <h5 class=" text-center my-4 text-nowrap">{{journey.title}}</h5>
+                      <select class="form-select mx-auto w-50 shadow-none my-2" aria-label="Default select example" v-model="journey.coupon">
+                        <option v-for="(coupon, index) in coupons" :key="index" :value="coupon.id">{{coupon.title}}</option>
+                      </select>
                       <div class="row text-center align-items-center py-3">
                           <div class="col-6  ">
-                              <button type="button" class="btn btn-danger ms-6">下架</button>
+                              <button type="button" class="btn btn-danger ms-6" data-bs-toggle="modal" :data-bs-target="'#goDown' +index">下架</button>
                           </div>
                           <div class="col-6 ">
-                              <button type="button" class="btn btn-primary me-6">修改</button>
+                              <button type="button" class="btn btn-primary me-6" data-bs-toggle="modal" :data-bs-target="'#update' +index">修改</button>
                           </div>
                       </div>
                 </div>
+              </div>
+              <!-- model -->
+              <div class="modal fade" :id="'goDown' +index" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
+                    <div class="modal-dialog">
+                      <div class="modal-content border-0">
+                          <div class="modal-body fs-3">
+                          是否下架折價券?
+                          </div>
+                          <div class="modal-footer border-0">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                          <button type="button" class="btn btn-primary"  data-bs-dismiss="modal"  @click="goDown(journey.id)" >確認</button>
+                          </div>
+                      </div>
+                    </div>
+              </div> 
+              <!-- model -->
+              <div class="modal fade" :id="'update' +index" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
+                    <div class="modal-dialog">
+                      <div class="modal-content border-0">
+                          <div class="modal-body fs-3">
+                          是否修改 {{journey.title}} 活動?
+                          </div>
+                          <div class="modal-footer border-0">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                          <button type="button" class="btn btn-primary"  data-bs-dismiss="modal"  @click="update(journey.id,journey.coupon)">確認</button>
+                          </div>
+                      </div>
+                    </div>
               </div>
             </div>
             </div>
@@ -49,24 +80,28 @@
                           <div class="modal-body bg-secondary">
                             <div class="card border-0 bg-secondary">
                               <div class="cardbody mt-4">
-                                <div class="d-flex h-25 justify-content-center my-2">
-                                  <btn class="btn btn-primary" @click="$refs.fileInput.click()">上傳檔案</btn>
-                                  <input type="file" style="display: none" ref="fileInput" @change="uploadFile">
+                                <div class="d-flex h-25 justify-content-center mt-3">
+                                  <input class="form-control w-50 " type="file" id="formFile" @change="uploadFile">
                                 </div>
                                 <div class="d-flex h-25 justify-content-center mt-5 mb-2">
-                                  <label for="title" class="fs-3 me-2">活動名:</label>
-                                  <input type="text" id="title" placeholder="牛肉" class=" form-control border-1 shadow-none  w-50" >
+                                  <label for="title" class="fs-3 me-2">活動:</label>
+                                  <input type="text" id="title" placeholder="活動名" class=" form-control border-1 shadow-none  w-50" v-model="dataForm.newsTitle">
                                 </div>
                                 <div class="d-flex h-25 justify-content-center mb-2">
-                                  <label for="title" class="fs-3 me-2">詳細內容:</label>
-                                  <input type="text" id="title" placeholder="" class=" form-control border-1 shadow-none  w-50" >
+                                  <label for="title" class="fs-3 me-2">內容:</label>
+                                  <input type="text" id="title" placeholder="" class=" form-control border-1 shadow-none  w-50" v-model="dataForm.newsContent">
+                                </div>
+                                <div class="d-flex h-25 justify-content-center mt-3 mb-2" >
+                                  <select class="form-select w-50 shadow-none" aria-label="Default select example" v-model="dataForm.couponId">
+                                    <option v-for="( coupon,index) in  coupons" :key="index" :value=coupon.id>{{coupon.title}}</option>
+                                  </select>
                                 </div>
                               </div>
                             </div>
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
-                            <button type="button" class="btn btn-primary">新增</button>
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="pushData()">新增</button>
                           </div>
                     </div>
                 </div>
@@ -84,20 +119,53 @@
             </div>
             <div class="row row-cols-4">
             <div class="col" v-for="(dj ,index) in thisPage2" :key="index">
-              <div class="card my-4 bg-light">
-                <div class="cardbody">
-                      <h4 class=" text-center mt-4">{{dj.title}}</h4>
-                      <div class="m-4">
-                            <button type="button" class="btn btn-danger w-100">上架</button>
+              <div class="card my-4 bg-light ">
+                <div class="cardbody ">
+                      <h5 class=" text-center mt-4 text-nowrap">{{dj.title}}</h5>
+                      <div class="row text-center align-items-center py-3">
+                        <div class="col-6  ">
+                          <button type="button" class="btn btn-danger ms-6" data-bs-toggle="modal" :data-bs-target="'#goon' +index">上架</button>
+                        </div>
+                        <div class="col-6 ">
+                          <button type="button" class="btn btn-danger me-6" data-bs-toggle="modal" :data-bs-target="'#del'+index">刪除</button>
+                        </div>
                       </div>
                 </div>
               </div>
+              <!-- model -->
+              <div class="modal fade" :id="'goon'+index" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
+                    <div class="modal-dialog">
+                      <div class="modal-content border-0">
+                          <div class="modal-body fs-3">
+                          是否上架活動?
+                          </div>
+                          <div class="modal-footer border-0">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                          <button type="button" class="btn btn-primary"  data-bs-dismiss="modal"  @click="goon(dj.id)" >確認</button>
+                          </div>
+                  </div>
+                </div>
+              </div> 
+              <!-- model -->
+              <div class="modal fade" :id="'del'+index" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
+                    <div class="modal-dialog">
+                      <div class="modal-content border-0">
+                          <div class="modal-body fs-3">
+                          是否刪除活動?
+                          </div>
+                          <div class="modal-footer border-0">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                          <button type="button" class="btn btn-primary"  data-bs-dismiss="modal"  @click="del(dj.id)" >確認</button>
+                          </div>
+                      </div>
+                    </div>
+              </div> 
             </div>
             </div>
             <div class="d-flex justify-content-center h-25 mt-3">
-                        <button class="btn btn-primary" @click="prevPage" :disabled="page === 1">上一页</button>
-                        <strong class="fs-3 text-primary mx-3 "> {{ page }} </strong>
-                        <button class="btn btn-primary" @click="nextPage" :disabled="thisPage.length < pg">下一页</button>
+                <button class="btn btn-primary" @click="prevPage" :disabled="page === 1">上一页</button>
+                <strong class="fs-3 text-primary mx-3 "> {{ page }} </strong>
+                <button class="btn btn-primary" @click="nextPage" :disabled="thisPage.length < pg">下一页</button>
             </div>
           </div>
         </main>
@@ -121,33 +189,8 @@ data() {
       {title:"優惠券在這邊"},
       {title:"優惠券在這邊"},
       {title:"優惠券在這邊"},
-      {title:"優惠券在這邊"},
-      {title:"優惠券在這邊"},
-      {title:"優惠券在這邊"},
-      {title:"優惠券在這邊"},
-      {title:"優惠券在這邊"},
-      {title:"優惠券在這邊"},
-      {title:"優惠券在這邊"},
-      {title:"優惠券在這邊"},
-      {title:"優惠券在這邊"},
-      {title:"優惠券在這邊"},
-      {title:"優惠券在這邊"},
-      {title:"優惠券在這邊"},
-      {title:"優惠券在這邊"},
     ],
     downJourney:[
-      {title:"優惠券"},
-      {title:"優惠券"},
-      {title:"優惠券"},
-      {title:"優惠券"},
-      {title:"優惠券"},
-      {title:"優惠券"},
-      {title:"優惠券"},
-      {title:"優惠券"},
-      {title:"優惠券"},
-      {title:"優惠券"},
-      {title:"優惠券"},
-      {title:"優惠券"},
       {title:"優惠券"},
       {title:"優惠券"},
       {title:"優惠券"},
@@ -167,6 +210,14 @@ data() {
       { value: '2', label: '下架活動' },
       { value: '1', label: '活動管理' },
     ],
+    dataForm:{
+      newsImage: "",
+      newsTitle: "",
+      newsContent: "",
+      couponId: "3",
+      isLook: false,
+    },
+    coupons:[]
   }
 },
 computed: {
@@ -204,22 +255,68 @@ methods: {
   updatePage() {
     this.thisPage2 = this.downJourney.slice(this.startIndex, this.endIndex);
   },
-
-  uploadFile () {
-      const file = this.$refs.fileInput.files[0]
-      const form = new FormData()
-      form.append('file', file)
-      form.append('userId', 'test1234')
-      // axios.post('https://後端網址', form)
-    },
-    get(data){
-       this.select = data
-    }
+  uploadFile (event) {
+      const file = event.target.files[0];
+      this.dataForm.image = file;
+  },
+  get(data){
+      this.select = data
+  },
+  goDown(id){
+    const data = { isLook: true };
+      this.$axios.patch(`/news/${id}`, data)
+      location.reload();
+  },
+  goon(id){
+    const data = { isLook: false };
+      this.$axios.patch(`/news/${id}`, data)
+      location.reload();
+  }, 
+  update(id,coupon){
+    const data = {couponId:`${coupon}`};
+    this.$axios.patch(`/news/${id}`, data)
+  },
+  pushData(){
+    this.$axios.post('/news', this.dataForm)
+    location.reload();
+  },
+  del(id){
+      this.$axios.delete(`/news/${id}`)
+      location.reload();
+  },
 },
-created() {
+mounted(){
+  this.$axios.get('/news')
+  .then(res=>{
+    res.data.forEach(element =>{
+      if(element.isLook == false){
+        this.journey.push({
+          title:element.newsTitle,
+          coupon:element.couponId,
+          id:element.id
+        })
+      }else{
+        this.downJourney.push({
+          title:element.newsTitle,
+          id:element.id
+        })
+      }
+    })
   this.updateThisPage();
   this.updatePage()
-},
+  })
+  this.$axios.get('/coupons')
+  .then(res=>{
+    res.data.forEach(element =>{
+      if(element.isLook == false){
+        this.coupons.push({
+          title:element.name,
+          id:element.id
+        })
+      }
+    })
+  })
+}
 };
 </script>
 

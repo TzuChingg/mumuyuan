@@ -1,81 +1,5 @@
 {
-  "users": [
-    {
-      "name": "joker",
-      "email": "joker@gmail.com",
-      "password": "$2a$10$l0l6eHyGFe.CSc4CFWuxh.GLmFJpRpDHj7/ZiPQw19Jk8gB.xmk32",
-      "copyPassword": "123456",
-      "phone": "093333333",
-      "identity": "baduser",
-      "couponId": [
-        1,
-        2
-      ],
-      "point": 30,
-      "id": 1
-    },
-    {
-      "name": "test",
-      "email": "test@gmail.com",
-      "password": "$2a$10$EaQOKGeA7Hs45ymXBFpIG.39.e283yFCR8Brcx3H9l26NQiAtI6m6",
-      "copyPassword": "123456",
-      "phone": "09222222222",
-      "identity": "user",
-      "couponId": [
-        1,
-        2
-      ],
-      "point": 30,
-      "id": 2
-    },
-    {
-      "name": "admin",
-      "email": "admin@gmail.com",
-      "password": "$2a$10$pbkX8jgDZHTDNP3YMgTKlelUwrm9dEAXAv8hHnZXoGrAgz1gKL/Uq",
-      "copyPassword": "123456",
-      "phone": "0911111111",
-      "identity": "admin",
-      "couponId": [
-        1,
-        2
-      ],
-      "point": 30,
-      "id": 3
-    },
-    {
-      "email": "jack@gmail.com",
-      "password": "$2a$10$tZwmn3m9HMk4eOE/cCNySeBc7JcfwihUAJCWXRWTThuaks/CVCGfK",
-      "copyPassword": "jack123456",
-      "name": "傑克",
-      "phone": "0911224455",
-      "identity": "user",
-      "couponId": [],
-      "point": 0,
-      "id": 4
-    },
-    {
-      "email": "tina@gmail.com",
-      "password": "$2a$10$OdIPYk8rM.Tzm8dRnXTss.UTZkw0RsvO7F1uYbOiXE22admcARJH2",
-      "copyPassword": "tina123456",
-      "name": "緹娜",
-      "phone": "0900999999",
-      "identity": "user",
-      "couponId": [],
-      "point": 0,
-      "id": 5
-    },
-    {
-      "email": "cat@gmail.com",
-      "password": "$2a$10$jVinxMlKMRj4Lh/K49UU4.ZPNdBRbkB87CEeSSRw8IUuv/IfT5K6m",
-      "copyPassword": "apple",
-      "name": "catcat",
-      "phone": "0900111111",
-      "identity": "user",
-      "couponId": [],
-      "point": 0,
-      "id": 6
-    }
-  ],
+  "users": [],
   "products": [
     {
       "productName": "玉米筍",
@@ -468,88 +392,14 @@
       "id": 39
     }
   ],
-  "orders": [
-    {
-      "isMember": true,
-      "name": "eric",
-      "phone": "094563131",
-      "day": "2024/01/01",
-      "product": [
-        {
-          "name": "牛肉串",
-          "quantity": 5
-        },
-        {
-          "name": "豬肉串",
-          "quantity": 3
-        },
-        {
-          "name": "豬肉串",
-          "quantity": 3
-        },
-        {
-          "name": "雞肉串",
-          "quantity": 2
-        }
-      ],
-      "price": 300,
-      "status": 2,
-      "userId": 1,
-      "type": true,
-      "tableware": true,
-      "bags": true,
-      "payment": true,
-      "pickTime": "17:00",
-      "comment": "做好吃一點",
-      "orderScore": 1,
-      "flavor": 1,
-      "id": 1
-    },
-    {
-      "isMember": true,
-      "name": "eric",
-      "phone": "094563131",
-      "day": "2024/01/01",
-      "product": [
-        {
-          "name": "牛肉串",
-          "quantity": 5
-        },
-        {
-          "name": "豬肉串",
-          "quantity": 3
-        },
-        {
-          "name": "豬肉串",
-          "quantity": 3
-        },
-        {
-          "name": "雞肉串",
-          "quantity": 2
-        }
-      ],
-      "price": 300,
-      "status": 2,
-      "userId": 1,
-      "type": true,
-      "tableware": true,
-      "bags": true,
-      "payment": true,
-      "pickTime": "17:00",
-      "comment": "做好吃一點",
-      "orderScore": 1,
-      "flavor": 1,
-      "id": 2,
-      "catch": true
-    }
-  ],
+  "orders": [],
   "news": [
     {
       "newsImage": "",
       "newsTitle": "1/31 - 12/31 領取優惠券折10元",
       "newsContent": "",
-      "couponId": 1,
-      "isLook": true,
+      "couponId": "3",
+      "isLook": false,
       "id": 1
     }
   ],
@@ -623,14 +473,14 @@
       "name": "折20塊",
       "image": "",
       "point": 50,
-      "isLook": false,
+      "isLook": true,
       "description": "沒有限制,每筆都能使用",
       "id": 2
     },
     {
       "name": "折30塊",
       "image": "",
-      "point": 70,
+      "point": "50",
       "isLook": false,
       "description": "沒有限制,每筆都能使用",
       "id": 3
