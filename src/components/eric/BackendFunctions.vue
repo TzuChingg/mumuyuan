@@ -1,14 +1,17 @@
 <template>
-            <div class="p-3 text-nowrap">
+    <div class="bg d-flex flex-column" >
+        <div class="p-3 text-nowrap bg">
                 <Transition name="shop" mode="out-in">
-                    <button v-if="open" type="button" class="btn btn-success w-100 "  @click="open=!open">開店</button>
-                    <button v-else type="button" class="btn btn-danger w-100 " @click="open=!open" >關店</button>
+                    <keep-alive>
+                        <button v-if="open" type="button" class="btn btn-success w-100 "  @click="open=!open" once>開店</button>
+                        <button v-else type="button" class="btn btn-danger w-100 " @click="open=!open" once>關店</button>
+                    </keep-alive>
                 </Transition>
             </div>
-            <div class="p-2 d-flex justify-content-center text-nowrap">
+            <div class="p-2 d-flex justify-content-center text-nowrap bg">
                 <strong class="text-nowrap ">木木苑後台系統</strong>
             </div>
-            <div class="overflow-auto">
+            <div class="overflow-auto ">
                 <div v-for="(menu,index) in menuItems" :key="index">
                     <router-link v-if="!menu.subMenu" :to="menu.path" class="sidebar-link py-2" :class="{active:menu.at}">
                         <div class="d-flex  justify-content-between px-4 ">
@@ -42,13 +45,12 @@
                     登出
                 </div>
             </a>
-
+    </div>
 </template>
 
 
 <script>
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-
 
 export default {
 data() {
@@ -133,6 +135,11 @@ mounted() {
 <style scoped lang="scss">
 
 @import '/src/assets/main.scss'; 
+
+.bg{
+    background: $secondary;
+}
+
 .sidebar-link {
     
     color: rgb(2, 2, 1);
@@ -146,7 +153,7 @@ mounted() {
     &:hover {
     color: #fff;    
     // background-color: plum;
-    background: linear-gradient(to right, $blue, $purple);
+    background: linear-gradient(to right, $primary, $secondary);
     }
 }
 a{     
@@ -155,7 +162,7 @@ a{
 .sidebar-link.active {
     position: relative;
     color: white;
-    background-color: gray;
+    background-color: $dark;
 
     &::after {
     content: "";

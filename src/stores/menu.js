@@ -25,6 +25,26 @@ export default defineStore('menu', {
         description: '美味五花豬與香蔥完美捲合，炭烤後散發香氣，串烤風味，口感豐富。',
         isLook: false,
         id: 2
+      },
+      {
+        productName: '鯛魚下巴',
+        category: 4,
+        image: '/木木苑食材修圖/03.jpg',
+        count: 10,
+        price: 45,
+        description: '肥美多汁，入口脆嫩香。',
+        isLook: false,
+        id: 3
+      },
+      {
+        productName: '梅花豬',
+        category: 3,
+        image: '/木木苑食材修圖/04.jpg',
+        count: 10,
+        price: '56',
+        description: '梅花豬串燒，細膩肉質，香氣撲鼻。',
+        isLook: false,
+        id: 4
       }
     ]
   }),

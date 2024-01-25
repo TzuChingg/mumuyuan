@@ -1,5 +1,81 @@
 {
-  "users": [],  
+  "users": [
+    {
+      "name": "joker",
+      "email": "joker@gmail.com",
+      "password": "$2a$10$l0l6eHyGFe.CSc4CFWuxh.GLmFJpRpDHj7/ZiPQw19Jk8gB.xmk32",
+      "copyPassword": "123456",
+      "phone": "093333333",
+      "identity": "baduser",
+      "couponId": [
+        1,
+        2
+      ],
+      "point": 30,
+      "id": 1
+    },
+    {
+      "name": "test",
+      "email": "test@gmail.com",
+      "password": "$2a$10$EaQOKGeA7Hs45ymXBFpIG.39.e283yFCR8Brcx3H9l26NQiAtI6m6",
+      "copyPassword": "123456",
+      "phone": "09222222222",
+      "identity": "user",
+      "couponId": [
+        1,
+        2
+      ],
+      "point": 30,
+      "id": 2
+    },
+    {
+      "name": "admin",
+      "email": "admin@gmail.com",
+      "password": "$2a$10$pbkX8jgDZHTDNP3YMgTKlelUwrm9dEAXAv8hHnZXoGrAgz1gKL/Uq",
+      "copyPassword": "123456",
+      "phone": "0911111111",
+      "identity": "admin",
+      "couponId": [
+        1,
+        2
+      ],
+      "point": 30,
+      "id": 3
+    },
+    {
+      "email": "jack@gmail.com",
+      "password": "$2a$10$tZwmn3m9HMk4eOE/cCNySeBc7JcfwihUAJCWXRWTThuaks/CVCGfK",
+      "copyPassword": "jack123456",
+      "name": "傑克",
+      "phone": "0911224455",
+      "identity": "user",
+      "couponId": [],
+      "point": 0,
+      "id": 4
+    },
+    {
+      "email": "tina@gmail.com",
+      "password": "$2a$10$OdIPYk8rM.Tzm8dRnXTss.UTZkw0RsvO7F1uYbOiXE22admcARJH2",
+      "copyPassword": "tina123456",
+      "name": "緹娜",
+      "phone": "0900999999",
+      "identity": "user",
+      "couponId": [],
+      "point": 0,
+      "id": 5
+    },
+    {
+      "email": "cat@gmail.com",
+      "password": "$2a$10$jVinxMlKMRj4Lh/K49UU4.ZPNdBRbkB87CEeSSRw8IUuv/IfT5K6m",
+      "copyPassword": "apple",
+      "name": "catcat",
+      "phone": "0900111111",
+      "identity": "user",
+      "couponId": [],
+      "point": 0,
+      "id": 6
+    }
+  ],
   "products": [
     {
       "productName": "玉米筍",
@@ -18,7 +94,7 @@
       "count": "15",
       "price": "61",
       "description": "美味五花豬與香蔥完美捲合，炭烤後散發香氣，串烤風味，口感豐富。",
-      "isLook": false,
+      "isLook": true,
       "id": 2
     },
     {
@@ -470,7 +546,7 @@
   "news": [
     {
       "newsImage": "",
-      "newsTitle": "",
+      "newsTitle": "1/31 - 12/31 領取優惠券折10元",
       "newsContent": "",
       "couponId": 1,
       "isLook": true,
@@ -479,7 +555,7 @@
   ],
   "bookingfrom": [
     {
-      "name": "alan",
+      "name": "ericn",
       "phone": "09274375343",
       "day": "2024/01/30",
       "time": "19:00",
@@ -495,17 +571,17 @@
       "time": "19:00",
       "periodId": 1,
       "personCount": 10,
-      "isCheck": true,
+      "isCheck": false,
       "id": 3
     },
     {
-      "name": "alan",
+      "name": "ben",
       "phone": "090000000000",
       "day": "2024/01/30",
       "time": "19:00",
       "periodId": 1,
       "personCount": 10,
-      "isCheck": false,
+      "isCheck": true,
       "id": 4
     }
   ],
@@ -531,11 +607,42 @@
     {
       "name": "折10塊",
       "image": "",
-      "point": 30,
-      "isLook": true,
-      "category": "",
-      "description": "",
+      "point": "40",
+      "isLook": false,
+      "description": "沒有限制,每筆都能使用",
       "id": 1
+    },
+    {
+      "name": "折20塊",
+      "image": "",
+      "point": 50,
+      "isLook": false,
+      "description": "沒有限制,每筆都能使用",
+      "id": 2
+    },
+    {
+      "name": "折30塊",
+      "image": "",
+      "point": 70,
+      "isLook": false,
+      "description": "沒有限制,每筆都能使用",
+      "id": 3
+    },
+    {
+      "name": "打九折",
+      "image": "",
+      "point": 30,
+      "isLook": false,
+      "description": "沒有限制,每筆都能使用",
+      "id": 4
+    },
+    {
+      "name": "打五折",
+      "image": "",
+      "point": 100,
+      "isLook": false,
+      "description": "沒有限制,每筆都能使用",
+      "id": 5
     }
   ]
 }

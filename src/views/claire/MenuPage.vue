@@ -1,8 +1,20 @@
 <script>
-
 import CategoryComponent from '../../components/claire/CategoryComponent.vue'
 import MenuComponent from '../../components/claire/MenuComponent.vue'
-export default { components: {  CategoryComponent, MenuComponent } }
+
+export default {
+  components: { CategoryComponent, MenuComponent },
+  mounted() {
+    this.$http
+      .get('http://localhost:3000/products?category=1')
+      .then((res) => {
+        console.log(res)
+      })
+      .catch((e) => {
+        console.log(e)
+      })
+  }
+}
 </script>
 
 <template>

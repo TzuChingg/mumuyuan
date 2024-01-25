@@ -1,6 +1,6 @@
 <template>
   <div class="d-flex">
-      <aside class="sidebar  border-5  pt-3 border-end d-flex bg-white flex-column ">
+      <aside class="sidebar  border-5  pt-3 border-end d-flex bg-secondary flex-column ">
         <BackendFunctions v-once></BackendFunctions>  
       </aside>
       <transition name="fade" mode="out-in">
@@ -10,7 +10,7 @@
               <div class="col-8 mb-0 ms-2">
                 <div class="d-flex h-50">
                   <label for="search"><i class="bi bi-search fs-4 "></i></label>
-                  <input type="search" placeholder="search" id="search" @input="currentDate" class=" form-control border-0 shadow-none mt-2 fs-4" v-model="search">
+                  <input type="search" placeholder="search" id="search" @input="currentDate" class=" form-control border-0 shadow-none mt-2 fs-4 bg-secondary" v-model="search">
                 </div>
               </div>
               <div class="col-2  ">
@@ -27,7 +27,7 @@
             <div v-if="this.filteredBookingList.length == 0" class="card ">
                 <h5 class="card-body fs-4 ">查無此訂位</h5>
             </div>
-            <div  class="card mb-2 shadow-sm w-100" :class="{out:book.timeout}" v-for="(book ,index) in  filteredBookingList" :key="index">
+            <div  class="card mb-2 shadow-sm w-100 bg-light" :class="{out:book.timeout}" v-for="(book ,index) in  filteredBookingList" :key="index">
               <div class="card-body" >
                 <div  class="row ">
                   <div class="col-4">
@@ -35,45 +35,46 @@
                     <span class="ms-6 ">{{book.people}}位</span><p class="m-0">日期:{{book.data}}</p>
                   </div>
                   <div class="col-4">
-                    <strong class="m-0">電話:{{book.phone}}</strong><p class="m-0">時間:{{book.time}}</p>
+                    <strong class="m-0">電話:{{book.phone}}</strong><p class="m-0">要改</p>
                   </div>
                   <div class="col-2">
                     <p class="mt-2 fs-5 " :class="{timeout:!book.timeout}">已過期</p>
                   </div>
                   <div class="col ">
-                    <i class="fs-3 float-end mt-1 me-3"  :class="book.CancelIcon" @mouseover="handleMouseOver(book.id)" @mouseleave="handleMouseLeave(book.id)" data-bs-toggle="modal" data-bs-target="#Cancel"></i>
-                    <i class=" fs-3 float-end mt-1 me-3" :class="{ timeout: book.timeout, [book.CheckIcon]: true }" @mouseover="handleMouseOver2(book.id)" @mouseleave="handleMouseLeave2(book.id)" data-bs-toggle="modal" data-bs-target="#check"></i>
+                    <i class="fs-3 float-end mt-1 me-3"  :class="book.CancelIcon" @mouseover="handleMouseOver(book.id)" @mouseleave="handleMouseLeave(book.id)" data-bs-toggle="modal" :data-bs-target="'#CancelModal' + index"></i>
+                    <i class=" fs-3 float-end mt-1 me-3" :class="{ timeout: book.timeout, [book.CheckIcon]: true }" @mouseover="handleMouseOver2(book.id)" @mouseleave="handleMouseLeave2(book.id)" data-bs-toggle="modal" :data-bs-target="'#checkModal' + index"></i>
                   </div>
                 </div>
               </div>
               <!-- model -->
-              <div class="modal fade" id="Cancel" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                      <div class="modal-body fs-3">
-                      是否確認刪除?
-                      </div>
-                      <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
-                      <button type="button" class="btn btn-primary"  data-bs-dismiss="modal"  @click="Cancel(book.id)" >確認</button>
-                      </div>
-                  </div>
-                </div>
-              </div> 
               <!-- model -->
-              <div class="modal fade" id="check" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
+              <div class="modal fade" :id="'checkModal' + index" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
                 <div class="modal-dialog">
-                  <div class="modal-content">
-                      <div class="modal-body fs-3">
+                  <div class="modal-content border-0">
+                      <div class="modal-body fs-3" >
                       是否確認接受?
                       </div>
-                      <div class="modal-footer">
+                      <div class="modal-footer border-0" >
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
                       <button type="button" class="btn btn-primary"  data-bs-dismiss="modal"  @click="check(book.id)" >確認</button>
                       </div>
                   </div>
                 </div>
               </div> 
+              <div class="modal fade" :id="'CancelModal' + index"   data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
+                <div class="modal-dialog">
+                  <div class="modal-content border-0">
+                      <div class="modal-body fs-3">
+                      是否確認刪除?
+                      </div>
+                      <div class="modal-footer border-0">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                      <button type="button" class="btn btn-primary"  data-bs-dismiss="modal"  @click="Cancel(book.id)" >確認</button>
+                      </div>
+                  </div>
+                </div>
+              </div> 
+
             </div>
           </div>   
 
@@ -84,7 +85,7 @@
             <div class="col-8 mb-0 ms-2">
               <div class="d-flex h-50">
                 <label for="search"><i class="bi bi-search fs-4 "></i></label>
-                <input type="search" placeholder="search" @input="filteredFinishBooking" id="search" class=" form-control border-0 shadow-none mt-2 fs-4" v-model="search">
+                <input type="search" placeholder="search" @input="filteredFinishBooking" id="search" class=" form-control border-0 shadow-none mt-2 fs-4 bg-secondary" v-model="search">
               </div>
             </div>
             <div class="col-2  ">
@@ -101,7 +102,7 @@
             <div v-if="this.filteredFinishBookingList.length == 0" class="card ">
                 <h5 class="card-body fs-4 ">查無此訂位</h5>
             </div>
-            <div  class="card mb-2 shadow-sm w-100" v-for="(finish,index) in filteredFinishBookingList" :key="index">
+            <div  class="card mb-2 shadow-sm w-100 bg-light" v-for="(finish,index) in filteredFinishBookingList" :key="index">
             <div  class="card-body" >
               <div  class="row ">
                 <div class="col-4">
@@ -109,7 +110,7 @@
                   <span class="ms-6 ">{{finish.people}}位</span><p class="m-0">日期:{{finish.data}}</p>
                 </div>
                 <div class="col-4">
-                  <strong class="m-0">電話:{{finish.phone}}</strong><p class="m-0">時間:{{finish.time}}</p>
+                  <strong class="m-0">電話:{{finish.phone}}</strong><p class="m-0">要改</p>
                 </div>
               </div>
             </div>
@@ -241,8 +242,6 @@ mounted(){
           phone:element.phone,
           people:element.personCount,
           data:element.day,
-          time:element.time,
-          isCheck:element.isCheck,
           id:element.id,
           timeout:timeout,
           CheckIcon:"bi bi-check-square",
@@ -254,8 +253,6 @@ mounted(){
           phone:element.phone,
           people:element.personCount,
           data:element.day,
-          time:element.time,
-          isCheck:element.isCheck,
           id:element.id,
         })
       }
@@ -268,8 +265,9 @@ mounted(){
 </script>
 
 <style lang="scss" scoped>
-
+@import '/src/assets/main.scss'; 
 .d-flex {
+  background: $secondary;
   height: 100vh;
 }
 

@@ -1,17 +1,14 @@
 <script>
-// 引入 store 至 components
 import menuStore from '../../stores/menu.js'
-import cartStore from '../../stores/cart.js'
-import { mapState, mapActions } from 'pinia'
+import { mapState } from 'pinia'
 
 export default {
-  // 導入 menu store
   computed: { ...mapState(menuStore, ['sortProducts']) }
 }
 </script>
 
 <template>
-  <div class="row row-cols-3 my-4 g-4">
+  <div class="row row-cols-3 mb-4 g-4">
     <div class="col" v-for="product in sortProducts" :key="product.id">
       <div class="card aligh-middle">
         <img :src="product.image" :alt="product.productName" class="card-img-top text-center" />
@@ -19,7 +16,7 @@ export default {
           <h6>
             {{ product.productName }} <span class="float-end">$ {{ product.price }}</span>
           </h6>
-          <p class="card-text">{{ product.description }}</p>
+          <p class="card-text my-3">{{ product.description }}</p>
           <div class="d-flex my-2">
             <select class="form-select" aria-label="Default select example">
               <option selected>選擇口味</option>
@@ -56,4 +53,8 @@ export default {
   </div>
 </template>
 
-<style lang="scss"></style>
+<style lang="scss">
+.card-text {
+  height: 75px;
+}
+</style>
