@@ -12,13 +12,15 @@ import backend from './backend'
 
 //主頁
 import IndexTest from '/src/views/eric/IndexTest.vue'
+import indexPage from '/src/views/ching/indexPage.vue'
 
 //線上點餐
 import MenuPage from '/src/views/claire/MenuPage.vue'
 import CartPage from '/src/views/claire/CartPage.vue'
 
 const routes = [
-  { path: '/', component: IndexTest },
+  // { path: '/', component: IndexTest },
+  { path: '/', component: indexPage },
   { path: '/menu', component: MenuPage },
   { path: '/cart', component: CartPage },
   { ...loginRouter },
