@@ -54,7 +54,7 @@
                   <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                  <ul class="navbar-nav ms-auto">
+                  <ul class="navbar-nav ms-auto align-items-center">
                     <li class="nav-item">
                       <router-link to="/menu" class="nav-link fs-5 text-light text-decoration-none">線上點餐</router-link>
                     </li>

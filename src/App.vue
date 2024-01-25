@@ -46,5 +46,6 @@ export default {
 }
 .indexheigth {
   min-height: 100vh;
+  background: #d8d0ae;
 }
 </style>
