@@ -18,11 +18,11 @@
                 <img class="w-100" src="/首頁圖片/logo-footer.png" alt="" />
               </router-link>
               <!-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                data-bs-target="#footerSupportedContent" aria-controls="footerSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button> -->
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <div class=" align-items-center" id="footerSupportedContent">
                 <ul class="navbar-nav ms-auto">
                   <li class="nav-item">
                     <router-link to="/" class="nav-link fs-5 text-light text-decoration-none"><img

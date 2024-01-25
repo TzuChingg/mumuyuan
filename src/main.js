@@ -5,7 +5,7 @@ import { createPinia } from 'pinia';
 //BS框架
 import './assets/main.scss';
 import 'bootstrap-icons/font/bootstrap-icons.css'
-import 'bootstrap'
+import '../node_modules/bootstrap'
 
 //API
 import axios from 'axios';
