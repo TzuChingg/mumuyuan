@@ -30,7 +30,7 @@
             <div class="card shadow-sm mt-1">
               <div class="card-body text-end">
                 <h2 class="display-6 ">當日營業額</h2>
-                <p><span class="fs-3">NT$</span><span class="display-4 text-success">980,655</span></p>
+                <p><span class="fs-3">NT$</span><span class="display-4 text-success">{{todayTotal}}</span></p>
               </div>
             </div>
           </div>
@@ -91,6 +91,20 @@ components: {
   myRadiasm,
   myHat,
 },
+data() {
+  return {
+    todayTotal:0
+  }
+},
+
+mounted(){
+  this.$axios.get('/orders')
+  .then(res=>{
+    res.data.forEach(element=>{
+      this.todayTotal += element.price
+    })
+  })
+}
 };
 </script>
 
