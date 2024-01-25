@@ -46,7 +46,7 @@
             <nav class="navbar navbar-expand-lg navbar-light mt-4 mb-4">
               <div class="container-fluid">
                 <router-link to="/">
-                  <img src="/首頁圖片/logo.png" alt="" />
+                  <img class="w-100" src="/首頁圖片/logo.png" alt="" />
                 </router-link>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                   data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
