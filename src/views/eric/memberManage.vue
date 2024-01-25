@@ -37,22 +37,22 @@
                       <tr >
                           <td>{{user.name}}</td>
                           <td>手機:{{user.phone}}</td>
-                          <td class="text-end "><button class="btn btn-outline-primary me-5" data-bs-toggle="modal" data-bs-target="#goBad">黑名單</button></td>
+                          <td class="text-end "><button class="btn btn-outline-primary me-5" data-bs-toggle="modal" :data-bs-target="'#goBad'+index">黑名單</button></td>
                       </tr>
-                        <!-- model -->
-                        <div class="modal fade" id="goBad" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
-                          <div class="modal-dialog">
-                            <div class="modal-content border-0">
-                                <div class="modal-body fs-3 ">
-                                是否加入黑名單?
-                                </div>
-                                <div class="modal-footer border-0">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
-                                <button type="button" class="btn btn-primary"  data-bs-dismiss="modal"  @click="goBad(user.id)" >確認</button>
-                                </div>
-                            </div>
+                      <!-- model -->
+                      <div class="modal fade" :id="'goBad'+index" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
+                        <div class="modal-dialog">
+                          <div class="modal-content border-0">
+                              <div class="modal-body fs-3 ">
+                              是否加入黑名單?
+                              </div>
+                              <div class="modal-footer border-0">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                              <button type="button" class="btn btn-primary"  data-bs-dismiss="modal"  @click="goBad(user.id)" >確認</button>
+                              </div>
                           </div>
-                        </div> 
+                        </div>
+                      </div> 
                     </tbody>
                   </table>
                 </div>
@@ -91,10 +91,10 @@
                   <tr>
                       <td>{{user.name}}</td>
                       <td>手機:{{user.phone}}</td>
-                      <td class="text-end "><button class="btn btn-primary me-5" data-bs-toggle="modal" data-bs-target="#goGood">原諒你</button></td>
+                      <td class="text-end "><button class="btn btn-primary me-5" data-bs-toggle="modal" :data-bs-target="'#goGood'+index">原諒你</button></td>
                   </tr>
                   <!-- model -->
-                  <div class="modal fade" id="goGood" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
+                  <div class="modal fade" :id="'goGood'+index" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
                     <div class="modal-dialog">
                       <div class="modal-content border-0">
                           <div class="modal-body fs-3 ">
