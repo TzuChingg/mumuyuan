@@ -289,35 +289,35 @@
                 <div class="row">
                     <div class="col-sm-12 d-flex justify-content-center flex-wrap mb-5">
                         <div class="feature position-relative">
-                            <img class="m-2 position-relative" src="/首頁圖片/feature1.png" alt="直火燒烤不油炸" />
+                            <img class="p-2 position-relative w-100" src="/首頁圖片/feature1.png" alt="直火燒烤不油炸" />
                             <div class="featureText position-absolute">
                                 <p class="featureNum display-3 text-center text-light">01</p>
                                 <p class="fs-3 text-light">直火燒烤不油炸</p>
                             </div>
                         </div>
                         <div class="feature position-relative">
-                            <img class="m-2 position-relative" src="/首頁圖片/feature2.png" alt="富含膠原蛋白的秘密醬汁" />
+                            <img class="p-2 position-relative w-100" src="/首頁圖片/feature2.png" alt="富含膠原蛋白的秘密醬汁" />
                             <div class="featureText2 position-absolute">
                                 <p class="featureNum display-3 text-center text-light">02</p>
                                 <p class="fs-3 text-light">富含膠原蛋白的秘密醬汁</p>
                             </div>
                         </div>
                         <div class="feature position-relative">
-                            <img class="m-2 position-relative" src="/首頁圖片/feature3.png" alt="餐點種類多樣化" />
+                            <img class="p-2 position-relative w-100" src="/首頁圖片/feature3.png" alt="餐點種類多樣化" />
                             <div class="featureText position-absolute">
                                 <p class="featureNum display-3 text-center text-light">03</p>
                                 <p class="fs-3 text-light">餐點種類多樣化</p>
                             </div>
                         </div>
                         <div class="feature position-relative">
-                            <img class="m-2 position-relative" src="/首頁圖片/feature4.png" alt="乾淨明亮的空間" />
+                            <img class="p-2 position-relative w-100" src="/首頁圖片/feature4.png" alt="乾淨明亮的空間" />
                             <div class="featureText position-absolute">
                                 <p class="featureNum display-3 text-center text-light">04</p>
                                 <p class="fs-3 text-light">乾淨明亮的空間</p>
                             </div>
                         </div>
                         <div class="feature position-relative">
-                            <img class="m-2 position-relative" src="/首頁圖片/feature5.png" alt="優惠的價格 餐廳的享受" />
+                            <img class="p-2 position-relative w-100" src="/首頁圖片/feature5.png" alt="優惠的價格 餐廳的享受" />
                             <div class="featureText5 position-absolute">
                                 <p class="featureNum display-3 text-center text-light">05</p>
                                 <p class="fs-3 text-light">優惠的價格 餐廳的享受</p>
@@ -331,7 +331,7 @@
             <div class="row">
                 <div class="pt-5 mb-5 d-flex justify-content-center">
                     <img src="/首頁圖片/illustration-left.png" alt="icon-left" />
-                    <h2 class="text-light text-center ms-3 me-3 my-auto">好評推薦</h2>
+                    <h2 class="text-light text-center ms-3 me-3 my-auto">常見問題</h2>
                     <img src="/首頁圖片/illustration-right.png" alt="icon-right" />
                 </div>
             </div>
@@ -402,46 +402,11 @@
                         </div>
                     </div>
                     <div class="col-7 p-0 m-0">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3640.1939341247257!2d120.69349077593675!3d24.16493047273495!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34691738eb40c225%3A0x2a6052ea0974f938!2z5pyo5pyo6IuR5Liy54S85bCC6ZaA44Gu5bqX!5e0!3m2!1szh-TW!2stw!4v1706116400211!5m2!1szh-TW!2stw" width="770px" height="520px" style="border:0;" allowfullscreen="false" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <iframe class="w-100" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3640.1939341247257!2d120.69349077593675!3d24.16493047273495!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34691738eb40c225%3A0x2a6052ea0974f938!2z5pyo5pyo6IuR5Liy54S85bCC6ZaA44Gu5bqX!5e0!3m2!1szh-TW!2stw!4v1706116400211!5m2!1szh-TW!2stw" width="770px" height="520px" style="border:0;" allowfullscreen="false" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- <div class="container-fluid bg-primary">
-            <div class="container">
-                <div class="row">
-                    <nav class="navbar navbar-expand-lg navbar-light mt-4">
-                            <div class="container-fluid">
-                                <router-link to="/">
-                                    <img src="/首頁圖片/logo-footer.png" alt="" />
-                                </router-link>
-                                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                                aria-expanded="false" aria-label="Toggle navigation">
-                                <span class="navbar-toggler-icon"></span>
-                                </button>
-                                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                                    <ul class="navbar-nav ms-auto">
-                                        <li class="nav-item">
-                                            <router-link to="/"
-                                            class="nav-link fs-5 text-light text-decoration-none"><img src="/首頁圖片/instagram.png" alt="instagram連結"></router-link>
-                                        </li>
-                                        <li class="nav-item">
-                                            <router-link to="/"
-                                            class="nav-link fs-5 text-light text-decoration-none"><img src="/首頁圖片/facebook.png" alt="facebook連結"></router-link>
-                                        </li>
-                                        <li class="nav-item">
-                                            <router-link to="/"
-                                            class="nav-link fs-5 text-light text-decoration-none"><img src="/首頁圖片/line.png" alt="Line連結" style="height: 48px; width: 48px;"></router-link>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </nav>
-                        <p class="text-light">#5-木木苑串燒專門店 ©2023 Copyrights All Rights Reserved</p>
-                    </div>
-                </div>
-        </div> -->
     </div>
 </template>
 
