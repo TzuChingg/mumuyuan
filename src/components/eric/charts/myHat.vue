@@ -12,7 +12,9 @@
   </template>
 
 <script>
+import { ref } from 'vue';
 export default {
+  
   data: function() {
     return {
       chartOptions: {
@@ -39,40 +41,23 @@ export default {
 
       series: [
           {
-            data: [
-              {
-                x: "New Delhi",
-                y: 218,
-              },
-              {
-                x: "Kolkata",
-                y: 149,
-              },
-              {
-                x: "Mumbai",
-                y: 184,
-              },
-              {
-                x: "Ahmedabad",
-                y: 55,
-              },
-              {
-                x: "Bangaluru",
-                y: 84,
-              },
-              {
-                x: "Pune",
-                y: 31,
-              },
-              {
-                x: "Chennai",
-                y: 7,
-              }
-            ],
+            data: [],
           
         }
       ],
     }
+  },
+
+  mounted(){
+    this.$axios.get('/products')
+    .then(res=>{
+      res.data.forEach(element=>{
+        this.series[0].data.push({
+          x:element.productName,
+          y:element.count
+        })
+      })
+    })
   }
 };
 </script>
