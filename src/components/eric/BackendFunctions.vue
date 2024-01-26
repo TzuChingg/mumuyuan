@@ -1,5 +1,5 @@
 <template>
-    <div class="bg d-flex flex-column" >
+    <div  class="bg d-flex flex-column" >
         <div class="p-3 text-nowrap bg">
                 <Transition name="shop" mode="out-in">
                     <keep-alive>
@@ -40,8 +40,9 @@
                     
                 </div>
             </div>
+
             <a href="#" class="mt-auto   text-nowrap sidebar-link">
-                <div class="ps-4 ">
+                <div class="ps-4 " @click="signOut">
                     登出
                 </div>
             </a>
@@ -51,6 +52,7 @@
 
 <script>
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import { docCookies } from '../../assets/cookie';
 
 export default {
 data() {
@@ -95,8 +97,15 @@ data() {
                 icon:"bi-caret-left-fill"
             },
         ],
-        open:true
+        open:true,
+        myIdentity:""
         
+    }
+},
+watch:{
+    open(){
+        const data = { shopStatus: this.open };
+        this.$axios.patch("/shop" ,data)
     }
 },
 methods:{
@@ -107,6 +116,11 @@ methods:{
         }else{
             this.menuItems[index].icon = "bi-caret-left-fill"
         }
+    },
+    signOut() {
+      docCookies.removeItem("token");
+      docCookies.removeItem("identity");
+      window.location.href = "/"; 
     },
 }, 
 
@@ -125,7 +139,12 @@ mounted() {
             })
         }
     });
-    
+
+    this.myIdentity =docCookies.getItem("identity")
+
+    if(this.myIdentity != 'admin'){
+        this.signOut()
+    } 
 },
 
 }

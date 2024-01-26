@@ -24,7 +24,7 @@
             <div class="card shadow-sm">
               <div class="card-body">
                 <h2 class="display-6">當日訂單數</h2>
-                <p class="display-4">90,213</p>
+                <p class="display-4">{{todayOrder}}</p>
               </div>
             </div>
             <div class="card shadow-sm mt-1">
@@ -60,7 +60,7 @@
             </div>
           </div>
         </div>
-        <div class="card shadow-sm h-100">
+        <div class="card shadow-sm h-100 mb-5">
               <div class="card-body">
                 <my-hat></my-hat>
               </div>
@@ -93,15 +93,17 @@ components: {
 },
 data() {
   return {
-    todayTotal:0
+    todayTotal:0,
+    todayOrder:0
   }
 },
 
 mounted(){
   this.$axios.get('/orders')
   .then(res=>{
-    res.data.forEach(element=>{
+    res.data.forEach((element,index)=>{
       this.todayTotal += element.price
+      this.todayOrder ++
     })
   })
 }
