@@ -1,19 +1,29 @@
 <script>
-import { mapState } from 'pinia'
 import categoryStore from '../../stores/category.js'
+import { mapState } from 'pinia'
+
+export default {
+  computed: {
+    ...mapState(categoryStore, ['getCategory'])
+  }
+}
 </script>
 
 <template>
-  <nav class="nav d-flex justify-content-evenly">
+  <nav class="nav d-flex justify-content-evenly m-5 p-3">
     <div class="btn-group me-5">
-      <a href="#" class="btn btn-outline-primary" aria-current="page">最新消息</a>
-      <a href="#" class="btn btn-outline-primary">肉品</a>
-      <a href="#" class="btn btn-outline-primary active">蔬菜</a>
+      <router-link
+        to="/menu/a"
+        class="btn btn-outline-primary"
+        v-for="item in getCategory"
+        :key="item.id"
+        >{{ item.title }}</router-link
+      >
     </div>
-    <a href="#">
-      <router-link to="/cart">購物車</router-link>
+    <div href="#" class="d-flex justify-content-center align-items-center">
+      <router-link to="/cart">cart</router-link>
       <!--<span class="badge text-bg-danger">0</span>-->
-    </a>
+    </div>
   </nav>
 </template>
 

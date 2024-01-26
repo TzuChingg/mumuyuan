@@ -13,15 +13,17 @@ import backend from './backend'
 //主頁
 import indexPage from '/src/views/ching/indexPage.vue'
 
-//線上點餐
-import MenuPage from '/src/views/claire/MenuPage.vue'
-import CartPage from '/src/views/claire/CartPage.vue'
+// 線上點餐
+import Menu from './claire/menuRouter'
+import Cart from './claire/cartRouter'
 
 const routes = [
+
+  { path: '/', component: IndexTest },
+  { ...Menu },
+  { ...Cart },
   // { path: '/', component: IndexTest },
   { path: '/', component: indexPage },
-  { path: '/menu', component: MenuPage },
-  { path: '/cart', component: CartPage },
   { ...loginRouter },
   { ...reserveRouter },
   { ...searchRouter },
