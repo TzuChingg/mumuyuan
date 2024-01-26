@@ -32,6 +32,9 @@
                                           <td class="fs-5 "><strong>口味:</strong>{{ order.flavor}}</td>
                                         </tr>
                                         <tr>
+                                          <td class="fs-5 "><strong>辣度:</strong>{{ order.spicy}}</td>
+                                        </tr>
+                                        <tr>
                                           <td class="fs-5 "><strong>是否要餐具:</strong>{{ order.tableware ? "要":"不要" }}</td>
                                         </tr>
                                         <tr>
@@ -54,8 +57,8 @@
                                         </tr>
                                       </tbody>
                                       <tfoot>
-                                        <button type="btn" class="btn btn-primary w-100 mb-1"  data-bs-toggle="modal" data-bs-target="#ok">接受</button>
-                                      <button type="btn" class="btn btn-primary w-100 mt-1" data-bs-toggle="modal" data-bs-target="#reject">拒絕</button>
+                                        <button type="btn" class="btn btn-primary w-100 mb-1"  data-bs-toggle="modal" :data-bs-target="'#ok'+index">接受</button>
+                                      <button type="btn" class="btn btn-primary w-100 mt-1" data-bs-toggle="modal" :data-bs-target="'#reject'+index">拒絕</button>
                                       </tfoot>
                                     </table>
                                 </div>
@@ -66,7 +69,7 @@
                 </div>
 
                 <!-- model -->
-                <div class="modal fade" id="ok" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
+                <div class="modal fade" :id="'ok'+index" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
                   <div class="modal-dialog">
                     <div class="modal-content border-0">
                         <div class="modal-body fs-3">
@@ -80,7 +83,7 @@
                   </div>
                 </div>
                 <!-- model -->
-                <div class="modal fade" id="reject" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
+                <div class="modal fade" :id="'reject'+index" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
                   <div class="modal-dialog">
                     <div class="modal-content border-0">
                         <div class="modal-body fs-3">
@@ -124,6 +127,9 @@
                                           <td class="fs-5 "><strong>口味:</strong>{{ order.flavor}}</td>
                                         </tr>
                                         <tr>
+                                          <td class="fs-5 "><strong>辣度:</strong>{{ order.spicy}}</td>
+                                        </tr>
+                                        <tr>
                                           <td class="fs-5 "><strong>是否要餐具:</strong>{{ order.tableware ? "要":"不要" }}</td>
                                         </tr>
                                         <tr>
@@ -146,7 +152,7 @@
                                         </tr>
                                       </tbody>
                                       <tfoot>
-                                        <button type="btn" class="btn btn-primary w-100 mt-1" data-bs-toggle="modal" data-bs-target="#finish">完成</button>
+                                        <button type="btn" class="btn btn-primary w-100 mt-1" data-bs-toggle="modal" :data-bs-target="'#finish'+index">完成</button>
                                       </tfoot>
                                     </table>
                                 </div>
@@ -156,7 +162,7 @@
                   </div>
                 </div>
                 <!-- model -->
-                <div class="modal fade" id="finish" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
+                <div class="modal fade" :id="'finish'+index" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
                   <div class="modal-dialog">
                     <div class="modal-content border-0">
                         <div class="modal-body fs-3">
@@ -230,17 +236,25 @@ export default {
         res.data.forEach(element => {
           const foods = []
           let taste = ""
-
+          let spicy = ""
           element.product.forEach(item=>{
               foods.push(item.name+"X"+item.quantity)
           })
 
           if(element.flavor == 1){
-            taste = "正常"
+            taste = "梅粉"
           }else if(element.flavor == 2){
-            taste = "重口味"
+            taste = "秘粉"
           }else if(element.flavor == 3){
-            taste = "辣"
+            taste = "椒鹽"
+          }
+
+          if(element.spicy == 1){
+            spicy = "不辣"
+          }else if(element.spicy == 2){
+            spicy = "小辣"
+          }else if(element.spicy == 3){
+            spicy = "大辣"
           }
 
           if(element.status == 1){
@@ -256,6 +270,7 @@ export default {
             total:element.price,
             food:foods,
             flavor:taste,
+            spicy:spicy,
             day:element.day,
             id:element.id,
 
@@ -277,6 +292,7 @@ export default {
             total:element.price,
             food:foods,
             flavor:taste,
+            spicy:spicy,
             day:element.day,
             id:element.id,
 

@@ -74,6 +74,17 @@
       "couponId": [],
       "point": 0,
       "id": 6
+    },
+    {
+      "email": "eric@gmail.com",
+      "password": "$2a$10$dMnMTmPbv5NTZXbBbfg82OH85/E9PTWiYdsOzYw5Q/9bhPd.Hm842",
+      "copyPassword": "123456",
+      "name": "eric",
+      "phone": "0955228869",
+      "identity": "user",
+      "couponId": [],
+      "point": 0,
+      "id": 7
     }
   ],
   "products": [
@@ -503,6 +514,7 @@
       "comment": "做好吃一點",
       "orderScore": 1,
       "flavor": 1,
+      "spicy": 3,
       "id": 1
     },
     {
@@ -535,12 +547,61 @@
       "tableware": true,
       "bags": true,
       "payment": true,
-      "pickTime": "17:00",
+      "pickTime": "12:00",
+      "comment": "做好吃一點",
+      "orderScore": 1,
+      "flavor": 3,
+      "spicy": 1,
+      "id": 2
+    },
+    {
+      "isMember": true,
+      "name": "eric",
+      "phone": "094563131",
+      "day": "2024/01/30",
+      "product": [
+        {
+          "name": "牛肉串",
+          "quantity": 5
+        },
+        {
+          "name": "百業豆腐",
+          "quantity": 3
+        },
+        {
+          "name": "豬肉串",
+          "quantity": 3
+        },
+        {
+          "name": "豬血糕",
+          "quantity": 5
+        },
+        {
+          "name":"干貝",
+          "quantity":4
+        },
+        {
+          "name":"牛小排",
+          "quantity":2
+        },
+        {
+          "name":"甜不辣",
+          "quantity":2
+        }
+      ],
+      "price": 1200,
+      "status": 2,
+      "userId": 3,
+      "type": true,
+      "tableware": true,
+      "bags": true,
+      "payment": true,
+      "pickTime": "22:00",
       "comment": "做好吃一點",
       "orderScore": 1,
       "flavor": 1,
-      "id": 2,
-      "catch": true
+      "spicy": 2,
+      "id": 3
     }
   ],
   "news": [
@@ -548,60 +609,59 @@
       "newsImage": "",
       "newsTitle": "1/31 - 12/31 領取優惠券折10元",
       "newsContent": "",
-      "couponId": 1,
-      "isLook": true,
+      "couponId": "3",
+      "isLook": false,
       "id": 1
     }
   ],
   "bookingfrom": [
     {
-      "name": "ericn",
-      "phone": "09274375343",
-      "day": "2024/01/30",
-      "time": "19:00",
-      "periodId": 1,
-      "personCount": 10,
-      "isCheck": true,
-      "id": 2
-    },
-    {
-      "name": "alan",
-      "phone": "090000000000",
-      "day": "2024/01/30",
-      "time": "19:00",
-      "periodId": 1,
-      "personCount": 10,
+      "name": "Tina",
+      "personCount": 3,
+      "phone": "0900123456",
+      "mail": "tt@gmail.com",
+      "day": "2024/01/25",
+      "time": "11:00",
       "isCheck": false,
-      "id": 3
-    },
-    {
-      "name": "ben",
-      "phone": "090000000000",
-      "day": "2024/01/30",
-      "time": "19:00",
-      "periodId": 1,
-      "personCount": 10,
-      "isCheck": true,
-      "id": 4
-    }
-  ],
-  "periods": [
-    {
-      "personCount": 10,
       "id": 1
     },
     {
-      "personCount": 20,
+      "name": "mary",
+      "personCount": 10,
+      "phone": "0423232323",
+      "mail": "maaa@gmail.com",
+      "day": "2024/01/24",
+      "time": "11:00",
+      "isCheck": false,
       "id": 2
     },
     {
-      "personCount": 30,
+      "name": "Lulu",
+      "personCount": 7,
+      "phone": "0999123456",
+      "mail": "LU@gmail.cc",
+      "day": "2024/01/24",
+      "time": "11:00",
+      "isCheck": false,
       "id": 3
-    },
-    {
-      "personCount": 20,
-      "id": 4
     }
+  ],
+  "periods": [
+    "11:00",
+    "12:00",
+    "13:00",
+    "14:00",
+    "15:00",
+    "18:00",
+    "19:00",
+    "20:00",
+    "21:00",
+    "22:00",
+    "23:00",
+    "00:00",
+    "01:00",
+    "02:00",
+    "03:00"
   ],
   "coupons": [
     {
@@ -616,14 +676,14 @@
       "name": "折20塊",
       "image": "",
       "point": 50,
-      "isLook": false,
+      "isLook": true,
       "description": "沒有限制,每筆都能使用",
       "id": 2
     },
     {
       "name": "折30塊",
       "image": "",
-      "point": 70,
+      "point": "50",
       "isLook": false,
       "description": "沒有限制,每筆都能使用",
       "id": 3
@@ -644,5 +704,9 @@
       "description": "沒有限制,每筆都能使用",
       "id": 5
     }
-  ]
+  ],
+  "shop": {
+    "shopStatus": false
+  }
 }
+

@@ -35,18 +35,22 @@
                     <span class="ms-6 ">{{book.people}}位</span><p class="m-0">日期:{{book.data}}</p>
                   </div>
                   <div class="col-4">
-                    <strong class="m-0">電話:{{book.phone}}</strong><p class="m-0">要改</p>
+                    <strong class="m-0">電話:{{book.phone}}</strong><p class="m-0">{{book.time}}</p>
                   </div>
                   <div class="col-2">
                     <p class="mt-2 fs-5 " :class="{timeout:!book.timeout}">已過期</p>
                   </div>
                   <div class="col ">
-                    <i class="fs-3 float-end mt-1 me-3"  :class="book.CancelIcon" @mouseover="handleMouseOver(book.id)" @mouseleave="handleMouseLeave(book.id)" data-bs-toggle="modal" :data-bs-target="'#CancelModal' + index"></i>
-                    <i class=" fs-3 float-end mt-1 me-3" :class="{ timeout: book.timeout, [book.CheckIcon]: true }" @mouseover="handleMouseOver2(book.id)" @mouseleave="handleMouseLeave2(book.id)" data-bs-toggle="modal" :data-bs-target="'#checkModal' + index"></i>
+                    <div v-if="book.timeout==false">
+                      <i class="fs-3 float-end mt-1 me-3"  :class="book.CancelIcon" @mouseover="handleMouseOver(book.id)" @mouseleave="handleMouseLeave(book.id)" data-bs-toggle="modal" :data-bs-target="'#CancelModal' + index"></i>
+                      <i class=" fs-3 float-end mt-1 me-3" :class="{ timeout: book.timeout, [book.CheckIcon]: true }" @mouseover="handleMouseOver2(book.id)" @mouseleave="handleMouseLeave2(book.id)" data-bs-toggle="modal" :data-bs-target="'#checkModal' + index"></i>
+                    </div>
+                    <div v-else>
+                       <i class=" fs-3 float-end mt-1 me-3" :class="{[book.CancelIcon]: true }" @mouseover="handleMouseOver(book.id)" @mouseleave="handleMouseLeave(book.id)"  @click="Cancel(book.id)"></i>
+                    </div>
                   </div>
                 </div>
               </div>
-              <!-- model -->
               <!-- model -->
               <div class="modal fade" :id="'checkModal' + index" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
                 <div class="modal-dialog">
@@ -61,6 +65,7 @@
                   </div>
                 </div>
               </div> 
+              <!-- model -->
               <div class="modal fade" :id="'CancelModal' + index"   data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
                 <div class="modal-dialog">
                   <div class="modal-content border-0">
@@ -110,7 +115,7 @@
                   <span class="ms-6 ">{{finish.people}}位</span><p class="m-0">日期:{{finish.data}}</p>
                 </div>
                 <div class="col-4">
-                  <strong class="m-0">電話:{{finish.phone}}</strong><p class="m-0">要改</p>
+                  <strong class="m-0">電話:{{finish.phone}}</strong><p class="m-0">{{finish.time}}}</p>
                 </div>
               </div>
             </div>
@@ -243,6 +248,7 @@ mounted(){
           people:element.personCount,
           data:element.day,
           id:element.id,
+          time:element.time,
           timeout:timeout,
           CheckIcon:"bi bi-check-square",
           CancelIcon:"bi bi-x-square",
@@ -251,6 +257,7 @@ mounted(){
         this.finishBooking.push({
           name:element.name,
           phone:element.phone,
+          time:element.time,
           people:element.personCount,
           data:element.day,
           id:element.id,

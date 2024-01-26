@@ -52,8 +52,19 @@ export default {
         },
         
 
-        series: [67],
+        series: [],
     };
 },
+mounted(){
+  this.$axios.get('/orders')
+  .then(res=>{
+      let total = 0 
+      res.data.forEach(element=>{
+        total += element.price
+      })
+      total = ((total / 100000) * 100).toFixed(2);
+      this.series.push(total)
+  })
+  }
 };
 </script>
