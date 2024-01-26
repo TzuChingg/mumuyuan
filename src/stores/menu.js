@@ -1,10 +1,11 @@
 import { defineStore } from 'pinia'
-// 新增
+
 import axios from 'axios'
 const url = 'http://localhost:3000'
 
 export default defineStore('menu', {
   state: () => ({
+    json: { combo: [] },
     products: [
       {
         productName: '玉米筍',
@@ -49,8 +50,9 @@ export default defineStore('menu', {
     ]
   }),
   actions: {
-    getData() {
-      console.log(this.products)
+    async getData({ json }) {
+      const veg = await getData(6)
+      console.log(veg)
     }
   },
   getters: {

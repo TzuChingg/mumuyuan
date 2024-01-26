@@ -14,8 +14,8 @@ import backend from './backend'
 import IndexTest from '/src/views/eric/IndexTest.vue'
 
 // 線上點餐
-import Menu from './menuRouter'
-import Cart from './cartRouter'
+import Menu from './claire/menuRouter'
+import Cart from './claire/cartRouter'
 
 const routes = [
   { path: '/', component: IndexTest },

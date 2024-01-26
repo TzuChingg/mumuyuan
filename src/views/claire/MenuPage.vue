@@ -1,25 +1,14 @@
 <script>
+import TitleComponent from '../../components/claire/TitleComponent.vue'
 import CategoryComponent from '../../components/claire/CategoryComponent.vue'
 import MenuComponent from '../../components/claire/MenuComponent.vue'
-
-export default {
-  components: { CategoryComponent, MenuComponent },
-  mounted() {
-    this.$http
-      .get('http://localhost:3000/products?category=1')
-      .then((res) => {
-        console.log(res)
-      })
-      .catch((e) => {
-        console.log(e)
-      })
-  }
-}
+export default { components: { TitleComponent, CategoryComponent, MenuComponent } }
 </script>
 
 <template>
-  <div>
-    <h1 class="my-4 text-center">線上點餐</h1>
+  <div class="wrapper">
+    <!--title-->
+    <TitleComponent></TitleComponent>
     <!--category-->
     <CategoryComponent></CategoryComponent>
     <!--title-->

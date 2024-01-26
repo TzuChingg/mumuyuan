@@ -1,13 +1,33 @@
 <script>
 import menuStore from '../../stores/menu.js'
-import { mapState } from 'pinia'
+import { mapState, mapActions } from 'pinia'
 
 export default {
+  methods: { ...mapActions(menuStore, ['getData']) },
   computed: { ...mapState(menuStore, ['sortProducts']) }
 }
 </script>
 
 <template>
+  <!--test-->
+  <div class="row">
+    <div class="col-4">
+      <div class="list-group">
+        <router-link to="/menu/a" class="list-group-item list-group-item-action"
+          >category 1</router-link
+        >
+        <router-link to="/menu/b" class="list-group-item list-group-item-action"
+          >category 2</router-link
+        >
+      </div>
+    </div>
+    <div class="col-8"><router-view></router-view></div>
+  </div>
+  <!--test-->
+  <!--test-->
+  <router-link to="#combo" class="list-group-item list-group-item-action">combo</router-link>
+  <router-view></router-view>
+  <!--test-->
   <div class="row row-cols-3 mb-4 g-4">
     <div class="col" v-for="product in sortProducts" :key="product.id">
       <div class="card aligh-middle">
