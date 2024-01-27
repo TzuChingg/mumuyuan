@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="author" content="Claire Chou" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index,follow" />
+    <meta name="rating" content="General" />
+    <base target="_self" />
+    <meta name="description" content="" />
+    <title>Cart</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <style>
+      *,
+      *::before,
+      *::after {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background: #fff;
+        font-family: 'Open Sans';
+        font-weight: 700;
+        text-align: center;
+        margin: 0;
+      }
+
+      .wrapper {
+        margin: 50px auto;
+        padding: 0 10px;
+      }
+
+      header {
+        background-color: #163a59;
+      }
+      footer {
+        background-color: #212738;
+      }
+      main {
+        background-color: #ff6600;
+      }
+      nav {
+        /*background-color: #36c1ce;*/
+      }
+
+      header,
+      footer {
+        padding: 20px 0;
+        color: #fff;
+      }
+      /********* 手機版樣式 *********/
+      /********* 電腦版樣式 *********/
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>HEADER</header>
+      <h1 class="my-4">線上點餐</h1>
+      <nav class="nav d-flex justify-content-evenly">
+        <div class="btn-group me-5">
+          <a href="#" class="btn btn-outline-primary" aria-current="page">最新消息</a>
+          <a href="#" class="btn btn-outline-primary">肉品</a>
+          <a href="#" class="btn btn-outline-primary active">蔬菜</a>
+        </div>
+        <a href="#">購物車<span class="badge text-bg-danger">0</span></a>
+      </nav>
+      <!-- 當前食材種類 -->
+      <h1 class="my-4">蔬菜</h1>
+      <main>
+        <!-- 食材卡片 -->
+        <div class="p-3">
+          <div class="row d-flex p-4 justify-content-evenly">
+            <!-- card -->
+            <div class="col-4 px-3">
+              <div class="card" style="width: 18rem">
+                <img src="..." class="card-img-top" alt="picture" />
+                <div class="card-body">
+                  <h5 class="card-title">青椒</h5>
+                  <p class="card-text">intro</p>
+                  <div class="d-flex my-2">
+                    <select class="form-select" aria-label="Default select example">
+                      <option selected>選擇口味</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                    </select>
+                    <select class="form-select" aria-label="Default select example">
+                      <option selected>選擇辣度</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                    </select>
+                  </div>
+                  <div class="text-end d-flex justify-content-between">
+                    <ul class="pagination m-0">
+                      <li class="page-item m-0">
+                        <a class="page-link m-0" href="#" aria-label="Previous">
+                          <span aria-hidden="true" class="m-0">-</span>
+                        </a>
+                      </li>
+                      <li class="page-item m-0"><a class="page-link m-0" href="#">1</a></li>
+                      <li class="page-item m-0">
+                        <a class="page-link m-0" href="#" aria-label="Next">
+                          <span aria-hidden="true">+</span>
+                        </a>
+                      </li>
+                    </ul>
+                    <a href="#" class="btn btn-outline-primary">加入購物車</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- /card -->
+            <!-- card -->
+            <div class="col-4 px-3">
+              <div class="card" style="width: 18rem">
+                <img src="..." class="card-img-top" alt="picture" />
+                <div class="card-body">
+                  <h5 class="card-title">青椒</h5>
+                  <p class="card-text">intro</p>
+                  <div class="d-flex my-2">
+                    <select class="form-select" aria-label="Default select example">
+                      <option selected>選擇口味</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                    </select>
+                    <select class="form-select" aria-label="Default select example">
+                      <option selected>選擇辣度</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                    </select>
+                  </div>
+                  <div class="text-end d-flex justify-content-between">
+                    <ul class="pagination m-0">
+                      <li class="page-item m-0">
+                        <a class="page-link m-0" href="#" aria-label="Previous">
+                          <span aria-hidden="true" class="m-0">-</span>
+                        </a>
+                      </li>
+                      <li class="page-item m-0"><a class="page-link m-0" href="#">1</a></li>
+                      <li class="page-item m-0">
+                        <a class="page-link m-0" href="#" aria-label="Next">
+                          <span aria-hidden="true">+</span>
+                        </a>
+                      </li>
+                    </ul>
+                    <a href="#" class="btn btn-outline-primary">加入購物車</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- /card --><!-- card -->
+            <div class="col-4 px-3">
+              <div class="card" style="width: 18rem">
+                <img src="..." class="card-img-top" alt="picture" />
+                <div class="card-body">
+                  <h5 class="card-title">青椒</h5>
+                  <p class="card-text">intro</p>
+                  <div class="d-flex my-2">
+                    <select class="form-select" aria-label="Default select example">
+                      <option selected>選擇口味</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                    </select>
+                    <select class="form-select" aria-label="Default select example">
+                      <option selected>選擇辣度</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                    </select>
+                  </div>
+                  <div class="text-end d-flex justify-content-between">
+                    <ul class="pagination m-0">
+                      <li class="page-item m-0">
+                        <a class="page-link m-0" href="#" aria-label="Previous">
+                          <span aria-hidden="true" class="m-0">-</span>
+                        </a>
+                      </li>
+                      <li class="page-item m-0"><a class="page-link m-0" href="#">1</a></li>
+                      <li class="page-item m-0">
+                        <a class="page-link m-0" href="#" aria-label="Next">
+                          <span aria-hidden="true">+</span>
+                        </a>
+                      </li>
+                    </ul>
+                    <a href="#" class="btn btn-outline-primary">加入購物車</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- /card -->
+          </div>
+          <div class="row d-flex p-4 justify-content-evenly">
+            <!-- card -->
+            <div class="col-4 px-3">
+              <div class="card" style="width: 18rem">
+                <img src="..." class="card-img-top" alt="picture" />
+                <div class="card-body">
+                  <h5 class="card-title">青椒</h5>
+                  <p class="card-text">intro</p>
+                  <div class="d-flex my-2">
+                    <select class="form-select" aria-label="Default select example">
+                      <option selected>選擇口味</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                    </select>
+                    <select class="form-select" aria-label="Default select example">
+                      <option selected>選擇辣度</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                    </select>
+                  </div>
+                  <div class="text-end d-flex justify-content-between">
+                    <ul class="pagination m-0">
+                      <li class="page-item m-0">
+                        <a class="page-link m-0" href="#" aria-label="Previous">
+                          <span aria-hidden="true" class="m-0">-</span>
+                        </a>
+                      </li>
+                      <li class="page-item m-0"><a class="page-link m-0" href="#">1</a></li>
+                      <li class="page-item m-0">
+                        <a class="page-link m-0" href="#" aria-label="Next">
+                          <span aria-hidden="true">+</span>
+                        </a>
+                      </li>
+                    </ul>
+                    <a href="#" class="btn btn-outline-primary">加入購物車</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- /card -->
+            <!-- card -->
+            <div class="col-4 px-3">
+              <div class="card" style="width: 18rem">
+                <img src="..." class="card-img-top" alt="picture" />
+                <div class="card-body">
+                  <h5 class="card-title">青椒</h5>
+                  <p class="card-text">intro</p>
+                  <div class="d-flex my-2">
+                    <select class="form-select" aria-label="Default select example">
+                      <option selected>選擇口味</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                    </select>
+                    <select class="form-select" aria-label="Default select example">
+                      <option selected>選擇辣度</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                    </select>
+                  </div>
+                  <div class="text-end d-flex justify-content-between">
+                    <ul class="pagination m-0">
+                      <li class="page-item m-0">
+                        <a class="page-link m-0" href="#" aria-label="Previous">
+                          <span aria-hidden="true" class="m-0">-</span>
+                        </a>
+                      </li>
+                      <li class="page-item m-0"><a class="page-link m-0" href="#">1</a></li>
+                      <li class="page-item m-0">
+                        <a class="page-link m-0" href="#" aria-label="Next">
+                          <span aria-hidden="true">+</span>
+                        </a>
+                      </li>
+                    </ul>
+                    <a href="#" class="btn btn-outline-primary">加入購物車</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- /card --><!-- card -->
+            <div class="col-4 px-3">
+              <div class="card" style="width: 18rem">
+                <img src="..." class="card-img-top" alt="picture" />
+                <div class="card-body">
+                  <h5 class="card-title">青椒</h5>
+                  <p class="card-text">intro</p>
+                  <div class="d-flex my-2">
+                    <select class="form-select" aria-label="Default select example">
+                      <option selected>選擇口味</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                    </select>
+                    <select class="form-select" aria-label="Default select example">
+                      <option selected>選擇辣度</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                    </select>
+                  </div>
+                  <div class="text-end d-flex justify-content-between">
+                    <ul class="pagination m-0">
+                      <li class="page-item m-0">
+                        <a class="page-link m-0" href="#" aria-label="Previous">
+                          <span aria-hidden="true" class="m-0">-</span>
+                        </a>
+                      </li>
+                      <li class="page-item m-0"><a class="page-link m-0" href="#">1</a></li>
+                      <li class="page-item m-0">
+                        <a class="page-link m-0" href="#" aria-label="Next">
+                          <span aria-hidden="true">+</span>
+                        </a>
+                      </li>
+                    </ul>
+                    <a href="#" class="btn btn-outline-primary">加入購物車</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- /card -->
+          </div>
+        </div>
+      </main>
+
+      <footer>FOOTER</footer>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

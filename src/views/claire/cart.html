@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="zh">
+  <head>
+    <!--https://htmlhead.dev/#meta-->
+    <!-- 指定網頁內容編碼是 UTF-8 -->
+    <meta charset="UTF-8" />
+    <!-- 說明作者是誰 -->
+    <meta name="author" content="Claire Chou" />
+    <!-- 指定螢幕的寬度為裝置寬，縮放比例 100% -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- 讓搜尋引擎索引此頁面，並檢索該頁面所連出去的連結 -->
+    <meta name="robots" content="index,follow" />
+    <!-- 網站內容分級，這是一般使用者都能看的 -->
+    <meta name="rating" content="General" />
+    <!-- 連結開啟方式，在同一視窗開啟。target="_blank"，在新的視窗開啟連結 -->
+    <base target="_self" />
+    <!-- 網頁內容描述，使用者搜尋時會出現的搜索結果顯示文字 -->
+    <meta name="description" content="木木苑串燒" />
+    <title>Cart</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <style>
+      *,
+      *:before,
+      *:after {
+        padding: 0;
+        margin: 0;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+      }
+      body {
+        background: #fff;
+        font-family: 'Open Sans';
+        font-weight: 700;
+        text-align: center;
+        text-align: center;
+      }
+      header {
+        background-color: #163a59;
+        color: white;
+      }
+      footer {
+        background-color: #212738;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid wrapper">
+      <!-- header -->
+      <header>HEADER</header>
+
+      <!-- content -->
+      <h1 class="my-4">購物車</h1>
+      <div class="d-flex flex-column justify-content-center align-items-center">
+        <form class="d-flex flex-column justify-content-center p-3">
+          <div class="row mb-3">
+            <label for="name" class="col-3 col-form-label mx-2">Name</label>
+            <input type="name" class="form-control col" id="name" />
+            <label for="phone" class="col col-form-label mx-2">Phone</label>
+            <input type="phone" class="form-control col" id="phone" />
+          </div>
+          <div class="row mb-3">
+            <label for="email" class="col-3 col-form-label mx-2">Email</label>
+            <input type="email" class="form-control col" id="email" />
+          </div>
+          <div class="row mb-3">
+            <label for="pickup" class="col-3 col-form-label mx-2">取餐期間</label>
+            <input type="text" class="form-control col" id="pickup" />
+          </div>
+          <div class="row my-3 d-flex align-items-center">
+            <div class="col-2">x</div>
+            <div class="col-2">七里香</div>
+            <div class="col-2">秘粉</div>
+            <div class="col-2">不辣</div>
+            <div class="col-2 position-relative border">
+              <ul class="pagination position-absolute top-50 start-50 translate-middle">
+                <li class="page-item">
+                  <a class="page-link" href="#" aria-label="Previous">
+                    <span aria-hidden="true">-</span>
+                  </a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item">
+                  <a class="page-link" href="#" aria-label="Next">
+                    <span aria-hidden="true">+</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="col-2">$25</div>
+          </div>
+          <hr />
+          <div class="row mb-3">
+            <label for="coupon" class="col-3 col-form-label mx-2">優惠券</label>
+            <select class="form-select col" aria-label="Default select example">
+              <option selected>優惠券</option>
+              <option value="1">優惠券</option>
+              <option value="2">優惠券</option>
+              <option value="3">優惠券</option>
+            </select>
+          </div>
+          <!-- 切換區 -->
+          <div class="row mb-3 d-flex justify-content-end">
+            <div class="col-2 col-form-label">
+              <input
+                class="form-check-input me-1"
+                type="radio"
+                name="inlineRadioOptions"
+                id="inlineRadio1"
+                value="option1"
+              />
+              <label class="form-check-label" for="inlineRadio1">現金</label>
+            </div>
+            <div class="col-2 col-form-label">
+              <input
+                class="form-check-input me-1"
+                type="radio"
+                name="inlineRadioOptions"
+                id="inlineRadio2"
+                value="option2"
+              />
+              <label class="form-check-label" for="inlineRadio2">信用卡</label>
+            </div>
+            <div class="col-2 col-form-label">
+              <input
+                class="form-check-input me-1"
+                type="radio"
+                name="inlineRadioOptions"
+                id="inlineRadio3"
+                value="option3"
+              />
+              <label class="form-check-label" for="inlineRadio3">Line</label>
+            </div>
+          </div>
+          <!-- /切換區 -->
+          <div class="row mb-3 d-flex justify-content-end">
+            <label class="col-2 col-form-label">總金額</label>
+            <label class="col-2 col-form-label">$60</label>
+          </div>
+          <div class="mb-3 d-flex justify-content-between mb-3">
+            <button type="button" class="btn btn-outline-primary">返回</button>
+            <button
+              type="button"
+              class="btn btn-outline-primary"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
+            >
+              送出訂單
+            </button>
+          </div>
+        </form>
+      </div>
+      <!-- modal -->
+
+      <!-- Modal -->
+      <div
+        class="modal fade"
+        id="exampleModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body mx-5">
+              <!-- 切換區 -->
+              <div class="row mb-3">
+                <input type="text" class="form-control col" placeholder="信用卡號碼" />
+              </div>
+              <div class="row mb-3 d-flex justify-content-between">
+                <input type="text" class="form-control col me-3" placeholder="月月/年年" />
+                <input
+                  type="text"
+                  class="form-control col ms-3"
+                  placeholder="信用卡認證編號(CVC)"
+                />
+              </div>
+              <div class="row mb-3">
+                <input type="text" class="form-control col" placeholder="持卡人姓名" />
+              </div>
+              <!-- 切換區 -->
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- /modal -->
+      <!-- footer -->
+      <footer>FOOTER</footer>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
