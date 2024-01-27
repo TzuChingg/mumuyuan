@@ -5,6 +5,7 @@ import { createPinia } from 'pinia';
 //BS框架
 import './assets/main.scss';
 import 'bootstrap-icons/font/bootstrap-icons.css'
+import '../node_modules/bootstrap'
 
 //API
 import axios from 'axios';
@@ -37,5 +38,11 @@ app.use(VueAxios, axios);
 app.use(createPinia());
 app.use(router);
 
+
+//debug
+app.config.errorHandler = (err,vm,info) =>{
+  console.log(err);
+  console.log(info);
+}
 
 app.mount('#app');

@@ -48,7 +48,7 @@
       "copyPassword": "jack123456",
       "name": "傑克",
       "phone": "0911224455",
-      "identity": "",
+      "identity": "user",
       "couponId": [],
       "point": 0,
       "id": 4
@@ -59,7 +59,7 @@
       "copyPassword": "tina123456",
       "name": "緹娜",
       "phone": "0900999999",
-      "identity": "",
+      "identity": "user",
       "couponId": [],
       "point": 0,
       "id": 5
@@ -70,10 +70,21 @@
       "copyPassword": "apple",
       "name": "catcat",
       "phone": "0900111111",
-      "identity": "",
+      "identity": "user",
       "couponId": [],
       "point": 0,
       "id": 6
+    },
+    {
+      "email": "eric@gmail.com",
+      "password": "$2a$10$dMnMTmPbv5NTZXbBbfg82OH85/E9PTWiYdsOzYw5Q/9bhPd.Hm842",
+      "copyPassword": "123456",
+      "name": "eric",
+      "phone": "0955228869",
+      "identity": "user",
+      "couponId": [],
+      "point": 0,
+      "id": 7
     }
   ],
   "products": [
@@ -470,14 +481,15 @@
   ],
   "orders": [
     {
-      "isMember": true,
-      "name": "eric",
-      "phone": "094563131",
-      "day": "2024/01/01",
-      "product": [
+      "isMember": true,          //是否會員
+      "name": "eric",            //訂購人姓名
+      "phone": "094563131",      //手機
+      "mail":"123@123.456",      //信箱
+      "day": "2024/01/01",       //訂單時間
+      "product": [               //訂購商品
         {
-          "name": "牛肉串",
-          "quantity": 5
+          "name": "牛肉串",       //品名
+          "quantity": 5          //數量
         },
         {
           "name": "豬肉串",
@@ -492,23 +504,25 @@
           "quantity": 2
         }
       ],
-      "price": 300,
-      "status": 2,
-      "userId": 1, 
-      "type": true, 
-      "tableware": true,
-      "bags": true,
-      "payment": true,
-      "pickTime": "17:00",
-      "comment": "做好吃一點",
-      "orderScore": 1,
-      "flavor": 1,
-      "id": 1
-    },
+      "price": 300,              //總金額
+      "status": 2,               //狀態
+      "userId": 1,               //會員ID
+      "type": true,              //外帶 or 外送
+      "tableware": true,         //是否餐具
+      "bags": true,              //是否袋子
+      "payment": true,           //付款方式 線上 or 現金
+      "pickTime": "17:00",       //預計取餐時間
+      "comment": "做好吃一點",    //備註
+      "orderScore": 1,           //評價
+      "flavor": 1,               //口味 3種
+      "spicy":1,                 //辣度 3種
+      "id": 1  
+    }, 
     {
       "isMember": true,
       "name": "eric",
       "phone": "094563131",
+      "mail":"123@123.456",
       "day": "2024/01/01",
       "product": [
         {
@@ -535,12 +549,61 @@
       "tableware": true,
       "bags": true,
       "payment": true,
-      "pickTime": "17:00",
+      "pickTime": "12:00",
+      "comment": "做好吃一點",
+      "orderScore": 1,
+      "flavor": 3,
+      "spicy": 1,
+      "id": 2
+    },
+    {
+      "isMember": true,
+      "name": "eric",
+      "phone": "094563131",
+      "day": "2024/01/30",
+      "product": [
+        {
+          "name": "牛肉串",
+          "quantity": 5
+        },
+        {
+          "name": "百業豆腐",
+          "quantity": 3
+        },
+        {
+          "name": "豬肉串",
+          "quantity": 3
+        },
+        {
+          "name": "豬血糕",
+          "quantity": 5
+        },
+        {
+          "name":"干貝",
+          "quantity":4
+        },
+        {
+          "name":"牛小排",
+          "quantity":2
+        },
+        {
+          "name":"甜不辣",
+          "quantity":2
+        }
+      ],
+      "price": 1200,
+      "status": 2,
+      "userId": 3,
+      "type": true,
+      "tableware": true,
+      "bags": true,
+      "payment": true,
+      "pickTime": "22:00",
       "comment": "做好吃一點",
       "orderScore": 1,
       "flavor": 1,
-      "id": 2,
-      "catch": true
+      "spicy": 2,
+      "id": 3
     }
   ],
   "news": [
@@ -583,32 +646,24 @@
       "time": "11:00",
       "isCheck": false,
       "id": 3
-    },
-    {
-      "name": "tom",
-      "personCount": 3,
-      "phone": "3333333333",
-      "mail": "tomtom@ff.tt",
-      "day": "2024/01/24",
-      "time": "14:00",
-      "isCheck": false,
-      "id": 4
-    },
-    {
-      "name": "Cool",
-      "personCount": 3,
-      "phone": "0200111222",
-      "mail": "123@123.456",
-      "day": "2024/01/24",
-      "time": "11:00",
-      "isCheck": false,
-      "id": 5
     }
   ],
   "periods": [
-    "11:00","12:00","13:00","14:00","15:00",
-    "18:00","19:00","20:00","21:00","22:00",
-    "23:00","00:00","01:00","02:00","03:00"
+    "11:00",
+    "12:00",
+    "13:00",
+    "14:00",
+    "15:00",
+    "18:00",
+    "19:00",
+    "20:00",
+    "21:00",
+    "22:00",
+    "23:00",
+    "00:00",
+    "01:00",
+    "02:00",
+    "03:00"
   ],
   "coupons": [
     {
@@ -651,5 +706,8 @@
       "description": "沒有限制,每筆都能使用",
       "id": 5
     }
-  ]
+  ],
+  "shop": {
+    "shopStatus": false
+  }
 }

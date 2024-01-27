@@ -78,7 +78,7 @@
             <div class="card-body ">
                 <div v-if="isLoading">
                   <div class="spinner-border" role="status">
-                    <span class="visually-hidden">Loading...</span>
+                    <span class="visually-hidden  ">Loading...</span>
                   </div>
                 </div>
               <table v-if="!isLoading" class=" table table-hover align-middle table-sm reduce-spacing">

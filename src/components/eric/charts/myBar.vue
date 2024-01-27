@@ -21,7 +21,7 @@ export default {
 
         },
         xaxis: {
-          categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998],
+          categories: [],
           
         },
         // colors: ['#66DA26'],
@@ -41,7 +41,7 @@ export default {
       series: [
         {
           name: "series-1",
-          data: [30, 40, 35, 50, 49, 60, 70, 91],
+          data: [],
           
         },
         
@@ -49,5 +49,39 @@ export default {
       
     };
   },
+
+  mounted(){
+    this.$axios.get('/orders')
+    .then(res=>{
+      let use=[]
+      res.data.forEach(element=>{
+        element.product.forEach((q,index)=>{
+          if(!this.chartOptions.xaxis.categories.includes(q.name)){
+            this.chartOptions.xaxis.categories.push(q.name) 
+          }
+          use.push({
+            x:q.name,
+            y:q.quantity
+          })
+        })
+      })
+      
+      let x = 0;
+      let push = 0;
+      while (use.length > 0) {
+          let z = use[x].x;
+          push = use.reduce((accumulator, item) => {
+              if (z === item.x) {
+                  return accumulator + item.y;
+              } else {
+                  return accumulator;
+              }
+          }, 0);
+          use = use.filter((item) => item.x !== z);
+          this.series[0].data.push(push);
+          push = 0;
+      }
+    })
+  }
 };
 </script>

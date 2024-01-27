@@ -46,7 +46,7 @@
             <nav class="navbar navbar-expand-lg navbar-light mt-4 mb-4">
               <div class="container-fluid">
                 <router-link to="/">
-                  <img src="/首頁圖片/logo.png" alt="" />
+                  <img class="w-100" src="/首頁圖片/logo.png" alt="" />
                 </router-link>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                   data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -66,12 +66,12 @@
                         class="nav-link fs-5 text-light text-decoration-none">訂位/訂單查詢</router-link>
                     </li>
                     <li class="nav-item">
-                      <router-link to="/" class="nav-link fs-5 text-light text-decoration-none">常見問題(往下滾)</router-link>
+                      <router-link to="/" class="nav-link fs-5 text-light text-decoration-none">常見問題</router-link>
                     </li>
                     <li class="nav-item" v-if="!hasToken">
                       <router-link to="/login" class="nav-link fs-5 text-light text-decoration-none">登入/註冊</router-link>
                     </li>
-                    <li class="nav-item" v-else>
+                    <li class="nav-item " v-else>
                       <router-link  :to="identityHref" class="nav-link fs-5 text-light text-decoration-none"><img
                           src="/首頁圖片/user.png" alt="會員中心"></router-link>
                     </li>
