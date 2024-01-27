@@ -32,6 +32,9 @@
                                           <td class="fs-5 "><strong>口味:</strong>{{ order.flavor}}</td>
                                         </tr>
                                         <tr>
+                                          <td class="fs-5 "><strong>辣度:</strong>{{ order.spicy}}</td>
+                                        </tr>
+                                        <tr>
                                           <td class="fs-5 "><strong>是否要餐具:</strong>{{ order.tableware ? "要":"不要" }}</td>
                                         </tr>
                                         <tr>
@@ -122,6 +125,9 @@
                                       <tbody>
                                         <tr>
                                           <td class="fs-5 "><strong>口味:</strong>{{ order.flavor}}</td>
+                                        </tr>
+                                        <tr>
+                                          <td class="fs-5 "><strong>辣度:</strong>{{ order.spicy}}</td>
                                         </tr>
                                         <tr>
                                           <td class="fs-5 "><strong>是否要餐具:</strong>{{ order.tableware ? "要":"不要" }}</td>
@@ -230,17 +236,25 @@ export default {
         res.data.forEach(element => {
           const foods = []
           let taste = ""
-
+          let spicy = ""
           element.product.forEach(item=>{
               foods.push(item.name+"X"+item.quantity)
           })
 
           if(element.flavor == 1){
-            taste = "正常"
+            taste = "梅粉"
           }else if(element.flavor == 2){
-            taste = "重口味"
+            taste = "秘粉"
           }else if(element.flavor == 3){
-            taste = "辣"
+            taste = "椒鹽"
+          }
+
+          if(element.spicy == 1){
+            spicy = "不辣"
+          }else if(element.spicy == 2){
+            spicy = "小辣"
+          }else if(element.spicy == 3){
+            spicy = "大辣"
           }
 
           if(element.status == 1){
@@ -256,6 +270,7 @@ export default {
             total:element.price,
             food:foods,
             flavor:taste,
+            spicy:spicy,
             day:element.day,
             id:element.id,
 
@@ -277,6 +292,7 @@ export default {
             total:element.price,
             food:foods,
             flavor:taste,
+            spicy:spicy,
             day:element.day,
             id:element.id,
 
