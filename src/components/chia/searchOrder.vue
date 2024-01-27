@@ -1,122 +1,111 @@
 <template>
     <div class="accordion w-70 m-auto mb-5" id="accordionExample">
-        <div class="accordion-item">
+        <div class="accordion-item" v-for="obj in tidyResponse">
             <h2 class="accordion-header" id="headingOne">
                 <div class="p-3  accordion-button collapsed " data-bs-toggle="collapse" data-bs-target="#collapseOne"
                     aria-expanded="true" aria-controls="collapseOne">
-                    <p class="mb-0 fs-5 fw-bolder mb-2">訂單編號 : 1130103-1</p>
+                    <p class="mb-0 fs-5 fw-bolder me-5">訂單編號 : 1130103-1</p>
                     <p class="mb-0 fs-5 fw-bolder">日期 1130103</p>
                 </div>
             </h2>
             <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
                 data-bs-parent="#accordionExample">
                 <div class="accordion-body">
+                    <div class="status mb-3">
+                        <p class="fs-4 fw-bolder text-center text-muted mb-4">出餐狀態</p>
+                        <div class="dot-line w-50 m-auto position-relative border border-1 border-light">
+                            <div class="dot position-absolute translate-middle"></div>
+                            <div class="dot position-absolute translate-middle"></div>
+                            <div class="dot position-absolute translate-middle"></div>
+                            <div class="dot position-absolute translate-middle"></div>
+                            <div class="dot position-absolute translate-middle"></div>
+                        </div>
+                    </div>
                     <table class="table table-borderless fs-5">
                         <thead>
                             <tr>
-                                <th colspan="5"></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td colspan="1">七里香</td>
-                                <td colspan="1">蜜粉不辣</td>
-                                <td colspan="1">x1</td>
-                                <td colspan="1">$ 25</td>
-                                <td colspan="1"></td>
+                                <td>七里香</td>
+                                <td>蜜粉不辣</td>
+                                <td>x1</td>
+                                <td>$ 25</td>
                             </tr>
                             <tr>
-                                <td colspan="1">豆干</td>
-                                <td colspan="1">蜜粉不辣</td>
-                                <td colspan="1">x2</td>
-                                <td colspan="1">$ 50</td>
-                                <td colspan="1"></td>
+                                <td>豆干</td>
+                                <td>蜜粉不辣</td>
+                                <td>x2</td>
+                                <td>$ 50</td>
                             </tr>
                         </tbody>
                     </table>
                     <hr>
-                    <div class="text-end px-4 fs-5 mb-2">優惠券:<span class="ps-3">xxx券</span></div>
-                    <div class="text-end px-4 fs-5">總金額<span class="ps-3">$ 60</span></div>
-                </div>
-            </div>
-        </div>
-        <div class="accordion-item">
-            <h2 class="accordion-header" id="headingTwo">
-                <div class="p-3  accordion-button collapsed " data-bs-toggle="collapse" data-bs-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <p class="mb-0 fs-5 fw-bolder mb-2">訂單編號 : 1130103-1</p>
-                    <p class="mb-0 fs-5 fw-bolder">日期 1130103</p>
-                </div>
-            </h2>
-            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                data-bs-parent="#accordionExample">
-                <div class="accordion-body">
-                    <table class="table table-borderless fs-5">
-                        <thead>
-                            <tr>
-                                <th colspan="5"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td colspan="1">七里香</td>
-                                <td colspan="1">蜜粉不辣</td>
-                                <td colspan="1">x1</td>
-                                <td colspan="1">$ 25</td>
-                                <td colspan="1"></td>
-                            </tr>
-                            <tr>
-                                <td colspan="1">豆干</td>
-                                <td colspan="1">蜜粉不辣</td>
-                                <td colspan="1">x2</td>
-                                <td colspan="1">$ 50</td>
-                                <td colspan="1"></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <hr>
-                    <div class="text-end px-4 fs-5 mb-2">優惠券:<span class="ps-3">xxx券</span></div>
-                    <div class="text-end px-4 fs-5">總金額<span class="ps-3">$ 60</span></div>
-                </div>
-            </div>
-        </div>
-        <div class="accordion-item">
-            <h2 class="accordion-header" id="headingThree">
-                <div class="p-3 accordion-button collapsed " data-bs-toggle="collapse" data-bs-target="#collapseThree"
-                    aria-expanded="true" aria-controls="collapseThree">
-                    <p class="mb-0 fs-5 fw-bolder mb-2">訂單編號 : 1130103-1</p>
-                    <p class="mb-0 fs-5 fw-bolder">日期 1130103</p>
-                </div>
-            </h2>
-            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
-                data-bs-parent="#accordionExample">
-                <div class="accordion-body">
-                    <table class="table table-borderless fs-5">
-                        <thead>
-                            <tr>
-                                <th colspan="5"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td colspan="1">七里香</td>
-                                <td colspan="1">蜜粉不辣</td>
-                                <td colspan="1">x1</td>
-                                <td colspan="1">$ 25</td>
-                                <td colspan="1"></td>
-                            </tr>
-                            <tr>
-                                <td colspan="1">豆干</td>
-                                <td colspan="1">蜜粉不辣</td>
-                                <td colspan="1">x2</td>
-                                <td colspan="1">$ 50</td>
-                                <td colspan="1"></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <hr>
-                    <div class="text-end px-4 fs-5 mb-2">優惠券:<span class="ps-3">xxx券</span></div>
-                    <div class="text-end px-4 fs-5">總金額<span class="ps-3">$ 60</span></div>
+                    <div class="detail d-flex">
+                        <div class="col-6">
+                            <div class="my-1">
+                                <label class="fs-6 col-4">訂購人</label>
+                                <input class="col input-set" type="text" :value="obj.name" disabled readonly>
+                            </div>
+                            <div class="my-1">
+                                <label class="fs-6 col-4">手機</label>
+                                <input class="col input-set" type="text" :value="obj.phone" disabled readonly>
+                            </div>
+                            <div class="my-1">
+                                <label class="fs-6 col-4">訂單時間</label>
+                                <input class="col input-set" type="text" :value="obj.name" disabled readonly>
+                            </div>
+                            <div class="my-1">
+                                <label class="fs-6 col-4">附贈餐具</label>
+                                <input class="col input-set" type="text" :value="(obj.tableware) ? '要' : '不要'" disabled
+                                    readonly>
+                            </div>
+                            <div class="my-1">
+                                <label class="fs-6 col-4">購買提袋</label>
+                                <input class="col input-set" type="text" :value="(obj.bags) ? '要' : '不要'" disabled readonly>
+                            </div>
+                            <div class="my-1">
+                                <label class="fs-6 col-4">取餐方式</label>
+                                <input class="col input-set" type="text" :value="(obj.type) ? '自取' : '外送'" disabled
+                                    readonly>
+                            </div>
+                            <div class="my-1">
+                                <label class="fs-6 col-4">取餐時間</label>
+                                <input class="col input-set" type="text" :value="obj.pickTime" disabled readonly>
+                            </div>
+                        </div>
+                        <div class="settle col-6">
+                            <div class="my-1">
+                                <label class="fs-6 col-4">總金額</label>
+                                <input class="col input-set" type="text" :value="obj.price" disabled readonly>
+                            </div>
+                            <div class="my-1">
+                                <label class="fs-6 col-4">付款方式</label>
+                                <input class="col input-set" type="text" :value="(obj.payment) ? '線上付款' : '現金'" disabled
+                                    readonly>
+                            </div>
+                            <div class="my-1">
+                                <label class="fs-6 col-4" col-6>口味</label>
+                                <input class="col input-set" type="text" :value="flavor(obj.flavor)" disabled readonly>
+                            </div>
+                            <div class="my-1">
+                                <label class="fs-6 col-4" col-6>辣度</label>
+                                <input class="col input-set" type="text" :value="spicy(obj.spicy)" disabled readonly>
+                            </div>
+                            <div class="my-1">
+                                <label class="fs-6 col-4">備註</label>
+                                <textarea class="col-10 input-set p-2" :value="obj.comment"
+                                    style="resize: none;" disabled readonly></textarea>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -128,17 +117,86 @@
             <li>請務必當場清點找零</li>
             <li>依現場排隊取餐</li>
         </ul>
+        {{ spicy }}
         <button type="button" class="d-block btn btn-dark mx-auto my-5 py-2 px-3">返回首頁</button>
     </div>
 </template>
 
 <script>
 export default {
-
+    props: ["getResponse"],
+    computed: {
+        tidyResponse(){
+            return this.getResponse;
+        },
+        spicy() {
+            return level => {
+                switch (level) {
+                    case 1:
+                        return '不辣';
+                    case 2:
+                        return '小辣';
+                    default:
+                        return '大辣';
+                }
+            };
+        },
+        flavor() {
+            return level => {
+                switch (level) {
+                    case 1:
+                        return '原味';
+                    case 2:
+                        return '秘粉';
+                    default:
+                        return '椒鹽';
+                }
+            };
+        }
+    },
+    mounted() {
+        this.tidyResponse = [...this.getResponse];
+    }
 }
 </script>
 
 <style scoped lang="scss">
+.dot {
+    width: 10px;
+    height: 10px;
+    background: gray;
+    border-radius: 50%;
+
+    &:nth-of-type(1) {
+        left: 0px;
+    }
+
+    &:nth-of-type(2) {
+        left: 25%;
+    }
+
+    &:nth-of-type(3) {
+        left: 50%;
+    }
+
+    &:nth-of-type(4) {
+        left: 75%;
+    }
+
+    &:nth-of-type(5) {
+        left: 100%;
+    }
+}
+
+.input-set {
+    background: transparent;
+    border: none;
+}
+
+.table th {
+    min-width: 80px;
+}
+
 .w-70 {
     width: 70%;
 }

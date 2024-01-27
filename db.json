@@ -481,15 +481,15 @@
   ],
   "orders": [
     {
-      "isMember": true,          //是否會員
-      "name": "eric",            //訂購人姓名
-      "phone": "094563131",      //手機
-      "mail":"123@123.456",      //信箱
-      "day": "2024/01/01",       //訂單時間
-      "product": [               //訂購商品
+      "isMember": true,         
+      "name": "eric",            
+      "phone": "094563131",    
+      "mail":"123@123.456",     
+      "day": "2024/01/01",      
+      "product": [              
         {
-          "name": "牛肉串",       //品名
-          "quantity": 5          //數量
+          "name": "牛肉串",     
+          "quantity": 5         
         },
         {
           "name": "豬肉串",
@@ -504,70 +504,33 @@
           "quantity": 2
         }
       ],
-      "price": 300,              //總金額
-      "status": 2,               //狀態
-      "userId": 1,               //會員ID
-      "type": true,              //外帶 or 外送
-      "tableware": true,         //是否餐具
-      "bags": true,              //是否袋子
-      "payment": true,           //付款方式 線上 or 現金
-      "pickTime": "17:00",       //預計取餐時間
-      "comment": "做好吃一點",    //備註
-      "orderScore": 1,           //評價
-      "flavor": 1,               //口味 3種
-      "spicy":1,                 //辣度 3種
+      "price": 300,            
+      "status": 2,             
+      "userId": 1,             
+      "type": true,            
+      "tableware": true,       
+      "bags": true,            
+      "payment": true,         
+      "pickTime": "17:00",     
+      "comment": "做好吃一點", 
+      "orderScore": 1,         
+      "flavor": 1,             
+      "spicy":1,               
       "id": 1  
-    }, 
-    {
-      "isMember": true,
-      "name": "eric",
-      "phone": "094563131",
-      "mail":"123@123.456",
-      "day": "2024/01/01",
-      "product": [
-        {
-          "name": "牛肉串",
-          "quantity": 5
-        },
-        {
-          "name": "豬肉串",
-          "quantity": 3
-        },
-        {
-          "name": "豬肉串",
-          "quantity": 3
-        },
-        {
-          "name": "雞肉串",
-          "quantity": 2
-        }
-      ],
-      "price": 300,
-      "status": 2,
-      "userId": 1,
-      "type": true,
-      "tableware": true,
-      "bags": true,
-      "payment": true,
-      "pickTime": "12:00",
-      "comment": "做好吃一點",
-      "orderScore": 1,
-      "flavor": 3,
-      "spicy": 1,
-      "id": 2
     },
     {
-      "isMember": true,
-      "name": "eric",
-      "phone": "094563131",
-      "day": "2024/01/30",
-      "product": [
+      "isMember": true,         
+      "name": "tommy",            
+      "phone": "0900111222",    
+      "mail":"tommy@gmail.com",     
+      "day": "2024/01/01",      
+      "product": [              
         {
-          "name": "牛肉串",
-          "quantity": 5
+          "name": "牛肉串",     
+          "quantity": 5         
         },
         {
-          "name": "百業豆腐",
+          "name": "豬肉串",
           "quantity": 3
         },
         {
@@ -575,35 +538,99 @@
           "quantity": 3
         },
         {
-          "name": "豬血糕",
-          "quantity": 5
-        },
-        {
-          "name":"干貝",
-          "quantity":4
-        },
-        {
-          "name":"牛小排",
-          "quantity":2
-        },
-        {
-          "name":"甜不辣",
-          "quantity":2
+          "name": "雞肉串",
+          "quantity": 2
         }
       ],
-      "price": 1200,
-      "status": 2,
-      "userId": 3,
-      "type": true,
-      "tableware": true,
-      "bags": true,
-      "payment": true,
-      "pickTime": "22:00",
-      "comment": "做好吃一點",
-      "orderScore": 1,
-      "flavor": 1,
-      "spicy": 2,
-      "id": 3
+      "price": 300,            
+      "status": 2,             
+      "userId": 1,             
+      "type": true,            
+      "tableware": true,       
+      "bags": true,            
+      "payment": true,         
+      "pickTime": "17:00",     
+      "comment": "做好吃一點", 
+      "orderScore": 1,         
+      "flavor": 1,             
+      "spicy":1,               
+      "id": 1  
+    },
+    {
+      "isMember": true,         
+      "name": "jack",            
+      "phone": "0900123456",    
+      "mail":"jack@gmail.com",     
+      "day": "2024/01/01",      
+      "product": [              
+        {
+          "name": "牛肉串",     
+          "quantity": 5         
+        },
+        {
+          "name": "豬肉串",
+          "quantity": 3
+        },
+        {
+          "name": "豬肉串",
+          "quantity": 3
+        },
+        {
+          "name": "雞肉串",
+          "quantity": 2
+        }
+      ],
+      "price": 300,            
+      "status": 2,             
+      "userId": 1,             
+      "type": true,            
+      "tableware": true,       
+      "bags": true,            
+      "payment": true,         
+      "pickTime": "17:00",     
+      "comment": "做好吃一點", 
+      "orderScore": 1,         
+      "flavor": 1,             
+      "spicy":1,               
+      "id": 1  
+    },
+    {
+      "isMember": true,         
+      "name": "jack",            
+      "phone": "0900123456",    
+      "mail":"jack@gmail.com",     
+      "day": "2024/01/01",      
+      "product": [              
+        {
+          "name": "牛肉串",     
+          "quantity": 5         
+        },
+        {
+          "name": "豬肉串",
+          "quantity": 3
+        },
+        {
+          "name": "豬肉串",
+          "quantity": 3
+        },
+        {
+          "name": "雞肉串",
+          "quantity": 2
+        }
+      ],
+      "price": 300,            
+      "status": 2,             
+      "userId": 1,             
+      "type": true,            
+      "tableware": true,       
+      "bags": true,            
+      "payment": true,         
+      "pickTime": "17:00",     
+      "comment": "做好吃一點", 
+      "orderScore": 1,         
+      "flavor": 1,             
+      "spicy":1,               
+      "id": 1  
     }
   ],
   "news": [
@@ -617,16 +644,6 @@
     }
   ],
   "bookingfrom": [
-    {
-      "name": "Tina",
-      "personCount": 3,
-      "phone": "0900123456",
-      "mail": "tt@gmail.com",
-      "day": "2024/01/25",
-      "time": "11:00",
-      "isCheck": false,
-      "id": 1
-    },
     {
       "name": "mary",
       "personCount": 10,
