@@ -18,8 +18,6 @@ import Menu from './claire/menuRouter'
 import Cart from './claire/cartRouter'
 
 const routes = [
-
-  { path: '/', component: IndexTest },
   { ...Menu },
   { ...Cart },
   // { path: '/', component: IndexTest },

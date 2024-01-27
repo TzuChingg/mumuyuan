@@ -1,80 +1,35 @@
 <template>
     <div>
         <div class="bg-image bg-primary">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <!-- <nav class="navbar navbar-expand-lg navbar-light mt-4 mb-4">
-                            <div class="container-fluid">
-                                <router-link to="/">
-                                    <img src="/首頁圖片/logo.png" alt="" />
-                                </router-link>
-                                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                                    aria-expanded="false" aria-label="Toggle navigation">
-                                    <span class="navbar-toggler-icon"></span>
-                                </button>
-                                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                                    <ul class="navbar-nav ms-auto">
-                                        <li class="nav-item">
-                                            <router-link to="/menu"
-                                                class="nav-link fs-5 text-light text-decoration-none">線上點餐</router-link>
-                                        </li>
-                                        <li class="nav-item">
-                                            <router-link to="/reserve"
-                                                class="nav-link fs-5 text-light text-decoration-none">立即訂位</router-link>
-                                        </li>
-                                        <li class="nav-item">
-                                            <router-link to="/search"
-                                                class="nav-link fs-5 text-light text-decoration-none">訂位/訂單查詢</router-link>
-                                        </li>
-                                        <li class="nav-item">
-                                            <router-link to="/"
-                                                class="nav-link fs-5 text-light text-decoration-none">常見問題(往下滾)</router-link>
-                                        </li>
-                                        <li class="nav-item">
-                                            <router-link to="/login"
-                                                class="nav-link fs-5 text-light text-decoration-none">登入/註冊</router-link>
-                                        </li>
-                                        <li class="nav-item">
-                                            <router-link to="/memberCenter"
-                                                class="nav-link fs-5 text-light text-decoration-none"><img src="/首頁圖片/user.png" alt="會員中心" ></router-link>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </nav> -->
-                    </div>
-                </div>
-            </div>
             <div class="container-fluid p-0 position-relative">
-                <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-indicators">
+                <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-pause="false" data-bs-wrap="true" data-bs-keyboard="false">
+                    <!-- 控制項 -->
+                    <!-- <div class="carousel-indicators">
                         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
                             class="active" aria-current="true" aria-label="Slide 1"></button>
                         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
                             aria-label="Slide 2"></button>
                         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
                             aria-label="Slide 3"></button>
-                    </div>
+                    </div> -->
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <router-link to="/" class="d-flex">
+                            <div class="d-flex">
                                 <img src="/首頁圖片/hero-desktop-1.png" class="d-block w-50" alt="食物照片1" />
                                 <img src="/首頁圖片/hero-desktop-2.png" class="d-block w-50" alt="食物照片2" />
-                            </router-link>
+                            </div>
                         </div>
                         <div class="carousel-item">
-                            <router-link to="/" class="d-flex">
+                            <div class="d-flex">
                                 <img src="/首頁圖片/hero-desktop-3.png" class="d-block w-50" alt="食物照片3" />
                                 <img src="/首頁圖片/hero-desktop-4.png" class="d-block w-50" alt="食物照片4" />
-                            </router-link>
+                            </div>
                         </div>
                         <div class="carousel-item">
-                            <router-link to="/" class="d-flex">
+                            <div class="d-flex">
                                 <img src="/首頁圖片/hero-desktop-5.png" class="d-block w-50" alt="食物照片5" />
                                 <img src="/首頁圖片/hero-desktop-6.png" class="d-block w-50" alt="食物照片6" />
-                            </router-link>
+                            </div>
                         </div>
                     </div>
                     <div class="slogan sRight position-absolute">
@@ -95,9 +50,92 @@
                     </div>
                     <div class="sloganButton position-absolute start-50 translate-middle">
                         <button type="button" class="btn btn-dark bg-light bg-opacity-75 fs-2">
-                            <strong>立即點餐</strong>
+                            <router-link to="/menu"
+                                class=" text-black   text-decoration-none"><strong>立即點餐</strong></router-link>
                         </button>
                     </div>
+                </div>
+            </div>
+            <div class="container-fuild bg-secondary ">
+                <div class="ms-0 me-0">
+                    <div class="pt-5 mb-5 d-flex justify-content-center">
+                        <img src="/首頁圖片/title-illustration-left-brown.png" alt="icon-left" />
+                        <h2 class="text-primary text-center ms-3 me-3 my-auto">最新消息</h2>
+                        <img src="/首頁圖片/title-illustration-right-brown.png" alt="icon-right" />
+                    </div>
+                </div>
+                <div id="latestNews" class="carousel slide position-relative pb-5" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="latestNewsCOl carousel-item active ms-5">
+                            <div class="d-flex justify-content-around"> 
+                                <router-link to="/news" class=" text-decoration-none">
+                                    <div class="card h-100" style="width: 19rem;">
+                                        <img src="/木木苑食材修圖/36.jpg" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <p class="card-text fs-4">新戶好禮</p>
+                                            <p class="card-text">趕快加入會員，領取優惠券~帝王蟹味棒兌換券一串</p>
+                                        </div>
+                                    </div>
+                                </router-link>
+                                <router-link to="/news" class=" text-decoration-none">
+                                    <div class="card h-100" style="width: 19rem;">
+                                        <img src="/木木苑食材修圖/39.jpg" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <p class="card-text  fs-4">蔬菜季</p>
+                                            <P class="card-text">青椒買一送一兌換券，與您分享新鮮、美味、健康的蔬食樂趣！</P>
+                                        </div>
+                                    </div>
+                                </router-link>
+                                <router-link to="/news" class=" text-decoration-none">
+                                    <div class="card h-100" style="width: 19rem;">
+                                        <img src="/木木苑食材修圖/38.jpg" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <p class="card-text fs-4">蔬菜季</p>
+                                            <P class="card-text">花椰菜買一送一兌換券，與您分享新鮮、美味、健康的蔬食樂趣！</P>
+                                        </div>
+                                    </div>
+                                </router-link>
+                                <router-link to="/news" class=" text-decoration-none">
+                                    <div class="card h-100" style="width: 19rem;">
+                                        <img src="/木木苑食材修圖/09.jpg" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <p class="card-text fs-4">番茄牛肉捲兌換券</p>
+                                            <p class="card-text">新品上市!!新鮮番茄與牛肉的清爽搭配，趕快來嘗試!</p>
+                                        </div>
+                                    </div>
+                                </router-link>
+                                <router-link to="/news" class=" text-decoration-none">
+                                    <div class="card h-100" style="width: 19rem;">
+                                        <img src="/木木苑食材修圖/31.jpg" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <p class="card-text fs-4">木木苑周年慶</p>
+                                            <p class="card-text">慶祝一週年，巨無霸魷魚 買一送一</p>
+                                        </div>
+                                    </div>
+                                </router-link>
+                            </div>
+                        </div>
+                        <!-- 第二頁 example -->
+                        <!-- <div class="latestNewsCOl carousel-item ms-5">
+                            <div class="card" style="width: 19rem;">
+                                <img src="/木木苑食材修圖/26.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <p class="card-text">Some quick example text to build on the card title and
+                                        make up the bulk of the card's content.</p>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+                    <button class=" position-absolute newsBtn-left border-0" type="button" data-bs-target="#latestNews"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true" style="filter: invert(50%); "></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class=" position-absolute newsBtn-right border-0" type="button" data-bs-target="#latestNews"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true" style="filter: invert(50%); "></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
                 </div>
             </div>
 
@@ -394,15 +432,19 @@
             </div>
             <div class="container">
                 <div class="row">
-                    <div class="address col-5 bg-primary d-flex flex-wrap justify-content-center align-content-center p-0 m-0">
+                    <div
+                        class="address col-5 bg-primary d-flex flex-wrap justify-content-center align-content-center p-0 m-0">
                         <div class="info">
                             <img class="mb-3" src="/首頁圖片/logo-sm.png" alt="木木苑logo" srcset="">
                             <p class="fs-4 text-light">店址：臺中市北屯區太原路三段500號</p>
-                            <p class="fs-4 text-light" >營業時間：17:00 - 00:00</p>
+                            <p class="fs-4 text-light">營業時間：17:00 - 00:00</p>
                         </div>
                     </div>
                     <div class="col-7 p-0 m-0">
-                        <iframe class="w-100" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3640.1939341247257!2d120.69349077593675!3d24.16493047273495!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34691738eb40c225%3A0x2a6052ea0974f938!2z5pyo5pyo6IuR5Liy54S85bCC6ZaA44Gu5bqX!5e0!3m2!1szh-TW!2stw!4v1706116400211!5m2!1szh-TW!2stw" width="770px" height="520px" style="border:0;" allowfullscreen="false" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <iframe class="w-100"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3640.1939341247257!2d120.69349077593675!3d24.16493047273495!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34691738eb40c225%3A0x2a6052ea0974f938!2z5pyo5pyo6IuR5Liy54S85bCC6ZaA44Gu5bqX!5e0!3m2!1szh-TW!2stw!4v1706116400211!5m2!1szh-TW!2stw"
+                            width="770px" height="520px" style="border:0;" allowfullscreen="false" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
             </div>
@@ -411,15 +453,16 @@
 </template>
 
 <style lang="scss" scoped>
-@import url('https://fonts.googleapis.com/css?family=Noto+Sans+TC');
+// @import url('https://fonts.googleapis.com/css?family=Noto+Sans+TC');
 
-* {
-    font-family: 'Noto Sans TC';
-}
+// * {
+//     font-family: 'Noto Sans TC';
+// }
+
 .bg-image {
     background-image: url('/首頁圖片/bg-shape.png');
     background-size: cover;
-    background-position:bottom;
+    background-position: bottom;
 }
 
 .slogan {
@@ -427,19 +470,42 @@
         margin: 0%;
         padding: 0%;
     }
+
     writing-mode: vertical-lr;
     top: 17%;
     right: 22%;
 }
+
 .sRight {
     right: 22%;
 }
+
 .sLeft {
     left: 22%;
 }
+
+.latestNewsCOl {
+    max-width: 1820px;
+}
+
 .sloganButton {
     top: 70%;
 }
+
+.newsBtn-left {
+    top: 0;
+    bottom: 0;
+    left: 0%;
+}
+
+.newsBtn-right {
+    top: 0;
+    bottom: 0;
+    right: 0%;
+}
+
+
+
 .ratingText {
     height: 60px;
     width: 256px;
@@ -448,6 +514,7 @@
     right: 10%;
     bottom: 15%;
 }
+
 .featureText {
     top: 37%;
     left: 28%;
@@ -457,26 +524,32 @@
         font-style: italic;
     }
 }
+
 .featureText2 {
     top: 37%;
     left: 15%;
+
     .featureNum {
         font-family: Georgia, 'Times New Roman', Times, serif;
         font-style: italic;
     }
 }
+
 .featureText5 {
     top: 37%;
     left: 15%;
+
     .featureNum {
         font-family: Georgia, 'Times New Roman', Times, serif;
         font-style: italic;
     }
 }
+
 .card-text {
     color: #4F4F4F;
 }
-.address{
+
+.address {
     height: 520px;
 }
 </style>
