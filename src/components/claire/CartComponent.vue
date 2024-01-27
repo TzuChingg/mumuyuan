@@ -78,6 +78,7 @@
         <tr class="">
           <td class="d-flex justify-content-end my-3">
             <!-- 切換區 -->
+            <!--https://bootstrap5.hexschool.com/docs/5.0/forms/checks-radios/#inline-->
             <div class="mx-3">
               <input
                 class="form-check-input me-1"
@@ -86,7 +87,7 @@
                 id="inlineRadio1"
                 value="option1"
               />
-              <label class="form-check-label " for="inlineRadio1">現金</label>
+              <label class="form-check-label" for="inlineRadio1">現金</label>
             </div>
             <div class="mx-3">
               <input
@@ -132,4 +133,8 @@
   </form>
 </template>
 
-<style lang="scss"></style>
+<style lang="scss">
+a {
+  text-decoration: none;
+}
+</style>

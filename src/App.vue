@@ -32,11 +32,7 @@ export default {
         <transition name="fade" mode="out-in">
           <component :is="Component"></component>
         </transition>
-      </router-view>
-      <!-- menu -->
-      <!-- <br />
-      <router-link :to="{ name: '線上點餐' }">線上點餐頁面</router-link>
-      <br /> -->
+      </router-view>      
       <footerComponent v-if="identity === 'user'" />
     </div>
   </div>
