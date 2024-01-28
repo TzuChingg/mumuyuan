@@ -6,10 +6,7 @@ export default { components: { CartComponent, ModalComponent } }
 </script>
 
 <template>
-
-        <!--cart-->
         <CartComponent></CartComponent>
-
   <!-- modal -->
   <ModalComponent></ModalComponent>
 </template>
