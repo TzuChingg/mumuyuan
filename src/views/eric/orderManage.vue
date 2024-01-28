@@ -5,6 +5,7 @@
         </aside>
         <transition name="fade" mode="out-in">
           <main v-if="select==1" class="main container">
+            <WebSocketExample />
             <div class="w-25 mt-5">              
               <select-list :options="options" @updata="get" v-once></select-list>
             </div>  
@@ -184,12 +185,14 @@
 </template>
 <!--   -->
 <script>
+import WebSocketExample from '/src/components/eric/WebSocketExample.vue';
 import BackendFunctions from '/src/components/eric/BackendFunctions.vue';
 import selectList from '/src/components/eric/selectList.vue';
 export default {
   components: {
     BackendFunctions,
     selectList,
+    WebSocketExample 
   },
   // 
   data() {
