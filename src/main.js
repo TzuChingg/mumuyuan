@@ -28,7 +28,7 @@ import App from './App.vue';
 
 const app = createApp(App);
 app.config.globalProperties.$axios = axios.create({
-    baseURL: 'http://localhost:3000/api',
+    baseURL: 'http://localhost:3011/api',
   })
 app.config.globalProperties.$ws = ws;
 app.config.globalProperties.$apexcharts = ApexCharts;
