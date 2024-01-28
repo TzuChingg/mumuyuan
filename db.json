@@ -1,92 +1,5 @@
 {
-  "users": [
-    {
-      "name": "joker",
-      "email": "joker@gmail.com",
-      "password": "$2a$10$l0l6eHyGFe.CSc4CFWuxh.GLmFJpRpDHj7/ZiPQw19Jk8gB.xmk32",
-      "copyPassword": "123456",
-      "phone": "093333333",
-      "identity": "baduser",
-      "couponId": [
-        1,
-        2
-      ],
-      "point": 30,
-      "id": 1
-    },
-    {
-      "name": "test",
-      "email": "test@gmail.com",
-      "password": "$2a$10$EaQOKGeA7Hs45ymXBFpIG.39.e283yFCR8Brcx3H9l26NQiAtI6m6",
-      "copyPassword": "123456",
-      "phone": "09222222222",
-      "identity": "user",
-      "couponId": [
-        1,
-        2
-      ],
-      "point": 30,
-      "id": 2
-    },
-    {
-      "name": "admin",
-      "email": "admin@gmail.com",
-      "password": "$2a$10$pbkX8jgDZHTDNP3YMgTKlelUwrm9dEAXAv8hHnZXoGrAgz1gKL/Uq",
-      "copyPassword": "123456",
-      "phone": "0911111111",
-      "identity": "admin",
-      "couponId": [
-        1,
-        2
-      ],
-      "point": 30,
-      "id": 3
-    },
-    {
-      "email": "jack@gmail.com",
-      "password": "$2a$10$tZwmn3m9HMk4eOE/cCNySeBc7JcfwihUAJCWXRWTThuaks/CVCGfK",
-      "copyPassword": "jack123456",
-      "name": "傑克",
-      "phone": "0911224455",
-      "identity": "user",
-      "couponId": [],
-      "point": 0,
-      "id": 4
-    },
-    {
-      "email": "tina@gmail.com",
-      "password": "$2a$10$OdIPYk8rM.Tzm8dRnXTss.UTZkw0RsvO7F1uYbOiXE22admcARJH2",
-      "copyPassword": "tina123456",
-      "name": "緹娜",
-      "phone": "0900999999",
-      "identity": "user",
-      "couponId": [],
-      "point": 0,
-      "id": 5
-    },
-    {
-      "email": "cat@gmail.com",
-      "password": "$2a$10$jVinxMlKMRj4Lh/K49UU4.ZPNdBRbkB87CEeSSRw8IUuv/IfT5K6m",
-      "copyPassword": "apple",
-      "name": "catcat",
-      "phone": "0900111111",
-      "identity": "user",
-      "couponId": [],
-      "point": 0,
-      "id": 6
-    },
-    {
-      "email": "eric@gmail.com",
-      "password": "$2a$10$dMnMTmPbv5NTZXbBbfg82OH85/E9PTWiYdsOzYw5Q/9bhPd.Hm842",
-      "copyPassword": "123456",
-      "name": "eric",
-      "phone": "0955228869",
-      "identity": "user",
-      "couponId": [],
-      "point": 0,
-      "id": 7
-    }
-  ],
+  "users": [],
   "products": [
     {
       "productName": "玉米筍",
@@ -504,7 +417,7 @@
         }
       ],
       "price": 300,
-      "status": 2,
+      "status": 1,
       "userId": 1,
       "type": true,
       "tableware": true,
@@ -541,7 +454,7 @@
         }
       ],
       "price": 300,
-      "status": 2,
+      "status": 1,
       "userId": 1,
       "type": true,
       "tableware": true,
@@ -577,20 +490,20 @@
           "quantity": 5
         },
         {
-          "name":"干貝",
-          "quantity":4
+          "name": "干貝",
+          "quantity": 4
         },
         {
-          "name":"牛小排",
-          "quantity":2
+          "name": "牛小排",
+          "quantity": 2
         },
         {
-          "name":"甜不辣",
-          "quantity":2
+          "name": "甜不辣",
+          "quantity": 2
         }
       ],
       "price": 1200,
-      "status": 2,
+      "status": 1,
       "userId": 3,
       "type": true,
       "tableware": true,
@@ -624,16 +537,6 @@
       "time": "11:00",
       "isCheck": false,
       "id": 1
-    },
-    {
-      "name": "mary",
-      "personCount": 10,
-      "phone": "0423232323",
-      "mail": "maaa@gmail.com",
-      "day": "2024/01/24",
-      "time": "11:00",
-      "isCheck": false,
-      "id": 2
     },
     {
       "name": "Lulu",
@@ -709,4 +612,3 @@
     "shopStatus": false
   }
 }
-
