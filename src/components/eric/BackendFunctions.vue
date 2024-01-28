@@ -51,7 +51,6 @@
 
 
 <script>
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import { docCookies } from '../../assets/cookie';
 
 export default {
