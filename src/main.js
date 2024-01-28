@@ -21,7 +21,7 @@ import footerComponent from "./components/global/footerComponent.vue";
 //套件工具
 import VueApexCharts from "vue3-apexcharts";
 import ApexCharts from 'apexcharts';
-
+import ws from 'ws';
 //網站起始點掛載
 import App from './App.vue';
 
@@ -29,6 +29,7 @@ const app = createApp(App);
 app.config.globalProperties.$axios = axios.create({
     baseURL: 'http://localhost:3000',
   })
+app.config.globalProperties.$ws = ws;
 app.config.globalProperties.$apexcharts = ApexCharts;
 app.component('navbarComponent', navbarComponent);
 app.component('footerComponent', footerComponent);
