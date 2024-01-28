@@ -537,16 +537,6 @@
       "time": "11:00",
       "isCheck": false,
       "id": 1
-    },
-    {
-      "name": "Lulu",
-      "personCount": 7,
-      "phone": "0999123456",
-      "mail": "LU@gmail.cc",
-      "day": "2024/01/24",
-      "time": "11:00",
-      "isCheck": false,
-      "id": 3
     }
   ],
   "periods": [

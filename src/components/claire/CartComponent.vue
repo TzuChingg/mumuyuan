@@ -1,43 +1,18 @@
 <script></script>
 
 <template>
-  <form class="border border-dark my-4 p-4">
+  <div class=" container x">
     <h1 class="my-4 text-center">購物車</h1>
     <!-- v-if -->
     <!--<div>購物車沒有任何品項</div>-->
     <!-- v-else -->
     <table class="table table-borderless">
-      <tbody class="">
-        <tr class="table-tr">
-          <td class="d-flex justify-content-evenly my-3">
-            <label for="name" class="">您的姓名</label>
-            <input type="text" class="" id="name" />
-          </td>
-        </tr>
-        <tr>
-          <td class="d-flex justify-content-evenly my-3">
-            <label for="phone" class="">手機號碼</label>
-            <input type="phone" class="" id="phone" />
-          </td>
-        </tr>
-        <tr>
-          <td class="d-flex justify-content-evenly my-3">
-            <label for="email" class="">電子郵件</label>
-            <input type="email" class="" id="email" />
-          </td>
-        </tr>
-        <tr>
-          <td class="d-flex justify-content-evenly my-3">
-            <label for="pickup" class="">取餐時間</label>
-            <input type="text" class="" id="pickup" />
-          </td>
-        </tr>
-        <tr>
+      <tbody >
+        <tr class=" border-bottom">
           <td class="align-middle d-flex justify-content-evenly align-items-center my-3">
-            <a href="#" class="link-dark text-decoration-none">x</a>
+            <a href="#" class="link-dark text-decoration-none fs-4">x</a>
             <div>七里香</div>
-            <div>秘粉</div>
-            <div>不辣</div>
+            <div></div>
             <div class="position-relative">
               <ul class="pagination position-absolute top-50 start-50 translate-middle">
                 <li class="page-item">
@@ -56,14 +31,39 @@
             <div class="text-end">$25</div>
           </td>
         </tr>
-        <tr class="border-top">
-          <td class="d-flex justify-content-evenly my-3">
-            <div class="d-flex align-items-center">
+      </tbody>
+      <tfoot>
+        <tr>
+          <td class="text-end pe-4">總金額 NT$ 60</td>
+        </tr>
+      </tfoot>
+    </table>
+    <div class="row ">
+      <div class="col-6  ">
+        <div class="d-flex mt-2 justify-content-center ">
+            <label for="name" class="">您的姓名</label>
+            <input type="text" class="ms-2" id="name" />
+          </div>
+          <div class="d-flex mt-2 justify-content-center">
+            <label for="phone" class="">手機號碼</label>
+            <input type="phone" class="ms-2" id="phone" />
+          </div>
+          <div class="d-flex mt-2 justify-content-center">
+            <label for="email" class="">電子郵件</label>
+            <input type="email" class="ms-2" id="email" />
+          </div>
+          <div class="d-flex mt-2 justify-content-center">
+            <label for="pickup" class="">取餐時間</label>
+            <input type="text" class="ms-2" id="pickup" />
+          </div>
+      </div>
+      <div class="col-6 ">
+        <div class="d-flex align-items-center">
               <label for="coupon" class="pe-4">優惠券</label>
             </div>
             <div>
               <select
-                class="form-select border border-dark form-select-md"
+                class="form-select border border-dark form-select-md w-50"
                 aria-label="coupon"
                 id="coupon"
               >
@@ -73,68 +73,67 @@
                 <option value="3">優惠券</option>
               </select>
             </div>
-          </td>
-        </tr>
-        <tr class="">
-          <td class="d-flex justify-content-end my-3">
-            <!-- 切換區 -->
-            <!--https://bootstrap5.hexschool.com/docs/5.0/forms/checks-radios/#inline-->
-            <div class="mx-3">
-              <input
-                class="form-check-input me-1"
-                type="radio"
-                name="inlineRadioOptions"
-                id="inlineRadio1"
-                value="option1"
-              />
-              <label class="form-check-label" for="inlineRadio1">現金</label>
-            </div>
-            <div class="mx-3">
-              <input
-                class="form-check-input me-1"
-                type="radio"
-                name="inlineRadioOptions"
-                id="inlineRadio1"
-                value="option1"
-              />
-              <label class="form-check-label" for="inlineRadio1">信用卡</label>
-            </div>
-            <div class="mx-3">
-              <input
-                class="form-check-input me-1"
-                type="radio"
-                name="inlineRadioOptions"
-                id="inlineRadio1"
-                value="option1"
-              />
-              <label class="form-check-label" for="inlineRadio1">Line Pay</label>
-            </div>
-            <!-- /切換區 -->
-          </td>
-        </tr>
-      </tbody>
-      <tfoot>
-        <tr>
-          <td class="text-end pe-4">總金額 NT$ 60</td>
-        </tr>
-      </tfoot>
-    </table>
-    <div class="mb-3 d-flex justify-content-evenly mb-3">
-      <button type="button" class="btn btn-outline-primary">返回</button>
-      <button
-        type="button"
-        class="btn btn-outline-primary"
-        data-bs-toggle="modal"
-        data-bs-target="#exampleModal"
-      >
-        送出訂單
-      </button>
+
+            <div class="mx-3 mt-3">
+                  <input
+                    class="form-check-input me-1"
+                    type="radio"
+                    name="inlineRadioOptions"
+                    id="inlineRadio1"
+                    value="option1"
+                  />
+                  <label class="form-check-label" for="inlineRadio1">現金</label>
+                </div>
+                <div class="mx-3">
+                  <input
+                    class="form-check-input me-1"
+                    type="radio"
+                    name="inlineRadioOptions"
+                    id="inlineRadio1"
+                    value="option1"
+                  />
+                  <label class="form-check-label" for="inlineRadio1">信用卡</label>
+                </div>
+                <div class="mx-3">
+                  <input
+                    class="form-check-input me-1"
+                    type="radio"
+                    name="inlineRadioOptions"
+                    id="inlineRadio1"
+                    value="option1"
+                  />
+                  <label class="form-check-label" for="inlineRadio1">Line Pay</label>
+              </div>
+      </div>
+      <div class="col-6">
+        <div class=" mt-4  d-flex justify-content-center">
+            <button type="button" class="btn btn-outline-primary ">返回</button>
+            <button type="button" class="btn btn-outline-primary ms-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              送出訂單
+            </button>
+          </div>
+      </div>
     </div>
-  </form>
+
+
+
+
+
+      
+
+  </div>
+
+
+
 </template>
 
 <style lang="scss">
 a {
   text-decoration: none;
 }
+.x{
+  height: 100vh;
+}
 </style>
+
+
