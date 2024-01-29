@@ -53,6 +53,8 @@ export default {
             this.$axios.delete(`/bookingfrom/${ordersId}`)
                 .then((response) => {
                     console.log(response);
+                    alert('成功取消');
+                    
                 })
                 .catch((err) => {
                     console.log(err);

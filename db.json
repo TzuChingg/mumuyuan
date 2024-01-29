@@ -470,20 +470,12 @@
       "day": "2024/01/01",
       "product": [
         {
-          "name": "牛肉串",
+          "name": "櫛瓜",
           "quantity": 5
         },
         {
-          "name": "豬肉串",
+          "name": "椒鹽肥腸",
           "quantity": 3
-        },
-        {
-          "name": "豬肉串",
-          "quantity": 3
-        },
-        {
-          "name": "雞肉串",
-          "quantity": 2
         }
       ],
       "price": 300,
@@ -498,7 +490,7 @@
       "orderScore": 1,
       "flavor": 1,
       "spicy": 1,
-      "id": 1
+      "id": 2
     },
     {
       "isMember": true,
@@ -508,20 +500,16 @@
       "day": "2024/01/01",
       "product": [
         {
-          "name": "牛肉串",
+          "name": "剝皮辣椒豬捲",
           "quantity": 5
         },
         {
-          "name": "豬肉串",
+          "name": "醬烤雞心",
           "quantity": 3
         },
         {
-          "name": "豬肉串",
+          "name": "干貝牛肉捲",
           "quantity": 3
-        },
-        {
-          "name": "雞肉串",
-          "quantity": 2
         }
       ],
       "price": 300,
@@ -536,7 +524,7 @@
       "orderScore": 1,
       "flavor": 1,
       "spicy": 1,
-      "id": 1
+      "id": 3
     },
     {
       "isMember": true,
@@ -546,20 +534,8 @@
       "day": "2024/01/01",
       "product": [
         {
-          "name": "牛肉串",
+          "name": "剝皮辣椒豬捲",
           "quantity": 5
-        },
-        {
-          "name": "豬肉串",
-          "quantity": 3
-        },
-        {
-          "name": "豬肉串",
-          "quantity": 3
-        },
-        {
-          "name": "雞肉串",
-          "quantity": 2
         }
       ],
       "price": 300,
@@ -574,7 +550,7 @@
       "orderScore": 1,
       "flavor": 1,
       "spicy": 1,
-      "id": 1
+      "id": 4
     }
   ],
   "news": [
@@ -588,16 +564,6 @@
     }
   ],
   "bookingfrom": [
-    {
-      "name": "Tina",
-      "personCount": 3,
-      "phone": "0900123456",
-      "mail": "tt@gmail.com",
-      "day": "2024/01/25",
-      "time": "11:00",
-      "isCheck": false,
-      "id": 1
-    },
     {
       "name": "mary",
       "personCount": 10,
