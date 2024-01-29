@@ -11,14 +11,11 @@ export default {
   },
   methods: { ...mapActions(menuStore, ['loadData']) },
   computed: { ...mapState(menuStore, ['sortProducts']) },
-  created() {
-    console.log(this.$route.params)
-    const categoryId = 6
-    axios
-      .get(`${url}/products?category=${categoryId}`)
+  created() {      
+    this.$axios
+      .get(`/products`)
       .then((res) => {
-        this.products = res.data
-        console.log(res.data)
+        this.products = res.data        
       })
       .catch((e) => {
         console.log(e)
@@ -30,9 +27,8 @@ export default {
 <template>
   <!--test-->
   <router-view></router-view>
-  
   <!--test-->
-  <!-- <div class="row row-cols-3 mb-4 g-4">
+  <div class="row row-cols-3 mb-4 g-4">
     <div class="col" v-for="product in products" :key="product.id">
       <div class="card aligh-middle">
         <img :src="product.image" :alt="product.productName" class="card-img-top text-center" />
@@ -74,7 +70,7 @@ export default {
         </div>
       </div>
     </div>
-  </div> -->
+  </div> 
 </template>
 
 <style lang="scss">

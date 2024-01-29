@@ -14,8 +14,8 @@ export default {
   created() {
     console.log(this.$route.params)
     const categoryId = 3
-    axios
-      .get(`${url}/products?category=${categoryId}`)
+    this.$axios
+      .get(`/products?category=${categoryId}`)
       .then((res) => {
         this.products = res.data
         console.log(res.data)

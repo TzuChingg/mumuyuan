@@ -16,12 +16,10 @@ const useCategoryStore = defineStore('category', {
   }),
   actions: {
     // 取 json server 的 categories
-    loadData: ({ categories }) => {      
+    loadData: async ({ categories }) => {
       try {
-        let result = axios.get(`${url}/categories`)
+        let result = await axios.get(`${url}/categories`)
         categories = result.data
-        console.log('categories' + categories)
-        console.log('result.data' + result.data)
         return categories
       } catch (err) {
         console.log(err)

@@ -11,14 +11,14 @@ import memberRouter from './memberRouter' //會員中心
 import backend from './backend'
 
 //主頁
-import IndexTest from '/src/views/eric/IndexTest.vue'
+import indexPage from '/src/views/ching/indexPage.vue'
 
 // 線上點餐
 import MenuRouter from './claire/menuRouter'
 import CartRouter from './claire/cartRouter'
 
 const routes = [
-  { path: '/', component: IndexTest },
+  //{ path: '/', component: IndexTest },
   { ...MenuRouter },
   { ...CartRouter },
   { ...loginRouter },

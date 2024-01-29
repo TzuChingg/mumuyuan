@@ -31,16 +31,16 @@
                       </div>
                       <div class="row text-center align-items-center py-3">
                           <div class="col-6  ">
-                              <button type="button" class="btn btn-danger ms-6" data-bs-toggle="modal" data-bs-target="#goDown">下架</button>
+                              <button type="button" class="btn btn-danger ms-6" data-bs-toggle="modal" :data-bs-target="'#goDown' +index">下架</button>
                           </div>
                           <div class="col-6 ">
-                              <button type="button" class="btn btn-primary me-6" data-bs-toggle="modal" data-bs-target="#update">修改</button>
+                              <button type="button" class="btn btn-primary me-6" data-bs-toggle="modal" :data-bs-target="'#update' +index">修改</button>
                           </div>
                       </div>
                 </div>
               </div>
               <!-- model -->
-              <div class="modal fade" id="goDown" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
+              <div class="modal fade" :id="'goDown' +index" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
                     <div class="modal-dialog">
                       <div class="modal-content border-0">
                           <div class="modal-body fs-3">
@@ -54,7 +54,7 @@
                     </div>
               </div> 
               <!-- model -->
-              <div class="modal fade" id="update" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
+              <div class="modal fade" :id="'update' +index" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
                     <div class="modal-dialog">
                       <div class="modal-content border-0">
                           <div class="modal-body fs-3">
@@ -66,7 +66,7 @@
                           </div>
                       </div>
                     </div>
-                </div>
+              </div>
             </div>
             </div>
             <div class="d-flex justify-content-center h-25 mt-3">
@@ -132,13 +132,18 @@
                             <h4 class="me-6">{{down.point}}</h4>
                         </div>
                     </div>
-                      <div class="m-3">
-                            <button type="button" class="btn btn-danger w-100" data-bs-toggle="modal" data-bs-target="#goon">上架</button>
+                      <div class="row text-center align-items-center py-3">
+                        <div class="col-6  ">
+                          <button type="button" class="btn btn-danger ms-6" data-bs-toggle="modal" :data-bs-target="'#goon'+index">上架</button>
+                        </div>
+                        <div class="col-6 ">
+                          <button type="button" class="btn btn-danger me-6" data-bs-toggle="modal" :data-bs-target="'#del'+index">刪除</button>
+                        </div>
                       </div>
                 </div>
               </div>
               <!-- model -->
-              <div class="modal fade" id="goon" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
+              <div class="modal fade" :id="'goon'+index" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
                     <div class="modal-dialog">
                       <div class="modal-content border-0">
                           <div class="modal-body fs-3">
@@ -150,7 +155,21 @@
                           </div>
                   </div>
                 </div>
-              </div> 
+              </div>
+              <!-- model -->
+              <div class="modal fade" :id="'del'+index" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
+                    <div class="modal-dialog">
+                      <div class="modal-content border-0">
+                          <div class="modal-body fs-3">
+                          是否刪除折價券?
+                          </div>
+                          <div class="modal-footer border-0">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                          <button type="button" class="btn btn-primary"  data-bs-dismiss="modal"  @click="del(down.id)" >確認</button>
+                          </div>
+                      </div>
+                    </div>
+              </div>  
             </div>
             </div>
             <div class="d-flex justify-content-center h-25 mt-3">
@@ -245,6 +264,7 @@ methods: {
   },
   pushData(){
     this.$axios.post('/coupons', this.dataForm)
+    location.reload();
   },  
   goDown(id){
     const data = { isLook: true };
@@ -259,6 +279,10 @@ methods: {
   update(id,point){
     const data = {point:`${point}`};
     this.$axios.patch(`/coupons/${id}`, data)
+  },
+  del(id){
+      this.$axios.delete(`/coupons/${id}`)
+      location.reload();
   },
 },
 created() {

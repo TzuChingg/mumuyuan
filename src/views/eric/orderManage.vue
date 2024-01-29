@@ -5,19 +5,20 @@
         </aside>
         <transition name="fade" mode="out-in">
           <main v-if="select==1" class="main container">
+            <WebSocketExample />
             <div class="w-25 mt-5">              
               <select-list :options="options" @updata="get" v-once></select-list>
             </div>  
-            <div class="card mt-2 shadow-sm w-100 mb-3">
-              <div class="card-body" v-for="(order,index) in order" :key="index">
-                <div class="accordion accordion-flush " id="accordionFlushExample">
+            <div class="card mt-2 shadow-sm w-100 mb-3" v-for="(order,index) in order" :key="index">
+              <div class="card-body" >
+                <div class="accordion accordion-flush " :id="'accordionFlushExample'+index">
                   <div class="accordion-item " >
                       <h2 class="accordion-header " :id="'flush-heading' + index">
-                        <button class="accordion-button collapsed shadow-none" type="button" data-bs-toggle="collapse" :data-bs-target="'#flush-collapseOne'+ index" aria-expanded="false" aria-controls="flush-collapseOne">
+                        <button class="accordion-button collapsed shadow-none" type="button" data-bs-toggle="collapse" :data-bs-target="'#flush-collapseOne'+ index" aria-expanded="false" :aria-controls="'flush-collapseOne'+index">
                             <strong class="me-5 fs-4">{{order.name}}</strong> <span class="ms-5 mt-11 fs-4">手機:{{order.phone}}</span><span class="ms-5 mt-11 fs-4">日期:{{order.day}}</span>
                         </button>
                       </h2>
-                      <div :id="'flush-collapseOne'+index" class="accordion-collapse collapse " :aria-labelledby="'flush-heading' + index" data-bs-parent="#accordionFlushExample" >
+                      <div :id="'flush-collapseOne'+index" class="accordion-collapse collapse " :aria-labelledby="'flush-heading' + index" :data-bs-parent="'#accordionFlushExample'+index" >
                           <div class="accordion-body" >     
                             <div class="row row-cols-2 " >
                                 <div class="col d-flex flex-wrap h-25" >  
@@ -30,6 +31,9 @@
                                       <tbody>
                                         <tr>
                                           <td class="fs-5 "><strong>口味:</strong>{{ order.flavor}}</td>
+                                        </tr>
+                                        <tr>
+                                          <td class="fs-5 "><strong>辣度:</strong>{{ order.spicy}}</td>
                                         </tr>
                                         <tr>
                                           <td class="fs-5 "><strong>是否要餐具:</strong>{{ order.tableware ? "要":"不要" }}</td>
@@ -54,8 +58,8 @@
                                         </tr>
                                       </tbody>
                                       <tfoot>
-                                        <button type="btn" class="btn btn-primary w-100 mb-1"  data-bs-toggle="modal" data-bs-target="#ok">接受</button>
-                                      <button type="btn" class="btn btn-primary w-100 mt-1" data-bs-toggle="modal" data-bs-target="#reject">拒絕</button>
+                                        <button type="btn" class="btn btn-primary w-100 mb-1"  data-bs-toggle="modal" :data-bs-target="'#ok'+index">接受</button>
+                                      <button type="btn" class="btn btn-primary w-100 mt-1" data-bs-toggle="modal" :data-bs-target="'#reject'+index">拒絕</button>
                                       </tfoot>
                                     </table>
                                 </div>
@@ -66,7 +70,7 @@
                 </div>
 
                 <!-- model -->
-                <div class="modal fade" id="ok" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
+                <div class="modal fade" :id="'ok'+index" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
                   <div class="modal-dialog">
                     <div class="modal-content border-0">
                         <div class="modal-body fs-3">
@@ -80,7 +84,7 @@
                   </div>
                 </div>
                 <!-- model -->
-                <div class="modal fade" id="reject" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
+                <div class="modal fade" :id="'reject'+index" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
                   <div class="modal-dialog">
                     <div class="modal-content border-0">
                         <div class="modal-body fs-3">
@@ -124,6 +128,9 @@
                                           <td class="fs-5 "><strong>口味:</strong>{{ order.flavor}}</td>
                                         </tr>
                                         <tr>
+                                          <td class="fs-5 "><strong>辣度:</strong>{{ order.spicy}}</td>
+                                        </tr>
+                                        <tr>
                                           <td class="fs-5 "><strong>是否要餐具:</strong>{{ order.tableware ? "要":"不要" }}</td>
                                         </tr>
                                         <tr>
@@ -146,7 +153,7 @@
                                         </tr>
                                       </tbody>
                                       <tfoot>
-                                        <button type="btn" class="btn btn-primary w-100 mt-1" data-bs-toggle="modal" data-bs-target="#finish">完成</button>
+                                        <button type="btn" class="btn btn-primary w-100 mt-1" data-bs-toggle="modal" :data-bs-target="'#finish'+index">完成</button>
                                       </tfoot>
                                     </table>
                                 </div>
@@ -156,7 +163,7 @@
                   </div>
                 </div>
                 <!-- model -->
-                <div class="modal fade" id="finish" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
+                <div class="modal fade" :id="'finish'+index" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
                   <div class="modal-dialog">
                     <div class="modal-content border-0">
                         <div class="modal-body fs-3">
@@ -178,12 +185,14 @@
 </template>
 <!--   -->
 <script>
+import WebSocketExample from '/src/components/eric/WebSocketExample.vue';
 import BackendFunctions from '/src/components/eric/BackendFunctions.vue';
 import selectList from '/src/components/eric/selectList.vue';
 export default {
   components: {
     BackendFunctions,
     selectList,
+    WebSocketExample 
   },
   // 
   data() {
@@ -230,17 +239,25 @@ export default {
         res.data.forEach(element => {
           const foods = []
           let taste = ""
-
+          let spicy = ""
           element.product.forEach(item=>{
               foods.push(item.name+"X"+item.quantity)
           })
 
           if(element.flavor == 1){
-            taste = "正常"
+            taste = "梅粉"
           }else if(element.flavor == 2){
-            taste = "重口味"
+            taste = "秘粉"
           }else if(element.flavor == 3){
-            taste = "辣"
+            taste = "椒鹽"
+          }
+
+          if(element.spicy == 1){
+            spicy = "不辣"
+          }else if(element.spicy == 2){
+            spicy = "小辣"
+          }else if(element.spicy == 3){
+            spicy = "大辣"
           }
 
           if(element.status == 1){
@@ -256,6 +273,7 @@ export default {
             total:element.price,
             food:foods,
             flavor:taste,
+            spicy:spicy,
             day:element.day,
             id:element.id,
 
@@ -277,6 +295,7 @@ export default {
             total:element.price,
             food:foods,
             flavor:taste,
+            spicy:spicy,
             day:element.day,
             id:element.id,
 

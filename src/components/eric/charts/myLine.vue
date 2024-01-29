@@ -21,7 +21,7 @@ export default {
           
         },
         xaxis: {
-          categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998],
+          categories: [1,5,10, 15, 20, 25, 30],
           
         },
         
@@ -31,12 +31,20 @@ export default {
       series: [
         {
           name: "series-1",
-          data: [30, 40, 35, 50, 49, 60, 70, 91],
+          data: [],
           
         },
       ],
 
     };
   },
+  mounted(){
+    this.$axios.get('/orders')
+    .then(res=>{
+      res.data.forEach(element=>{
+        this.series[0].data.push(element.price)
+      })
+    })
+  }
 };
 </script>

@@ -9,7 +9,6 @@ export default {
                 name: "",
                 phone: "",
                 identity: "user",
-                couponId: [],
                 point: 0,
             },
             dbCheckPassword: false,
@@ -23,14 +22,14 @@ export default {
     },
     methods: {
         startSignin() {
-            this.$http.get(`http://localhost:3000/users?email=${this.userInfo.email}`)
+            this.$axios.get(`/users?email=${this.userInfo.email}`)
                 .then((response) => {
                     (response.data.length) ? alert('已被註冊') : this.noUsed = !this.noUsed;
                 })
         },
         finishSignin() {
             if (!this.isSome) return;
-            this.$http.post('http://localhost:3000/users', {
+            this.$axios.post('/users', {
                 ...this.userInfo
             }).then((response) => {
                 alert('成功註冊');

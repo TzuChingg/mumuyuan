@@ -14,8 +14,8 @@ export default {
   created() {
     console.log(this.$route.params)
     const categoryId = 5
-    axios
-      .get(`${url}/products?category=${categoryId}`)
+    this.$axios
+      .get(`/products?category=${categoryId}`)
       .then((res) => {
         this.products = res.data
         console.log(res.data)
@@ -29,7 +29,7 @@ export default {
 
 <template>
   <!--test-->
-  <router-view></router-view>  
+  <router-view></router-view>
   <!--test-->
   <div class="row row-cols-3 mb-4 g-4">
     <div class="col" v-for="product in products" :key="product.id">

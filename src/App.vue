@@ -52,6 +52,13 @@ export default {
 }
 .indexheigth {
   min-height: 100vh;
+  background: #d8d0ae;
+}
+img{
+  height: 100vh;
+  width: 100%;
+  background-position: center center;
+  background-size: cover;
 }
 img{
   height: 100vh;
