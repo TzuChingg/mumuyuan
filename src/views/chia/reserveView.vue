@@ -269,11 +269,6 @@ export default {
                 <button type="button" class="d-block btn btn-dark mx-auto my-5 py-2 px-3" @click="goReserve"
                     :disabled="allTrue">送出預定</button>
             </div>
-            <div class="imgContent pt-5">
-                <img src="https://picsum.photos/id/10/700/300" alt="" class="col-4">
-                <img src="https://picsum.photos/id/20/700/300" alt="" class="col-4">
-                <img src="https://picsum.photos/id/30/700/300" alt="" class="col-4">
-            </div>
         </div>
     </div>
 </template>

@@ -30,13 +30,6 @@ export default {
     },
     methods: {
         userlogin() {
-            /*
-            json-server-auth src/views/chia/chiapin.json
-            */
-            // this.$http.get('https://randomuser.me/api/').then((response) => {
-            //     console.log(response)
-            //     this.$router.push({ path: '/' });
-            // })
             this.$axios.post('/signin', {
                 ...this.userInput
             }).then((response) => {
