@@ -12,7 +12,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="obj in tidyResponse">
+                <tr v-for="(obj,idx) in tidyResponse" :key="idx">
                     <td>{{ obj.day }}</td>
                     <th>{{ obj.name }}</th>
                     <td>{{ obj.phone }}</td>

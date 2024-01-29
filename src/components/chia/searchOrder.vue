@@ -32,11 +32,10 @@
                         </thead>
                         <tbody>
                             <tr v-for="food in obj.product">
-                                <td><img style="width: 60px;" :src="foodImage[food.name]['image']" alt=""></td>
+                                <td><img style="width: 60px;" :src="food.image" alt=""></td>
                                 <td class="fs-5">{{ food.name }}</td>
-                                <!-- <td class="text-Secondary fs-6">{{ foodImage[food.name]['description'] }}</td> -->
                                 <td>{{ food.quantity }}</td>
-                                <td>{{ food.quantity * foodImage[food.name]['price'] }}</td>
+                                <td>{{ food.quantity * food.price }}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -119,17 +118,26 @@ export default {
     props: ["getResponse"],
     data() {
         return {
-            getProducts: {}
+            getProducts: []
         }
     },
     created() {
-        this.$axios.get('/products')
-            .then((res) => {
-                this.getProducts = res.data;
-            })
-            .catch((err) => {
-                console.log(err);
-            })
+        // this.$axios.get('/products')
+        //     .then((res) => {
+        //         console.log(res.data);
+        //         // this.getProducts = res.data;
+
+
+        //         res.data.forEach((item) => {
+        //             this.getProducts.push({
+        //                 name: item.image,
+        //             })
+        //         })
+        //         console.log(this.getProducts);
+        //     })
+        //     .catch((err) => {
+        //         console.log(err);
+        //     })
     },
     computed: {
         tidyResponse() {
@@ -159,15 +167,6 @@ export default {
                 }
             };
         },
-        foodImage() {
-            return this.getProducts.reduce((result, obj) => {
-                const { productName, image, price, description } = obj;
-                result[productName] = {
-                    image, price, description
-                }
-                return result;
-            }, {});
-        }
     }
 }
 </script>
