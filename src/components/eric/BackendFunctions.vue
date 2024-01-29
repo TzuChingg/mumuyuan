@@ -51,12 +51,12 @@
 
 
 <script>
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import { docCookies } from '../../assets/cookie';
 
 export default {
 data() {
     return {
+        
         menuItems:[
             {   label:"訂單狀態",
                 expend:false,
