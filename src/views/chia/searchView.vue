@@ -17,7 +17,7 @@ export default {
             if (this.userInput.phone.trim() === '' ||
                 this.userInput.mail.trim() === '' ||
                 this.radioToggle === '') return;
-            this.$http.get(`http://localhost:3000/${this.radioToggle}?phone=${this.userInput.phone}&mail=${this.userInput.mail}`)
+            this.$axios.get(`/${this.radioToggle}?phone=${this.userInput.phone}&mail=${this.userInput.mail}`)
                 .then((response) => {
                     if (response.status !== 200 || response.data.length === 0) return;
                     this.getResponse = [...response.data];
