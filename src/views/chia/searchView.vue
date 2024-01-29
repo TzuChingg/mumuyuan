@@ -46,6 +46,11 @@ export default {
     components: {
         searchOrder,
         searchSeat
+    },
+    watch:{
+        radioToggle(){
+            this.getResponse = [];
+        }
     }
 }
 </script>

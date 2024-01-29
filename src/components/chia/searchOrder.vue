@@ -1,15 +1,14 @@
 <template>
-    <div class="accordion w-70 m-auto mb-5" id="accordionExample">
-        <div class="accordion-item" v-for="obj in tidyResponse">
-            <h2 class="accordion-header" id="headingOne">
-                <div class="p-3  accordion-button collapsed " data-bs-toggle="collapse" data-bs-target="#collapseOne"
-                    aria-expanded="true" aria-controls="collapseOne">
-                    <p class="mb-0 fs-5 fw-bolder me-5">訂單編號 : 1130103-1</p>
-                    <p class="mb-0 fs-5 fw-bolder">日期 1130103</p>
+    <div class="accordion w-70 m-auto mb-5" :id="'accordionExample' + index">
+        <div class="accordion-item" v-for="(obj, index) in tidyResponse" :key="index">
+            <h2 class="accordion-header" :id="'headingOne' + index">
+                <div class="p-3  accordion-button collapsed " data-bs-toggle="collapse"
+                    :data-bs-target="'#collapseOne' + index" aria-expanded="true" :aria-controls="'collapseOne' + index">
+                    <p class="mb-0 fs-5 fw-bolder me-5">訂單編號 : {{ obj.day + '-' + obj.id }}</p>
+                    <p class="mb-0 fs-5 fw-bolder">日期 {{ obj.day }}</p>
                 </div>
             </h2>
-            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
-                data-bs-parent="#accordionExample">
+            <div :id="'collapseOne' + index" class="accordion-collapse collapse" :aria-labelledby="'headingOne' + index">
                 <div class="accordion-body">
                     <div class="status mb-3">
                         <p class="fs-4 fw-bolder text-center text-muted mb-4">出餐狀態</p>
@@ -25,19 +24,18 @@
                         <thead>
                             <tr>
                                 <th class="col-1">圖片</th>
-                                <th class="col-3">品項</th>
-                                <th class="col-6">介紹</th>
-                                <th class="col-1"></th>
-                                <th class="col-1"></th>
+                                <th class="col-2">品項</th>
+                                <!-- <th class="col-7">介紹</th> -->
+                                <th class="col-1">數量</th>
+                                <th class="col-1">金額</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr v-for="food in obj.product">
-                                <td><img style="width: 60px;" :src="foodImage[food.name]" alt=""></td>
-                                 <td>{{ food.name }}</td>
-                               <!-- <td>{{ food.name }}</td>
+                                <td><img style="width: 60px;" :src="food.image" alt=""></td>
+                                <td class="fs-5">{{ food.name }}</td>
                                 <td>{{ food.quantity }}</td>
-                                <td>{{ food.name }}</td> -->
+                                <td>{{ food.quantity * food.price }}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -54,7 +52,7 @@
                             </div>
                             <div class="my-1">
                                 <label class="fs-6 col-4">訂單時間</label>
-                                <input class="col input-set" type="text" :value="obj.name" disabled readonly>
+                                <input class="col input-set" type="text" :value="obj.day" disabled readonly>
                             </div>
                             <div class="my-1">
                                 <label class="fs-6 col-4">附贈餐具</label>
@@ -120,18 +118,26 @@ export default {
     props: ["getResponse"],
     data() {
         return {
-            getProducts: {}
+            getProducts: []
         }
     },
     created() {
-        this.$axios.get('/products')
-            .then((res) => {
-                this.getProducts = res.data;
-                console.log(this.getProducts);
-            })
-            .catch((err) => {
-                console.log(err);
-            })
+        // this.$axios.get('/products')
+        //     .then((res) => {
+        //         console.log(res.data);
+        //         // this.getProducts = res.data;
+
+
+        //         res.data.forEach((item) => {
+        //             this.getProducts.push({
+        //                 name: item.image,
+        //             })
+        //         })
+        //         console.log(this.getProducts);
+        //     })
+        //     .catch((err) => {
+        //         console.log(err);
+        //     })
     },
     computed: {
         tidyResponse() {
@@ -161,16 +167,6 @@ export default {
                 }
             };
         },
-        foodImage() {
-            return this.getProducts.reduce((result, obj) => {
-                const { productName, image } = obj;
-                result[productName] = image;
-                return result;
-            }, {});
-        }
-    },
-    mounted() {
-
     }
 }
 </script>
