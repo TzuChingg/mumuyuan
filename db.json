@@ -26,6 +26,17 @@
       "identity": "admin",
       "point": 30,
       "id": 3
+    },
+    {
+      "email": "eirc@gmail.com",
+      "password": "123456",
+      "copyPassword": "123456",
+      "name": "eric",
+      "phone": "095565687",
+      "identity": "user",
+      "couponId": [],
+      "point": 0,
+      "id": 4
     }
   ],
   "products": [
@@ -445,7 +456,7 @@
         }
       ],
       "price": 300,
-      "status": 1,
+      "status": 2,
       "userId": 1,
       "type": true,
       "tableware": true,
@@ -557,16 +568,6 @@
   ],
   "bookingfrom": [
     {
-<<<<<<< HEAD
-      "name": "mary",
-      "personCount": 10,
-      "phone": "0423232323",
-      "mail": "maaa@gmail.com",
-      "day": "2024/01/24",
-      "time": "11:00",
-      "isCheck": false,
-      "id": 2
-=======
       "name": "Tina",
       "personCount": 3,
       "phone": "0900123456",
@@ -575,7 +576,6 @@
       "time": "11:00",
       "isCheck": false,
       "id": 1
->>>>>>> 066ab16e68333b2158386b81e97b14a59f0b16f7
     }
   ],
   "periods": [

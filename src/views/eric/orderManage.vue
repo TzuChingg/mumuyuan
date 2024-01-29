@@ -171,7 +171,7 @@
                         </div>
                         <div class="modal-footer border-0">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
-                        <button type="button" class="btn btn-primary"  data-bs-dismiss="modal"  @click="finish(order.id)" >確認</button>
+                        <button type="button" class="btn btn-primary"  data-bs-dismiss="modal"  @click="pushForCustomer(order)" >確認</button>
                         </div>
                     </div>
                   </div>
@@ -208,6 +208,8 @@ export default {
           { value: '2', label: '待完成訂單' },
           { value: '1', label: '待確認訂單' },
         ],
+        socket:null,
+        messages:[],
     }
   },
   computed:{
@@ -223,14 +225,18 @@ export default {
       this.$axios.delete(`/orders/${id}`)
       location.reload();
     },
-    finish(id){
-      const data = { status: 3 };
-      this.$axios.patch(`/orders/${id}`, data)
-      location.reload();
-    },
     get(data){
        this.select = data
     },
+
+    pushForCustomer(data){
+      // const data = { status: 3 };
+      // this.$axios.patch(`/orders/${id}`, data)
+      // location.reload();
+      this.socket.send(JSON.stringify({
+        data:data
+      }))
+    }
   },
 
   mounted() {
@@ -309,6 +315,18 @@ export default {
         });
       })
       
+      this.socket = new WebSocket('ws://localhost:8080/ws');
+      this.socket.onmessage = (event) => {
+      const message = JSON.parse(event.data);
+      console.log(message)
+      // this.messages.push(message);
+      };
+  },
+  beforeUnmount() {
+    // Close the WebSocket connection when the component is destroyed
+    if (this.socket) {
+      this.socket.close();
+    }
   },
 };
 </script>
