@@ -14,13 +14,13 @@ import backend from './backend'
 import IndexTest from '/src/views/eric/IndexTest.vue'
 
 // 線上點餐
-import Menu from './claire/menuRouter'
-import Cart from './claire/cartRouter'
+import MenuRouter from './claire/menuRouter'
+import CartRouter from './claire/cartRouter'
 
 const routes = [
   { path: '/', component: IndexTest },
-  { ...Menu },
-  { ...Cart },
+  { ...MenuRouter },
+  { ...CartRouter },
   { ...loginRouter },
   { ...reserveRouter },
   { ...searchRouter },

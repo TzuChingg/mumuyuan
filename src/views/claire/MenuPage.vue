@@ -12,7 +12,7 @@ export default { components: { TitleComponent, CategoryComponent, MenuComponent 
     <!--category-->
     <CategoryComponent></CategoryComponent>
     <!--title-->
-    <h1 class="my-4 text-center">蔬菜</h1>
+    <h1 class="my-4 text-center"></h1>
     <main>
       <!-- 食材卡片 -->
       <div class="px-3">

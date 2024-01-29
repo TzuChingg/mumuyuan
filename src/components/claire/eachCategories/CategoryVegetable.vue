@@ -1,5 +1,5 @@
 <script>
-import menuStore from '../../stores/menu.js'
+import menuStore from '../../../stores/menu.js'
 import { mapState, mapActions } from 'pinia'
 import axios from 'axios'
 const url = 'http://localhost:3000'
@@ -29,10 +29,9 @@ export default {
 
 <template>
   <!--test-->
-  <router-view></router-view>
-  
+  <router-view></router-view>  
   <!--test-->
-  <!-- <div class="row row-cols-3 mb-4 g-4">
+  <div class="row row-cols-3 mb-4 g-4">
     <div class="col" v-for="product in products" :key="product.id">
       <div class="card aligh-middle">
         <img :src="product.image" :alt="product.productName" class="card-img-top text-center" />
@@ -74,7 +73,7 @@ export default {
         </div>
       </div>
     </div>
-  </div> -->
+  </div>
 </template>
 
 <style lang="scss">
