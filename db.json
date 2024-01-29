@@ -3,6 +3,7 @@
     {
       "email": "joker@gmail.com",
       "password": "$2a$10$l0l6eHyGFe.CSc4CFWuxh.GLmFJpRpDHj7/ZiPQw19Jk8gB.xmk32",
+      "copyPassword": "123456",
       "name": "joker",
       "phone": "093333333",
       "identity": "baduser",
@@ -12,6 +13,7 @@
     {
       "email": "test@gmail.com",
       "password": "$2a$10$EaQOKGeA7Hs45ymXBFpIG.39.e283yFCR8Brcx3H9l26NQiAtI6m6",
+      "copyPassword": "123456",
       "name": "test",
       "phone": "09222222222",
       "identity": "user",
@@ -21,6 +23,7 @@
     {
       "email": "admin@gmail.com",
       "password": "$2a$10$pbkX8jgDZHTDNP3YMgTKlelUwrm9dEAXAv8hHnZXoGrAgz1gKL/Uq",
+      "copyPassword": "123456",
       "name": "admin",
       "phone": "0911111111",
       "identity": "admin",
@@ -425,18 +428,19 @@
       "isMember": true,
       "name": "eric",
       "phone": "094563131",
+      "mail": "123@123.456",
       "day": "2024/01/01",
       "product": [
         {
-          "name": "牛肉串",
+          "name": "玉米筍",
           "quantity": 5
         },
         {
-          "name": "豬肉串",
+          "name": "豬五花蔥捲",
           "quantity": 3
         },
         {
-          "name": "豬肉串",
+          "name": "鯛魚下巴",
           "quantity": 3
         },
         {
@@ -445,7 +449,7 @@
         }
       ],
       "price": 300,
-      "status": 1,
+      "status": 2,
       "userId": 1,
       "type": true,
       "tableware": true,
@@ -455,13 +459,14 @@
       "comment": "做好吃一點",
       "orderScore": 1,
       "flavor": 1,
-      "spicy": 3,
+      "spicy": 1,
       "id": 1
     },
     {
       "isMember": true,
-      "name": "eric",
-      "phone": "094563131",
+      "name": "tommy",
+      "phone": "0900111222",
+      "mail": "tommy@gmail.com",
       "day": "2024/01/01",
       "product": [
         {
@@ -482,31 +487,32 @@
         }
       ],
       "price": 300,
-      "status": 1,
+      "status": 2,
       "userId": 1,
       "type": true,
       "tableware": true,
       "bags": true,
       "payment": true,
-      "pickTime": "12:00",
+      "pickTime": "17:00",
       "comment": "做好吃一點",
       "orderScore": 1,
-      "flavor": 3,
+      "flavor": 1,
       "spicy": 1,
-      "id": 2
+      "id": 1
     },
     {
       "isMember": true,
-      "name": "eric",
-      "phone": "094563131",
-      "day": "2024/01/30",
+      "name": "jack",
+      "phone": "0900123456",
+      "mail": "jack@gmail.com",
+      "day": "2024/01/01",
       "product": [
         {
           "name": "牛肉串",
           "quantity": 5
         },
         {
-          "name": "百業豆腐",
+          "name": "豬肉串",
           "quantity": 3
         },
         {
@@ -514,35 +520,61 @@
           "quantity": 3
         },
         {
-          "name": "豬血糕",
-          "quantity": 5
-        },
-        {
-          "name": "干貝",
-          "quantity": 4
-        },
-        {
-          "name": "牛小排",
-          "quantity": 2
-        },
-        {
-          "name": "甜不辣",
+          "name": "雞肉串",
           "quantity": 2
         }
       ],
-      "price": 1200,
-      "status": 1,
-      "userId": 3,
+      "price": 300,
+      "status": 2,
+      "userId": 1,
       "type": true,
       "tableware": true,
       "bags": true,
       "payment": true,
-      "pickTime": "22:00",
+      "pickTime": "17:00",
       "comment": "做好吃一點",
       "orderScore": 1,
       "flavor": 1,
-      "spicy": 2,
-      "id": 3
+      "spicy": 1,
+      "id": 1
+    },
+    {
+      "isMember": true,
+      "name": "jack",
+      "phone": "0900123456",
+      "mail": "jack@gmail.com",
+      "day": "2024/01/01",
+      "product": [
+        {
+          "name": "牛肉串",
+          "quantity": 5
+        },
+        {
+          "name": "豬肉串",
+          "quantity": 3
+        },
+        {
+          "name": "豬肉串",
+          "quantity": 3
+        },
+        {
+          "name": "雞肉串",
+          "quantity": 2
+        }
+      ],
+      "price": 300,
+      "status": 2,
+      "userId": 1,
+      "type": true,
+      "tableware": true,
+      "bags": true,
+      "payment": true,
+      "pickTime": "17:00",
+      "comment": "做好吃一點",
+      "orderScore": 1,
+      "flavor": 1,
+      "spicy": 1,
+      "id": 1
     }
   ],
   "news": [
@@ -557,16 +589,6 @@
   ],
   "bookingfrom": [
     {
-<<<<<<< HEAD
-      "name": "mary",
-      "personCount": 10,
-      "phone": "0423232323",
-      "mail": "maaa@gmail.com",
-      "day": "2024/01/24",
-      "time": "11:00",
-      "isCheck": false,
-      "id": 2
-=======
       "name": "Tina",
       "personCount": 3,
       "phone": "0900123456",
@@ -575,7 +597,16 @@
       "time": "11:00",
       "isCheck": false,
       "id": 1
->>>>>>> 066ab16e68333b2158386b81e97b14a59f0b16f7
+    },
+    {
+      "name": "mary",
+      "personCount": 10,
+      "phone": "0423232323",
+      "mail": "maaa@gmail.com",
+      "day": "2024/01/24",
+      "time": "11:00",
+      "isCheck": false,
+      "id": 2
     }
   ],
   "periods": [

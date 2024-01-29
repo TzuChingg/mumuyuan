@@ -5,14 +5,13 @@ import auth from 'json-server-auth';
 const app = express();
 const jsonServerApp = jsonServer.create();
 const router = jsonServer.router('db.json'); // 這裡指定你的 JSON 文件路徑
-const middlewares = jsonServer.defaults();
-const port = 8080
+const middlewares = jsonServer.defaults()
 
 app.use(cors()); 
 jsonServerApp.use(middlewares);
-jsonServerApp.db = router.db; // 傳遞資料庫對象給 json-server-auth
 jsonServerApp.use(auth);
-app.use('/api', router);
+jsonServerApp.db = router.db; // 傳遞資料庫對象給 json-server-auth
+app.use('/api', [jsonServerApp, router]);
 
 // jsonServerApp.use(jsonServer.defaults());
 

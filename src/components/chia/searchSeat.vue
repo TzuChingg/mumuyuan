@@ -3,38 +3,22 @@
         <table class="table fs-5  align-middle">
             <thead class="table-danger">
                 <tr>
-                    <th scope="col">訂單編號</th>
+                    <th scope="col">日期</th>
                     <th scope="col">訂位人</th>
+                    <th scope="col">手機</th>
                     <th scope="col">人數</th>
                     <th scope="col">時段</th>
-                    <th scope="col">日期</th>
                     <th scope="col">取消訂位</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th>1031212-1</th>
-                    <td>Mark</td>
-                    <td>5</td>
-                    <td>13:00 PM</td>
-                    <td>01/18 (四)</td>
-                    <td><button type="button" class="btn btn-primary">取消</button></td>
-                </tr>
-                <tr>
-                    <th>1031212-2</th>
-                    <td>Tommy</td>
-                    <td>2</td>
-                    <td>11:00 AM</td>
-                    <td>01/19 (五)</td>
-                    <td><button type="button" class="btn btn-primary">取消</button></td>
-                </tr>
-                <tr>
-                    <th>1031212-3</th>
-                    <td>Sun</td>
-                    <td>10</td>
-                    <td>17:00 PM</td>
-                    <td>01/20 (六)</td>
-                    <td><button type="button" class="btn btn-primary">取消</button></td>
+                <tr v-for="obj in tidyResponse">
+                    <td>{{ obj.day }}</td>
+                    <th>{{ obj.name }}</th>
+                    <td>{{ obj.phone }}</td>
+                    <td>{{ obj.personCount }}</td>
+                    <td>{{ obj.time }}</td>
+                    <td><button type="button" class="btn btn-primary" @click="cancelSeat(obj.id)">取消</button></td>
                 </tr>
             </tbody>
         </table>
@@ -52,6 +36,29 @@
 
 <script>
 export default {
+    props: ["getResponse"],
+    data() {
+        return {
+            tidyResponse: []
+        }
+    },
+    mounted() {
+        console.log(this.getResponse);
+        this.tidyResponse = [...this.getResponse];
+        console.log(this.tidyResponse);
+    },
+    methods: {
+        cancelSeat(ordersId) {
+            console.log(ordersId);
+            this.$axios.delete(`/bookingfrom/${ordersId}`)
+                .then((response) => {
+                    console.log(response);
+                })
+                .catch((err) => {
+                    console.log(err);
+                })
+        }
+    },
 
 }
 </script>

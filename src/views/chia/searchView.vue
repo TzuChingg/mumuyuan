@@ -8,11 +8,40 @@ export default {
                 phone: '',
                 mail: '',
             },
-            radioToggle: 'order'
+            radioToggle: '',
+            getResponse: [],
         }
     },
-    created() {
-
+    methods: {
+        startSearch() {
+            if (this.userInput.phone.trim() === '' ||
+                this.userInput.mail.trim() === '' ||
+                this.radioToggle === '') return;
+            this.$axios.get(`/${this.radioToggle}?phone=${this.userInput.phone}&mail=${this.userInput.mail}`)
+                .then((response) => {
+                    if (response.status !== 200 || response.data.length === 0) return;
+                    this.getResponse = [...response.data];
+                })
+        }
+    },
+    computed: {
+        controlBtn() {
+            return (this.userInput.phone.trim() === '' ||
+                this.userInput.mail.trim() === '' ||
+                this.radioToggle === '') ? true : false;
+        },
+        showOrder() {
+            return (this.userInput.phone.trim() !== '' &&
+                this.userInput.mail.trim() !== '' &&
+                this.radioToggle === 'orders' &&
+                this.getResponse.length !== 0) ? true : false;
+        },
+        showSeat() {
+            return (this.userInput.phone.trim() !== '' &&
+                this.userInput.mail.trim() !== '' &&
+                this.radioToggle === 'bookingfrom' &&
+                this.getResponse.length !== 0) ? true : false;
+        }
     },
     components: {
         searchOrder,
@@ -38,23 +67,25 @@ export default {
             </div>
             <div class="radioContent w-70 m-auto mb-4 d-flex align-items-center">
                 <div class="form-check mb-0 me-3">
-                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="order"
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="orders"
                         v-model="radioToggle">
                     <label class="form-check-label fs-5" for="exampleRadios1">
                         訂單
                     </label>
                 </div>
                 <div class="form-check mb-0 me-3">
-                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="seat"
-                        v-model="radioToggle">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2"
+                        value="bookingfrom" v-model="radioToggle">
                     <label class="form-check-label fs-5" for="exampleRadios2">
                         訂位
                     </label>
                 </div>
-                <button type="button" class="btn btn-dark">查詢</button>
+                <button type="button" class="btn btn-dark" :disabled="controlBtn" @click="startSearch">查詢</button>
             </div>
-            <searchOrder v-if="radioToggle == 'order'" />
-            <searchSeat v-else />
+            <div class="min-heigth">
+                <searchOrder v-if="showOrder" :getResponse="getResponse"/>
+                <searchSeat v-if="showSeat" :getResponse="getResponse" />
+            </div>
         </div>
     </div>
 </template>
@@ -73,6 +104,10 @@ export default {
 
         .w-70 {
             width: 70%;
+        }
+
+        .min-heigth {
+            min-height: 300px;
         }
     }
 }
