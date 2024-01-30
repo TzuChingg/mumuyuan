@@ -316,10 +316,13 @@ export default {
       })
       
       this.socket = new WebSocket('ws://localhost:8080/ws');
+      this.socket.onopen = () => {
+      console.log('WebSocket connection opened');
+    };
       this.socket.onmessage = (event) => {
-      const message = JSON.parse(event.data);
-      console.log(message)
-      // this.messages.push(message);
+        const receivedData = JSON.parse(event.data);
+  console.log(receivedData.data);
+      // // this.messages.push(message);
       };
   },
   beforeUnmount() {

@@ -1,24 +1,20 @@
 <template>
-    <div class="accordion w-70 m-auto mb-5" id="accordionExample">
-        <div class="accordion-item" v-for="obj in tidyResponse">
-            <h2 class="accordion-header" id="headingOne">
-                <div class="p-3  accordion-button collapsed " data-bs-toggle="collapse" data-bs-target="#collapseOne"
-                    aria-expanded="true" aria-controls="collapseOne">
+    <div class="accordion w-70 m-auto mb-5" :id="'accordionExample'+index">
+        <div class="accordion-item" v-for="(obj , index) in tidyResponse" :key="index">
+            <h2 class="accordion-header" :id="'headingOne'+index">
+                <div class="p-3  accordion-button collapsed " data-bs-toggle="collapse" :data-bs-target="'#collapseOne'+index"
+                    aria-expanded="true" :aria-controls="'collapseOne'+index">
                     <p class="mb-0 fs-5 fw-bolder me-5">訂單編號 : 1130103-1</p>
                     <p class="mb-0 fs-5 fw-bolder">日期 1130103</p>
                 </div>
             </h2>
-            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
-                data-bs-parent="#accordionExample">
+            <div :id="'collapseOne'+index" class="accordion-collapse collapse" :aria-labelledby="'headingOne'+index"
+                :data-bs-parent="'#accordionExample'+index">
                 <div class="accordion-body">
                     <div class="status mb-3">
                         <p class="fs-4 fw-bolder text-center text-muted mb-4">出餐狀態</p>
-                        <div class="dot-line w-50 m-auto position-relative border border-1 border-light">
-                            <div class="dot position-absolute translate-middle"></div>
-                            <div class="dot position-absolute translate-middle"></div>
-                            <div class="dot position-absolute translate-middle"></div>
-                            <div class="dot position-absolute translate-middle"></div>
-                            <div class="dot position-absolute translate-middle"></div>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="50" aria-valuemax="100" style="width: 75%">25</div>
                         </div>
                     </div>
                     <table class="table table-borderless fs-5">

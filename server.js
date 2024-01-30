@@ -3,10 +3,9 @@ import jsonServer from 'json-server';
 import cors from 'cors';
 import auth from 'json-server-auth';
 import { createServer } from 'http';
-import { WebSocketServer } from 'ws';
+import { WebSocketServer , WebSocket} from 'ws';
 import { v4 as uuidv4 } from 'uuid';
 import { parse } from 'url';
-import { data } from 'jquery';
 
 const app = express();
 const jsonServerApp = jsonServer.create();
@@ -34,16 +33,17 @@ wss.on('connection', function connection(ws) {
   ws.uuid = uuid 
 
   ws.on('message' , (message) =>{
-    sendAllUser(message)
+    const parsedMessage = JSON.parse(message);
+    sendAllUser(parsedMessage);
   })
 });
 
-function sendAllUser(msg){
-  wss.clients.forEach(function (client){
-    if(client.readyState === WebSocket.OPEN && client.uuid !== msg.uuid){
-      client.send(JSON.parse(msg))
+function sendAllUser(msg) {
+  wss.clients.forEach(function (client) {
+    if (client.readyState === WebSocket.OPEN && client.uuid !== msg.uuid) {
+      client.send(JSON.stringify(msg)); // Stringify the object before sending
     }
-  })
+  });
 }
 
 app.on('upgrade', function upgrade(req, soc, head) {

@@ -600,7 +600,6 @@
   ],
   "bookingfrom": [
     {
-<<<<<<< HEAD
       "name": "mary",
       "personCount": 10,
       "phone": "0423232323",
@@ -609,16 +608,6 @@
       "time": "11:00",
       "isCheck": false,
       "id": 2
-=======
-      "name": "Tina",
-      "personCount": 3,
-      "phone": "0900123456",
-      "mail": "tt@gmail.com",
-      "day": "2024/01/25",
-      "time": "11:00",
-      "isCheck": false,
-      "id": 1
->>>>>>> 066ab16e68333b2158386b81e97b14a59f0b16f7
     }
   ],
   "periods": [
