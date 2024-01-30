@@ -6,6 +6,7 @@
       "copyPassword": "123456",
       "name": "joker",
       "phone": "093333333",
+      "coupon":"",
       "identity": "baduser",
       "point": 30,
       "id": 1
@@ -16,6 +17,7 @@
       "copyPassword": "123456",
       "name": "test",
       "phone": "09222222222",
+      "coupon":"",
       "identity": "user",
       "point": 30,
       "id": 2
@@ -26,6 +28,7 @@
       "copyPassword": "123456",
       "name": "admin",
       "phone": "0911111111",
+      "coupon":"",
       "identity": "admin",
       "point": 30,
       "id": 3
