@@ -41,10 +41,5 @@ app.use(createPinia());
 app.use(router);
 
 
-//debug
-app.config.errorHandler = (err,vm,info) =>{
-  console.log(err);
-  console.log(info);
-}
 
 app.mount('#app');

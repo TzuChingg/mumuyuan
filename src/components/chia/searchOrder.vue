@@ -12,8 +12,8 @@
                 <div class="accordion-body">
                     <div class="status mb-3">
                         <p class="fs-4 fw-bolder text-center text-muted mb-4">出餐狀態</p>
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="50" aria-valuemax="100" style="width: 75%">25</div>
+                        <div class="progress " style="height: 35px;" >
+                            <div class="progress-bar progress-bar-striped progress-bar-animated  fs-4 " role="progressbar" aria-valuenow="75" aria-valuemin="0"  aria-valuemax="100" ref="loading" ></div>
                         </div>
                     </div>
                     <table class="table table-borderless fs-5">
@@ -27,7 +27,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="food in obj.product">
+                            <tr v-for="(food,index) in obj.product" :key="index">
                                 <td><img style="width: 60px;" :src="food.image" alt=""></td>
                                 <td class="fs-5">{{ food.name }}</td>
                                 <td>{{ food.quantity }}</td>
@@ -110,30 +110,19 @@
 </template>
 
 <script>
+import { docCookies } from '../../assets/cookie';
+
 export default {
     props: ["getResponse"],
     data() {
         return {
-            getProducts: []
+            getProducts: [],
+            socket:null,
+            status: 0,
         }
     },
     created() {
-        // this.$axios.get('/products')
-        //     .then((res) => {
-        //         console.log(res.data);
-        //         // this.getProducts = res.data;
 
-
-        //         res.data.forEach((item) => {
-        //             this.getProducts.push({
-        //                 name: item.image,
-        //             })
-        //         })
-        //         console.log(this.getProducts);
-        //     })
-        //     .catch((err) => {
-        //         console.log(err);
-        //     })
     },
     computed: {
         tidyResponse() {
@@ -163,7 +152,62 @@ export default {
                 }
             };
         },
+    },
+    watch:{
+        status(){
+            const loadingElement = this.$refs.loading[0];
+            if(this.status == 1){
+                loadingElement.classList.add('wait');
+                loadingElement.innerText = '待接單';
+            }else if (this.status == 2) {
+                loadingElement.classList.add('wait2');
+                loadingElement.classList.remove('wait');
+                loadingElement.innerText = '準備中';
+            } else if (this.status == 3) {
+                loadingElement.classList.add('wait3');
+                loadingElement.classList.remove('wait2');
+                loadingElement.classList.remove('wait');
+                loadingElement.innerText = '餐點完成';
+            }
+        }
+    },
+    methods:{
+
+    },
+    mounted(){
+        this.socket = new WebSocket('ws://localhost:8080/ws');
+        let ids = []
+        this.getResponse.forEach(id=>{
+            ids.push(id.id)
+        })
+        this.socket.onmessage = (event) => {
+        const receivedData = JSON.parse(event.data);
+            if (ids.includes(receivedData.id)) {
+                this.status = receivedData.data;
+            }
+        };
+        this.status = this.getResponse[0].status
+        const loadingElement = this.$refs.loading[0];
+            if(this.status == 1){
+                loadingElement.classList.add('wait');
+                loadingElement.innerText = '待接單';
+            }else if (this.status == 2) {
+                loadingElement.classList.add('wait2');
+                loadingElement.classList.remove('wait');
+                loadingElement.innerText = '準備中';
+            } else if (this.status == 3) {
+                loadingElement.classList.add('wait3');
+                loadingElement.classList.remove('wait2');
+                loadingElement.classList.remove('wait');
+                loadingElement.innerText = '餐點完成';
+            }
+    },
+    beforeUnmount() {
+    // Close the WebSocket connection when the component is destroyed
+    if (this.socket) {
+        this.socket.close();
     }
+    },
 }
 </script>
 
@@ -210,5 +254,15 @@ export default {
 
 .w-70 {
     width: 70%;
+}
+
+.wait{
+    width: 10%
+}
+.wait2{
+    width: 50%
+}
+.wait3{
+    width: 100%
 }
 </style>

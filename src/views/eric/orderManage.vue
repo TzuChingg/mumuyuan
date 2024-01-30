@@ -23,7 +23,7 @@
                             <div class="row row-cols-2 " >
                                 <div class="col d-flex flex-wrap h-25" >  
                                   <div class="row  text-center  h-25 w-100" >
-                                    <div class="col-3 fs-3 text-nowrap" v-for="(food,index) in order.food" :key="index">{{food}}</div>
+                                    <div class="col-4 fs-4 text-nowrap " v-for="(food,index) in order.food" :key="index">{{food}}</div>
                                   </div>   
                                 </div> 
                                 <div class="col">
@@ -104,8 +104,8 @@
             <div class="w-25 mt-5">
               <select-list :options="options2" @updata="get" v-once></select-list>
             </div>  
-            <div class="card mt-2 shadow-sm w-100">
-              <div class="card-body" v-for="(order,index) in finishorder" :key="index">
+            <div class="card mt-2 shadow-sm w-100" v-for="(order,index) in finishorder" :key="index">
+              <div class="card-body" >
                 <div class="accordion accordion-flush " id="accordionFlushExample">
                   <div class="accordion-item " >
                         <h2 class="accordion-header " :id="'flush-heading' + index">
@@ -118,7 +118,7 @@
                             <div class="row row-cols-2 " >
                                 <div class="col d-flex flex-wrap h-25" >  
                                   <div class="row row-cols-4 text-center  h-25 w-100" >
-                                    <div class="col fs-3 text-nowrap" v-for="(food, foodIndex) in order.food" :key="foodIndex">{{food}}</div>
+                                    <div class="col-4 fs-4 text-nowrap" v-for="(food, foodIndex) in order.food" :key="foodIndex">{{food}}</div>
                                   </div>   
                                 </div> 
                                 <div class="col">
@@ -171,7 +171,7 @@
                         </div>
                         <div class="modal-footer border-0">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
-                        <button type="button" class="btn btn-primary"  data-bs-dismiss="modal"  @click="pushForCustomer(order)" >確認</button>
+                        <button type="button" class="btn btn-primary"  data-bs-dismiss="modal"  @click="pushForCustomer(order.id)" >確認</button>
                         </div>
                     </div>
                   </div>
@@ -218,8 +218,13 @@ export default {
   methods:{
     ok(id){
       const data = { status: 2 };
+      const loadingData = 2
       this.$axios.patch(`/orders/${id}`, data)
       location.reload();
+      this.socket.send(JSON.stringify({
+        data:loadingData,
+        id:id
+      }))
     },
     reject(id){
       this.$axios.delete(`/orders/${id}`)
@@ -229,12 +234,14 @@ export default {
        this.select = data
     },
 
-    pushForCustomer(data){
-      // const data = { status: 3 };
-      // this.$axios.patch(`/orders/${id}`, data)
-      // location.reload();
+    pushForCustomer(id){
+      const data = { status: 3 };
+      const loadingData = 3 
+      this.$axios.patch(`/orders/${id}`, data)
+      location.reload();
       this.socket.send(JSON.stringify({
-        data:data
+        data:loadingData,
+        id:id
       }))
     }
   },
@@ -318,11 +325,6 @@ export default {
       this.socket = new WebSocket('ws://localhost:8080/ws');
       this.socket.onopen = () => {
       console.log('WebSocket connection opened');
-    };
-      this.socket.onmessage = (event) => {
-        const receivedData = JSON.parse(event.data);
-  console.log(receivedData.data);
-      // // this.messages.push(message);
       };
   },
   beforeUnmount() {
