@@ -6,9 +6,8 @@
       "copyPassword": "123456",
       "name": "joker",
       "phone": "093333333",
-      "coupon":"",
-      "identity": "baduser",
       "coupon": "",
+      "identity": "baduser",
       "point": 30,
       "id": 1
     },
@@ -18,7 +17,6 @@
       "copyPassword": "123456",
       "name": "test",
       "phone": "09222222222",
-      "coupon":"",
       "identity": "user",
       "coupon": "",
       "point": 30,
@@ -30,7 +28,6 @@
       "copyPassword": "123456",
       "name": "admin",
       "phone": "0911111111",
-      "coupon":"",
       "identity": "admin",
       "coupon": "",
       "point": 30,
@@ -452,25 +449,25 @@
           "name": "玉米筍",
           "quantity": 5,
           "image": "/木木苑食材修圖/01.jpg",
-          "price":52
+          "price": 52
         },
         {
           "name": "豬五花蔥捲",
           "quantity": 3,
           "image": "/木木苑食材修圖/02.jpg",
-          "price":61
+          "price": 61
         },
         {
           "name": "鯛魚下巴",
           "quantity": 3,
           "image": "/木木苑食材修圖/03.jpg",
-          "price":45
+          "price": 45
         },
         {
           "name": "雞肉串",
           "quantity": 2,
           "image": "/木木苑食材修圖/20.jpg",
-          "price":89
+          "price": 89
         }
       ],
       "price": 300,
@@ -485,7 +482,7 @@
       "orderScore": 1,
       "flavor": 1,
       "spicy": 1,
-      "orderid":"123",
+      "orderid": "20240101ABC",
       "id": 1
     },
     {
@@ -499,25 +496,25 @@
           "name": "玉米筍",
           "quantity": 5,
           "image": "/木木苑食材修圖/01.jpg",
-          "price":52
+          "price": 52
         },
         {
           "name": "豬五花蔥捲",
           "quantity": 3,
           "image": "/木木苑食材修圖/02.jpg",
-          "price":61
+          "price": 61
         },
         {
           "name": "鯛魚下巴",
           "quantity": 3,
           "image": "/木木苑食材修圖/03.jpg",
-          "price":45
+          "price": 45
         },
         {
           "name": "雞肉串",
           "quantity": 2,
           "image": "/木木苑食材修圖/20.jpg",
-          "price":89
+          "price": 89
         }
       ],
       "price": 300,
@@ -532,7 +529,7 @@
       "orderScore": 1,
       "flavor": 1,
       "spicy": 1,
-      "orderid":"123",
+      "orderid": "20240101XXX",
       "id": 2
     },
     {
@@ -546,25 +543,25 @@
           "name": "玉米筍",
           "quantity": 5,
           "image": "/木木苑食材修圖/01.jpg",
-          "price":52
+          "price": 52
         },
         {
           "name": "豬五花蔥捲",
           "quantity": 3,
           "image": "/木木苑食材修圖/02.jpg",
-          "price":61
+          "price": 61
         },
         {
           "name": "鯛魚下巴",
           "quantity": 3,
           "image": "/木木苑食材修圖/03.jpg",
-          "price":45
+          "price": 45
         },
         {
           "name": "雞肉串",
           "quantity": 2,
           "image": "/木木苑食材修圖/20.jpg",
-          "price":89
+          "price": 89
         }
       ],
       "price": 300,
@@ -579,7 +576,7 @@
       "orderScore": 1,
       "flavor": 1,
       "spicy": 1,
-      "orderid":"123",
+      "orderid": "20240101AAA",
       "id": 3
     }
   ],
@@ -667,7 +664,5 @@
   "shop": {
     "shopStatus": false
   },
-  "notice":[
-
-  ]
+  "notice": []
 }
