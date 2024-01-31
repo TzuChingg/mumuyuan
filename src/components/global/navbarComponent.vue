@@ -68,13 +68,20 @@
                     <li class="nav-item">
                       <router-link :to="{name: 'FAQ', hash: '#FAQ'}" class="nav-link fs-5 text-light text-decoration-none">常見問題</router-link>
                     </li>
-                    <li class="nav-item" v-if="!hasToken">
-                      <router-link to="/login" class="nav-link fs-5 text-light text-decoration-none">登入/註冊</router-link>
-                    </li>
-                    <li class="nav-item " v-else>
+                    <li class="nav-item "  v-if="hasToken">
                       <router-link  :to="identityHref" class="nav-link fs-5 text-light text-decoration-none"><img
                           src="/首頁圖片/user.png" alt="會員中心"></router-link>
                     </li>
+                    <li class="nav-item "  v-if="hasToken">
+                      <button type="button" class="btn position-relative bg-transparent">
+                        <i class="bi bi-bell fs-2   text-white"></i>
+                          <span class="position-absolute top-25 start-75 translate-middle p-2 bg-danger border border-light rounded-circle"></span>
+                        </button>
+                    </li>
+                    <li class="nav-item" v-else>
+                      <router-link to="/login" class="nav-link fs-5 text-light text-decoration-none">登入/註冊</router-link>
+                    </li>
+
                   </ul>
                  </div>
               </div>
