@@ -1,5 +1,5 @@
 <template>
-    <div class="container position-relative">
+    <div class="container position-relative h-100">
         <div class="row justify-content-center position-absolute top-50 start-50 translate-middle ">
             <div class="col-sm-7 mt-5 d-flex justify-content-center">
                 <img src="/notFound.png" alt="" class="">
@@ -12,9 +12,11 @@
             </div>
         </div>
     </div>
+    
 </template>
 
 <script>
+
 export default {
 
 }
@@ -23,7 +25,7 @@ export default {
 <style lang="scss" scoped>
 
 .container  {
-    min-height: calc(100vh - 314px);
+    min-height: calc(100vh - 174px);
     img{
         height: 250px;
         object-fit: cover;

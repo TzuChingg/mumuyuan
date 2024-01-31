@@ -22,30 +22,35 @@ const routes = [
   { ...Cart },
   // { path: '/', component: IndexTest },
   { path: '/', name: 'home', component: indexPage },
-  { path: '/FAQ', name: 'FAQ', component: indexPage },
+  { path: '/', name: 'FAQ', component: indexPage },
   { ...loginRouter },
   { ...reserveRouter },
   { ...searchRouter },
   ...backend,
   ...memberRouter,
-  {path: '/:pathMatch(.*)*', name: 'notFound', component: notFoundPage}
+  { path: '/:pathMatch(.*)*', name: 'notFound', component: notFoundPage }
 ]
 
 const router = createRouter({
   history: createWebHashHistory(),
   routes,
+  // 在同頁錨點
   scrollBehavior(to, from, savedPosition) {
-    if (to.hash) 
-    {
-      return { selector: to.hash }; // <==== the important part
-    }
-
-
-    return savedPosition || new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve({ left: 0, top: 0 , behavior:'smooth'})
-      }, 400)
-    })
+    if (savedPosition){
+      console.log(savedPosition);
+      return savedPosition
+    }else if (to.hash) {
+      const element = document.getElementById(to.hash)
+      if (element) {
+        return {el: element, behavior: 'smooth' } // <==== the important part
+      }
+    }else{
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+              resolve({ left: 0, top: 0, behavior: 'smooth' })
+            }, 400)
+          })
+      }
   }
 })
 

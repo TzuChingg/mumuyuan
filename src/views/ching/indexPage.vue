@@ -82,7 +82,7 @@
                                         <img src="/木木苑食材修圖/39.jpg" class="card-img-top" alt="...">
                                         <div class="card-body">
                                             <p class="card-text  fs-4">蔬菜季</p>
-                                            <P class="card-text">青椒買一送一兌換券，與您分享新鮮、美味、健康的蔬食樂趣！</P>
+                                            <p class="card-text">青椒買一送一兌換券，與您分享新鮮、美味、健康的蔬食樂趣！</p>
                                         </div>
                                     </div>
                                 </router-link>
@@ -91,7 +91,7 @@
                                         <img src="/木木苑食材修圖/38.jpg" class="card-img-top" alt="...">
                                         <div class="card-body">
                                             <p class="card-text fs-4">蔬菜季</p>
-                                            <P class="card-text">花椰菜買一送一兌換券，與您分享新鮮、美味、健康的蔬食樂趣！</P>
+                                            <p class="card-text">花椰菜買一送一兌換券，與您分享新鮮、美味、健康的蔬食樂趣！</p>
                                         </div>
                                     </div>
                                 </router-link>
@@ -365,17 +365,17 @@
                 </div>
             </div>
         </div>
-        <div class="container-fluid bg-primary">
+        <div class="container-fluid bg-primary" id="#FAQ" ref="FAQ" >
             <div class="row">
                 <div class="pt-5 mb-5 d-flex justify-content-center">
                     <img src="/首頁圖片/illustration-left.png" alt="icon-left" />
-                    <h2 id="#FAQ" class="text-light text-center ms-3 me-3 my-auto">常見問題</h2>
+                    <h2 class="text-light text-center ms-3 me-3 my-auto">常見問題</h2>
                     <img src="/首頁圖片/illustration-right.png" alt="icon-right" />
                 </div>
             </div>
             <div class="container pb-5 ">
                 <div class="row m-3">
-                    <div class="col-6">
+                    <div class="col-6 " >
                         <div class="card">
                             <div class="card-body">
                                 <h5 class="card-title">Q. 如何線上點餐？</h5>
@@ -451,6 +451,21 @@
         </div>
     </div>
 </template>
+<script>
+export default{
+    mounted() {
+        if(this.$route.hash === '#FAQ'){
+            this.scrollToSection();
+        }
+    },
+    methods: {
+        scrollToSection(){
+            this.$refs.FAQ.scrollIntoView({behavior: 'smooth'})
+        }
+    },
+}
+
+</script>
 
 <style lang="scss" scoped>
 // @import url('https://fonts.googleapis.com/css?family=Noto+Sans+TC');
@@ -466,7 +481,7 @@
 }
 
 .slogan {
-    P {
+    p {
         margin: 0%;
         padding: 0%;
     }
