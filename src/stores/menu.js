@@ -399,10 +399,16 @@ export default defineStore('menu', {
       }
     ]
   }),
-  actions: {
-    async getData({ json }) {
-      const veg = await getData(6)
-      console.log(veg)
+  actions: {    
+    getProducts() {
+      this.$axios
+        .get(`/products`)
+        .then((res) => {
+          this.products = res.data
+        })
+        .catch((e) => {
+          console.log(e)
+        })
     }
   },
   getters: {

@@ -1,39 +1,22 @@
 <script>
-import { useCategoryStore } from '@/stores/category'
+import categoryStore from '../../stores/category.js'
+import { mapState, mapActions } from 'pinia'
+//import { useCategoryStore } from '@/stores/category'
 
-//import categoryStore from '../../stores/category.js'
-//import { mapState, mapActions } from 'pinia'
 export default {
-  onMounted() {
-    const categoryStore = useCategoryStore()
-    categoryStore.loadData()
-    return {
-      categories: categoryStore.categories
-    }
-  }
-}
-/*export default {
-  data() {
-    return {
-      categories: []
-    }
-  },
+  
   methods: { ...mapActions(categoryStore, ['loadData']) },
   computed: {
-    ...mapState(categoryStore, ['getCategory']),
-    ...mapActions(categoryStore, ['loadData'])
-  },
-  created() {
-    this.loadData()
-  }
-}*/
+    ...mapState(categoryStore, ['getCategory'])
+  }  
+}
 </script>
 
 <template>
+  {{ categories }}
   <div>
     <nav class="navbar d-flex justify-content-center">
       <div class="btn-group">
-        {{ categories }}
         <!--<router-link
         to="/menu/combo"
         class="btn btn-outline-primary"
