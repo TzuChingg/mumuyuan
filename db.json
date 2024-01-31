@@ -482,7 +482,7 @@
       "orderScore": 1,
       "flavor": 1,
       "spicy": 1,
-      "orderid":"123",
+      "orderid": "123",
       "id": 1
     },
     {
@@ -529,7 +529,7 @@
       "orderScore": 1,
       "flavor": 1,
       "spicy": 1,
-      "orderid":"123",
+      "orderid": "456",
       "id": 2
     },
     {
@@ -576,7 +576,7 @@
       "orderScore": 1,
       "flavor": 1,
       "spicy": 1,
-      "orderid":"123",
+      "orderid": "789",
       "id": 3
     }
   ],
@@ -664,7 +664,11 @@
   "shop": {
     "shopStatus": false
   },
-  "notice":[
-
+  "notice": [
+    {
+      "userId": 3,
+      "orderId":2,
+      "id": 1
+    }
   ]
 }

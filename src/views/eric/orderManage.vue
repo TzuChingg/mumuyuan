@@ -219,21 +219,10 @@ export default {
   },
   methods:{
     ok(id,userId,orderid){
-      const data ={status: 2} ;
+      const data = { status: 2 };
       const loadingData = 2
-      // this.$axios.patch(`/orders/${id}`, data)
-      // location.reload();
-      this.$axios.delete(`/notice/${userId}?num=${orderid}`)
-      // this.$axios.post('/notice',{
-        
-      //     "userId": `${userId}`,
-      //     "notice": [
-      //       {
-      //         "num":  `${orderid}`,
-      //         "status": 2
-      //       }
-      //     ],
-      // })
+      this.$axios.patch(`/orders/${id}`, data)
+      location.reload();
       this.socket.send(JSON.stringify({
         data:loadingData,
         id:orderid,
@@ -251,9 +240,8 @@ export default {
     pushForCustomer(id,userId,orderid){
       const data = { status: 3 };
       const loadingData = 3 
-      // this.$axios.patch(`/orders/${id}`, data)
-      // location.reload();
-
+      this.$axios.patch(`/orders/${id}`, data)
+      location.reload();
       this.socket.send(JSON.stringify({
         data:loadingData,
         id:orderid,
@@ -305,7 +293,7 @@ export default {
             spicy:spicy,
             day:element.day,
             id:element.id,
-            orderNum:element.orderNum,
+            orderNum:element.orderid,
             status:element.status,
             isMember:element.isMember,
             userId:element.userId,
@@ -327,7 +315,7 @@ export default {
             spicy:spicy,
             day:element.day,
             id:element.id,
-            orderNum:element.orderNum,
+            orderNum:element.orderid,
             status:element.status,
             isMember:element.isMember,
             userId:element.userId,

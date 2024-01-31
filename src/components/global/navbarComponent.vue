@@ -187,19 +187,19 @@ export default {
         }
         };
 
-        this.$axios.get(`/notice/?userId=${myId}`)
+        this.$axios.get(`/notice/?userId=${myId}&_expand=order`)
         .then(res=>{
           let text = ""
-          res.data[0].notice.forEach(element=>{
-            if(element.status == 1){
+          res.data.forEach(element=>{
+            if(element.order.status == 1){
               text = "待接受"
-            }else if(element.status == 2){
+            }else if(element.order.status == 2){
               text = "準備中"
-            }else if(element.status == 3){
+            }else if(element.order.status == 3){
               text = "已完成"
             }
             this.news.push({
-              num:element.num,
+              num:element.order.orderid,
               status:text
             })
           })
