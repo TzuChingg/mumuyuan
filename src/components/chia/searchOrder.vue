@@ -178,7 +178,7 @@ export default {
         this.socket = new WebSocket('ws://localhost:8080/ws');
         let ids = []
         this.getResponse.forEach(id=>{
-            ids.push(id.id)
+            ids.push(id.orderid)
         })
         this.socket.onmessage = (event) => {
         const receivedData = JSON.parse(event.data);

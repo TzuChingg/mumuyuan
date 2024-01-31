@@ -34,10 +34,28 @@
                           src="/首頁圖片/user.png" alt="會員中心"></router-link>
                     </li>
                     <li class="nav-item "  v-if="hasToken">
-                      <button type="button" class="btn position-relative bg-transparent">
+                      <button type="button" class="btn position-relative bg-transparent" ref="liveToastBtn" @click="show">
                         <i class="bi bi-bell fs-2   text-white"></i>
-                          <span class="position-absolute top-25 start-75 translate-middle p-2 bg-danger border border-light rounded-circle"></span>
+                          <span class="position-absolute top-25 start-75 translate-middle p-2 bg-danger border border-light rounded-circle " :class="{ 'd-none': notice }"></span>
                         </button>
+
+                        <div class="position-absolute top-60 end-30 p-3" style="z-index: 11">
+                          <div ref="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                            <div class="toast-header">
+                              <strong class="me-auto">通知紀錄</strong>
+                              <small>11 mins ago</small>
+                              <button type="button" class="btn-close  shadow-sm" data-bs-dismiss="toast" aria-label="Close"></button>
+                            </div>
+                            <div v-if="news.length>0" class="toast-body" >
+                              <div v-for="(no, index) in news" :key="index">
+                                你的訂單{{ no.num }}正在 [{{ no.status }}]狀態
+                              </div>
+                            </div>
+                            <div v-else-if="news.length == 0" class="toast-body" >
+                              目前沒有通知
+                            </div>
+                          </div>
+                        </div>
                     </li>
                     <li class="nav-item" v-else>
                       <router-link to="/login" class="nav-link fs-5 text-light text-decoration-none">登入/註冊</router-link>
@@ -56,6 +74,8 @@
 
 <script>
 import { docCookies } from '../../assets/cookie';
+import { Toast } from 'bootstrap/dist/js/bootstrap.bundle.min.js';
+
 export default {
   data() {
     return {
@@ -63,6 +83,10 @@ export default {
       identityHref: "#/memberCenter",
       identity: 'user',
       showNav: true,
+      notice:true,
+      newStatus:0,
+      orderId:0,
+      news:[]
     }
   },
   computed: {
@@ -85,7 +109,69 @@ export default {
           newRoute.fullPath === '/discount' ||
           newRoute.fullPath === '/journey')) ? false : true;
     },
-  }
+    newStatus(){
+      this.news.forEach(item=>{
+          if(item.num.includes(this.orderId)){
+            item.status = this.newStatus
+            if(item.status == 1){
+              item.status = "待接受"
+            }else if(item.status == 2){
+              item.status = "準備中"
+            }else if(item.status == 3){
+              item.status = "已完成"
+            }
+          }
+      })
+
+    }
+  },
+  methods:{
+    show(){
+      var toast = new Toast(this.$refs.liveToast)
+      toast.show()
+      this.notice = true
+    }
+  },
+  mounted(){
+        this.socket = new WebSocket('ws://localhost:8080/ws');
+        let myId =docCookies.getItem("id")
+        this.socket.onmessage = (event) => {
+        const receivedData = JSON.parse(event.data);
+        if(receivedData.userId == myId){
+            this.notice = false
+            this.news.forEach(item=>{
+              if(item.num.includes(receivedData.id)){
+                this.orderId = receivedData.id
+                this.newStatus = receivedData.data
+              }
+            })
+        }
+        };
+
+        this.$axios.get(`/notice/?userId=${myId}&_expand=order`)
+        .then(res=>{
+          let text = ""
+          res.data.forEach(element=>{
+            if(element.order.status == 1){
+              text = "待接受"
+            }else if(element.order.status == 2){
+              text = "準備中"
+            }else if(element.order.status == 3){
+              text = "已完成"
+            }
+            this.news.push({
+              num:element.order.orderid,
+              status:text
+            })
+          })
+        })
+    },
+    beforeUnmount() {
+    // Close the WebSocket connection when the component is destroyed
+    if (this.socket) {
+        this.socket.close();
+    }
+    },
 }
 </script>
 
@@ -102,6 +188,9 @@ ul.nav {
     &:last-child {
       margin: 0;
     }
+  }
+  .noti{
+    display: none;
   }
 }
 // .nav-item:hover{

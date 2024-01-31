@@ -482,7 +482,7 @@
       "orderScore": 1,
       "flavor": 1,
       "spicy": 1,
-      "orderid": "20240101ABC",
+      "orderid": "123",
       "id": 1
     },
     {
@@ -519,7 +519,7 @@
       ],
       "price": 300,
       "status": 1,
-      "userId": 1,
+      "userId": 3,
       "type": true,
       "tableware": true,
       "bags": true,
@@ -529,7 +529,7 @@
       "orderScore": 1,
       "flavor": 1,
       "spicy": 1,
-      "orderid": "20240101XXX",
+      "orderid": "456",
       "id": 2
     },
     {
@@ -576,7 +576,7 @@
       "orderScore": 1,
       "flavor": 1,
       "spicy": 1,
-      "orderid": "20240101AAA",
+      "orderid": "789",
       "id": 3
     }
   ],
@@ -664,5 +664,11 @@
   "shop": {
     "shopStatus": false
   },
-  "notice": []
+  "notice": [
+    {
+      "userId": 3,
+      "orderId":2,
+      "id": 1
+    }
+  ]
 }
