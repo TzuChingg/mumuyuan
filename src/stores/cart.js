@@ -1,7 +1,6 @@
 import { defineStore } from 'pinia'
 
-
-export const cartStore = defineStore('cart', {
+const cartStore = defineStore('cart', {
   state: () => ({
     cart: []
   }),
@@ -10,5 +9,12 @@ export const cartStore = defineStore('cart', {
     addToCart(productId, qty = 1) {
       this.cart.push({ id: new Date().getTime(), productId, qty })
     }
+  },
+  getters: {
+    getCart:({ cart })=> {
+      console.log(cart)
+    }
   }
 })
+
+export default cartStore
