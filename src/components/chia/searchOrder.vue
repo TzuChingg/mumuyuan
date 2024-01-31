@@ -172,7 +172,7 @@ export default {
         }
     },
     methods:{
-
+        
     },
     mounted(){
         this.socket = new WebSocket('ws://localhost:8080/ws');

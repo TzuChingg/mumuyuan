@@ -2,7 +2,7 @@
   "users": [
     {
       "email": "joker@gmail.com",
-      "password": "$2a$10$l0l6eHyGFe.CSc4CFWuxh.GLmFJpRpDHj7/ZiPQw19Jk8gB.xmk32",
+      "password": "$2a$10$9NnNqirOqygdKhl4tTnWyOp9jbAvsX3Lglm4G9d0dLZ1GJ2evs8Zy",
       "copyPassword": "123456",
       "name": "joker",
       "phone": "093333333",
@@ -480,7 +480,7 @@
       "pickTime": "17:00",
       "comment": "做好吃一點",
       "orderScore": 1,
-      "flavor": 1,                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+      "flavor": 1,
       "spicy": 1,
       "orderid": "20240101ABC",
       "id": 1

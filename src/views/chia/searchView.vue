@@ -16,7 +16,6 @@ export default {
     methods: {
         startSearch() {
             if (this.ctlOrderBtn) return;
-            console.log(this.axiosGetUrl);
             this.$axios.get(`${this.axiosGetUrl}`)
                 .then((response) => {
                     if (response.status !== 200 || response.data.length === 0) {
@@ -71,7 +70,6 @@ export default {
 <template>
     <div class="search container">
         <div class="searchContent">
-            {{ radioToggle }}
             <h2 class="text-center fw-bolder fs-1 text-white py-5">訂位/訂單查詢</h2>
             <div class="radioContent w-70 m-auto mb-3 d-flex align-items-center">
                 <div class="form-check mb-0 me-3">
