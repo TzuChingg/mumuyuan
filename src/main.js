@@ -2,11 +2,11 @@
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
 
+
 //BS框架
 import './assets/main.scss';
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-
 
 //API
 import axios from 'axios';
@@ -28,7 +28,7 @@ import App from './App.vue';
 
 const app = createApp(App);
 app.config.globalProperties.$axios = axios.create({
-    baseURL: 'http://localhost:3011/api',
+    baseURL: 'http://localhost:8080/api',
   })
 app.config.globalProperties.$ws = ws;
 app.config.globalProperties.$apexcharts = ApexCharts;
@@ -41,10 +41,5 @@ app.use(createPinia());
 app.use(router);
 
 
-//debug
-app.config.errorHandler = (err,vm,info) =>{
-  console.log(err);
-  console.log(info);
-}
 
 app.mount('#app');

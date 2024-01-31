@@ -37,6 +37,7 @@ export default {
                     const { user, accessToken } = response.data;
                     document.cookie = `token=${accessToken};expires=${new Date().getTime() + 24 * 60 * 60 * 1000};`;
                     document.cookie = `identity=${user.identity};expires=${new Date().getTime() + 24 * 60 * 60 * 1000};`;
+                    document.cookie = `id=${user.id};expires=${new Date().getTime() + 24 * 60 * 60 * 1000};`;
                     this.$router.push({ path: '/' });
                 }
             })

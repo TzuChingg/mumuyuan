@@ -24,14 +24,14 @@ export default {
 
 <template>
   <div class=" container x">
-    <h1 class="my-4 text-center">購物車</h1>
+    <h1 class="my-4 text-center me-2">購物車</h1>
     <!-- v-if -->
     <!--<div>購物車沒有任何品項</div>-->
     <!-- v-else -->
     <table class="table table-borderless">
       <tbody >
         <tr class=" border-bottom">
-          <td class="align-middle d-flex justify-content-evenly align-items-center my-3">
+          <td class="align-middle d-flex justify-content-evenly align-items-center ">
             <a href="#" class="link-dark text-decoration-none fs-4">x</a>
             <div>七里香</div>
             <div></div>
@@ -80,12 +80,33 @@ export default {
           </div>
       </div>
       <div class="col-6 ">
-        <div class="d-flex align-items-center">
-              <label for="coupon" class="pe-4">優惠券</label>
-            </div>
-            <div>
+            <div class="d-flex mb-3 justify-content-center">
               <select
-                class="form-select border border-dark form-select-md w-50"
+                class="form-select border border-dark form-select-md w-50 "
+                aria-label="coupon"
+                id="coupon"
+              >
+                <option selected>請選擇口味</option>
+                <option value="1">秘粉</option>
+                <option value="2">梅粉</option>
+                <option value="3">椒鹽</option>
+              </select>
+            </div>
+            <div class="d-flex my-3 justify-content-center">
+              <select
+                class="form-select border border-dark form-select-md w-50 "
+                aria-label="coupon"
+                id="coupon"
+              >
+                <option selected>請選擇辣度</option>
+                <option value="1">小辣</option>
+                <option value="2">中辣</option>
+                <option value="3">大辣</option>
+              </select>
+            </div>
+            <div class="d-flex my-3 justify-content-center">
+              <select
+                class="form-select border border-dark form-select-md w-50 "
                 aria-label="coupon"
                 id="coupon"
               >
@@ -96,38 +117,35 @@ export default {
               </select>
             </div>
 
-            <div class="mx-3 mt-3">
-                  <input
-                    class="form-check-input me-1"
-                    type="radio"
-                    name="inlineRadioOptions"
-                    id="inlineRadio1"
-                    value="option1"
-                  />
-                  <label class="form-check-label" for="inlineRadio1">現金</label>
-                </div>
-                <div class="mx-3">
-                  <input
-                    class="form-check-input me-1"
-                    type="radio"
-                    name="inlineRadioOptions"
-                    id="inlineRadio1"
-                    value="option1"
-                  />
-                  <label class="form-check-label" for="inlineRadio1">信用卡</label>
-                </div>
-                <div class="mx-3">
-                  <input
-                    class="form-check-input me-1"
-                    type="radio"
-                    name="inlineRadioOptions"
-                    id="inlineRadio1"
-                    value="option1"
-                  />
-                  <label class="form-check-label" for="inlineRadio1">Line Pay</label>
-              </div>
       </div>
-      <div class="col-6">
+      <div class=" mt-4 d-flex justify-content-center">
+        <div class="me-3">付款方式:</div>
+              <input
+                class="form-check-input me-1"
+                type="radio"
+                name="inlineRadioOptions"
+                id="inlineRadio1"
+                value="option1"
+              />
+              <label class="form-check-label me-2" for="inlineRadio1">現金</label>
+              <input
+                class="form-check-input me-1"
+                type="radio"
+                name="inlineRadioOptions"
+                id="inlineRadio1"
+                value="option1"
+              />
+              <label class="form-check-label me-2" for="inlineRadio1">信用卡</label>
+              <input
+                class="form-check-input me-1"
+                type="radio"
+                name="inlineRadioOptions"
+                id="inlineRadio1"
+                value="option1"
+              />
+              <label class="form-check-label" for="inlineRadio1">Line Pay</label>
+      </div>
+      <div >
         <div class=" mt-4  d-flex justify-content-center">
             <button type="button" class="btn btn-outline-primary ">返回</button>
             <button type="button" class="btn btn-outline-primary ms-3" data-bs-toggle="modal" data-bs-target="#exampleModal">

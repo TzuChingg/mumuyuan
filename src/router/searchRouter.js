@@ -7,9 +7,4 @@ import searchView from '../views/chia/searchView.vue'
 export default {
   path: '/search',
   component: searchView
-  // children: [
-  //   { path: '', component: loginComponent },
-  //   { path: 'signin', component: signinComponent },
-  //   { path: 'forget', component: forgetComponent },
-  // ],
 }

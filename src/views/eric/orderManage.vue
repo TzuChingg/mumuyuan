@@ -23,7 +23,7 @@
                             <div class="row row-cols-2 " >
                                 <div class="col d-flex flex-wrap h-25" >  
                                   <div class="row  text-center  h-25 w-100" >
-                                    <div class="col-3 fs-3 text-nowrap" v-for="(food,index) in order.food" :key="index">{{food}}</div>
+                                    <div class="col-4 fs-4 text-nowrap " v-for="(food,index) in order.food" :key="index">{{food}}</div>
                                   </div>   
                                 </div> 
                                 <div class="col">
@@ -54,6 +54,7 @@
                                           <td class="fs-5"><strong>總金額:</strong>{{order.total}}</td>
                                         </tr>
                                         <tr>
+                                        
                                           <td class="fs-5"><strong>備註:</strong>{{ order.remark }}</td>
                                         </tr>
                                       </tbody>
@@ -73,12 +74,13 @@
                 <div class="modal fade" :id="'ok'+index" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
                   <div class="modal-dialog">
                     <div class="modal-content border-0">
+                     
                         <div class="modal-body fs-3">
                         是否接受訂單?
                         </div>
                         <div class="modal-footer border-0">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
-                        <button type="button" class="btn btn-primary"  data-bs-dismiss="modal"  @click="ok(order.id)" >確認</button>
+                        <button type="button" class="btn btn-primary"  data-bs-dismiss="modal"  @click="ok(order.id,order.userId,order.orderNum)" >確認</button>
                         </div>
                     </div>
                   </div>
@@ -104,8 +106,8 @@
             <div class="w-25 mt-5">
               <select-list :options="options2" @updata="get" v-once></select-list>
             </div>  
-            <div class="card mt-2 shadow-sm w-100">
-              <div class="card-body" v-for="(order,index) in finishorder" :key="index">
+            <div class="card mt-2 shadow-sm w-100" v-for="(order,index) in finishorder" :key="index">
+              <div class="card-body" >
                 <div class="accordion accordion-flush " id="accordionFlushExample">
                   <div class="accordion-item " >
                         <h2 class="accordion-header " :id="'flush-heading' + index">
@@ -118,7 +120,7 @@
                             <div class="row row-cols-2 " >
                                 <div class="col d-flex flex-wrap h-25" >  
                                   <div class="row row-cols-4 text-center  h-25 w-100" >
-                                    <div class="col fs-3 text-nowrap" v-for="(food, foodIndex) in order.food" :key="foodIndex">{{food}}</div>
+                                    <div class="col-4 fs-4 text-nowrap" v-for="(food, foodIndex) in order.food" :key="foodIndex">{{food}}</div>
                                   </div>   
                                 </div> 
                                 <div class="col">
@@ -171,7 +173,7 @@
                         </div>
                         <div class="modal-footer border-0">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
-                        <button type="button" class="btn btn-primary"  data-bs-dismiss="modal"  @click="finish(order.id)" >確認</button>
+                        <button type="button" class="btn btn-primary"  data-bs-dismiss="modal"  @click="pushForCustomer(order.id ,order.userId, order.orderNum)" >確認</button>
                         </div>
                     </div>
                   </div>
@@ -208,29 +210,44 @@ export default {
           { value: '2', label: '待完成訂單' },
           { value: '1', label: '待確認訂單' },
         ],
+        socket:null,
+        messages:[],
     }
   },
   computed:{
 
   },
   methods:{
-    ok(id){
+    ok(id,userId,orderid){
       const data = { status: 2 };
+      const loadingData = 2
       this.$axios.patch(`/orders/${id}`, data)
       location.reload();
+      this.socket.send(JSON.stringify({
+        data:loadingData,
+        id:orderid,
+        userId:userId
+      }))
     },
     reject(id){
       this.$axios.delete(`/orders/${id}`)
       location.reload();
     },
-    finish(id){
-      const data = { status: 3 };
-      this.$axios.patch(`/orders/${id}`, data)
-      location.reload();
-    },
     get(data){
        this.select = data
     },
+
+    pushForCustomer(id,userId,orderid){
+      const data = { status: 3 };
+      const loadingData = 3 
+      this.$axios.patch(`/orders/${id}`, data)
+      location.reload();
+      this.socket.send(JSON.stringify({
+        data:loadingData,
+        id:orderid,
+        userId:userId
+      }))
+    }
   },
 
   mounted() {
@@ -276,7 +293,7 @@ export default {
             spicy:spicy,
             day:element.day,
             id:element.id,
-
+            orderNum:element.orderid,
             status:element.status,
             isMember:element.isMember,
             userId:element.userId,
@@ -298,7 +315,7 @@ export default {
             spicy:spicy,
             day:element.day,
             id:element.id,
-
+            orderNum:element.orderid,
             status:element.status,
             isMember:element.isMember,
             userId:element.userId,
@@ -309,6 +326,16 @@ export default {
         });
       })
       
+      this.socket = new WebSocket('ws://localhost:8080/ws');
+      this.socket.onopen = () => {
+      console.log('WebSocket connection opened');
+      };
+  },
+  beforeUnmount() {
+    // Close the WebSocket connection when the component is destroyed
+    if (this.socket) {
+      this.socket.close();
+    }
   },
 };
 </script>

@@ -1,6 +1,6 @@
 <template>
     <div class="w-70 m-auto table-responsive">
-        <table class="table fs-5  align-middle">
+        <table class="table fs-5  align-middle" v-if="tidyResponse.length!==0">
             <thead class="table-danger">
                 <tr>
                     <th scope="col">日期</th>
@@ -12,7 +12,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="obj in tidyResponse">
+                <tr v-for="(obj,idx) in tidyResponse" :key="idx">
                     <td>{{ obj.day }}</td>
                     <th>{{ obj.name }}</th>
                     <td>{{ obj.phone }}</td>
@@ -42,10 +42,13 @@ export default {
             tidyResponse: []
         }
     },
+    watch:{
+        getResponse(){
+            this.tidyResponse = this.getResponse;
+        }
+    },
     mounted() {
-        console.log(this.getResponse);
-        this.tidyResponse = [...this.getResponse];
-        console.log(this.tidyResponse);
+        this.tidyResponse = this.getResponse;
     },
     methods: {
         cancelSeat(ordersId) {
@@ -53,6 +56,11 @@ export default {
             this.$axios.delete(`/bookingfrom/${ordersId}`)
                 .then((response) => {
                     console.log(response);
+                    if(response.status===200){
+                        this.tidyResponse = [];
+                        alert('成功取消');
+                    }
+                    
                 })
                 .catch((err) => {
                     console.log(err);
