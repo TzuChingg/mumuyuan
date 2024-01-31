@@ -67,7 +67,7 @@ export default {
             this.day = getThreeDays();
         },
         getPeriods() {
-            this.$http.get(`http://localhost:3000/periods`)
+            this.$axios.get(`/periods`)
                 .then((response) => {
                     if (response.status === 200) {
                         this.periods = [...response.data];
@@ -82,7 +82,7 @@ export default {
         },
         async goReserve() {
             try {
-                const check = await this.$http.get(`http://localhost:3000/bookingfrom?day=${this.list.day}&time=${this.list.time}`);
+                const check = await this.$axios.get(`/bookingfrom?day=${this.list.day}&time=${this.list.time}`);
                 const count = this.maxPeople[this.list.time]; // 當天該時段最多用餐人數
                 const reduceCounnt = check.data.reduce((acc, cur) => { // 當天該時段已預定人數
                     return acc + cur["personCount"]
@@ -94,7 +94,7 @@ export default {
             }
 
             if (this.allTrue || !this.ageinCheck) return;
-            this.$http.post('http://localhost:3000/bookingfrom', {
+            this.$axios.post('/bookingfrom', {
                 ...this.list
             }).then((response) => {
                 if (response.status === 201) {
@@ -148,7 +148,7 @@ export default {
             deep: true,
             handler(newVal, oldVal) {
                 if (newVal !== '') this.regexStatus.day = true;
-                this.$http.get(`http://localhost:3000/bookingfrom?day=${newVal}`)
+                this.$axios.get(`/bookingfrom?day=${newVal}`)
                     .then((response) => {
                         if (response.status === 200) {
                             this.remainPeople = {
