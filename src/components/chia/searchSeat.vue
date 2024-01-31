@@ -30,7 +30,6 @@
             <li>人數異動、臨時取消，請提前告知店家，避免影響雙方權益</li>
             <li>響應食材不浪費，離開前如有浪費食物疑慮，即額外收取相關費用</li>
         </ul>
-        <button type="button" class="d-block btn btn-dark mx-auto my-5 py-2 px-3">返回首頁</button>
     </div>
 </template>
 

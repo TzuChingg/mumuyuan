@@ -471,7 +471,7 @@
         }
       ],
       "price": 300,
-      "status": 2,
+      "status": 3,
       "userId": 1,
       "type": true,
       "tableware": true,
@@ -503,18 +503,6 @@
           "quantity": 3,
           "image": "/木木苑食材修圖/02.jpg",
           "price": 61
-        },
-        {
-          "name": "鯛魚下巴",
-          "quantity": 3,
-          "image": "/木木苑食材修圖/03.jpg",
-          "price": 45
-        },
-        {
-          "name": "雞肉串",
-          "quantity": 2,
-          "image": "/木木苑食材修圖/20.jpg",
-          "price": 89
         }
       ],
       "price": 300,
@@ -544,28 +532,10 @@
           "quantity": 5,
           "image": "/木木苑食材修圖/01.jpg",
           "price": 52
-        },
-        {
-          "name": "豬五花蔥捲",
-          "quantity": 3,
-          "image": "/木木苑食材修圖/02.jpg",
-          "price": 61
-        },
-        {
-          "name": "鯛魚下巴",
-          "quantity": 3,
-          "image": "/木木苑食材修圖/03.jpg",
-          "price": 45
-        },
-        {
-          "name": "雞肉串",
-          "quantity": 2,
-          "image": "/木木苑食材修圖/20.jpg",
-          "price": 89
         }
       ],
       "price": 300,
-      "status": 1,
+      "status": 3,
       "userId": 1,
       "type": true,
       "tableware": true,

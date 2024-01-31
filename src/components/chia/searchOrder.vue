@@ -105,7 +105,6 @@
             <li>請務必當場清點找零</li>
             <li>依現場排隊取餐</li>
         </ul>
-        <button type="button" class="d-block btn btn-dark mx-auto my-5 py-2 px-3">返回首頁</button>
     </div>
 </template>
 
@@ -116,7 +115,7 @@ export default {
     props: ["getResponse"],
     data() {
         return {
-            getProducts: [],
+            // getProducts: [],
             socket:null,
             status: 0,
         }
