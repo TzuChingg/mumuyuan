@@ -1,4 +1,26 @@
-<script></script>
+<script>
+import useCartStore from '@/stores/cart';
+import { mapState, mapActions } from 'pinia'
+export default {
+  data() {
+    return {
+      cart: [],
+      products: []
+    }
+  },
+  computed:{},
+  created() {
+    this.$axios
+      .get(`/products`)
+      .then((res) => {
+        this.products = res.data
+      })
+      .catch((e) => {
+        console.log(e)
+      })
+  }
+}
+</script>
 
 <template>
   <div class=" container x">
