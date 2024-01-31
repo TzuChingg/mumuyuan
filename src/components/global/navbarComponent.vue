@@ -66,7 +66,7 @@
                         class="nav-link fs-5 text-light text-decoration-none">訂位/訂單查詢</router-link>
                     </li>
                     <li class="nav-item">
-                      <router-link to="/" class="nav-link fs-5 text-light text-decoration-none">常見問題</router-link>
+                      <router-link :to="{name: 'home', hash: '#FAQ'}" class="nav-link fs-5 text-light text-decoration-none">常見問題</router-link>
                     </li>
                     <li class="nav-item" v-if="!hasToken">
                       <router-link to="/login" class="nav-link fs-5 text-light text-decoration-none">登入/註冊</router-link>

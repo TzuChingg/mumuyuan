@@ -369,7 +369,7 @@
             <div class="row">
                 <div class="pt-5 mb-5 d-flex justify-content-center">
                     <img src="/首頁圖片/illustration-left.png" alt="icon-left" />
-                    <h2 class="text-light text-center ms-3 me-3 my-auto">常見問題</h2>
+                    <h2 id="#FAQ" class="text-light text-center ms-3 me-3 my-auto">常見問題</h2>
                     <img src="/首頁圖片/illustration-right.png" alt="icon-right" />
                 </div>
             </div>
