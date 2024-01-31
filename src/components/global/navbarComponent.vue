@@ -34,16 +34,14 @@
                           src="/首頁圖片/user.png" alt="會員中心"></router-link>
                     </li>
                     <li class="nav-item "  v-if="hasToken">
-                      <button type="button" class="btn position-relative bg-transparent" ref="liveToastBtn" @click="show">
+                        <button type="button" class="btn position-relative bg-transparent" ref="liveToastBtn" @click="show">
                         <i class="bi bi-bell fs-2   text-white"></i>
-                          <span class="position-absolute top-25 start-75 translate-middle p-2 bg-danger border border-light rounded-circle " :class="{ 'd-none': notice }"></span>
+                        <span class="position-absolute top-25 start-75 translate-middle p-2 bg-danger border border-light rounded-circle " :class="{ 'd-none': notice }"></span>
                         </button>
-
                         <div class="position-absolute top-60 end-30 p-3" style="z-index: 11">
                           <div ref="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
                             <div class="toast-header">
                               <strong class="me-auto">通知紀錄</strong>
-                              <small>11 mins ago</small>
                               <button type="button" class="btn-close  shadow-sm" data-bs-dismiss="toast" aria-label="Close"></button>
                             </div>
                             <div v-if="news.length>0" class="toast-body" >

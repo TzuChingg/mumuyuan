@@ -19,6 +19,8 @@ import CartRouter from './claire/cartRouter'
 
 const routes = [
   //{ path: '/', component: IndexTest },
+  { path: '/', name: 'home', component: indexPage },
+  { path: '/', name: 'FAQ', component: indexPage },
   { ...MenuRouter },
   { ...CartRouter },
   { ...loginRouter },
