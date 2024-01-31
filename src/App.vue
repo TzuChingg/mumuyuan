@@ -60,4 +60,10 @@ img{
   background-position: center center;
   background-size: cover;
 }
+img{
+  height: 100vh;
+  width: 100%;
+  background-position: center center;
+  background-size: cover;
+}
 </style>
