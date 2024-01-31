@@ -2,12 +2,12 @@
   "users": [
     {
       "email": "joker@gmail.com",
-      "password": "$2a$10$l0l6eHyGFe.CSc4CFWuxh.GLmFJpRpDHj7/ZiPQw19Jk8gB.xmk32",
+      "password": "$2a$10$9NnNqirOqygdKhl4tTnWyOp9jbAvsX3Lglm4G9d0dLZ1GJ2evs8Zy",
       "copyPassword": "123456",
       "name": "joker",
       "phone": "093333333",
-      "identity": "baduser",
       "coupon": "",
+      "identity": "baduser",
       "point": 30,
       "id": 1
     },
@@ -482,7 +482,7 @@
       "orderScore": 1,
       "flavor": 1,
       "spicy": 1,
-      "orderNum": "123",
+      "orderid":"123",
       "id": 1
     },
     {
@@ -529,7 +529,7 @@
       "orderScore": 1,
       "flavor": 1,
       "spicy": 1,
-      "orderNum": "456",
+      "orderid":"123",
       "id": 2
     },
     {
@@ -576,7 +576,7 @@
       "orderScore": 1,
       "flavor": 1,
       "spicy": 1,
-      "orderNum": "789",
+      "orderid":"123",
       "id": 3
     }
   ],
@@ -664,16 +664,7 @@
   "shop": {
     "shopStatus": false
   },
-  "notice": [
-    {
-      "userId": 3,
-      "notice": [
-        {
-          "num": "456",
-          "status": 1
-        }
-      ],
-      "id": 1
-    }
+  "notice":[
+
   ]
 }
