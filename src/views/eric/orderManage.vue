@@ -54,6 +54,7 @@
                                           <td class="fs-5"><strong>總金額:</strong>{{order.total}}</td>
                                         </tr>
                                         <tr>
+                                        
                                           <td class="fs-5"><strong>備註:</strong>{{ order.remark }}</td>
                                         </tr>
                                       </tbody>
@@ -73,12 +74,13 @@
                 <div class="modal fade" :id="'ok'+index" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >0
                   <div class="modal-dialog">
                     <div class="modal-content border-0">
+                     
                         <div class="modal-body fs-3">
                         是否接受訂單?
                         </div>
                         <div class="modal-footer border-0">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
-                        <button type="button" class="btn btn-primary"  data-bs-dismiss="modal"  @click="ok(order.id)" >確認</button>
+                        <button type="button" class="btn btn-primary"  data-bs-dismiss="modal"  @click="ok(order.id,order.userId,order.orderNum)" >確認</button>
                         </div>
                     </div>
                   </div>
@@ -171,7 +173,7 @@
                         </div>
                         <div class="modal-footer border-0">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
-                        <button type="button" class="btn btn-primary"  data-bs-dismiss="modal"  @click="pushForCustomer(order.id)" >確認</button>
+                        <button type="button" class="btn btn-primary"  data-bs-dismiss="modal"  @click="pushForCustomer(order.id ,order.userId, order.orderNum)" >確認</button>
                         </div>
                     </div>
                   </div>
@@ -216,14 +218,26 @@ export default {
 
   },
   methods:{
-    ok(id){
-      const data = { status: 2 };
+    ok(id,userId,orderid){
+      const data ={status: 2} ;
       const loadingData = 2
-      this.$axios.patch(`/orders/${id}`, data)
-      location.reload();
+      // this.$axios.patch(`/orders/${id}`, data)
+      // location.reload();
+      this.$axios.delete(`/notice/${userId}?num=${orderid}`)
+      // this.$axios.post('/notice',{
+        
+      //     "userId": `${userId}`,
+      //     "notice": [
+      //       {
+      //         "num":  `${orderid}`,
+      //         "status": 2
+      //       }
+      //     ],
+      // })
       this.socket.send(JSON.stringify({
         data:loadingData,
-        id:id
+        id:orderid,
+        userId:userId
       }))
     },
     reject(id){
@@ -234,14 +248,16 @@ export default {
        this.select = data
     },
 
-    pushForCustomer(id){
+    pushForCustomer(id,userId,orderid){
       const data = { status: 3 };
       const loadingData = 3 
-      this.$axios.patch(`/orders/${id}`, data)
-      location.reload();
+      // this.$axios.patch(`/orders/${id}`, data)
+      // location.reload();
+
       this.socket.send(JSON.stringify({
         data:loadingData,
-        id:id
+        id:orderid,
+        userId:userId
       }))
     }
   },
@@ -289,7 +305,7 @@ export default {
             spicy:spicy,
             day:element.day,
             id:element.id,
-
+            orderNum:element.orderNum,
             status:element.status,
             isMember:element.isMember,
             userId:element.userId,
@@ -311,7 +327,7 @@ export default {
             spicy:spicy,
             day:element.day,
             id:element.id,
-
+            orderNum:element.orderNum,
             status:element.status,
             isMember:element.isMember,
             userId:element.userId,

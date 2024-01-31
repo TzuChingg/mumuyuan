@@ -449,25 +449,25 @@
           "name": "玉米筍",
           "quantity": 5,
           "image": "/木木苑食材修圖/01.jpg",
-          "price":52
+          "price": 52
         },
         {
           "name": "豬五花蔥捲",
           "quantity": 3,
           "image": "/木木苑食材修圖/02.jpg",
-          "price":61
+          "price": 61
         },
         {
           "name": "鯛魚下巴",
           "quantity": 3,
           "image": "/木木苑食材修圖/03.jpg",
-          "price":45
+          "price": 45
         },
         {
           "name": "雞肉串",
           "quantity": 2,
           "image": "/木木苑食材修圖/20.jpg",
-          "price":89
+          "price": 89
         }
       ],
       "price": 300,
@@ -482,7 +482,7 @@
       "orderScore": 1,
       "flavor": 1,
       "spicy": 1,
-      "orderid":"123",
+      "orderNum": "123",
       "id": 1
     },
     {
@@ -496,30 +496,30 @@
           "name": "玉米筍",
           "quantity": 5,
           "image": "/木木苑食材修圖/01.jpg",
-          "price":52
+          "price": 52
         },
         {
           "name": "豬五花蔥捲",
           "quantity": 3,
           "image": "/木木苑食材修圖/02.jpg",
-          "price":61
+          "price": 61
         },
         {
           "name": "鯛魚下巴",
           "quantity": 3,
           "image": "/木木苑食材修圖/03.jpg",
-          "price":45
+          "price": 45
         },
         {
           "name": "雞肉串",
           "quantity": 2,
           "image": "/木木苑食材修圖/20.jpg",
-          "price":89
+          "price": 89
         }
       ],
       "price": 300,
       "status": 1,
-      "userId": 1,
+      "userId": 3,
       "type": true,
       "tableware": true,
       "bags": true,
@@ -529,7 +529,7 @@
       "orderScore": 1,
       "flavor": 1,
       "spicy": 1,
-      "orderid":"123",
+      "orderNum": "456",
       "id": 2
     },
     {
@@ -543,25 +543,25 @@
           "name": "玉米筍",
           "quantity": 5,
           "image": "/木木苑食材修圖/01.jpg",
-          "price":52
+          "price": 52
         },
         {
           "name": "豬五花蔥捲",
           "quantity": 3,
           "image": "/木木苑食材修圖/02.jpg",
-          "price":61
+          "price": 61
         },
         {
           "name": "鯛魚下巴",
           "quantity": 3,
           "image": "/木木苑食材修圖/03.jpg",
-          "price":45
+          "price": 45
         },
         {
           "name": "雞肉串",
           "quantity": 2,
           "image": "/木木苑食材修圖/20.jpg",
-          "price":89
+          "price": 89
         }
       ],
       "price": 300,
@@ -576,7 +576,7 @@
       "orderScore": 1,
       "flavor": 1,
       "spicy": 1,
-      "orderid":"123",
+      "orderNum": "789",
       "id": 3
     }
   ],
@@ -664,7 +664,16 @@
   "shop": {
     "shopStatus": false
   },
-  "notice":[
-
+  "notice": [
+    {
+      "userId": 3,
+      "notice": [
+        {
+          "num": "456",
+          "status": 1
+        }
+      ],
+      "id": 1
+    }
   ]
 }

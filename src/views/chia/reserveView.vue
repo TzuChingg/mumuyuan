@@ -246,7 +246,7 @@ export default {
             <div class="timeContent m-auto py-3">
                 <p class="fs-3 fw-bolder text-dark">剩餘座位</p>
                 <div class="row" role="group" aria-label="Basic radio toggle button group">
-                    <div class="col-lg-3 col-sm-6 text-center my-3" v-for="(time, idx) in periods">
+                    <div class="col-lg-3 col-sm-6 text-center my-3" v-for="(time, idx) in periods" :key="idx">
                         <input type="radio" class="btn-check" name="time" :id="time" :value="time" v-model="list.time"
                             autocomplete="off">
                         <label class="btn btn-outline-dark w-75" :for="time">{{ time }}
