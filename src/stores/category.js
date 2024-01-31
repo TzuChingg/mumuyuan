@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 
-export default defineStore('category', {
+const useCategoryStore = defineStore('category', {
   state: () => ({
     categories: [
       { id: 1, title: '固定套餐', eng: 'combo' },
@@ -13,8 +13,22 @@ export default defineStore('category', {
     ]
   }),
   getters: {
+    // 取出 categories 的資料狀態
     getCategory: ({ categories }) => {
       return categories
     }
+  },
+  actions: {
+    // 更新 categories
+    async loadData({ categories }) {
+      try {
+        const response = await this.$axios.get(`/categories`)
+        this.categories = response
+      } catch (err) {
+        console.log(err)
+      }
+    }
   }
 })
+
+export default useCategoryStore
