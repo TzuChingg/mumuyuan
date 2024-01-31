@@ -1,44 +1,5 @@
 <template>
   <div v-if="showNav">
-    <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-          <img src="/navLogo.png" alt="" height="75" />
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="#">首頁(暫時放後台)</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#/menu">線上點餐</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#/reserve">立即訂位</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#/search">訂位/訂單查詢</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">常見問題(往下滾)</a>
-            </li>
-            <li class="nav-item" v-if="!hasToken">
-              <a class="nav-link" href="#/login">登入/註冊</a>
-            </li>
-            <li class="nav-item" style="width: 60px;" v-else>
-              <a class="nav-link" :href="identityHref">
-                <img style="margin: 0 auto;height: 40px; border-radius: 50%;background-color: rgb(238, 231, 193);"
-                  src="/user.png" alt="">
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav> -->
     <div class="bg-image bg-primary">
       <div class="container">
         <div class="row">
@@ -231,5 +192,75 @@ ul.nav {
   .noti{
     display: none;
   }
+}
+// .nav-item:hover{
+//   transform: scale(1.1);
+// }
+.nav-item {
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 600;
+}
+
+.nav-item * {
+  box-sizing: border-box;
+  transition: all 0.35s ease;
+}
+
+.nav-item li {
+  display: inline-block;
+  list-style: outside none none;
+  margin: 0.5em 1em;
+  padding: 0;
+}
+
+.nav-item a, .nav-item button {
+  padding: 0.5em 0.8em;
+  position: relative;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.nav-item a::before,.nav-item a::after,
+.nav-item button::before, .nav-item button::after
+{
+  content: "";
+  height: 14px;
+  width: 14px;
+  position: absolute;
+  transition: all 0.35s ease;
+  opacity: 0;
+}
+
+.nav-item a::before,
+.nav-item button::before {
+  content: "";
+  right: 0;
+  top: 0;
+  border-top: 3px solid rgb(241, 238, 233);
+  border-right: 3px solid rgb(241, 238, 233);
+  transform: translate(-100%, 50%);
+}
+
+.nav-item a:after,
+.nav-item button:after  {
+  content: "";
+  left: 0;
+  bottom: 0;
+  border-bottom: 3px solid rgb(241, 238, 233);
+  border-left: 3px solid rgb(241, 238, 233);
+  transform: translate(100%, -50%);
+}
+
+.nav-item a:hover:before, .nav-item a:hover:after ,
+.nav-item button:hover:before, .nav-item button:hover:after 
+{
+  transform: translate(0, 0);
+  opacity: 1;
+}
+
+.nav-item a:hover ,
+.nav-item button:hover{
+  color: black;
 }
 </style>
