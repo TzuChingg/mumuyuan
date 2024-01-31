@@ -68,48 +68,12 @@
                     <div class="carousel-inner">
                         <div class="latestNewsCOl carousel-item active ms-5">
                             <div class="d-flex justify-content-around"> 
-                                <router-link to="/news" class=" text-decoration-none">
+                                <router-link :to="'/news/'+item.id" class=" text-decoration-none" v-for="item in news" :key="item.id">
                                     <div class="card h-100" style="width: 19rem;">
-                                        <img src="/木木苑食材修圖/36.jpg" class="card-img-top" alt="...">
+                                        <img :src="item.newsImage" class="card-img-top" alt="...">
                                         <div class="card-body">
-                                            <p class="card-text fs-4">新戶好禮</p>
-                                            <p class="card-text">趕快加入會員，領取優惠券~帝王蟹味棒兌換券一串</p>
-                                        </div>
-                                    </div>
-                                </router-link>
-                                <router-link to="/news" class=" text-decoration-none">
-                                    <div class="card h-100" style="width: 19rem;">
-                                        <img src="/木木苑食材修圖/39.jpg" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <p class="card-text  fs-4">蔬菜季</p>
-                                            <p class="card-text">青椒買一送一兌換券，與您分享新鮮、美味、健康的蔬食樂趣！</p>
-                                        </div>
-                                    </div>
-                                </router-link>
-                                <router-link to="/news" class=" text-decoration-none">
-                                    <div class="card h-100" style="width: 19rem;">
-                                        <img src="/木木苑食材修圖/38.jpg" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <p class="card-text fs-4">蔬菜季</p>
-                                            <p class="card-text">花椰菜買一送一兌換券，與您分享新鮮、美味、健康的蔬食樂趣！</p>
-                                        </div>
-                                    </div>
-                                </router-link>
-                                <router-link to="/news" class=" text-decoration-none">
-                                    <div class="card h-100" style="width: 19rem;">
-                                        <img src="/木木苑食材修圖/09.jpg" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <p class="card-text fs-4">番茄牛肉捲兌換券</p>
-                                            <p class="card-text">新品上市!!新鮮番茄與牛肉的清爽搭配，趕快來嘗試!</p>
-                                        </div>
-                                    </div>
-                                </router-link>
-                                <router-link to="/news" class=" text-decoration-none">
-                                    <div class="card h-100" style="width: 19rem;">
-                                        <img src="/木木苑食材修圖/31.jpg" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <p class="card-text fs-4">木木苑周年慶</p>
-                                            <p class="card-text">慶祝一週年，巨無霸魷魚 買一送一</p>
+                                            <p class="card-text fs-4">{{item.newsTitle}}</p>
+                                            <p class="card-text">{{item.newsContent}}</p>
                                         </div>
                                     </div>
                                 </router-link>
@@ -117,12 +81,16 @@
                         </div>
                         <!-- 第二頁 example -->
                         <!-- <div class="latestNewsCOl carousel-item ms-5">
-                            <div class="card" style="width: 19rem;">
-                                <img src="/木木苑食材修圖/26.jpg" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <p class="card-text">Some quick example text to build on the card title and
-                                        make up the bulk of the card's content.</p>
-                                </div>
+                            <div class="d-flex justify-content-around">
+                                <router-link :to="'/news'+item.id" class=" text-decoration-none" v-for="item in news" :key="item.id">
+                                    <div class="card h-100" style="width: 19rem;">
+                                        <img :src="item.newsImage" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                            <p class="card-text fs-4">{{item.newsTitle}}</p>
+                                            <p class="card-text">{{item.newsContent}}</p>
+                                        </div>
+                                    </div>
+                                </router-link>
                             </div>
                         </div> -->
                     </div>
@@ -453,14 +421,37 @@
 </template>
 <script>
 export default{
-    mounted() {
-        if(this.$route.hash === '#FAQ'){
-            this.scrollToSection();
+    data() {
+        return {
+            news:[]
         }
     },
+
+
+
+    // 跳轉
+    mounted() { 
+        if(this.$route.hash === '#FAQ'){
+            this.scrollToSection();
+        };
+        this.getNews()
+
+
+
+    },
     methods: {
+        // 跳轉
         scrollToSection(){
             this.$refs.FAQ.scrollIntoView({behavior: 'smooth'})
+        },
+        getNews(){
+            this.$axios.get(`/news`)
+            .then((result) => {
+                this.news = result.data
+                console.log(this.news);
+            }).catch((err) => {
+                console.log(err.response);
+            });
         }
     },
 }
