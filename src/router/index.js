@@ -12,7 +12,7 @@ import backend from './backend'
 
 //主頁
 import indexPage from '/src/views/ching/indexPage.vue'
-
+import notFoundPage from '/src/views/ching/notFound.vue'
 // 線上點餐
 import Menu from './claire/menuRouter'
 import Cart from './claire/cartRouter'
@@ -21,17 +21,37 @@ const routes = [
   { ...Menu },
   { ...Cart },
   // { path: '/', component: IndexTest },
-  { path: '/', component: indexPage },
+  { path: '/', name: 'home', component: indexPage },
+  { path: '/', name: 'FAQ', component: indexPage },
   { ...loginRouter },
   { ...reserveRouter },
   { ...searchRouter },
   ...backend,
-  ...memberRouter
+  ...memberRouter,
+  { path: '/:pathMatch(.*)*', name: 'notFound', component: notFoundPage }
 ]
 
 const router = createRouter({
   history: createWebHashHistory(),
-  routes
+  routes,
+  // 在同頁錨點
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition){
+      console.log(savedPosition);
+      return savedPosition
+    }else if (to.hash) {
+      const element = document.getElementById(to.hash)
+      if (element) {
+        return {el: element, behavior: 'smooth' } // <==== the important part
+      }
+    }else{
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+              resolve({ left: 0, top: 0, behavior: 'smooth' })
+            }, 400)
+          })
+      }
+  }
 })
 
 export default router
