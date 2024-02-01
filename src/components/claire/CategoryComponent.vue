@@ -1,19 +1,16 @@
 <script>
 import categoryStore from '../../stores/category.js'
 import { mapState, mapActions } from 'pinia'
-//import { useCategoryStore } from '@/stores/category'
-
 export default {
-  
-  methods: { ...mapActions(categoryStore, ['loadData']) },
+  methods: { ...mapActions(categoryStore, ['loadData', 'getData']) },
   computed: {
     ...mapState(categoryStore, ['getCategory'])
-  }  
+  }
 }
 </script>
 
 <template>
-  {{ categories }}
+  <div></div>
   <div>
     <nav class="navbar d-flex justify-content-center">
       <div class="btn-group">

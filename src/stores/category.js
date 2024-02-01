@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
-
+import axios from 'axios'
+const url = 'http://localhost:8080/api/categories'
 const useCategoryStore = defineStore('category', {
   state: () => ({
     categories: [
@@ -10,7 +11,8 @@ const useCategoryStore = defineStore('category', {
       { id: 5, title: '酒食', eng: 'wine' },
       { id: 6, title: '蔬菜', eng: 'vegetable' },
       { id: 7, title: '經典', eng: 'classic' }
-    ]
+    ],
+    category: []
   }),
   getters: {
     // 取出 categories 的資料狀態
@@ -20,14 +22,16 @@ const useCategoryStore = defineStore('category', {
   },
   actions: {
     // 更新 categories
-    async loadData({ categories }) {
+    async loadData() {
       try {
         const response = await this.$axios.get(`/categories`)
+        console.log(response)
         this.categories = response
       } catch (err) {
         console.log(err)
       }
-    }
+    },
+   
   }
 })
 

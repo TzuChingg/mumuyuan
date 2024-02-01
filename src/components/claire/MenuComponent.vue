@@ -12,11 +12,7 @@ export default {
   },
   methods: {
     ...mapActions(menuStore, ['getProducts']), 
-    ...mapActions(cartStore, ['addToCart']),
-    // addToCart(productId, qty = 1) {
-    //   this.cart.push({ id: new Date().getTime(), productId, qty })
-    //   console.log(this.cart)
-    // }
+    ...mapActions(cartStore, ['addToCart']),    
   },
   computed: { ...mapState(menuStore, ['sortProducts']) },
   created() {
