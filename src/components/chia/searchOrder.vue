@@ -115,7 +115,7 @@ export default {
     props: ["getResponse"],
     data() {
         return {
-            getProducts: [],
+            // getProducts: [],
             socket:null,
             status: 0,
         }
