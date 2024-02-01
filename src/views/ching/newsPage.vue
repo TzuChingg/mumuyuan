@@ -12,11 +12,14 @@
                   <img :src="news.newsImage" alt="" />
                 </div>
               </div>
-              <p>木木苑一周年啦！！</p>
+              <p v-for="(content, index) in news.newsContent" :key="index">
+                {{ content }}
+              </p>
+              <!-- <p>木木苑一周年啦！！</p>
               <p>感謝您在過去一年中對我們的支持，為此我們準備了優惠活動</p>
               <p>11/24(五)-11/26(日) 限期三天</p>
               <p>■巨無霸魷魚 買一送一 (每人限購一組)</p>
-              <p>■金牌生啤 買一送一 (不列入會員集點)</p>
+              <p>■金牌生啤 買一送一 (不列入會員集點)</p> -->
               <p>❕木木苑保有活動解釋權，造成不便敬請見諒❕</p>
             </div>
             <div class="otherNews col-sm-3 mb-3 mx-auto">
@@ -47,7 +50,6 @@ export default {
     }
   },
   mounted() {
-    console.log(this.$route.params.id)
     this.getNews()
   },
 
@@ -56,7 +58,9 @@ export default {
       this.$axios(`/news/${this.$route.params.id}`)
         .then((res) => {
           this.news = res.data
+          this.news.newsContent = this.news.newsContent.split('\n')
         })
+        console.log(this.news);
     }
   },
 
