@@ -6,7 +6,8 @@ const url = 'http://localhost:3000'
 export default {
   data() {
     return {
-      products: []
+      products: [],
+      props: ["category"],
     }
   },
   methods: { ...mapActions(menuStore, ['loadData']) },
@@ -40,6 +41,7 @@ export default {
           <h6>
             {{ product.productName }} <span class="float-end">$ {{ product.price }}</span>
           </h6>
+          <p>{{ product.category }}</p>
           <p class="card-text my-3">{{ product.description }}</p>
 
           <div class="text-end">

@@ -26,7 +26,8 @@
                     class="d-block link-underline link-underline-opacity-0">點數兌換</router-link>
                 </button>
                 <button class="btn btn-outline-primary" type="button">
-                  <router-link to="/" class="d-block link-underline link-underline-opacity-0"  @click="signOut">登出</router-link>
+                  <router-link to="/" class="d-block link-underline link-underline-opacity-0"
+                    @click="signOut">登出</router-link>
                 </button>
               </div>
             </div>
@@ -38,21 +39,23 @@
                   <h5>歷史訂單</h5>
                   <hr />
                   <!-- accordion -->
-                  <div class="accordion mb-4" id="accordionExample">
+                  <div class="accordion mb-4" v-for="(item, idx) in finishOrder" :key="'index' + item.orderid"
+                    id="accordionExample">
                     <div class="accordion-item">
                       <h2 class="accordion-header" id="headingOne">
                         <button class="itemImg accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                          data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                          :data-bs-target="'#index' + item.orderid" aria-expanded="false"
+                          :aria-controls="'index' + item.orderid">
                           <img src="/14.jpg" alt="" />
                           <div class="row ms-2">
-                            <div class="col-12">6 份餐點 $637 <span class="ms-5">已完成</span></div>
+                            <div class="col-12">{{ item.product.length }} 份餐點 ${{ item.price }} <span class="ms-5">已完成</span></div>
                             <div class="col-12">
-                              <span>2024年1月20日</span>
+                              <span>{{ item.day }}</span>
                             </div>
                           </div>
                         </button>
                       </h2>
-                      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                      <div :id="'index' + item.orderid" class="accordion-collapse collapse" aria-labelledby="headingOne"
                         data-bs-parent="#accordionExample">
                         <div class="accordion-body">
                           <table class="table table-sm">
@@ -65,51 +68,21 @@
                               </tr>
                             </thead>
                             <tbody class="table-group-divider">
-                              <tr>
-                                <td>干貝捲牛肉</td>
-                                <td>2</td>
-                                <td>45</td>
-                                <td>90</td>
-                              </tr>
-                              <tr>
-                                <td>帝王蟹味棒</td>
-                                <td>3</td>
-                                <td>49</td>
-                                <td>147</td>
-                              </tr>
-                              <tr>
-                                <td>剝皮辣椒豬捲</td>
-                                <td>4</td>
-                                <td>45</td>
-                                <td>180</td>
-                              </tr>
-                              <tr>
-                                <td>豆干</td>
-                                <td>2</td>
-                                <td>25</td>
-                                <td>50</td>
-                              </tr>
-                              <tr>
-                                <td>花椰菜</td>
-                                <td>1</td>
-                                <td>35</td>
-                                <td>35</td>
-                              </tr>
-                              <tr>
-                                <td>牛小排</td>
-                                <td>3</td>
-                                <td>45</td>
-                                <td>135</td>
+                              <tr v-for="food in item.product">
+                                <td>{{ food.name }}</td>
+                                <td>{{ food.quantity }}</td>
+                                <td>{{ food.price }}</td>
+                                <td>{{ food.quantity * food.price }}</td>
                               </tr>
                             </tbody>
                             <tfoot class="table-group-divider">
                               <td></td>
-                              <td colspan="2">總計</td>
-                              <td>637</td>
+                              <td colspan="2" class="p-1">總計(含優惠券使用)</td>
+                              <td class="p-1">{{ item.price }}</td>
                             </tfoot>
                           </table>
                           <div class="col-12 d-flex justify-content-between">
-                            <span>rating</span>
+                            <span>評分 rating 區塊</span>
                             <button class="btn btn-primary btn-sm">再次訂購</button>
                           </div>
                         </div>
@@ -117,74 +90,6 @@
                     </div>
                   </div>
                   <!-- accordion End -->
-                  <!-- accordion 2 -->
-                  <div class="accordion mb-4" id="accordionExample2">
-                    <div class="accordion-item">
-                      <h2 class="accordion-header" id="headingTwo">
-                        <button class="itemImg accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                          data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                          <img src="/11.jpg" alt="" />
-                          <div class="row ms-2">
-                            <div class="col-12">4 份餐點 $290 <span class="ms-5">已完成</span></div>
-                            <div class="col-12">
-                              <span>2024年1月18日</span>
-                            </div>
-                          </div>
-                        </button>
-                      </h2>
-                      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                        data-bs-parent="#accordionExample2">
-                        <div class="accordion-body">
-                          <table class="table table-sm">
-                            <thead>
-                              <tr>
-                                <th scope="col">品項</th>
-                                <th scope="col">數量</th>
-                                <th scope="col">單價</th>
-                                <th scope="col">總價</th>
-                              </tr>
-                            </thead>
-                            <tbody class="table-group-divider">
-                              <tr>
-                                <td>醬烤雞心</td>
-                                <td>4</td>
-                                <td>35</td>
-                                <td>140</td>
-                              </tr>
-                              <tr>
-                                <td>花枝丸</td>
-                                <td>1</td>
-                                <td>30</td>
-                                <td>30</td>
-                              </tr>
-                              <tr>
-                                <td>炸豆包串</td>
-                                <td>2</td>
-                                <td>30</td>
-                                <td>60</td>
-                              </tr>
-                              <tr>
-                                <td>四季豆</td>
-                                <td>2</td>
-                                <td>30</td>
-                                <td>60</td>
-                              </tr>
-                            </tbody>
-                            <tfoot class="table-group-divider">
-                              <td></td>
-                              <td colspan="2">總計</td>
-                              <td>290</td>
-                            </tfoot>
-                          </table>
-                          <div class="col-12 d-flex justify-content-between">
-                            <span>rating</span>
-                            <button class="btn btn-primary btn-sm">再次訂購</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- accordion 2 End -->
                 </div>
               </div>
             </div>
@@ -198,10 +103,24 @@
 import { docCookies } from '../../assets/cookie';
 
 export default {
+  data() {
+    return {
+      finishOrder: [],
+    }
+  },
+  created() {
+    this.$axios.get(`/orders?userId=${docCookies.getItem('id')}&status=3`)
+      .then(res => {
+        if (res.status === 200) {
+          this.finishOrder = res.data;
+        }
+      })
+  },
   methods: {
     signOut() {
       docCookies.removeItem("token");
       docCookies.removeItem("identity");
+      docCookies.removeItem("id");
     }
   }
 }
@@ -226,4 +145,5 @@ export default {
     object-fit: cover;
     height: 40px;
   }
-}</style>
+}
+</style>

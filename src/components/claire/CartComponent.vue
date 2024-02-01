@@ -1,5 +1,5 @@
 <script>
-import useCartStore from '@/stores/cart';
+import useCartStore from '@/stores/cart'
 import { mapState, mapActions } from 'pinia'
 export default {
   data() {
@@ -8,7 +8,7 @@ export default {
       products: []
     }
   },
-  computed:{},
+  computed: {},
   created() {
     this.$axios
       .get(`/products`)
@@ -23,103 +23,99 @@ export default {
 </script>
 
 <template>
-  <div class=" container x">
+  <div class="container x">
     <h1 class="my-4 text-center me-2">購物車</h1>
     <!-- v-if -->
     <!--<div>購物車沒有任何品項</div>-->
     <!-- v-else -->
-    <table class="table table-borderless">
-      <tbody >
-        <tr class=" border-bottom">
-          <td class="align-middle d-flex justify-content-evenly align-items-center ">
-            <a href="#" class="link-dark text-decoration-none fs-4">x</a>
-            <div>七里香</div>
-            <div></div>
-            <div class="position-relative">
-              <ul class="pagination position-absolute top-50 start-50 translate-middle">
-                <li class="page-item">
-                  <button class="page-link" href="#" aria-label="Previous">
-                    <span aria-hidden="true">-</span>
-                  </button>
-                </li>
-                <li class="page-item"><button class="page-link" href="#">1</button></li>
-                <li class="page-item">
-                  <button class="page-link" href="#" aria-label="Next">
-                    <span aria-hidden="true">+</span>
-                  </button>
-                </li>
-              </ul>
-            </div>
-            <div class="text-end">$25</div>
-          </td>
-        </tr>
-      </tbody>
-      <tfoot>
-        <tr>
-          <td class="text-end pe-4">總金額 NT$ 60</td>
-        </tr>
-      </tfoot>
-    </table>
-    <div class="row ">
-      <div class="col-6  ">
-        <div class="d-flex mt-2 justify-content-center ">
-            <label for="name" class="">您的姓名</label>
-            <input type="text" class="ms-2" id="name" />
-          </div>
-          <div class="d-flex mt-2 justify-content-center">
-            <label for="phone" class="">手機號碼</label>
-            <input type="phone" class="ms-2" id="phone" />
-          </div>
-          <div class="d-flex mt-2 justify-content-center">
-            <label for="email" class="">電子郵件</label>
-            <input type="email" class="ms-2" id="email" />
-          </div>
-          <div class="d-flex mt-2 justify-content-center">
-            <label for="pickup" class="">取餐時間</label>
-            <input type="text" class="ms-2" id="pickup" />
-          </div>
-      </div>
-      <div class="col-6 ">
-            <div class="d-flex mb-3 justify-content-center">
-              <select
-                class="form-select border border-dark form-select-md w-50 "
-                aria-label="coupon"
-                id="coupon"
-              >
-                <option selected>請選擇口味</option>
-                <option value="1">秘粉</option>
-                <option value="2">梅粉</option>
-                <option value="3">椒鹽</option>
-              </select>
-            </div>
-            <div class="d-flex my-3 justify-content-center">
-              <select
-                class="form-select border border-dark form-select-md w-50 "
-                aria-label="coupon"
-                id="coupon"
-              >
-                <option selected>請選擇辣度</option>
-                <option value="1">小辣</option>
-                <option value="2">中辣</option>
-                <option value="3">大辣</option>
-              </select>
-            </div>
-            <div class="d-flex my-3 justify-content-center">
-              <select
-                class="form-select border border-dark form-select-md w-50 "
-                aria-label="coupon"
-                id="coupon"
-              >
-                <option selected>請選擇一張優惠券</option>
-                <option value="1">優惠券</option>
-                <option value="2">優惠券</option>
-                <option value="3">優惠券</option>
-              </select>
-            </div>
-
-      </div>
-      <div class=" mt-4 d-flex justify-content-center">
-        <div class="me-3">付款方式:</div>
+    <div class="table-responsive">
+      <table class="table table-borderless align-middle table-light">
+        <thead>
+          <tr>
+            <th class="ps-5 pt-5"><label for="name">您的姓名</label></th>
+            <th><input type="text" class="ms-2" id="name" /></th>
+            <th class="ps-5 pt-5"><label for="phone">手機號碼</label></th>
+            <th><input type="phone" class="ms-2" id="phone" /></th>
+          </tr>
+          <tr>
+            <th class="ps-5"><label for="email">電子郵件</label></th>
+            <th><input type="email" class="ms-2" id="email" /></th>
+            <th class="ps-5">
+              <label>取餐時間</label>
+            </th>
+            <th><label class="ms-2">2024-02-02</label></th>
+          </tr>
+          <tr>
+            <th class="ps-5 pt-5">刪除</th>
+            <th class="ps-5">名稱</th>
+            <th class="ps-5">數量</th>
+            <th class="px-5 text-end">價格</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="ps-5"><a href="#" class="link-dark fs-4">x</a></td>
+            <td class="ps-5">七里香</td>
+            <td class="ps-5">
+              <div class="btn-group" role="group" aria-label="Basic outlined example">
+                <button type="button" class="btn btn-outline-primary">-</button>
+                <button type="button" class="btn btn-outline-primary">1</button>
+                <button type="button" class="btn btn-outline-primary">+</button>
+              </div>
+            </td>
+            <td class="px-5"><div class="text-end">$25</div></td>
+          </tr>
+          <tr>
+            <td class="px-5 pt-5" colspan="4">
+              <div class="d-flex justify-content-end">
+                <select
+                  class="form-select border border-dark form-select-md w-50"
+                  aria-label="coupon"
+                  id="coupon"
+                >
+                  <option selected>請選擇口味</option>
+                  <option value="1">秘粉</option>
+                  <option value="2">梅粉</option>
+                  <option value="3">椒鹽</option>
+                </select>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="px-5" colspan="4">
+              <div class="d-flex justify-content-end">
+                <select
+                  class="form-select border border-dark form-select-md w-50"
+                  aria-label="coupon"
+                  id="coupon"
+                >
+                  <option selected>請選擇辣度</option>
+                  <option value="1">小辣</option>
+                  <option value="2">中辣</option>
+                  <option value="3">大辣</option>
+                </select>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="px-5 pb-5" colspan="4">
+              <div class="d-flex justify-content-end">
+                <select
+                  class="form-select border border-dark form-select-md w-50"
+                  aria-label="coupon"
+                  id="coupon"
+                >
+                  <option selected>請選擇一張優惠券</option>
+                  <option value="1">優惠券</option>
+                  <option value="2">優惠券</option>
+                  <option value="3">優惠券</option>
+                </select>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="px-5 pb-5"><label class="me-3">付款方式:</label></td>
+            <td class="px-5 pb-5">
               <input
                 class="form-check-input me-1"
                 type="radio"
@@ -128,6 +124,8 @@ export default {
                 value="option1"
               />
               <label class="form-check-label me-2" for="inlineRadio1">現金</label>
+            </td>
+            <td class="px-5 pb-5">
               <input
                 class="form-check-input me-1"
                 type="radio"
@@ -136,6 +134,8 @@ export default {
                 value="option1"
               />
               <label class="form-check-label me-2" for="inlineRadio1">信用卡</label>
+            </td>
+            <td class="px-5 pb-5">
               <input
                 class="form-check-input me-1"
                 type="radio"
@@ -144,36 +144,24 @@ export default {
                 value="option1"
               />
               <label class="form-check-label" for="inlineRadio1">Line Pay</label>
-      </div>
-      <div >
-        <div class=" mt-4  d-flex justify-content-center">
-            <button type="button" class="btn btn-outline-primary ">返回</button>
-            <button type="button" class="btn btn-outline-primary ms-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
-              送出訂單
-            </button>
-          </div>
-      </div>
+            </td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr class="border-top">
+            <td class="text-end pe-5" colspan="4">總金額 NT$ 60</td>
+          </tr>
+        </tfoot>
+      </table>
     </div>
-
-
-
-
-
-      
-
   </div>
-
-
-
 </template>
 
 <style lang="scss">
 a {
   text-decoration: none;
 }
-.x{
+.x {
   height: 100vh;
 }
 </style>
-
-
