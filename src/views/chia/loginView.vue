@@ -1,5 +1,11 @@
 <script>
+import Parallax from "parallax-js";
 export default {
+    data() {
+        return {
+            parallax:null
+        }
+    },
     computed: {
         pageStatus() {
             return {
@@ -8,12 +14,20 @@ export default {
                 '/login/forget': '密碼找回'
             }[this.$route.path];
         }
-    }
+    },
+    methods:{
+
+    },
+    mounted() {
+        this.parallax = new Parallax(this.$refs.scene);
+    },
 }
 </script>
 <template>
     <div class="row login mx-0">
-        <div class="col-8 imgContent">
+        <div class="col-8 imgContent" ref="scene">
+            <div data-depth="0.2">My first Layer!</div>
+            <div data-depth="0.6">My second Layer!</div>
         </div>
         <div class="col-4 signinContent d-flex">
             <div class="m-auto w-75">
