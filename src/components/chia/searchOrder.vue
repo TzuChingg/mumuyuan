@@ -105,7 +105,6 @@
             <li>請務必當場清點找零</li>
             <li>依現場排隊取餐</li>
         </ul>
-        <button type="button" class="d-block btn btn-dark mx-auto my-5 py-2 px-3">返回首頁</button>
     </div>
 </template>
 
@@ -116,7 +115,7 @@ export default {
     props: ["getResponse"],
     data() {
         return {
-            getProducts: [],
+            // getProducts: [],
             socket:null,
             status: 0,
         }
@@ -158,10 +157,33 @@ export default {
             const loadingElement = this.$refs.loading[0];
             if(this.status == 1){
                 loadingElement.classList.add('wait');
+                loadingElement.classList.remove('wait2');
+                loadingElement.classList.remove('wait3');
                 loadingElement.innerText = '待接單';
             }else if (this.status == 2) {
                 loadingElement.classList.add('wait2');
                 loadingElement.classList.remove('wait');
+                loadingElement.classList.remove('wait3');
+                loadingElement.innerText = '準備中';
+            } else if (this.status == 3) {
+                loadingElement.classList.add('wait3');
+                loadingElement.classList.remove('wait2');
+                loadingElement.classList.remove('wait');
+                loadingElement.innerText = '餐點完成';
+            }
+        },
+        tidyResponse(){
+            this.status = this.getResponse[0].status
+            const loadingElement = this.$refs.loading[0];
+            if(this.status == 1){
+                loadingElement.classList.add('wait');
+                loadingElement.classList.remove('wait2');
+                loadingElement.classList.remove('wait3');
+                loadingElement.innerText = '待接單';
+            }else if (this.status == 2) {
+                loadingElement.classList.add('wait2');
+                loadingElement.classList.remove('wait');
+                loadingElement.classList.remove('wait3');
                 loadingElement.innerText = '準備中';
             } else if (this.status == 3) {
                 loadingElement.classList.add('wait3');
@@ -188,12 +210,15 @@ export default {
         };
         this.status = this.getResponse[0].status
         const loadingElement = this.$refs.loading[0];
-            if(this.status == 1){
+        if(this.status == 1){
                 loadingElement.classList.add('wait');
+                loadingElement.classList.remove('wait2');
+                loadingElement.classList.remove('wait3');
                 loadingElement.innerText = '待接單';
             }else if (this.status == 2) {
                 loadingElement.classList.add('wait2');
                 loadingElement.classList.remove('wait');
+                loadingElement.classList.remove('wait3');
                 loadingElement.innerText = '準備中';
             } else if (this.status == 3) {
                 loadingElement.classList.add('wait3');
