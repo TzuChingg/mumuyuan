@@ -51,7 +51,7 @@ export default {
   </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @media screen and (max-width: 625px) {
   .btn-group {
     flex-direction: column;
