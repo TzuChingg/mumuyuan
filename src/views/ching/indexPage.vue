@@ -71,9 +71,9 @@
                                 <router-link :to="'/news/'+item.id" class=" text-decoration-none" v-for="item in news" :key="item.id">
                                     <div class="card h-100" style="width: 19rem;">
                                         <img :src="item.newsImage" class="card-img-top" alt="...">
-                                        <div class="card-body">
+                                        <div class="card-body ">
                                             <p class="card-text fs-4">{{item.newsTitle}}</p>
-                                            <p class="card-text">{{item.newsContent}}</p>
+                                            <p class="card-text ">{{item.newsContent}}</p>
                                         </div>
                                     </div>
                                 </router-link>
@@ -492,6 +492,14 @@ export default{
 
 .latestNewsCOl {
     max-width: 1820px;
+    .card-text{
+        // height: 150px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
 }
 
 .sloganButton {
