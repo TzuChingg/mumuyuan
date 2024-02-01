@@ -1,57 +1,40 @@
 <script>
-import categoryStore from '../../stores/category.js'
-import { mapState, mapActions } from 'pinia'
 export default {
-  methods: { ...mapActions(categoryStore, ['loadData', 'getData']) },
-  computed: {
-    ...mapState(categoryStore, ['getCategory'])
+  data() {
+    return { categories: [] }
+  },
+  methods: {},
+  computed: {},
+  mounted() {
+    this.$axios
+      .get('/categories')
+      .then((res) => {
+        this.categories = res.data
+        console.log(this.categories)
+      })
+      .catch((e) => {
+        console.log(e)
+      })
   }
 }
 </script>
 
 <template>
-  <div></div>
-  <div>
-    <nav class="navbar d-flex justify-content-center">
-      <div class="btn-group">
-        <!--<router-link
-        to="/menu/combo"
-        class="btn btn-outline-primary"
-        v-for="item in getCategory"
-        :key="item.id"
-        >{{ item.title }}</router-link
-      > -->
-        <router-link to="/menu/combo" class="btn btn-outline-primary">{{
-          getCategory[0].title
-        }}</router-link>
-        <router-link to="/menu/secret" class="btn btn-outline-primary">{{
-          getCategory[1].title
-        }}</router-link>
-        <router-link to="/menu/meat" class="btn btn-outline-primary">{{
-          getCategory[2].title
-        }}</router-link>
-        <router-link to="/menu/seafood" class="btn btn-outline-primary">{{
-          getCategory[3].title
-        }}</router-link>
-        <router-link to="/menu/wine" class="btn btn-outline-primary">{{
-          getCategory[4].title
-        }}</router-link>
-        <router-link to="/menu/vegetable" class="btn btn-outline-primary">{{
-          getCategory[5].title
-        }}</router-link>
-        <router-link to="/menu/classic" class="btn btn-outline-primary">{{
-          getCategory[6].title
-        }}</router-link>
-      </div>
-      <div href="#" class="d-flex justify-content-end align-items-center ms-5">
-        <router-link to="/cart">cart</router-link>
-        <!--<span class="badge text-bg-danger">0</span>-->
-      </div>
-    </nav>
-  </div>
+  <nav class="navbar d-flex justify-content-center">
+    <div class="btn-group" role="group" v-for="category in categories" :key="category.id">
+      <button type="button" class="btn btn-outline-primary mx-2">{{ category.title }}</button>
+    </div>
+    <div href="#" class="d-flex justify-content-end align-items-center ms-5">
+      <router-link to="/cart" class="link">購物車</router-link>
+      <span class="badge text-bg-danger mx-3">0</span>
+    </div>
+  </nav>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
+.link {
+  text-decoration: none;
+}
 @media screen and (max-width: 625px) {
   .btn-group {
     flex-direction: column;

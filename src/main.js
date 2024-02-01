@@ -27,6 +27,8 @@ import ws from 'ws';
 import App from './App.vue';
 
 const app = createApp(App);
+
+
 app.config.globalProperties.$axios = axios.create({
     baseURL: 'http://localhost:8080/api',
   })
@@ -35,9 +37,10 @@ app.config.globalProperties.$apexcharts = ApexCharts;
 app.component('navbarComponent', navbarComponent);
 app.component('footerComponent', footerComponent);
 
+
 app.use(VueApexCharts);
 app.use(VueAxios, axios);
-app.use(createPinia());
+app.use(createPinia())
 app.use(router);
 
 

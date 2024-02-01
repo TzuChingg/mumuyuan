@@ -1,26 +1,39 @@
 <script>
-import TitleComponent from '../../components/claire/TitleComponent.vue'
-import CategoryComponent from '../../components/claire/CategoryComponent.vue'
-import MenuComponent from '../../components/claire/MenuComponent.vue'
-export default { components: { TitleComponent, CategoryComponent, MenuComponent } }
-</script>
+import CategoryComponent from '@/components/claire/CategoryComponent.vue'
 
+export default {
+  data() {
+    return { categories: [] }
+  },
+  mounted() {
+    this.$axios
+      .get('/categories')
+      .then((res) => {
+        console.log(res.data)
+        this.categories = res.data
+      })
+      .catch((e) => {
+        console.log(e)
+      })
+  },
+  components: { CategoryComponent }
+}
+</script>
 <template>
-  <div class="wrapper">
+  <div class="container pt-5">
     <!--title-->
-    <TitleComponent></TitleComponent>
+    <h1 class="my-4 text-center">線上點餐</h1>
     <!--category-->
     <CategoryComponent></CategoryComponent>
-    <!--title-->
-    <h1 class="my-4 text-center"></h1>
     <main>
       <!-- 食材卡片 -->
       <div class="px-3">
         <div class="row d-flex px-5 justify-content-evenly">
           <!--menu-->
-          <MenuComponent></MenuComponent>
         </div>
       </div>
     </main>
   </div>
 </template>
+
+<style></style>
