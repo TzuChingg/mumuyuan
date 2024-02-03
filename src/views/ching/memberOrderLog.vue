@@ -39,7 +39,7 @@
                   <h5>歷史訂單</h5>
                   <hr />
                   <!-- accordion -->
-                  <div class="accordion mb-4" v-for="(item, idx) in finishOrder" :key="'index' + item.orderid"
+                  <div class="accordion mb-4" v-for="(item) in finishOrder" :key="'index' + item.orderid"
                     id="accordionExample">
                     <div class="accordion-item">
                       <h2 class="accordion-header" id="headingOne">
@@ -55,38 +55,57 @@
                           </div>
                         </button>
                       </h2>
-                      <div :id="'index' + item.orderid" class="accordion-collapse collapse" aria-labelledby="headingOne"
-                        data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                          <table class="table table-sm">
-                            <thead>
-                              <tr>
-                                <th scope="col">品項</th>
-                                <th scope="col">數量</th>
-                                <th scope="col">單價</th>
-                                <th scope="col">總價</th>
-                              </tr>
-                            </thead>
-                            <tbody class="table-group-divider">
-                              <tr v-for="food in item.product">
-                                <td>{{ food.name }}</td>
-                                <td>{{ food.quantity }}</td>
-                                <td>{{ food.price }}</td>
-                                <td>{{ food.quantity * food.price }}</td>
-                              </tr>
-                            </tbody>
-                            <tfoot class="table-group-divider">
-                              <td></td>
-                              <td colspan="2" class="p-1">總計(含優惠券使用)</td>
-                              <td class="p-1">{{ item.price }}</td>
-                            </tfoot>
-                          </table>
-                          <div class="col-12 d-flex justify-content-between">
-                            <span>評分 rating 區塊</span>
-                            <button class="btn btn-primary btn-sm">再次訂購</button>
-                          </div>
+                        <div :id="'index' + item.orderid" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                          data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                              <table class="table table-sm">
+                                <thead>
+                                  <tr>
+                                    <th scope="col">品項</th>
+                                    <th scope="col">數量</th>
+                                    <th scope="col">單價</th>
+                                    <th scope="col">總價</th>
+                                  </tr>
+                                </thead>
+                                <tbody class="table-group-divider">
+                                  <tr v-for="food in item.product" :key="food">
+                                    <td>{{ food.name }}</td>
+                                    <td>{{ food.quantity }}</td>
+                                    <td>{{ food.price }}</td>
+                                    <td>{{ food.quantity * food.price }}</td>
+                                  </tr>
+                                </tbody>
+                                <tfoot class="table-group-divider">
+                                  <td></td>
+                                  <td colspan="2" class="p-1">總計(含優惠券使用)</td>
+                                  <td class="p-1">{{ item.price }}</td>
+                                </tfoot>
+                              </table>
+                                <div class="col-12 d-flex justify-content-between">
+                                  <span><div className="box">
+                                      <input type="radio" name="star" id="score5" value="5" data-bs-toggle="modal" data-bs-target="#star"/>
+                                      <label class="star" for="score5"></label>
+
+                                      <input type="radio" name="star" id="score4" value="4" data-bs-toggle="modal" data-bs-target="#star"/>
+                                      <label class="star" for="score4"></label>
+
+                                      <input type="radio" name="star" id="score3" value="3" data-bs-toggle="modal" data-bs-target="#star"/>
+                                      <label class="star" for="score3"></label>
+
+                                      <input type="radio" name="star" id="score2" value="2" data-bs-toggle="modal" data-bs-target="#star"/>
+                                      <label class="star" for="score2"></label>
+
+                                      <input type="radio" name="star" id="score1" value="1" data-bs-toggle="modal" data-bs-target="#star"/>
+                                      <label class="star" for="score1"></label>
+                                         
+                                  </div> <p class=" text-success ">(按下星星送出評價)</p></span>
+                                  <textarea id="title" placeholder="評價內容內容" class="form-control border-1 shadow-none w-50" ></textarea>
+                                  
+                                  <button class="btn btn-primary btn-sm">再次訂購</button>
+                                </div>
+                           
+                            </div>
                         </div>
-                      </div>
                     </div>
                   </div>
                   <!-- accordion End -->
@@ -126,6 +145,8 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+@import '/src/assets/main.scss'; 
+
 .memberorder {
   min-height: calc(100vh - 174px);
 
@@ -146,4 +167,45 @@ export default {
     height: 40px;
   }
 }
+.box {
+  > label {
+    user-select: none;
+    font-size: 30px;
+    &:after {
+      content: '☆';
+    }
+  }
+
+  > input {
+    display: none;
+  }
+
+  display: inline-flex;
+  flex-direction: row-reverse;
+
+  > label {
+    user-select: none;
+    font-size: 30px;
+    &:hover {
+      cursor: pointer;
+
+      &:after {
+        content: '★';
+        color: $primary; // Assuming you have a variable $primary defined
+      }
+
+      ~ label {
+        &:after {
+          content: '★';
+          color: $primary;
+        }
+      }
+    }
+  }
+
+  > input {
+    display: none;
+  }
+}
+
 </style>

@@ -540,6 +540,18 @@
           "quantity": 3,
           "image": "/木木苑食材修圖/02.jpg",
           "price": 61
+        },
+        {
+          "name": "鯛魚下巴",
+          "quantity": 3,
+          "image": "/木木苑食材修圖/03.jpg",
+          "price": 45
+        },
+        {
+          "name": "雞肉串",
+          "quantity": 2,
+          "image": "/木木苑食材修圖/20.jpg",
+          "price": 89
         }
       ],
       "price": 300,
@@ -551,7 +563,6 @@
       "payment": true,
       "pickTime": "12:00",
       "comment": "做好吃一點",
-      "orderScore": 1,
       "flavor": 3,
       "spicy": 1,
       "id": 2
@@ -600,7 +611,6 @@
       "payment": true,
       "pickTime": "22:00",
       "comment": "做好吃一點",
-      "orderScore": 1,
       "flavor": 1,
       "spicy": 1,
       "orderid": "456",
@@ -618,6 +628,24 @@
           "quantity": 5,
           "image": "/木木苑食材修圖/01.jpg",
           "price": 52
+        },
+        {
+          "name": "豬五花蔥捲",
+          "quantity": 3,
+          "image": "/木木苑食材修圖/02.jpg",
+          "price": 61
+        },
+        {
+          "name": "鯛魚下巴",
+          "quantity": 3,
+          "image": "/木木苑食材修圖/03.jpg",
+          "price": 45
+        },
+        {
+          "name": "雞肉串",
+          "quantity": 2,
+          "image": "/木木苑食材修圖/20.jpg",
+          "price": 89
         }
       ],
       "price": 300,
@@ -629,7 +657,6 @@
       "payment": true,
       "pickTime": "17:00",
       "comment": "做好吃一點",
-      "orderScore": 1,
       "flavor": 1,
       "spicy": 1,
       "orderid": "789",
@@ -640,7 +667,7 @@
     {
       "newsImage": "",
       "newsTitle": "1/31 - 12/31 領取優惠券折10元",
-      "newsContent": "",
+      "newsContent": "測試",
       "couponId": "3",
       "isLook": false,
       "id": 1
@@ -726,5 +753,8 @@
       "orderId": 2,
       "id": 1
     }
+  ],
+  "orderScore": [
+    {}
   ]
 }
