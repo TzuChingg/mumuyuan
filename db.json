@@ -665,12 +665,44 @@
   ],
   "news": [
     {
-      "newsImage": "",
-      "newsTitle": "1/31 - 12/31 領取優惠券折10元",
-      "newsContent": "測試",
+      "newsImage": "/木木苑食材修圖/36.jpg",
+      "newsTitle": "新戶好禮",
+      "newsContent": "趕快加入會員，領取優惠券~帝王蟹味棒兌換券一串",
       "couponId": "3",
       "isLook": false,
       "id": 1
+    },
+    {
+      "newsImage": "/木木苑食材修圖/39.jpg",
+      "newsTitle": "蔬菜季",
+      "newsContent": "青椒買一送一兌換券，與您分享新鮮、美味、健康的蔬食樂趣！",
+      "couponId": "3",
+      "isLook": false,
+      "id": 2
+    },
+    {
+      "newsImage": "/木木苑食材修圖/38.jpg",
+      "newsTitle": "蔬菜季",
+      "newsContent": "花椰菜買一送一兌換券，與您分享新鮮、美味、健康的蔬食樂趣！",
+      "couponId": "3",
+      "isLook": false,
+      "id": 3
+    },
+    {
+      "newsImage": "/木木苑食材修圖/09.jpg",
+      "newsTitle": "新品上市!!番茄牛肉捲",
+      "newsContent": "新鮮番茄與牛肉的清爽搭配，趕快來嘗試!",
+      "couponId": "3",
+      "isLook": false,
+      "id": 4
+    },
+    {
+      "newsImage": "/木木苑食材修圖/31.jpg",
+      "newsTitle": "木木苑周年慶",
+      "newsContent": "木木苑一周年啦！！\n感謝您在過去一年中對我們的支持，為此我們準備了優惠活動\n11/24(五)-11/26(日) 限期三天\n■巨無霸魷魚 買一送一 (每人限購一組)\n■金牌生啤 買一送一 (不列入會員集點)",
+      "couponId": "3",
+      "isLook": false,
+      "id": 5
     }
   ],
   "bookingfrom": [

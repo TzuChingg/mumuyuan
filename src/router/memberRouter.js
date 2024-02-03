@@ -6,7 +6,7 @@ import memberExchange from '/src/views/ching/memberExchange.vue'
 
 
 export default [
-    { path: '/news', component: newsPage, },
+    { path: '/news/:id', component: newsPage, },
     { path: '/memberCenter', component: memberCenter, },
     { path: '/member/orderLog', component: orderLog, },
     { path: '/member/discount', component: memberDiscount, },
