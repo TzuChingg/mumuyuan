@@ -6,7 +6,7 @@
       "copyPassword": "123456",
       "name": "joker",
       "phone": "093333333",
-      "coupon": "",
+      "coupon": "3,4,1",
       "identity": "baduser",
       "point": 30,
       "id": 1
@@ -46,13 +46,41 @@
     }
   ],
   "categories": [
-    { "id": 1, "title": "固定套餐", "eng": "combo" },
-    { "id": 2, "title": "秘捲", "eng": "secret" },
-    { "id": 3, "title": "肉品", "eng": "meat" },
-    { "id": 4, "title": "海鮮", "eng": "seafood" },
-    { "id": 5, "title": "酒食", "eng": "wine" },
-    { "id": 6, "title": "蔬菜", "eng": "vegetable" },
-    { "id": 7, "title": "經典", "eng": "classic" }
+    {
+      "id": 1,
+      "title": "固定套餐",
+      "eng": "combo"
+    },
+    {
+      "id": 2,
+      "title": "秘捲",
+      "eng": "secret"
+    },
+    {
+      "id": 3,
+      "title": "肉品",
+      "eng": "meat"
+    },
+    {
+      "id": 4,
+      "title": "海鮮",
+      "eng": "seafood"
+    },
+    {
+      "id": 5,
+      "title": "酒食",
+      "eng": "wine"
+    },
+    {
+      "id": 6,
+      "title": "蔬菜",
+      "eng": "vegetable"
+    },
+    {
+      "id": 7,
+      "title": "經典",
+      "eng": "classic"
+    }
   ],
   "products": [
     {
@@ -612,42 +640,58 @@
     {
       "newsImage": "/木木苑食材修圖/36.jpg",
       "newsTitle": "新戶好禮",
-      "newsContent": "趕快加入會員，領取優惠券~帝王蟹味棒兌換券一串",
+      "newsContent": "木木苑串燒店，現在註冊成為我們的新會員，即可領取帝王蟹味棒兌換券一張！\n立即成為新會員，領取您的專屬優惠券，品味串燒店獨家美味。\n快來加入我們，一起享受美味的串燒時光吧！",
       "couponId": "3",
       "isLook": false,
       "id": 1
     },
     {
       "newsImage": "/木木苑食材修圖/39.jpg",
-      "newsTitle": "蔬菜季",
-      "newsContent": "青椒買一送一兌換券，與您分享新鮮、美味、健康的蔬食樂趣！",
+      "newsTitle": "「蔬菜季」好康來襲！",
+      "newsContent": " 木木苑推出會員限定優惠！\n 即日起，透過會員領取優惠券，「青椒兌換券」！\n 新鮮、多汁的青椒串燒，為您的味蕾帶來驚喜，同時關心您的健康。\n 快來加入會員領取領取優惠！讓我們一起享受美味的同時兼顧健康！",
       "couponId": "3",
       "isLook": false,
       "id": 2
     },
     {
       "newsImage": "/木木苑食材修圖/38.jpg",
-      "newsTitle": "蔬菜季",
-      "newsContent": "花椰菜買一送一兌換券，與您分享新鮮、美味、健康的蔬食樂趣！",
+      "newsTitle": "「蔬菜季」好康來襲！",
+      "newsContent": " 木木苑推出會員限定優惠！\n 即日起，透過會員領取優惠券，「花椰菜兌換券」！\n 新鮮、多汁的青椒串燒，為您的味蕾帶來驚喜，同時關心您的健康。\n 快來加入會員領取領取優惠！讓我們一起享受美味的同時兼顧健康！",
       "couponId": "3",
       "isLook": false,
       "id": 3
     },
     {
       "newsImage": "/木木苑食材修圖/09.jpg",
-      "newsTitle": "新品上市!!番茄牛肉捲",
-      "newsContent": "新鮮番茄與牛肉的清爽搭配，趕快來嘗試!",
+      "newsTitle": "番茄牛肉捲全新登場！",
+      "newsContent": "親愛的串燒店顧客，我們為您帶來一道令人垂涎的全新美味！\n嚴選新鮮番茄，搭配嫩滑牛肉，巧妙捲成精緻捲物。\n口感鮮甜，多汁肉香，絕對是您串燒饗宴中的不可錯過之選！\n品味美味的同時，感受番茄的營養與滋味，為您的味蕾帶來全新的享受。\n快來串燒店品嚐，讓「番茄牛肉捲」成為您串燒時的最愛！",
       "couponId": "3",
       "isLook": false,
       "id": 4
     },
     {
-      "newsImage": "/木木苑食材修圖/31.jpg",
+      "newsImage": "/首頁圖片/hero-desktop-3.png",
       "newsTitle": "木木苑周年慶",
       "newsContent": "木木苑一周年啦！！\n感謝您在過去一年中對我們的支持，為此我們準備了優惠活動\n11/24(五)-11/26(日) 限期三天\n■巨無霸魷魚 買一送一 (每人限購一組)\n■金牌生啤 買一送一 (不列入會員集點)",
       "couponId": "3",
       "isLook": false,
       "id": 5
+    },
+    {
+      "newsImage": "/木木苑食材修圖/20.jpg",
+      "newsTitle": "雞肉串買一送一！！！",
+      "newsContent": "感謝您對木木苑的支持，木木苑推出超值好康。\n即刻至木木苑，購買雞肉串，使用此優惠券，即可免費獲得另一串！\n新鮮嫩滑的雞肉，搭配獨特的調味，絕對是您享受串燒美味的絕佳選擇。\n別錯過這個難得的機會，帶著您的好友、家人，一同品味這份美味的快樂！",
+      "couponId": "3",
+      "isLook": false,
+      "id": 6
+    },
+    {
+      "newsImage": "/首頁圖片/hero-desktop-1.png",
+      "newsTitle": "【外帶優惠券】限時優惠",
+      "newsContent": "現在只需出示此券，即享外帶串燒折扣50元！\n立即前來串燒店，輕鬆取得美味，輕鬆省下50元！\n別錯過這個優惠，讓串燒的美味成為您生活中的一部分。\n快來享受美食，帶著串燒的滿足感回家吧！",
+      "couponId": "3",
+      "isLook": false,
+      "id": 7
     }
   ],
   "bookingfrom": [
