@@ -15,11 +15,10 @@
               <p v-for="(content, index) in news.newsContent" :key="index">
                 {{ content }}
               </p>
-              <!-- <p>木木苑一周年啦！！</p>
-              <p>感謝您在過去一年中對我們的支持，為此我們準備了優惠活動</p>
-              <p>11/24(五)-11/26(日) 限期三天</p>
-              <p>■巨無霸魷魚 買一送一 (每人限購一組)</p>
-              <p>■金牌生啤 買一送一 (不列入會員集點)</p> -->
+              <p>
+                <!-- <router-link to="/" @click.prevent="getCoupon" >按此領取優惠</router-link> -->
+                <a href="" @click.prevent="getCoupon">按此領取優惠</a>
+              </p>
               <p>❕木木苑保有活動解釋權，造成不便敬請見諒❕</p>
             </div>
             <div class="otherNews col-sm-3 mb-3 mx-auto">
@@ -37,16 +36,26 @@
               </p>
             </div>
           </div>
+          <div class="row justify-content-center">
+            <div class="col-3 d-flex justify-content-center">
+              <router-link to="/">
+                <button type="button" class="btn btn-primary text-light">回首頁</button>
+              </router-link>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </template>
 <script>
+import { docCookies } from '../../assets/cookie';
 export default {
   data() {
     return {
-      news: {}
+      news: {},
+      userCoupon: []
+
     }
   },
   mounted() {
@@ -55,12 +64,30 @@ export default {
 
   methods: {
     getNews() {
-      this.$axios(`/news/${this.$route.params.id}`)
+      this.$axios.get(`/news/${this.$route.params.id}`)
         .then((res) => {
           this.news = res.data
           this.news.newsContent = this.news.newsContent.split('\n')
         })
-        console.log(this.news);
+    },
+    getCoupon() {
+      if (docCookies.getItem("id") == null) {
+        alert('請先登入')
+        this.$router.push({ path: '/login' })
+      }
+      this.$axios.get(`/users/${docCookies.getItem("id")}`)
+        .then((res) => {
+          this.userCoupon = res.data.coupon.split(',').filter(el => el !== '')
+          if (this.userCoupon.includes(this.$route.params.id)) {
+            alert('已領過此優惠券')
+          }else{
+            this.userCoupon.push(this.$route.params.id)
+            this.$axios.patch(`/users/${docCookies.getItem("id")}`, {
+              coupon: this.userCoupon.join(',')
+            })
+            alert('加入優惠券成功')
+          }
+        })
     }
   },
 
