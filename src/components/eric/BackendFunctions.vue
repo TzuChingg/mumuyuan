@@ -26,7 +26,7 @@
                                 {{menu.label}}
                             </p>
                             <div >
-                                <i  class="bi" :class="menu.icon"></i>
+                                <i class="bi  text-dark" :class="menu.icon"></i>
                             </div>
                         </div>
                     </a>
@@ -39,6 +39,7 @@
                         </div>
                     
                 </div>
+
             </div>
 
             <a href="#" class="mt-auto   text-nowrap sidebar-link">
@@ -46,6 +47,7 @@
                     登出
                 </div>
             </a>
+
     </div>
 </template>
 
@@ -94,6 +96,12 @@ data() {
                             {title:'優惠券',path:'/discount',at:false}, 
                             {title:'活動',path:'/journey',at:false},
                         ],
+                icon:"bi-caret-left-fill"
+            },
+            {   label:"去首頁",
+                expend:false,
+                path:'/',
+                at:false,
                 icon:"bi-caret-left-fill"
             },
         ],

@@ -26,6 +26,7 @@
                       <select class="form-select mx-auto w-50 shadow-none my-2" aria-label="Default select example" v-model="journey.coupon">
                         <option v-for="(coupon, index) in coupons" :key="index" :value="coupon.id">{{coupon.title}}</option>
                       </select>
+                      <textarea id="title" placeholder="內容" class="mx-auto form-control border-1 shadow-none w-50" v-model="journey.newsContent"></textarea>
                       <div class="row text-center align-items-center py-3">
                           <div class="col-6  ">
                               <button type="button" class="btn btn-danger ms-6" data-bs-toggle="modal" :data-bs-target="'#goDown' +index">下架</button>
@@ -59,7 +60,7 @@
                           </div>
                           <div class="modal-footer border-0">
                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
-                          <button type="button" class="btn btn-primary"  data-bs-dismiss="modal"  @click="update(journey.id,journey.coupon)">確認</button>
+                          <button type="button" class="btn btn-primary"  data-bs-dismiss="modal"  @click="update(journey.id,journey.coupon,journey.newsContent)">確認</button>
                           </div>
                       </div>
                     </div>
@@ -89,7 +90,7 @@
                                 </div>
                                 <div class="d-flex h-25 justify-content-center mb-2">
                                   <label for="title" class="fs-3 me-2">內容:</label>
-                                  <input type="text" id="title" placeholder="" class=" form-control border-1 shadow-none  w-50" v-model="dataForm.newsContent">
+                                  <textarea id="title" placeholder="內容" class="form-control border-1 shadow-none w-50" v-model="dataForm.newsContent"></textarea>
                                 </div>
                                 <div class="d-flex h-25 justify-content-center mt-3 mb-2" >
                                   <select class="form-select w-50 shadow-none" aria-label="Default select example" v-model="dataForm.couponId">
@@ -185,17 +186,10 @@ components: {
 data() {
   return {
     journey:[
-      {title:"優惠券在這邊"},
-      {title:"優惠券在這邊"},
-      {title:"優惠券在這邊"},
-      {title:"優惠券在這邊"},
+
     ],
     downJourney:[
-      {title:"優惠券"},
-      {title:"優惠券"},
-      {title:"優惠券"},
-      {title:"優惠券"},
-      {title:"優惠券"},
+
     ],
     thisPage: [],
     thisPage2: [],
@@ -272,8 +266,8 @@ methods: {
       this.$axios.patch(`/news/${id}`, data)
       location.reload();
   }, 
-  update(id,coupon){
-    const data = {couponId:`${coupon}`};
+  update(id,coupon,newsContent){
+    const data = {couponId:`${coupon}`,newsContent:`${newsContent}`};
     this.$axios.patch(`/news/${id}`, data)
   },
   pushData(){
@@ -293,6 +287,7 @@ mounted(){
         this.journey.push({
           title:element.newsTitle,
           coupon:element.couponId,
+          newsContent:element.newsContent,
           id:element.id
         })
       }else{
