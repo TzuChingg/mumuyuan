@@ -334,8 +334,8 @@ methods: {
       location.reload();
   },
   update(id,money,count){
-    const data = {price:`${money}` ,
-                  count:`${count}`};
+    const data = {price:parseFloat(money) ,
+                  count:parseInt(count)};
     this.$axios.patch(`/products/${id}`, data)
   },
   pushData(){

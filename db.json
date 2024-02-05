@@ -87,8 +87,8 @@
       "productName": "玉米筍",
       "category": 6,
       "image": "/木木苑食材修圖/01.jpg",
-      "count": "10",
-      "price": "50",
+      "count": 15,
+      "price": 55,
       "description": "清爽的口感。",
       "isLook": false,
       "id": 1
@@ -97,10 +97,10 @@
       "productName": "豬五花蔥捲",
       "category": 2,
       "image": "/木木苑食材修圖/02.jpg",
-      "count": "15",
-      "price": "61",
+      "count": 20,
+      "price": 60,
       "description": "美味五花豬與香蔥完美捲合，炭烤後散發香氣，串烤風味，口感豐富。",
-      "isLook": true,
+      "isLook": false,
       "id": 2
     },
     {
@@ -520,52 +520,8 @@
       "flavor": 1,
       "spicy": 1,
       "orderid": "123",
+      "score": "3",
       "id": 1
-    },
-    {
-      "isMember": true,
-      "name": "eric",
-      "phone": "091111111",
-      "mail": "123@123.456",
-      "day": "2024/01/01",
-      "product": [
-        {
-          "name": "玉米筍",
-          "quantity": 5,
-          "image": "/木木苑食材修圖/01.jpg",
-          "price": 52
-        },
-        {
-          "name": "豬五花蔥捲",
-          "quantity": 3,
-          "image": "/木木苑食材修圖/02.jpg",
-          "price": 61
-        },
-        {
-          "name": "鯛魚下巴",
-          "quantity": 3,
-          "image": "/木木苑食材修圖/03.jpg",
-          "price": 45
-        },
-        {
-          "name": "雞肉串",
-          "quantity": 2,
-          "image": "/木木苑食材修圖/20.jpg",
-          "price": 89
-        }
-      ],
-      "price": 300,
-      "status": 1,
-      "userId": 3,
-      "type": true,
-      "tableware": true,
-      "bags": true,
-      "payment": true,
-      "pickTime": "12:00",
-      "comment": "做好吃一點",
-      "flavor": 3,
-      "spicy": 1,
-      "id": 2
     },
     {
       "isMember": true,
@@ -614,6 +570,7 @@
       "flavor": 1,
       "spicy": 1,
       "orderid": "456",
+      "score": "",
       "id": 2
     },
     {
@@ -648,7 +605,7 @@
           "price": 89
         }
       ],
-      "price": 300,
+      "price": 500,
       "status": 3,
       "userId": 1,
       "type": true,
@@ -660,6 +617,7 @@
       "flavor": 1,
       "spicy": 1,
       "orderid": "789",
+      "score": "4",
       "id": 3
     }
   ],
@@ -786,7 +744,18 @@
       "id": 1
     }
   ],
-  "orderScore": [
-    {}
+  "scores": [
+    {
+      "star": 3,
+      "ScoreText": "123",
+      "orderId": "1",
+      "id": 1
+    },
+    {
+      "star": "4",
+      "ScoreText": "不錯",
+      "orderId": "3",
+      "id": 2
+    }
   ]
 }
