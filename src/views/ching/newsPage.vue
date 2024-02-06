@@ -22,15 +22,17 @@
               <p>❕木木苑保有活動解釋權，造成不便敬請見諒❕</p>
             </div>
             <div class="otherNews col-sm-3 mb-3 mx-auto">
-              <p class="fs-5 mt-3 mb-0">最新消息</p>
+              <p class="otherNewsTitle fs-5 mt-3">其他消息</p>
               <hr class="mb-0 mt-0" />
               <ul class="list-group bg-transparent">
-                <li class="list-group-item d-flex align-items-center bg-transparent rounded-0 border-top-0 border-start-0 border-end-0 " style="border-bottom: 1px solid #A69F8A;" v-for="(item, index) in otherNews" :key="index">
-                  <router-link :to="`/news/${item.id}`">
+                <li
+                  class="list-group-item d-flex align-items-center bg-transparent rounded-0 border-top-0 border-start-0 border-end-0  mb-2 mt-2"
+                  style="border-bottom: 1px solid #A69F8A;" v-for="(item, index) in otherNews" :key="index">
+                  <router-link :to="'/news/' + item.id">
                     <img :src="item.newsImage" alt="" style="height: 50px;">
-                    <p class=" ms-2 fs-6">{{item.newsTitle}}</p>
                   </router-link>
-                  <hr>
+                  <router-link :to="'/news/' + item.id"><p class=" ms-2 fs-6">{{ item.newsTitle }}</p></router-link>
+                  
                 </li>
 
               </ul>
@@ -103,10 +105,16 @@ export default {
             let numIndex = Math.floor(Math.random() * tempList.length);
             this.otherNews.push(res.data[tempList[numIndex]])
             tempList.splice(numIndex, 1)
-          }     
+          }
         })
-        console.log(this.otherNews);
-    }
+      console.log(this.otherNews);
+    },
+  },
+  watch: {
+    '$route.params.id'(newId) {
+      // 路由参数变化时执行的逻辑
+      window.location.reload()
+    },
   },
 
 }
@@ -125,6 +133,10 @@ export default {
 }
 
 .otherNews {
+  .otherNewsTitle{
+    margin-bottom: 4px;
+  }
+
   p {
     // text-align: center;
     overflow: hidden;
