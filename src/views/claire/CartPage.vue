@@ -6,7 +6,7 @@ export default { components: { CartComponent, ModalComponent } }
 </script>
 
 <template>
-  <div>
+  <div >
     <CartComponent></CartComponent>
     <ModalComponent></ModalComponent>
   </div>
