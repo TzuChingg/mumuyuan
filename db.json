@@ -46,15 +46,53 @@
     }
   ],
   "categories": [
-    { "id": 1, "title": "固定套餐", "eng": "combo" },
-    { "id": 2, "title": "秘捲", "eng": "secret" },
-    { "id": 3, "title": "肉品", "eng": "meat" },
-    { "id": 4, "title": "海鮮", "eng": "seafood" },
-    { "id": 5, "title": "酒食", "eng": "wine" },
-    { "id": 6, "title": "蔬菜", "eng": "vegetable" },
-    { "id": 7, "title": "經典", "eng": "classic" }
+    {
+      "id": 1,
+      "title": "固定套餐",
+      "eng": "combo"
+    },
+    {
+      "id": 2,
+      "title": "秘捲",
+      "eng": "secret"
+    },
+    {
+      "id": 3,
+      "title": "肉品",
+      "eng": "meat"
+    },
+    {
+      "id": 4,
+      "title": "海鮮",
+      "eng": "seafood"
+    },
+    {
+      "id": 5,
+      "title": "酒食",
+      "eng": "wine"
+    },
+    {
+      "id": 6,
+      "title": "蔬菜",
+      "eng": "vegetable"
+    },
+    {
+      "id": 7,
+      "title": "經典",
+      "eng": "classic"
+    }
   ],
   "products": [
+    {
+      "productName": "套餐",
+      "category": 1,
+      "image": "/木木苑食材修圖/01.jpg",
+      "count": 10,
+      "price": "52",
+      "description": "清爽的口感。",
+      "isLook": true,
+      "id": 0
+    },
     {
       "productName": "玉米筍",
       "category": 6,
@@ -62,14 +100,14 @@
       "count": 10,
       "price": "52",
       "description": "清爽的口感。",
-      "isLook": false,
+      "isLook": true,
       "id": 1
     },
     {
       "productName": "豬五花蔥捲",
       "category": 2,
       "image": "/木木苑食材修圖/02.jpg",
-      "count": "15",
+      "count": 15,
       "price": "61",
       "description": "美味五花豬與香蔥完美捲合，炭烤後散發香氣，串烤風味，口感豐富。",
       "isLook": true,
@@ -82,7 +120,7 @@
       "count": 10,
       "price": 45,
       "description": "肥美多汁，入口脆嫩香。",
-      "isLook": false,
+      "isLook": true,
       "id": 3
     },
     {
@@ -90,9 +128,9 @@
       "category": 3,
       "image": "/木木苑食材修圖/04.jpg",
       "count": 10,
-      "price": "56",
+      "price": 56,
       "description": "梅花豬串燒，細膩肉質，香氣撲鼻。",
-      "isLook": false,
+      "isLook": true,
       "id": 4
     },
     {
@@ -102,7 +140,7 @@
       "count": 10,
       "price": 45,
       "description": "豬五花串燒，脂肪分佈均勻，香氣宜人。",
-      "isLook": false,
+      "isLook": true,
       "id": 5
     },
     {
@@ -112,7 +150,7 @@
       "count": 10,
       "price": 45,
       "description": "頂級牛五花串燒，油花豐富，香氣誘人",
-      "isLook": false,
+      "isLook": true,
       "id": 6
     },
     {
@@ -122,7 +160,7 @@
       "count": 10,
       "price": 45,
       "description": "鮮嫩牛小排，厚切串燒。",
-      "isLook": false,
+      "isLook": true,
       "id": 7
     },
     {
@@ -132,7 +170,7 @@
       "count": 10,
       "price": 45,
       "description": "剝皮辣椒辣甜脆，搭豬五花香醇油脂，串烤完美組合，美味滿溢解膩。",
-      "isLook": false,
+      "isLook": true,
       "id": 8
     },
     {
@@ -142,7 +180,7 @@
       "count": 10,
       "price": 45,
       "description": "新鮮番茄牛肉捲，口感多汁香甜。",
-      "isLook": false,
+      "isLook": true,
       "id": 9
     },
     {
@@ -152,7 +190,7 @@
       "count": 10,
       "price": 39,
       "description": "鴨肉串燒，外脆內嫩，帶有獨特鴨香。",
-      "isLook": false,
+      "isLook": true,
       "id": 10
     },
     {
@@ -162,7 +200,7 @@
       "count": 10,
       "price": 35,
       "description": "嚴選雞心，搭配獨特醬汁烤製，口感鮮嫩多汁，香氣四溢，美味迷人。",
-      "isLook": false,
+      "isLook": true,
       "id": 11
     },
     {
@@ -172,7 +210,7 @@
       "count": 10,
       "price": 35,
       "description": "嫩滑雞胗搭配特製醬汁烤製，口感鮮美，風味獨特，令人愛不釋手。",
-      "isLook": false,
+      "isLook": true,
       "id": 12
     },
     {
@@ -182,7 +220,7 @@
       "count": 10,
       "price": 45,
       "description": "鮮嫩干貝與精選牛肉完美卷裹，獨特風味，串烤中的極致美味。",
-      "isLook": false,
+      "isLook": true,
       "id": 13
     },
     {
@@ -192,7 +230,7 @@
       "count": 10,
       "price": 49,
       "description": "鳳梨香氣搭配鮮嫩蝦球，串烤中的甜蜜風味。",
-      "isLook": false,
+      "isLook": true,
       "id": 14
     },
     {
@@ -202,7 +240,7 @@
       "count": 10,
       "price": 35,
       "description": "受歡迎的櫛瓜，清新脆爽，口感令人愉悅，美味無比",
-      "isLook": false,
+      "isLook": true,
       "id": 15
     },
     {
@@ -212,7 +250,7 @@
       "count": 10,
       "price": 45,
       "description": "肥腸酥脆，搭配椒鹽調味，美味中帶有獨特風味，令人回味無窮。",
-      "isLook": false,
+      "isLook": true,
       "id": 16
     },
     {
@@ -222,7 +260,7 @@
       "count": 10,
       "price": 79,
       "description": "蝦肉鮮嫩，鹽烤風味簡約鮮美。",
-      "isLook": false,
+      "isLook": true,
       "id": 17
     },
     {
@@ -232,7 +270,7 @@
       "count": 10,
       "price": 39,
       "description": "串烤店經典之選，香烤雞肉串，肉質鮮嫩，串燒炭火風味，絕對令人愛不釋手。",
-      "isLook": false,
+      "isLook": true,
       "id": 18
     },
     {
@@ -242,7 +280,7 @@
       "count": 10,
       "price": 35,
       "description": "外皮香脆如金，內裡多汁嫩滑，烤製至完美黃金色澤，美味令人難以抗拒。",
-      "isLook": false,
+      "isLook": true,
       "id": 19
     },
     {
@@ -252,7 +290,7 @@
       "count": 10,
       "price": 89,
       "description": "彈牙的食感，散發深海鮮美。",
-      "isLook": false,
+      "isLook": true,
       "id": 20
     },
     {
@@ -262,7 +300,7 @@
       "count": 10,
       "price": 25,
       "description": "外酥內嫩，口感豐富，串烤中的濃郁風味。",
-      "isLook": false,
+      "isLook": true,
       "id": 21
     },
     {
@@ -272,7 +310,7 @@
       "count": 10,
       "price": 30,
       "description": "口感層次豐富。",
-      "isLook": false,
+      "isLook": true,
       "id": 22
     },
     {
@@ -282,7 +320,7 @@
       "count": 10,
       "price": 30,
       "description": "有淡淡甜味，串烤中的清新口感。",
-      "isLook": false,
+      "isLook": true,
       "id": 23
     },
     {
@@ -292,7 +330,7 @@
       "count": 10,
       "price": 35,
       "description": "有淡淡甜味，串烤中的清新口感。",
-      "isLook": false,
+      "isLook": true,
       "id": 24
     },
     {
@@ -302,7 +340,7 @@
       "count": 10,
       "price": 25,
       "description": "外脆內嫩，帶有淡淡甜味，串烤中的清新美味。",
-      "isLook": false,
+      "isLook": true,
       "id": 25
     },
     {
@@ -312,7 +350,7 @@
       "count": 10,
       "price": 35,
       "description": "帶有香菇獨特的濃郁風味，串烤中的美味享受。",
-      "isLook": false,
+      "isLook": true,
       "id": 26
     },
     {
@@ -322,7 +360,7 @@
       "count": 10,
       "price": 35,
       "description": "山藥香氣搭配明太子風味，串烤中的獨特美味。",
-      "isLook": false,
+      "isLook": true,
       "id": 27
     },
     {
@@ -332,7 +370,7 @@
       "count": 10,
       "price": 35,
       "description": "淡淡的煙熏味，有嚼勁，散發出濃鬱的肉香",
-      "isLook": false,
+      "isLook": true,
       "id": 28
     },
     {
@@ -342,7 +380,7 @@
       "count": 10,
       "price": 35,
       "description": "散發濃厚糯米香，米香十足！",
-      "isLook": false,
+      "isLook": true,
       "id": 29
     },
     {
@@ -699,5 +737,7 @@
       "id": 1
     }
   ],
-  "cart": []
+  "cart": [
+    
+  ]
 }

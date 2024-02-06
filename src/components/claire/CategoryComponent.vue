@@ -1,16 +1,16 @@
 <script>
 export default {
   data() {
-    return { categories: [] }
+    return {  categories: [] }
   },
-  methods: {},
+  methods: { scrollToSection() {} },
   computed: {},
-  mounted() {
+  mounted() {    
+    // 取分類
     this.$axios
       .get('/categories')
       .then((res) => {
-        this.categories = res.data
-        console.log(this.categories)
+        this.categories = res.data        
       })
       .catch((e) => {
         console.log(e)
@@ -20,9 +20,11 @@ export default {
 </script>
 
 <template>
-  <nav class="navbar d-flex justify-content-center">
+  <nav class="navbar d-flex justify-content-center py-4">
     <div class="btn-group" role="group" v-for="category in categories" :key="category.id">
-      <button type="button" class="btn btn-outline-primary mx-2">{{ category.title }}</button>
+      <button type="button" class="btn btn-outline-primary mx-2" @click="scrollToSection">
+        {{ category.title }}
+      </button>
     </div>
     <div href="#" class="d-flex justify-content-end align-items-center ms-5">
       <router-link to="/cart" class="link">購物車</router-link>
@@ -35,8 +37,8 @@ export default {
 .link {
   text-decoration: none;
 }
-@media screen and (max-width: 625px) {
-  .btn-group {
+@media screen and (max-width: 700px) {
+  nav {
     flex-direction: column;
   }
 }

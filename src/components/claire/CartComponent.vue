@@ -1,5 +1,42 @@
 <script>
+import dayjs from 'dayjs'
+import { docCookies } from '../../../src/assets/cookie'
 
+export default {
+  data() {
+    return { cart: [], time: '', userData: {} }
+  },
+  methods: {},
+  computed: {
+    // 將 cart 渲染到畫面
+    cardList: () => {}
+  },
+  created() {
+    const id = docCookies.getItem('id')
+    // 使用者資料
+    this.$axios.get(`/users?id=4`).then((res) => {
+      console.log(res.data[0])
+      if (res.data[0]) {
+        this.userData = res.data[0]
+      } else {
+        console.log('使用者沒登入')
+      }
+    })
+  },
+  mounted() {
+    // 取時間
+    this.time = dayjs().add(30, 'minute').format('YYYY-MM-DD HH:mm')
+    // 取購物車資料
+    this.$axios
+      .get(`/cart`)
+      .then((res) => {
+        console.log(res.data)
+      })
+      .catch((e) => {
+        console.log(e)
+      })
+  }
+}
 </script>
 
 <template>
@@ -12,18 +49,20 @@
       <table class="table table-borderless align-middle table-light">
         <thead>
           <tr>
-            <th class="ps-5 pt-5"><label for="name">您的姓名</label></th>
-            <th><input type="text" class="ms-2" id="name" /></th>
+            <th class="ps-5 pt-5"><label for="name">您的姓名</label>{{ userData.name }}</th>
+            <th><input type="text" class="ms-2" id="name" :value="userData.name" /></th>
             <th class="ps-5 pt-5"><label for="phone">手機號碼</label></th>
-            <th><input type="phone" class="ms-2" id="phone" /></th>
+            <th><input type="phone" class="ms-2" id="phone" :value="userData.phone" /></th>
           </tr>
           <tr>
             <th class="ps-5"><label for="email">電子郵件</label></th>
-            <th><input type="email" class="ms-2" id="email" /></th>
+            <th><input type="email" class="ms-2" id="email" :value="userData.email" /></th>
             <th class="ps-5">
               <label>取餐時間</label>
             </th>
-            <th><label class="ms-2">2024-02-02</label></th>
+            <th>
+              <label class="ms-2">{{ time }}</label>
+            </th>
           </tr>
           <tr>
             <th class="ps-5 pt-5">刪除</th>
@@ -37,11 +76,13 @@
             <td class="ps-5"><a href="#" class="link-dark fs-4">x</a></td>
             <td class="ps-5">七里香</td>
             <td class="ps-5">
-              <div class="btn-group" role="group" aria-label="Basic outlined example">
-                <button type="button" class="btn btn-outline-primary">-</button>
-                <button type="button" class="btn btn-outline-primary">1</button>
-                <button type="button" class="btn btn-outline-primary">+</button>
-              </div>
+              <select
+                class="form-select"
+                id="inputGroupSelect04"
+                aria-label="Example select with button addon"
+              >
+                <option selected>選擇數量</option>
+              </select>
             </td>
             <td class="px-5"><div class="text-end">$25</div></td>
           </tr>
