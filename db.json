@@ -6,9 +6,14 @@
       "copyPassword": "123456",
       "name": "joker",
       "phone": "093333333",
-      "coupon": "3,4,1",
+      "coupon": [
+        2,
+        2,
+        2,
+        2
+      ],
       "identity": "baduser",
-      "point": 30,
+      "point": 1000,
       "id": 1
     },
     {
@@ -18,7 +23,7 @@
       "name": "test",
       "phone": "09222222222",
       "identity": "user",
-      "coupon": "",
+      "coupon": [],
       "point": 30,
       "id": 2
     },
@@ -29,7 +34,7 @@
       "name": "admin",
       "phone": "0911111111",
       "identity": "admin",
-      "coupon": "",
+      "coupon": [],
       "point": 30,
       "id": 3
     },
@@ -40,7 +45,7 @@
       "name": "eric",
       "phone": "095565687",
       "identity": "user",
-      "coupon": "",
+      "coupon": [],
       "point": 0,
       "id": 4
     }
@@ -710,8 +715,10 @@
   ],
   "coupons": [
     {
-      "name": "折10塊",
-      "image": "",
+      "name": "青椒",
+      "unit": "份",
+      "calc": "",
+      "image": "35",
       "point": "40",
       "isLook": false,
       "description": "沒有限制,每筆都能使用",
@@ -719,23 +726,29 @@
     },
     {
       "name": "折20塊",
-      "image": "",
+      "unit": "張",
+      "calc": "-20",
+      "image": "money",
       "point": 50,
       "isLook": true,
       "description": "沒有限制,每筆都能使用",
       "id": 2
     },
     {
-      "name": "折30塊",
-      "image": "",
+      "name": "香腸",
+      "unit": "根",
+      "calc": "",
+      "image": "31",
       "point": "50",
       "isLook": false,
       "description": "沒有限制,每筆都能使用",
       "id": 3
     },
     {
-      "name": "打九折",
-      "image": "",
+      "name": "玉米",
+      "unit": "支",
+      "calc": "",
+      "image": "38",
       "point": 30,
       "isLook": false,
       "description": "沒有限制,每筆都能使用",
@@ -743,7 +756,9 @@
     },
     {
       "name": "打五折",
-      "image": "",
+      "calc": "*0.5",
+      "unit": "張",
+      "image": "money",
       "point": 100,
       "isLook": false,
       "description": "沒有限制,每筆都能使用",

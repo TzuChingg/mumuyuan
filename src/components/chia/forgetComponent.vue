@@ -43,8 +43,6 @@ export default {
         <span class="text-center fs-6">已經有會員了?</span>
         <router-link to="/login" class="signin mx-2 text-decoration-none">登入</router-link>
     </div>
-
-
 </template>
 <style scoped lang="scss">
 .signin {
