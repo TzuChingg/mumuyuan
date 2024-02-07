@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div class="memberorder container">
-      <div class="row justify-content-center ">
+    <div class="memberorder container py-5">
+      <div class="row justify-content-center">
         <div class="col-9">
           <div class="row">
             <div class="col-3 border-end">

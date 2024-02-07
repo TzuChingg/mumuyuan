@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="membercenter container">
+    <div class="membercenter container py-5">
       <div class="row justify-content-center">
         <div class="col-9">
           <div class="row">
