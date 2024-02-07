@@ -158,9 +158,8 @@ export default {
     },
     confirm(getPoint) {
       const point = this.userInfo.point - getPoint.point
-      let coupon = this.userInfo.coupon.split(',')
+      let coupon = this.userInfo.coupon
       coupon.push(getPoint.id)
-      coupon = coupon.join()
       this.$axios
         .patch(`/users/${this.userInfo.id}`, { point, coupon })
         .then((response) => {

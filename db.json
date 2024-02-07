@@ -6,9 +6,14 @@
       "copyPassword": "123456",
       "name": "joker",
       "phone": "093333333",
-      "coupon": "3,4,1,3,2,5,2",
+      "coupon": [
+        2,
+        2,
+        2,
+        2
+      ],
       "identity": "baduser",
-      "point": 620,
+      "point": 1000,
       "id": 1
     },
     {
@@ -18,7 +23,7 @@
       "name": "test",
       "phone": "09222222222",
       "identity": "user",
-      "coupon": "",
+      "coupon": [],
       "point": 30,
       "id": 2
     },
@@ -29,7 +34,7 @@
       "name": "admin",
       "phone": "0911111111",
       "identity": "admin",
-      "coupon": "",
+      "coupon": [],
       "point": 30,
       "id": 3
     },
@@ -40,7 +45,7 @@
       "name": "eric",
       "phone": "095565687",
       "identity": "user",
-      "coupon": "",
+      "coupon": [],
       "point": 0,
       "id": 4
     }

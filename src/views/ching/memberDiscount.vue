@@ -51,13 +51,13 @@
               <h3 class="text-center">我的優惠券</h3>
               <hr class="pt-3"/>
               <div class="row justify-content-center">
-                <div class="col-11 mb-4">
+                <div class="col-12 mb-4">
                   <div class="d-flex flex-wrap">
                     <!-- card 1 -->
-                    <div class="card mb-4 me-2" style="width: 13rem" v-for="i in myCoupons">
+                    <div class="mb-4 col-sm-6 col-xl-4 p-2" v-for="i in myCoupons">
                       <img :src="`/木木苑食材修圖/${i.image}.jpg`" class="card-img-top" alt="image error" />
-                      <div class="card-body">
-                        <h5 class="card-title">{{i.name +'1'+ i.unit}}</h5>
+                      <div class="card-body p-2 bg-light">
+                        <h5 class="card-title fw-bolder mb-2">{{i.name}}</h5>
                         <p class="card-text mb-0">{{i.description}}</p>
                       </div>
                     </div>
@@ -92,7 +92,7 @@ export default {
       try {
         const getCoupons = await this.$axios.get('/coupons')
         const getUsers = await this.$axios.get(`/users/${docCookies.getItem('id')}`)
-        const splitCoupons = getUsers.data.coupon.split(',')
+        const splitCoupons = getUsers.data.coupon
         splitCoupons.forEach((iCoupons) => {
           const findIndex = getCoupons.data.findIndex((every) => every.id === iCoupons - 0)
           this.myCoupons.push(getCoupons.data[findIndex])
