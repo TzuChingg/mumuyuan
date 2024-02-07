@@ -40,7 +40,7 @@
       "name": "eric",
       "phone": "095565687",
       "identity": "user",
-      "coupon": "",
+      "coupon": [1, 2],
       "point": 0,
       "id": 4
     }
@@ -88,7 +88,7 @@
       "category": 1,
       "image": "/木木苑食材修圖/01.jpg",
       "count": 10,
-      "price": "52",
+      "price": 52,
       "description": "清爽的口感。",
       "isLook": true,
       "id": 0
@@ -98,7 +98,7 @@
       "category": 6,
       "image": "/木木苑食材修圖/01.jpg",
       "count": 10,
-      "price": "52",
+      "price": 52,
       "description": "清爽的口感。",
       "isLook": true,
       "id": 1
@@ -108,7 +108,7 @@
       "category": 2,
       "image": "/木木苑食材修圖/02.jpg",
       "count": 15,
-      "price": "61",
+      "price": 61,
       "description": "美味五花豬與香蔥完美捲合，炭烤後散發香氣，串烤風味，口感豐富。",
       "isLook": true,
       "id": 2
@@ -741,6 +741,21 @@
     {
       "id": 1707230680362,
       "productId": 5,
+      "qty": 1
+    },
+    {
+      "id": 1707289906293,
+      "productId": 8,
+      "qty": 1
+    },
+    {
+      "id": 1707289912797,
+      "productId": 9,
+      "qty": 1
+    },
+    {
+      "id": 1707290658704,
+      "productId": 8,
       "qty": 1
     }
   ]

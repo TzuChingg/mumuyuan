@@ -11,25 +11,29 @@ export default {
       this.$axios
         .post(`/cart`, this.cart)
         .then((res) => {
-          console.log(res.data)
+          console.log('成功加入購物車')
+        })
+        .catch((e) => {
+          console.log(e)
+        })
+    },
+    // 取得產品資料
+    getProducts() {
+      const categoryId = this.categoryId
+      this.$axios
+        .get(`/products?category=${categoryId}`)
+        .then((res) => {
+          const data = res.data.sort((a, b) => b.price - a.price)
+          this.products = data
         })
         .catch((e) => {
           console.log(e)
         })
     }
-  },
-  mounted() {
+  },  
+  created() {
     // 取得產品資料
-    const categoryId = this.categoryId
-    this.$axios
-      .get(`/products?category=${categoryId}`)
-      .then((res) => {
-        const data = res.data.sort((a, b) => b.price - a.price)
-        this.products = data
-      })
-      .catch((e) => {
-        console.log(e)
-      })
+    this.getProducts()
   }
 }
 // 使用 vue 點擊按鈕滾動到頁面位置

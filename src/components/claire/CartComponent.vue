@@ -1,37 +1,75 @@
 <script>
 import dayjs from 'dayjs'
-
 import { docCookies } from '../../../src/assets/cookie'
 
 export default {
   data() {
     return {
-      businessHours: { startHour: 11, endHour: 3, preparation: 15 },
-      cart: [],
-      time: '',
+      businessHours: { startHour: 11, endHour: 3, preparation: 15 }, // 測試用營業時間
+      cart: [], //  db 的購物車
+      products: [], // 所有產品資料
+      carts: { carts: [], total: 0 }, // 渲染用購物車
+      time: '', // 時間
       userData: {}
     }
   },
-  methods: {},
+  methods: {
+    // 取使用者資料
+    getUser() {
+      const id = docCookies.getItem('id')
+      this.$axios.get(`/users?id=4`).then((res) => {
+        if (res.data[0]) {
+          this.userData = res.data[0]
+          console.log(this.userData.coupon)
+        } else {
+          console.log('使用者尚未登入!')
+        }
+      })
+    },
+    // 取產品資料
+    getProducts() {
+      this.$axios
+        .get(`/products`)
+        .then((res) => {
+          this.products = res.data
+        })
+        .catch((e) => {
+          console.log(e)
+        })
+    },
+    // 取購物車資料
+    getCart() {
+      this.$axios
+        .get(`/cart`)
+        .then((res) => {
+          this.cart = res.data
+        })
+        .catch((e) => {
+          console.log(e)
+        })
+    }
+  },
   computed: {
-    // 將 cart 渲染到畫面
-    cardList: () => {
-      return { carts: [], total: 0 }
+    // 整合 cart product
+    cartList: ({ cart, products }) => {
+      const carts = cart.map((item) => {
+        const product = products.find((product) => product.id === item.productId)
+        return { ...item, product, subtotal: product.price * item.qty }
+      })
+      const total = carts.reduce((a, b) => a + b.subtotal, 0)
+      return { carts, total }
     }
   },
   created() {
     // 取使用者資料
-    const id = docCookies.getItem('id')
-    this.$axios.get(`/users?id=4`).then((res) => {
-      if (res.data[0]) {
-        this.userData = res.data[0]
-      } else {
-        console.log('使用者尚未登入!')
-      }
-    })
+    this.getUser()
+    // 取產品資料
+    this.getProducts()
+    // 取購物車資料
+    this.getCart()
   },
   mounted() {
-    // 取時間
+    // 測試用 取時間
     if (this.businessHours.endHour > dayjs().$H > this.businessHours.startHour && dayjs().$H < 24) {
       alert('非常抱歉!今日尚未營業，這筆訂單將轉為預定訂單')
       this.time = `${dayjs()
@@ -42,18 +80,6 @@ export default {
     this.time = `${dayjs()
       .add(this.businessHours.preparation, 'minute')
       .format('YYYY-MM-DD HH:mm')}`
-
-    // 取購物車資料
-    this.$axios
-      .get(`/cart`)
-      .then((res) => {
-        this.cart = res.data
-      })
-      .catch((e) => {
-        console.log(e)
-      })
-
-    // 取產品資料
   }
 }
 </script>
@@ -61,9 +87,7 @@ export default {
 <template>
   <div class="container x">
     <h1 class="my-4 text-center me-2">購物車</h1>
-
-    <div v-if="cart.length === 0">購物車沒有任何品項</div>
-
+    <div v-if="!cart.length">購物車沒有任何品項</div>
     <div class="table-responsive" v-else>
       <table class="table table-borderless align-middle table-light">
         <thead>
@@ -91,19 +115,19 @@ export default {
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr v-for="item in cartList.carts" :key="item.id">
             <td class="ps-5"><a href="#" class="link-dark fs-4">x</a></td>
-            <td class="ps-5">七里香</td>
+            <td class="ps-5">{{item.product.productName}}</td>
             <td class="ps-5">
               <select
                 class="form-select"
                 id="inputGroupSelect04"
                 aria-label="Example select with button addon"
               >
-                <option selected>選擇數量</option>
+                <option selected>{{item.qty}}</option>
               </select>
             </td>
-            <td class="px-5"><div class="text-end">$25</div></td>
+            <td class="px-5"><div class="text-end">$ {{item.product.price}}</div></td>
           </tr>
           <tr>
             <td class="px-5 pt-5" colspan="4">
@@ -189,7 +213,7 @@ export default {
         </tbody>
         <tfoot>
           <tr class="border-top">
-            <td class="text-end pe-5" colspan="4">總金額 NT$ 60</td>
+            <td class="text-end pe-5" colspan="4">總金額 NT$ {{ cartList.total }}</td>
           </tr>
         </tfoot>
       </table>
