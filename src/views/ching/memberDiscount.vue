@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="py-5">
     <div class="memberdiscount container">
       <div class="row justify-content-center">
         <div class="col-9">
@@ -10,80 +10,59 @@
               </div>
               <div class="btn-group-vertical d-flex justify-content-center">
                 <button class="btn btn-outline-primary" type="button">
-                  <router-link to="/memberCenter"
-                    class="d-block link-underline link-underline-opacity-0 ">會員中心</router-link>
+                  <router-link
+                    to="/memberCenter"
+                    class="d-block link-underline link-underline-opacity-0"
+                    >會員中心</router-link
+                  >
                 </button>
                 <button class="btn btn-outline-primary" type="button">
-                  <router-link to="/member/orderLog"
-                    class="d-block link-underline link-underline-opacity-0">歷史訂單</router-link>
+                  <router-link
+                    to="/member/orderLog"
+                    class="d-block link-underline link-underline-opacity-0"
+                    >歷史訂單</router-link
+                  >
                 </button>
                 <button class="btn btn-outline-primary active" type="button">
-                  <router-link to="/member/discount"
-                    class="d-block text-light link-underline link-underline-opacity-0">我的優惠券</router-link>
+                  <router-link
+                    to="/member/discount"
+                    class="d-block text-light link-underline link-underline-opacity-0"
+                    >我的優惠券</router-link
+                  >
                 </button>
                 <button class="btn btn-outline-primary" type="button">
-                  <router-link to="/member/exchange"
-                    class="d-block link-underline link-underline-opacity-0">點數兌換</router-link>
+                  <router-link
+                    to="/member/exchange"
+                    class="d-block link-underline link-underline-opacity-0"
+                    >點數兌換</router-link
+                  >
                 </button>
                 <button class="btn btn-outline-primary" type="button">
-                  <router-link to="/" class="d-block link-underline link-underline-opacity-0"  @click="signOut">登出</router-link>
+                  <router-link
+                    to="/"
+                    class="d-block link-underline link-underline-opacity-0"
+                    @click="signOut"
+                    >登出</router-link
+                  >
                 </button>
               </div>
             </div>
             <div class="col-9">
               <h3 class="text-center">我的優惠券</h3>
-              <hr />
+              <hr class="pt-3"/>
               <div class="row justify-content-center">
                 <div class="col-11 mb-4">
-                  <h5>我的優惠券</h5>
-                  <hr />
                   <div class="d-flex flex-wrap">
                     <!-- card 1 -->
-                    <div class="card mb-4 me-2" style="width: 13rem">
-                      <img src="/31.jpg" class="card-img-top" alt="..." />
+                    <div class="card mb-4 me-2" style="width: 13rem" v-for="i in myCoupons">
+                      <img :src="`/木木苑食材修圖/${i.image}.jpg`" class="card-img-top" alt="image error" />
                       <div class="card-body">
-                        <h5 class="card-title">香腸 1 根</h5>
-                        <p class="card-text mb-0">
-                          兌換券
-                        </p>
+                        <h5 class="card-title">{{i.name +'1'+ i.unit}}</h5>
+                        <p class="card-text mb-0">{{i.description}}</p>
                       </div>
                     </div>
                     <!-- card 1 end -->
-                    <!-- card 2  -->
-                    <div class="card mb-4 me-2" style="width: 13rem">
-                      <img src="/46.jpg" class="card-img-top" alt="..." />
-                      <div class="card-body">
-                        <h5 class="card-title">杏包菇 2 串</h5>
-                        <p class="card-text mb-0">
-                          兌換券
-                        </p>
-                      </div>
-                    </div>
-                    <!-- card 2 end -->
-                    <!-- card 3  -->
-                    <div class="card mb-4 me-2" style="width: 13rem">
-                      <img src="/14.jpg" class="card-img-top" alt="..." />
-                      <div class="card-body">
-                        <h5 class="card-title">干貝捲牛肉 2 串</h5>
-                        <p class="card-text mb-0">
-                          兌換券
-                        </p>
-                      </div>
-                    </div>
-                    <!-- card 3 end -->
-                    <!-- card 4  -->
-                    <div class="card mb-4 me-3" style="width: 13rem">
-                      <img src="/37.jpg" class="card-img-top" alt="..." />
-                      <div class="card-body">
-                        <h5 class="card-title">花椰菜 2 串</h5>
-                        <p class="card-text mb-0">
-                          兌換券
-                        </p>
-                      </div>
-                    </div>
-                    <!-- card 4 end -->
                   </div>
-
                 </div>
               </div>
             </div>
@@ -94,14 +73,35 @@
   </div>
 </template>
 <script>
-import { docCookies } from '../../assets/cookie';
+import { docCookies } from '../../assets/cookie'
 
 export default {
+  data() {
+    return {
+      myCoupons: []
+    }
+  },
+  created() {},
   methods: {
     signOut() {
-      docCookies.removeItem("token");
-      docCookies.removeItem("identity");
+      docCookies.removeItem('token')
+      docCookies.removeItem('identity')
+      docCookies.removeItem("id");
+    },
+    async filterCoupons() {
+      try {
+        const getCoupons = await this.$axios.get('/coupons')
+        const getUsers = await this.$axios.get(`/users/${docCookies.getItem('id')}`)
+        const splitCoupons = getUsers.data.coupon.split(',')
+        splitCoupons.forEach((iCoupons) => {
+          const findIndex = getCoupons.data.findIndex((every) => every.id === iCoupons - 0)
+          this.myCoupons.push(getCoupons.data[findIndex])
+        })
+      } catch (error) {}
     }
+  },
+  mounted() {
+    this.filterCoupons()
   }
 }
 </script>
@@ -118,4 +118,5 @@ export default {
   .questionIcon:hover {
     cursor: pointer;
   }
-}</style>
+}
+</style>
