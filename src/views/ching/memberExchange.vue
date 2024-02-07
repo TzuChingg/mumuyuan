@@ -73,6 +73,7 @@
                               data-bs-toggle="modal"
                               data-bs-target="#exampleModal"
                               @click="chooseDiscount(i)"
+                              :disabled="userInfo.point<i.point"
                             >
                               兌換
                             </button>
@@ -141,7 +142,7 @@ export default {
     }
   },
   created() {
-    this.$axios.get(`/coupons`).then((res) => {
+    this.$axios.get(`/coupons?isLook=true`).then((res) => {
       this.coupons = res.data
       this.getUserInfo()
     })

@@ -6,9 +6,9 @@
       "copyPassword": "123456",
       "name": "joker",
       "phone": "093333333",
-      "coupon": "3,4,1,3",
+      "coupon": "3,4,1,3,2,5,2",
       "identity": "baduser",
-      "point": 820,
+      "point": 620,
       "id": 1
     },
     {
@@ -211,7 +211,7 @@
       "price": 45,
       "description": "鮮嫩干貝與精選牛肉完美卷裹，獨特風味，串烤中的極致美味。",
       "isLook": false,
-      "id": 12
+      "id": 13
     },
     {
       "productName": "鳳梨蝦球",
