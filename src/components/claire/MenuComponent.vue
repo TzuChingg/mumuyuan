@@ -2,20 +2,45 @@
 export default {
   props: ['categoryId'],
   data() {
-    return { products: [], cart: {} }
+    return {
+      products: [],
+      dbCart: [],
+      cart: {},
+      selected: 1
+    }
   },
   methods: {
     // 加入購物車
-    addToCart(productId, qty = 1) {
-      this.cart = { id: new Date().getTime(), productId, qty }
-      this.$axios
-        .post(`/cart`, this.cart)
-        .then((res) => {
-          console.log('成功加入購物車')
-        })
-        .catch((e) => {
-          console.log(e)
-        })
+    async addToCart(productId, qty = 1) {
+      // 取得已加入購物車項目
+      const currentCart = this.dbCart.find((item) => {
+        return item.productId === productId
+      })
+      // 如已加過則更新數目
+      if (currentCart) {
+        currentCart.qty += qty
+        this.cart = currentCart
+        await this.$axios
+          .put(`/cart/${currentCart.id}`, this.cart)
+          .then((res) => {
+            console.log('成功將重複品項加入購物車')
+          })
+          .catch((e) => {
+            console.log(e)
+          })
+        await this.getCart()
+      } else {
+        this.cart = { id: new Date().getTime(), productId, qty }
+        await this.$axios
+          .post(`/cart`, this.cart)
+          .then((res) => {
+            console.log('成功加入購物車')
+          })
+          .catch((e) => {
+            console.log(e)
+          })
+        await this.getCart()
+      }
     },
     // 取得產品資料
     getProducts() {
@@ -29,11 +54,27 @@ export default {
         .catch((e) => {
           console.log(e)
         })
+    },
+    // 取得購物車資料
+    getCart() {
+      this.$axios
+        .get(`/cart`)
+        .then((res) => {
+          this.dbCart = res.data
+        })
+        .catch((e) => {
+          console.log(e)
+        })
     }
-  },  
+  },
   created() {
     // 取得產品資料
     this.getProducts()
+    // 取得購物車資料
+    this.getCart()
+  },
+  mounted() {
+    // :value="product.qty"
   }
 }
 // 使用 vue 點擊按鈕滾動到頁面位置
@@ -58,14 +99,14 @@ export default {
                   class="form-select"
                   id="inputGroupSelect04"
                   aria-label="Example select with button addon"
+                  v-model="selected"
                 >
-                  <option selected>選擇數量</option>
                   <option :value="i" v-for="i in product.count" :key="i">{{ i }}</option>
                 </select>
                 <a
                   class="btn btn-outline-primary"
                   type="button"
-                  @click.prevent="addToCart(product.id)"
+                  @click.prevent="addToCart(product.id, selected)"
                   >加入購物車</a
                 >
               </div>

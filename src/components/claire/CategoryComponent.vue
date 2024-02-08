@@ -1,20 +1,40 @@
 <script>
 export default {
   data() {
-    return {  categories: [] }
+    return { categories: [], cart: [] }
   },
-  methods: { scrollToSection() {} },
-  computed: {},
-  mounted() {    
+  methods: {
+    scrollToSection() {},
+    getCategories() {
+      this.$axios
+        .get('/categories')
+        .then((res) => {
+          this.categories = res.data
+        })
+        .catch((e) => {
+          console.log(e)
+        })
+    },
+    getCart() {
+      this.$axios
+        .get('/cart')
+        .then((res) => {
+          this.cart = res.data
+          console.log(this.cart)
+        })
+        .catch((e) => {
+          console.log(e)
+        })
+    }
+  },
+  mounted() {
     // 取分類
-    this.$axios
-      .get('/categories')
-      .then((res) => {
-        this.categories = res.data        
-      })
-      .catch((e) => {
-        console.log(e)
-      })
+    this.getCategories()
+    // 取購物車
+    this.getCart()
+  },
+  updated() {
+    this.getCart()
   }
 }
 </script>
@@ -28,7 +48,7 @@ export default {
     </div>
     <div href="#" class="d-flex justify-content-end align-items-center ms-5">
       <router-link to="/cart" class="link">購物車</router-link>
-      <span class="badge text-bg-danger mx-3">0</span>
+      <span class="badge text-bg-danger mx-3">{{ cart.length }}</span>
     </div>
   </nav>
 </template>
