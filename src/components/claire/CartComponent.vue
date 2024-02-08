@@ -8,23 +8,33 @@ export default {
       businessHours: { startHour: 11, endHour: 3, preparation: 15 }, // 測試用營業時間
       cart: [], //  db 的購物車
       products: [], // 所有產品資料
-      carts: { carts: [], total: 0 }, // 渲染用購物車
       time: '', // 時間
-      userData: {}
+      userData: {},
+      coupons: [], // 所有優惠券
+      userCoupon: 1, // 使用者所有優惠券
+      flavour: 1,
+      spicy: 1,
+      coupon: 1,
+      payment: ''
     }
   },
   methods: {
     // 取使用者資料
     getUser() {
       const id = docCookies.getItem('id')
-      this.$axios.get(`/users?id=4`).then((res) => {
-        if (res.data[0]) {
-          this.userData = res.data[0]
-          console.log(this.userData.coupon)
-        } else {
-          console.log('使用者尚未登入!')
-        }
-      })
+      this.$axios
+        .get(`/users?id=4`)
+        .then((res) => {
+          if (res.data[0]) {
+            this.userData = res.data[0]
+          } else {
+            this.userData = false
+            console.log('使用者尚未登入!')
+          }
+        })
+        .catch((e) => {
+          console.log(e)
+        })
     },
     // 取產品資料
     getProducts() {
@@ -47,6 +57,99 @@ export default {
         .catch((e) => {
           console.log(e)
         })
+    },
+    // 取優惠券資料
+    getCoupons() {
+      console.log(this.userData.coupon)
+      this.$axios
+        .get(`/coupons/1`)
+        .then((res) => {
+          this.coupons = res.data
+          console.log(this.coupons)
+        })
+        .catch((e) => {
+          console.log(e)
+        })
+    },
+
+    // 刪除 db 跟 data 的 cart
+    removeCartItem(id) {
+      this.$axios
+        .delete(`/cart/${id}`)
+        .then((res) => {
+          const index = this.cart.findIndex((item) => item.id === id)
+          this.cart.splice(index, 1)
+        })
+        .catch((e) => {
+          console.log(e)
+        })
+    },
+    // 取得口味、辣度、優惠券
+    getFlavour(flavour) {
+      this.flavour = Number(flavour)
+    },
+    getSpicy(spicy) {
+      this.spicy = Number(spicy)
+    },
+    getCoupon(coupon) {
+      this.coupon = Number(coupon)
+    },
+    addRFQ() {
+      const RFQ = {
+        isMember: true,
+        name: 'eric',
+        phone: '094563131',
+        mail: '123@123.456',
+        day: '2024/01/01',
+        product: [
+          {
+            name: '玉米筍',
+            quantity: 5,
+            image: '/木木苑食材修圖/01.jpg',
+            price: 52
+          },
+          {
+            name: '豬五花蔥捲',
+            quantity: 3,
+            image: '/木木苑食材修圖/02.jpg',
+            price: 61
+          },
+          {
+            name: '鯛魚下巴',
+            quantity: 3,
+            image: '/木木苑食材修圖/03.jpg',
+            price: 45
+          },
+          {
+            name: '雞肉串',
+            quantity: 2,
+            image: '/木木苑食材修圖/20.jpg',
+            price: 89
+          }
+        ],
+        price: 300,
+        status: 3,
+        userId: this.userData.id,
+        type: true,
+        tableware: true,
+        bags: true,
+        payment: this.payment,
+        pickTime: '17:00',
+        comment: '',
+        orderScore: 0,
+        flavor: this.flavor,
+        spicy: this.spicy,
+        orderid: '123',
+        id: new Date().getTime()
+      }
+      this.$axios
+        .post(`/RFQ`, {})
+        .then((res) => {
+          console.log(res.data)
+        })
+        .catch((e) => {
+          console.log(e)
+        })
     }
   },
   computed: {
@@ -56,19 +159,22 @@ export default {
         const product = products.find((product) => product.id === item.productId)
         return { ...item, product, subtotal: product.price * item.qty }
       })
+      console.log(carts)
       const total = carts.reduce((a, b) => a + b.subtotal, 0)
       return { carts, total }
     }
   },
-  created() {
+  async created() {
     // 取使用者資料
-    this.getUser()
+    await this.getUser()
     // 取產品資料
-    this.getProducts()
+    await this.getProducts()
     // 取購物車資料
-    this.getCart()
+    await this.getCart()
+    // 取優惠券資料
+    await this.getCoupons()
   },
-  mounted() {
+  async mounted() {
     // 測試用 取時間
     if (this.businessHours.endHour > dayjs().$H > this.businessHours.startHour && dayjs().$H < 24) {
       alert('非常抱歉!今日尚未營業，這筆訂單將轉為預定訂單')
@@ -85,6 +191,7 @@ export default {
 </script>
 
 <template>
+  {{ userData.coupon }}
   <div class="container x">
     <h1 class="my-4 text-center me-2">購物車</h1>
     <div v-if="!cart.length">購物車沒有任何品項</div>
@@ -116,18 +223,23 @@ export default {
         </thead>
         <tbody>
           <tr v-for="item in cartList.carts" :key="item.id">
-            <td class="ps-5"><a href="#" class="link-dark fs-4">x</a></td>
-            <td class="ps-5">{{item.product.productName}}</td>
+            <td class="ps-5">
+              <a href="#" class="link-dark fs-4" @click.prevent="removeCartItem(item.id)">x</a>
+            </td>
+            <td class="ps-5">{{ item.product.productName }}</td>
             <td class="ps-5">
               <select
                 class="form-select"
                 id="inputGroupSelect04"
                 aria-label="Example select with button addon"
+                v-model="item.qty"
               >
-                <option selected>{{item.qty}}</option>
+                <option :value="i" v-for="i in item.product.count" :key="i">{{ i }}</option>
               </select>
             </td>
-            <td class="px-5"><div class="text-end">$ {{item.product.price}}</div></td>
+            <td class="px-5">
+              <div class="text-end">$ {{ item.subtotal }}</div>
+            </td>
           </tr>
           <tr>
             <td class="px-5 pt-5" colspan="4">
@@ -136,6 +248,8 @@ export default {
                   class="form-select border border-dark form-select-md w-50"
                   aria-label="coupon"
                   id="coupon"
+                  v-model="flavour"
+                  @change.prevent="getFlavour(flavour)"
                 >
                   <option selected>請選擇口味</option>
                   <option value="1">秘粉</option>
@@ -152,6 +266,8 @@ export default {
                   class="form-select border border-dark form-select-md w-50"
                   aria-label="coupon"
                   id="coupon"
+                  v-model="spicy"
+                  @change.prevent="getSpicy(spicy)"
                 >
                   <option selected>請選擇辣度</option>
                   <option value="1">小辣</option>
@@ -168,11 +284,12 @@ export default {
                   class="form-select border border-dark form-select-md w-50"
                   aria-label="coupon"
                   id="coupon"
+                  v-model="coupon"
+                  @change.prevent="getCoupon(coupon)"
                 >
-                  <option selected>請選擇一張優惠券</option>
-                  <option value="1">優惠券</option>
-                  <option value="2">優惠券</option>
-                  <option value="3">優惠券</option>
+                  <option value="coupon.id" v-for="coupon in userData.coupon" :key="coupon">
+                    優惠券
+                  </option>
                 </select>
               </div>
             </td>
@@ -185,7 +302,8 @@ export default {
                 type="radio"
                 name="inlineRadioOptions"
                 id="inlineRadio1"
-                value="option1"
+                value="現金"
+                v-model="payment"
               />
               <label class="form-check-label me-2" for="inlineRadio1">現金</label>
             </td>
@@ -195,7 +313,8 @@ export default {
                 type="radio"
                 name="inlineRadioOptions"
                 id="inlineRadio1"
-                value="option1"
+                value="信用卡"
+                v-model="payment"
               />
               <label class="form-check-label me-2" for="inlineRadio1">信用卡</label>
             </td>
@@ -205,7 +324,8 @@ export default {
                 type="radio"
                 name="inlineRadioOptions"
                 id="inlineRadio1"
-                value="option1"
+                value="Line Pay"
+                v-model="payment"
               />
               <label class="form-check-label" for="inlineRadio1">Line Pay</label>
             </td>
