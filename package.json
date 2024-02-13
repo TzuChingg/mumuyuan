@@ -11,6 +11,8 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@vee-validate/i18n": "^4.12.4",
+    "@vee-validate/rules": "^4.12.4",
     "apexcharts": "^3.45.1",
     "axios": "^1.6.5",
     "bootstrap": "^5.3.2",
@@ -28,6 +30,7 @@
     "popper.js": "^1.16.1",
     "url": "^0.11.3",
     "uuid": "^9.0.1",
+    "vee-validate": "^4.12.4",
     "vue": "^3.3.11",
     "vue-axios": "^3.5.2",
     "vue-router": "^4.2.5",
