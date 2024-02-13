@@ -5,30 +5,45 @@ import { docCookies } from '../../../src/assets/cookie'
 export default {
   data() {
     return {
-      businessHours: { startHour: 11, endHour: 3, preparation: 15 }, // 測試用營業時間
-      cart: [], //  db 的購物車
       products: [], // 所有產品資料
+      cart: [], //  db 的購物車
+      coupons: [], // 使用者優惠券
+      businessHours: { startHour: 11, endHour: 3, preparation: 15 }, // 測試用營業時間
       time: '', // 時間
-      userData: {},
-      coupons: [], // 所有優惠券
-      userCoupon: 1, // 使用者所有優惠券
-      flavour: 1,
-      spicy: 1,
-      coupon: 1,
-      payment: ''
+      tempOrder: {
+        isMember: true,
+        user: { id: 0, email: '', name: '', phone: '', coupon: [], point: 0 },
+        coupon: {},
+        total: 0,
+        flavour: 1,
+        spicy: 1,
+        payment: '現金'
+      }
     }
   },
   methods: {
-    // 取使用者資料
+    // 取使用者資料 ok
     getUser() {
-      const id = docCookies.getItem('id')
+      const id = docCookies.getItem('id') || 4
       this.$axios
-        .get(`/users?id=4`)
+        .get(`/users?id=${id}`)
         .then((res) => {
           if (res.data[0]) {
-            this.userData = res.data[0]
+            const { id, name, email, phone, coupon, point } = res.data[0]
+            this.tempOrder = {
+              isMember: true,
+              user: {
+                id,
+                email,
+                name,
+                phone,
+                coupon,
+                point
+              },
+              coupon: ''
+            }
           } else {
-            this.userData = false
+            this.tempOrder.isMember = false
             console.log('使用者尚未登入!')
           }
         })
@@ -36,7 +51,7 @@ export default {
           console.log(e)
         })
     },
-    // 取產品資料
+    // 取產品資料 ok
     getProducts() {
       this.$axios
         .get(`/products`)
@@ -60,92 +75,28 @@ export default {
     },
     // 取優惠券資料
     getCoupons() {
-      console.log(this.userData.coupon)
       this.$axios
-        .get(`/coupons/1`)
+        .get(`/coupons`)
         .then((res) => {
-          this.coupons = res.data
-          console.log(this.coupons)
+          this.tempOrder.user.coupon.forEach((couponId) => {
+            res.data.filter((coupon) => {
+              if (coupon.id === couponId) {
+                this.coupons.push(coupon)
+              }
+            })
+          })
         })
         .catch((e) => {
           console.log(e)
         })
     },
-
-    // 刪除 db 跟 data 的 cart
+    // 刪除 cart
     removeCartItem(id) {
       this.$axios
         .delete(`/cart/${id}`)
         .then((res) => {
           const index = this.cart.findIndex((item) => item.id === id)
           this.cart.splice(index, 1)
-        })
-        .catch((e) => {
-          console.log(e)
-        })
-    },
-    // 取得口味、辣度、優惠券
-    getFlavour(flavour) {
-      this.flavour = Number(flavour)
-    },
-    getSpicy(spicy) {
-      this.spicy = Number(spicy)
-    },
-    getCoupon(coupon) {
-      this.coupon = Number(coupon)
-    },
-    addRFQ() {
-      const RFQ = {
-        isMember: true,
-        name: 'eric',
-        phone: '094563131',
-        mail: '123@123.456',
-        day: '2024/01/01',
-        product: [
-          {
-            name: '玉米筍',
-            quantity: 5,
-            image: '/木木苑食材修圖/01.jpg',
-            price: 52
-          },
-          {
-            name: '豬五花蔥捲',
-            quantity: 3,
-            image: '/木木苑食材修圖/02.jpg',
-            price: 61
-          },
-          {
-            name: '鯛魚下巴',
-            quantity: 3,
-            image: '/木木苑食材修圖/03.jpg',
-            price: 45
-          },
-          {
-            name: '雞肉串',
-            quantity: 2,
-            image: '/木木苑食材修圖/20.jpg',
-            price: 89
-          }
-        ],
-        price: 300,
-        status: 3,
-        userId: this.userData.id,
-        type: true,
-        tableware: true,
-        bags: true,
-        payment: this.payment,
-        pickTime: '17:00',
-        comment: '',
-        orderScore: 0,
-        flavor: this.flavor,
-        spicy: this.spicy,
-        orderid: '123',
-        id: new Date().getTime()
-      }
-      this.$axios
-        .post(`/RFQ`, {})
-        .then((res) => {
-          console.log(res.data)
         })
         .catch((e) => {
           console.log(e)
@@ -159,22 +110,21 @@ export default {
         const product = products.find((product) => product.id === item.productId)
         return { ...item, product, subtotal: product.price * item.qty }
       })
-      console.log(carts)
       const total = carts.reduce((a, b) => a + b.subtotal, 0)
       return { carts, total }
     }
   },
-  async created() {
+  created() {
     // 取使用者資料
-    await this.getUser()
+    this.getUser()
     // 取產品資料
-    await this.getProducts()
+    this.getProducts()
     // 取購物車資料
-    await this.getCart()
+    this.getCart()
     // 取優惠券資料
-    await this.getCoupons()
+    this.getCoupons()
   },
-  async mounted() {
+  mounted() {
     // 測試用 取時間
     if (this.businessHours.endHour > dayjs().$H > this.businessHours.startHour && dayjs().$H < 24) {
       alert('非常抱歉!今日尚未營業，這筆訂單將轉為預定訂單')
@@ -191,22 +141,22 @@ export default {
 </script>
 
 <template>
-  {{ userData.coupon }}
   <div class="container x">
     <h1 class="my-4 text-center me-2">購物車</h1>
     <div v-if="!cart.length">購物車沒有任何品項</div>
     <div class="table-responsive" v-else>
+      {{ tempOrder.flavour }}
       <table class="table table-borderless align-middle table-light">
         <thead>
           <tr>
             <th class="ps-5 pt-5"><label for="name">您的姓名</label></th>
-            <th><input type="text" class="ms-2" id="name" :value="userData.name" /></th>
+            <th><input type="text" class="ms-2" id="name" :value="tempOrder.user.name" /></th>
             <th class="ps-5 pt-5"><label for="phone">手機號碼</label></th>
-            <th><input type="phone" class="ms-2" id="phone" :value="userData.phone" /></th>
+            <th><input type="phone" class="ms-2" id="phone" :value="tempOrder.user.phone" /></th>
           </tr>
           <tr>
             <th class="ps-5"><label for="email">電子郵件</label></th>
-            <th><input type="email" class="ms-2" id="email" :value="userData.email" /></th>
+            <th><input type="email" class="ms-2" id="email" :value="tempOrder.user.email" /></th>
             <th class="ps-5">
               <label>取餐時間</label>
             </th>
@@ -246,12 +196,11 @@ export default {
               <div class="d-flex justify-content-end">
                 <select
                   class="form-select border border-dark form-select-md w-50"
-                  aria-label="coupon"
-                  id="coupon"
-                  v-model="flavour"
-                  @change.prevent="getFlavour(flavour)"
+                  aria-label="flavour"
+                  id="flavour"
+                  v-model="tempOrder.flavour"
                 >
-                  <option selected>請選擇口味</option>
+                  <option value="0" selected disabled hidden>請選擇口味</option>
                   <option value="1">秘粉</option>
                   <option value="2">梅粉</option>
                   <option value="3">椒鹽</option>
@@ -264,12 +213,11 @@ export default {
               <div class="d-flex justify-content-end">
                 <select
                   class="form-select border border-dark form-select-md w-50"
-                  aria-label="coupon"
-                  id="coupon"
-                  v-model="spicy"
-                  @change.prevent="getSpicy(spicy)"
+                  aria-label="spicy"
+                  id="spicy"
+                  v-model="tempOrder.spicy"
                 >
-                  <option selected>請選擇辣度</option>
+                  <option value="0" selected disabled hidden>請選擇辣度</option>
                   <option value="1">小辣</option>
                   <option value="2">中辣</option>
                   <option value="3">大辣</option>
@@ -284,11 +232,11 @@ export default {
                   class="form-select border border-dark form-select-md w-50"
                   aria-label="coupon"
                   id="coupon"
-                  v-model="coupon"
-                  @change.prevent="getCoupon(coupon)"
+                  v-model="tempOrder.coupon"
                 >
-                  <option value="coupon.id" v-for="coupon in userData.coupon" :key="coupon">
-                    優惠券
+                  <option value="" selected disabled hidden>請選擇優惠券</option>
+                  <option v-for="item in coupons" :key="item.id" :value="item">
+                    {{ item.name }}
                   </option>
                 </select>
               </div>
@@ -301,33 +249,34 @@ export default {
                 class="form-check-input me-1"
                 type="radio"
                 name="inlineRadioOptions"
-                id="inlineRadio1"
+                id="payment1"
                 value="現金"
-                v-model="payment"
+                v-model="tempOrder.payment"
+                checked
               />
-              <label class="form-check-label me-2" for="inlineRadio1">現金</label>
+              <label class="form-check-label me-2" for="payment1">現金</label>
             </td>
             <td class="px-5 pb-5">
               <input
                 class="form-check-input me-1"
                 type="radio"
                 name="inlineRadioOptions"
-                id="inlineRadio1"
+                id="payment2"
                 value="信用卡"
-                v-model="payment"
+                v-model="tempOrder.payment"
               />
-              <label class="form-check-label me-2" for="inlineRadio1">信用卡</label>
+              <label class="form-check-label me-2" for="payment2">信用卡</label>
             </td>
             <td class="px-5 pb-5">
               <input
                 class="form-check-input me-1"
                 type="radio"
                 name="inlineRadioOptions"
-                id="inlineRadio1"
+                id="payment3"
                 value="Line Pay"
-                v-model="payment"
+                v-model="tempOrder.payment"
               />
-              <label class="form-check-label" for="inlineRadio1">Line Pay</label>
+              <label class="form-check-label" for="payment3">Line Pay</label>
             </td>
           </tr>
         </tbody>

@@ -23,7 +23,7 @@ export default {
         await this.$axios
           .put(`/cart/${currentCart.id}`, this.cart)
           .then((res) => {
-            console.log('成功將重複品項加入購物車')
+            alert('成功將重複品項加入購物車')
           })
           .catch((e) => {
             console.log(e)
@@ -34,7 +34,7 @@ export default {
         await this.$axios
           .post(`/cart`, this.cart)
           .then((res) => {
-            console.log('成功加入購物車')
+            alert('成功加入購物車')
           })
           .catch((e) => {
             console.log(e)
@@ -67,25 +67,20 @@ export default {
         })
     }
   },
-  created() {
+  mounted() {
     // 取得產品資料
     this.getProducts()
     // 取得購物車資料
     this.getCart()
-  },
-  mounted() {
-    // :value="product.qty"
   }
 }
-// 使用 scrollBehavior 點擊按鈕滾動到錨點
 </script>
 
 <template>
   <div class="container mb-3">
     <div class="row">
-      {{ products }}
-      <template v-for="product in products" :key="product.id" >
-        <div class="col-md-4" v-if="product.isLook === true" >
+      <template v-for="product in products" :key="product.id">
+        <div class="col-md-4" v-if="product.isLook === true">
           <div class="card my-3">
             <img :src="product.image" :alt="product.productName" class="card-img-top text-center" />
             <div class="card-body">

@@ -1,17 +1,15 @@
 <script>
-import CategoryComponent from '@/components/claire/CategoryComponent.vue'
 import MenuComponent from '@/components/claire/MenuComponent.vue'
 export default {
   data() {
     return {
       categories: [],
-      cart: [],
-      categoryId: 0 // 傳到 CategoryComponent
+      cart: []
     }
   },
   methods: {
+    // 瀏覽各類菜單
     scrollToCategory(categoryId) {
-      console.log(categoryId)
       const element = document.querySelector(`${categoryId}`)
       console.log(element)
       if (element) {
@@ -56,9 +54,7 @@ export default {
 </script>
 <template>
   <div class="container">
-    <!--title-->
-    <h1 class="text-center pt-5">線上點餐</h1>
-    <!--category-->
+    <!-- category -->
     <nav class="navbar d-flex justify-content-center py-4">
       <div class="btn-group" role="group" v-for="category in categories" :key="category.id">
         <button
