@@ -41,14 +41,11 @@ const router = createRouter({
       return savedPosition
     }else if (to.hash) {
       const element = document.getElementById(to.hash)
-      if (['#固定套餐', '#秘捲', '#肉品', '#海鮮', '#酒食', '#蔬菜', '#經典',].includes(element.id)){
+      if (['#固定套餐', '#秘捲', '#肉品', '#海鮮', '#酒食', '#蔬菜', '#經典',].includes(to.hash)){
         return {el: element, top: 50, behavior: 'smooth' } // <==== the important part
       }
-
-
-      if (element) {
-        console.log(element.id);
-        return {el: element, behavior: 'smooth' } // <==== the important part
+      if ('#FAQ' === to.hash) {
+        return {el: element, top:0,  behavior: 'smooth' } // <==== the important part
       }
     }else{
         return new Promise((resolve, reject) => {

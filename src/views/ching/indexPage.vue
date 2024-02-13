@@ -34,12 +34,10 @@ export default{
     // 跳轉
     mounted() { 
         if(this.$route.hash === '#FAQ'){
-            this.scrollToSection();
+            setTimeout(() => {
+                this.scrollToSection();
+            }, 100);
         };
-        // this.getNews()
-
-
-
     },
     methods: {
         // 跳轉

@@ -6,28 +6,44 @@
         <table class="table table-borderless align-middle table-light ">
           <thead>
             <tr>
-              <td class="col-3">
-                <label for="name" class=" form-label d-flex justify-content-center fs-5">您的姓名</label>
+              <td>
+                <div class="row justify-content-center">
+                  <div class="col-7">
+                    <label for="name" class=" form-label d-flex justify-content-center fs-5">您的姓名</label>
+                  </div>
+                </div>
               </td>
               <td class="col-3">
                 <input type="text" class=" form-control" id="name">
               </td>
-              <td class="col-3">
-                <label for="phone" class=" form-label d-flex justify-content-center fs-5">手機號碼</label>
+              <td>
+                <div class="row justify-content-center">
+                  <div class="col-5">
+                    <label for="phone" class=" form-label d-flex justify-content-center fs-5">手機號碼</label>
+                  </div>
+                </div>
               </td>
               <td class="col-3">
                 <input type="text" class=" form-control" id="phone">
               </td>
             </tr>
             <tr>
-              <td class="col-3">
-                <label for="email" class=" form-label d-flex justify-content-center fs-5">電子郵件</label>
+              <td>
+                <div class="row justify-content-center">
+                  <div class="col-7">
+                    <label for="email" class=" form-label d-flex justify-content-center fs-5">電子郵件</label>
+                  </div>
+                </div>
               </td>
               <td class="col-3">
                 <input type="text" class=" form-control" id="email">
               </td>
-              <td class="col-3">
-                <label for="time" class=" form-label d-flex justify-content-center fs-5">取餐時間</label>
+              <td>
+                <div class="row justify-content-center">
+                  <div class="col-5">
+                    <label for="time" class=" form-label d-flex justify-content-center fs-5">取餐時間</label>
+                  </div>
+                </div>
               </td>
               <td class="col-3">
                 <label for="time" class=" form-label">2024-01-22 18:30</label>
@@ -45,9 +61,17 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="(item, index) in cartsList.carts" :key="index" >
-                      <td class="text-center"><a href="" @click.prevent="removeCartsListItem(item.id)" class="p-0"><i
-                            class="bi bi-x-lg text-primary fs-4 "></i></a></td>
+                    <tr v-for="(item, index) in cartsList.carts" :key="index">
+                      <td>
+                        <!-- <div class="row h-100 "> -->
+
+                        <a href="" @click.prevent="removeCartsListItem(item.id)"
+                          class="p-0 d-flex justify-content-center mt-1"><i class="bi bi-x-lg text-primary fs-4 "></i></a>
+
+
+
+                        <!-- </div> -->
+                      </td>
                       <td class="fs-5">
                         <div class="ms-5 ps-4">
                           <img :src="item.product.image" :alt="item.product.productName" style="width: 50px;">
@@ -58,7 +82,8 @@
                         <div class="input-group mt-1">
                           <input type="button" class="cal btn btn-outline-dark" value="-" @click="decreaseQty(item.id)">
                           <input type="number" id="" name="quantity"
-                            class="form-control input-number border-primary text-center p-0 h-" :value=item.quantity min=1 max=100  readonly="readonly">
+                            class="form-control input-number border-primary text-center p-0 h-" :value=item.quantity min=1
+                            max=100 readonly="readonly">
                           <input type="button" class="cal btn btn-outline-dark" value="+" @click="increaseQty(item.id)">
                         </div>
                       </td>
@@ -71,7 +96,7 @@
             <tr>
               <td colspan="3" class="text-end fs-5">總金額
               </td>
-              <td class="text-center fs-5"> $ {{cartsList.totalAmount}}</td>
+              <td class="text-center fs-5"> $ {{ cartsList.totalAmount }}</td>
             </tr>
           </thead>
           <tbody>
@@ -81,7 +106,7 @@
               </td>
               <td>
                 <div class="form-check">
-                  <input class="form-check-input border-primary" type="radio" name="flavor" id="pepperSalt" >
+                  <input class="form-check-input border-primary" type="radio" name="flavor" id="pepperSalt">
                   <label class="form-check-label fs-5" for="pepperSalt">
                     椒鹽
                   </label>
@@ -104,7 +129,8 @@
                 <div class="row">
                   <div class="col ">
                     <div class="form-check">
-                      <input class="form-check-input border-primary" type="radio" name="spicinessLevel" id="nonSpicy" checked>
+                      <input class="form-check-input border-primary" type="radio" name="spicinessLevel" id="nonSpicy"
+                        checked>
                       <label class="form-check-label fs-5" for="nonSpicy">
                         不辣
                       </label>
@@ -159,27 +185,27 @@
                 <div class="row">
                   <div class="col d-flex justify-content-center">
                     <div class="form-check">
-                  <input class="form-check-input border-primary" type="radio" name="payment" id="cash" >
-                  <label class="form-check-label fs-5" for="cash">
-                    現金
-                  </label>
-                </div>
+                      <input class="form-check-input border-primary" type="radio" name="payment" id="cash">
+                      <label class="form-check-label fs-5" for="cash">
+                        現金
+                      </label>
+                    </div>
                   </div>
                   <div class="col d-flex justify-content-center">
                     <div class="form-check">
-                  <input class="form-check-input border-primary" type="radio" name="payment" id="creditCard">
-                  <label class="form-check-label fs-5" for="creditCard">
-                    信用卡
-                  </label>
-                </div>
+                      <input class="form-check-input border-primary" type="radio" name="payment" id="creditCard">
+                      <label class="form-check-label fs-5" for="creditCard">
+                        信用卡
+                      </label>
+                    </div>
                   </div>
                   <div class="col d-flex justify-content-center">
                     <div class="form-check">
-                  <input class="form-check-input border-primary" type="radio" name="payment" id="linePay">
-                  <label class="form-check-label fs-5" for="linePay">
-                    Line Pay
-                  </label>
-                </div>
+                      <input class="form-check-input border-primary" type="radio" name="payment" id="linePay">
+                      <label class="form-check-label fs-5" for="linePay">
+                        Line Pay
+                      </label>
+                    </div>
                   </div>
                 </div>
               </td>
@@ -206,7 +232,7 @@
 import cartStore from '@/stores/cartStore.js'
 import { mapActions, mapState } from 'pinia'
 export default {
-  computed:{
+  computed: {
     ...mapState(cartStore, ['cartsList'])
   },
   methods: {
@@ -219,6 +245,5 @@ export default {
 
 <style lang="scss" scoped>
 .cal:hover {
-    color: #f1eee9;
-}
-</style>
+  color: #f1eee9;
+}</style>
