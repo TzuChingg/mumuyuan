@@ -8,62 +8,33 @@
             <thead>
               <tr>
                 <td class="col-3">
-                  <label for="name" class="form-label d-flex justify-content-center fs-5"
-                    >您的姓名</label
-                  >
+                  <label for="name" class="form-label d-flex justify-content-center fs-5">您的姓名</label>
                 </td>
                 <td class="col-3">
-                  <VField
-                    id="name"
-                    name="name"
-                    type="text"
-                    class="form-control"
-                    :class="{ 'is-invalid': errors['name'] }"
-                    placeholder="請輸入姓名"
-                    rules="required"
-                  ></VField>
+                  <VField id="name" name="name" type="text" class="form-control" :class="{ 'is-invalid': errors['name'] }"
+                    placeholder="請輸入姓名" rules="required"></VField>
                   <ErrorMessage name="name" class="invalid-feedback"></ErrorMessage>
                 </td>
                 <td class="col-3">
-                  <label for="phone" class="form-label d-flex justify-content-center fs-5"
-                    >手機號碼</label
-                  >
+                  <label for="phone" class="form-label d-flex justify-content-center fs-5">手機號碼</label>
                 </td>
                 <td class="col-3">
-                  <VField
-                    id="tel"
-                    name="tel"
-                    type="tel"
-                    class="form-control"
-                    :class="{ 'is-invalid': errors['tel'] }"
-                    placeholder="請輸入電話"
-                    rules="required|min:10|numeric"
-                  ></VField>
+                  <VField id="tel" name="tel" type="tel" class="form-control" :class="{ 'is-invalid': errors['tel'] }"
+                    placeholder="請輸入電話" rules="required|min:10|numeric"></VField>
                   <ErrorMessage name="tel" class="invalid-feedback"></ErrorMessage>
                 </td>
               </tr>
               <tr>
                 <td class="col-3">
-                  <label for="email" class="form-label d-flex justify-content-center fs-5"
-                    >電子郵件</label
-                  >
+                  <label for="email" class="form-label d-flex justify-content-center fs-5">電子郵件</label>
                 </td>
                 <td class="col-3">
-                  <VField
-                    id="email"
-                    name="email"
-                    type="email"
-                    class="form-control"
-                    :class="{ 'is-invalid': errors['email'] }"
-                    placeholder="請輸入 Email"
-                    rules="email|required"
-                  ></VField>
+                  <VField id="email" name="email" type="email" class="form-control"
+                    :class="{ 'is-invalid': errors['email'] }" placeholder="請輸入 Email" rules="email|required"></VField>
                   <ErrorMessage name="email" class="invalid-feedback"></ErrorMessage>
                 </td>
                 <td class="col-3">
-                  <label for="time" class="form-label d-flex justify-content-center fs-5"
-                    >取餐時間</label
-                  >
+                  <label for="time" class="form-label d-flex justify-content-center fs-5">取餐時間</label>
                 </td>
                 <td class="col-3">
                   <label for="time" class="form-label">2024-01-22 18:30</label>
@@ -83,44 +54,24 @@
                     <tbody>
                       <tr v-for="(item, index) in cartsList.carts" :key="index">
                         <td class="text-center">
-                          <a href="" @click.prevent="removeCartsListItem(item.id)" class="p-0"
-                            ><i class="bi bi-x-lg text-primary fs-4"></i
-                          ></a>
+                          <a href="" @click.prevent="removeCartsListItem(item.id)" class="p-0"><i
+                              class="bi bi-x-lg text-primary fs-4"></i></a>
                         </td>
                         <td class="fs-5">
                           <div class="ms-5 ps-4">
-                            <img
-                              :src="item.product.image"
-                              :alt="item.product.productName"
-                              style="width: 50px"
-                            />
+                            <img :src="item.product.image" :alt="item.product.productName" style="width: 50px" />
                             {{ item.product.productName }}
                           </div>
                         </td>
                         <td class="text-center">
                           <div class="input-group mt-1">
-                            <input
-                              type="button"
-                              class="cal btn btn-outline-dark"
-                              value="-"
-                              @click="decreaseQty(item.id)"
-                            />
-                            <input
-                              type="number"
-                              id=""
-                              name="quantity"
-                              class="form-control input-number border-primary text-center p-0 h-"
-                              :value="item.quantity"
-                              min="1"
-                              max="100"
-                              readonly="readonly"
-                            />
-                            <input
-                              type="button"
-                              class="cal btn btn-outline-dark"
-                              value="+"
-                              @click="increaseQty(item.id)"
-                            />
+                            <input type="button" class="cal btn btn-outline-dark" value="-"
+                              @click="decreaseQty(item.id)" />
+                            <input type="number" id="" name="quantity"
+                              class="form-control input-number border-primary text-center p-0 h-" :value="item.quantity"
+                              min="1" max="100" readonly="readonly" />
+                            <input type="button" class="cal btn btn-outline-dark" value="+"
+                              @click="increaseQty(item.id)" />
                           </div>
                         </td>
                         <td class="text-center fs-5">{{ item.amount }}</td>
@@ -142,15 +93,21 @@
                 <td colspan="2">
                   <div class="row">
                     <div class="col">
-                      <VField name="flavor" type="radio" value="椒鹽" rules="required" />
-                      <label class="form-check-label fs-5" for="pepperSalt"> 椒鹽 </label>
+                      <div class="form-check">
+                        <VField name="flavor" type="radio" value="椒鹽" rules="required"
+                          class=" form-check-input border-primary" id="pepperSalt" />
+                        <label class="form-check-label fs-5" for="pepperSalt"> 椒鹽 </label>
+                      </div>
                     </div>
                     <div class="col">
-                      <VField name="flavor" type="radio" value="秘粉" rules="required"/>
-                      <label class="form-check-label fs-5" for="secretSpice"> 秘粉 </label>
+                      <div class="form-check">
+                        <VField name="flavor" type="radio" value="秘粉" rules="required"
+                          class=" form-check-input border-primary" id="secretSpice" />
+                        <label class="form-check-label fs-5" for="secretSpice"> 秘粉 </label>
+                      </div>
                     </div>
                   </div>
-                  <ErrorMessage name="flavor" class="text-danger"/>
+                  <ErrorMessage name="flavor" class="text-danger" />
                 </td>
               </tr>
               <tr>
@@ -161,40 +118,40 @@
                   <div class="row">
                     <div class="col">
                       <div class="form-check">
-                        <VField name="spicy" type="radio" value="不辣" rules="required"/>
+                        <VField name="spicy" type="radio" value="不辣" rules="required"
+                          class=" form-check-input border-primary" id="nonSpicy" />
                         <label class="form-check-label fs-5" for="nonSpicy"> 不辣 </label>
                       </div>
                     </div>
                     <div class="col">
                       <div class="form-check">
-                        <VField name="spicy" type="radio" value="小辣" rules="required"/>
+                        <VField name="spicy" type="radio" value="小辣" rules="required"
+                          class=" form-check-input border-primary" id="mildlySpicy" />
                         <label class="form-check-label fs-5" for="mildlySpicy"> 小辣 </label>
                       </div>
                     </div>
                     <div class="col">
                       <div class="form-check">
-                        <VField name="spicy" type="radio" value="中辣" rules="required"/>
+                        <VField name="spicy" type="radio" value="中辣" rules="required"
+                          class=" form-check-input border-primary" id="mediumSpicy" />
                         <label class="form-check-label fs-5" for="mediumSpicy"> 中辣 </label>
                       </div>
                     </div>
                     <div class="col">
                       <div class="form-check">
-                        <VField name="spicy" type="radio" value="大辣" rules="required"/>
+                        <VField name="spicy" type="radio" value="大辣" rules="required"
+                          class=" form-check-input border-primary" id="spicy" />
                         <label class="form-check-label fs-5" for="spicy"> 大辣 </label>
                       </div>
                     </div>
                   </div>
-                  <ErrorMessage name="spicy" class="text-danger"/>
+                  <ErrorMessage name="spicy" class="text-danger" />
                 </td>
               </tr>
               <tr>
                 <td class="px-5 pb-5" colspan="4">
                   <div class="d-flex justify-content-end">
-                    <select
-                      class="form-select border border-dark form-select-md w-50"
-                      aria-label="coupon"
-                      id="coupon"
-                    >
+                    <select class="form-select border border-dark form-select-md w-50" aria-label="coupon" id="coupon">
                       <option selected>請選擇一張優惠券</option>
                       <option value="1">優惠券</option>
                       <option value="2">優惠券</option>
@@ -209,24 +166,27 @@
                   <div class="row">
                     <div class="col d-flex justify-content-center">
                       <div class="form-check">
-                        <VField name="pay" type="radio" value="現金" rules="required"/>
+                        <VField name="pay" type="radio" value="現金" rules="required"
+                          class=" form-check-input border-primary" id="cash" />
                         <label class="form-check-label fs-5" for="cash"> 現金 </label>
                       </div>
                     </div>
                     <div class="col d-flex justify-content-center">
                       <div class="form-check">
-                        <VField name="pay" type="radio" value="信用卡" rules="required"/>
+                        <VField name="pay" type="radio" value="信用卡" rules="required"
+                          class=" form-check-input border-primary" id="creditCard" />
                         <label class="form-check-label fs-5" for="creditCard"> 信用卡 </label>
                       </div>
                     </div>
                     <div class="col d-flex justify-content-center">
                       <div class="form-check">
-                        <VField name="pay" type="radio" value="Line Pay" rules="required"/>
+                        <VField name="pay" type="radio" value="Line Pay" rules="required"
+                          class=" form-check-input border-primary" id="linePay" />
                         <label class="form-check-label fs-5" for="linePay"> Line Pay </label>
                       </div>
                     </div>
                   </div>
-                  <ErrorMessage name="pay" class="text-danger"/>
+                  <ErrorMessage name="pay" class="text-danger" />
                 </td>
               </tr>
             </tbody>
