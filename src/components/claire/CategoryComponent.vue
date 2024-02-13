@@ -5,6 +5,7 @@ export default {
   },
   methods: {
     scrollToSection() {},
+    // 取分類
     getCategories() {
       this.$axios
         .get('/categories')
@@ -15,12 +16,12 @@ export default {
           console.log(e)
         })
     },
+    // 取購物車
     getCart() {
       this.$axios
         .get('/cart')
         .then((res) => {
           this.cart = res.data
-          console.log(this.cart)
         })
         .catch((e) => {
           console.log(e)
@@ -34,6 +35,7 @@ export default {
     this.getCart()
   },
   updated() {
+    // 取購物車
     this.getCart()
   }
 }
@@ -53,13 +55,4 @@ export default {
   </nav>
 </template>
 
-<style lang="scss" scoped>
-.link {
-  text-decoration: none;
-}
-@media screen and (max-width: 700px) {
-  nav {
-    flex-direction: column;
-  }
-}
-</style>
+
