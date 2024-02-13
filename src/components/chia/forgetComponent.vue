@@ -2,26 +2,41 @@
 export default {
     data() {
         return {
-            useGetPassword: ''
+            useGetPassword: '',
         }
     },
     methods: {
         forgetPassword() {
-            console.log('go');
-            this.$http.get(`http://localhost:3000?email=${this.useGetPassword}`)
-                .then((response) => {
-                    console.log(response)
-                    this.$router.push({ path: '/' });
-                    console.log('end');
-                })
+            this.$axios.get(`/users/?email=${this.useGetPassword}`)
+            .then(res=>{
+                this.socket.send(JSON.stringify({
+                email:this.useGetPassword,
+                ubPassword:res.data[0].copyPassword
+                }))
+            }).catch(error => {
+                alert('查無郵件')
+            });
         }
+    },
+    mounted(){
+        this.socket = new WebSocket('ws://localhost:8080/ws');
+        this.socket.onopen = () => {
+        console.log('WebSocket connection opened');
+        };
+
+    },
+    beforeUnmount() {
+    // Close the WebSocket connection when the component is destroyed
+    if (this.socket) {
+      this.socket.close();
     }
+  },
 }
 </script>
 <template>
     <div class="mb-4">
         <label for="mumuyuanPhone" class="form-label fw-bolder fs-5">帳號</label>
-        <input type="email" class="form-control" id="mumuyuanPhone" placeholder="user phone" v-model="useGetPassword">
+        <input type="email" class="form-control" id="mumuyuanPhone" placeholder="user mail" v-model="useGetPassword">
     </div>
     <button type="type" class="btn btn-dark d-block mx-auto w-100 pt-2 mb-3" @click="forgetPassword">找回</button>
     <div class="text-center">
