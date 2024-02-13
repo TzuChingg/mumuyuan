@@ -45,7 +45,10 @@
       "name": "eric",
       "phone": "095565687",
       "identity": "user",
-      "coupon": [1, 2],
+      "coupon": [
+        1,
+        2
+      ],
       "point": 0,
       "id": 4
     }
@@ -704,6 +707,16 @@
       "time": "11:00",
       "isCheck": false,
       "id": 2
+    },
+    {
+      "name": "qdwfa",
+      "personCount": 2,
+      "phone": "0933333334",
+      "mail": "cjolxvhsi@shaosr.com",
+      "day": "2024/02/13",
+      "time": "18:00",
+      "isCheck": false,
+      "id": 3
     }
   ],
   "periods": [
@@ -787,11 +800,6 @@
   ],
   "cart": [
     {
-      "id": 1707313078803,
-      "productId": 0,
-      "qty": 10
-    },
-    {
       "id": 1707316727272,
       "productId": 2,
       "qty": 1
@@ -800,6 +808,21 @@
       "id": 1707316851263,
       "productId": 9,
       "qty": 1
+    },
+    {
+      "id": 1707809143937,
+      "productId": 15,
+      "qty": 3
+    },
+    {
+      "id": 1707809172923,
+      "productId": 24,
+      "qty": 2
+    },
+    {
+      "id": 1707824956739,
+      "productId": 0,
+      "qty": 3
     }
   ]
 }

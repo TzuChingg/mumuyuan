@@ -3,8 +3,8 @@ export default {
   props: ['categoryId'],
   data() {
     return {
-      products: [],
-      dbCart: [],
+      products: [], // 所有產品
+      dbCart: [], // db 購物車
       cart: {},
       selected: 1
     }
@@ -23,23 +23,23 @@ export default {
         await this.$axios
           .put(`/cart/${currentCart.id}`, this.cart)
           .then((res) => {
-            console.log('成功將重複品項加入購物車')
+            alert('成功將重複品項加入購物車')
           })
           .catch((e) => {
             console.log(e)
           })
-        await this.getCart()
+        this.getCart()
       } else {
         this.cart = { id: new Date().getTime(), productId, qty }
         await this.$axios
           .post(`/cart`, this.cart)
           .then((res) => {
-            console.log('成功加入購物車')
+            alert('成功加入購物車')
           })
           .catch((e) => {
             console.log(e)
           })
-        await this.getCart()
+        this.getCart()
       }
     },
     // 取得產品資料
@@ -67,17 +67,13 @@ export default {
         })
     }
   },
-  created() {
+  mounted() {
     // 取得產品資料
     this.getProducts()
     // 取得購物車資料
     this.getCart()
-  },
-  mounted() {
-    // :value="product.qty"
   }
 }
-// 使用 vue 點擊按鈕滾動到頁面位置
 </script>
 
 <template>
@@ -93,7 +89,6 @@ export default {
                 <span class="float-end">$ {{ product.price }}</span>
               </h6>
               <p class="card-text">{{ product.description }}</p>
-
               <div class="input-group">
                 <select
                   class="form-select"
