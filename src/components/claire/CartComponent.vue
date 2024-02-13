@@ -145,7 +145,6 @@ export default {
     <h1 class="my-4 text-center me-2">購物車</h1>
     <div v-if="!cart.length">購物車沒有任何品項</div>
     <div class="table-responsive" v-else>
-      {{ tempOrder.flavour }}
       <table class="table table-borderless align-middle table-light">
         <thead>
           <tr>
