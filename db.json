@@ -6,9 +6,14 @@
       "copyPassword": "123456",
       "name": "joker",
       "phone": "093333333",
-      "coupon": "",
+      "coupon": [
+        2,
+        2,
+        2,
+        2
+      ],
       "identity": "baduser",
-      "point": 30,
+      "point": 1000,
       "id": 1
     },
     {
@@ -18,7 +23,7 @@
       "name": "test",
       "phone": "09222222222",
       "identity": "user",
-      "coupon": "",
+      "coupon": [],
       "point": 30,
       "id": 2
     },
@@ -29,7 +34,7 @@
       "name": "admin",
       "phone": "0911111111",
       "identity": "admin",
-      "coupon": "",
+      "coupon": [],
       "point": 30,
       "id": 3
     },
@@ -113,7 +118,7 @@
       "count": 15,
       "price": 61,
       "description": "美味五花豬與香蔥完美捲合，炭烤後散發香氣，串烤風味，口感豐富。",
-      "isLook": true,
+      "isLook": false,
       "id": 2
     },
     {
@@ -169,7 +174,7 @@
     {
       "productName": "剝皮辣椒豬捲",
       "category": 2,
-      "image": "/木木苑食材修圖/45.jpg",
+      "image": "/木木苑食材修圖/08.jpg",
       "count": 10,
       "price": 45,
       "description": "剝皮辣椒辣甜脆，搭豬五花香醇油脂，串烤完美組合，美味滿溢解膩。",
@@ -219,7 +224,7 @@
     {
       "productName": "干貝牛肉捲",
       "category": 2,
-      "image": "/木木苑食材修圖/14.jpg",
+      "image": "/木木苑食材修圖/13.jpg",
       "count": 10,
       "price": 45,
       "description": "鮮嫩干貝與精選牛肉完美卷裹，獨特風味，串烤中的極致美味。",
@@ -229,7 +234,7 @@
     {
       "productName": "鳳梨蝦球",
       "category": 4,
-      "image": "/木木苑食材修圖/15.jpg",
+      "image": "/木木苑食材修圖/14.jpg",
       "count": 10,
       "price": 49,
       "description": "鳳梨香氣搭配鮮嫩蝦球，串烤中的甜蜜風味。",
@@ -239,7 +244,7 @@
     {
       "productName": "櫛瓜",
       "category": 6,
-      "image": "/木木苑食材修圖/16.jpg",
+      "image": "/木木苑食材修圖/15.jpg",
       "count": 10,
       "price": 35,
       "description": "受歡迎的櫛瓜，清新脆爽，口感令人愉悅，美味無比",
@@ -249,7 +254,7 @@
     {
       "productName": "椒鹽肥腸",
       "category": 5,
-      "image": "/木木苑食材修圖/17.jpg",
+      "image": "/木木苑食材修圖/16.jpg",
       "count": 10,
       "price": 45,
       "description": "肥腸酥脆，搭配椒鹽調味，美味中帶有獨特風味，令人回味無窮。",
@@ -259,7 +264,7 @@
     {
       "productName": "鹽烤白蝦",
       "category": 4,
-      "image": "/木木苑食材修圖/43.jpg",
+      "image": "/木木苑食材修圖/17.jpg",
       "count": 10,
       "price": 79,
       "description": "蝦肉鮮嫩，鹽烤風味簡約鮮美。",
@@ -269,7 +274,7 @@
     {
       "productName": "雞肉串",
       "category": 3,
-      "image": "/木木苑食材修圖/20.jpg",
+      "image": "/木木苑食材修圖/18.jpg",
       "count": 10,
       "price": 39,
       "description": "串烤店經典之選，香烤雞肉串，肉質鮮嫩，串燒炭火風味，絕對令人愛不釋手。",
@@ -279,7 +284,7 @@
     {
       "productName": "黃金雞翅",
       "category": 5,
-      "image": "/木木苑食材修圖/21.jpg",
+      "image": "/木木苑食材修圖/19.jpg",
       "count": 10,
       "price": 35,
       "description": "外皮香脆如金，內裡多汁嫩滑，烤製至完美黃金色澤，美味令人難以抗拒。",
@@ -289,7 +294,7 @@
     {
       "productName": "深海章魚足",
       "category": 4,
-      "image": "/木木苑食材修圖/22.jpg",
+      "image": "/木木苑食材修圖/20.jpg",
       "count": 10,
       "price": 89,
       "description": "彈牙的食感，散發深海鮮美。",
@@ -299,7 +304,7 @@
     {
       "productName": "茄子",
       "category": 6,
-      "image": "/木木苑食材修圖/23.jpg",
+      "image": "/木木苑食材修圖/21.jpg",
       "count": 10,
       "price": 25,
       "description": "外酥內嫩，口感豐富，串烤中的濃郁風味。",
@@ -309,7 +314,7 @@
     {
       "productName": "杏鮑菇",
       "category": 6,
-      "image": "/木木苑食材修圖/46.jpg",
+      "image": "/木木苑食材修圖/22.jpg",
       "count": 10,
       "price": 30,
       "description": "口感層次豐富。",
@@ -319,7 +324,7 @@
     {
       "productName": "四季豆",
       "category": 6,
-      "image": "/木木苑食材修圖/25.jpg",
+      "image": "/木木苑食材修圖/23.jpg",
       "count": 10,
       "price": 30,
       "description": "有淡淡甜味，串烤中的清新口感。",
@@ -329,7 +334,7 @@
     {
       "productName": "筊白筍",
       "category": 6,
-      "image": "/木木苑食材修圖/26.jpg",
+      "image": "/木木苑食材修圖/24.jpg",
       "count": 10,
       "price": 35,
       "description": "有淡淡甜味，串烤中的清新口感。",
@@ -339,7 +344,7 @@
     {
       "productName": "洋蔥",
       "category": 6,
-      "image": "/木木苑食材修圖/27.jpg",
+      "image": "/木木苑食材修圖/25.jpg",
       "count": 10,
       "price": 25,
       "description": "外脆內嫩，帶有淡淡甜味，串烤中的清新美味。",
@@ -349,7 +354,7 @@
     {
       "productName": "香菇",
       "category": 6,
-      "image": "/木木苑食材修圖/28.jpg",
+      "image": "/木木苑食材修圖/26.jpg",
       "count": 10,
       "price": 35,
       "description": "帶有香菇獨特的濃郁風味，串烤中的美味享受。",
@@ -359,7 +364,7 @@
     {
       "productName": "明太子山藥",
       "category": 6,
-      "image": "/木木苑食材修圖/30.jpg",
+      "image": "/木木苑食材修圖/27.jpg",
       "count": 10,
       "price": 35,
       "description": "山藥香氣搭配明太子風味，串烤中的獨特美味。",
@@ -369,7 +374,7 @@
     {
       "productName": "香腸",
       "category": 7,
-      "image": "/木木苑食材修圖/31.jpg",
+      "image": "/木木苑食材修圖/28.jpg",
       "count": 10,
       "price": 35,
       "description": "淡淡的煙熏味，有嚼勁，散發出濃鬱的肉香",
@@ -379,7 +384,7 @@
     {
       "productName": "燒烤麻糬",
       "category": 7,
-      "image": "/木木苑食材修圖/32.jpg",
+      "image": "/木木苑食材修圖/29.jpg",
       "count": 10,
       "price": 35,
       "description": "散發濃厚糯米香，米香十足！",
@@ -389,7 +394,7 @@
     {
       "productName": "龍蝦沙拉",
       "category": 7,
-      "image": "/木木苑食材修圖/33.jpg",
+      "image": "/木木苑食材修圖/30.jpg",
       "count": 10,
       "price": 35,
       "description": "口感Q彈的丸子，搭配龍蝦沙拉，清爽美味。",
@@ -399,7 +404,7 @@
     {
       "productName": "香酥雞皮",
       "category": 5,
-      "image": "/木木苑食材修圖/34.jpg",
+      "image": "/木木苑食材修圖/31.jpg",
       "count": 10,
       "price": 35,
       "description": "外層金黃酥脆，咬下即化，宛如餅乾般的香濃口感。",
@@ -409,7 +414,7 @@
     {
       "productName": "七里香",
       "category": 5,
-      "image": "/木木苑食材修圖/35.jpg",
+      "image": "/木木苑食材修圖/32.jpg",
       "count": 10,
       "price": 35,
       "description": "台灣經典小吃，香氣四溢，口感酥脆，讓人愛不釋手的美味。",
@@ -419,7 +424,7 @@
     {
       "productName": "帝王蟹味棒",
       "category": 7,
-      "image": "/木木苑食材修圖/36.jpg",
+      "image": "/木木苑食材修圖/33.jpg",
       "count": 10,
       "price": 49,
       "description": "濃郁帝王蟹風味，肉質鮮嫩，外皮酥脆，如同享受皇室美味一般。",
@@ -429,7 +434,7 @@
     {
       "productName": "花椰菜",
       "category": 6,
-      "image": "/木木苑食材修圖/37.jpg",
+      "image": "/木木苑食材修圖/34.jpg",
       "count": 10,
       "price": 35,
       "description": "有淡淡甜味，串烤中的清新口感。",
@@ -439,7 +444,7 @@
     {
       "productName": "青椒",
       "category": 6,
-      "image": "/木木苑食材修圖/39.jpg",
+      "image": "/木木苑食材修圖/35.jpg",
       "count": 10,
       "price": 25,
       "description": "口感脆嫩、清新。",
@@ -449,7 +454,7 @@
     {
       "productName": "紅龜粿",
       "category": 7,
-      "image": "/木木苑食材修圖/40.jpg",
+      "image": "/木木苑食材修圖/36.jpg",
       "count": 10,
       "price": 35,
       "description": "外皮紅潤糯滑，經烤製後更添焦香脆感，風味獨特，口感豐富。",
@@ -459,7 +464,7 @@
     {
       "productName": "生食級干貝",
       "category": 4,
-      "image": "/木木苑食材修圖/41.jpg",
+      "image": "/木木苑食材修圖/37.jpg",
       "count": 10,
       "price": 99,
       "description": "簡單調味，享受干貝原味。",
@@ -469,7 +474,7 @@
     {
       "productName": "玉米",
       "category": 6,
-      "image": "/木木苑食材修圖/42.jpg",
+      "image": "/木木苑食材修圖/38.jpg",
       "count": 10,
       "price": 39,
       "description": "粒粒飽滿，帶有烤香，串烤中的自然甜美。",
@@ -479,7 +484,7 @@
     {
       "productName": "牛五花蔥捲",
       "category": 2,
-      "image": "/木木苑食材修圖/44.jpg",
+      "image": "/木木苑食材修圖/39.jpg",
       "count": 10,
       "price": 45,
       "description": "牛五花與蔥巧妙交融，肉嫩蔥香，串烤的極致享受。",
@@ -533,41 +538,8 @@
       "flavor": 1,
       "spicy": 1,
       "orderid": "123",
+      "score": "3",
       "id": 1
-    },
-    {
-      "isMember": true,
-      "name": "eric",
-      "phone": "091111111",
-      "mail": "123@123.456",
-      "day": "2024/01/01",
-      "product": [
-        {
-          "name": "玉米筍",
-          "quantity": 5,
-          "image": "/木木苑食材修圖/01.jpg",
-          "price": 52
-        },
-        {
-          "name": "豬五花蔥捲",
-          "quantity": 3,
-          "image": "/木木苑食材修圖/02.jpg",
-          "price": 61
-        }
-      ],
-      "price": 300,
-      "status": 1,
-      "userId": 3,
-      "type": true,
-      "tableware": true,
-      "bags": true,
-      "payment": true,
-      "pickTime": "12:00",
-      "comment": "做好吃一點",
-      "orderScore": 1,
-      "flavor": 3,
-      "spicy": 1,
-      "id": 2
     },
     {
       "isMember": true,
@@ -613,10 +585,10 @@
       "payment": true,
       "pickTime": "22:00",
       "comment": "做好吃一點",
-      "orderScore": 1,
       "flavor": 1,
       "spicy": 1,
       "orderid": "456",
+      "score": "",
       "id": 2
     },
     {
@@ -631,9 +603,27 @@
           "quantity": 5,
           "image": "/木木苑食材修圖/01.jpg",
           "price": 52
+        },
+        {
+          "name": "豬五花蔥捲",
+          "quantity": 3,
+          "image": "/木木苑食材修圖/02.jpg",
+          "price": 61
+        },
+        {
+          "name": "鯛魚下巴",
+          "quantity": 3,
+          "image": "/木木苑食材修圖/03.jpg",
+          "price": 45
+        },
+        {
+          "name": "雞肉串",
+          "quantity": 2,
+          "image": "/木木苑食材修圖/20.jpg",
+          "price": 89
         }
       ],
-      "price": 300,
+      "price": 500,
       "status": 3,
       "userId": 1,
       "type": true,
@@ -642,21 +632,69 @@
       "payment": true,
       "pickTime": "17:00",
       "comment": "做好吃一點",
-      "orderScore": 1,
       "flavor": 1,
       "spicy": 1,
       "orderid": "789",
+      "score": "4",
       "id": 3
     }
   ],
   "news": [
     {
-      "newsImage": "",
-      "newsTitle": "1/31 - 12/31 領取優惠券折10元",
-      "newsContent": "",
+      "newsImage": "/木木苑食材修圖/36.jpg",
+      "newsTitle": "新戶好禮",
+      "newsContent": "木木苑串燒店，現在註冊成為我們的新會員，即可領取帝王蟹味棒兌換券一張！\n立即成為新會員，領取您的專屬優惠券，品味串燒店獨家美味。\n快來加入我們，一起享受美味的串燒時光吧！",
       "couponId": "3",
       "isLook": false,
       "id": 1
+    },
+    {
+      "newsImage": "/木木苑食材修圖/39.jpg",
+      "newsTitle": "「蔬菜季」好康來襲！",
+      "newsContent": " 木木苑推出會員限定優惠！\n 即日起，透過會員領取優惠券，「青椒兌換券」！\n 新鮮、多汁的青椒串燒，為您的味蕾帶來驚喜，同時關心您的健康。\n 快來加入會員領取領取優惠！讓我們一起享受美味的同時兼顧健康！",
+      "couponId": "3",
+      "isLook": false,
+      "id": 2
+    },
+    {
+      "newsImage": "/木木苑食材修圖/38.jpg",
+      "newsTitle": "「蔬菜季」好康來襲！",
+      "newsContent": " 木木苑推出會員限定優惠！\n 即日起，透過會員領取優惠券，「花椰菜兌換券」！\n 新鮮、多汁的青椒串燒，為您的味蕾帶來驚喜，同時關心您的健康。\n 快來加入會員領取領取優惠！讓我們一起享受美味的同時兼顧健康！",
+      "couponId": "3",
+      "isLook": false,
+      "id": 3
+    },
+    {
+      "newsImage": "/木木苑食材修圖/09.jpg",
+      "newsTitle": "番茄牛肉捲全新登場！",
+      "newsContent": "親愛的串燒店顧客，我們為您帶來一道令人垂涎的全新美味！\n嚴選新鮮番茄，搭配嫩滑牛肉，巧妙捲成精緻捲物。\n口感鮮甜，多汁肉香，絕對是您串燒饗宴中的不可錯過之選！\n品味美味的同時，感受番茄的營養與滋味，為您的味蕾帶來全新的享受。\n快來串燒店品嚐，讓「番茄牛肉捲」成為您串燒時的最愛！",
+      "couponId": "3",
+      "isLook": false,
+      "id": 4
+    },
+    {
+      "newsImage": "/首頁圖片/hero-desktop-3.png",
+      "newsTitle": "木木苑周年慶",
+      "newsContent": "木木苑一周年啦！！\n感謝您在過去一年中對我們的支持，為此我們準備了優惠活動\n11/24(五)-11/26(日) 限期三天\n■巨無霸魷魚 買一送一 (每人限購一組)\n■金牌生啤 買一送一 (不列入會員集點)",
+      "couponId": "3",
+      "isLook": false,
+      "id": 5
+    },
+    {
+      "newsImage": "/木木苑食材修圖/20.jpg",
+      "newsTitle": "雞肉串買一送一！！！",
+      "newsContent": "感謝您對木木苑的支持，木木苑推出超值好康。\n即刻至木木苑，購買雞肉串，使用此優惠券，即可免費獲得另一串！\n新鮮嫩滑的雞肉，搭配獨特的調味，絕對是您享受串燒美味的絕佳選擇。\n別錯過這個難得的機會，帶著您的好友、家人，一同品味這份美味的快樂！",
+      "couponId": "3",
+      "isLook": false,
+      "id": 6
+    },
+    {
+      "newsImage": "/首頁圖片/hero-desktop-1.png",
+      "newsTitle": "【外帶優惠券】限時優惠",
+      "newsContent": "現在只需出示此券，即享外帶串燒折扣50元！\n立即前來串燒店，輕鬆取得美味，輕鬆省下50元！\n別錯過這個優惠，讓串燒的美味成為您生活中的一部分。\n快來享受美食，帶著串燒的滿足感回家吧！",
+      "couponId": "3",
+      "isLook": false,
+      "id": 7
     }
   ],
   "bookingfrom": [
@@ -700,8 +738,10 @@
   ],
   "coupons": [
     {
-      "name": "折10塊",
-      "image": "",
+      "name": "青椒",
+      "unit": "份",
+      "calc": "",
+      "image": "35",
       "point": "40",
       "isLook": false,
       "description": "沒有限制,每筆都能使用",
@@ -709,23 +749,29 @@
     },
     {
       "name": "折20塊",
-      "image": "",
+      "unit": "張",
+      "calc": "-20",
+      "image": "money",
       "point": 50,
       "isLook": true,
       "description": "沒有限制,每筆都能使用",
       "id": 2
     },
     {
-      "name": "折30塊",
-      "image": "",
+      "name": "香腸",
+      "unit": "根",
+      "calc": "",
+      "image": "31",
       "point": "50",
       "isLook": false,
       "description": "沒有限制,每筆都能使用",
       "id": 3
     },
     {
-      "name": "打九折",
-      "image": "",
+      "name": "玉米",
+      "unit": "支",
+      "calc": "",
+      "image": "38",
       "point": 30,
       "isLook": false,
       "description": "沒有限制,每筆都能使用",
@@ -733,7 +779,9 @@
     },
     {
       "name": "打五折",
-      "image": "",
+      "calc": "*0.5",
+      "unit": "張",
+      "image": "money",
       "point": 100,
       "isLook": false,
       "description": "沒有限制,每筆都能使用",
@@ -776,6 +824,5 @@
       "productId": 0,
       "qty": 6
     }
-  ],
-  "RFQ": {}
+  ]
 }
