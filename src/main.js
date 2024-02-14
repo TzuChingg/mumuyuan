@@ -41,6 +41,10 @@ configure({
 });
 setLocale('zh_TW');
 
+//Vue loading 
+import {LoadingPlugin} from 'vue-loading-overlay';
+import 'vue-loading-overlay/dist/css/index.css';
+
 //套件工具
 import VueApexCharts from "vue3-apexcharts";
 import ApexCharts from 'apexcharts';
@@ -64,6 +68,10 @@ app.component('VForm', Form);
 app.component('ErrorMessage', ErrorMessage);
 
 
+app.use(LoadingPlugin, {
+  backgroundColor: "#000",
+  lockScroll: true
+});
 app.use(VueApexCharts);
 app.use(VueAxios, axios);
 app.use(createPinia())

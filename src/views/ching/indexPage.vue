@@ -38,12 +38,23 @@ export default{
                 this.scrollToSection();
             }, 100);
         };
+
+        const loader = this.$loading.show({
+            // backgroundColor: "#000",
+            // lockScroll: true
+        });
+            
+        setTimeout(() => {
+            loader.hide()
+        }, 2000);
     },
     methods: {
         // 跳轉
         scrollToSection(){
             this.$refs.FAQ.scrollIntoView({behavior: 'smooth'})
         },
+
+        
     },
     components:{
         indexSlogan,

@@ -33,6 +33,7 @@
     "vee-validate": "^4.12.4",
     "vue": "^3.3.11",
     "vue-axios": "^3.5.2",
+    "vue-loading-overlay": "^6.0.3",
     "vue-router": "^4.2.5",
     "vue3-apexcharts": "^1.4.4",
     "ws": "^8.16.0"
