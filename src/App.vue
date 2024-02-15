@@ -1,6 +1,5 @@
 <script>
-// test
-import CategoryComponent from './components/claire/CategoryComponent.vue'
+
 //VUE3 CLI 默認導入模塊，所以不用加type="module"
 import { Transition } from 'vue'
 export default {
@@ -11,8 +10,7 @@ export default {
     }
   },
   components: {
-    Transition,
-    CategoryComponent
+    Transition    
   },
   // mounted(){
   //   this.$axios.get("/shop")

@@ -6,7 +6,9 @@ export default { components: { CartComponent, ModalComponent } }
 </script>
 
 <template>
-        <CartComponent></CartComponent>
-  <!-- modal -->
-  <ModalComponent></ModalComponent>
+  <div >
+    <CartComponent></CartComponent>
+    <ModalComponent></ModalComponent>
+  </div>
 </template>
+<style lang="scss" scoped></style>

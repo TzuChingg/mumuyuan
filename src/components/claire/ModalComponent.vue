@@ -1,6 +1,5 @@
 <script>
-import CartComponent from '../../components/claire/CartComponent.vue'
-// export default { components: { CartComponent } }
+
 </script>
 
 <template>
@@ -46,4 +45,4 @@ import CartComponent from '../../components/claire/CartComponent.vue'
   </div>
 </template>
 
-<style lang="scss"></style>
+<style lang="scss" scoped></style>

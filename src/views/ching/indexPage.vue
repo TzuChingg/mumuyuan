@@ -34,18 +34,27 @@ export default{
     // 跳轉
     mounted() { 
         if(this.$route.hash === '#FAQ'){
-            this.scrollToSection();
+            setTimeout(() => {
+                this.scrollToSection();
+            }, 100);
         };
-        // this.getNews()
 
-
-
+        const loader = this.$loading.show({
+            // backgroundColor: "#000",
+            // lockScroll: true
+        });
+            
+        setTimeout(() => {
+            loader.hide()
+        }, 2000);
     },
     methods: {
         // 跳轉
         scrollToSection(){
             this.$refs.FAQ.scrollIntoView({behavior: 'smooth'})
         },
+
+        
     },
     components:{
         indexSlogan,
