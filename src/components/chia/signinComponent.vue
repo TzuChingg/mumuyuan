@@ -66,7 +66,7 @@ export default {
     <div class="mb-2">
       <label for="mumuyuanPassword" class="form-label fw-bolder fs-5">密碼</label>
       <input
-        type="email"
+        type="text"
         class="form-control"
         id="mumuyuanPassword"
         placeholder="user password"
@@ -76,7 +76,7 @@ export default {
     <div class="mb-2">
       <label for="doubleCheck" class="form-label fw-bolder fs-5">密碼確認</label>
       <input
-        type="email"
+        type="text"
         class="form-control"
         id="doubleCheck"
         placeholder="double check"
@@ -86,7 +86,7 @@ export default {
     <div class="mb-2">
       <label for="mumuyuanName" class="form-label fw-bolder fs-5">姓名</label>
       <input
-        type="email"
+        type="text"
         class="form-control"
         id="mumuyuanName"
         placeholder="user name"
@@ -96,11 +96,13 @@ export default {
     <div class="mb-5">
       <label for="mumuyuanPhone" class="form-label fw-bolder fs-5">手機</label>
       <input
-        type="email"
+        type="tel"
         class="form-control"
         id="mumuyuanPhone"
         placeholder="user phone"
         v-model="userInfo.phone"
+        minlength="10"
+        maxlength="10"
       />
     </div>
     <button type="type" class="btn btn-dark d-block mx-auto w-100 pt-2 mb-3" @click="finishSignin">

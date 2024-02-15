@@ -5,9 +5,6 @@
         <div class="col-9">
           <div class="row">
             <div class="col-3 border-end">
-              <div class="logoCard d-flex justify-content-center mb-2">
-                <img class="rounded-circle mt-2" src="/logoCard.jpg" alt="" style="height: 100px" />
-              </div>
               <div class="btn-group-vertical d-flex justify-content-center">
                 <button class="btn btn-outline-primary" type="button">
                   <router-link

@@ -17,17 +17,6 @@
       "id": 1
     },
     {
-      "email": "test@gmail.com",
-      "password": "$2a$10$EaQOKGeA7Hs45ymXBFpIG.39.e283yFCR8Brcx3H9l26NQiAtI6m6",
-      "copyPassword": "123456",
-      "name": "test",
-      "phone": "09222222222",
-      "identity": "user",
-      "coupon": [],
-      "point": 30,
-      "id": 2
-    },
-    {
       "email": "admin@gmail.com",
       "password": "$2a$10$pbkX8jgDZHTDNP3YMgTKlelUwrm9dEAXAv8hHnZXoGrAgz1gKL/Uq",
       "copyPassword": "123456",

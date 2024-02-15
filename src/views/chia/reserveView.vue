@@ -93,7 +93,11 @@ export default {
                 console.log(error);
             }
 
-            if (this.allTrue || !this.ageinCheck) return;
+            if (this.allTrue || !this.ageinCheck) {
+                alert('訂位失敗');
+                return
+            };
+            
             this.$axios.post('/bookingfrom', {
                 ...this.list
             }).then((response) => {
@@ -101,7 +105,7 @@ export default {
                     alert('訂位成功');
                     this.$router.push({ path: '/' });
                 }
-            })
+            }).catch(err=>console.log(err))
         }
     },
     computed: {
