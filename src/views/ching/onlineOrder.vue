@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container mb-5">
         <div class="categoryNav row  position-sticky sticky-top">
             <div class="col-sm-12 position-relative d-flex justify-content-end">
                 <categoryComponent></categoryComponent>

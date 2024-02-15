@@ -12,8 +12,8 @@
                 <div id="latestNews" class="carousel slide " data-bs-ride="carousel">
                     <div class="carousel-inner">
                         <div class="latestNewsCOl carousel-item "  v-for="(page, index) in temp" :key="index" :class="{ active : page[0] == true}">
-                            <div class="d-flex justify-content-around">
-                                <router-link :to="'/news/' + item.id" class="text-decoration-none" v-for="item in page[1]" :key="item.id">
+                            <div class="d-flex">
+                                <router-link :to="'/news/' + item.id" class="text-decoration-none me-4" v-for="item in page[1]" :key="item.id">
                                     <div class="card h-100" style="width: 19rem">
                                         <img :src="item.newsImage" class="card-img-top" alt="..." />
                                         <div class="card-body">
@@ -140,4 +140,5 @@ export default {
     bottom: 0;
     right: 0%;
 }
+
 </style>

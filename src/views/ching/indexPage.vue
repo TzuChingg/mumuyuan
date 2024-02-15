@@ -24,6 +24,8 @@ import indexRating from '@/components/ching/indexRating.vue';
 import indexFeature from '@/components/ching/indexFeature.vue';
 import indexFaq from '@/components/ching/indexFAQ.vue';
 import indexAddress from '@/components/ching/indexAddress.vue';
+import loaderComponent from '@/components/ching/loadingComponent.vue'
+import { h } from 'vue';
 export default{
     data() {
         return {
@@ -34,18 +36,30 @@ export default{
     // 跳轉
     mounted() { 
         if(this.$route.hash === '#FAQ'){
-            this.scrollToSection();
+            setTimeout(() => {
+                this.scrollToSection();
+            }, 100);
         };
-        // this.getNews()
 
-
-
+        const loader = this.$loading.show({
+            backgroundColor: "#000",
+            // lockScroll: true
+        },
+        {
+            default: h(loaderComponent)
+        });
+            
+        setTimeout(() => {
+            loader.hide()
+        }, 2000);
     },
     methods: {
         // 跳轉
         scrollToSection(){
             this.$refs.FAQ.scrollIntoView({behavior: 'smooth'})
         },
+
+        
     },
     components:{
         indexSlogan,
