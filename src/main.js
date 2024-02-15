@@ -68,10 +68,7 @@ app.component('VForm', Form);
 app.component('ErrorMessage', ErrorMessage);
 
 
-app.use(LoadingPlugin, {
-  backgroundColor: "#000",
-  lockScroll: true
-});
+app.use(LoadingPlugin);
 app.use(VueApexCharts);
 app.use(VueAxios, axios);
 app.use(createPinia())

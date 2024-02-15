@@ -24,6 +24,8 @@ import indexRating from '@/components/ching/indexRating.vue';
 import indexFeature from '@/components/ching/indexFeature.vue';
 import indexFaq from '@/components/ching/indexFAQ.vue';
 import indexAddress from '@/components/ching/indexAddress.vue';
+import loaderComponent from '@/components/ching/loadingComponent.vue'
+import { h } from 'vue';
 export default{
     data() {
         return {
@@ -40,8 +42,11 @@ export default{
         };
 
         const loader = this.$loading.show({
-            // backgroundColor: "#000",
+            backgroundColor: "#000",
             // lockScroll: true
+        },
+        {
+            default: h(loaderComponent)
         });
             
         setTimeout(() => {
