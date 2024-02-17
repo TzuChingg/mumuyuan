@@ -93,7 +93,11 @@ export default {
                 console.log(error);
             }
 
-            if (this.allTrue || !this.ageinCheck) return;
+            if (this.allTrue || !this.ageinCheck) {
+                alert('訂位失敗');
+                return
+            };
+
             this.$axios.post('/bookingfrom', {
                 ...this.list
             }).then((response) => {
@@ -101,7 +105,7 @@ export default {
                     alert('訂位成功');
                     this.$router.push({ path: '/' });
                 }
-            })
+            }).catch(err => console.log(err))
         }
     },
     computed: {
@@ -182,10 +186,10 @@ export default {
     <div class="reserve container">
         <div class="reserveContent">
             <form class="w-75 m-auto">
-                <div class="row mb-3">
+                <div class="row">
                     <h2 class="text-center fw-bolder fs-1 text-white py-5">即刻訂位</h2>
                     <div class="col-6">
-                        <div class="form-floating mb-3">
+                        <div class="form-floating mb-1" style="height: 85px;">
                             <input type="text" class="form-control" id="reserveName" v-model="list.name">
                             <label for="reserveName">預約人</label>
                             <div v-if="list.name != ''">
@@ -193,10 +197,10 @@ export default {
                                 <span v-else class="text-danger">✘</span>
                             </div>
                         </div>
-                        <div class="form-floating">
+                        <div class="form-floating mb-1" style="height: 85px;">
                             <input type="number" min="1" max="10" class="form-control" id="reservepersonCount"
                                 v-model="list.personCount">
-                            <label for="reservepersonCount">預約人數</label>
+                            <label for="reservepersonCount">預約人數(最多10位)</label>
                             <div v-if="list.personCount != ''">
                                 <span v-if="regexStatus.personCount" class="text-success">✔</span>
                                 <span v-else class="text-danger">✘</span>
@@ -205,7 +209,7 @@ export default {
                     </div>
                     <div class="col-6">
                         <select class="form-select form-select-lg p-2" aria-label="Default select example"
-                            v-model="list.day">
+                            v-model="list.day" style="height: 58px;">
                             <option value="" selected disabled>選擇時段</option>
                             <option v-for="i in day" :key="i.day" :value="i.date.replaceAll(' ', '')">
                                 {{ `${i.date} (${i.day})` }}
@@ -217,9 +221,9 @@ export default {
                         </div>
                     </div>
                 </div>
-                <div class="row mb-3">
+                <div class="row">
                     <div class="col-6">
-                        <div class="form-floating">
+                        <div class="form-floating mb-1" style="height: 85px;">
                             <input type="text" class="form-control" id="reservePhone" maxlength="10" v-model="list.phone"
                                 @input="checkNumber">
                             <label for="reservePhone">聯絡電話</label>
@@ -230,9 +234,9 @@ export default {
                         </div>
                     </div>
                 </div>
-                <div class="row mb-3">
+                <div class="row">
                     <div class="col-6">
-                        <div class="form-floating">
+                        <div class="form-floating mb-1" style="height: 85px;">
                             <input type="mail" class="form-control" id="reserveMail" v-model="list.mail">
                             <label for="reserveMail">信箱</label>
                             <div v-if="list.mail != ''">
@@ -248,7 +252,8 @@ export default {
                 <div class="row" role="group" aria-label="Basic radio toggle button group">
                     <div class="col-lg-3 col-sm-6 text-center my-3" v-for="(time, idx) in periods" :key="idx">
                         <input type="radio" class="btn-check" name="time" :id="time" :value="time" v-model="list.time"
-                            autocomplete="off">
+                            autocomplete="off"
+                            :disabled="list.personCount > maxPeople[time] - remainPeople[time] ? true : false">
                         <label class="btn btn-outline-dark w-75" :for="time">{{ time }}
                             ({{ maxPeople[time] - remainPeople[time] }})</label>
                     </div>

@@ -21,7 +21,6 @@
                             <tr>
                                 <th class="col-1">圖片</th>
                                 <th class="col-2">品項</th>
-                                <!-- <th class="col-7">介紹</th> -->
                                 <th class="col-1">數量</th>
                                 <th class="col-1">金額</th>
                             </tr>
@@ -109,19 +108,14 @@
 </template>
 
 <script>
-import { docCookies } from '../../assets/cookie';
 
 export default {
     props: ["getResponse"],
     data() {
         return {
-            // getProducts: [],
             socket:null,
             status: 0,
         }
-    },
-    created() {
-
     },
     computed: {
         tidyResponse() {
@@ -192,9 +186,6 @@ export default {
                 loadingElement.innerText = '餐點完成';
             }
         }
-    },
-    methods:{
-        
     },
     mounted(){
         this.socket = new WebSocket('ws://localhost:8080/ws');
