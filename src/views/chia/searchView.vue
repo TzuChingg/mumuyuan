@@ -91,19 +91,19 @@ export default {
             <div class="d-flex flex-column w-70 m-auto mb-5">
                 <div class="mb-3 col-4 fs-4" v-if="radioToggle === 'bookingfrom'">
                     <div class="mb-3 fs-4">
-                        <label for="mumuyuanPhone" class="form-label fw-bolder">手機</label>
-                        <input type="email" class="form-control" id="mumuyuanPhone" placeholder="user phone"
+                        <label for="mumuyuanPhone" class="form-label fw-bolder mb-1">手機</label>
+                        <input type="email" class="form-control" id="mumuyuanPhone" placeholder="請輸入手機"
                             v-model="userInput.phone">
                     </div>
                     <div class="mb-4 fs-4">
-                        <label for="mumuyuanMail" class="form-label fw-bolder">信箱</label>
-                        <input type="text" class="form-control" id="mumuyuanMail" placeholder="user mail"
+                        <label for="mumuyuanMail" class="form-label fw-bolder mb-1">信箱</label>
+                        <input type="text" class="form-control" id="mumuyuanMail" placeholder="請輸入信箱"
                             v-model="userInput.mail">
                     </div>
                 </div>
                 <div class="mb-3 col-4 fs-4" v-else>
-                    <label for="mumuyuanPhone" class="form-label fw-bolder">訂單編號</label>
-                    <input type="email" class="form-control mb-3" id="mumuyuanPhone" placeholder="order number"
+                    <label for="mumuyuanPhone" class="form-label fw-bolder mb-1">訂單編號</label>
+                    <input type="email" class="form-control mb-3" id="mumuyuanPhone" placeholder="請輸入訂單編號"
                         v-model="orderNumber">
                 </div>
                 <button type="button" class="btn btn-dark w-25" :disabled="ctlOrderBtn" @click="startSearch">查詢</button>
