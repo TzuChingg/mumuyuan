@@ -15,25 +15,23 @@
             <button type="button" data-bs-target="#ratingCarouse" data-bs-slide-to="2" aria-label="Slide 3"></button>
           </div>
           <div class="carousel-inner">
-            <div class="carousel-item" v-for="(page, index) in ratingList" :key="index" :class="{ active : page[0] == true}">
+            <div class="carousel-item" v-for="(page, indexPage) in ratingList" :key="indexPage" :class="{ active : page[0] == true}">
                 <div class="d-flex" >
-                  <div class="col-3 me-3 mb-3 rating-left-bg-image" v-for="(rating, index) in page[1]" :key="index">
-                    <div className="box ms-4 mb-0">
-                      <input type="radio" id="star1">
-                      <label class="star" for="star1"></label>
-                      <label class="star" for="star1"></label>
-                      <label class="star" for="star1"></label>
+                  <div class="col-4 me-3 ms-3 mb-3 rating-left-bg-image" v-for="(rating, indexUp) in page[1]" :key="indexUp">
+                    <div class="box ms-4 mb-0 mt-1">
+                      <i class="bi bi-star text-secondary ms-1" v-for="(item, index) in (5 - rating.star) " :key="index"></i>
+                      <i class="bi bi-star-fill  text-secondary ms-1" v-for="(item, index) in  rating.star " :key="index" ></i>
                     </div>
-                    <textarea class=" border-0 bg-transparent bg-opacity-100 text-light ms-4" rows="3" cols="33" disabled v-model="rating.ScoreText"></textarea>
+                    <textarea class=" border-0 bg-transparent bg-opacity-100 text-light ms-4 text-wra" rows="3" cols="33" disabled v-model="rating.ScoreText"></textarea>
                   </div>
                 </div>
                 <div class="d-flex justify-content-end mb-5" >
-                  <div class="col-3 ms-3 rating-right-bg-image" v-for="(rating, index) in page[2]" :key="index">
-                    <div className="box ms-4 mb-0">
-                      <input type="radio" id="star1" checked>
-                      <label class="star" for="star1"></label>
+                  <div class="col-4 me-3 ms-3 rating-right-bg-image" v-for="(rating, indexDown) in page[2]" :key="indexDown">
+                    <div class="box ms-4 mb-0 mt-1">
+                      <i class="bi bi-star text-secondary ms-1" v-for="(item, index) in (5 - rating.star) " :key="index"></i>
+                      <i class="bi bi-star-fill  text-secondary ms-1" v-for="(item, index) in  rating.star " :key="index" ></i>
                     </div>
-                    <textarea class=" border-0 bg-transparent bg-opacity-100 text-light ms-4" rows="3" cols="33" disabled v-model="rating.ScoreText"></textarea>
+                    <textarea class=" border-0 bg-transparent bg-opacity-100 text-light ms-4 text-wrap " rows="3" cols="33" disabled v-model="rating.ScoreText"></textarea>
                   </div>
                 </div>
               
@@ -190,13 +188,12 @@ export default {
       this.$axios.get('/scores')
       .then((res) => {
         const temp = res.data
-        const len = parseInt(res.data.length/6)
-        for (let i = 0; i <= len; i++) {
-          this.ratingList.push([i+1, temp.slice(6*i, 3+(6*i)), temp.slice(3+(6*i), 6*(i+1))])
+        const count = 6
+        const len = parseInt(res.data.length/count)
+        // 滿6筆留言才會新的一頁
+        for (let i = 0; i < len; i++) {
+          this.ratingList.push([i+1, temp.slice(count*i, 3+(count*i)), temp.slice(3+(count*i), count*(i+1))]) // [1, [0-2], [3-5]]  [第幾頁,  [前3個], [後3個]]
         }
-        console.log(this.ratingList);
-
-
       }).catch((err) => {
         console.log('評價取得失敗');
       });
@@ -246,7 +243,7 @@ export default {
         font-size: 18px;
     
         &:hover {
-          cursor: pointer;
+        //   // cursor: pointer;
     
           &:after {
             content: '★';
@@ -305,21 +302,21 @@ export default {
         user-select: none;
         font-size: 18px;
     
-        &:hover {
-          cursor: pointer;
+        // &:hover {
+        //   // cursor: pointer;
     
-          &:after {
-            content: '★';
-            color: $secondary; // Assuming you have a variable $primary defined
-          }
+        //   &:after {
+        //     content: '★';
+        //     color: $secondary; // Assuming you have a variable $primary defined
+        //   }
     
-          ~label {
-            &:after {
-              content: '★';
-              color: $secondary;
-            }
-          }
-        }
+        //   ~label {
+        //     &:after {
+        //       content: '★';
+        //       color: $secondary;
+        //     }
+        //   }
+        // }
       }
     
       >input {
