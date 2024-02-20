@@ -17,21 +17,29 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul class="navbar-nav ms-auto align-items-center">
                     <li class="nav-item">
-                      <router-link to="/menu" class="nav-link fs-5 text-light text-decoration-none">線上點餐</router-link>
+                      <router-link to="/onlineOrder" class="nav-link fs-5 text-light text-decoration-none">線上點餐</router-link>
+                      <div :class="{ 'breath' : this.$route.path == '/onlineOrder'}"></div>
                     </li>
                     <li class="nav-item">
                       <router-link to="/reserve" class="nav-link fs-5 text-light text-decoration-none">立即訂位</router-link>
+                      <div :class="{ 'breath' : this.$route.path == '/reserve'}"></div>
                     </li>
                     <li class="nav-item">
                       <router-link to="/search"
                         class="nav-link fs-5 text-light text-decoration-none">訂位/訂單查詢</router-link>
+                        <div :class="{ 'breath' : this.$route.path == '/search'}"></div>
                     </li>
                     <li class="nav-item">
                       <router-link :to="{name: 'FAQ', hash: '#FAQ'}" class="nav-link fs-5 text-light text-decoration-none">常見問題</router-link>
+                        <div :class="{ 'breath' : this.$route.hash === '#FAQ'}"></div>
                     </li>
                     <li class="nav-item "  v-if="hasToken">
                       <router-link  :to="identityHref" class="nav-link fs-5 text-light text-decoration-none"><img
                           src="/首頁圖片/user.png" alt="會員中心"></router-link>
+                          <div :class="{ 'breath' : this.$route.path == '/memberCenter'}"></div>
+                          <div :class="{ 'breath' : this.$route.path == '/member/orderLog'}"></div>
+                          <div :class="{ 'breath' : this.$route.path == '/member/discount'}"></div>
+                          <div :class="{ 'breath' : this.$route.path == '/member/exchange'}"></div>
                     </li>
                     <li class="nav-item "  v-if="hasToken">
                         <button type="button" class="btn position-relative bg-transparent" ref="liveToastBtn" @click="show">
@@ -57,6 +65,9 @@
                     </li>
                     <li class="nav-item" v-else>
                       <router-link to="/login" class="nav-link fs-5 text-light text-decoration-none">登入/註冊</router-link>
+                      <div :class="{ 'breath' : this.$route.path == '/login'}"></div>
+                      <div :class="{ 'breath' : this.$route.path == '/login/forget'}"></div>
+                      <div :class="{ 'breath' : this.$route.path == '/login/signin'}"></div>
                     </li>
 
                   </ul>
@@ -163,6 +174,7 @@ export default {
             })
           })
         })
+        
     },
     beforeUnmount() {
     // Close the WebSocket connection when the component is destroyed
@@ -174,26 +186,13 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import '/src/assets/main.scss'; 
 .bg-image {
   background-image: url('/首頁圖片/bg-shape.png');
   background-size: cover;
 }
 
-ul.nav {
-  .nav-item {
-    margin: 0 0.6rem;
 
-    &:last-child {
-      margin: 0;
-    }
-  }
-  .noti{
-    display: none;
-  }
-}
-// .nav-item:hover{
-//   transform: scale(1.1);
-// }
 .nav-item {
   text-transform: uppercase;
   text-align: center;
@@ -261,4 +260,30 @@ ul.nav {
 .nav-item button:hover{
   color: black;
 }
+
+.breath {
+  border-top: 2px solid $secondary;
+	opacity:0.8;
+  margin: 0px;
+	overflow: hidden;
+
+	animation-name: breath;
+	animation-duration: 4s;
+	animation-timing-function: ease-in-out;
+	animation-iteration-count: infinite;
+}
+
+@keyframes breath {
+	from {
+		opacity: 0.4;
+	}
+	50% {
+		opacity: 0.8;
+
+	}
+	to {
+		opacity: 0.4;
+	}
+}
+
 </style>

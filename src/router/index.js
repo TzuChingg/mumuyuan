@@ -38,7 +38,6 @@ const router = createRouter({
   // 在同頁錨點
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition){
-      // console.log(savedPosition);
       return savedPosition
     }else if (to.hash) {
       const element = document.getElementById(to.hash)
