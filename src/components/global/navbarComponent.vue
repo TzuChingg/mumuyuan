@@ -17,7 +17,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul class="navbar-nav ms-auto align-items-center">
                     <li class="nav-item">
-                      <router-link to="/onlineOrder" class="nav-link fs-5 text-light text-decoration-none">線上點餐</router-link>
+                      <router-link to="/menu" class="nav-link fs-5 text-light text-decoration-none">線上點餐</router-link>
                       <div :class="{ 'breath' : this.$route.path == '/onlineOrder'}"></div>
                     </li>
                     <li class="nav-item">
