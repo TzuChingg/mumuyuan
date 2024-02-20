@@ -31,8 +31,10 @@
                   <router-link :to="'/news/' + item.id">
                     <img :src="item.newsImage" alt="" style="height: 50px;">
                   </router-link>
-                  <router-link :to="'/news/' + item.id"><p class=" ms-2 fs-6">{{ item.newsTitle }}</p></router-link>
-                  
+                  <router-link :to="'/news/' + item.id">
+                    <p class=" ms-2 fs-6">{{ item.newsTitle }}</p>
+                  </router-link>
+
                 </li>
 
               </ul>
@@ -132,7 +134,7 @@ export default {
 }
 
 .otherNews {
-  .otherNewsTitle{
+  .otherNewsTitle {
     margin-bottom: 4px;
   }
 
