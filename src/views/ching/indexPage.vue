@@ -41,17 +41,17 @@ export default{
             }, 100);
         };
 
-        const loader = this.$loading.show({
-            backgroundColor: "#000",
-            // lockScroll: true
-        },
-        {
-            default: h(loaderComponent)
-        });
+        // const loader = this.$loading.show({
+        //     backgroundColor: "#000",
+        //     // lockScroll: true
+        // },
+        // {
+        //     default: h(loaderComponent)
+        // });
             
-        setTimeout(() => {
-            loader.hide()
-        }, 2000);
+        // setTimeout(() => {
+        //     loader.hide()
+        // }, 2000);
     },
     methods: {
         // 跳轉
