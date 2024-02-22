@@ -8,20 +8,36 @@
       "phone": "093333333",
       "coupon": [
         {
+          "id": 2,
           "name": "折20塊",
-          "calc": "-20"
+          "calc": "-20",
+          "image": "money",
+          "description": "沒有限制,每筆都能使用"
         },
         {
+          "id": 6,
           "name": "折30塊",
-          "calc": "-30"
+          "calc": "-30",
+          "image": "money",
+          "description": "沒有限制,每筆都能使用"
         },
         {
-          "name": "折40塊",
-          "calc": "-40"
+          "id": 5,
+          "name": "打五折",
+          "calc": "*0.5",
+          "image": "money",
+          "description": "沒有限制,每筆都能使用"
+        },
+        {
+          "id": 3,
+          "name": "香腸",
+          "calc": "",
+          "image": "28",
+          "description": "沒有限制,每筆都能使用"
         }
       ],
       "identity": "baduser",
-      "point": 1000,
+      "point": 700,
       "id": 1
     },
     {
@@ -32,7 +48,7 @@
       "phone": "0911111111",
       "identity": "admin",
       "coupon": [],
-      "point": 30,
+      "point": 1000,
       "id": 3
     },
     {
@@ -42,11 +58,8 @@
       "name": "eric",
       "phone": "095565687",
       "identity": "user",
-      "coupon": [
-        1,
-        2
-      ],
-      "point": 0,
+      "coupon": [],
+      "point": 1000,
       "id": 4
     }
   ],
@@ -494,29 +507,28 @@
       "isMember": true,
       "name": "eric",
       "phone": "094563131",
-      "mail": "123@123.456",
       "day": "2024/01/01",
       "product": [
         {
-          "name": "玉米筍",
+          "productName": "玉米筍",
           "quantity": 5,
           "image": "/木木苑食材修圖/01.jpg",
           "price": 52
         },
         {
-          "name": "豬五花蔥捲",
+          "productName": "豬五花蔥捲",
           "quantity": 3,
           "image": "/木木苑食材修圖/02.jpg",
           "price": 61
         },
         {
-          "name": "鯛魚下巴",
+          "productName": "鯛魚下巴",
           "quantity": 3,
           "image": "/木木苑食材修圖/03.jpg",
           "price": 45
         },
         {
-          "name": "雞肉串",
+          "productName": "雞肉串",
           "quantity": 2,
           "image": "/木木苑食材修圖/20.jpg",
           "price": 89
@@ -531,220 +543,11 @@
       "payment": true,
       "pickTime": "17:00",
       "comment": "做好吃一點",
-      "orderScore": 1,
       "flavor": 1,
       "spicy": 1,
       "orderid": "123",
       "score": "3",
       "id": 1
-    },
-    {
-      "isMember": true,
-      "name": "eric",
-      "phone": "094563131",
-      "day": "2024/01/30",
-      "product": [
-        {
-          "name": "牛肉串",
-          "quantity": 5
-        },
-        {
-          "name": "百業豆腐",
-          "quantity": 3
-        },
-        {
-          "name": "豬肉串",
-          "quantity": 3
-        },
-        {
-          "name": "豬血糕",
-          "quantity": 5
-        },
-        {
-          "name": "干貝",
-          "quantity": 4
-        },
-        {
-          "name": "牛小排",
-          "quantity": 2
-        },
-        {
-          "name": "甜不辣",
-          "quantity": 2
-        }
-      ],
-      "price": 1200,
-      "status": 2,
-      "userId": 3,
-      "type": true,
-      "tableware": true,
-      "bags": true,
-      "payment": true,
-      "pickTime": "22:00",
-      "comment": "做好吃一點",
-      "flavor": 1,
-      "spicy": 1,
-      "orderid": "456",
-      "score": "",
-      "id": 2
-    },
-    {
-      "isMember": true,
-      "name": "eric",
-      "phone": "09000000",
-      "mail": "123@123.456",
-      "day": "2024/01/01",
-      "product": [
-        {
-          "name": "玉米筍",
-          "quantity": 5,
-          "image": "/木木苑食材修圖/01.jpg",
-          "price": 52
-        },
-        {
-          "name": "豬五花蔥捲",
-          "quantity": 3,
-          "image": "/木木苑食材修圖/02.jpg",
-          "price": 61
-        },
-        {
-          "name": "鯛魚下巴",
-          "quantity": 3,
-          "image": "/木木苑食材修圖/03.jpg",
-          "price": 45
-        },
-        {
-          "name": "雞肉串",
-          "quantity": 2,
-          "image": "/木木苑食材修圖/20.jpg",
-          "price": 89
-        }
-      ],
-      "price": 500,
-      "status": 3,
-      "userId": 1,
-      "type": true,
-      "tableware": true,
-      "bags": true,
-      "payment": true,
-      "pickTime": "17:00",
-      "comment": "做好吃一點",
-      "flavor": 1,
-      "spicy": 1,
-      "orderid": "789",
-      "score": "4",
-      "id": 3
-    },
-    {
-      "isMember": "true",
-      "name": "admin",
-      "phone": "0911111111",
-      "day": "2024-02-22",
-      "product": [
-        {
-          "productName": "套餐",
-          "image": "/木木苑食材修圖/01.jpg",
-          "price": 52
-        },
-        {
-          "productName": "豬五花蔥捲",
-          "image": "/木木苑食材修圖/02.jpg",
-          "price": 61
-        },
-        {
-          "productName": "剝皮辣椒豬捲",
-          "image": "/木木苑食材修圖/08.jpg",
-          "price": 45
-        }
-      ],
-      "price": 158,
-      "userId": "3",
-      "status": 1,
-      "type": true,
-      "tableware": true,
-      "bags": true,
-      "payment": true,
-      "comment": "",
-      "pickTime": "20:35",
-      "flavor": "1",
-      "spicy": "",
-      "orderid": "123",
-      "score": "",
-      "id": 4
-    },
-    {
-      "isMember": "true",
-      "name": "admin",
-      "phone": "0911111111",
-      "day": "2024-02-22",
-      "product": [
-        {
-          "productName": "套餐",
-          "image": "/木木苑食材修圖/01.jpg",
-          "price": 52
-        },
-        {
-          "productName": "豬五花蔥捲",
-          "image": "/木木苑食材修圖/02.jpg",
-          "price": 61
-        },
-        {
-          "productName": "剝皮辣椒豬捲",
-          "image": "/木木苑食材修圖/08.jpg",
-          "price": 45
-        }
-      ],
-      "price": 203,
-      "userId": "3",
-      "status": 1,
-      "type": true,
-      "tableware": true,
-      "bags": true,
-      "payment": true,
-      "comment": "",
-      "pickTime": "20:41",
-      "flavor": "1",
-      "spicy": "1",
-      "orderid": "2024-02222041",
-      "score": "",
-      "id": 5
-    },
-    {
-      "isMember": "true",
-      "name": "admin",
-      "phone": "0911111111",
-      "day": "2024-02-22",
-      "product": [
-        {
-          "productName": "套餐",
-          "image": "/木木苑食材修圖/01.jpg",
-          "price": 52
-        },
-        {
-          "productName": "豬五花蔥捲",
-          "image": "/木木苑食材修圖/02.jpg",
-          "price": 61
-        },
-        {
-          "productName": "剝皮辣椒豬捲",
-          "image": "/木木苑食材修圖/08.jpg",
-          "price": 45
-        }
-      ],
-      "price": 210,
-      "userId": "3",
-      "status": 1,
-      "type": true,
-      "tableware": true,
-      "bags": true,
-      "payment": true,
-      "comment": "",
-      "pickTime": "20:44",
-      "flavor": "1",
-      "spicy": "1",
-      "orderid": "202402222044",
-      "score": "",
-      "id": 6
     },
     {
       "isMember": "true",
@@ -869,16 +672,6 @@
       "time": "11:00",
       "isCheck": false,
       "id": 4
-    },
-    {
-      "name": "joker",
-      "personCount": 8,
-      "phone": "0111111111",
-      "mail": "333@dd.cc",
-      "day": "2024/02/17",
-      "time": "11:00",
-      "isCheck": false,
-      "id": 5
     }
   ],
   "periods": [
@@ -923,9 +716,9 @@
       "name": "香腸",
       "unit": "根",
       "calc": "",
-      "image": "31",
+      "image": "28",
       "point": "50",
-      "isLook": false,
+      "isLook": true,
       "description": "沒有限制,每筆都能使用",
       "id": 3
     },
@@ -945,21 +738,35 @@
       "unit": "張",
       "image": "money",
       "point": 100,
-      "isLook": false,
+      "isLook": true,
       "description": "沒有限制,每筆都能使用",
       "id": 5
+    },
+    {
+      "name": "折30塊",
+      "unit": "張",
+      "calc": "-30",
+      "image": "money",
+      "point": 100,
+      "isLook": true,
+      "description": "沒有限制,每筆都能使用",
+      "id": 6
+    },
+    {
+      "name": "折40塊",
+      "unit": "張",
+      "calc": "-40",
+      "image": "money",
+      "point": 150,
+      "isLook": true,
+      "description": "沒有限制,每筆都能使用",
+      "id": 7
     }
   ],
   "shop": {
     "shopStatus": false
   },
-  "notice": [
-    {
-      "userId": 3,
-      "orderId": 2,
-      "id": 1
-    }
-  ],
+  "notice": [],
   "scores": [
     {
       "star": 4,
@@ -969,111 +776,9 @@
     },
     {
       "star": 4,
-      "ScoreText": "店內與食材區都很整齊，乾乾淨淨的很舒服！",
-      "orderId": "2",
-      "id": 2
-    },
-    {
-      "star": 5,
-      "ScoreText": "外帶會依照不同味道分開裝，超用心！",
-      "orderId": "3",
-      "id": 3
-    },
-    {
-      "star": 5,
-      "ScoreText": "種類很多，\n比居酒屋還好吃～",
-      "orderId": "4",
-      "id": 4
-    },
-    {
-      "star": 4,
-      "ScoreText": "烤串烤得很精緻，老闆非常親切。",
-      "orderId": "5",
-      "id": 5
-    },
-    {
-      "star": 5,
-      "ScoreText": "空間明亮有氣氛，\n適合小聚～",
-      "orderId": "6",
-      "id": 6
-    },
-    {
-      "star": 4,
       "ScoreText": "燒烤不會太鹹又很香！烤功一流！大腸有處理得很好！整體非常喜歡。",
       "orderId": "7",
       "id": 7
-    },
-    {
-      "star": 4,
-      "ScoreText": "肉串都還不錯吃，外酥裡嫩，調味得宜。",
-      "orderId": "8",
-      "id": 8
-    },
-    {
-      "star": 5,
-      "ScoreText": "非常非常非常好吃👍 …",
-      "orderId": "9",
-      "id": 9
-    },
-    {
-      "star": 5,
-      "ScoreText": "豬五花、剝皮辣椒豬、牛肉干貝捲，真的好好吃",
-      "orderId": "10",
-      "id": 10
-    },
-    {
-      "star": 5,
-      "ScoreText": "餐點衛生都很優，店內位置不多，但是真心推薦內用～",
-      "orderId": "11",
-      "id": 11
-    },
-    {
-      "star": 3,
-      "ScoreText": "推推，好吃，價格小貴但還可以接受",
-      "orderId": "12",
-      "id": 12
-    },
-    {
-      "star": 4,
-      "ScoreText": "燒烤稍微偏甜，食材跟價位cp值高，師傅的烤工一流。",
-      "orderId": "13",
-      "id": 13
-    },
-    {
-      "star": 4,
-      "ScoreText": "口味適中，食材本身的鮮味，感受得出來非常用心。",
-      "orderId": "14",
-      "id": 14
-    },
-    {
-      "star": 5,
-      "ScoreText": "外帶會依照不同味道分開裝，超用心！",
-      "orderId": "15",
-      "id": 15
-    },
-    {
-      "star": 4,
-      "ScoreText": "推推推👍食材多種美味～",
-      "orderId": "16",
-      "id": 16
-    },
-    {
-      "star": 4,
-      "ScoreText": "牛五花蔥、茄子、玉米筍、烤雞翅好好吃👍",
-      "orderId": "17",
-      "id": 17
-    },
-    {
-      "star": 5,
-      "ScoreText": "好吃到不行，醬料獨特而且烤的很讚😎重點4他的辣粉超好吃的啦！！",
-      "orderId": "18",
-      "id": 18
-    },
-    {
-      "star": 5,
-      "ScoreText": "好吃到不行，醬料獨特而且烤的很讚😎重點4他的辣粉超好吃的啦！！",
-      "orderId": "19",
-      "id": 19
     }
   ]
 }

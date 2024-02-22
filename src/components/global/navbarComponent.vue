@@ -142,6 +142,8 @@ export default {
     }
   },
   mounted(){
+        this.hasToken = docCookies.hasItem("token");
+
         this.socket = new WebSocket('ws://localhost:8080/ws');
         let myId =docCookies.getItem("id")
         this.socket.onmessage = (event) => {
@@ -174,7 +176,6 @@ export default {
             })
           })
         })
-        
     },
     beforeUnmount() {
     // Close the WebSocket connection when the component is destroyed

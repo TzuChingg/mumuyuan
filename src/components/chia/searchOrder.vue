@@ -29,7 +29,7 @@
             <tbody>
               <tr v-for="(food, index) in obj.product" :key="index">
                 <td><img style="width: 60px" :src="food.image" alt="" /></td>
-                <td class="fs-5">{{ food.name }}</td>
+                <td class="fs-5">{{ food.productName }}</td>
                 <td>{{ food.quantity }}</td>
                 <td>{{ food.quantity * food.price }}</td>
               </tr>
