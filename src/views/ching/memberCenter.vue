@@ -44,13 +44,13 @@
                   <div class="mb-3 row">
                     <label for="phone" class="col-xxl-3 col-form-label">手機：</label>
                     <div class="col-xxl-9">
-                      <input type="text" class="form-control" id="phone" v-model="userInfo.phone" readonly/>
+                      <input type="text" class="form-control" id="phone" v-model="userInfo.phone" readonly />
                     </div>
                   </div>
                   <div class="mb-3 row">
                     <label for="email" class="col-xxl-3 col-form-label">信箱：</label>
                     <div class="col-xxl-9">
-                      <input type="text" class="form-control" id="email" v-model="userInfo.email" readonly/>
+                      <input type="text" class="form-control" id="email" v-model="userInfo.email" readonly />
                     </div>
                   </div>
                   <div class="mb-3 row">
@@ -73,7 +73,7 @@
                   <div class="mb-3 row">
                     <label for="name" class="col-xxl-4 col-form-label">目前密碼：</label>
                     <div class="col-xxl-8">
-                      <input type="text" class="m-0 form-control" :value="userInfo.copyPassword" readonly/>
+                      <input type="text" class="m-0 form-control" :value="userInfo.copyPassword" readonly />
                     </div>
                   </div>
                   <div class="mb-3 row">
@@ -166,8 +166,8 @@ export default {
     },
     setNewPassword() {
       this.$axios.patch(`/users/${this.userInfo.id}`, {
-        "password":this.userInfo.newPassword,
-        "copyPassword":this.userInfo.newPassword
+        "password": this.userInfo.newPassword,
+        "copyPassword": this.userInfo.newPassword
       })
         .then((response) => {
           if (response.status === 200) {

@@ -7,55 +7,39 @@
             <div class="col-3 border-end">
               <div class="btn-group-vertical d-flex justify-content-center">
                 <button class="btn btn-outline-primary" type="button">
-                  <router-link
-                    to="/memberCenter"
-                    class="d-block link-underline link-underline-opacity-0"
-                    >會員中心</router-link
-                  >
+                  <router-link to="/memberCenter"
+                    class="d-block link-underline link-underline-opacity-0">會員中心</router-link>
                 </button>
                 <button class="btn btn-outline-primary" type="button">
-                  <router-link
-                    to="/member/orderLog"
-                    class="d-block link-underline link-underline-opacity-0"
-                    >歷史訂單</router-link
-                  >
+                  <router-link to="/member/orderLog"
+                    class="d-block link-underline link-underline-opacity-0">歷史訂單</router-link>
                 </button>
                 <button class="btn btn-outline-primary active" type="button">
-                  <router-link
-                    to="/member/discount"
-                    class="d-block text-light link-underline link-underline-opacity-0"
-                    >我的優惠券</router-link
-                  >
+                  <router-link to="/member/discount"
+                    class="d-block text-light link-underline link-underline-opacity-0">我的優惠券</router-link>
                 </button>
                 <button class="btn btn-outline-primary" type="button">
-                  <router-link
-                    to="/member/exchange"
-                    class="d-block link-underline link-underline-opacity-0"
-                    >點數兌換</router-link
-                  >
+                  <router-link to="/member/exchange"
+                    class="d-block link-underline link-underline-opacity-0">點數兌換</router-link>
                 </button>
                 <button class="btn btn-outline-primary" type="button">
-                  <router-link
-                    to="/"
-                    class="d-block link-underline link-underline-opacity-0"
-                    @click="signOut"
-                    >登出</router-link
-                  >
+                  <router-link to="/" class="d-block link-underline link-underline-opacity-0"
+                    @click="signOut">登出</router-link>
                 </button>
               </div>
             </div>
             <div class="col-9">
               <h3 class="text-center">我的優惠券</h3>
-              <hr class="pt-3"/>
+              <hr class="pt-3" />
               <div class="row justify-content-center">
                 <div class="col-12 mb-4">
                   <div class="d-flex flex-wrap">
                     <!-- card 1 -->
-                    <div class="mb-4 col-sm-6 col-xl-4 p-2" v-for="i in myCoupons">
+                    <div class="mb-4 col-sm-6 col-xl-4 p-2" v-for="i in myCoupons" :key="i.name">
                       <img :src="`/木木苑食材修圖/${i.image}.jpg`" class="card-img-top" alt="image error" />
                       <div class="card-body p-2 bg-light">
-                        <h5 class="card-title fw-bolder mb-2">{{i.name}}</h5>
-                        <p class="card-text mb-0">{{i.description}}</p>
+                        <h5 class="card-title fw-bolder mb-2">{{ i.name }}</h5>
+                        <p class="card-text mb-0">{{ i.description }}</p>
                       </div>
                     </div>
                     <!-- card 1 end -->
@@ -78,12 +62,12 @@ export default {
       myCoupons: []
     }
   },
-  created() {},
+  created() { },
   methods: {
     signOut() {
       docCookies.removeItem('token')
       docCookies.removeItem('identity')
-      docCookies.removeItem("id");
+      docCookies.removeItem('id')
     },
     async filterCoupons() {
       try {
@@ -94,7 +78,7 @@ export default {
           const findIndex = getCoupons.data.findIndex((every) => every.id === iCoupons - 0)
           this.myCoupons.push(getCoupons.data[findIndex])
         })
-      } catch (error) {}
+      } catch (error) { console.log(error); }
     }
   },
   mounted() {
