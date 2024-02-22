@@ -5,8 +5,8 @@
                 <categoryComponent></categoryComponent>
                 <router-link to="/cartPage"><button class="btn btn-outline-primary justify-content-end border-0">
                         <i class="bi bi-cart fs-2 "><span class=" position-absolute fs-5">{{ cartNum }}</span></i></button>
-                        <!-- position-relative -->
-                    </router-link>
+                    <!-- position-relative -->
+                </router-link>
 
             </div>
         </div>
@@ -26,14 +26,18 @@
                     <div class="card-footer d-flex justify-content-around border-0 bg-white">
                         <div class="col-6">
                             <div class="input-group">
-                                <input type="button" class="cal btn btn-outline-dark" value="-" @click="decreaseBtn(product.id)">
-                                <input type="number" :id="product.id" name="quantity" class="form-control input-number border-primary text-center p-0" value=1
-                                min=1 max=100   readonly="readonly">
-                                <input type="button"  class="cal btn btn-outline-dark" value="+" @click="increaseBtn(product.id)">
+                                <input type="button" class="cal btn btn-outline-dark" value="-"
+                                    @click="decreaseBtn(product.id)">
+                                <input type="number" :id="product.id" name="quantity"
+                                    class="form-control input-number border-primary text-center p-0" value=1 min=1 max=100
+                                    readonly="readonly">
+                                <input type="button" class="cal btn btn-outline-dark" value="+"
+                                    @click="increaseBtn(product.id)">
                             </div>
                         </div>
                         <div class="col-6 d-flex justify-content-end">
-                            <button type="button" class="btn btn-outline-dark" @click="addToCart(product.id,)">加入購物車</button>
+                            <button type="button" class="btn btn-outline-dark"
+                                @click="addToCart(product.id,)">加入購物車</button>
                         </div>
 
                     </div>
@@ -60,23 +64,23 @@ export default {
     methods: {
         ...mapActions(productsStore, ['getProducts']),
         ...mapActions(cartStore, ['addToCart']),
-        increaseBtn(id){
+        increaseBtn(id) {
             const quantity = document.getElementById(id)
-            if (quantity.value >=1 && quantity.value < 100) {
+            if (quantity.value >= 1 && quantity.value < 100) {
                 quantity.value++
-            }else if (quantity.value > 100 ){
+            } else if (quantity.value > 100) {
                 quantity.value = 100
-            }else if (quantity.value < 1 ){
+            } else if (quantity.value < 1) {
                 quantity.value = 1
             }
         },
-        decreaseBtn(id){
+        decreaseBtn(id) {
             const quantity = document.getElementById(id)
             if (quantity.value > 1 && quantity.value <= 100) {
                 quantity.value--
-            }else if (quantity.value > 100 ){
+            } else if (quantity.value > 100) {
                 quantity.value = 100
-            }else if (quantity.value < 1 ){
+            } else if (quantity.value < 1) {
                 quantity.value = 1
             }
         }
@@ -88,8 +92,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.categoryNav{
+.categoryNav {
     background: #d8d0ae;
+
     .btn-outline-primary:hover {
         color: #f1eee9;
         background: #d8d0ae;

@@ -53,7 +53,7 @@
                   <hr />
                   <div class="d-flex flex-wrap">
                     <!-- card 1 -->
-                    <div class="mb-4 col-sm-6 col-xl-4 p-2" v-for="i in coupons">
+                    <div class="mb-4 col-sm-6 col-xl-4 p-2" v-for="i in coupons" :key="i.name">
                       <img
                         :src="`/木木苑食材修圖/${i.image}.jpg`"
                         class="card-img-top"
