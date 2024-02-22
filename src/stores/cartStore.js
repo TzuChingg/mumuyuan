@@ -78,6 +78,8 @@ export default defineStore ('', {
             .get(`http://localhost:8080/api/users/${id}`)
             .then(res=>{
                 this.information = res.data
+            }).catch((err)=>{
+                
             })
         }
     }

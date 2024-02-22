@@ -88,6 +88,25 @@
             <tbody>
               <tr>
                 <td colspan="2" class="text-center">
+                  <label class="form-label fs-5">優惠券</label>
+                </td>
+
+                <td colspan="2">
+                  <div class="d-flex justify-content-end">
+                    <template v-if="user.coupon == 0||user.coupon ==undefined">
+                      <select class="form-select border border-dark form-select-md" aria-label="coupon" id="coupon" @change="handleCouponChange" disabled> 
+                        <option value="0" selected>尚未持有優惠券</option>
+                     </select>
+                    </template>
+                    <select v-else  class="form-select border border-dark form-select-md" aria-label="coupon" id="coupon" @change="handleCouponChange" > 
+                      <option value="0">請選擇優惠券</option>
+                      <option v-for="(option, index) in user.coupon" :key="index" :value="option.calc" >{{ option.name }}</option>
+                    </select>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" class="text-center">
                   <label class="form-label fs-5">選擇口味</label>
                 </td>
                 <td colspan="2">
@@ -96,7 +115,6 @@
                       <div class="form-check">
                         <VField name="flavor" type="radio" value=1  rules="required"
                           class=" form-check-input border-primary" id="pepperSalt"  v-model="flavor"/>
-                          
                         <label class="form-check-label fs-5" for="pepperSalt"> 椒鹽 </label>
                       </div>
                     </div>
@@ -150,12 +168,49 @@
                 </td>
               </tr>
               <tr>
-                <td class="px-5 pb-5" colspan="4">
-                  <div class="d-flex justify-content-end">
-                    <select class="form-select border border-dark form-select-md w-50" aria-label="coupon" id="coupon" @change="handleCouponChange"> 
-                      <option value="0">折價券</option>
-                      <option v-for="(option, index) in user.coupon" :key="index" :value="option.calc" >{{ option.name }}</option>
-                    </select>
+                <td colspan="2" class="text-center fs-5">備註</td>
+                <td colspan="2"><textarea name="comment" id="comment" cols="60" rows="3" style="resize: none;"></textarea></td>
+              </tr>
+
+              <tr>
+                <td colspan="2" class="text-center fs-5">取餐方式</td>
+                <td colspan="2">
+                  <div class="row">
+                    <div class="col">
+                      <div class="form-check">
+                        <VField name="type" type="radio" value="0" rules="required"
+                          class=" form-check-input border-primary" id="selfPickup" />
+                        <label class="form-check-label fs-5" for="selfPickup"> 自取 </label>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="form-check">
+                        <VField name="type" type="radio" value="1" rules="required"
+                          class=" form-check-input border-primary" id="takeout" />
+                        <label class="form-check-label fs-5" for="takeout"> 外帶 </label>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" class="text-center fs-5">塑膠袋</td>
+                <td colspan="2">
+                  <div class="row">
+                    <div class="col">
+                      <div class="form-check">
+                        <VField name="bags" type="radio" value="0" rules="required"
+                          class=" form-check-input border-primary" id="noBags" />
+                        <label class="form-check-label fs-5" for="noBags"> 不購買塑膠袋 </label>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="form-check">
+                        <VField name="bags" type="radio" value="1" rules="required"
+                          class=" form-check-input border-primary" id="needBags" />
+                        <label class="form-check-label fs-5" for="needBags"> 購買塑膠袋 </label>
+                      </div>
+                    </div>
                   </div>
                 </td>
               </tr>
