@@ -2,44 +2,10 @@
   <div class="container mb-5">
     <h1 class="my-4 text-center me-2">購物車</h1>
     <div class="row justify-content-center">
-      <div class="col-10" >
+      <div class="col-10">
         <VForm ref="form" v-slot="{ errors }">
-          <table class="table table-borderless align-middle table-light" >
-            <thead >
-              <tr>
-                <td class="col-3">
-                  <label for="name" class="form-label d-flex justify-content-center fs-5">您的姓名</label>
-                </td>
-                <td class="col-3">
-                  <VField id="name" name="name" type="text" class="form-control" :class="{ 'is-invalid': errors['name'] }"
-                  v-model="user.name"  placeholder="請輸入姓名" rules="required" ></VField>
-                  <ErrorMessage name="name" class="invalid-feedback"></ErrorMessage>
-                </td>
-                <td class="col-3">
-                  <label for="phone" class="form-label d-flex justify-content-center fs-5">手機號碼</label>
-                </td>
-                <td class="col-3">
-                  <VField id="tel" name="tel" type="tel" class="form-control" :class="{ 'is-invalid': errors['tel'] }"
-                    v-model="user.phone"  placeholder="請輸入電話" rules="required|min:9|numeric"></VField>
-                  <ErrorMessage name="tel" class="invalid-feedback"></ErrorMessage>
-                </td>
-              </tr>
-              <tr>
-                <td class="col-3">
-                  <label for="email" class="form-label d-flex justify-content-center fs-5">電子郵件</label>
-                </td>
-                <td class="col-3">
-                  <VField id="email" name="email" type="email" class="form-control"
-                    v-model="user.email"  :class="{ 'is-invalid': errors['email'] }" placeholder="請輸入 Email" rules="email|required"></VField>
-                  <ErrorMessage name="email" class="invalid-feedback"></ErrorMessage>
-                </td>
-                <td class="col-3">
-                  <label for="time" class="form-label d-flex justify-content-center fs-5">取餐時間</label>
-                </td>
-                <td class="col-3">
-                  <label for="time" class="form-label">{{currentDate}} {{ currentTime }}</label>
-                </td>
-              </tr>
+          <table class="table table-borderless align-middle table-light">
+            <thead>
               <tr>
                 <td colspan="4">
                   <table class="table mb-0 table-light">
@@ -84,82 +50,120 @@
                 <td colspan="3" class="text-end fs-5">總金額</td>
                 <td class="text-center fs-5">$ {{ total }}</td>
               </tr>
-            </thead>
-            <tbody>
               <tr>
-                <td colspan="2" class="text-center">
-                  <label class="form-label fs-5">優惠券</label>
+                <td colspan="3" class="text-end fs-5">獲得點數</td>
+                <td class="text-center fs-5">5 點</td>
+              </tr>
+              <tr>
+                <td class="col-3">
+                  <label for="name" class="form-label d-flex justify-content-center fs-5">您的姓名</label>
                 </td>
-
-                <td colspan="2">
-                  <div class="d-flex justify-content-end">
-                    <template v-if="user.coupon == 0||user.coupon ==undefined">
-                      <select class="form-select border border-dark form-select-md" aria-label="coupon" id="coupon" @change="handleCouponChange" disabled> 
-                        <option value="0" selected>尚未持有優惠券</option>
-                     </select>
-                    </template>
-                    <select v-else  class="form-select border border-dark form-select-md" aria-label="coupon" id="coupon" @change="handleCouponChange" > 
-                      <option value="0">請選擇優惠券</option>
-                      <option v-for="(option, index) in user.coupon" :key="index" :value="option.calc" >{{ option.name }}</option>
-                    </select>
-                  </div>
+                <td class="col-3">
+                  <VField id="name" name="name" type="text" class="form-control" :class="{ 'is-invalid': errors['name'] }"
+                    v-model="user.name" placeholder="請輸入姓名" rules="required"></VField>
+                  <ErrorMessage name="name" class="invalid-feedback"></ErrorMessage>
+                </td>
+                <td class="col-3">
+                  <label for="phone" class="form-label d-flex justify-content-center fs-5">手機號碼</label>
+                </td>
+                <td class="col-3">
+                  <VField id="tel" name="tel" type="tel" class="form-control" :class="{ 'is-invalid': errors['tel'] }"
+                    v-model="user.phone" placeholder="請輸入電話" rules="required|min:9|numeric"></VField>
+                  <ErrorMessage name="tel" class="invalid-feedback"></ErrorMessage>
                 </td>
               </tr>
               <tr>
-                <td colspan="2" class="text-center">
+                <td class="col-3">
+                  <label for="email" class="form-label d-flex justify-content-center fs-5">電子郵件</label>
+                </td>
+                <td class="col-3">
+                  <VField id="email" name="email" type="email" class="form-control" v-model="user.email"
+                    :class="{ 'is-invalid': errors['email'] }" placeholder="請輸入 Email" rules="email|required"></VField>
+                  <ErrorMessage name="email" class="invalid-feedback"></ErrorMessage>
+                </td>
+                <td class="col-3">
+                  <label for="time" class="form-label d-flex justify-content-center fs-5">取餐時間</label>
+                </td>
+                <td class="col-3">
+                  <label for="time" class="form-label">{{ currentDate }} {{ currentTime }}</label>
+                </td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="text-center">
                   <label class="form-label fs-5">選擇口味</label>
                 </td>
-                <td colspan="2">
+                <td >
                   <div class="row">
                     <div class="col">
                       <div class="form-check">
-                        <VField name="flavor" type="radio" value=1  rules="required"
-                          class=" form-check-input border-primary" id="pepperSalt"  v-model="flavor"/>
+                        <VField name="flavor" type="radio" value=1 rules="required"
+                          class=" form-check-input border-primary" id="pepperSalt" v-model="flavor" />
                         <label class="form-check-label fs-5" for="pepperSalt"> 椒鹽 </label>
                       </div>
                     </div>
                     <div class="col">
                       <div class="form-check">
                         <VField name="flavor" type="radio" value="2" rules="required"
-                          class=" form-check-input border-primary" id="secretSpice" v-model="flavor"/>
+                          class=" form-check-input border-primary" id="secretSpice" v-model="flavor" />
                         <label class="form-check-label fs-5" for="secretSpice"> 秘粉 </label>
                       </div>
                     </div>
                   </div>
                   <ErrorMessage name="flavor" class="text-danger" />
                 </td>
+                <td class="text-center">
+                  <label class="form-label fs-5">優惠券</label>
+                </td>
+                <td>
+                  <div class="d-flex justify-content-end">
+                    <template v-if="user.coupon == 0 || user.coupon == undefined">
+                      <select class="form-select border border-dark form-select-md" aria-label="coupon" id="coupon"
+                        @change="handleCouponChange" disabled>
+                        <option value="0" selected>尚未持有優惠券</option>
+                      </select>
+                    </template>
+                    <select v-else class="form-select border border-dark form-select-md" aria-label="coupon" id="coupon"
+                      @change="handleCouponChange">
+                      <option value="0">請選擇優惠券</option>
+                      <option v-for="(option, index) in user.coupon" :key="index" :value="option.calc">{{ option.name }}
+                      </option>
+                    </select>
+                  </div>
+                </td>
               </tr>
               <tr>
-                <td colspan="2" class="text-center">
+                <td class="text-center">
                   <label class="form-label fs-5">選擇辣度</label>
                 </td>
-                <td colspan="2">
+                <td colspan="3">
                   <div class="row">
                     <div class="col">
                       <div class="form-check">
                         <VField name="spicy" type="radio" value="1" rules="required"
-                          class=" form-check-input border-primary" id="nonSpicy"  v-model="spicy"/>
+                          class=" form-check-input border-primary" id="nonSpicy" v-model="spicy" />
                         <label class="form-check-label fs-5" for="nonSpicy"> 不辣 </label>
                       </div>
                     </div>
                     <div class="col">
                       <div class="form-check">
                         <VField name="spicy" type="radio" value="2" rules="required"
-                          class=" form-check-input border-primary" id="mildlySpicy" v-model="spicy"/>
+                          class=" form-check-input border-primary" id="mildlySpicy" v-model="spicy" />
                         <label class="form-check-label fs-5" for="mildlySpicy"> 小辣 </label>
                       </div>
                     </div>
                     <div class="col">
                       <div class="form-check">
                         <VField name="spicy" type="radio" value="3" rules="required"
-                          class=" form-check-input border-primary" id="mediumSpicy" v-model="spicy"/>
+                          class=" form-check-input border-primary" id="mediumSpicy" v-model="spicy" />
                         <label class="form-check-label fs-5" for="mediumSpicy"> 中辣 </label>
                       </div>
                     </div>
                     <div class="col">
                       <div class="form-check">
                         <VField name="spicy" type="radio" value="4" rules="required"
-                          class=" form-check-input border-primary" id="spicy" v-model="spicy"/>
+                          class=" form-check-input border-primary" id="spicy" v-model="spicy" />
                         <label class="form-check-label fs-5" for="spicy"> 大辣 </label>
                       </div>
                     </div>
@@ -168,30 +172,26 @@
                 </td>
               </tr>
               <tr>
-                <td colspan="2" class="text-center fs-5">備註</td>
-                <td colspan="2"><textarea name="comment" id="comment" cols="60" rows="3" style="resize: none;"></textarea></td>
-              </tr>
-
-              <tr>
-                <td colspan="2" class="text-center fs-5">取餐方式</td>
-                <td colspan="2">
+                <td class="text-center fs-5">取餐方式</td>
+                <td>
                   <div class="row">
                     <div class="col">
                       <div class="form-check">
                         <VField name="type" type="radio" value="0" rules="required"
                           class=" form-check-input border-primary" id="selfPickup" />
-                        <label class="form-check-label fs-5" for="selfPickup"> 自取 </label>
-                      </div>
-                    </div>
-                    <div class="col">
-                      <div class="form-check">
-                        <VField name="type" type="radio" value="1" rules="required"
-                          class=" form-check-input border-primary" id="takeout" />
-                        <label class="form-check-label fs-5" for="takeout"> 外帶 </label>
+                        <label class="form-check-label fs-5" for="selfPickup" > 自取 </label>
                       </div>
                     </div>
                   </div>
                 </td>
+                <td class="text-center fs-5">備註</td>
+                <td>
+                  <textarea name="comment" id="comment" cols="30" rows="3" style="resize: none;"></textarea>
+                </td>
+              </tr>
+
+              <tr>
+                
               </tr>
               <tr>
                 <td colspan="2" class="text-center fs-5">塑膠袋</td>
@@ -201,7 +201,7 @@
                       <div class="form-check">
                         <VField name="bags" type="radio" value="0" rules="required"
                           class=" form-check-input border-primary" id="noBags" />
-                        <label class="form-check-label fs-5" for="noBags"> 不購買塑膠袋 </label>
+                        <label class="form-check-label fs-5" for="noBags"> 不用塑膠袋 </label>
                       </div>
                     </div>
                     <div class="col">
@@ -249,7 +249,8 @@
                 <td colspan="4">
                   <div class="row justify-content-center mt-3 mb-5">
                     <div class="col-2 d-flex justify-content-center">
-                      <button type="button" class="btn btn-danger" @click="useCoupon(couponName,myIdentity );pushOrder()">
+                      <button type="button" class="btn btn-danger"
+                        @click="useCoupon(couponName, myIdentity); pushOrder()">
                         送出訂單
                       </button>
                     </div>
@@ -271,17 +272,17 @@ import { docCookies } from '../../assets/cookie';
 export default {
   data() {
     return {
-      myIdentity:"",
-      user:{},
-      couponPrice:0,
-      couponName:"",
-      total:0,
-      product:[],
+      myIdentity: "",
+      user: {},
+      couponPrice: 0,
+      couponName: "",
+      total: 0,
+      product: [],
       currentDate: '',
       currentTime: '',
-      flavor:"",
-      spicy:"",
-      orderId:"",
+      flavor: "",
+      spicy: "",
+      orderId: "",
     }
   },
   computed: {
@@ -301,34 +302,34 @@ export default {
       this.couponPrice = event.target.value;
       this.couponName = event.target.selectedOptions[0].textContent
     },
-    pushOrder(){
-            const data = {
-                    "isMember": this.myIdentity ? "true":"false",
-                    "name": this.user.name,
-                    "phone": this.user.phone,
-                    "mail": this.user.mail,
-                    "day": this.currentDate,
-                    "product": this.product,
-                    "price": this.total,
-                    "userId": this.myIdentity,
-                    "status": 1,
-                    "type": true,
-                    "tableware": true,
-                    "bags": true,
-                    "payment": true,
-                    "comment": "",
-                    "pickTime": this.currentTime,
-                    "flavor": this.flavor,
-                    "spicy": this.spicy,
-                    "orderid": this.orderId,
-                    "score": "",
-             };
-            this.$axios.post(`http://localhost:8080/api/orders`, data)
-            .then(res=>{
-              location.reload();
-            })
+    pushOrder() {
+      const data = {
+        "isMember": this.myIdentity ? "true" : "false",
+        "name": this.user.name,
+        "phone": this.user.phone,
+        "mail": this.user.mail,
+        "day": this.currentDate,
+        "product": this.product,
+        "price": this.total,
+        "userId": this.myIdentity,
+        "status": 1,
+        "type": true,
+        "tableware": true,
+        "bags": true,
+        "payment": true,
+        "comment": "",
+        "pickTime": this.currentTime,
+        "flavor": this.flavor,
+        "spicy": this.spicy,
+        "orderid": this.orderId,
+        "score": "",
+      };
+      this.$axios.post(`http://localhost:8080/api/orders`, data)
+        .then(res => {
+          location.reload();
+        })
 
-        },
+    },
   },
   watch: {
     storeInformation: {
@@ -337,25 +338,25 @@ export default {
       },
     },
     couponPrice(newPrice, oldPrice) {
-    this.total = this.total - parseInt(oldPrice) +parseInt(newPrice);
-  }
+      this.total = this.total - parseInt(oldPrice) + parseInt(newPrice);
+    }
   },
-  mounted(){
-    this.myIdentity =docCookies.getItem("id")
+  mounted() {
+    this.myIdentity = docCookies.getItem("id")
     this.member(this.myIdentity)
     this.user = { ...this.storeInformation }
     this.total = this.cartsList.totalAmount
 
     this.product = this.cartsList.carts.map(item => {
       return {
-          productName: item.product.productName,
-          image:item.product.image,
-          price: item.product.price,
-          quantity:item.quantity
+        productName: item.product.productName,
+        image: item.product.image,
+        price: item.product.price,
+        quantity: item.quantity
       };
     });
 
-    
+
   },
   created() {
     const currentDate = new Date();
