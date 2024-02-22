@@ -105,7 +105,7 @@
       "count": 10,
       "price": 52,
       "description": "清爽的口感。",
-      "isLook": true,
+      "isLook": false,
       "id": 1
     },
     {
@@ -125,7 +125,7 @@
       "count": 10,
       "price": 45,
       "description": "肥美多汁，入口脆嫩香。",
-      "isLook": true,
+      "isLook": false,
       "id": 3
     },
     {
@@ -135,7 +135,7 @@
       "count": 10,
       "price": 56,
       "description": "梅花豬串燒，細膩肉質，香氣撲鼻。",
-      "isLook": true,
+      "isLook": false,
       "id": 4
     },
     {
@@ -145,7 +145,7 @@
       "count": 10,
       "price": 45,
       "description": "豬五花串燒，脂肪分佈均勻，香氣宜人。",
-      "isLook": true,
+      "isLook": false,
       "id": 5
     },
     {
@@ -175,7 +175,7 @@
       "count": 10,
       "price": 45,
       "description": "剝皮辣椒辣甜脆，搭豬五花香醇油脂，串烤完美組合，美味滿溢解膩。",
-      "isLook": true,
+      "isLook": false,
       "id": 8
     },
     {
@@ -185,7 +185,7 @@
       "count": 10,
       "price": 45,
       "description": "新鮮番茄牛肉捲，口感多汁香甜。",
-      "isLook": true,
+      "isLook": false,
       "id": 9
     },
     {
@@ -195,7 +195,7 @@
       "count": 10,
       "price": 39,
       "description": "鴨肉串燒，外脆內嫩，帶有獨特鴨香。",
-      "isLook": true,
+      "isLook": false,
       "id": 10
     },
     {
@@ -205,7 +205,7 @@
       "count": 10,
       "price": 35,
       "description": "嚴選雞心，搭配獨特醬汁烤製，口感鮮嫩多汁，香氣四溢，美味迷人。",
-      "isLook": true,
+      "isLook": false,
       "id": 11
     },
     {

@@ -17,7 +17,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul class="navbar-nav ms-auto align-items-center">
                     <li class="nav-item">
-                      <router-link to="/menu" class="nav-link fs-5 text-light text-decoration-none">線上點餐</router-link>
+                      <router-link to="/onlineOrder" class="nav-link fs-5 text-light text-decoration-none">線上點餐</router-link>
                       <div :class="{ 'breath' : this.$route.path == '/onlineOrder'}"></div>
                     </li>
                     <li class="nav-item">
@@ -46,7 +46,7 @@
                         <i class="bi bi-bell fs-2   text-white"></i>
                         <span class="position-absolute top-25 start-75 translate-middle p-2 bg-danger border border-light rounded-circle " :class="{ 'd-none': notice }"></span>
                         </button>
-                        <div class="position-absolute top-60 end-30 p-3" style="z-index: 11">
+                        <div class="position-absolute top-60 end-30 p-3" style="z-index: 9999">
                           <div ref="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
                             <div class="toast-header">
                               <strong class="me-auto">通知紀錄</strong>
