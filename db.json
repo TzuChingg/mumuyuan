@@ -494,35 +494,34 @@
       "isMember": true,
       "name": "eric",
       "phone": "094563131",
-      "mail": "123@123.456",
       "day": "2024/01/01",
       "product": [
         {
-          "name": "玉米筍",
+          "productName": "玉米筍",
           "quantity": 5,
           "image": "/木木苑食材修圖/01.jpg",
           "price": 52
         },
         {
-          "name": "豬五花蔥捲",
+          "productName": "豬五花蔥捲",
           "quantity": 3,
           "image": "/木木苑食材修圖/02.jpg",
           "price": 61
         },
         {
-          "name": "鯛魚下巴",
+          "productName": "鯛魚下巴",
           "quantity": 3,
           "image": "/木木苑食材修圖/03.jpg",
           "price": 45
         },
         {
-          "name": "雞肉串",
+          "productName": "雞肉串",
           "quantity": 2,
           "image": "/木木苑食材修圖/20.jpg",
           "price": 89
         }
       ],
-      "price": 300,
+      "price": 756,
       "status": 3,
       "userId": 1,
       "type": true,
@@ -531,220 +530,11 @@
       "payment": true,
       "pickTime": "17:00",
       "comment": "做好吃一點",
-      "orderScore": 1,
       "flavor": 1,
       "spicy": 1,
       "orderid": "123",
       "score": "3",
       "id": 1
-    },
-    {
-      "isMember": true,
-      "name": "eric",
-      "phone": "094563131",
-      "day": "2024/01/30",
-      "product": [
-        {
-          "name": "牛肉串",
-          "quantity": 5
-        },
-        {
-          "name": "百業豆腐",
-          "quantity": 3
-        },
-        {
-          "name": "豬肉串",
-          "quantity": 3
-        },
-        {
-          "name": "豬血糕",
-          "quantity": 5
-        },
-        {
-          "name": "干貝",
-          "quantity": 4
-        },
-        {
-          "name": "牛小排",
-          "quantity": 2
-        },
-        {
-          "name": "甜不辣",
-          "quantity": 2
-        }
-      ],
-      "price": 1200,
-      "status": 2,
-      "userId": 3,
-      "type": true,
-      "tableware": true,
-      "bags": true,
-      "payment": true,
-      "pickTime": "22:00",
-      "comment": "做好吃一點",
-      "flavor": 1,
-      "spicy": 1,
-      "orderid": "456",
-      "score": "",
-      "id": 2
-    },
-    {
-      "isMember": true,
-      "name": "eric",
-      "phone": "09000000",
-      "mail": "123@123.456",
-      "day": "2024/01/01",
-      "product": [
-        {
-          "name": "玉米筍",
-          "quantity": 5,
-          "image": "/木木苑食材修圖/01.jpg",
-          "price": 52
-        },
-        {
-          "name": "豬五花蔥捲",
-          "quantity": 3,
-          "image": "/木木苑食材修圖/02.jpg",
-          "price": 61
-        },
-        {
-          "name": "鯛魚下巴",
-          "quantity": 3,
-          "image": "/木木苑食材修圖/03.jpg",
-          "price": 45
-        },
-        {
-          "name": "雞肉串",
-          "quantity": 2,
-          "image": "/木木苑食材修圖/20.jpg",
-          "price": 89
-        }
-      ],
-      "price": 500,
-      "status": 3,
-      "userId": 1,
-      "type": true,
-      "tableware": true,
-      "bags": true,
-      "payment": true,
-      "pickTime": "17:00",
-      "comment": "做好吃一點",
-      "flavor": 1,
-      "spicy": 1,
-      "orderid": "789",
-      "score": "4",
-      "id": 3
-    },
-    {
-      "isMember": "true",
-      "name": "admin",
-      "phone": "0911111111",
-      "day": "2024-02-22",
-      "product": [
-        {
-          "productName": "套餐",
-          "image": "/木木苑食材修圖/01.jpg",
-          "price": 52
-        },
-        {
-          "productName": "豬五花蔥捲",
-          "image": "/木木苑食材修圖/02.jpg",
-          "price": 61
-        },
-        {
-          "productName": "剝皮辣椒豬捲",
-          "image": "/木木苑食材修圖/08.jpg",
-          "price": 45
-        }
-      ],
-      "price": 158,
-      "userId": "3",
-      "status": 1,
-      "type": true,
-      "tableware": true,
-      "bags": true,
-      "payment": true,
-      "comment": "",
-      "pickTime": "20:35",
-      "flavor": "1",
-      "spicy": "",
-      "orderid": "123",
-      "score": "",
-      "id": 4
-    },
-    {
-      "isMember": "true",
-      "name": "admin",
-      "phone": "0911111111",
-      "day": "2024-02-22",
-      "product": [
-        {
-          "productName": "套餐",
-          "image": "/木木苑食材修圖/01.jpg",
-          "price": 52
-        },
-        {
-          "productName": "豬五花蔥捲",
-          "image": "/木木苑食材修圖/02.jpg",
-          "price": 61
-        },
-        {
-          "productName": "剝皮辣椒豬捲",
-          "image": "/木木苑食材修圖/08.jpg",
-          "price": 45
-        }
-      ],
-      "price": 203,
-      "userId": "3",
-      "status": 1,
-      "type": true,
-      "tableware": true,
-      "bags": true,
-      "payment": true,
-      "comment": "",
-      "pickTime": "20:41",
-      "flavor": "1",
-      "spicy": "1",
-      "orderid": "2024-02222041",
-      "score": "",
-      "id": 5
-    },
-    {
-      "isMember": "true",
-      "name": "admin",
-      "phone": "0911111111",
-      "day": "2024-02-22",
-      "product": [
-        {
-          "productName": "套餐",
-          "image": "/木木苑食材修圖/01.jpg",
-          "price": 52
-        },
-        {
-          "productName": "豬五花蔥捲",
-          "image": "/木木苑食材修圖/02.jpg",
-          "price": 61
-        },
-        {
-          "productName": "剝皮辣椒豬捲",
-          "image": "/木木苑食材修圖/08.jpg",
-          "price": 45
-        }
-      ],
-      "price": 210,
-      "userId": "3",
-      "status": 1,
-      "type": true,
-      "tableware": true,
-      "bags": true,
-      "payment": true,
-      "comment": "",
-      "pickTime": "20:44",
-      "flavor": "1",
-      "spicy": "1",
-      "orderid": "202402222044",
-      "score": "",
-      "id": 6
     },
     {
       "isMember": "true",
