@@ -34,7 +34,6 @@
               <div class="row justify-content-center">
                 <div class="col-12 mb-4">
                   <div class="d-flex flex-wrap">
-                    <!-- card 1 -->
                     <div class="mb-4 col-sm-6 col-xl-4 p-2" v-for="i in myCoupons" :key="i.name">
                       <img :src="`/木木苑食材修圖/${i.image}.jpg`" class="card-img-top" alt="image error" />
                       <div class="card-body p-2 bg-light">
@@ -42,7 +41,6 @@
                         <p class="card-text mb-0">{{ i.description }}</p>
                       </div>
                     </div>
-                    <!-- card 1 end -->
                   </div>
                 </div>
               </div>
@@ -71,13 +69,14 @@ export default {
     },
     async filterCoupons() {
       try {
-        const getCoupons = await this.$axios.get('/coupons')
+        // const getCoupons = await this.$axios.get('/coupons')
         const getUsers = await this.$axios.get(`/users/${docCookies.getItem('id')}`)
-        const splitCoupons = getUsers.data.coupon
-        splitCoupons.forEach((iCoupons) => {
-          const findIndex = getCoupons.data.findIndex((every) => every.id === iCoupons - 0)
-          this.myCoupons.push(getCoupons.data[findIndex])
-        })
+        this.myCoupons = getUsers.data.coupon
+        // console.log(splitCoupons);
+        // splitCoupons.forEach((iCoupons) => {
+        //   const findIndex = getCoupons.data.findIndex((every) => every.id === iCoupons - 0)
+        //   this.myCoupons.push(getCoupons.data[findIndex])
+        // })
       } catch (error) { console.log(error); }
     }
   },

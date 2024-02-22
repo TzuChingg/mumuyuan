@@ -154,15 +154,17 @@ export default {
       this.choose = iChoose
     },
     confirm(getPoint) {
+      console.log(getPoint);
+      const {id,name,calc,image,description} = getPoint
       const point = this.userInfo.point - getPoint.point
       let coupon = this.userInfo.coupon
-      coupon.push(getPoint.id)
+      coupon.push({id,name,calc,image,description})
       this.$axios
         .patch(`/users/${this.userInfo.id}`, { point, coupon })
         .then((response) => {
           if (response.status === 200) {
             this.getUserInfo()
-            alert('更新成功')
+            alert('兌換成功')
           }
         })
         .catch((err) => {

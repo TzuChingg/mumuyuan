@@ -12,7 +12,7 @@
             </div>
             <div aria-live="polite" aria-atomic="true" class="d-flex justify-content-end w-100">
                 <div class="toast-container position-absolute" ref="toast">
-    
+
                 </div>
             </div>
         </div>
@@ -55,6 +55,7 @@
 </template>
 
 <script type="module">
+import { docCookies } from '../../assets/cookie'
 import productsStore from '@/stores/productsStore.js'
 import cartStore from '@/stores/cartStore.js'
 import categoryComponent from '@/components/ching/categoryComponent.vue'
@@ -62,6 +63,13 @@ import { mapActions, mapState } from 'pinia'
 import { Toast } from 'bootstrap/dist/js/bootstrap.bundle.min.js'
 
 export default {
+    created(){
+        if (docCookies.getItem('identity') === 'baduser') {
+            alert('目前為黑名單狀態，即將返回首頁');
+            this.$router.push('/')
+			return
+        }
+    },
     mounted() {
         this.getProducts()
     },
@@ -96,8 +104,8 @@ export default {
         addCartToastFn(product, id) {
             const toastId = new Date().getTime()
             const content = document.createElement('div')
-            content.innerHTML = 
-            `<div id=${toastId} class="toast bottom-50 start-100 " role="alert" aria-live="assertive" aria-atomic="true">
+            content.innerHTML =
+                `<div id=${toastId} class="toast bottom-50 start-100 " role="alert" aria-live="assertive" aria-atomic="true">
                 <div class="toast-header">
                     <strong class="me-auto">購物車</strong>
                     <small>Just now</small>
@@ -140,5 +148,4 @@ export default {
         color: #f1eee9;
     }
 }
-
 </style>
