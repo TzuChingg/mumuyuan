@@ -18,15 +18,16 @@
                 </div>
               </div>
             </div>
-            <div class="row row-cols-4 mt-2">
+            <div class="row row-cols-2 mt-2">
             <div class="col" v-for="(journey ,index) in thisPage" :key="index">
               <div class="card my-4 bg-light">
-                <div class="cardbody">
+                <div class="cardbody px-4">
                       <h5 class=" text-center my-4 text-nowrap">{{journey.title}}</h5>
-                      <select class="form-select mx-auto w-50 shadow-none my-2" aria-label="Default select example" v-model="journey.coupon">
+                        <select class="form-select mx-auto w-50 shadow-none my-2" aria-label="Default select example" v-model="journey.coupon">
                         <option v-for="(coupon, index) in coupons" :key="index" :value="coupon.id">{{coupon.title}}</option>
-                      </select>
-                      <textarea id="title" placeholder="內容" class="mx-auto form-control border-1 shadow-none w-50" v-model="journey.newsContent"></textarea>
+                        </select>
+
+                      <textarea id="title" placeholder="內容" class="px-4 form-control border-1 shadow-none w-100" style="height: 150px;" v-model="journey.newsContent"></textarea>
                       <div class="row text-center align-items-center py-3">
                           <div class="col-6  ">
                               <button type="button" class="btn btn-danger ms-6" data-bs-toggle="modal" :data-bs-target="'#goDown' +index">下架</button>
