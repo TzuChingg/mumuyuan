@@ -16,7 +16,6 @@
                 </div>
             </div>
         </div>
-        <button type="button" class="btn btn-primary" id="addCartToastBtn">Show live toast</button>
         <div class="row g-4 mt-2" v-for="(productList, index) in storeProducts" :key="index" :id="'#' + productList[0]">
             <h2>{{ productList[0] }}</h2>
             <hr class="m-0" />
