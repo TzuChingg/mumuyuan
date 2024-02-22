@@ -5,7 +5,8 @@ import { defineStore } from 'pinia';
 export default defineStore ('', {
     // data
     state: ()=>({
-        cart: []
+        cart: [],
+        information:{},
     }),
     // computed
     getters:{
@@ -19,9 +20,8 @@ export default defineStore ('', {
                 return {
                     ...item,
                     product,
-                    amount: product.price * item.quantity
+                    amount: product.price * item.quantity,
                 }
-                
             })
             const totalAmount = carts.reduce((acc, item)=> acc + item.amount, 0)
             
@@ -30,7 +30,9 @@ export default defineStore ('', {
                 totalAmount
             }
         },
-        
+        storeInformation: ({ information }) => {
+            return information
+        }
     },
     // method
     actions:{
@@ -63,8 +65,21 @@ export default defineStore ('', {
             if (currentCart.quantity > 1) {
                 currentCart.quantity--
             }
-        }
+        },
+        useCoupon(couponName,id){
+            const index = this.information.coupon.find((item)=>item.name === couponName)
+            this.information.coupon.splice(index,1)
+            const data = { coupon: this.information.coupon };
+            axios.patch(`ttp://localhost:8080/api/users/${id}`, data)
+        },
 
+        member(id){
+            axios
+            .get(`http://localhost:8080/api/users/${id}`)
+            .then(res=>{
+                this.information = res.data
+            })
+        }
     }
 
 })
