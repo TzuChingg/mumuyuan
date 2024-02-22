@@ -58,8 +58,6 @@ export default {
         scrollToSection() {
             this.$refs.FAQ.scrollIntoView({ behavior: 'smooth' })
         },
-
-
     },
     components: {
         indexSlogan,

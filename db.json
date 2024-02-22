@@ -945,9 +945,29 @@
       "unit": "張",
       "image": "money",
       "point": 100,
-      "isLook": false,
+      "isLook": true,
       "description": "沒有限制,每筆都能使用",
       "id": 5
+    },
+    {
+      "name": "折30塊",
+      "unit": "張",
+      "calc": "-30",
+      "image": "money",
+      "point": 100,
+      "isLook": true,
+      "description": "沒有限制,每筆都能使用",
+      "id": 6
+    },
+    {
+      "name": "折40塊",
+      "unit": "張",
+      "calc": "-40",
+      "image": "money",
+      "point": 150,
+      "isLook": true,
+      "description": "沒有限制,每筆都能使用",
+      "id": 7
     }
   ],
   "shop": {
