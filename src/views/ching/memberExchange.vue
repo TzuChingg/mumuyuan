@@ -5,9 +5,6 @@
         <div class="col-9">
           <div class="row">
             <div class="col-3 border-end">
-              <div class="logoCard d-flex justify-content-center mb-2">
-                <img class="rounded-circle mt-2" src="/logoCard.jpg" alt="" style="height: 100px" />
-              </div>
               <div class="btn-group-vertical d-flex justify-content-center">
                 <button class="btn btn-outline-primary" type="button">
                   <router-link
@@ -56,7 +53,7 @@
                   <hr />
                   <div class="d-flex flex-wrap">
                     <!-- card 1 -->
-                    <div class="mb-4 col-sm-6 col-xl-4 p-2" v-for="i in coupons">
+                    <div class="mb-4 col-sm-6 col-xl-4 p-2" v-for="i in coupons" :key="i.name">
                       <img
                         :src="`/木木苑食材修圖/${i.image}.jpg`"
                         class="card-img-top"

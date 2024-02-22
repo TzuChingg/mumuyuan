@@ -5,9 +5,6 @@
         <div class="col-9">
           <div class="row">
             <div class="col-3 border-end">
-              <div class="logoCard d-flex justify-content-center mb-2">
-                <img class="rounded-circle mt-2" src="/logoCard.jpg" alt="" style="height: 100px" />
-              </div>
               <div class="btn-group-vertical d-flex justify-content-center">
                 <button class="btn btn-outline-primary active" type="button">
                   <router-link to="/memberCenter"
@@ -47,13 +44,13 @@
                   <div class="mb-3 row">
                     <label for="phone" class="col-xxl-3 col-form-label">手機：</label>
                     <div class="col-xxl-9">
-                      <input type="text" class="form-control" id="phone" v-model="userInfo.phone" />
+                      <input type="text" class="form-control" id="phone" v-model="userInfo.phone" readonly />
                     </div>
                   </div>
                   <div class="mb-3 row">
                     <label for="email" class="col-xxl-3 col-form-label">信箱：</label>
                     <div class="col-xxl-9">
-                      <input type="text" class="form-control" id="email" v-model="userInfo.email" />
+                      <input type="text" class="form-control" id="email" v-model="userInfo.email" readonly />
                     </div>
                   </div>
                   <div class="mb-3 row">
@@ -76,7 +73,7 @@
                   <div class="mb-3 row">
                     <label for="name" class="col-xxl-4 col-form-label">目前密碼：</label>
                     <div class="col-xxl-8">
-                      <p class="m-0 form-control">{{ userInfo.copyPassword }}</p>
+                      <input type="text" class="m-0 form-control" :value="userInfo.copyPassword" readonly />
                     </div>
                   </div>
                   <div class="mb-3 row">
@@ -169,8 +166,8 @@ export default {
     },
     setNewPassword() {
       this.$axios.patch(`/users/${this.userInfo.id}`, {
-        "password":this.userInfo.newPassword,
-        "copyPassword":this.userInfo.newPassword
+        "password": this.userInfo.newPassword,
+        "copyPassword": this.userInfo.newPassword
       })
         .then((response) => {
           if (response.status === 200) {

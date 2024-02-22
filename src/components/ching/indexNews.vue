@@ -65,7 +65,7 @@ export default {
             this.$axios
                 .get(`/news`)
                 .then((result) => {
-                    this.news = result.data
+                    this.news = result.data.filter(el => el.isLook == false )
                     this.newsCarousel()
                 })
                 .catch((err) => {
@@ -76,38 +76,43 @@ export default {
             const newsCopy = JSON.parse(JSON.stringify(this.news))         
             if ( this.fullWidth >= 1660) {
                 this.newsPage = 1
-                const len = parseInt(newsCopy.length/5)
+                const count = 5
+                const len = parseInt(newsCopy.length/count)
                 this.newsPage += len
                 for (let i=0; i<this.newsPage; i++){
-                    this.temp.push([(i+1), newsCopy.slice((5)*i, (5)*(i+1))])
+                    this.temp.push([(i+1), newsCopy.slice(count*i, count*(i+1))])
                 }
             } else if (this.fullWidth >= 1337 & this.fullWidth < 1660) {
                 this.newsPage = 1
+                const count = 4
                 const len = parseInt(newsCopy.length/4)
                 this.newsPage += len;
                 for (let i=0; i<this.newsPage; i++){
-                    this.temp.push([(i+1), newsCopy.slice((4)*i, (4)*(i+1))])
+                    this.temp.push([(i+1), newsCopy.slice(count*i, count*(i+1))])
                 }
             }else if (this.fullWidth >= 1000 & this.fullWidth < 1337){
                 this.newsPage = 1
+                const count = 3
                 const len = parseInt(newsCopy.length/3)
                 this.newsPage += len;
                 for (let i=0; i<this.newsPage; i++){
-                    this.temp.push([(i+1), newsCopy.slice((3)*i, (3)*(i+1))])
+                    this.temp.push([(i+1), newsCopy.slice(count*i, count*(i+1))])
                 }
             }else if (this.fullWidth >= 690 & this.fullWidth < 1000) {
                 this.newsPage = 1
+                const count = 2
                 const len = parseInt(newsCopy.length/2)
                 this.newsPage += len;
                 for (let i=0; i<this.newsPage; i++){
-                    this.temp.push([(i+1), newsCopy.slice((2)*i, (2)*(i+1))])
+                    this.temp.push([(i+1), newsCopy.slice(count*i, count*(i+1))])
                 }
             }else {
                 this.newsPage = 1
+                const count = 1
                 const len = parseInt(newsCopy.length/1)
                 this.newsPage += len;
                 for (let i=0; i<this.newsPage; i++){
-                    this.temp.push([(i+1), newsCopy.slice((1)*i, (1)*(i+1))])
+                    this.temp.push([(i+1), newsCopy.slice(count*i, count*(i+1))])
                 }
             }
         }

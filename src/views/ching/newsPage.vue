@@ -31,8 +31,10 @@
                   <router-link :to="'/news/' + item.id">
                     <img :src="item.newsImage" alt="" style="height: 50px;">
                   </router-link>
-                  <router-link :to="'/news/' + item.id"><p class=" ms-2 fs-6">{{ item.newsTitle }}</p></router-link>
-                  
+                  <router-link :to="'/news/' + item.id">
+                    <p class=" ms-2 fs-6">{{ item.newsTitle }}</p>
+                  </router-link>
+
                 </li>
 
               </ul>
@@ -85,13 +87,13 @@ export default {
       }
       this.$axios.get(`/users/${docCookies.getItem("id")}`)
         .then((res) => {
-          this.userCoupon = res.data.coupon.split(',').filter(el => el !== '')
-          if (this.userCoupon.includes(this.$route.params.id)) {
+          this.userCoupon = res.data.coupon.filter(el => el !== '')
+          if (this.userCoupon.includes(parseInt(this.$route.params.id))) {
             alert('已領過此優惠券')
           } else {
-            this.userCoupon.push(this.$route.params.id)
+            this.userCoupon.push(parseInt(this.$route.params.id))
             this.$axios.patch(`/users/${docCookies.getItem("id")}`, {
-              coupon: this.userCoupon.join(',')
+              coupon: this.userCoupon
             })
             alert('加入優惠券成功')
           }
@@ -107,7 +109,6 @@ export default {
             tempList.splice(numIndex, 1)
           }
         })
-      console.log(this.otherNews);
     },
   },
   watch: {
@@ -133,7 +134,7 @@ export default {
 }
 
 .otherNews {
-  .otherNewsTitle{
+  .otherNewsTitle {
     margin-bottom: 4px;
   }
 

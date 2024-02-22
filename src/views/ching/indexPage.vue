@@ -9,11 +9,11 @@
             <index-feature></index-feature>
         </div>
 
-        <div class="container-fluid bg-primary" id="#FAQ" ref="FAQ" >
-           <index-faq></index-faq>
+        <div class="container-fluid bg-primary" id="#FAQ" ref="FAQ">
+            <index-faq></index-faq>
         </div>
         <div class="container-fluid bg-secondary pb-5">
-           <index-address></index-address>
+            <index-address></index-address>
         </div>
     </div>
 </template>
@@ -26,42 +26,42 @@ import indexFaq from '@/components/ching/indexFAQ.vue';
 import indexAddress from '@/components/ching/indexAddress.vue';
 import loaderComponent from '@/components/ching/loadingComponent.vue'
 import { h } from 'vue';
-export default{
+export default {
     data() {
         return {
-            news:[]
+            news: []
         }
     },
 
     // 跳轉
-    mounted() { 
-        if(this.$route.hash === '#FAQ'){
+    mounted() {
+        if (this.$route.hash === '#FAQ') {
             setTimeout(() => {
                 this.scrollToSection();
             }, 100);
         };
 
-        const loader = this.$loading.show({
-            backgroundColor: "#000",
-            // lockScroll: true
-        },
-        {
-            default: h(loaderComponent)
-        });
-            
-        setTimeout(() => {
-            loader.hide()
-        }, 2000);
+        // const loader = this.$loading.show({
+        //     backgroundColor: "#000",
+        //     // lockScroll: true
+        // },
+        // {
+        //     default: h(loaderComponent)
+        // });
+
+        // setTimeout(() => {
+        //     loader.hide()
+        // }, 2000);
     },
     methods: {
         // 跳轉
-        scrollToSection(){
-            this.$refs.FAQ.scrollIntoView({behavior: 'smooth'})
+        scrollToSection() {
+            this.$refs.FAQ.scrollIntoView({ behavior: 'smooth' })
         },
 
-        
+
     },
-    components:{
+    components: {
         indexSlogan,
         indexNews,
         indexRating,
@@ -69,7 +69,7 @@ export default{
         indexFaq,
         indexAddress
     }
-    
+
 }
 
 </script>
@@ -86,6 +86,4 @@ export default{
     background-size: cover;
     background-position: bottom;
 }
-
-
 </style>

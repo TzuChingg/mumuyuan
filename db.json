@@ -25,17 +25,6 @@
       "id": 1
     },
     {
-      "email": "test@gmail.com",
-      "password": "$2a$10$EaQOKGeA7Hs45ymXBFpIG.39.e283yFCR8Brcx3H9l26NQiAtI6m6",
-      "copyPassword": "123456",
-      "name": "test",
-      "phone": "09222222222",
-      "identity": "user",
-      "coupon": [],
-      "point": 30,
-      "id": 2
-    },
-    {
       "email": "admin@gmail.com",
       "password": "$2a$10$pbkX8jgDZHTDNP3YMgTKlelUwrm9dEAXAv8hHnZXoGrAgz1gKL/Uq",
       "copyPassword": "123456",
@@ -124,7 +113,7 @@
       "category": 2,
       "image": "/木木苑食材修圖/02.jpg",
       "count": 15,
-      "price": 61,
+      "price": 58,
       "description": "美味五花豬與香蔥完美捲合，炭烤後散發香氣，串烤風味，口感豐富。",
       "isLook": false,
       "id": 2
@@ -794,7 +783,7 @@
   ],
   "news": [
     {
-      "newsImage": "/木木苑食材修圖/36.jpg",
+      "newsImage": "/木木苑食材修圖/33.jpg",
       "newsTitle": "新戶好禮",
       "newsContent": "木木苑串燒店，現在註冊成為我們的新會員，即可領取帝王蟹味棒兌換券一張！\n立即成為新會員，領取您的專屬優惠券，品味串燒店獨家美味。\n快來加入我們，一起享受美味的串燒時光吧！",
       "couponId": "3",
@@ -802,7 +791,7 @@
       "id": 1
     },
     {
-      "newsImage": "/木木苑食材修圖/39.jpg",
+      "newsImage": "/木木苑食材修圖/35.jpg",
       "newsTitle": "「蔬菜季」好康來襲！",
       "newsContent": " 木木苑推出會員限定優惠！\n 即日起，透過會員領取優惠券，「青椒兌換券」！\n 新鮮、多汁的青椒串燒，為您的味蕾帶來驚喜，同時關心您的健康。\n 快來加入會員領取領取優惠！讓我們一起享受美味的同時兼顧健康！",
       "couponId": "3",
@@ -810,7 +799,7 @@
       "id": 2
     },
     {
-      "newsImage": "/木木苑食材修圖/38.jpg",
+      "newsImage": "/木木苑食材修圖/34.jpg",
       "newsTitle": "「蔬菜季」好康來襲！",
       "newsContent": " 木木苑推出會員限定優惠！\n 即日起，透過會員領取優惠券，「花椰菜兌換券」！\n 新鮮、多汁的青椒串燒，為您的味蕾帶來驚喜，同時關心您的健康。\n 快來加入會員領取領取優惠！讓我們一起享受美味的同時兼顧健康！",
       "couponId": "3",
@@ -870,6 +859,26 @@
       "time": "18:00",
       "isCheck": false,
       "id": 3
+    },
+    {
+      "name": "joker",
+      "personCount": 10,
+      "phone": "0900123123",
+      "mail": "123@123.x",
+      "day": "2024/02/17",
+      "time": "11:00",
+      "isCheck": false,
+      "id": 4
+    },
+    {
+      "name": "joker",
+      "personCount": 8,
+      "phone": "0111111111",
+      "mail": "333@dd.cc",
+      "day": "2024/02/17",
+      "time": "11:00",
+      "isCheck": false,
+      "id": 5
     }
   ],
   "periods": [
@@ -951,36 +960,120 @@
       "id": 1
     }
   ],
-  "cart": [
+  "scores": [
     {
-      "id": 1707316851263,
-      "productId": 9,
-      "qty": 1
+      "star": 4,
+      "ScoreText": "外酥內嫩，\n火侯掌握得很好～",
+      "orderId": "1",
+      "id": 1
     },
     {
-      "id": 1707809143937,
-      "productId": 15,
-      "qty": 3
+      "star": 4,
+      "ScoreText": "店內與食材區都很整齊，乾乾淨淨的很舒服！",
+      "orderId": "2",
+      "id": 2
     },
     {
-      "id": 1707809172923,
-      "productId": 24,
-      "qty": 2
+      "star": 5,
+      "ScoreText": "外帶會依照不同味道分開裝，超用心！",
+      "orderId": "3",
+      "id": 3
     },
     {
-      "id": 1707824956739,
-      "productId": 0,
-      "qty": 6
+      "star": 5,
+      "ScoreText": "種類很多，\n比居酒屋還好吃～",
+      "orderId": "4",
+      "id": 4
     },
     {
-      "id": 1708001205821,
-      "productId": 1,
-      "qty": 1
+      "star": 4,
+      "ScoreText": "烤串烤得很精緻，老闆非常親切。",
+      "orderId": "5",
+      "id": 5
     },
     {
-      "id": 1708001221638,
-      "productId": 17,
-      "qty": 5
+      "star": 5,
+      "ScoreText": "空間明亮有氣氛，\n適合小聚～",
+      "orderId": "6",
+      "id": 6
+    },
+    {
+      "star": 4,
+      "ScoreText": "燒烤不會太鹹又很香！烤功一流！大腸有處理得很好！整體非常喜歡。",
+      "orderId": "7",
+      "id": 7
+    },
+    {
+      "star": 4,
+      "ScoreText": "肉串都還不錯吃，外酥裡嫩，調味得宜。",
+      "orderId": "8",
+      "id": 8
+    },
+    {
+      "star": 5,
+      "ScoreText": "非常非常非常好吃👍 …",
+      "orderId": "9",
+      "id": 9
+    },
+    {
+      "star": 5,
+      "ScoreText": "豬五花、剝皮辣椒豬、牛肉干貝捲，真的好好吃",
+      "orderId": "10",
+      "id": 10
+    },
+    {
+      "star": 5,
+      "ScoreText": "餐點衛生都很優，店內位置不多，但是真心推薦內用～",
+      "orderId": "11",
+      "id": 11
+    },
+    {
+      "star": 3,
+      "ScoreText": "推推，好吃，價格小貴但還可以接受",
+      "orderId": "12",
+      "id": 12
+    },
+    {
+      "star": 4,
+      "ScoreText": "燒烤稍微偏甜，食材跟價位cp值高，師傅的烤工一流。",
+      "orderId": "13",
+      "id": 13
+    },
+    {
+      "star": 4,
+      "ScoreText": "口味適中，食材本身的鮮味，感受得出來非常用心。",
+      "orderId": "14",
+      "id": 14
+    },
+    {
+      "star": 5,
+      "ScoreText": "外帶會依照不同味道分開裝，超用心！",
+      "orderId": "15",
+      "id": 15
+    },
+    {
+      "star": 4,
+      "ScoreText": "推推推👍食材多種美味～",
+      "orderId": "16",
+      "id": 16
+    },
+    {
+      "star": 4,
+      "ScoreText": "牛五花蔥、茄子、玉米筍、烤雞翅好好吃👍",
+      "orderId": "17",
+      "id": 17
+    },
+    {
+      "star": 5,
+      "ScoreText": "好吃到不行，醬料獨特而且烤的很讚😎重點4他的辣粉超好吃的啦！！",
+      "orderId": "18",
+      "id": 18
+    },
+    {
+      "star": 5,
+      "ScoreText": "好吃到不行，醬料獨特而且烤的很讚😎重點4他的辣粉超好吃的啦！！",
+      "orderId": "19",
+      "id": 19
     }
   ]
 }
