@@ -5,7 +5,7 @@
         <div class="col-9">
           <div class="row">
             <div class="col-3 border-end">
-              <div class="btn-group-vertical d-flex justify-content-center">
+              <div class="btn-group-vertical d-flex justify-content-center mt-5">
                 <button class="btn btn-outline-primary active" type="button">
                   <router-link to="/memberCenter"
                     class="d-block text-light link-underline link-underline-opacity-0 ">會員中心</router-link>

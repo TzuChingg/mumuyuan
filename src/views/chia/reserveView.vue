@@ -1,8 +1,10 @@
 <script>
+import { docCookies } from '../../assets/cookie'
 export default {
 	data() {
 		return {
 			periods: [], //按紐時段
+			day:[], //抓取預定往後三天
 			maxPeople: { //每個時段最多20位(可更改)
 				'11:00': 20, '12:00': 20, '13:00': 20, '14:00': 20, '15:00': 20,
 				'18:00': 20, '19:00': 20, '20:00': 20, '21:00': 20, '22:00': 20,
@@ -35,6 +37,11 @@ export default {
 		}
 	},
 	created() {
+		if (docCookies.getItem('identity') === 'baduser') {
+			alert('目前為黑名單狀態，即將返回首頁');
+			this.$router.push('/')
+			return
+		}
 		this.getReserveDay(); //抓往後3天
 		this.getPeriods(); //抓各時段
 	},
