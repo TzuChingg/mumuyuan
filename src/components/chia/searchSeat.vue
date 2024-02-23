@@ -1,33 +1,25 @@
 <template>
-  <div class="w-70 m-auto table-responsive">
-    <table class="table fs-5 align-middle" v-if="tidyResponse.length !== 0">
-      <thead class="table-danger">
-        <tr>
-          <th scope="col">日期</th>
-          <th scope="col">訂位人</th>
-          <th scope="col">手機</th>
-          <th scope="col">人數</th>
-          <th scope="col">時段</th>
-          <th scope="col">取消訂位</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="(obj, idx) in tidyResponse" :key="idx">
-          <td>{{ obj.day }}</td>
-          <th>{{ obj.name }}</th>
-          <td>{{ obj.phone }}</td>
-          <td>{{ obj.personCount }}</td>
-          <td>{{ obj.time }}</td>
-          <td>
-            <button type="button" class="btn btn-primary" @click="cancelSeat(obj.id)">取消</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+  <div v-if="tidyResponse.length !== 0">
+    <div v-for="(obj, idx) in tidyResponse" :key="idx" class="card col-lg-4 col-md-6 col-12">
+      <div class="g-0">
+        <div class="col-md-12">
+          <div class="card-body">
+            <h5 class="card-title">日期 : {{ obj.day }}</h5>
+            <p class="card-text">訂位人 : {{ obj.name }}</p>
+            <p class="card-text">手機 : {{ obj.phone }}</p>
+            <p class="card-text">人數 : {{ obj.personCount }}</p>
+            <p class="card-text">時段 : {{ obj.time }}</p>
+            <p class="card-text">
+              <button type="button" class="text-light btn btn-danger" @click="cancelSeat(obj.id)">取消</button>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="notice w-50 py-4 m-auto">
-    <p class="my-0 fs-5">注意事項</p>
-    <ul class="list fs-5">
+  <div class="notice col-lg-8 col-md-10 py-4 m-auto">
+    <p class="my-0 fs-4 fw-bolder text-dark">注意事項</p>
+    <ul class="list fs-5 text-dark">
       <li>現場保留時間為10分，請客人盡早準時抵達。</li>
       <li>人數異動、臨時取消，請提前告知店家，避免影響雙方權益</li>
       <li>響應食材不浪費，離開前如有浪費食物疑慮，即額外收取相關費用</li>
@@ -72,7 +64,15 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.w-70 {
-  width: 70%;
+@media (min-width:576px) {
+  .tbody-fs {
+    font-size: 16px;
+  }
+}
+
+@media (min-width:768px) {
+  .tbody-fs {
+    font-size: 20px;
+  }
 }
 </style>
