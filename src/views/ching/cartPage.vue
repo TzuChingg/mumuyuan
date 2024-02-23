@@ -202,38 +202,57 @@
                     <label for="floatingInput">外送地址</label>
                   </div>
                 </td>
-
               </tr>
-
               <tr>
-                <td class="text-center fs-5">備註</td>
+                <td class="text-center fs-5">附贈餐具</td>
                 <td>
-                  <textarea name="comment" id="comment" cols="30" rows="3" style="resize: none;"></textarea>
+                  <div class="row">
+                    <div class="col">
+                      <div class="form-check">
+                        <VField name="tableware" type="radio" value="0" rules="required"
+                          class=" form-check-input border-primary" id="noTableware" />
+                        <label class="form-check-label fs-5" for="noTableware"> 不用 </label>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="form-check">
+                        <VField name="tableware" type="radio" value="1" rules="required"
+                          class=" form-check-input border-primary" id="needTableware" />
+                        <label class="form-check-label fs-5" for="needTableware"> 需要 </label>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td colspan="2" rowspan="2" class="fs-5">
+                  <div class="col d-flex justify-content-between">
+                    <p for="">備註</p>
+                    <textarea name="comment" id="comment" cols="38" rows="3" style="resize: none;"></textarea>
+                  </div>
                 </td>
               </tr>
               <tr>
-                <td colspan="2" class="text-center fs-5">塑膠袋</td>
-                <td colspan="2">
+                <td class="text-center fs-5">提袋</td>
+                <td>
                   <div class="row">
                     <div class="col">
                       <div class="form-check">
                         <VField name="bags" type="radio" value="0" rules="required"
                           class=" form-check-input border-primary" id="noBags" />
-                        <label class="form-check-label fs-5" for="noBags"> 不用塑膠袋 </label>
+                        <label class="form-check-label fs-5" for="noBags"> 不用 </label>
                       </div>
                     </div>
                     <div class="col">
                       <div class="form-check">
                         <VField name="bags" type="radio" value="1" rules="required"
                           class=" form-check-input border-primary" id="needBags" />
-                        <label class="form-check-label fs-5" for="needBags"> 購買塑膠袋 </label>
+                        <label class="form-check-label fs-5" for="needBags"> 需要 </label>
                       </div>
                     </div>
                   </div>
                 </td>
               </tr>
               <tr>
-                <td colspan="2" class="text-center fs-5">付款方式</td>
+                <td class="text-center fs-5">付款方式</td>
                 <td colspan="2">
                   <div class="row">
                     <div class="col d-flex justify-content-center">
@@ -260,6 +279,7 @@
                   </div>
                   <ErrorMessage name="pay" class="text-danger" />
                 </td>
+                <td></td>
               </tr>
             </tbody>
             <tfoot>
