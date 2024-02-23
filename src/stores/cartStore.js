@@ -24,10 +24,11 @@ export default defineStore ('', {
                 }
             })
             const totalAmount = carts.reduce((acc, item)=> acc + item.amount, 0)
-            
+            const point = parseInt(totalAmount/100)
             return{
                 carts,
-                totalAmount
+                totalAmount,
+                point
             }
         },
         storeInformation: ({ information }) => {

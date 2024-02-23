@@ -10,14 +10,19 @@ export default defineStore('productsStore', {
   }),
   // computed
   getters: {
-    storeProducts: ({ products, categorires, sortedProducts }) => {
+    storeProducts: ({ products, categorires, sortedProducts, loading }) => {
+      // 產品分類與篩選
+      // [分類, [產品]]
       categorires.forEach((item) => {
         sortedProducts.push([item.title, products.filter((el) => el.category == item.id)])
       })
-      return sortedProducts
+      // 檢查產品有沒有空值，刪空值
+      return sortedProducts.filter((item) =>item[1].length !== 0)
     },
-    storeCategorires: ({ categorires }) => {
-      return categorires.map((el) => el.title)
+    // 線上點餐的btn
+    storeCategorires: ({ categorires, sortedProducts }) => {
+      // 從刪去空值的產品列找分類
+      return sortedProducts.filter((item) =>item[1].length !== 0).map(el => el[0])
     }
   },
   // method
@@ -27,7 +32,7 @@ export default defineStore('productsStore', {
         axios
           .get('http://localhost:8080/api/products')
           .then((res) => {
-            this.products = res.data
+            this.products = res.data.filter((item)=> item.isLook === false)
             return axios.get('http://localhost:8080/api/categories')
           })
           .then((resTwo) => {
