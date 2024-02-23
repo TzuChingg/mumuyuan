@@ -4,7 +4,7 @@
       <h2 class="accordion-header" :id="'headingOne' + index">
         <div class="p-3 accordion-button collapsed" data-bs-toggle="collapse" :data-bs-target="'#collapseOne' + index"
           aria-expanded="true" :aria-controls="'collapseOne' + index">
-          <p class="mb-0 fs-5 fw-bolder me-5">訂單編號 : {{ obj.day + '-' + obj.id }}</p>
+          <p class="mb-0 fs-5 fw-bolder me-5">訂單編號 : {{ obj.orderid }}</p>
           <p class="mb-0 fs-5 fw-bolder">日期 {{ obj.day }}</p>
         </div>
       </h2>
@@ -63,7 +63,11 @@
                 <input class="col input-set" type="text" :value="obj.type ? '自取' : '外送'" disabled readonly />
               </div>
               <div class="my-1">
-                <label class="fs-6 col-4">取餐時間</label>
+                <label class="fs-6 col-4">地址</label>
+                <input class="col input-set" type="text" :value="obj.type ? '無' : obj.address" disabled readonly />
+              </div>
+              <div class="my-1">
+                <label class="fs-6 col-4">{{obj.type?'預計取餐時間':'預計送達時間'}}</label>
                 <input class="col input-set" type="text" :value="obj.pickTime" disabled readonly />
               </div>
             </div>
@@ -86,7 +90,7 @@
               </div>
               <div class="my-1">
                 <label class="fs-6 col-4 mb-1">備註</label>
-                <textarea class="col-10 input-set p-2 textarea" :value="obj.comment" style="resize: none" disabled
+                <textarea class="col-10 input-set p-2 textarea" :value="obj.comment" style="resize: none;min-height: 100px;" disabled
                   readonly></textarea>
               </div>
             </div>
