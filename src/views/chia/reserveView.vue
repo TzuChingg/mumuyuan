@@ -4,7 +4,7 @@ export default {
 	data() {
 		return {
 			periods: [], //按紐時段
-			day:[], //抓取預定往後三天
+			day: [], //抓取預定往後三天
 			maxPeople: { //每個時段最多20位(可更改)
 				'11:00': 20, '12:00': 20, '13:00': 20, '14:00': 20, '15:00': 20,
 				'18:00': 20, '19:00': 20, '20:00': 20, '21:00': 20, '22:00': 20,
@@ -192,10 +192,10 @@ export default {
 <template>
 	<div class="reserve container">
 		<div class="reserveContent">
-			<form class="w-75 m-auto">
+			<form class="m-auto">
 				<div class="row">
 					<h2 class="text-center fw-bolder fs-1 text-white py-5">即刻訂位</h2>
-					<div class="col-6">
+					<div class="col-lg-6 col-md-12">
 						<div class="form-floating mb-1" style="height: 85px;">
 							<input type="text" class="form-control" id="reserveName" v-model="list.name">
 							<label for="reserveName">預約人</label>
@@ -214,9 +214,8 @@ export default {
 							</div>
 						</div>
 					</div>
-					<div class="col-6">
-						<select class="form-select form-select-lg p-2" aria-label="Default select example" v-model="list.day"
-							style="height: 58px;">
+					<div class="col-lg-6 col-md-12" style="height: 85px;">
+						<select class="form-select form-select-lg fs-4 p-2" aria-label="Default select example" v-model="list.day">
 							<option value="" selected disabled>選擇時段</option>
 							<option v-for="i in day" :key="i.day" :value="i.date.replaceAll(' ', '')">
 								{{ `${i.date} (${i.day})` }}
@@ -229,7 +228,7 @@ export default {
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-6">
+					<div class="col-lg-6 col-md-12">
 						<div class="form-floating mb-1" style="height: 85px;">
 							<input type="text" class="form-control" id="reservePhone" maxlength="10" v-model="list.phone"
 								@input="checkNumber">
@@ -242,7 +241,7 @@ export default {
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-6">
+					<div class="col-lg-6 col-md-12">
 						<div class="form-floating mb-1" style="height: 85px;">
 							<input type="mail" class="form-control" id="reserveMail" v-model="list.mail">
 							<label for="reserveMail">信箱</label>
@@ -254,10 +253,10 @@ export default {
 					</div>
 				</div>
 			</form>
-			<div class="timeContent m-auto py-3">
+			<div class="timeContent m-auto py-3" v-if="list.day !== ''">
 				<p class="fs-3 fw-bolder text-dark">剩餘座位</p>
 				<div class="row" role="group" aria-label="Basic radio toggle button group">
-					<div class="col-lg-3 col-sm-6 text-center my-3" v-for="(time, idx) in periods" :key="idx">
+					<div class="col-lg-3 col-md-6 col-sm-12 text-center my-3" v-for="(time, idx) in periods" :key="idx">
 						<input type="radio" class="btn-check" name="time" :id="time" :value="time" v-model="list.time"
 							autocomplete="off" :disabled="list.personCount > maxPeople[time] - remainPeople[time] ? true : false">
 						<label class="btn btn-outline-dark w-75" :for="time">{{ time }}
@@ -265,19 +264,20 @@ export default {
 					</div>
 				</div>
 			</div>
-			<div class="notice w-50 py-4 m-auto">
-				<p class="my-1 fs-5">注意事項</p>
-				<ul class="list fs-5">
-					<li>現場保留時間為10分，請客人盡早準時抵達</li>
-					<li>人數異動、臨時取消，請提前告知店家，避免影響雙方權益</li>
-					<li>響應食材不浪費，離開前如有浪費食物疑慮，即額外收取相關費用</li>
-				</ul>
-				<div class="d-flex align-items-center">
-					<input type="checkbox" name="agree" id="agree" class="agree d-inline-block mx-2"
-						v-model="this.regexStatus.agree">
-					<label class="my-4 fs-5 d-inline-block" for="agree">本人已詳細閱讀注意事項，並遵守用餐相關規定。</label>
+			<div class="notice col-lg-6 col-md-10 pt-4  m-auto text-start">
+				<div class="mb-3">
+					<p class="my-1 fs-4 fw-bolder text-dark">注意事項</p>
+					<ul class="list fs-5 text-dark">
+						<li>現場保留時間為10分，請客人盡早準時抵達</li>
+						<li>人數異動、臨時取消，請提前告知店家，避免影響雙方權益</li>
+						<li>響應食材不浪費，離開前如有浪費食物疑慮，即額外收取相關費用</li>
+					</ul>
+					<div class="d-flex align-items-center">
+						<input type="checkbox" name="agree" id="agree" class="agree mx-2" v-model="this.regexStatus.agree">
+						<label class="my-4 fs-5 fw-bolder text-dark" for="agree">本人已詳細閱讀注意事項，並遵守用餐相關規定。</label>
+					</div>
 				</div>
-				<button type="button" class="d-block btn btn-dark mx-auto my-5 py-2 px-3" @click="goReserve"
+				<button type="button" class="d-block btn btn-dark mx-auto mb-5 py-2 px-3" @click="goReserve"
 					:disabled="allTrue">送出預定</button>
 			</div>
 		</div>
@@ -289,10 +289,6 @@ export default {
 
 	.reserveContent {
 		background: #d8d0ae;
-
-		.timeContent {
-			width: 65%;
-		}
 
 		.list {
 			list-style-type: auto;
