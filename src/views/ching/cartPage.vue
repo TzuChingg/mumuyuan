@@ -91,28 +91,7 @@
             </thead>
             <tbody>
               <tr>
-                <td class="text-center">
-                  <label class="form-label fs-5">選擇口味</label>
-                </td>
-                <td >
-                  <div class="row">
-                    <div class="col">
-                      <div class="form-check">
-                        <VField name="flavor" type="radio" value=1 rules="required"
-                          class=" form-check-input border-primary" id="pepperSalt" v-model="flavor" />
-                        <label class="form-check-label fs-5" for="pepperSalt"> 椒鹽 </label>
-                      </div>
-                    </div>
-                    <div class="col">
-                      <div class="form-check">
-                        <VField name="flavor" type="radio" value="2" rules="required"
-                          class=" form-check-input border-primary" id="secretSpice" v-model="flavor" />
-                        <label class="form-check-label fs-5" for="secretSpice"> 秘粉 </label>
-                      </div>
-                    </div>
-                  </div>
-                  <ErrorMessage name="flavor" class="text-danger" />
-                </td>
+
                 <td class="text-center">
                   <label class="form-label fs-5">優惠券</label>
                 </td>
@@ -132,6 +111,32 @@
                     </select>
                   </div>
                 </td>
+                <td colspan="2"></td>
+              </tr>
+              <tr>
+                <td class="text-center">
+                  <label class="form-label fs-5">選擇口味</label>
+                </td>
+                <td>
+                  <div class="row">
+                    <div class="col">
+                      <div class="form-check">
+                        <VField name="flavor" type="radio" value=1 rules="required"
+                          class=" form-check-input border-primary" id="pepperSalt" v-model="flavor" />
+                        <label class="form-check-label fs-5" for="pepperSalt"> 椒鹽 </label>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="form-check">
+                        <VField name="flavor" type="radio" value="2" rules="required"
+                          class=" form-check-input border-primary" id="secretSpice" v-model="flavor" />
+                        <label class="form-check-label fs-5" for="secretSpice"> 秘粉 </label>
+                      </div>
+                    </div>
+                  </div>
+                  <ErrorMessage name="flavor" class="text-danger" />
+                </td>
+                <td colspan="2"></td>
               </tr>
               <tr>
                 <td class="text-center">
@@ -179,19 +184,32 @@
                       <div class="form-check">
                         <VField name="type" type="radio" value="0" rules="required"
                           class=" form-check-input border-primary" id="selfPickup" />
-                        <label class="form-check-label fs-5" for="selfPickup" > 自取 </label>
+                        <label class="form-check-label fs-5" for="selfPickup"> 自取 </label>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="form-check">
+                        <VField name="type" type="radio" value="1" rules="required"
+                          class=" form-check-input border-primary" id="orderDelivery" />
+                        <label class="form-check-label fs-5" for="orderDelivery"> 外送 </label>
                       </div>
                     </div>
                   </div>
                 </td>
+                <td colspan="2">
+                  <div class="form-floating mb-3">
+                    <input type="address" class="form-control" id="floatingInput" placeholder="" disabled>
+                    <label for="floatingInput">外送地址</label>
+                  </div>
+                </td>
+
+              </tr>
+
+              <tr>
                 <td class="text-center fs-5">備註</td>
                 <td>
                   <textarea name="comment" id="comment" cols="30" rows="3" style="resize: none;"></textarea>
                 </td>
-              </tr>
-
-              <tr>
-                
               </tr>
               <tr>
                 <td colspan="2" class="text-center fs-5">塑膠袋</td>
