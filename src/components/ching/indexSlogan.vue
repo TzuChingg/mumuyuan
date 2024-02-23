@@ -49,7 +49,7 @@
             </div>
             <div class="sloganButton position-absolute start-50 translate-middle">
                 <button type="button" class="btn btn-dark bg-light bg-opacity-75 fs-2">
-                    <router-link to="/menu" class=" text-black   text-decoration-none"><strong>立即點餐</strong></router-link>
+                    <router-link to="/onlineOrder" class=" text-black   text-decoration-none"><strong>立即點餐</strong></router-link>
                 </button>
             </div>
         </div>

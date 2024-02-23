@@ -1,4 +1,4 @@
-<template>
+<template >
     <div class="container mb-5">
         <div class="categoryNav row position-sticky sticky-top">
             <div class="col-sm-12 position-relative d-flex justify-content-end">
@@ -12,7 +12,17 @@
             </div>
             <div aria-live="polite" aria-atomic="true" class="d-flex justify-content-end w-100">
                 <div class="toast-container position-absolute" ref="toast">
-
+                    <div :id="item.toastId" class="toast bottom-50 start-100 " role="alert" aria-live="assertive"
+                        aria-atomic="true" v-for="(item, index) in cartToastList" :key="index" >
+                        <div class="toast-header">
+                            <strong class="me-auto">購物車</strong>
+                            <small>Just now</small>
+                            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                        </div>
+                        <div class="toast-body" style="height: 4rem;">
+                            已經 <strong>{{item.product}}</strong> 加入購物車
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -61,13 +71,17 @@ import cartStore from '@/stores/cartStore.js'
 import categoryComponent from '@/components/ching/categoryComponent.vue'
 import { mapActions, mapState } from 'pinia'
 import { Toast } from 'bootstrap/dist/js/bootstrap.bundle.min.js'
-
 export default {
-    created(){
+    data() {
+        return {
+            cartToastList: []
+        }
+    },
+    created() {
         if (docCookies.getItem('identity') === 'baduser') {
             alert('目前為黑名單狀態，即將返回首頁');
             this.$router.push('/')
-			return
+            return
         }
     },
     mounted() {
@@ -76,7 +90,8 @@ export default {
     computed: {
         ...mapState(productsStore, ['storeProducts']), //['秘捲', ['干貝牛肉捲', '番茄牛肉捲']]
         ...mapState(cartStore, ['cartNum']),
-        ...mapState(cartStore, ['cartsList'])
+        ...mapState(cartStore, ['cartsList']),
+        ...mapState(productsStore, ['loadingState'])
     },
     methods: {
         ...mapActions(productsStore, ['getProducts']),
@@ -103,23 +118,13 @@ export default {
         },
         addCartToastFn(product, id) {
             const toastId = new Date().getTime()
-            const content = document.createElement('div')
-            content.innerHTML =
-                `<div id=${toastId} class="toast bottom-50 start-100 " role="alert" aria-live="assertive" aria-atomic="true">
-                <div class="toast-header">
-                    <strong class="me-auto">購物車</strong>
-                    <small>Just now</small>
-                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-                </div>
-                <div class="toast-body" style="height: 4rem;">
-                    已經 <strong>${product}</strong> 加入購物車
-                </div>
-            </div>`
-            // 加入到夜面上
-            this.$refs.toast.appendChild(content)
-            const toastPath = document.getElementById(toastId) // 找toast
-            const toast = new Toast(toastPath)
-            toast.show() //顯示
+            this.cartToastList.push({toastId, product})
+            // 等待渲染
+            setTimeout(() => {
+                const toastPath = document.getElementById(toastId) // 找toast
+                const toast = new Toast(toastPath)
+                toast.show() //顯示
+            }, 100);
         }
     },
     components: {
