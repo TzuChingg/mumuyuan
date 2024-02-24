@@ -175,6 +175,7 @@ export default {
       docCookies.removeItem('token')
       docCookies.removeItem('identity')
       docCookies.removeItem('id')
+      window.location.href = "/"; 
     }
   }
 }

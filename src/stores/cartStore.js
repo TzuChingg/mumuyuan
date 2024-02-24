@@ -6,7 +6,7 @@ export default defineStore ('', {
     // data
     state: ()=>({
         cart: [],
-        information:{},
+        information:{ coupon:[]},
     }),
     // computed
     getters:{
@@ -68,10 +68,12 @@ export default defineStore ('', {
             }
         },
         useCoupon(couponName,id){
-            const index = this.information.coupon.find((item)=>item.name === couponName)
-            this.information.coupon.splice(index,1)
-            const data = { coupon: this.information.coupon };
-            axios.patch(`ttp://localhost:8080/api/users/${id}`, data)
+            if(this.information){
+                const index = this.information.coupon.find((item)=>item.name === couponName)
+                this.information.coupon.splice(index,1)
+                const data = { coupon: this.information.coupon };
+                axios.patch(`http://localhost:8080/api/users/${id}`, data)
+            }
         },
 
         member(id){
@@ -80,7 +82,7 @@ export default defineStore ('', {
             .then(res=>{
                 this.information = res.data
             }).catch((err)=>{
-                
+                console.log(123123123123132)
             })
         }
     }

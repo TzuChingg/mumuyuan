@@ -23,7 +23,7 @@
                             <div class="row row-cols-2 " >
                                 <div class="col d-flex flex-wrap h-25" >  
                                   <div class="row  text-center  h-25 w-100" >
-                                    <div class="col-4 fs-4 text-nowrap " v-for="(food,index) in order.food" :key="index">{{food}}</div>
+                                    <div class="col-4 fs-4 text-nowrap " v-for="(food,index) in order.product" :key="index">{{food}}</div>
                                   </div>   
                                 </div> 
                                 <div class="col">
@@ -42,7 +42,7 @@
                                           <td class="fs-5"><strong>是否要加購提袋:</strong>{{order.bags ? "要":"不要"}}</td>
                                         </tr>
                                         <tr>
-                                          <td class="fs-5"><strong>訂購方式:</strong>{{order.way ? "外帶":"自取"}}</td>
+                                          <td class="fs-5"><strong>訂購方式:</strong>{{order.way ? "自取":"外送"}}</td>
                                         </tr>
                                         <tr>
                                           <td class="fs-5"><strong>預計取餐時間:</strong><span class="text-danger">{{order.time}}</span></td>
@@ -120,7 +120,7 @@
                             <div class="row row-cols-2 " >
                                 <div class="col d-flex flex-wrap h-25" >  
                                   <div class="row row-cols-4 text-center  h-25 w-100" >
-                                    <div class="col-4 fs-4 text-nowrap" v-for="(food, foodIndex) in order.food" :key="foodIndex">{{food}}</div>
+                                    <div class="col-4 fs-4 text-nowrap" v-for="(food, foodIndex) in order.product" :key="foodIndex">{{food}}</div>
                                   </div>   
                                 </div> 
                                 <div class="col">
@@ -139,7 +139,7 @@
                                           <td class="fs-5"><strong>是否要加購提袋:</strong>{{order.bags ? "要":"不要"}}</td>
                                         </tr>
                                         <tr>
-                                          <td class="fs-5"><strong>訂購方式:</strong>{{order.way ? "外帶":"自取"}}</td>
+                                          <td class="fs-5"><strong>訂購方式:</strong>{{order.way ? "自取":"外送"}}</td>
                                         </tr>
                                         <tr>
                                           <td class="fs-5"><strong>預計取餐時間:</strong><span class="text-danger">{{order.time}}</span></td>
@@ -258,7 +258,7 @@ export default {
           let taste = ""
           let spicy = ""
           element.product.forEach(item=>{
-              foods.push(item.name+"X"+item.quantity)
+              foods.push(item.productName+"X"+item.quantity)
           })
 
           if(element.flavor == 1){
@@ -288,7 +288,7 @@ export default {
             payment:element.payment,
             remark:element.comment,
             total:element.price,
-            food:foods,
+            product:foods,
             flavor:taste,
             spicy:spicy,
             day:element.day,
@@ -310,7 +310,7 @@ export default {
             payment:element.payment,
             remark:element.comment,
             total:element.price,
-            food:foods,
+            product:foods,
             flavor:taste,
             spicy:spicy,
             day:element.day,

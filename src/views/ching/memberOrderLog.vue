@@ -171,6 +171,7 @@ export default {
       docCookies.removeItem("token");
       docCookies.removeItem("identity");
       docCookies.removeItem("id");
+      window.location.href = "/"; 
     },
     pushScore(itemId, score) {
       let data = { "star": score, "ScoreText": this.ScoreText, "orderId": `${itemId}` }

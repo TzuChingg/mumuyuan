@@ -34,7 +34,7 @@
                             <input type="button" class="cal btn btn-outline-dark" value="-"
                               @click="decreaseQty(item.id)" />
                             <input type="number" id="" name="quantity"
-                              class="form-control input-number border-primary text-center p-0 h-" :value="item.quantity"
+                              class="form-control input-number border-primary text-center p-0 shadow-none" :value="item.quantity"
                               min="1" max="100" readonly="readonly" />
                             <input type="button" class="cal btn btn-outline-dark" value="+"
                               @click="increaseQty(item.id)" />
@@ -50,9 +50,9 @@
                 <td colspan="3" class="text-end fs-5">總金額</td>
                 <td class="text-center fs-5">$ {{ total }}</td>
               </tr>
-              <tr>
+              <tr v-if="this.myIdentity">
                 <td colspan="3" class="text-end fs-5">獲得點數</td>
-                <td class="text-center fs-5">5 點</td>
+                <td class="text-center fs-5">{{ point }}</td>
               </tr>
               <tr>
                 <td class="col-3">
@@ -90,8 +90,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-
+              <tr v-if="this.myIdentity">
                 <td class="text-center">
                   <label class="form-label fs-5">優惠券</label>
                 </td>
@@ -182,15 +181,15 @@
                   <div class="row">
                     <div class="col">
                       <div class="form-check">
-                        <VField name="type" type="radio" value="0" rules="required"
-                          class=" form-check-input border-primary" id="selfPickup" />
+                        <VField name="type" type="radio" value=false rules="required"
+                          class=" form-check-input border-primary" id="selfPickup" v-model="type"/>
                         <label class="form-check-label fs-5" for="selfPickup"> 自取 </label>
                       </div>
                     </div>
                     <div class="col">
                       <div class="form-check">
-                        <VField name="type" type="radio" value="1" rules="required"
-                          class=" form-check-input border-primary" id="orderDelivery" />
+                        <VField name="type" type="radio" value=true rules="required"
+                          class=" form-check-input border-primary" id="orderDelivery" v-model="type"/>
                         <label class="form-check-label fs-5" for="orderDelivery"> 外送 </label>
                       </div>
                     </div>
@@ -209,15 +208,15 @@
                   <div class="row">
                     <div class="col">
                       <div class="form-check">
-                        <VField name="tableware" type="radio" value="0" rules="required"
-                          class=" form-check-input border-primary" id="noTableware" />
+                        <VField name="tableware" type="radio" value=false rules="required"
+                          class=" form-check-input border-primary" id="noTableware" v-model="tableware"/>
                         <label class="form-check-label fs-5" for="noTableware"> 不用 </label>
                       </div>
                     </div>
                     <div class="col">
                       <div class="form-check">
-                        <VField name="tableware" type="radio" value="1" rules="required"
-                          class=" form-check-input border-primary" id="needTableware" />
+                        <VField name="tableware" type="radio" value=true rules="required"
+                          class=" form-check-input border-primary" id="needTableware" v-model="tableware"/>
                         <label class="form-check-label fs-5" for="needTableware"> 需要 </label>
                       </div>
                     </div>
@@ -226,7 +225,7 @@
                 <td colspan="2" rowspan="2" class="fs-5">
                   <div class="col d-flex justify-content-between">
                     <p for="">備註</p>
-                    <textarea name="comment" id="comment" cols="38" rows="3" style="resize: none;"></textarea>
+                    <textarea v-model="comment" name="comment" id="comment" cols="38" rows="3" style="resize: none; "></textarea>
                   </div>
                 </td>
               </tr>
@@ -236,15 +235,15 @@
                   <div class="row">
                     <div class="col">
                       <div class="form-check">
-                        <VField name="bags" type="radio" value="0" rules="required"
-                          class=" form-check-input border-primary" id="noBags" />
+                        <VField name="bags" type="radio" value=false rules="required"
+                          class=" form-check-input border-primary" id="noBags" v-model="bags"/>
                         <label class="form-check-label fs-5" for="noBags"> 不用 </label>
                       </div>
                     </div>
                     <div class="col">
                       <div class="form-check">
-                        <VField name="bags" type="radio" value="1" rules="required"
-                          class=" form-check-input border-primary" id="needBags" />
+                        <VField name="bags" type="radio" value=true rules="required"
+                          class=" form-check-input border-primary" id="needBags" v-model="bags"/>
                         <label class="form-check-label fs-5" for="needBags"> 需要 </label>
                       </div>
                     </div>
@@ -257,23 +256,16 @@
                   <div class="row">
                     <div class="col d-flex justify-content-center">
                       <div class="form-check">
-                        <VField name="pay" type="radio" value="現金" rules="required"
-                          class=" form-check-input border-primary" id="cash" />
+                        <VField name="pay" type="radio" value=true rules="required"
+                          class=" form-check-input border-primary" id="cash" v-model="payment"/>
                         <label class="form-check-label fs-5" for="cash"> 現金 </label>
                       </div>
                     </div>
                     <div class="col d-flex justify-content-center">
                       <div class="form-check">
-                        <VField name="pay" type="radio" value="信用卡" rules="required"
-                          class=" form-check-input border-primary" id="creditCard" />
-                        <label class="form-check-label fs-5" for="creditCard"> 信用卡 </label>
-                      </div>
-                    </div>
-                    <div class="col d-flex justify-content-center">
-                      <div class="form-check">
-                        <VField name="pay" type="radio" value="Line Pay" rules="required"
-                          class=" form-check-input border-primary" id="linePay" />
-                        <label class="form-check-label fs-5" for="linePay"> Line Pay </label>
+                        <VField name="pay" type="radio" value=false rules="required"
+                          class=" form-check-input border-primary" id="creditCard" v-model="payment"/>
+                        <label class="form-check-label fs-5" for="creditCard"> 線上付款 </label>
                       </div>
                     </div>
                   </div>
@@ -321,21 +313,24 @@ export default {
       flavor: "",
       spicy: "",
       orderId: "",
+      comment:"",
+      type:"",
+      tableware:"",
+      bags:"",
+      payment:"",
+      point:"",
     }
   },
   computed: {
     ...mapState(cartStore, ['cartsList']),
     ...mapState(cartStore, ['storeInformation'])
-
-
   },
   methods: {
     ...mapActions(cartStore, ['removeCartsListItem']),
     ...mapActions(cartStore, ['increaseQty']),
     ...mapActions(cartStore, ['decreaseQty']),
-    ...mapActions(cartStore, ['useCoupon']),
     ...mapActions(cartStore, ['member']),
-
+    ...mapActions(cartStore, ['useCoupon']),
     handleCouponChange(event) {
       this.couponPrice = event.target.value;
       this.couponName = event.target.selectedOptions[0].textContent
@@ -351,22 +346,24 @@ export default {
         "price": this.total,
         "userId": this.myIdentity,
         "status": 1,
-        "type": true,
-        "tableware": true,
-        "bags": true,
-        "payment": true,
-        "comment": "",
+        "type": this.type,
+        "tableware": this.tableware,
+        "bags": this.bags,
+        "payment": this.payment,
+        "comment": this.comment,
         "pickTime": this.currentTime,
         "flavor": this.flavor,
         "spicy": this.spicy,
         "orderid": this.orderId,
         "score": "",
       };
-      this.$axios.post(`http://localhost:8080/api/orders`, data)
+      const point = {point:this.user.point + this.point}
+      this.$axios.patch(`/users/${this.myIdentity}`, point)
+      this.$axios.post(`/orders`, data)
         .then(res => {
           location.reload();
         })
-
+     
     },
   },
   watch: {
@@ -377,14 +374,27 @@ export default {
     },
     couponPrice(newPrice, oldPrice) {
       this.total = this.total - parseInt(oldPrice) + parseInt(newPrice);
+    },
+    'cartsList.carts': {
+      handler(newValue, oldValue) {
+        oldValue.forEach(element => {
+          this.total -= element.amount
+          this.point = parseInt(this.total/100)
+        });
+        newValue.forEach(element => {
+          this.total += element.amount
+          this.point = parseInt(this.total/100)
+        });
+      },
     }
+
   },
   mounted() {
     this.myIdentity = docCookies.getItem("id")
     this.member(this.myIdentity)
     this.user = { ...this.storeInformation }
     this.total = this.cartsList.totalAmount
-
+    this.point = this.cartsList.point
     this.product = this.cartsList.carts.map(item => {
       return {
         productName: item.product.productName,
@@ -394,7 +404,7 @@ export default {
       };
     });
 
-
+  
   },
   created() {
     const currentDate = new Date();
