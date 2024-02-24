@@ -14,16 +14,12 @@ import backend from './backend'
 import indexPage from '/src/views/ching/indexPage.vue'
 import notFoundPage from '/src/views/ching/notFound.vue'
 
-// 線上點餐
-import MenuRouter from './claire/menuRouter'
-import CartRouter from './claire/cartRouter'
+
 
 const routes = [
   //{ path: '/', component: IndexTest },
   { path: '/', name: 'home', component: indexPage },
   { path: '/', name: 'FAQ', component: indexPage },
-  { ...MenuRouter },
-  { ...CartRouter },
   { ...loginRouter },
   { ...reserveRouter },
   { ...searchRouter },
