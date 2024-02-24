@@ -2,23 +2,34 @@
   <div class="accordion mb-4" id="accordionExample">
     <div class="accordion-item" v-for="(obj, index) in tidyResponse" :key="index">
       <h2 class="accordion-header" id="headingOne">
-        <div class="p-3 accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+        <div class="accordion-button collapsed col-12" data-bs-toggle="collapse" data-bs-target="#collapseOne"
           aria-expanded="true" aria-controls="collapseOne">
-          <p class="mb-0 fw-bolder me-5">訂單編號 : {{ obj.orderid }}</p>
-          <p class="mb-0 fw-bolder">日期 {{ obj.day }}</p>
+            <div class="w-50">
+              <div class="row">
+                <p class="mb-1 fw-bolder text-dark fs-5" style="letter-spacing: 2px;">訂單編號</p>
+                <p class="mb-0 fw-bolder">{{ obj.orderid }}</p>
+              </div>
+            </div>
+            <div class="w-50">
+              <div class="row">
+                <p class="mb-1 fw-bolder text-dark fs-5" style="letter-spacing: 2px;">日期</p>
+                <p class="mb-0 fw-bolder fs-6">{{ obj.day }}</p>
+              </div>
+            </div>
+      
         </div>
       </h2>
       <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne">
         <div class="px-2">
           <div class="status mb-3">
-            <p class="fs-4 fw-bolder text-center text-muted my-4">出餐狀態</p>
+            <p class="fs-4 fw-bolder text-center text-muted my-4" style="letter-spacing: 3px;">出餐狀態</p>
             <div class="progress" style="height: 35px">
               <div class="progress-bar progress-bar-striped progress-bar-animated fs-4" role="progressbar"
                 aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" ref="loading"></div>
             </div>
           </div>
-          <table class="table table-borderless fs-5">
-            <thead>
+          <table class="table table-borderless">
+            <thead class="fs-5">
               <tr>
                 <th>圖片</th>
                 <th>品項</th>
@@ -28,10 +39,10 @@
             </thead>
             <tbody class="tbody-fs">
               <tr v-for="(food, index) in obj.product" :key="index">
-                <td class="col-1 col-md-1"><img style="max-width: 80px" :src="food.image" alt="img error" /></td>
-                <td class="col-3 col-md-2">{{ food.productName }}</td>
-                <td class="col-2 col-md-1">{{ food.quantity }}</td>
-                <td class="col-1 col-md-1">{{ food.quantity * food.price }}</td>
+                <td class="col-1 col-sm-1"><div :style="{ backgroundImage:`url(${food.image})`}" class="product-image"></div></td>
+                <td class="col-5 col-sm-2 product-size">{{ food.productName }}</td>
+                <td class="col-3 col-sm-1 product-size">{{ food.quantity }}</td>
+                <td class="col-3 col-sm-1 product-size">{{ food.quantity * food.price }}</td>
               </tr>
             </tbody>
           </table>
@@ -110,6 +121,8 @@
 </template>
 
 <script>
+import { Url } from 'url'
+
 export default {
   props: ['getResponse'],
   data() {
@@ -261,15 +274,22 @@ export default {
   border: none;
 }
 
+.product-image{
+  width: 50px;
+  height: 50px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  // background: center cover no-repeat;
+}
 
 .textarea {
   background: #fcfcb8;
 }
 
 
-
 .wait {
-  width: 10%;
+  width: 20%;
 }
 
 .wait2 {
@@ -279,14 +299,20 @@ export default {
 .wait3 {
   width: 100%;
 }
+
 @media (min-width:576px) {
-  .tbody-fs {
+  .product-size {
     font-size: 16px;
   }
 }
+
 @media (min-width:768px) {
-  .tbody-fs {
+  .product-size {
     font-size: 24px;
+  }
+  .product-image{
+    width: 80px;
+    height: 80px;
   }
 }
 </style>

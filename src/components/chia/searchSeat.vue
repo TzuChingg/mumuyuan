@@ -1,23 +1,32 @@
 <template>
-  <div v-if="tidyResponse.length !== 0">
-    <div v-for="(obj, idx) in tidyResponse" :key="idx" class="card col-lg-4 col-md-6 col-12">
-      <div class="g-0">
-        <div class="col-md-12">
-          <div class="card-body">
-            <h5 class="card-title">日期 : {{ obj.day }}</h5>
-            <p class="card-text">訂位人 : {{ obj.name }}</p>
-            <p class="card-text">手機 : {{ obj.phone }}</p>
-            <p class="card-text">人數 : {{ obj.personCount }}</p>
-            <p class="card-text">時段 : {{ obj.time }}</p>
-            <p class="card-text">
-              <button type="button" class="text-light btn btn-danger" @click="cancelSeat(obj.id)">取消</button>
-            </p>
+  <div class="row g-3" v-if="tidyResponse.length !== 0">
+    <div v-for="(obj, idx) in tidyResponse" :key="idx" class="col-xl-4 col-lg-6 col-md-6">
+      <div class="col-md-12">
+        <div class="card card-body position-relative">
+          <div class="position-absolute" style="top: 12px; right: 10px;">
+            <span class="fs-6 fw-bolder text-dark">{{ obj.day }}</span>
           </div>
+          <div class="mb-3 row fs-5 fw-bolder">
+            <span class="col-sm-4 col-lg-4 text-primary">訂位人</span>
+            <span class="col-sm-8 col-lg-8">{{ obj.name }}</span>
+          </div>
+          <div class="mb-3 row fs-5 fw-bolder">
+            <span class="col-sm-4 col-lg-4 text-primary">手機</span>
+            <span class="col-sm-8 col-lg-8">{{ obj.phone }}</span>
+          </div>
+          <div class="mb-3 row fs-5 fw-bolder">
+            <span class="col-sm-4 col-lg-4 text-primary">人數</span>
+            <span class="col-sm-8 col-lg-8">{{ obj.personCount }}</span>
+          </div>
+          <div class="position-absolute" style="top: 32px; right: 10px;">
+            <span class="fs-6 fw-bolder text-dark">{{ obj.time }}</span>
+          </div>
+          <button type="button" class="text-light btn btn-danger w-100" @click="cancelSeat(obj.id)">取消</button>
         </div>
       </div>
     </div>
   </div>
-  <div class="notice col-lg-8 col-md-10 py-4 m-auto">
+  <div class="notice col-lg-7 col-md-10 py-4 m-auto">
     <p class="my-0 fs-4 fw-bolder text-dark">注意事項</p>
     <ul class="list fs-5 text-dark">
       <li>現場保留時間為10分，請客人盡早準時抵達。</li>
