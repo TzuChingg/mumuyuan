@@ -92,7 +92,11 @@
                                 </div>
                                 <div class="d-flex h-25 justify-content-center mb-2">
                                   <label for="point" class="fs-3 me-2">點數:</label>
-                                  <input type="text" id="point" placeholder="100" class=" form-control border-1 shadow-none  w-50" v-model="dataForm.point">
+                                  <input type="text" id="point" placeholder="100" class=" form-control border-1 shadow-none  w-50" v-model="dataForm.calc">
+                                </div>
+                                <div class="d-flex h-25 justify-content-center mb-2">
+                                  <label for="money" class="fs-3 me-2">折價金額:</label>
+                                  <input type="text" id="money" placeholder="100" class=" form-control border-1 shadow-none  w-50" v-model="dataForm.point">
                                 </div>
                                 <div class="d-flex h-25 justify-content-center mb-2">
                                   <label for="de" class="fs-3 me-2">介紹:</label>
@@ -215,6 +219,7 @@ data() {
       name: "",
       image: "",
       point: "1",
+      calc: "",
       isLook: false,
       description: "",
     }

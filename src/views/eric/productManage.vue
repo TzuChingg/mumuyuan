@@ -100,7 +100,7 @@
                           </div>
                           <div class="modal-footer border-0">
                           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
-                          <button type="button" class="btn btn-primary"  data-bs-dismiss="modal"  @click="update(product.id,product.money,product.count)">確認</button>
+                          <button type="button" class="btn btn-primary"  data-bs-dismiss="modal"  @click="update(product.id,product.money,product.count,product.title)">確認</button>
                           </div>
                       </div>
                     </div>
@@ -333,9 +333,16 @@ methods: {
       this.$axios.delete(`/products/${id}`)
       location.reload();
   },
-  update(id,money,count){
+  update(id,money,count,name){
     const data = {price:parseFloat(money) ,
                   count:parseInt(count)};
+
+    const coupon = {calc:parseInt(-money)}
+    this.$axios.get(`/coupons?name=${name}`)
+    .then(res=>{
+      const itemId = res.data[0].id
+      this.$axios.patch(`/coupons/${itemId}`, coupon)
+    })
     this.$axios.patch(`/products/${id}`, data)
   },
   pushData(){
