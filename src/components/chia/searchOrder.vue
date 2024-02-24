@@ -1,43 +1,54 @@
 <template>
-  <div class="accordion w-70 m-auto mb-5" :id="'accordionExample' + index">
+  <div class="accordion mb-4" id="accordionExample">
     <div class="accordion-item" v-for="(obj, index) in tidyResponse" :key="index">
-      <h2 class="accordion-header" :id="'headingOne' + index">
-        <div class="p-3 accordion-button collapsed" data-bs-toggle="collapse" :data-bs-target="'#collapseOne' + index"
-          aria-expanded="true" :aria-controls="'collapseOne' + index">
-          <p class="mb-0 fs-5 fw-bolder me-5">訂單編號 : {{ obj.day + '-' + obj.id }}</p>
-          <p class="mb-0 fs-5 fw-bolder">日期 {{ obj.day }}</p>
+      <h2 class="accordion-header" id="headingOne">
+        <div class="accordion-button collapsed col-12" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+          aria-expanded="true" aria-controls="collapseOne">
+            <div class="w-50">
+              <div class="row">
+                <p class="mb-1 fw-bolder text-dark fs-5" style="letter-spacing: 2px;">訂單編號</p>
+                <p class="mb-0 fw-bolder">{{ obj.orderid }}</p>
+              </div>
+            </div>
+            <div class="w-50">
+              <div class="row">
+                <p class="mb-1 fw-bolder text-dark fs-5" style="letter-spacing: 2px;">日期</p>
+                <p class="mb-0 fw-bolder fs-6">{{ obj.day }}</p>
+              </div>
+            </div>
+      
         </div>
       </h2>
-      <div :id="'collapseOne' + index" class="accordion-collapse collapse" :aria-labelledby="'headingOne' + index">
-        <div class="accordion-body">
+      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne">
+        <div class="px-2">
           <div class="status mb-3">
-            <p class="fs-4 fw-bolder text-center text-muted mb-4">出餐狀態</p>
+            <p class="fs-4 fw-bolder text-center text-muted my-4" style="letter-spacing: 3px;">出餐狀態</p>
             <div class="progress" style="height: 35px">
               <div class="progress-bar progress-bar-striped progress-bar-animated fs-4" role="progressbar"
                 aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" ref="loading"></div>
             </div>
           </div>
-          <table class="table table-borderless fs-5">
-            <thead>
+          <table class="table table-borderless">
+            <thead class="fs-5">
               <tr>
-                <th class="col-1">圖片</th>
-                <th class="col-2">品項</th>
-                <th class="col-1">數量</th>
-                <th class="col-1">金額</th>
+                <th>圖片</th>
+                <th>品項</th>
+                <th>數量</th>
+                <th>金額</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody class="tbody-fs">
               <tr v-for="(food, index) in obj.product" :key="index">
-                <td><img style="width: 60px" :src="food.image" alt="" /></td>
-                <td class="fs-5">{{ food.productName }}</td>
-                <td>{{ food.quantity }}</td>
-                <td>{{ food.quantity * food.price }}</td>
+                <td class="col-1 col-sm-1"><div :style="{ backgroundImage:`url(${food.image})`}" class="product-image"></div></td>
+                <td class="col-5 col-sm-2 product-size">{{ food.productName }}</td>
+                <td class="col-3 col-sm-1 product-size">{{ food.quantity }}</td>
+                <td class="col-3 col-sm-1 product-size">{{ food.quantity * food.price }}</td>
               </tr>
             </tbody>
           </table>
           <hr />
-          <div class="detail d-flex">
-            <div class="col-6">
+          <div class="detail row">
+            <div class="col-md-6 col-sm-12">
               <div class="my-1">
                 <label class="fs-6 col-4">訂購人</label>
                 <input class="col input-set" type="text" :value="obj.name" disabled readonly />
@@ -63,11 +74,15 @@
                 <input class="col input-set" type="text" :value="obj.type ? '自取' : '外送'" disabled readonly />
               </div>
               <div class="my-1">
-                <label class="fs-6 col-4">取餐時間</label>
+                <label class="fs-6 col-4">地址</label>
+                <input class="col input-set" type="text" :value="obj.type ? '無' : obj.address" disabled readonly />
+              </div>
+              <div class="my-1">
+                <label class="fs-6 col-4">{{ obj.type ? '預計取餐時間' : '預計送達時間' }}</label>
                 <input class="col input-set" type="text" :value="obj.pickTime" disabled readonly />
               </div>
             </div>
-            <div class="settle col-6">
+            <div class="col-md-6 col-sm-12">
               <div class="my-1">
                 <label class="fs-6 col-4">付款方式</label>
                 <input class="col input-set" type="text" :value="obj.payment ? '線上付款' : '現金'" disabled readonly />
@@ -85,9 +100,9 @@
                 <input class="col input-set" type="text" :value="obj.price" disabled readonly />
               </div>
               <div class="my-1">
-                <label class="fs-6 col-4 mb-1">備註</label>
-                <textarea class="col-10 input-set p-2 textarea" :value="obj.comment" style="resize: none" disabled
-                  readonly></textarea>
+                <label class="fs-6 col-4 mb-1 d-block">備註</label>
+                <textarea class="col-md-10 col-12 input-set p-2 textarea" :value="obj.comment"
+                  style="resize: none;min-height: 100px;" disabled readonly></textarea>
               </div>
             </div>
           </div>
@@ -95,9 +110,9 @@
       </div>
     </div>
   </div>
-  <div class="notice w-50 py-4 m-auto">
-    <p class="my-0 fs-5">注意事項</p>
-    <ul class="list fs-5">
+  <div class="notice col-md-6 col-sm-12 fs-4 py-5 m-auto">
+    <p class="my-0 fs-4 fw-bolder text-dark">注意事項</p>
+    <ul class="list fs-5 text-dark">
       <li>取餐時，請現場清點餐點，確保商品製作無誤。</li>
       <li>請務必當場清點找零</li>
       <li>依現場排隊取餐</li>
@@ -106,6 +121,8 @@
 </template>
 
 <script>
+import { Url } from 'url'
+
 export default {
   props: ['getResponse'],
   data() {
@@ -257,20 +274,22 @@ export default {
   border: none;
 }
 
-.table th {
-  min-width: 80px;
+.product-image{
+  width: 50px;
+  height: 50px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  // background: center cover no-repeat;
 }
 
 .textarea {
   background: #fcfcb8;
 }
 
-.w-70 {
-  width: 70%;
-}
 
 .wait {
-  width: 10%;
+  width: 20%;
 }
 
 .wait2 {
@@ -279,5 +298,21 @@ export default {
 
 .wait3 {
   width: 100%;
+}
+
+@media (min-width:576px) {
+  .product-size {
+    font-size: 16px;
+  }
+}
+
+@media (min-width:768px) {
+  .product-size {
+    font-size: 24px;
+  }
+  .product-image{
+    width: 80px;
+    height: 80px;
+  }
 }
 </style>

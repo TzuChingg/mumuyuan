@@ -21,7 +21,6 @@ export default {
 					if (response.status !== 200 || response.data.length === 0) {
 						alert('查無訂位');
 					} else {
-						console.log(response.data);
 						this.getResponse = response.data;
 					}
 				})
@@ -69,9 +68,9 @@ export default {
 </script>
 <template>
 	<div class="search container">
-		<div class="searchContent">
+		<div class="searchContent col-lg-10 col-sm-12 mx-auto">
 			<h2 class="text-center fw-bolder fs-1 text-white py-5">訂位/訂單查詢</h2>
-			<div class="radioContent w-70 m-auto mb-3 d-flex align-items-center">
+			<div class="radioContent m-auto mb-3 d-flex align-items-center">
 				<div class="form-check mb-0 me-3">
 					<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="bookingfrom"
 						v-model="radioToggle">
@@ -88,22 +87,22 @@ export default {
 				</div>
 
 			</div>
-			<div class="d-flex flex-column w-70 m-auto mb-5">
-				<div class="mb-3 col-4 fs-4" v-if="radioToggle === 'bookingfrom'">
+			<div class="d-flex flex-column m-auto mb-5">
+				<div class="mb-3 col-lg-4 col-md-6 col-sm-12 fs-4" v-if="radioToggle === 'bookingfrom'">
 					<div class="mb-3 fs-4">
-						<label for="mumuyuanPhone" class="form-label fw-bolder mb-1">手機</label>
+						<label for="mumuyuanPhone" class="form-label fw-bolder mb-1" style="letter-spacing: 1px;">手機</label>
 						<input type="email" class="form-control" id="mumuyuanPhone" placeholder="請輸入手機" v-model="userInput.phone">
 					</div>
 					<div class="mb-4 fs-4">
-						<label for="mumuyuanMail" class="form-label fw-bolder mb-1">信箱</label>
+						<label for="mumuyuanMail" class="form-label fw-bolder mb-1" style="letter-spacing: 1px;">信箱</label>
 						<input type="text" class="form-control" id="mumuyuanMail" placeholder="請輸入信箱" v-model="userInput.mail">
 					</div>
 				</div>
-				<div class="mb-3 col-4 fs-4" v-else>
-					<label for="mumuyuanPhone" class="form-label fw-bolder mb-1">訂單編號</label>
+				<div class="mb-3 col-lg-4 col-md-6 col-sm-12 fs-4" v-else>
+					<label for="mumuyuanPhone" class="form-label fw-bolder mb-1" style="letter-spacing: 1px;">訂單編號</label>
 					<input type="email" class="form-control mb-3" id="mumuyuanPhone" placeholder="請輸入訂單編號" v-model="orderNumber">
 				</div>
-				<button type="button" class="btn btn-dark w-25" :disabled="ctlOrderBtn" @click="startSearch">查詢</button>
+				<button type="button" class="btn btn-dark col-lg-4 col-md-6 col-sm-12 fs-4" :disabled="ctlOrderBtn" @click="startSearch">查詢</button>
 			</div>
 			<div class="min-heigth">
 				<searchOrder v-if="showOrder" :getResponse="getResponse" />
@@ -123,10 +122,6 @@ export default {
 		#exampleRadios2 {
 			width: 20px;
 			height: 20px;
-		}
-
-		.w-70 {
-			width: 70%;
 		}
 
 		.min-heigth {
