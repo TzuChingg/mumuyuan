@@ -54,11 +54,9 @@ export default {
   },
   methods: {
     cancelSeat(ordersId) {
-      console.log(ordersId)
       this.$axios
         .delete(`/bookingfrom/${ordersId}`)
         .then(response => {
-          console.log(response)
           if (response.status === 200) {
             this.tidyResponse = []
             alert('成功取消')
