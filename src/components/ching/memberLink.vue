@@ -20,7 +20,6 @@
       <router-link to="/" class="d-block link-underline link-underline-opacity-0" @click="signOut">登出</router-link>
     </button>
   </div>
-  {{ linkSetting }}
 </template>
 <script>
 import { docCookies } from '../../assets/cookie.js';

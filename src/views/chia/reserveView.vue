@@ -214,13 +214,14 @@ export default {
 							</div>
 						</div>
 					</div>
-					<div class="col-lg-6 col-md-12" style="height: 85px;">
+					<div class="col-lg-6 col-md-12 form-floating" style="height: 85px;">
 						<select class="form-select form-select-lg fs-4 p-2" aria-label="Default select example" v-model="list.day">
-							<option value="" selected disabled>選擇時段</option>
+							<option value="" selected disabled></option>
 							<option v-for="i in day" :key="i.day" :value="i.date.replaceAll(' ', '')">
 								{{ `${i.date} (${i.day})` }}
 							</option>
 						</select>
+						<label style="left: 10px;" v-if="list.day == ''">選擇時段</label>
 						<div v-if="list.day != ''">
 							<span v-if="regexStatus.day" class="text-success">✔</span>
 							<span v-else class="text-danger">✘</span>
