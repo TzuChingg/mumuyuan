@@ -14,18 +14,16 @@ import backend from './backend'
 import indexPage from '/src/views/ching/indexPage.vue'
 import notFoundPage from '/src/views/ching/notFound.vue'
 
-
-
 const routes = [
   //{ path: '/', component: IndexTest },
   { path: '/', name: 'home', component: indexPage },
   { path: '/', name: 'FAQ', component: indexPage },
-  { ...loginRouter },
-  { ...reserveRouter },
-  { ...searchRouter },
-  ...backend,
-  ...memberRouter,
-  { path: '/:pathMatch(.*)*', name: 'notFound', component: notFoundPage }
+  { path: '/:pathMatch(.*)*', name: 'notFound', component: notFoundPage },
+   ...loginRouter ,
+   ...reserveRouter ,
+   ...searchRouter ,
+   ...backend ,
+   ...memberRouter ,
 ]
 
 const router = createRouter({
@@ -33,23 +31,23 @@ const router = createRouter({
   routes,
   // 在同頁錨點
   scrollBehavior(to, from, savedPosition) {
-    if (savedPosition){
+    if (savedPosition) {
       return savedPosition
-    }else if (to.hash) {
+    } else if (to.hash) {
       const element = document.getElementById(to.hash)
-      if (['#固定套餐', '#秘捲', '#肉品', '#海鮮', '#酒食', '#蔬菜', '#經典',].includes(to.hash)){
-        return {el: element, top: 50, behavior: 'smooth' } // <==== the important part
+      if (['#固定套餐', '#秘捲', '#肉品', '#海鮮', '#酒食', '#蔬菜', '#經典'].includes(to.hash)) {
+        return { el: element, top: 50, behavior: 'smooth' } // <==== the important part
       }
       if ('#FAQ' === to.hash) {
-        return {el: element, top:0,  behavior: 'smooth' } // <==== the important part
+        return { el: element, top: 0, behavior: 'smooth' } // <==== the important part
       }
-    }else{
-        return new Promise((resolve, reject) => {
-            setTimeout(() => {
-              resolve({ left: 0, top: 0, behavior: 'smooth' })
-            }, 400)
-          })
-      }
+    } else {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve({ left: 0, top: 0, behavior: 'smooth' })
+        }, 400)
+      })
+    }
   }
 })
 

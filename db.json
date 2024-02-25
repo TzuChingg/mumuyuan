@@ -2,7 +2,7 @@
   "users": [
     {
       "email": "joker@gmail.com",
-      "password": "$2a$10$9NnNqirOqygdKhl4tTnWyOp9jbAvsX3Lglm4G9d0dLZ1GJ2evs8Zy",
+      "password": "$2a$10$9h2o35V5p6uq5aAz8x8YWehInIv7ms/HvFLMPDbLnnWyc/tF9EQfa",
       "copyPassword": "123456",
       "name": "joker",
       "phone": "093333333",
@@ -20,10 +20,17 @@
           "calc": "-30",
           "image": "money",
           "description": "沒有限制,每筆都能使用"
+        },
+        {
+          "id": 7,
+          "name": "折40塊",
+          "calc": "-40",
+          "image": "money",
+          "description": "沒有限制,每筆都能使用"
         }
       ],
       "identity": "user",
-      "point": 700,
+      "point": 550,
       "id": 1
     },
     {
