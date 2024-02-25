@@ -1,0 +1,60 @@
+<template>
+  <h3 class="text-center">我的優惠券</h3>
+  <hr class="pt-3" />
+  <div class="row justify-content-center">
+    <div class="col-12 mb-4">
+      <div class="d-flex flex-wrap">
+        <div class="mb-4 col-sm-6 col-xl-4 p-2" v-for="i in myCoupons" :key="i.name">
+          <img :src="`/木木苑食材修圖/${i.image}.jpg`" class="card-img-top" alt="image error" />
+          <div class="card-body p-2 bg-light">
+            <h5 class="card-title fw-bolder mb-2">{{ i.name }}</h5>
+            <p class="card-text mb-0">{{ i.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+<script>
+import { docCookies } from '../../assets/cookie'
+
+export default {
+  data() {
+    return {
+      myCoupons: []
+    }
+  },
+  methods: {
+    async filterCoupons() {
+      try {
+        // const getCoupons = await this.$axios.get('/coupons')
+        const getUsers = await this.$axios.get(`/users/${docCookies.getItem('id')}`)
+        this.myCoupons = getUsers.data.coupon
+        // console.log(splitCoupons);
+        // splitCoupons.forEach((iCoupons) => {
+        //   const findIndex = getCoupons.data.findIndex((every) => every.id === iCoupons - 0)
+        //   this.myCoupons.push(getCoupons.data[findIndex])
+        // })
+      } catch (error) { console.log(error); }
+    }
+  },
+  mounted() {
+    this.filterCoupons()
+  }
+}
+</script>
+<style lang="scss" scoped>
+.memberdiscount {
+  min-height: calc(100vh - 174px);
+
+  button:hover {
+    a {
+      color: white;
+    }
+  }
+
+  .questionIcon:hover {
+    cursor: pointer;
+  }
+}
+</style>

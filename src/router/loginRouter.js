@@ -4,7 +4,7 @@ import loginComponent from '../components/chia/loginComponent.vue'
 import loginView from '../views/chia/loginView.vue'
 
 
-export default {
+export default [{
   path: '/login',
   component: loginView,
   children: [
@@ -12,4 +12,4 @@ export default {
     { path: 'signin', component: signinComponent },
     { path: 'forget', component: forgetComponent },
   ],
-}
+}]

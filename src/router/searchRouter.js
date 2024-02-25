@@ -4,7 +4,7 @@
 // import loginView from '../views/chia/loginView.vue'
 import searchView from '../views/chia/searchView.vue'
 
-export default {
+export default [{
   path: '/search',
   component: searchView
-}
+}]
