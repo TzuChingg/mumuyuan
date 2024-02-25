@@ -34,6 +34,17 @@
       "id": 1
     },
     {
+      "email": "amin@gmail.com",
+      "password": "$2a$10$sntD.IJ9L2hqi6gLNlxC9.LteqNoQumFbB58pG6d6cZ6Cdiwb6lO2",
+      "copyPassword": "123456",
+      "name": "阿明",
+      "phone": "0212345678",
+      "identity": "user",
+      "point": 0,
+      "coupon": [],
+      "id": 2
+    },
+    {
       "email": "admin@gmail.com",
       "password": "$2a$10$pbkX8jgDZHTDNP3YMgTKlelUwrm9dEAXAv8hHnZXoGrAgz1gKL/Uq",
       "copyPassword": "123456",
@@ -69,6 +80,17 @@
       "coupon": [],
       "point": 1000,
       "id": 4
+    },
+    {
+      "email": "jocker.ss.cat@gmail.com",
+      "password": "$2a$10$Wb9exj.zfZoH/gpvzvPQoOWNF.YGSAFJdSxG6rTp3b6oEdl0HmlL.",
+      "copyPassword": "123456",
+      "name": "pin",
+      "phone": "0900000000",
+      "identity": "user",
+      "point": 0,
+      "coupon": [],
+      "id": 5
     }
   ],
   "categories": [
