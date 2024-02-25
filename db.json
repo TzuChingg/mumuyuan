@@ -80,17 +80,6 @@
       "coupon": [],
       "point": 1000,
       "id": 4
-    },
-    {
-      "email": "jocker.ss.cat@gmail.com",
-      "password": "$2a$10$Wb9exj.zfZoH/gpvzvPQoOWNF.YGSAFJdSxG6rTp3b6oEdl0HmlL.",
-      "copyPassword": "123456",
-      "name": "pin",
-      "phone": "0900000000",
-      "identity": "user",
-      "point": 0,
-      "coupon": [],
-      "id": 5
     }
   ],
   "categories": [

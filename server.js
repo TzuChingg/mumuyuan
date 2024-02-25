@@ -98,6 +98,9 @@ wss.on('connection', function connection(ws) {
                   .card-img-top{
                     width: 100%;
                   }
+                  .card-text{
+                    margin-bottom: 30px;
+                  }
                   .mb-4 {
                     margin-bottom: 1.5rem;
                   }
@@ -119,33 +122,22 @@ wss.on('connection', function connection(ws) {
                     <h5 class="card-title fw-bolder" style="letter-spacing: 1px; color: #a86a46">
                       您的密碼為：
                     </h5>
-                    <p id="copy" class="card-text border">
+                    <p class="card-text border">
                       ${parsedMessage.ubPassword}
                     </p>
-                    <button class="w-100 btn text-light" id="copybtn" style="background-color: #a86a46">
-                      點我複製
-                    </button>
+                    <div style="text-align: right; font-size:12px; color: #a86a46;">
+                      <p style="margin:0; font-weight: 400; letter-spacing: 1px;">感謝您的收取</P>
+                      <p style="margin:0 0 5px 0; font-weight: 400; letter-spacing: 1px;">祝您用餐愉快</P>
+                      <p style="margin:0; font-weight: 200;letter-spacing: 1px;">- 木木苑串燒專門店mumuyuan</P>
+                    </div>
                   </div>
                 </div>
-                <script>
-                  const copybtn = document.querySelector('#copybtn')
-                  copybtn.addEventListener('click', copyFn)
-                  function copyFn() {
-                    const range = document.createRange()
-                    const texts = document.querySelector('#copy')
-                    range.selectNode(texts)
-                    const selection = window.getSelection()
-                    selection.addRange(range)
-                    document.execCommand('copy')
-                    selection.removeAllRanges()
-                  }
-                </script>
               </body>
             </html>
             `
           })
           .then((info) => {
-            ws.send(JSON.stringify(info.response));
+            ws.send(JSON.stringify(info.response))
           })
           .catch(console.error)
       }
