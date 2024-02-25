@@ -7,7 +7,7 @@
             <nav class="navbar navbar-expand-lg navbar-light mt-4 mb-4">
               <div class="container-fluid">
                 <router-link to="/">
-                  <img class="w-100" src="/首頁圖片/logo.png" alt="" />
+                  <img class="w-100" src="/首頁圖片/logo.png" alt="logo" />
                 </router-link>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                   data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -17,61 +17,66 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul class="navbar-nav ms-auto align-items-center">
                     <li class="nav-item">
-                      <router-link to="/onlineOrder" class="nav-link fs-5 text-light text-decoration-none">線上點餐</router-link>
-                      <div :class="{ 'breath' : this.$route.path == '/onlineOrder'}"></div>
+                      <router-link to="/onlineOrder"
+                        class="nav-link fs-5 text-light text-decoration-none">線上點餐</router-link>
+                      <div :class="{ 'breath': this.$route.path == '/onlineOrder' }"></div>
                     </li>
                     <li class="nav-item">
                       <router-link to="/reserve" class="nav-link fs-5 text-light text-decoration-none">立即訂位</router-link>
-                      <div :class="{ 'breath' : this.$route.path == '/reserve'}"></div>
+                      <div :class="{ 'breath': this.$route.path == '/reserve' }"></div>
                     </li>
                     <li class="nav-item">
                       <router-link to="/search"
                         class="nav-link fs-5 text-light text-decoration-none">訂位/訂單查詢</router-link>
-                        <div :class="{ 'breath' : this.$route.path == '/search'}"></div>
+                      <div :class="{ 'breath': this.$route.path == '/search' }"></div>
                     </li>
                     <li class="nav-item">
-                      <router-link :to="{name: 'FAQ', hash: '#FAQ'}" class="nav-link fs-5 text-light text-decoration-none">常見問題</router-link>
-                        <div :class="{ 'breath' : this.$route.hash === '#FAQ'}"></div>
+                      <router-link :to="{ name: 'FAQ', hash: '#FAQ' }"
+                        class="nav-link fs-5 text-light text-decoration-none">常見問題</router-link>
+                      <div :class="{ 'breath': this.$route.hash === '#FAQ' }"></div>
                     </li>
-                    <li class="nav-item "  v-if="hasToken">
-                      <router-link  :to="identityHref" class="nav-link fs-5 text-light text-decoration-none"><img
+                    <li class="nav-item " v-if="hasToken">
+                      <router-link :to="identityHref" class="nav-link fs-5 text-light text-decoration-none"><img
                           src="/首頁圖片/user.png" alt="會員中心"></router-link>
-                          <div :class="{ 'breath' : this.$route.path == '/memberCenter'}"></div>
-                          <div :class="{ 'breath' : this.$route.path == '/member/orderLog'}"></div>
-                          <div :class="{ 'breath' : this.$route.path == '/member/discount'}"></div>
-                          <div :class="{ 'breath' : this.$route.path == '/member/exchange'}"></div>
+                      <div :class="{ 'breath': this.$route.path == '/memberCenter' }"></div>
+                      <div :class="{ 'breath': this.$route.path == '/member/orderLog' }"></div>
+                      <div :class="{ 'breath': this.$route.path == '/member/discount' }"></div>
+                      <div :class="{ 'breath': this.$route.path == '/member/exchange' }"></div>
                     </li>
-                    <li class="nav-item "  v-if="hasToken">
-                        <button type="button" class="btn position-relative bg-transparent" ref="liveToastBtn" @click="show">
+                    <li class="nav-item " v-if="hasToken">
+                      <button type="button" class="btn position-relative bg-transparent" ref="liveToastBtn" @click="show">
                         <i class="bi bi-bell fs-2   text-white"></i>
-                        <span class="position-absolute top-25 start-75 translate-middle p-2 bg-danger border border-light rounded-circle " :class="{ 'd-none': notice }"></span>
-                        </button>
-                        <div class="position-absolute top-60 end-30 p-3" style="z-index: 9999">
-                          <div ref="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-                            <div class="toast-header">
-                              <strong class="me-auto">通知紀錄</strong>
-                              <button type="button" class="btn-close  shadow-sm" data-bs-dismiss="toast" aria-label="Close"></button>
-                            </div>
-                            <div v-if="news.length>0" class="toast-body" >
-                              <div v-for="(no, index) in news" :key="index">
-                                你的訂單{{ no.num }}正在 [{{ no.status }}]狀態
-                              </div>
-                            </div>
-                            <div v-else-if="news.length == 0" class="toast-body" >
-                              目前沒有通知
+                        <span
+                          class="position-absolute top-25 start-75 translate-middle p-2 bg-danger border border-light rounded-circle "
+                          :class="{ 'd-none': notice }"></span>
+                      </button>
+                      <div class="position-absolute top-60 end-30 p-3" style="z-index: 9999">
+                        <div ref="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                          <div class="toast-header">
+                            <strong class="me-auto">通知紀錄</strong>
+                            <button type="button" class="btn-close  shadow-sm" data-bs-dismiss="toast"
+                              aria-label="Close"></button>
+                          </div>
+                          <div v-if="news.length > 0" class="toast-body">
+                            <div v-for="(no, index) in news" :key="index">
+                              你的訂單{{ no.num }}正在 [{{ no.status }}]狀態
                             </div>
                           </div>
+                          <div v-else-if="news.length == 0" class="toast-body">
+                            目前沒有通知
+                          </div>
                         </div>
+                      </div>
                     </li>
                     <li class="nav-item" v-else>
                       <router-link to="/login" class="nav-link fs-5 text-light text-decoration-none">登入/註冊</router-link>
-                      <div :class="{ 'breath' : this.$route.path == '/login'}"></div>
-                      <div :class="{ 'breath' : this.$route.path == '/login/forget'}"></div>
-                      <div :class="{ 'breath' : this.$route.path == '/login/signin'}"></div>
+                      <div :class="{ 'breath': this.$route.path == '/login' }"></div>
+                      <div :class="{ 'breath': this.$route.path == '/login/forget' }"></div>
+                      <div :class="{ 'breath': this.$route.path == '/login/signin' }"></div>
                     </li>
 
                   </ul>
-                 </div>
+                </div>
               </div>
             </nav>
           </div>
@@ -89,13 +94,13 @@ export default {
   data() {
     return {
       hasToken: false,
-      identityHref: "#/memberCenter",
+      identityHref: "#/member",
       identity: 'user',
       showNav: true,
-      notice:true,
-      newStatus:0,
-      orderId:0,
-      news:[]
+      notice: true,
+      newStatus: 0,
+      orderId: 0,
+      news: []
     }
   },
   computed: {
@@ -105,7 +110,7 @@ export default {
   },
   watch: {
     currentRoute(newRoute, oldRoute) {
-      this.identityHref = (docCookies.getItem("identity") === "admin") ? "/order" : "/memberCenter";
+      this.identityHref = (docCookies.getItem("identity") === "admin") ? "/order" : "/member";
       if (newRoute.fullPath === '/') {
         this.hasToken = docCookies.hasItem("token");
       }
@@ -118,76 +123,77 @@ export default {
           newRoute.fullPath === '/discount' ||
           newRoute.fullPath === '/journey')) ? false : true;
     },
-    newStatus(){
-      this.news.forEach(item=>{
-          if(item.num.includes(this.orderId)){
-            item.status = this.newStatus
-            if(item.status == 1){
-              item.status = "待接受"
-            }else if(item.status == 2){
-              item.status = "準備中"
-            }else if(item.status == 3){
-              item.status = "已完成"
-            }
+    newStatus() {
+      this.news.forEach(item => {
+        if (item.num.includes(this.orderId)) {
+          item.status = this.newStatus
+          if (item.status == 1) {
+            item.status = "待接受"
+          } else if (item.status == 2) {
+            item.status = "準備中"
+          } else if (item.status == 3) {
+            item.status = "已完成"
           }
+        }
       })
 
     }
   },
-  methods:{
-    show(){
+  methods: {
+    show() {
       var toast = new Toast(this.$refs.liveToast)
       toast.show()
       this.notice = true
     }
   },
-  mounted(){
-        this.hasToken = docCookies.hasItem("token");
+  mounted() {
+    this.hasToken = docCookies.hasItem("token");
 
-        this.socket = new WebSocket('ws://localhost:8080/ws');
-        let myId =docCookies.getItem("id")
-        this.socket.onmessage = (event) => {
-        const receivedData = JSON.parse(event.data);
-        if(receivedData.userId == myId){
-            this.notice = false
-            this.news.forEach(item=>{
-              if(item.num.includes(receivedData.id)){
-                this.orderId = receivedData.id
-                this.newStatus = receivedData.data
-              }
-            })
-        }
-        };
+    this.socket = new WebSocket('ws://localhost:8080/ws');
+    let myId = docCookies.getItem("id")
+    this.socket.onmessage = (event) => {
+      const receivedData = JSON.parse(event.data);
+      if (receivedData.userId == myId) {
+        this.notice = false
+        this.news.forEach(item => {
+          if (item.num.includes(receivedData.id)) {
+            this.orderId = receivedData.id
+            this.newStatus = receivedData.data
+          }
+        })
+      }
+    };
 
-        this.$axios.get(`/notice/?userId=${myId}&_expand=order`)
-        .then(res=>{
-          let text = ""
-          res.data.forEach(element=>{
-            if(element.order.status == 1){
-              text = "待接受"
-            }else if(element.order.status == 2){
-              text = "準備中"
-            }else if(element.order.status == 3){
-              text = "已完成"
-            }
-            this.news.push({
-              num:element.order.orderid,
-              status:text
-            })
+    this.$axios.get(`/notice/?userId=${myId}&_expand=order`)
+      .then(res => {
+        let text = ""
+        res.data.forEach(element => {
+          if (element.order.status == 1) {
+            text = "待接受"
+          } else if (element.order.status == 2) {
+            text = "準備中"
+          } else if (element.order.status == 3) {
+            text = "已完成"
+          }
+          this.news.push({
+            num: element.order.orderid,
+            status: text
           })
         })
-    },
-    beforeUnmount() {
+      })
+  },
+  beforeUnmount() {
     // Close the WebSocket connection when the component is destroyed
     if (this.socket) {
-        this.socket.close();
+      this.socket.close();
     }
-    },
+  },
 }
 </script>
 
 <style scoped lang="scss">
-@import '/src/assets/main.scss'; 
+@import '/src/assets/main.scss';
+
 .bg-image {
   background-image: url('/首頁圖片/bg-shape.png');
   background-size: cover;
@@ -212,16 +218,18 @@ export default {
   padding: 0;
 }
 
-.nav-item a, .nav-item button {
+.nav-item a,
+.nav-item button {
   padding: 0.5em 0.8em;
   position: relative;
   text-decoration: none;
   font-size: 20px;
 }
 
-.nav-item a::before,.nav-item a::after,
-.nav-item button::before, .nav-item button::after
-{
+.nav-item a::before,
+.nav-item a::after,
+.nav-item button::before,
+.nav-item button::after {
   content: "";
   height: 14px;
   width: 14px;
@@ -241,7 +249,7 @@ export default {
 }
 
 .nav-item a:after,
-.nav-item button:after  {
+.nav-item button:after {
   content: "";
   left: 0;
   bottom: 0;
@@ -250,41 +258,43 @@ export default {
   transform: translate(100%, -50%);
 }
 
-.nav-item a:hover:before, .nav-item a:hover:after ,
-.nav-item button:hover:before, .nav-item button:hover:after 
-{
+.nav-item a:hover:before,
+.nav-item a:hover:after,
+.nav-item button:hover:before,
+.nav-item button:hover:after {
   transform: translate(0, 0);
   opacity: 1;
 }
 
-.nav-item a:hover ,
-.nav-item button:hover{
+.nav-item a:hover,
+.nav-item button:hover {
   color: black;
 }
 
 .breath {
   border-top: 2px solid $secondary;
-	opacity:0.8;
+  opacity: 0.8;
   margin: 0px;
-	overflow: hidden;
+  overflow: hidden;
 
-	animation-name: breath;
-	animation-duration: 4s;
-	animation-timing-function: ease-in-out;
-	animation-iteration-count: infinite;
+  animation-name: breath;
+  animation-duration: 4s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
 }
 
 @keyframes breath {
-	from {
-		opacity: 0.4;
-	}
-	50% {
-		opacity: 0.8;
+  from {
+    opacity: 0.4;
+  }
 
-	}
-	to {
-		opacity: 0.4;
-	}
+  50% {
+    opacity: 0.8;
+
+  }
+
+  to {
+    opacity: 0.4;
+  }
 }
-
 </style>

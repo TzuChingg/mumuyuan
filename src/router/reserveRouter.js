@@ -4,7 +4,7 @@
 // import loginView from '../views/chia/loginView.vue'
 import reserveView from '../views/chia/reserveView.vue'
 
-export default {
+export default [{
   path: '/reserve',
   component: reserveView
-}
+}]
