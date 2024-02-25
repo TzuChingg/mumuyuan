@@ -1,13 +1,13 @@
 <template>
-  <h3 class="text-center">點數兌換</h3>
+  <h3 class="text-center text-dark" style="font-weight: 600;letter-spacing: 2px;">點數兌換</h3>
   <hr />
-  <div class="row justify-content-center">
-    <div class="col-11 mb-4">
-      <h5 class="text-center">會員點數：{{ userInfo.point }} 點</h5>
+  <div class="row justify-content-center memberexchange">
+    <div class="col-12 mb-4">
+      <h5 class="fw-bolder px-2" style="letter-spacing: 1px;color: #d73e2dd4;">會員點數：{{ userInfo.point }} 點</h5>
       <hr />
       <div class="d-flex flex-wrap">
         <!-- card 1 -->
-        <div class="mb-4 col-sm-6 col-xl-4 p-2" v-for="i in coupons" :key="i.name">
+        <div class="mb-4 col-lg-4 col-6 p-2" v-for="i in coupons" :key="i.name">
           <img :src="`/木木苑食材修圖/${i.image}.jpg`" class="card-img-top" alt="image error" />
           <div class="card-body p-2 bg-light">
             <h5 class="card-title fw-bolder">{{ i.name + '1' + i.unit }}</h5>
@@ -98,7 +98,6 @@ export default {
 </script>
 <style lang="scss" scoped>
 .memberexchange {
-  min-height: calc(100vh - 174px);
 
   button:hover {
     a {

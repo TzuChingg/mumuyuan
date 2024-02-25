@@ -1,9 +1,9 @@
 <template>
-  <h3 class="text-center">歷史訂單</h3>
+  <h3 class="text-center text-dark" style="font-weight: 600;letter-spacing: 2px;">歷史訂單</h3>
   <hr />
-  <div class="row justify-content-center">
-    <div class="col-11 mb-4">
-      <h5>歷史訂單</h5>
+  <div class="row justify-content-center memberorder">
+    <div class="col-12 mb-4">
+      <h5 class="text-primary fw-bolder" style="letter-spacing: 1px;">歷史訂單</h5>
       <hr />
       <!-- accordion -->
       <div class="accordion mb-4" v-for="(item, index) in finishOrder" :key="index" id="accordionExample">
@@ -26,15 +26,15 @@
               <table class="table table-sm">
                 <thead>
                   <tr>
-                    <th scope="col">品項</th>
-                    <th scope="col">數量</th>
-                    <th scope="col">單價</th>
-                    <th scope="col">總價</th>
+                    <th class="col-2">品項</th>
+                    <th class="col-1">數量</th>
+                    <th class="col-1">單價</th>
+                    <th class="col-1">總價</th>
                   </tr>
                 </thead>
                 <tbody class="table-group-divider">
                   <tr v-for="food in item.product" :key="food">
-                    <td>{{ food.name }}</td>
+                    <td>{{ food.productName }}</td>
                     <td>{{ food.quantity }}</td>
                     <td>{{ food.price }}</td>
                     <td>{{ food.quantity * food.price }}</td>
@@ -136,7 +136,7 @@ export default {
 @import '/src/assets/main.scss';
 
 .memberorder {
-  min-height: calc(100vh - 174px);
+  
 
   button:hover {
     a {

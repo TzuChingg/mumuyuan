@@ -1,31 +1,31 @@
 <template>
-  <h3 class="text-center">會員中心</h3>
+  <h3 class="text-center text-dark" style="font-weight: 600;letter-spacing: 2px;">會員中心</h3>
   <hr />
-  <div class="row justify-content-center">
-    <div class="col-8 mb-4">
-      <h5>基本資料</h5>
+  <div class="row justify-content-center membercenter">
+    <div class="col-10 col-md-8 mb-4">
+      <h5 class="text-primary fw-bolder" style="letter-spacing: 1px;">基本資料</h5>
       <hr />
       <div class="mb-3 row">
-        <label for="name" class="col-xxl-3 col-form-label">姓名：</label>
-        <div class="col-xxl-9">
+        <label for="name" class="col-md-4 col-form-label">姓名：</label>
+        <div class="col-md-8">
           <input type="text" class="form-control" id="name" v-model="userInfo.name" />
         </div>
       </div>
       <div class="mb-3 row">
-        <label for="phone" class="col-xxl-3 col-form-label">手機：</label>
-        <div class="col-xxl-9">
+        <label for="phone" class="col-md-4 col-form-label">手機：</label>
+        <div class="col-md-8">
           <input type="text" class="form-control" id="phone" v-model="userInfo.phone" readonly />
         </div>
       </div>
       <div class="mb-3 row">
-        <label for="email" class="col-xxl-3 col-form-label">信箱：</label>
-        <div class="col-xxl-9">
+        <label for="email" class="col-md-4 col-form-label">信箱：</label>
+        <div class="col-md-8">
           <input type="text" class="form-control" id="email" v-model="userInfo.email" readonly />
         </div>
       </div>
       <div class="mb-3 row">
-        <label for="email" class="col-xxl-3 col-sm-3 col-form-label">會員點數：</label>
-        <div class="col-xxl-9 col-sm-9">
+        <label for="email" class="col-md-4 col-sm-3 col-4 col-form-label">會員點數：</label>
+        <div class="col-md-8 col-sm-9 col-8">
           <p class="mt-2">
             <span>{{ userInfo.point }}</span>
             <span class="questionIcon ms-3 bi-question-circle-fill" data-bs-toggle="tooltip" data-bs-placement="right"
@@ -37,24 +37,24 @@
         <button class="btn btn-primary" type="button" @click="setUserInfo" :disabled="checkEmpty">儲存</button>
       </div>
     </div>
-    <div class="col-8 mb-4">
-      <h5>修改密碼</h5>
+    <div class="col-10 col-md-8 mb-4">
+      <h5 class="text-primary fw-bolder" style="letter-spacing: 1px;">修改密碼</h5>
       <hr />
       <div class="mb-3 row">
-        <label for="name" class="col-xxl-4 col-form-label">目前密碼：</label>
-        <div class="col-xxl-8">
+        <label for="name" class="col-md-4 col-form-label">目前密碼：</label>
+        <div class="col-md-8">
           <input type="text" class="m-0 form-control" :value="userInfo.copyPassword" readonly />
         </div>
       </div>
       <div class="mb-3 row">
-        <label for="phone" class="col-xxl-4 col-form-label">新密碼：</label>
-        <div class="col-xxl-8">
+        <label for="phone" class="col-md-4 col-form-label">新密碼：</label>
+        <div class="col-md-8">
           <input type="password" class="form-control" id="newPassword" v-model="userInfo.newPassword" />
         </div>
       </div>
       <div class="mb-3 row">
-        <label for="name" class="col-xxl-4 col-form-label">重新輸入新密碼：</label>
-        <div class="col-xxl-8">
+        <label for="name" class="col-md-4 col-form-label">重新輸入新密碼：</label>
+        <div class="col-md-8">
           <input type="password" class="form-control" id="rePassword" v-model="userInfo.dbCheckPassword" />
         </div>
       </div>
@@ -147,7 +147,6 @@ export default {
 </script>
 <style lang="scss" scoped>
 .membercenter {
-  min-height: calc(100vh - 174px);
 
   button:hover {
     a {
