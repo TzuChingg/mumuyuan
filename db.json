@@ -22,19 +22,11 @@
           "description": "沒有限制,每筆都能使用"
         },
         {
-<<<<<<< HEAD
           "name": "玉米",
-          "calc": -40,
+          "calc": "-40",
           "image": "38",
           "description": "沒有限制,每筆都能使用",
           "id": 4
-=======
-          "id": 7,
-          "name": "折40塊",
-          "calc": "-40",
-          "image": "money",
-          "description": "沒有限制,每筆都能使用"
->>>>>>> origin
         }
       ],
       "identity": "user",
@@ -908,7 +900,6 @@
       "orderid": "202402242021",
       "score": "",
       "id": 10
-<<<<<<< HEAD
     },
     {
       "isMember": "false",
@@ -964,8 +955,6 @@
       "orderid": "202402252238",
       "score": "",
       "id": 12
-=======
->>>>>>> origin
     }
   ],
   "news": [
