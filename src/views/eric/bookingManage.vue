@@ -115,7 +115,7 @@
                   <span class="ms-6 ">{{finish.people}}位</span><p class="m-0">日期:{{finish.data}}</p>
                 </div>
                 <div class="col-4">
-                  <strong class="m-0">電話:{{finish.phone}}</strong><p class="m-0">{{finish.time}}}</p>
+                  <strong class="m-0">電話:{{finish.phone}}</strong><p class="m-0">{{finish.time}}</p>
                 </div>
               </div>
             </div>

@@ -22,6 +22,15 @@ export default {
         .catch(error => {
           alert('查無郵件')
         })
+    },
+    handleMessage(event) {
+      const resStr = event.data.includes('OK');
+      if (resStr) {
+        alert('成功寄出，請察看信箱。');
+        this.$router.push('/');
+      }else{
+        alert('寄信失敗，請稍後再試。');
+      }
     }
   },
   computed: {
@@ -34,6 +43,10 @@ export default {
     this.socket.onopen = () => {
       console.log('WebSocket connection opened')
     }
+
+    //監聽socket是否成功寄件
+    this.socket.addEventListener('message', this.handleMessage);
+
   },
   beforeUnmount() {
     // Close the WebSocket connection when the component is destroyed
