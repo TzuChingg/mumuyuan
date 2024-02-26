@@ -20,6 +20,13 @@
           "calc": "-30",
           "image": "money",
           "description": "沒有限制,每筆都能使用"
+        },
+        {
+          "name": "玉米",
+          "calc": -40,
+          "image": "38",
+          "description": "沒有限制,每筆都能使用",
+          "id": 4
         }
       ],
       "identity": "user",
@@ -33,22 +40,7 @@
       "name": "admin",
       "phone": "0911111111",
       "identity": "admin",
-      "coupon": [
-        {
-          "id": 2,
-          "name": "折20塊",
-          "calc": "-20",
-          "image": "money",
-          "description": "沒有限制,每筆都能使用"
-        },
-        {
-          "id": 6,
-          "name": "折30塊",
-          "calc": "-30",
-          "image": "money",
-          "description": "沒有限制,每筆都能使用"
-        }
-      ],
+      "coupon": [],
       "point": 1015,
       "id": 3
     },
@@ -62,6 +54,17 @@
       "coupon": [],
       "point": 1000,
       "id": 4
+    },
+    {
+      "email": "26416387.re@gmail.com",
+      "password": "$2a$10$1c4uv2v3m6L028PAHH1dzOp50HnRfYgpjKu2avSyXMrkc.hOM.cf2",
+      "copyPassword": "123456",
+      "name": "eric",
+      "phone": "0911111111",
+      "identity": "user",
+      "point": 0,
+      "coupon": [],
+      "id": 5
     }
   ],
   "categories": [
@@ -706,6 +709,40 @@
       "orderid": "202402242117",
       "score": "",
       "id": 11
+    },
+    {
+      "isMember": "true",
+      "name": "admin",
+      "phone": "0911111111",
+      "day": "2024-02-25",
+      "product": [
+        {
+          "productName": "牛五花蔥捲",
+          "image": "/木木苑食材修圖/39.jpg",
+          "price": 45,
+          "quantity": 1
+        },
+        {
+          "productName": "番茄牛肉捲",
+          "image": "/木木苑食材修圖/09.jpg",
+          "price": 45,
+          "quantity": 1
+        }
+      ],
+      "price": 70,
+      "userId": "3",
+      "status": 1,
+      "type": "true",
+      "tableware": "true",
+      "bags": "true",
+      "payment": "false",
+      "comment": "",
+      "pickTime": "22:38",
+      "flavor": "1",
+      "spicy": "2",
+      "orderid": "202402252238",
+      "score": "",
+      "id": 12
     }
   ],
   "news": [
@@ -818,7 +855,6 @@
   "coupons": [
     {
       "name": "青椒",
-      "unit": "份",
       "calc": "-25",
       "image": "35",
       "point": "40",
@@ -828,7 +864,6 @@
     },
     {
       "name": "折20塊",
-      "unit": "張",
       "calc": "-20",
       "image": "money",
       "point": 50,
@@ -838,7 +873,6 @@
     },
     {
       "name": "香腸",
-      "unit": "根",
       "calc": "-35",
       "image": "28",
       "point": "50",
@@ -848,7 +882,6 @@
     },
     {
       "name": "玉米",
-      "unit": "支",
       "calc": -40,
       "image": "38",
       "point": 30,
@@ -858,7 +891,6 @@
     },
     {
       "name": "折30塊",
-      "unit": "張",
       "calc": "-30",
       "image": "money",
       "point": 100,
@@ -868,31 +900,12 @@
     },
     {
       "name": "折40塊",
-      "unit": "張",
       "calc": "-40",
       "image": "money",
       "point": 150,
       "isLook": true,
       "description": "沒有限制,每筆都能使用",
       "id": 7
-    },
-    {
-      "name": "測試",
-      "image": "",
-      "point": "50",
-      "calc": "50",
-      "isLook": false,
-      "description": "123",
-      "id": 8
-    },
-    {
-      "name": "hk4",
-      "image": "",
-      "point": "1wef",
-      "calc": "ewfwef",
-      "isLook": false,
-      "description": "wfe",
-      "id": 9
     }
   ],
   "shop": {

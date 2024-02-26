@@ -50,13 +50,25 @@ wss.on('connection', function connection(ws) {
         transporter.sendMail({
           from: 'mumuyuan1234@gmail.com',
           to: parsedMessage.email,
-          subject: '你好這是你的備用密碼',
-          html: parsedMessage.ubPassword,
+          subject: '備用密碼',
+          html: `你好這是你的備用密碼${parsedMessage.ubPassword} 請盡快重設密碼`,
         }).then(info => {
           console.log({ info });
         }).catch(console.error);
       }
-    }else{
+    }else if(parsedMessage.mail){
+      if(parsedMessage.mail.length>0 && parsedMessage.mail.includes('@gmail.com')){
+        transporter.sendMail({
+          from: 'mumuyuan1234@gmail.com',
+          to: parsedMessage.mail,
+          subject: '你好這是你的訂單號碼 ',
+          html: `你可以透過這個號碼查詢訂單狀態 ${parsedMessage.orderid}`,
+        }).then(info => {
+          console.log({ info });
+        }).catch(console.error);
+      }
+    }
+    else{
        sendAllUser(parsedMessage);
     }
   })
