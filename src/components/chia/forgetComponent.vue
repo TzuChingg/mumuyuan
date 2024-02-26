@@ -16,6 +16,8 @@ export default {
               ubPassword: res.data[0].copyPassword
             })
           )
+
+          window.location.href = "/"; 
         })
         .catch(error => {
           alert('查無郵件')

@@ -95,6 +95,7 @@
                   <label class="form-label fs-5">優惠券</label>
                 </td>
                 <td>
+                  
                   <div class="d-flex justify-content-end">
                     <template v-if="user.coupon == 0 || user.coupon == undefined">
                       <select class="form-select border border-dark form-select-md" aria-label="coupon" id="coupon"
@@ -323,7 +324,17 @@ export default {
   },
   computed: {
     ...mapState(cartStore, ['cartsList']),
-    ...mapState(cartStore, ['storeInformation'])
+    ...mapState(cartStore, ['storeInformation']),
+
+    arrayCoupon() {
+      return this.cartsList.carts.map(ele => {
+        const coupon = this.user.coupon.find(item => item.name === ele.product.productName);
+        return {
+          name:  coupon.name ,
+          calc:  coupon.calc 
+        };
+      });
+    }
   },
   methods: {
     ...mapActions(cartStore, ['removeCartsListItem']),
@@ -340,7 +351,7 @@ export default {
         "isMember": this.myIdentity ? "true" : "false",
         "name": this.user.name,
         "phone": this.user.phone,
-        "mail": this.user.mail,
+        "mail": this.user.email,
         "day": this.currentDate,
         "product": this.product,
         "price": this.total,
@@ -363,7 +374,12 @@ export default {
         .then(res => {
           location.reload();
         })
-     
+      this.socket.send(
+          JSON.stringify({
+            mail: this.user.email,
+            orderid:this.orderId 
+          })
+          )
     },
   },
   watch: {
@@ -404,7 +420,16 @@ export default {
       };
     });
 
-  
+    this.socket = new WebSocket('ws://localhost:8080/ws')
+    this.socket.onopen = () => {
+      console.log('WebSocket connection opened')
+    }
+  },
+  beforeUnmount() {
+    // Close the WebSocket connection when the component is destroyed
+    if (this.socket) {
+      this.socket.close()
+    }
   },
   created() {
     const currentDate = new Date();
