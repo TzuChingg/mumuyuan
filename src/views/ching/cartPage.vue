@@ -165,17 +165,17 @@
                   <div class="row align-items-center">
                     <div class="col-3">
                       <div class="btn-group w-100" role="group" aria-label="Basic radio toggle button group">
-                        <VField name="取餐方式" type="radio" value=false rules="required"
+                        <VField name="取餐方式" type="radio" value="false" rules="required"
                           class="btn-check form-check-input border-primary" id="selfPickup" v-model="type" />
                         <label class="btn btn-outline-primary fs-5" for="selfPickup"> 自取 </label>
-                        <VField name="取餐方式" type="radio" value=true rules="required"
+                        <VField name="取餐方式" type="radio" value="true" rules="required"
                           class="btn-check form-check-input border-primary" id="orderDelivery" v-model="type" />
                         <label class="btn btn-outline-primary fs-5" for="orderDelivery"> 外送 </label>
                       </div>
                     </div>
                     <div class="col-9">
-                      <input type="address" class="form-control" placeholder="外送地址"
-                        aria-label="Text input with radio button">
+                      <input type="text" class="form-control" placeholder="外送地址" v-model="address"
+                        :disabled="type === 'false'">
                     </div>
                     <ErrorMessage name="取餐方式" class="text-danger" />
                   </div>
@@ -187,10 +187,10 @@
                 </td>
                 <td colspan="1">
                   <div class="btn-group w-100" role="group" aria-label="Basic radio toggle button group">
-                    <VField name="附贈餐具" type="radio" value=false rules="required"
+                    <VField name="附贈餐具" type="radio" value="false" rules="required"
                       class="btn-check form-check-input border-primary" id="noTableware" v-model="tableware" />
                     <label class="btn btn-outline-primary fs-5 col-6" for="noTableware"> 不用 </label>
-                    <VField name="附贈餐具" type="radio" value=true rules="required"
+                    <VField name="附贈餐具" type="radio" value="true" rules="required"
                       class="btn-check form-check-input border-primary" id="needTableware" v-model="tableware" />
                     <label class="btn btn-outline-primary fs-5 col-6" for="needTableware"> 需要 </label>
                     <ErrorMessage name="附贈餐具" class="text-danger" />
@@ -200,10 +200,10 @@
                   <div class="d-flex align-items-center">
                     <div class="text-center fs-5 w-25">提袋</div>
                     <div class="btn-group w-75" role="group" aria-label="Basic radio toggle button group">
-                      <VField name="提袋" type="radio" value=false rules="required"
+                      <VField name="提袋" type="radio" value="false" rules="required"
                         class="btn-check form-check-input border-primary" id="noBags" v-model="bags" />
                       <label class="btn btn-outline-primary fs-5 col-6" for="noBags"> 不用 </label>
-                      <VField name="提袋" type="radio" value=true rules="required"
+                      <VField name="提袋" type="radio" value="true" rules="required"
                         class="btn-check form-check-input border-primary" id="needBags" v-model="bags" />
                       <label class="btn btn-outline-primary fs-5 col-6" for="needBags"> 需要 </label>
                     </div>
@@ -226,7 +226,6 @@
                   </div>
                   <ErrorMessage name="pay" class="text-danger" />
                 </td>
-
                 <td colspan="2">
                   <div class="d-flex align-items-center">
                     <div class="text-center fs-5 w-25">備註</div>
@@ -236,9 +235,6 @@
                     </div>
                   </div>
                 </td>
-
-
-
               </tr>
             </tbody>
             <tfoot>
@@ -270,6 +266,7 @@ export default {
       couponPrice: 0,
       couponName: "",
       total: 0,
+      address: '自取',
       product: [],
       currentDate: '',
       currentTime: '',
@@ -277,7 +274,7 @@ export default {
       spicy: "",
       orderId: "",
       comment: "",
-      type: "",
+      type: "false",
       tableware: "false",
       bags: "false",
       payment: "true",
@@ -287,7 +284,6 @@ export default {
   computed: {
     ...mapState(cartStore, ['cartsList']),
     ...mapState(cartStore, ['storeInformation']),
-
     arrayCoupon() {
       return this.cartsList.carts.map(ele => {
         const coupon = this.user.coupon.find(item => item.name === ele.product.productName);
@@ -308,7 +304,7 @@ export default {
       this.couponPrice = event.target.value;
       this.couponName = event.target.selectedOptions[0].textContent
     },
-    pushOrder() {
+    async pushOrder() {
       const data = {
         "isMember": this.myIdentity ? "true" : "false",
         "name": this.user.name,
@@ -316,6 +312,7 @@ export default {
         "mail": this.user.email,
         "day": this.currentDate,
         "product": this.product,
+        'address': this.address,
         "price": this.total,
         "userId": this.myIdentity,
         "status": 1,
@@ -331,24 +328,27 @@ export default {
         "score": "",
       };
       const point = { point: this.user.point + this.point }
-      this.$axios.patch(`/users/${this.myIdentity}`, point)
-      this.$axios.post(`/orders`, data)
-        .then(res => {
-          location.reload();
-        })
-      this.socket.send(
-        JSON.stringify({
-          mail: this.user.email,
-          orderid: this.orderId
-        })
-      )
+      try {
+        const apiPost = await this.$axios.post(`/orders`, data)
+        const apiPatch = await this.$axios.patch(`/users/${this.myIdentity}`, point);
+        if (apiPost.statusText === "Created" && apiPatch.statusText === "OK") {
+          this.socket.send(
+            JSON.stringify({
+              mail: this.user.email,
+              orderid: this.orderId
+            })
+          )
+        }
+      } catch (error) {
+        alert('訂單送出異常，請稍後再試。');
+      }
     },
     async checkValid() {
       try {
         const formValid = await this.$refs.form.validate();
         const status = formValid.valid;
         if (!status) throw new Error('欄位未填寫完整，請再次檢查。');
-        const containerPush = await this.pushOrder();
+        this.pushOrder();
       } catch (error) {
         alert(error);
       }
@@ -362,6 +362,9 @@ export default {
     },
     couponPrice(newPrice, oldPrice) {
       this.total = this.total - parseInt(oldPrice) + parseInt(newPrice);
+    },
+    type(newValue, oldValue) {
+      this.address = newValue ? '' : '自取';
     },
     'cartsList.carts': {
       handler(newValue, oldValue) {
