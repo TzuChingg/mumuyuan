@@ -10,11 +10,11 @@
                 <td colspan="4">
                   <table class="table mb-0 table-light">
                     <thead>
-                      <tr>
-                        <td class="text-center fs-5">取消</td>
-                        <td class="text-center fs-5">名稱</td>
-                        <td class="text-center fs-5">數量</td>
-                        <td class="text-center fs-5">價格</td>
+                      <tr class="text-center fs-5 fw-bolder">
+                        <td class="text-primary">取消</td>
+                        <td class="text-primary">名稱</td>
+                        <td class="text-primary">數量</td>
+                        <td class="text-primary">價格</td>
                       </tr>
                     </thead>
                     <tbody>
@@ -47,8 +47,13 @@
                 </td>
               </tr>
               <tr class="align-middle">
-                <td colspan="3" class="text-end fs-5">總金額</td>
-                <td colspan="1" class="text-center fs-5">$ {{ total }}</td>
+                <td colspan="2"></td>
+                <td colspan="2" class="text-primary fs-4 text-center">
+                  <div class="border border-2 border-primary py-1">
+                    <span class="me-3 p-2">總金額</span>
+                    <span>${{ total }}</span>
+                  </div>
+                </td>
               </tr>
               <tr class="align-middle" v-if="this.myIdentity">
                 <td colspan="3" class="text-end fs-5">獲得點數</td>
@@ -192,8 +197,8 @@
                   </div>
                 </td>
                 <td colspan="2">
-                  <div class="d-flex align-items-center justify-content-around">
-                    <div class="text-center fs-5">提袋</div>
+                  <div class="d-flex align-items-center">
+                    <div class="text-center fs-5 w-25">提袋</div>
                     <div class="btn-group w-75" role="group" aria-label="Basic radio toggle button group">
                       <VField name="提袋" type="radio" value=false rules="required"
                         class="btn-check form-check-input border-primary" id="noBags" v-model="bags" />
@@ -221,20 +226,28 @@
                   </div>
                   <ErrorMessage name="pay" class="text-danger" />
                 </td>
-                <td colspan="2"></td>
+
+                <td colspan="2">
+                  <div class="d-flex align-items-center">
+                    <div class="text-center fs-5 w-25">備註</div>
+                    <div class="btn-group w-75" role="group" aria-label="Basic radio toggle button group">
+                      <textarea v-model="comment" name="comment" id="comment" class="w-100" rows="3"
+                        style="resize: none; "></textarea>
+                    </div>
+                  </div>
+                </td>
+
+
+
               </tr>
             </tbody>
             <tfoot>
-              <tr class="align-middle">
-                <td colspan="4">
-                  <div class="row justify-content-center mt-3 mb-5">
-                    <div class="col-2 d-flex justify-content-center">
-                      <button type="submit" class="btn btn-danger"
-                        @click="useCoupon(couponName, myIdentity); pushOrder()">
-                        送出訂單
-                      </button>
-                    </div>
-                  </div>
+              <tr class="align-middle text-center">
+                <td colspan="4" height="80">
+                  <button type="button" class="btn btn-danger px-3 py-2"
+                    @click="useCoupon(couponName, myIdentity); checkValid()">
+                    送出訂單
+                  </button>
                 </td>
               </tr>
             </tfoot>
@@ -330,6 +343,16 @@ export default {
         })
       )
     },
+    async checkValid() {
+      try {
+        const formValid = await this.$refs.form.validate();
+        const status = formValid.valid;
+        if (!status) throw new Error('欄位未填寫完整，請再次檢查。');
+        const containerPush = await this.pushOrder();
+      } catch (error) {
+        alert(error);
+      }
+    },
   },
   watch: {
     storeInformation: {
@@ -383,14 +406,14 @@ export default {
   created() {
     const currentDate = new Date();
     const year = currentDate.getFullYear();
-    const month = currentDate.getMonth() + 1; // 月份从 0 开始，所以要加 1
+    const month = currentDate.getMonth() + 1;
     const day = currentDate.getDate();
 
     this.currentDate = `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
 
-    // 获取当前的时间
+    // 當前時間
     let hours = currentDate.getHours();
-    let minutes = currentDate.getMinutes() + 20; // 将分钟数加上 20
+    let minutes = currentDate.getMinutes() + 20; // 加20分鐘
     if (minutes >= 60) {
       hours += 1;
       minutes -= 60;
@@ -405,6 +428,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+input[type="number"] {
+  cursor: default;
+}
+
 label {
   margin-bottom: 0;
 }
