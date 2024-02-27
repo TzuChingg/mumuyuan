@@ -3,7 +3,7 @@
   <hr />  
   <div class="row justify-content-center memberdiscount">
     <div class="col-12 mb-4">
-      <h5 class="text-primary fw-bolder" style="letter-spacing: 1px;">我的優惠券</h5>
+      <h5 class="text-primary fw-bolder px-2" style="letter-spacing: 1px;">我的優惠券</h5>
       <hr />
       <div class="d-flex flex-wrap">
         <div class="mb-4  col-lg-4 col-6 p-2" v-for="i in myCoupons" :key="i.name">

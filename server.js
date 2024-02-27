@@ -137,6 +137,7 @@ wss.on('connection', function connection(ws) {
             `
           })
           .then((info) => {
+            console.log(info);
             ws.send(JSON.stringify(info.response))
           })
           .catch(console.error)

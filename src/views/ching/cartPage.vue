@@ -20,7 +20,7 @@
                     <tbody>
                       <tr v-for="(item, index) in cartsList.carts" :key="index">
                         <td class="text-center align-middle">
-                          <a href="" @click.prevent="removeCartsListItem(item.id)" class="p-0"><i
+                          <a @click.prevent="removeCartsListItem(item.id)" class="p-0"><i
                               class="bi bi-x-lg text-primary fs-4"></i></a>
                         </td>
                         <td class="fs-5 align-middle">
@@ -173,11 +173,13 @@
                         <label class="btn btn-outline-primary fs-5" for="orderDelivery"> 外送 </label>
                       </div>
                     </div>
-                    <div class="col-9">
-                      <input type="text" class="form-control" placeholder="外送地址" v-model="address"
-                        :disabled="type === 'false'">
-                    </div>
                     <ErrorMessage name="取餐方式" class="text-danger" />
+                    <div class="col-9">
+                      <VField name="外送地址" type="text" class="form-control" :class="{ 'is-invalid': errors['外送地址'] }"
+                        placeholder="外送地址" v-model="address" :disabled="type === 'false'"
+                        :rules="{ required: type === 'true' }" />
+                    </div>
+                    <ErrorMessage name="外送地址" class="invalid-feedback"></ErrorMessage>
                   </div>
                 </td>
               </tr>
@@ -230,7 +232,7 @@
                   <div class="d-flex align-items-center">
                     <div class="text-center fs-5 w-25">備註</div>
                     <div class="btn-group w-75" role="group" aria-label="Basic radio toggle button group">
-                      <textarea v-model="comment" name="comment" id="comment" class="w-100" rows="3"
+                      <textarea v-model="comment" name="comment" id="comment" class="w-100 p-2" rows="3"
                         style="resize: none; "></textarea>
                     </div>
                   </div>
@@ -338,6 +340,8 @@ export default {
               orderid: this.orderId
             })
           )
+          alert('訂單已送出，請確認出餐狀態。');
+          window.location.href = "/";
         }
       } catch (error) {
         alert('訂單送出異常，請稍後再試。');
@@ -364,7 +368,7 @@ export default {
       this.total = this.total - parseInt(oldPrice) + parseInt(newPrice);
     },
     type(newValue, oldValue) {
-      this.address = newValue ? '' : '自取';
+      this.address = newValue === 'true' ? '' : '自取';
     },
     'cartsList.carts': {
       handler(newValue, oldValue) {

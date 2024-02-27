@@ -17,7 +17,7 @@ export default {
             })
           )
 
-          window.location.href = "/"; 
+          // window.location.href = "/"; 
         })
         .catch(error => {
           alert('查無郵件')
