@@ -1,6 +1,6 @@
 <template>
   <div class="container mb-5">
-    <h1 class="my-4 text-center me-2">購物車</h1>
+    <h1 class="my-4 text-dark text-center me-2 fw-bolder" style="letter-spacing:2px">購物車</h1>
     <div class="row justify-content-center">
       <div class="col-10">
         <VForm ref="form" v-slot="{ errors }">
@@ -47,17 +47,19 @@
                 </td>
               </tr>
               <tr class="align-middle">
-                <td colspan="2"></td>
+                <td colspan="2" class="text-primary fs-4 text-center" v-if="this.myIdentity">
+                  <div class="border border-2 border-primary py-1">
+                    <span class="me-3 p-2">獲得點數</span>
+                    <span>{{ point }}</span>
+                  </div>
+                </td>
+                <td colspan="2" v-else></td>
                 <td colspan="2" class="text-primary fs-4 text-center">
                   <div class="border border-2 border-primary py-1">
                     <span class="me-3 p-2">總金額</span>
                     <span>${{ total }}</span>
                   </div>
                 </td>
-              </tr>
-              <tr class="align-middle" v-if="this.myIdentity">
-                <td colspan="3" class="text-end fs-5">獲得點數</td>
-                <td colspan="1" class="text-center fs-5">{{ point }}</td>
               </tr>
               <tr class="align-middle">
                 <td>
@@ -97,7 +99,7 @@
             </thead>
             <tbody>
               <tr class="align-middle" v-if="this.myIdentity">
-                <td class="text-center fs-5">優惠券</td>
+                <td class="text-center fs-5">優惠方式</td>
                 <td>
                   <div class="d-flex justify-content-end">
                     <template v-if="user.coupon == 0 || user.coupon == undefined">
@@ -241,7 +243,7 @@
             </tbody>
             <tfoot>
               <tr class="align-middle text-center">
-                <td colspan="4" height="80">
+                <td colspan="4" height="100">
                   <button type="button" class="btn btn-danger px-3 py-2"
                     @click="useCoupon(couponName, myIdentity); checkValid()">
                     送出訂單
@@ -311,7 +313,7 @@ export default {
         "isMember": this.myIdentity ? "true" : "false",
         "name": this.user.name,
         "phone": this.user.phone,
-        "mail": this.user.email,
+        // "mail": this.user.email,
         "day": this.currentDate,
         "product": this.product,
         'address': this.address,
@@ -435,8 +437,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+td,
+span,
 input[type="number"] {
   cursor: default;
+}
+
+i {
+  cursor: pointer;
 }
 
 label {

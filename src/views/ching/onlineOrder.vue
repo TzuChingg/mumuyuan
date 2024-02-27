@@ -28,7 +28,7 @@
 			</div>
 		</div>
 		<div class="row g-4 mt-2" v-for="(productList, index) in storeProducts" :key="index" :id="'#' + productList[0]">
-			<h2>{{ productList[0] }}</h2>
+			<h2 class="text-dark fw-bolder">{{ productList[0] }}</h2>
 			<hr class="m-0" />
 			<div class="col-md-3" v-for="(product, index) in productList[1]" :key="index">
 				<div class="card" style="width: 18rem; height: 30rem">
