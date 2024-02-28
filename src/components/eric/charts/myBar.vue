@@ -56,11 +56,11 @@ export default {
       let use=[]
       res.data.forEach(element=>{
         element.product.forEach((q,index)=>{
-          if(!this.chartOptions.xaxis.categories.includes(q.name)){
-            this.chartOptions.xaxis.categories.push(q.name) 
+          if(!this.chartOptions.xaxis.categories.includes(q.productName)){
+            this.chartOptions.xaxis.categories.push(q.productName) 
           }
           use.push({
-            x:q.name,
+            x:q.productName,
             y:q.quantity
           })
         })

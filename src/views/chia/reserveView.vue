@@ -191,8 +191,8 @@ export default {
 </script>
 <template>
 	<div class="reserve container">
-		<div class="reserveContent">
-			<form class="m-auto">
+		<div class="reserveContent col-lg-10 m-auto">
+			<form class="">
 				<div class="row">
 					<h2 class="text-center fw-bolder fs-1 text-white py-5">即刻訂位</h2>
 					<div class="col-lg-6 col-md-12">

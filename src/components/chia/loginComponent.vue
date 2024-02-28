@@ -7,7 +7,7 @@
     <label for="mumuyuanPassword" class="form-label fw-bolder fs-5">密碼</label>
     <input type="password" class="form-control" id="mumuyuanPassword" placeholder="請輸入密碼" v-model="userInput.password" />
     <div class="text-end pt-1">
-      <router-link to="/login/forget" class="fotgetPassword text-decoration-none">忘記密碼?</router-link>
+      <router-link to="/login/forget" class="fotgetPassword">忘記密碼?</router-link>
     </div>
   </div>
   <button type="type" class="btn btn-dark d-block mx-auto w-100 pt-2 mb-3" @click="userlogin" :disabled="loginBtn">
@@ -15,7 +15,7 @@
   </button>
   <div class="text-center">
     <span class="text-center">還沒加入會員嗎?</span>
-    <router-link to="/login/signin" class="signin mx-2 text-decoration-none">註冊</router-link>
+    <router-link to="/login/signin" class="signin mx-2">註冊</router-link>
   </div>
 </template>
 

@@ -5,7 +5,7 @@
       "password": "$2a$10$9h2o35V5p6uq5aAz8x8YWehInIv7ms/HvFLMPDbLnnWyc/tF9EQfa",
       "copyPassword": "123456",
       "name": "joker",
-      "phone": "093333333",
+      "phone": "0933333333",
       "coupon": [
         {
           "id": 2,
@@ -13,25 +13,22 @@
           "calc": "-20",
           "image": "money",
           "description": "沒有限制,每筆都能使用"
-        },
-        {
-          "id": 6,
-          "name": "折30塊",
-          "calc": "-30",
-          "image": "money",
-          "description": "沒有限制,每筆都能使用"
-        },
-        {
-          "id": 7,
-          "name": "折40塊",
-          "calc": "-40",
-          "image": "money",
-          "description": "沒有限制,每筆都能使用"
         }
       ],
       "identity": "user",
-      "point": 550,
+      "point": 59,
       "id": 1
+    },
+    {
+      "email": "amin@gmail.com",
+      "password": "$2a$10$sntD.IJ9L2hqi6gLNlxC9.LteqNoQumFbB58pG6d6cZ6Cdiwb6lO2",
+      "copyPassword": "123456",
+      "name": "阿明",
+      "phone": "0212345678",
+      "identity": "user",
+      "point": 0,
+      "coupon": [],
+      "id": 2
     },
     {
       "email": "admin@gmail.com",
@@ -40,23 +37,8 @@
       "name": "admin",
       "phone": "0911111111",
       "identity": "admin",
-      "coupon": [
-        {
-          "id": 2,
-          "name": "折20塊",
-          "calc": "-20",
-          "image": "money",
-          "description": "沒有限制,每筆都能使用"
-        },
-        {
-          "id": 6,
-          "name": "折30塊",
-          "calc": "-30",
-          "image": "money",
-          "description": "沒有限制,每筆都能使用"
-        }
-      ],
-      "point": 1015,
+      "coupon": [],
+      "point": 1030,
       "id": 3
     },
     {
@@ -69,6 +51,17 @@
       "coupon": [],
       "point": 1000,
       "id": 4
+    },
+    {
+      "email": "26416387.re@gmail.com",
+      "password": "$2a$10$1c4uv2v3m6L028PAHH1dzOp50HnRfYgpjKu2avSyXMrkc.hOM.cf2",
+      "copyPassword": "123456",
+      "name": "eric",
+      "phone": "0911111111",
+      "identity": "user",
+      "point": 0,
+      "coupon": [],
+      "id": 5
     }
   ],
   "categories": [
@@ -862,35 +855,37 @@
     },
     {
       "isMember": "true",
-      "name": "admin",
-      "phone": "0911111111",
-      "day": "2024-02-24",
+      "name": "joker",
+      "phone": "0933333333",
+      "mail": "joker@gmail.com",
+      "day": "2024-02-27",
       "product": [
-        {
-          "productName": "豬五花蔥捲",
-          "image": "/木木苑食材修圖/02.jpg",
-          "price": 58,
-          "quantity": 1
-        },
         {
           "productName": "剝皮辣椒豬捲",
           "image": "/木木苑食材修圖/08.jpg",
           "price": 45,
           "quantity": 1
+        },
+        {
+          "productName": "番茄牛肉捲",
+          "image": "/木木苑食材修圖/09.jpg",
+          "price": 45,
+          "quantity": 1
         }
       ],
-      "price": 1526,
-      "userId": "3",
+      "address": "台灣大道1000號",
+      "price": 70,
+      "userId": "1",
       "status": 1,
       "type": "true",
-      "tableware": "false",
-      "bags": "false",
+      "tableware": "true",
+      "bags": "true",
       "payment": "true",
-      "comment": "",
-      "pickTime": "20:21",
-      "flavor": "2",
-      "spicy": "3",
-      "orderid": "202402242021",
+      "comment": "3Q",
+      "pickTime": "00:09",
+      "flavor": "1",
+      "spicy": "2",
+      "orderid": "202402270009",
       "score": "",
       "id": 10
     },
@@ -1044,7 +1039,6 @@
   "coupons": [
     {
       "name": "青椒",
-      "unit": "份",
       "calc": "-25",
       "image": "35",
       "point": "40",
@@ -1054,7 +1048,6 @@
     },
     {
       "name": "折20塊",
-      "unit": "張",
       "calc": "-20",
       "image": "money",
       "point": 50,
@@ -1064,7 +1057,6 @@
     },
     {
       "name": "香腸",
-      "unit": "根",
       "calc": "-35",
       "image": "28",
       "point": "50",
@@ -1074,7 +1066,6 @@
     },
     {
       "name": "玉米",
-      "unit": "支",
       "calc": -40,
       "image": "38",
       "point": 30,
@@ -1084,7 +1075,6 @@
     },
     {
       "name": "折30塊",
-      "unit": "張",
       "calc": "-30",
       "image": "money",
       "point": 100,
@@ -1094,31 +1084,12 @@
     },
     {
       "name": "折40塊",
-      "unit": "張",
       "calc": "-40",
       "image": "money",
       "point": 150,
       "isLook": true,
       "description": "沒有限制,每筆都能使用",
       "id": 7
-    },
-    {
-      "name": "測試",
-      "image": "",
-      "point": "50",
-      "calc": "50",
-      "isLook": false,
-      "description": "123",
-      "id": 8
-    },
-    {
-      "name": "hk4",
-      "image": "",
-      "point": "1wef",
-      "calc": "ewfwef",
-      "isLook": false,
-      "description": "wfe",
-      "id": 9
     }
   ],
   "shop": {
