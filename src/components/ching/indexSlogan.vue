@@ -2,8 +2,8 @@
 	<div class="container-fluid p-0 position-relative overflow-hidden">
 		<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-pause="false"
 			data-bs-wrap="true" data-bs-keyboard="false">
-			<!-- 控制項 -->
-			<!-- <div class="carousel-indicators">
+			<!-- 控制項
+			<div class="carousel-indicators">
                         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
                             class="active" aria-current="true" aria-label="Slide 1"></button>
                         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
@@ -69,7 +69,32 @@
 </template>
 
 <script>
+import { Swiper, SwiperSlide } from "swiper/vue";
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import { Autoplay, Pagination, Navigation } from "swiper/modules";
 export default {
+	data() {
+		return {
+			// modules: [Autoplay, Pagination, Navigation],
+			// 這邊是給 SwiperSlide 的 slidesPerView 判斷用的
+			windowInnerWidth: window.innerWidth,
+		}
+	},
+	components:{
+		// Swiper,
+		// SwiperSlide
+	},
+	computed:{
+		width:() =>{
+			console.log(window.innerWidth);
+		}
+	}
+	
+	
+	
 
 }
 </script>

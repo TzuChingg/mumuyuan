@@ -65,7 +65,7 @@ export default {
         indexRating,
         indexFeature,
         indexFaq,
-        indexAddress
+        indexAddress,
     }
 
 }

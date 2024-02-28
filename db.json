@@ -6,15 +6,7 @@
       "copyPassword": "123456",
       "name": "joker",
       "phone": "0933333333",
-      "coupon": [
-        {
-          "id": 2,
-          "name": "折20塊",
-          "calc": "-20",
-          "image": "money",
-          "description": "沒有限制,每筆都能使用"
-        }
-      ],
+      "coupon": [],
       "identity": "user",
       "point": 59,
       "id": 1
