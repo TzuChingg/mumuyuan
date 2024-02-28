@@ -30,17 +30,17 @@
 		<div class="row g-4 mt-2" v-for="(productList, index) in storeProducts" :key="index" :id="'#' + productList[0]">
 			<h2 class="text-dark fw-bolder">{{ productList[0] }}</h2>
 			<hr class="m-0" />
-			<div class="col-md-3" v-for="(product, index) in productList[1]" :key="index">
-				<div class="card" style="width: 18rem; height: 30rem">
+			<div class="col-sm-6 col-lg-3" v-for="(product, index) in productList[1]" :key="index">
+				<div class="card mx-auto">
 					<img :src="product.image" class="card-img-top" :alt="product.productName" />
-					<div class="card-body">
+					<div class="card-body" style="height: 8rem;">
 						<div class="title d-flex justify-content-between">
 							<h5 class="card-title">{{ product.productName }}</h5>
 							<span class="text-end">NT {{ product.price }}</span>
 						</div>
 						<p class="card-text fs-6">{{ product.description }}</p>
 					</div>
-					<div class="card-footer d-flex justify-content-around border-0 bg-white">
+					<div class="card-footer d-flex justify-content-around border-0 bg-white p-3">
 						<div class="col-6">
 							<div class="input-group">
 								<input type="button" class="cal btn btn-outline-dark" value="-" @click="decreaseBtn(product.id)" />
