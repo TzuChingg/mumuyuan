@@ -65,12 +65,8 @@ export default {
           this.$swal({
             icon: 'error',
             title: '登入失敗',
-            text: '請稍後再試',
-            timer: 1500
-          }).then(() => {
-            this.$router.push({ path: '/' })
-            // window.location.href = "/";
-          });
+            text: '請重新輸入',
+          })
         })
     }
   }

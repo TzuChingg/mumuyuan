@@ -147,18 +147,23 @@ export default {
             this.$swal({
               icon: 'success',
               title: '更新成功',
-              text: '請確認出餐狀態',
+              text: '請確認更新資訊',
               timer: 2000
+            }).then(() => {
+              this.userInfo.copyPassword = this.userInfo.newPassword;
+              this.userInfo.newPassword = ''
+              this.userInfo.dbCheckPassword = ''
+
             })
           }
         })
         .catch(() => {
           this.$swal({
-              icon: 'error',
-              title: '更新失敗',
-              text: '請稍後再試',
-              timer: 2000
-            })
+            icon: 'error',
+            title: '更新失敗',
+            text: '請稍後再試',
+            timer: 2000
+          })
         })
     },
 

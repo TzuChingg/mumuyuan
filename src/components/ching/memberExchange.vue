@@ -76,7 +76,6 @@ export default {
       this.choose = iChoose
     },
     confirm(getPoint) {
-      console.log(getPoint);
       const { id, name, calc, image, description } = getPoint
       const point = this.userInfo.point - getPoint.point
       let coupon = this.userInfo.coupon
@@ -90,7 +89,7 @@ export default {
               icon: 'success',
               title: '兌換成功',
               text: '請確認兌換券',
-              timer: 2000
+              timer: 1500
             })
           }
         })
