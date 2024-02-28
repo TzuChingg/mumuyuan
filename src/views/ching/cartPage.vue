@@ -342,21 +342,39 @@ export default {
               orderid: this.orderId
             })
           )
-          alert('訂單已送出，請確認出餐狀態。');
-          window.location.href = "/";
+          this.$swal({
+            icon: 'success',
+            title: '訂單已送出',
+            text: '請確認出餐狀態',
+            timer: 3000
+          }).then(() => {
+            window.location.href = "/";
+          });
         }
       } catch (error) {
-        alert('訂單送出異常，請稍後再試。');
+        this.$swal({
+          icon: 'error',
+          title: '訂單送出異常',
+          text: '請稍後再試',
+          timer: 3000
+        }).then(() => {
+          window.location.href = "/";
+        });
       }
     },
     async checkValid() {
       try {
         const formValid = await this.$refs.form.validate();
         const status = formValid.valid;
-        if (!status) throw new Error('欄位未填寫完整，請再次檢查。');
+        if (!status) throw false;
         this.pushOrder();
       } catch (error) {
-        alert(error);
+        this.$swal({
+          icon: 'error',
+          title: '欄位未填寫完整',
+          text: '請再次檢查',
+          timer: 300000
+        });
       }
     },
   },

@@ -46,7 +46,14 @@ export default {
   methods: {
     startSignin() {
       this.$axios.get(`/users?email=${this.userInfo.email}`).then((response) => {
-        response.data.length ? alert('已被註冊') : (this.noUsed = !this.noUsed)
+        response.data.length ?
+          this.$swal({
+            icon: 'warning',
+            title: '已被註冊',
+            text: '請重新輸入',
+            timer: 2000
+          }) :
+          (this.noUsed = !this.noUsed)
       })
     },
     finishSignin() {
@@ -58,11 +65,24 @@ export default {
               ...this.userInfo
             })
             .then(() => {
-              alert('成功註冊')
-              this.$router.push({ path: '/' })
+              this.$swal({
+                icon: 'success',
+                title: '成功註冊',
+                text: '待跳轉至首頁',
+                timer: 2000
+              }).then(() => {
+                window.location.href = "/";
+              });
             })
         } else {
-          alert('註冊失敗')
+          this.$swal({
+            icon: 'error',
+            title: '註冊失敗',
+            text: '請稍後再試',
+            timer: 2000
+          }).then(() => {
+            window.location.href = "/";
+          });
         }
       })
     }

@@ -42,7 +42,9 @@ setLocale('zh_TW')
 //Vue loading
 import { LoadingPlugin } from 'vue-loading-overlay'
 import 'vue-loading-overlay/dist/css/index.css'
-
+//Vue sweetalert2
+import VueSweetalert2 from 'vue-sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
 //套件工具
 import VueApexCharts from 'vue3-apexcharts'
 import ApexCharts from 'apexcharts'
@@ -67,6 +69,7 @@ app.component('ErrorMessage', ErrorMessage)
 app.use(LoadingPlugin)
 app.use(VueApexCharts)
 app.use(VueAxios, axios)
+app.use(VueSweetalert2);
 app.use(createPinia())
 app.use(router)
 

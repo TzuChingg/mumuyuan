@@ -59,11 +59,25 @@ export default {
         .then(response => {
           if (response.status === 200) {
             this.tidyResponse = []
-            alert('成功取消')
+            this.$swal({
+              icon: 'success',
+              title: '成功取消',
+              text: '歡迎您再次預定',
+              timer: 1500
+            }).then(() => {
+              this.$router.push({ path: '/' })
+            });
           }
         })
-        .catch(err => {
-          console.log(err)
+        .catch(() => {
+          this.$swal({
+            icon: 'error',
+            title: '訂位取消失敗',
+            text: '請稍後再試',
+            timer: 1500
+          }).then(() => {
+            this.$router.push({ path: '/' })
+          });
         })
     }
   }

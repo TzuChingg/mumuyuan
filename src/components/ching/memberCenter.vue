@@ -120,11 +120,21 @@ export default {
       })
         .then((response) => {
           if (response.status === 200) {
-            alert('更新成功');
+            this.$swal({
+              icon: 'success',
+              title: '更新成功',
+              text: '請確認更新資訊',
+              timer: 2000
+            })
           }
         })
-        .catch((err) => {
-          console.log(err);
+        .catch(() => {
+          this.$swal({
+            icon: 'error',
+            title: '更新失敗',
+            text: '請稍後再試',
+            timer: 2000
+          })
         })
     },
     setNewPassword() {
@@ -134,11 +144,21 @@ export default {
       })
         .then((response) => {
           if (response.status === 200) {
-            alert('更新成功');
+            this.$swal({
+              icon: 'success',
+              title: '更新成功',
+              text: '請確認出餐狀態',
+              timer: 2000
+            })
           }
         })
-        .catch((err) => {
-          console.log(err);
+        .catch(() => {
+          this.$swal({
+              icon: 'error',
+              title: '更新失敗',
+              text: '請稍後再試',
+              timer: 2000
+            })
         })
     },
 
