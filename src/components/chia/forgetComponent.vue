@@ -16,8 +16,6 @@ export default {
               ubPassword: res.data[0].copyPassword
             })
           )
-
-          window.location.href = "/"; 
         })
         .catch(error => {
           alert('查無郵件')
@@ -28,6 +26,7 @@ export default {
       if (resStr) {
         alert('成功寄出，請察看信箱。');
         this.$router.push('/');
+        // window.location.href = "/"; 
       }else{
         alert('寄信失敗，請稍後再試。');
       }

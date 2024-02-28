@@ -5,7 +5,7 @@
       "password": "$2a$10$9h2o35V5p6uq5aAz8x8YWehInIv7ms/HvFLMPDbLnnWyc/tF9EQfa",
       "copyPassword": "123456",
       "name": "joker",
-      "phone": "093333333",
+      "phone": "0933333333",
       "coupon": [
         {
           "id": 2,
@@ -13,32 +13,10 @@
           "calc": "-20",
           "image": "money",
           "description": "沒有限制,每筆都能使用"
-        },
-        {
-          "id": 6,
-          "name": "折30塊",
-          "calc": "-30",
-          "image": "money",
-          "description": "沒有限制,每筆都能使用"
-        },
-        {
-<<<<<<< HEAD
-          "name": "玉米",
-          "calc": -40,
-          "image": "38",
-          "description": "沒有限制,每筆都能使用",
-          "id": 4
-=======
-          "id": 7,
-          "name": "折40塊",
-          "calc": "-40",
-          "image": "money",
-          "description": "沒有限制,每筆都能使用"
->>>>>>> origin
         }
       ],
       "identity": "user",
-      "point": 550,
+      "point": 59,
       "id": 1
     },
     {
@@ -60,7 +38,7 @@
       "phone": "0911111111",
       "identity": "admin",
       "coupon": [],
-      "point": 1015,
+      "point": 1030,
       "id": 3
     },
     {
@@ -877,69 +855,14 @@
     },
     {
       "isMember": "true",
-      "name": "admin",
-      "phone": "0911111111",
-      "day": "2024-02-24",
+      "name": "joker",
+      "phone": "0933333333",
+      "mail": "joker@gmail.com",
+      "day": "2024-02-27",
       "product": [
-        {
-          "productName": "豬五花蔥捲",
-          "image": "/木木苑食材修圖/02.jpg",
-          "price": 58,
-          "quantity": 1
-        },
         {
           "productName": "剝皮辣椒豬捲",
           "image": "/木木苑食材修圖/08.jpg",
-          "price": 45,
-          "quantity": 1
-        }
-      ],
-      "price": 1526,
-      "userId": "3",
-      "status": 1,
-      "type": "true",
-      "tableware": "false",
-      "bags": "false",
-      "payment": "true",
-      "comment": "",
-      "pickTime": "20:21",
-      "flavor": "2",
-      "spicy": "3",
-      "orderid": "202402242021",
-      "score": "",
-      "id": 10
-<<<<<<< HEAD
-    },
-    {
-      "isMember": "false",
-      "name": "eln tsai",
-      "phone": "026947347",
-      "day": "2024-02-24",
-      "product": [],
-      "price": 0,
-      "userId": null,
-      "status": 1,
-      "type": "true",
-      "tableware": "true",
-      "bags": "true",
-      "payment": "false",
-      "comment": "",
-      "pickTime": "21:17",
-      "flavor": "1",
-      "spicy": "2",
-      "orderid": "202402242117",
-      "score": "",
-      "id": 11
-    },
-    {
-      "isMember": "true",
-      "name": "admin",
-      "phone": "0911111111",
-      "day": "2024-02-25",
-      "product": [
-        {
-          "productName": "牛五花蔥捲",
-          "image": "/木木苑食材修圖/39.jpg",
           "price": 45,
           "quantity": 1
         },
@@ -950,22 +873,21 @@
           "quantity": 1
         }
       ],
+      "address": "台灣大道1000號",
       "price": 70,
-      "userId": "3",
+      "userId": "1",
       "status": 1,
       "type": "true",
       "tableware": "true",
       "bags": "true",
-      "payment": "false",
-      "comment": "",
-      "pickTime": "22:38",
+      "payment": "true",
+      "comment": "3Q",
+      "pickTime": "00:09",
       "flavor": "1",
       "spicy": "2",
-      "orderid": "202402252238",
+      "orderid": "202402270009",
       "score": "",
-      "id": 12
-=======
->>>>>>> origin
+      "id": 10
     }
   ],
   "news": [

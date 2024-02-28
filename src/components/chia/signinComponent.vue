@@ -57,7 +57,7 @@ export default {
             .post('/users', {
               ...this.userInfo
             })
-            .then((response) => {
+            .then(() => {
               alert('成功註冊')
               this.$router.push({ path: '/' })
             })
@@ -73,7 +73,7 @@ export default {
   <div v-if="!noUsed">
     <div class="mb-3" style="min-height: 95px">
       <VForm ref="formmail" v-slot="{ errors }">
-        <label for="mumuyuanMail" class="form-label fw-bolder fs-5 mb-0">信箱</label>
+        <label for="mumuyuanMail" class="form-label fw-bolder fs-5">信箱</label>
         <VField id="mumuyuanMail" name="信箱" type="email" class="form-control" :class="{ 'is-invalid': errors['信箱'] }"
           v-model="userInfo.email" placeholder="請輸入信箱" rules="email|required">
         </VField>
@@ -107,7 +107,7 @@ export default {
           v-model="userInfo.name" placeholder="請輸入姓名" rules="required"></VField>
         <ErrorMessage name="姓名" class="invalid-feedback"></ErrorMessage>
       </div>
-      <div class="mb-2" style="min-height: 95px">
+      <div class="mb-3" style="min-height: 95px">
         <label for="mumuyuanPhone" class="form-label fw-bolder fs-5 mb-0">手機</label>
         <VField id="mumuyuanPhone" name="手機" type="tel" class="form-control" :class="{ 'is-invalid': errors['手機'] }"
           v-model="userInfo.phone" placeholder="請輸入電話" rules="required|min:10|numeric|max:10"></VField>

@@ -75,9 +75,9 @@ export default {
 				<img class="position-absolute" style="top:30%;left:40%" src="/首頁圖片/illustration-right.png" alt="image error" />
 			</div>
 		</div>
-		<div class="position-absolute top-50 start-50 translate-middle" style="z-index: 100;width: 20%;">
-			<h2 class="fw-bolder text-center py-2">{{ pageStatus }}</h2>
-			<router-view></router-view>
+		<div class="position-absolute top-50 start-50 translate-middle col-md-6 px-3" style="max-width: 400px;">
+			<h2 class="fw-bolder text-center py-2 text-primary mb-4" style="letter-spacing: 2px;">{{ pageStatus }}</h2>
+				<router-view></router-view>
 		</div>
 	</div>
 </template>
@@ -89,10 +89,5 @@ export default {
 		min-height: calc(100vh - 314px);
 		background: #d8d0ae;
 	}
-}
-
-.setposition {
-	top:#{attr(data-custom-top)};
-	left:#{attr(data-custom-left)};
 }
 </style>
