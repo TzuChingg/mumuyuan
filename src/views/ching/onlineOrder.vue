@@ -70,6 +70,8 @@ import cartStore from '@/stores/cartStore.js'
 import categoryComponent from '@/components/ching/categoryComponent.vue'
 import { mapActions, mapState } from 'pinia'
 import { Toast } from 'bootstrap/dist/js/bootstrap.bundle.min.js'
+import { getChartByID } from 'apexcharts'
+import { BIconColumns } from 'bootstrap-icons-vue'
 export default {
 	data() {
 		return {
@@ -78,13 +80,29 @@ export default {
 	},
 	created() {
 		if (docCookies.getItem('identity') === 'baduser') {
-			alert('目前為黑名單狀態，即將返回首頁');
-			this.$router.push('/')
+			this.$swal.fire({
+				icon: "warning",
+				title: "警告!!!",
+				text: "您目前處於黑名單，",
+				footer: '如有疑問請詢問相關人員，謝謝。'
+			}).then(() => {
+				this.$router.push('/')
+			});
 			return
 		}
 	},
 	mounted() {
 		this.getProducts()
+		// this.$swal({
+		//     toast: true,
+		//     position: 'top-end',
+		//     showConfirmButton: false,
+		//     timer: 3000,
+
+		//     icon: 'success',
+		//     title: 'Hi man',
+		//     text: 'is a good day!',
+		//   });
 	},
 	computed: {
 		...mapState(productsStore, ['storeProducts']), //['秘捲', ['干貝牛肉捲', '番茄牛肉捲']]
@@ -115,15 +133,41 @@ export default {
 				quantity.value = 1
 			}
 		},
-		addCartToastFn(product, id) {
-			const toastId = new Date().getTime()
-			this.cartToastList.push({ toastId, product })
-			// 等待渲染
-			setTimeout(() => {
-				const toastPath = document.getElementById(toastId) // 找toast
-				const toast = new Toast(toastPath)
-				toast.show() //顯示
-			}, 100);
+		addCartToastFn(product) {
+			// const toastId = new Date().getTime()
+			// this.cartToastList.push({ toastId, product })
+			// // 等待渲染
+			// setTimeout(() => {
+			// 	const toastPath = document.getElementById(toastId) // 找toast
+			// 	const toast = new Toast(toastPath)
+			// 	toast.show() //顯示
+			// }, 100);
+
+			this.$swal({
+				toast: true,
+				position: 'top-end',
+				showConfirmButton: false,
+				timerProgressBar: true,
+				timer: 1200,
+				width: '20em',
+				padding: '0',
+				html: `
+				<div class="mb-2 w-100 py-1">
+					<div class="row g-0">
+						<div class="col-md-4">
+							<img src="${product.image}" class="w-100" alt="image error">
+						</div>
+						<div class="col-md-8">
+							<div class="card-body px-2">
+								<h5 class="card-title fw-bolder text-dark mb-1">${product.productName}</h5>
+								<p class="card-text">數量 : ${document.getElementById(product.id).value}</p>
+								<p class="card-text"><small class="text-muted">已加入購物車</small></p>
+							</div>
+						</div>
+					</div>
+				</div>
+				`
+			});
 		}
 	},
 	components: {

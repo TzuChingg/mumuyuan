@@ -7,16 +7,16 @@
             <span class="fs-6 fw-bolder text-dark">{{ obj.day }}</span>
           </div>
           <div class="mb-3 row fs-5 fw-bolder">
-            <span class="col-sm-4 col-lg-4 text-primary">訂位人</span>
-            <span class="col-sm-8 col-lg-8">{{ obj.name }}</span>
+            <span class="col-sm-3 text-primary">訂位人</span>
+            <span class="col-sm-9">{{ obj.name }}</span>
           </div>
           <div class="mb-3 row fs-5 fw-bolder">
-            <span class="col-sm-4 col-lg-4 text-primary">手機</span>
-            <span class="col-sm-8 col-lg-8">{{ obj.phone }}</span>
+            <span class="col-sm-3 text-primary">手機</span>
+            <span class="col-sm-9">{{ obj.phone }}</span>
           </div>
           <div class="mb-3 row fs-5 fw-bolder">
-            <span class="col-sm-4 col-lg-4 text-primary">人數</span>
-            <span class="col-sm-8 col-lg-8">{{ obj.personCount }}</span>
+            <span class="col-sm-3 text-primary">人數</span>
+            <span class="col-sm-9">{{ obj.personCount }}</span>
           </div>
           <div class="position-absolute" style="top: 32px; right: 10px;">
             <span class="fs-6 fw-bolder text-dark">{{ obj.time }}</span>
@@ -59,11 +59,23 @@ export default {
         .then(response => {
           if (response.status === 200) {
             this.tidyResponse = []
-            alert('成功取消')
+            this.$swal({
+              icon: 'success',
+              title: '成功取消',
+              text: '歡迎您再次預定',
+              timer: 1500
+            })
           }
         })
-        .catch(err => {
-          console.log(err)
+        .catch(() => {
+          this.$swal({
+            icon: 'error',
+            title: '訂位取消失敗',
+            text: '請稍後再試',
+            timer: 1500
+          }).then(() => {
+            this.$router.push({ path: '/' })
+          });
         })
     }
   }

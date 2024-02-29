@@ -20,7 +20,14 @@ export default {
       docCookies.removeItem("token");
       docCookies.removeItem("identity");
       docCookies.removeItem("id");
-      window.location.href = "/";
+      this.$swal({
+        icon: 'success',
+        title: '成功登出',
+        text: '導覽至首頁',
+        timer: 1500
+      }).then(() => {
+        window.location.href = "/";
+      });
     }
   }
 }
@@ -37,6 +44,9 @@ export default {
 
 .localroute {
   background-color: #B2815A;
-  color: white;
+
+  a {
+    color: white;
+  }
 }
 </style>

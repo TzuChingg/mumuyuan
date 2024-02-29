@@ -19,7 +19,12 @@ export default {
 			this.$axios.get(`${this.axiosGetUrl}`)
 				.then((response) => {
 					if (response.status !== 200 || response.data.length === 0) {
-						alert('查無訂位');
+						this.$swal({
+							icon: 'error',
+							title: '查無訂位',
+							text: '請重新輸入',
+							timer: 2000
+						})
 					} else {
 						this.getResponse = response.data;
 					}
@@ -102,7 +107,8 @@ export default {
 					<label for="mumuyuanPhone" class="form-label fw-bolder mb-1" style="letter-spacing: 1px;">訂單編號</label>
 					<input type="email" class="form-control mb-3" id="mumuyuanPhone" placeholder="請輸入訂單編號" v-model="orderNumber">
 				</div>
-				<button type="button" class="btn btn-dark col-lg-4 col-md-6 col-sm-12 fs-4" :disabled="ctlOrderBtn" @click="startSearch">查詢</button>
+				<button type="button" class="btn btn-dark col-lg-4 col-md-6 col-sm-12 fs-4" :disabled="ctlOrderBtn"
+					@click="startSearch">查詢</button>
 			</div>
 			<div class="min-heigth">
 				<searchOrder v-if="showOrder" :getResponse="getResponse" />

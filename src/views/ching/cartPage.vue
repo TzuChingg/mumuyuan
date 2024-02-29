@@ -244,8 +244,7 @@
             <tfoot>
               <tr class="align-middle text-center">
                 <td colspan="4" height="100">
-                  <button type="button" class="btn btn-danger px-3 py-2"
-                    @click="useCoupon(couponName, myIdentity); checkValid()">
+                  <button type="button" class="btn btn-danger px-3 py-2" @click="checkValid()">
                     送出訂單
                   </button>
                 </td>
@@ -331,32 +330,60 @@ export default {
         "orderid": this.orderId,
         "score": "",
       };
+
       const point = { point: this.user.point + this.point }
       try {
-        const apiPost = await this.$axios.post(`/orders`, data)
+        const apiPost = await this.$axios.post(`/orders`, data);
+        const apiUseCoupon = await this.useCoupon(this.couponName, this.myIdentity);
         const apiPatch = await this.$axios.patch(`/users/${this.myIdentity}`, point);
-        if (apiPost.statusText === "Created" && apiPatch.statusText === "OK") {
+        console.log(apiUseCoupon);
+        if (apiPost.statusText === "Created" && apiUseCoupon.statusText === "OK" && apiPatch.statusText === "OK") {
+          
+          
+          // -------------預定寫發信--------------
           this.socket.send(
             JSON.stringify({
               mail: this.user.email,
               orderid: this.orderId
             })
           )
-          alert('訂單已送出，請確認出餐狀態。');
-          window.location.href = "/";
+          // ---------------------------
+
+
+
+          this.$swal({
+            icon: 'success',
+            title: '訂單已送出',
+            text: '請確認出餐狀態',
+            timer: 3000
+          }).then(() => {
+            window.location.href = "/";
+          });
         }
       } catch (error) {
-        alert('訂單送出異常，請稍後再試。');
+        this.$swal({
+          icon: 'error',
+          title: '訂單送出異常',
+          text: '請稍後再試',
+          timer: 3000
+        }).then(() => {
+          window.location.href = "/";
+        });
       }
     },
     async checkValid() {
       try {
         const formValid = await this.$refs.form.validate();
         const status = formValid.valid;
-        if (!status) throw new Error('欄位未填寫完整，請再次檢查。');
+        if (!status) throw false;
         this.pushOrder();
       } catch (error) {
-        alert(error);
+        this.$swal({
+          icon: 'error',
+          title: '欄位未填寫完整',
+          text: '請再次檢查',
+          timer: 300000
+        });
       }
     },
   },

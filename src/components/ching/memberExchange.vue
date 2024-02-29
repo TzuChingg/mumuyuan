@@ -76,7 +76,6 @@ export default {
       this.choose = iChoose
     },
     confirm(getPoint) {
-      console.log(getPoint);
       const { id, name, calc, image, description } = getPoint
       const point = this.userInfo.point - getPoint.point
       let coupon = this.userInfo.coupon
@@ -86,11 +85,21 @@ export default {
         .then((response) => {
           if (response.status === 200) {
             this.getUserInfo()
-            alert('兌換成功')
+            this.$swal({
+              icon: 'success',
+              title: '兌換成功',
+              text: '請確認兌換券',
+              timer: 1500
+            })
           }
         })
-        .catch((err) => {
-          console.log(err)
+        .catch(() => {
+          this.$swal({
+            icon: 'error',
+            title: '兌換失敗',
+            text: '請稍後再試',
+            timer: 3000
+          })
         })
     }
   }
