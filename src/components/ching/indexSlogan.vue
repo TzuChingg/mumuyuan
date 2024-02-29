@@ -11,13 +11,13 @@
                         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
                             aria-label="Slide 3"></button>
                     </div> -->
-			<div class="carousel-inner">
+			<div class="carousel-inner" v-if="width>=850">
 				<div class="carousel-item active">
 					<div class="d-flex">
 						<div class="w-50  overflow-hidden img-scale">
 							<img src="/首頁圖片/hero-desktop-1.png" class="w-100" alt="食物照片1" />
 						</div>
-						<div class="w-50 overflow-hidden img-scale" v-if="width>=768">
+						<div class="w-50 overflow-hidden img-scale">
 							<img src="/首頁圖片/hero-desktop-2.png" class="w-100" alt="食物照片2" />
 						</div>
 					</div>
@@ -27,7 +27,7 @@
 						<div class="w-50 overflow-hidden img-scale">
 							<img src="/首頁圖片/hero-desktop-3.png" class="d-block w-100" alt="食物照片3" />
 						</div>
-						<div class="w-50 overflow-hidden img-scale" v-if="width>=768">
+						<div class="w-50 overflow-hidden img-scale">
 							<img src="/首頁圖片/hero-desktop-4.png" class="d-block w-100" alt="食物照片4" />
 						</div>
 					</div>
@@ -37,12 +37,21 @@
 						<div class="w-50 overflow-hidden img-scale">
 							<img src="/首頁圖片/hero-desktop-5.png" class="d-block w-100" alt="食物照片5" />
 						</div>
-						<div class="w-50 overflow-hidden img-scale" v-if="width>=768">
+						<div class="w-50 overflow-hidden img-scale">
 							<img src="/首頁圖片/hero-desktop-6.png" class="d-block w-100" alt="食物照片6" />
 						</div>
 					</div>
 				</div>
 			</div>
+			<div class="carousel-inner" v-else>
+				<div class="carousel-item active">
+					<div class="  overflow-hidden img-scale">
+						<img src="/首頁圖片/hero-mobile-1.png"  alt="食物照片1"  />
+						<!-- <img src="/首頁圖片/hero-mobile-2.png" class="h-100" alt="食物照片2" /> -->
+					</div>
+				</div>
+			</div>
+
 			<div class="fontSize">
 				<div class="slogan sRight position-absolute pe-none">
 					<p class="text-light" >
