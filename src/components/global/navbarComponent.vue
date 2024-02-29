@@ -161,6 +161,7 @@ export default {
             this.newStatus = receivedData.data
           }
         })
+        window.location.href = "/";
       }
     };
 

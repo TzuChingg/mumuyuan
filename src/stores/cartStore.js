@@ -82,7 +82,7 @@ export default defineStore('', {
           this.information = res.data
         })
         .catch((err) => {
-          console.log(123123123123132)
+          // console.log('沒有會員')
         })
     }
   }

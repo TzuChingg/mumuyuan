@@ -51,10 +51,13 @@
                             </div>
                         </div>
                         <div class="col-6 d-flex justify-content-end">
-                            <button type="button" class="btn btn-outline-dark"
+							<button type="button" class="btn btn-outline-dark" @click="addToCart(product.id); addCartToastFn(product);">
+								加入購物車
+							</button>
+                            <!-- <button type="button" class="btn btn-outline-dark"
                                 @click="addToCart(product.id); addCartToastFn(product.productName, product.productName);">
                                 加入購物車
-                            </button>
+                            </button> -->
                         </div>
                     </div>
                 </div>
@@ -93,16 +96,6 @@ export default {
 	},
 	mounted() {
 		this.getProducts()
-		// this.$swal({
-		//     toast: true,
-		//     position: 'top-end',
-		//     showConfirmButton: false,
-		//     timer: 3000,
-
-		//     icon: 'success',
-		//     title: 'Hi man',
-		//     text: 'is a good day!',
-		//   });
 	},
 	computed: {
 		...mapState(productsStore, ['storeProducts']), //['秘捲', ['干貝牛肉捲', '番茄牛肉捲']]

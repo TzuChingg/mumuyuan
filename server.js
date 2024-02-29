@@ -42,6 +42,7 @@ wss.on('connection', function connection(ws) {
 
   ws.on('message', (message) => {
     const parsedMessage = JSON.parse(message)
+    console.log(parsedMessage);
     if (parsedMessage.email) {
       if (parsedMessage.email.length > 0 && parsedMessage.email.includes('@gmail.com')) {
         transporter
@@ -141,6 +142,17 @@ wss.on('connection', function connection(ws) {
             ws.send(JSON.stringify(info.response))
           })
           .catch(console.error)
+      }
+    }else if(parsedMessage.mail){
+      if(parsedMessage.mail.length>0 && parsedMessage.mail.includes('@gmail.com')){
+        transporter.sendMail({
+          from: 'mumuyuan1234@gmail.com',
+          to: parsedMessage.mail,
+          subject: '你好這是你的訂單號碼 ',
+          html: `你可以透過這個號碼查詢訂單狀態 ${parsedMessage.orderid}`,
+        }).then(info => {
+          console.log({ info });
+        }).catch(console.error);
       }
     } else {
       sendAllUser(parsedMessage)

@@ -220,7 +220,10 @@ export default {
   methods:{
     ok(id,userId,orderid){
       const data = { status: 2 };
+      const data2 = { userId: userId,
+                      orderId: id}
       const loadingData = 2
+      this.$axios.post('notice' , data2)
       this.$axios.patch(`/orders/${id}`, data)
       location.reload();
       this.socket.send(JSON.stringify({
@@ -228,6 +231,7 @@ export default {
         id:orderid,
         userId:userId
       }))
+      
     },
     reject(id){
       this.$axios.delete(`/orders/${id}`)

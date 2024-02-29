@@ -21,9 +21,9 @@
                 <div class="col-4 me-3 ms-3 mb-3 rating-left-bg-image" v-for="(rating, indexUp) in page[1]"
                   :key="indexUp">
                   <div class="box ms-4 mb-0 mt-1">
-                    <i class="bi bi-star text-secondary ms-1" v-for="(item, index) in (5 - rating.star) "
-                      :key="index"></i>
                     <i class="bi bi-star-fill  text-secondary ms-1" v-for="(item, index) in  rating.star "
+                      :key="index"></i>
+                    <i class="bi bi-star text-secondary ms-1" v-for="(item, index) in (5 - rating.star) "
                       :key="index"></i>
                   </div>
                   <textarea class=" border-0 bg-transparent bg-opacity-100 text-light ms-4 text-wra" rows="3" cols="33"
@@ -34,9 +34,9 @@
                 <div class="col-4 me-3 ms-3 rating-right-bg-image" v-for="(rating, indexDown) in page[2]"
                   :key="indexDown">
                   <div class="box ms-4 mb-0 mt-1">
-                    <i class="bi bi-star text-secondary ms-1" v-for="(item, index) in (5 - rating.star) "
-                      :key="index"></i>
                     <i class="bi bi-star-fill  text-secondary ms-1" v-for="(item, index) in  rating.star "
+                      :key="index"></i>
+                    <i class="bi bi-star text-secondary ms-1" v-for="(item, index) in (5 - rating.star) "
                       :key="index"></i>
                   </div>
                   <textarea class=" border-0 bg-transparent bg-opacity-100 text-light ms-4 text-wrap " rows="3" cols="33"
@@ -70,7 +70,8 @@ export default {
           const len = parseInt(res.data.length / count)
           // 滿6筆留言才會新的一頁
           for (let i = 0; i < len; i++) {
-            this.ratingList.push([i + 1, temp.slice(count * i, 3 + (count * i)), temp.slice(3 + (count * i), count * (i + 1))]) // [1, [0-2], [3-5]]  [第幾頁,  [前3個], [後3個]]
+            this.ratingList.push([i + 1, temp.slice(count * i, 3 + (count * i)), temp.slice(3 + (count * i), count * (i + 1))]) 
+            // [1, [0-2], [3-5]]  [第幾頁,  [前3個], [後3個]]
           }
         }).catch((err) => {
           console.log('評價取得失敗');

@@ -312,7 +312,7 @@ export default {
         "isMember": this.myIdentity ? "true" : "false",
         "name": this.user.name,
         "phone": this.user.phone,
-        // "mail": this.user.email,
+        "mail": this.user.email,
         "day": this.currentDate,
         "product": this.product,
         'address': this.address,
@@ -333,13 +333,17 @@ export default {
 
       const point = { point: this.user.point + this.point }
       try {
+        let apiUseCoupon;
+        let apiPatch;
         const apiPost = await this.$axios.post(`/orders`, data);
-        const apiUseCoupon = await this.useCoupon(this.couponName, this.myIdentity);
-        const apiPatch = await this.$axios.patch(`/users/${this.myIdentity}`, point);
-        console.log(apiUseCoupon);
-        if (apiPost.statusText === "Created" && apiUseCoupon.statusText === "OK" && apiPatch.statusText === "OK") {
-          
-          
+        if (data.isMember === "true") {
+          apiUseCoupon = await this.useCoupon(this.couponName, this.myIdentity);
+          apiPatch = await this.$axios.patch(`/users/${this.myIdentity}`, point);
+        }
+
+        //  && apiUseCoupon.statusText === "OK" && apiPatch.statusText === "OK"
+        if (apiPost.statusText === "Created") {
+
           // -------------預定寫發信--------------
           this.socket.send(
             JSON.stringify({
@@ -348,9 +352,6 @@ export default {
             })
           )
           // ---------------------------
-
-
-
           this.$swal({
             icon: 'success',
             title: '訂單已送出',

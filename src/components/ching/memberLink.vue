@@ -44,7 +44,7 @@ export default {
 
 .localroute {
   background-color: #B2815A;
-
+  color: white;
   a {
     color: white;
   }
