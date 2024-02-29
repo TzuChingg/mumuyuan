@@ -82,20 +82,36 @@ export default {
     },
     getCoupon() {
       if (docCookies.getItem("id") == null) {
-        alert('請先登入')
-        this.$router.push({ path: '/login' })
+        this.$swal({
+          icon: 'warning',
+          title: '請先登入',
+          text: '請先登入後再試'
+        }).then(() => {
+          this.$router.push({ path: '/login' })
+        });
+        return
       }
       this.$axios.get(`/users/${docCookies.getItem("id")}`)
         .then((res) => {
           this.userCoupon = res.data.coupon.filter(el => el !== '')
           if (this.userCoupon.includes(parseInt(this.$route.params.id))) {
-            alert('已領過此優惠券')
+            this.$swal({
+              icon: 'error',
+              title: '已領過此優惠券',
+              text: '請查看個人優惠券',
+              timer: 2000
+            })
           } else {
             this.userCoupon.push(parseInt(this.$route.params.id))
             this.$axios.patch(`/users/${docCookies.getItem("id")}`, {
               coupon: this.userCoupon
             })
-            alert('加入優惠券成功')
+            this.$swal({
+              icon: 'success',
+              title: '加入優惠券成功',
+              text: '請查看個人優惠券',
+              timer: 2000
+            })
           }
         })
     },

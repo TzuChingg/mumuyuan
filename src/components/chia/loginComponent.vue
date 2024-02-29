@@ -50,10 +50,24 @@ export default {
             document.cookie = `identity=${user.identity};expires=${new Date().getTime() + 24 * 60 * 60 * 1000
               };`
             document.cookie = `id=${user.id};expires=${new Date().getTime() + 24 * 60 * 60 * 1000};`
-            this.$router.push({ path: '/' })
+            this.$swal({
+              icon: 'success',
+              title: '成功登入',
+              text: '導覽至首頁',
+              timer: 1500
+            }).then(() => {
+              this.$router.push({ path: '/' })
+              // window.location.href = "/";
+            });
           }
         })
-        .catch(err => alert('登入失敗'))
+        .catch(() => {
+          this.$swal({
+            icon: 'error',
+            title: '登入失敗',
+            text: '請重新輸入',
+          })
+        })
     }
   }
 }

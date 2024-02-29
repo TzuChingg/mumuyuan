@@ -38,8 +38,14 @@ export default {
 	},
 	created() {
 		if (docCookies.getItem('identity') === 'baduser') {
-			alert('目前為黑名單狀態，即將返回首頁');
-			this.$router.push('/')
+			this.$swal.fire({
+				icon: "warning",
+				title: "警告!!!",
+				text: "您目前處於黑名單，",
+				footer: '如有疑問請詢問相關人員，謝謝。'
+			}).then(() => {
+				this.$router.push('/')
+			});
 			return
 		}
 		this.getReserveDay(); //抓往後3天
@@ -101,7 +107,12 @@ export default {
 			}
 
 			if (this.allTrue || !this.ageinCheck) {
-				alert('訂位失敗');
+				this.$swal({
+					icon: 'error',
+					title: '訂位失敗',
+					text: '欄位請填寫完整',
+					timer: 2000
+				})
 				return
 			};
 
@@ -109,10 +120,25 @@ export default {
 				...this.list
 			}).then((response) => {
 				if (response.status === 201) {
-					alert('訂位成功');
-					this.$router.push({ path: '/' });
+					this.$swal({
+						icon: 'success',
+						title: '訂位成功',
+						text: '待返回首頁',
+						timer: 2000
+					}).then(() => {
+						this.$router.push({ path: '/' });
+					});
 				}
-			}).catch(err => console.log(err))
+			}).catch(() => {
+				this.$swal({
+					icon: 'error',
+					title: '訂位失敗',
+					text: '請稍後再試',
+					timer: 2000
+				}).then(() => {
+					window.location.href = "/";
+				});
+			})
 		}
 	},
 	computed: {
