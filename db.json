@@ -324,7 +324,7 @@
       "count": 10,
       "price": 35,
       "description": "外皮香脆如金，內裡多汁嫩滑，烤製至完美黃金色澤，美味令人難以抗拒。",
-      "isLook": true,
+      "isLook": false,
       "id": 19
     },
     {
@@ -444,7 +444,7 @@
       "count": 10,
       "price": 35,
       "description": "外層金黃酥脆，咬下即化，宛如餅乾般的香濃口感。",
-      "isLook": false,
+      "isLook": true,
       "id": 31
     },
     {

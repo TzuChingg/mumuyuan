@@ -232,7 +232,7 @@ export default {
 						</div>
 						<div class="form-floating mb-1" style="height: 85px;">
 							<input type="number" min="1" max="10" class="form-control" id="reservepersonCount"
-								v-model="list.personCount">
+								v-model="list.personCount" >
 							<label for="reservepersonCount">預約人數(最多10位)</label>
 							<div v-if="list.personCount != ''">
 								<span v-if="regexStatus.personCount" class="text-success">✔</span>
@@ -285,7 +285,7 @@ export default {
 				<div class="row" role="group" aria-label="Basic radio toggle button group">
 					<div class="col-lg-3 col-md-6 col-sm-12 text-center my-3" v-for="(time, idx) in periods" :key="idx">
 						<input type="radio" class="btn-check" name="time" :id="time" :value="time" v-model="list.time"
-							autocomplete="off" :disabled="list.personCount > maxPeople[time] - remainPeople[time] ? true : false">
+							autocomplete="off" :disabled="list.personCount >= maxPeople[time] - remainPeople[time] ? true : false">
 						<label class="btn btn-outline-dark w-75" :for="time">{{ time }}
 							({{ maxPeople[time] - remainPeople[time] }})</label>
 					</div>
