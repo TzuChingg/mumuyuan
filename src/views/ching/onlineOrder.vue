@@ -4,10 +4,10 @@
 			<div class="col-sm-12 position-relative d-flex justify-content-end py-3">
 				<categoryComponent></categoryComponent>
 				<router-link to="/cartPage" class="text-decoration-none">
-					<button class="btn justify-content-end border-0 d-flex align-items-center">
-						<i class="btn btn-outline-primary border-0 bi bi-cart fs-3 me-2"><span class="position-absolute fs-5">{{
+					<button class="btn btn-outline-primary justify-content-end border-0 d-flex align-items-center">
+						<i class="bi bi-cart fs-3 me-2"><span class="position-absolute fs-5">{{
 							cartNum }}</span></i>
-						<div class="btn btn-outline-primary border-0 fs-3">${{ cartsList.totalAmount }}</div>
+						<div class="fs-3">&nbsp;&nbsp;${{ cartsList.totalAmount }}</div>
 					</button>
 				</router-link>
 			</div>
@@ -27,41 +27,41 @@
 				</div>
 			</div>
 		</div>
-		<div class="row g-4 mt-2" v-for="(productList, index) in storeProducts" :key="index" :id="'#' + productList[0]">
+		<div class="row g-4 mt-2 " v-for="(productList, index) in storeProducts" :key="index" :id="'#' + productList[0]">
 			<h2 class="text-dark fw-bolder">{{ productList[0] }}</h2>
 			<hr class="m-0" />
 			<div class="col-sm-6 col-lg-3" v-for="(product, index) in productList[1]" :key="index">
-				<div class="card mx-auto">
-					<img :src="product.image" class="card-img-top" :alt="product.productName" />
-					<div class="card-body" style="height: 8rem;">
-						<div class="title d-flex justify-content-between">
-							<h5 class="card-title">{{ product.productName }}</h5>
-							<span class="text-end">NT {{ product.price }}</span>
-						</div>
-						<p class="card-text fs-6">{{ product.description }}</p>
-					</div>
-					<div class="card-footer d-flex justify-content-around border-0 bg-white p-3">
-						<div class="col-6">
-							<div class="input-group">
-								<input type="button" class="cal btn btn-outline-dark" value="-" @click="decreaseBtn(product.id)" />
-								<input type="number" :id="product.id" name="quantity"
-									class="form-control input-number border-primary text-center p-0" value="1" min="1" max="100"
-									readonly="readonly" />
-								<input type="button" class="cal btn btn-outline-dark" value="+" @click="increaseBtn(product.id)" />
-							</div>
-						</div>
-						<div class="col-6 d-flex justify-content-end">
+                <div class="card mx-auto">
+                    <img :src="product.image" class="card-img-top" :alt="product.productName" />
+                    <div class="card-body" style="height: 8rem;">
+                        <div class="title d-flex justify-content-between">
+                            <h5 class="card-title">{{ product.productName }}</h5>
+                            <span class="text-end">NT {{ product.price }}</span>
+                        </div>
+                        <p class="card-text fs-6">{{ product.description }}</p>
+                    </div>
+                    <div class="card-footer d-flex justify-content-around border-0 bg-white p-3">
+                        <div class="col-6">
+                            <div class="input-group">
+                                <input type="button" class="cal btn btn-outline-dark" value="-" @click="decreaseBtn(product.id)" />
+                                <input type="number" :id="product.id" name="quantity"
+                                    class="form-control input-number border-primary text-center p-0" value="1" min="1" max="100"
+                                    readonly="readonly" />
+                                <input type="button" class="cal btn btn-outline-dark" value="+" @click="increaseBtn(product.id)" />
+                            </div>
+                        </div>
+                        <div class="col-6 d-flex justify-content-end">
 							<button type="button" class="btn btn-outline-dark" @click="addToCart(product.id); addCartToastFn(product);">
 								加入購物車
 							</button>
-							<!-- <button type="button" class="btn btn-outline-dark"
-								@click="addToCart(product.id); addCartToastFn(product.productName, product.productName);">
-								加入購物車
-							</button> -->
-						</div>
-					</div>
-				</div>
-			</div>
+                            <!-- <button type="button" class="btn btn-outline-dark"
+                                @click="addToCart(product.id); addCartToastFn(product.productName, product.productName);">
+                                加入購物車
+                            </button> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
 		</div>
 	</div>
 </template>
@@ -96,16 +96,6 @@ export default {
 	},
 	mounted() {
 		this.getProducts()
-		// this.$swal({
-		//     toast: true,
-		//     position: 'top-end',
-		//     showConfirmButton: false,
-		//     timer: 3000,
-
-		//     icon: 'success',
-		//     title: 'Hi man',
-		//     text: 'is a good day!',
-		//   });
 	},
 	computed: {
 		...mapState(productsStore, ['storeProducts']), //['秘捲', ['干貝牛肉捲', '番茄牛肉捲']]

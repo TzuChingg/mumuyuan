@@ -76,6 +76,17 @@
       "point": 0,
       "coupon": [],
       "id": 5
+    },
+    {
+      "email": "suger5769@gmail.com",
+      "password": "$2a$10$zWm5gmGFhd2q5qeGexgHk.MtE3J5ZunJ1CAabt5/7wYaRmD6vdSj2",
+      "copyPassword": "123456",
+      "name": "LLLLLL",
+      "phone": "0912345678",
+      "identity": "user",
+      "point": 0,
+      "coupon": [],
+      "id": 6
     }
   ],
   "categories": [
@@ -313,7 +324,7 @@
       "count": 10,
       "price": 35,
       "description": "外皮香脆如金，內裡多汁嫩滑，烤製至完美黃金色澤，美味令人難以抗拒。",
-      "isLook": true,
+      "isLook": false,
       "id": 19
     },
     {
@@ -433,7 +444,7 @@
       "count": 10,
       "price": 35,
       "description": "外層金黃酥脆，咬下即化，宛如餅乾般的香濃口感。",
-      "isLook": false,
+      "isLook": true,
       "id": 31
     },
     {
