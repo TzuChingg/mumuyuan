@@ -4,7 +4,6 @@
             {{category}}
         </router-link>
     </div>
-    <!-- position-absolute top-50 start-50 translate-middle -->
 </template>
 
 <script>
