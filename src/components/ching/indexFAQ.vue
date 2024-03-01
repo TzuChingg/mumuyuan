@@ -7,9 +7,9 @@
     </div>
   </div>
   <div class="container pb-5">
-    <div class="row m-3">
-      <div class="col-6">
-        <div class="card">
+    <div class="row">
+      <div class="col-sm-6 col-12 mb-3">
+        <div class="card h-100">
           <div class="card-body">
             <h5 class="card-title">Q. 如何線上點餐？</h5>
             <p class="card-text fs-5">
@@ -18,8 +18,8 @@
           </div>
         </div>
       </div>
-      <div class="col-6">
-        <div class="card">
+      <div class="col-sm-6 col-12 mb-3">
+        <div class="card h-100">
           <div class="card-body">
             <h5 class="card-title">Q. 會員點數如何計算？</h5>
             <p class="card-text fs-5">
@@ -29,8 +29,8 @@
         </div>
       </div>
     </div>
-    <div class="row m-3">
-      <div class="col-6">
+    <div class="row">
+      <div class="col-sm-6 col-12 mb-3">
         <div class="card h-100">
           <div class="card-body">
             <h5 class="card-title">Q. 現場等待會很久嗎？</h5>
@@ -40,8 +40,8 @@
           </div>
         </div>
       </div>
-      <div class="col-6">
-        <div class="card">
+      <div class="col-sm-6 col-12 mb-3">
+        <div class="card h-100">
           <div class="card-body">
             <h5 class="card-title">Q. 口味有哪些選擇呢？</h5>
             <p class="card-text fs-5">
