@@ -3,7 +3,7 @@
 		<div class="categoryNav row position-sticky sticky-top">
 			<div class="col-sm-12 d-flex flex-xl-column justify-content-xl-center align-items-sm-center py-3">
 				<categoryComponent></categoryComponent>
-				<router-link to="/cartPage" class="text-decoration-none position-absolute end-0">
+				<router-link to="/cartPage" class="text-decoration-none position-relative end-0 align-self-end">
 					<button class="btn btn-outline-primary border-0 justify-content-center d-flex align-items-center">
 						<i class="bi bi-cart fs-3 me-2"><span class="position-absolute fs-5">{{
 							cartNum }}</span></i>
