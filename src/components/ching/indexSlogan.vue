@@ -4,40 +4,40 @@
 			data-bs-wrap="true" data-bs-keyboard="false">
 			<!-- 控制項
 			<div class="carousel-indicators">
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
-                            class="active" aria-current="true" aria-label="Slide 1"></button>
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                            aria-label="Slide 2"></button>
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                            aria-label="Slide 3"></button>
-                    </div> -->
-			<div class="carousel-inner" v-if="width>=850">
+					<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
+							class="active" aria-current="true" aria-label="Slide 1"></button>
+					<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+							aria-label="Slide 2"></button>
+					<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+							aria-label="Slide 3"></button>
+			</div> -->
+			<div class="carousel-inner" v-if="width > 576">
 				<div class="carousel-item active">
-					<div class="d-flex">
-						<div class="w-50  overflow-hidden img-scale">
+					<div class="row p-0">
+						<div class="col-12 col-sm-6 overflow-hidden img-scale">
 							<img src="/首頁圖片/hero-desktop-1.png" class="w-100" alt="食物照片1" />
 						</div>
-						<div class="w-50 overflow-hidden img-scale">
+						<div class="col-12 col-sm-6 overflow-hidden img-scale">
 							<img src="/首頁圖片/hero-desktop-2.png" class="w-100" alt="食物照片2" />
 						</div>
 					</div>
 				</div>
 				<div class="carousel-item">
-					<div class="d-flex">
-						<div class="w-50 overflow-hidden img-scale">
+					<div class="row p-0">
+						<div class="col-12 col-sm-6 overflow-hidden img-scale">
 							<img src="/首頁圖片/hero-desktop-3.png" class="d-block w-100" alt="食物照片3" />
 						</div>
-						<div class="w-50 overflow-hidden img-scale">
+						<div class="col-12 col-sm-6 overflow-hidden img-scale">
 							<img src="/首頁圖片/hero-desktop-4.png" class="d-block w-100" alt="食物照片4" />
 						</div>
 					</div>
 				</div>
 				<div class="carousel-item">
-					<div class="d-flex">
-						<div class="w-50 overflow-hidden img-scale">
+					<div class="row p-0">
+						<div class="col-12 col-sm-6 overflow-hidden img-scale">
 							<img src="/首頁圖片/hero-desktop-5.png" class="d-block w-100" alt="食物照片5" />
 						</div>
-						<div class="w-50 overflow-hidden img-scale">
+						<div class="col-12 col-sm-6 overflow-hidden img-scale">
 							<img src="/首頁圖片/hero-desktop-6.png" class="d-block w-100" alt="食物照片6" />
 						</div>
 					</div>
@@ -45,36 +45,54 @@
 			</div>
 			<div class="carousel-inner" v-else>
 				<div class="carousel-item active">
-					<div class="  overflow-hidden img-scale">
-						<img src="/首頁圖片/hero-mobile-1.png"  alt="食物照片1"  />
-						<!-- <img src="/首頁圖片/hero-mobile-2.png" class="h-100" alt="食物照片2" /> -->
+					<div class="row p-0">
+						<div class="col-12 overflow-hidden img-scale">
+							<img src="/首頁圖片/hero-mobile-1.png" class="w-100 object-fit-cover" style="height: 200px;" alt="食物照片1" />
+						</div>
+						<div class="col-12 overflow-hidden img-scale">
+							<img src="/首頁圖片/hero-mobile-2.png" class="w-100 object-fit-cover" style="height: 200px;" alt="食物照片2" />
+						</div>
+					</div>
+				</div>
+				<div class="carousel-item">
+					<div class="row p-0">
+						<div class="col-12 overflow-hidden img-scale">
+							<img src="/首頁圖片/hero-mobile-3.png" class="w-100 object-fit-cover" style="height: 200px;" alt="食物照片3" />
+						</div>
+						<div class="col-12 overflow-hidden img-scale">
+							<img src="/首頁圖片/hero-mobile-4.png" class="w-100 object-fit-cover" style="height: 200px;" alt="食物照片4" />
+						</div>
+					</div>
+				</div>
+				<div class="carousel-item">
+					<div class="row p-0">
+						<div class="col-12 overflow-hidden img-scale">
+							<img src="/首頁圖片/hero-mobile-5.png" class="w-100 object-fit-cover" style="height: 200px;" alt="食物照片5" />
+						</div>
+						<div class="col-12 overflow-hidden img-scale">
+							<img src="/首頁圖片/hero-mobile-6.png" class="w-100 object-fit-cover" style="height: 200px;" alt="食物照片6" />
+						</div>
 					</div>
 				</div>
 			</div>
-
-			<div class="fontSize">
-				<div class="slogan sRight position-absolute pe-none">
-					<p class="text-light" >
-						獨&nbsp;&nbsp;家&nbsp;&nbsp;醬&nbsp;&nbsp;料&nbsp;&nbsp;，&nbsp;&nbsp;特&nbsp;&nbsp;製&nbsp;&nbsp;秘&nbsp;&nbsp;粉
-					</p>
-					<p class="text-light">
-						無&nbsp;&nbsp;煙&nbsp;&nbsp;純&nbsp;&nbsp;烤&nbsp;&nbsp;，&nbsp;&nbsp;絕&nbsp;&nbsp;不&nbsp;&nbsp;油&nbsp;&nbsp;炸
-					</p>
+			<div class="fontSize position-absolute w-100 h-100 top-0">
+				<div class="d-flex flex-sm-row flex-column justify-content-evenly align-items-center h-100">
+					<div class="slogan pe-none d-flex">
+						<div class="m-auto">
+							<p class="text-light">獨家醬料，特製秘粉</p>
+							<p class="text-light">無煙純烤，絕不油炸</p>
+						</div>
+					</div>
+					<div class="slogan pe-none d-flex">
+						<div class="m-auto">
+							<p class="text-light">一手一串，如苑以嚐</p>
+							<p class="text-light">平價美食，種類多樣</p>
+						</div>
+					</div>
 				</div>
-				<div class="slogan sLeft position-absolute pe-none">
-					<p class="text-light">
-						一&nbsp;&nbsp;手&nbsp;&nbsp;一&nbsp;&nbsp;串&nbsp;&nbsp;，&nbsp;&nbsp;如&nbsp;&nbsp;苑&nbsp;&nbsp;以&nbsp;&nbsp;嚐
-					</p>
-					<p class="text-light">
-						平&nbsp;&nbsp;價&nbsp;&nbsp;美&nbsp;&nbsp;食&nbsp;&nbsp;，&nbsp;&nbsp;種&nbsp;&nbsp;類&nbsp;&nbsp;多&nbsp;&nbsp;樣
-					</p>
-				</div>
-				<div class="sloganButton position-absolute start-50 translate-middle">
-					<button type="button" class="btn btn-dark bg-light bg-opacity-75 ">
-						<router-link to="/onlineOrder" class=" text-black  text-decoration-none"><strong>立即點餐</strong></router-link>
-						{{ width }}
-					</button>
-				</div>
+				<button type="button" class="slogan-btn btn btn-dark bg-light bg-opacity-75 position-absolute bottom-0 start-50">
+					<router-link to="/onlineOrder" class="text-black text-decoration-none"><strong>立即點餐</strong></router-link>
+				</button>
 			</div>
 		</div>
 	</div>
@@ -99,7 +117,7 @@ export default {
 
 		}
 	},
-	components:{
+	components: {
 		// Swiper,
 		// SwiperSlide
 	},
@@ -109,84 +127,86 @@ export default {
 	methods: {
 		...mapActions(windowStore, ['getWidth'])
 	},
-	computed:{
+	computed: {
 		...mapState(windowStore, ['width'])
 	}
-	
-	
-	
-
 }
 </script>
 
 <style lang="scss" scoped>
 .img-scale {
-	img{
+	padding: 0;
+
+	img {
 		transition: 1s;
 	}
+
 	&:hover img {
 		transform: scale(1.2);
 	}
 }
 
 .slogan {
-	p {
-		margin: 0%;
-		padding: 0%;
-	}
-
 	writing-mode: vertical-lr;
-	top: 17%;
-	right: 22%;
+	width: 50%;
+}
 
-	&.sRight {
-		right: 22%;
+.fontSize {
+	font-size: 2.4rem;
+	letter-spacing: 1.4rem;
+}
+
+.slogan-btn {
+	font-size: 2.2rem;
+	transform: translate(-50%, -200px);
+}
+
+@media screen and (max-width: 1400px) {
+	.fontSize {
+		font-size: 2rem;
+		letter-spacing: 1rem;
 	}
 
-	&.sLeft {
-		left: 22%;
+	.slogan-btn {
+		font-size: 1.8rem;
+		transform: translate(-50%, -100px);
 	}
 }
 
-.sloganButton {
-	top: 70%;
-}
-@media screen and (min-width: 850px) {
-	.fontSize{
-		font-size: 23.52px;
+@media screen and (max-width: 992px) {
+	.fontSize {
+		font-size: 1.4rem;
+		letter-spacing: 1rem;
 	}
-	button{
-		font-size: 20px;
-	}
-}
 
-@media screen and (min-width: 992px) {
-	.fontSize{
-		font-size: 27.04px;
-	}
-	button{
-		font-size: 23.52px;
+	.slogan-btn {
+		font-size: 1.4rem;
+		transform: translate(-50%, -80px);
 	}
 }
 
-@media screen and (min-width: 1200px) {
-	.fontSize{
-		font-size: 30.56px;
-
+@media screen and (max-width: 768px) {
+	.fontSize {
+		font-size: 1rem;
+		letter-spacing: 0.6rem;
 	}
-	button{
-		font-size: 27.04px;
+
+	.slogan-btn {
+		font-size: 1.2rem;
+		transform: translate(-50%, -100px);
 	}
 }
 
-@media screen and (min-width: 1450px) {
-	.fontSize{
-		font-size: 37.6px;
+@media screen and (max-width: 576px) {
+	.slogan {
+		width: 75%;
+		font-size: 1.2rem;
+		writing-mode: inherit;
 	}
-	button{
-		font-size: 30.56px;
+	.slogan-btn {
+		font-size: 0.8rem;
+		transform: translate(-50%, -180px);
 	}
 }
-
 
 </style>
