@@ -1,6 +1,6 @@
 <template>
 	<div class="container-fluid p-0 position-relative overflow-hidden">
-		<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-pause="false"
+		<div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-pause="false"
 			data-bs-wrap="true" data-bs-keyboard="false">
 			<!-- 控制項
 			<div class="carousel-indicators">
@@ -75,7 +75,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="fontSize position-absolute w-100 h-100 top-0">
+			<div class="fontSize position-absolute w-100 h-100 top-0" style="z-index: 100;">
 				<div class="d-flex flex-sm-row flex-column justify-content-evenly align-items-center h-100">
 					<div class="slogan pe-none d-flex">
 						<div class="m-auto">
@@ -197,7 +197,7 @@ export default {
 	}
 }
 
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 575px) {
 	.slogan {
 		width: 75%;
 		font-size: 1.2rem;

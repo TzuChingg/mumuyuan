@@ -15,13 +15,15 @@
             <button type="button" data-bs-target="#ratingCarouse" data-bs-slide-to="2" aria-label="Slide 3"></button>
           </div>
           <div class="carousel-inner">
-            <div class="carousel-item" v-for="(page, indexPage) in ratingList" :key="indexPage"
+            <div class="carousel-item row" v-for="(page, indexPage) in ratingList" :key="indexPage"
               :class="{ active: page[0] == true }">
-              <div class="d-flex">
-                <div class="col-4 me-3 ms-3 mb-3 rating-left-bg-image" v-for="(rating, indexUp) in page[1]"
+              
+              
+              <div class="d-flex col-lg-12 col-md-6">
+                <div class="col-lg-4 col-md-12 rating-left-bg-image" v-for="(rating, indexUp) in page[1]"
                   :key="indexUp">
                   <div class="box ms-4 mb-0 mt-1">
-                    <i class="bi bi-star-fill  text-secondary ms-1" v-for="(item, index) in  rating.star "
+                    <i class="bi bi-star-fill text-secondary ms-1" v-for="(item, index) in  rating.star "
                       :key="index"></i>
                     <i class="bi bi-star text-secondary ms-1" v-for="(item, index) in (5 - rating.star) "
                       :key="index"></i>
@@ -30,8 +32,9 @@
                     disabled v-model="rating.ScoreText"></textarea>
                 </div>
               </div>
-              <div class="d-flex justify-content-end mb-5">
-                <div class="col-4 me-3 ms-3 rating-right-bg-image" v-for="(rating, indexDown) in page[2]"
+
+              <div class="d-flex col-lg-12 col-md-6 justify-content-end mb-5">
+                <div class="col-lg-4 col-md-12 rating-right-bg-image" v-for="(rating, indexDown) in page[2]"
                   :key="indexDown">
                   <div class="box ms-4 mb-0 mt-1">
                     <i class="bi bi-star-fill  text-secondary ms-1" v-for="(item, index) in  rating.star "
@@ -85,6 +88,11 @@ export default {
 <style lang="scss" scoped>
 @import '/src/assets/main.scss';
 
+.rating-left-bg-image,
+.rating-right-bg-image{
+  background-repeat: no-repeat;
+  background-size: contain;
+}
 .rating-left-bg-image {
   background-image: url('/首頁圖片/rating-left.png');
   width: 308px;
