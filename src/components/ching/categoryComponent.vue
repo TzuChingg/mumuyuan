@@ -1,10 +1,9 @@
 <template>
-    <div class="btn-group position-absolute top-50 start-50 translate-middle" role="group">
+    <div class="btn-group d-flex align-items-center align-self-center" role="group">
         <router-link class="btn btn-outline-primary" :to="{name: category, hash: '#'+category}" v-for="(category, index) in storeCategorires" :key="index" >
             {{category}}
         </router-link>
     </div>
-    <!-- position-absolute top-50 start-50 translate-middle -->
 </template>
 
 <script>
