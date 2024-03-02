@@ -73,12 +73,12 @@ import cartStore from '@/stores/cartStore.js'
 import categoryComponent from '@/components/ching/categoryComponent.vue'
 import { mapActions, mapState } from 'pinia'
 import { Toast } from 'bootstrap/dist/js/bootstrap.bundle.min.js'
-import { getChartByID } from 'apexcharts'
-import { BIconColumns } from 'bootstrap-icons-vue'
+
 export default {
 	data() {
 		return {
-			cartToastList: []
+			cartToastList: [],
+			loader: null
 		}
 	},
 	created() {
@@ -93,18 +93,31 @@ export default {
 			});
 			return
 		}
+		if (this.storeLoader) {
+			this.loader = this.$loading.show()
+		}
 	},
 	mounted() {
 		this.getProducts()
+
 	},
 	computed: {
-		...mapState(productsStore, ['storeProducts']), //['秘捲', ['干貝牛肉捲', '番茄牛肉捲']]
-		...mapState(cartStore, ['cartNum']),
-		...mapState(cartStore, ['cartsList']),
-		...mapState(productsStore, ['loadingState'])
+		...mapState(productsStore, ['storeProducts', 'storeLoader']), //['秘捲', ['干貝牛肉捲', '番茄牛肉捲']]
+		...mapState(cartStore, ['cartNum', 'cartsList'])
+	},
+	watch:{
+		storeLoader(newState, oldState){
+			console.log(oldState);
+			if (newState === false){
+				setTimeout(() => {
+					this.loader.hide()
+					// this.changeLoading()
+				}, 1000);
+			}
+		}
 	},
 	methods: {
-		...mapActions(productsStore, ['getProducts']),
+		...mapActions(productsStore, ['getProducts', 'changeLoading']),
 		...mapActions(cartStore, ['addToCart']),
 		increaseBtn(id) {
 			const quantity = document.getElementById(id)

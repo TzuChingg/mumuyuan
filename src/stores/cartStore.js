@@ -1,6 +1,7 @@
 import axios from 'axios'
 import productsStore from './productsStore'
 import { defineStore } from 'pinia'
+const api =  import.meta.env.VITE_API
 
 export default defineStore('', {
   // data
@@ -71,13 +72,13 @@ export default defineStore('', {
         const index = this.information.coupon.find((item) => item.name === couponName)
         this.information.coupon.splice(index, 1)
         const data = { coupon: this.information.coupon }
-        return axios.patch(`http://localhost:8080/api/users/${id}`, data)
+        return axios.patch(`${api}/users/${id}`, data)
       }
     },
 
     member(id) {
       axios
-        .get(`http://localhost:8080/api/users/${id}`)
+        .get(`${api}/users/${id}`)
         .then((res) => {
           this.information = res.data
         })

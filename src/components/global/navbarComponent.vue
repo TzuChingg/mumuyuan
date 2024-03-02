@@ -87,7 +87,7 @@
 </template>
 
 <script>
-import { docCookies } from '../../assets/cookie';
+import { docCookies } from '@/assets/cookie';
 import { Toast } from 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 export default {
@@ -148,8 +148,9 @@ export default {
   },
   mounted() {
     this.hasToken = docCookies.hasItem("token");
-
-    this.socket = new WebSocket('ws://localhost:8080/ws');
+    // 用.env
+    const ws_path =  import.meta.env.VITE_WS
+    this.socket = new WebSocket(ws_path);
     let myId = docCookies.getItem("id")
     this.socket.onmessage = (event) => {
       const receivedData = JSON.parse(event.data);
@@ -196,7 +197,7 @@ export default {
 @import '/src/assets/main.scss';
 
 .bg-image {
-  background-image: url('/首頁圖片/bg-shape.png');
+  background-image: url('./首頁圖片/bg-shape.png');
   background-size: cover;
 }
 

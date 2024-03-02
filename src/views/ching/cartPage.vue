@@ -340,9 +340,8 @@ export default {
           apiUseCoupon = await this.useCoupon(this.couponName, this.myIdentity);
           apiPatch = await this.$axios.patch(`/users/${this.myIdentity}`, point);
         }
-
         //  && apiUseCoupon.statusText === "OK" && apiPatch.statusText === "OK"
-        if (apiPost.statusText === "Created") {
+        if (apiPost.status === 201) {
 
           // -------------預定寫發信--------------
           this.socket.send(
@@ -428,8 +427,9 @@ export default {
         quantity: item.quantity
       };
     });
-
-    this.socket = new WebSocket('ws://localhost:8080/ws')
+    // 用.env
+    const ws_path =  import.meta.env.VITE_WS
+    this.socket = new WebSocket(ws_path)
     this.socket.onopen = () => {
       console.log('WebSocket connection opened')
     }
