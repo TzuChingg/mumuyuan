@@ -24,15 +24,18 @@ import indexRating from '@/components/ching/indexRating.vue';
 import indexFeature from '@/components/ching/indexFeature.vue';
 import indexFaq from '@/components/ching/indexFAQ.vue';
 import indexAddress from '@/components/ching/indexAddress.vue';
-// import loaderComponent from '@/components/ching/loadingComponent.vue'
-// import { h } from 'vue';
+
+
 export default {
     data() {
         return {
-            news: []
+            news: [],
+            loader: null
         }
     },
-
+    created() {
+        this.loader = this.$loading.show()
+    },
     // 跳轉
     mounted() {
         if (this.$route.hash === '#FAQ') {
@@ -40,6 +43,9 @@ export default {
                 this.scrollToSection();
             }, 100);
         };
+        setTimeout(() => {
+            this.loader.hide() 
+        }, 2000);
 
         // const loader = this.$loading.show({
         //     backgroundColor: "#000",

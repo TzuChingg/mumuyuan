@@ -43,7 +43,8 @@ export default {
           ...this.userInput
         })
         .then(response => {
-          if (response.statusText === 'OK') {
+          console.log(response);
+          if (response.status === 200) {
             const { user, accessToken } = response.data
             document.cookie = `token=${accessToken};expires=${new Date().getTime() + 24 * 60 * 60 * 1000
               };`
@@ -57,7 +58,6 @@ export default {
               timer: 1500
             }).then(() => {
               this.$router.push({ path: '/' })
-              // window.location.href = "/";
             });
           }
         })

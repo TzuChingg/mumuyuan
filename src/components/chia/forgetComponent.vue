@@ -57,7 +57,9 @@ export default {
     }
   },
   mounted() {
-    this.socket = new WebSocket('ws://localhost:8080/ws')
+    // 用.env
+    const ws_path =  import.meta.env.VITE_WS
+    this.socket = new WebSocket(ws_path)
     this.socket.onopen = () => {
       console.log('WebSocket connection opened')
     }
