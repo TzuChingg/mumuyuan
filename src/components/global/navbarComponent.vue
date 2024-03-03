@@ -160,7 +160,6 @@ export default {
       const receivedData = JSON.parse(event.data);
       if (receivedData.userId == myId) {
         this.notice = false
-        console.log(receivedData);
         if (receivedData.status == 2) {
           receivedData.status = "準備中"
           this.news.push(receivedData)
