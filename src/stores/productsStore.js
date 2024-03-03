@@ -27,7 +27,6 @@ export default defineStore('productsStore', {
       return sortedProducts.filter((item) =>item[1].length !== 0).map(el => el[0])
     },
     storeLoader: ({loader})=>{
-      // console.log(loader);
       return loader
     }
   },

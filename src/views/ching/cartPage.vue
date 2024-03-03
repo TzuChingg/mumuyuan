@@ -357,7 +357,7 @@ export default {
             text: '請確認出餐狀態',
             timer: 3000
           }).then(() => {
-            window.location.href = "/";
+            this.$router.push('/')
           });
         }
       } catch (error) {
@@ -367,7 +367,7 @@ export default {
           text: '請稍後再試',
           timer: 3000
         }).then(() => {
-          window.location.href = "/";
+          this.$router.push('/')
         });
       }
     },

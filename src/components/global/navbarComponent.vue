@@ -160,13 +160,18 @@ export default {
       const receivedData = JSON.parse(event.data);
       if (receivedData.userId == myId) {
         this.notice = false
-        this.news.forEach(item => {
-          if (item.num.includes(receivedData.id)) {
-            this.orderId = receivedData.id
-            this.newStatus = receivedData.data
-          }
-        })
-        window.location.href = "/";
+        console.log(receivedData);
+        if (receivedData.status == 2) {
+          receivedData.status = "準備中"
+          this.news.push(receivedData)
+        }else if(receivedData.status == 3){
+          this.news.map(item => {
+            if (item.num.includes(receivedData.num)) {
+              this.orderId = receivedData.num
+              this.newStatus = receivedData.status
+            }
+          })
+        }
       }
     };
 

@@ -42,14 +42,22 @@
 </template>
 
 <script>
+import windowStore from '@/stores/windowStore.js'
+import { mapActions, mapState } from 'pinia'
 export default {
     data() {
         return {
             news: [],
             fullWidth: 0,
             newsPage:1,
-            temp:[]
+            temp:[],
+            loader: null
         }
+    },
+    created() {
+        if (this.newsLoader) {
+			this.loader = this.$loading.show()
+		}
     },
     mounted() {
         const vm = this;
@@ -59,19 +67,24 @@ export default {
         }
         this.getNews()
     },
-
-    methods: {
-        getNews() {
-            this.$axios
-                .get(`/news`)
-                .then((result) => {
-                    this.news = result.data.filter(el => el.isLook == false )
-                    this.newsCarousel()
-                })
-                .catch((err) => {
-                    console.log(err.response)
-                })
+    computed:{
+        ...mapState(windowStore, ['storeNews', 'newsLoader'])
+    },
+    watch:{
+        storeNews(){
+            this.news = this.storeNews
+            this.newsCarousel()
         },
+        newsLoader(newState){
+            if (newState === false){
+				setTimeout(() => {
+					this.loader.hide()
+				}, 2000);
+			}
+        }
+    },
+    methods: {
+        ...mapActions(windowStore, ['getNews']),
         newsCarousel(){
             const newsCopy = JSON.parse(JSON.stringify(this.news))         
             if ( this.fullWidth >= 1660) {

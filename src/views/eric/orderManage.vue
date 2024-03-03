@@ -227,8 +227,8 @@ export default {
       this.$axios.patch(`/orders/${id}`, data)
       location.reload();
       this.socket.send(JSON.stringify({
-        data:loadingData,
-        id:orderid,
+        status:loadingData,//data 改成status
+        num:orderid,       //id 改成num
         userId:userId
       }))
       
@@ -247,8 +247,8 @@ export default {
       this.$axios.patch(`/orders/${id}`, data)
       location.reload();
       this.socket.send(JSON.stringify({
-        data:loadingData,
-        id:orderid,
+        status:loadingData, //data 改成status
+        num:orderid, //id 改成num
         userId:userId
       }))
     }

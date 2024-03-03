@@ -57,7 +57,8 @@ export default {
               text: '導覽至首頁',
               timer: 1500
             }).then(() => {
-              this.$router.push({ path: '/' })
+              // this.$router.push({ path: '/' })
+              window.location.href = "/"
             });
           }
         })
