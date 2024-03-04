@@ -37,7 +37,7 @@ export default {
     if (this.$route.hash === '#FAQ') {
       setTimeout(() => {
         this.scrollToSection()
-      }, 100)
+      }, 500)
     }
   },
   methods: {

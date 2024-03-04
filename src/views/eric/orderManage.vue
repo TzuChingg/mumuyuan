@@ -5,7 +5,7 @@
         </aside>
         <transition name="fade" mode="out-in">
           <main v-if="select==1" class="main container">
-            <WebSocketExample />
+            <!-- <WebSocketExample /> -->
             <div class="w-25 mt-5">              
               <select-list :options="options" @updata="get" v-once></select-list>
             </div>  
@@ -194,7 +194,7 @@ export default {
   components: {
     BackendFunctions,
     selectList,
-    WebSocketExample 
+    // WebSocketExample 
   },
   // 
   data() {
@@ -224,8 +224,15 @@ export default {
                       orderId: id}
       const loadingData = 2
       this.$axios.post('notice' , data2)
-      this.$axios.patch(`/orders/${id}`, data)
-      location.reload();
+      .then((res) => {
+        return this.$axios.patch(`/orders/${id}`, data)
+      })
+      .then((res) => {
+        location.reload();
+      })
+      .catch((err) => {
+        console.log(err.response);
+      });
       this.socket.send(JSON.stringify({
         status:loadingData,//data 改成status
         num:orderid,       //id 改成num
@@ -245,7 +252,10 @@ export default {
       const data = { status: 3 };
       const loadingData = 3 
       this.$axios.patch(`/orders/${id}`, data)
-      location.reload();
+      .then((res) => {
+        location.reload();
+      }).catch((err) => {
+      });
       this.socket.send(JSON.stringify({
         status:loadingData, //data 改成status
         num:orderid, //id 改成num
