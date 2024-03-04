@@ -8,7 +8,7 @@
   </div>
 </template>
 <script>
-import { docCookies } from '../../assets/cookie.js';
+import { docCookies } from '@/assets/cookie.js';
 export default {
   computed: {
     linkSetting() {
@@ -26,7 +26,7 @@ export default {
         text: '導覽至首頁',
         timer: 1500
       }).then(() => {
-        window.location.href = "/";
+        window.location.href = "/mumuyuan/";
       });
     }
   }

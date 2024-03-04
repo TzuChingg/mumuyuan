@@ -309,7 +309,7 @@ export default {
     },
     async pushOrder() {
       const data = {
-        "isMember": this.myIdentity ? "true" : "false",
+        "isMember": this.myIdentity ? true : false,
         "name": this.user.name,
         "phone": this.user.phone,
         "mail": this.user.email,
@@ -336,11 +336,12 @@ export default {
         let apiUseCoupon;
         let apiPatch;
         const apiPost = await this.$axios.post(`/orders`, data);
-        if (data.isMember === "true") {
-          apiUseCoupon = await this.useCoupon(this.couponName, this.myIdentity);
+        if (data.isMember === true ) {
+          if (this.couponName !== ''){
+            apiUseCoupon = await this.useCoupon(this.couponName, this.myIdentity);
+          }
           apiPatch = await this.$axios.patch(`/users/${this.myIdentity}`, point);
         }
-        //  && apiUseCoupon.statusText === "OK" && apiPatch.statusText === "OK"
         if (apiPost.status === 201) {
 
           // -------------預定寫發信--------------
@@ -357,7 +358,7 @@ export default {
             text: '請確認出餐狀態',
             timer: 3000
           }).then(() => {
-            window.location.href = "/";
+            window.location.href = '/mumuyuan/'
           });
         }
       } catch (error) {
@@ -367,7 +368,7 @@ export default {
           text: '請稍後再試',
           timer: 3000
         }).then(() => {
-          window.location.href = "/";
+          this.$router.push('/')
         });
       }
     },

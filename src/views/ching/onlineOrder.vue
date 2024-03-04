@@ -72,7 +72,7 @@ import productsStore from '@/stores/productsStore.js'
 import cartStore from '@/stores/cartStore.js'
 import categoryComponent from '@/components/ching/categoryComponent.vue'
 import { mapActions, mapState } from 'pinia'
-import { Toast } from 'bootstrap/dist/js/bootstrap.bundle.min.js'
+// import { Toast } from 'bootstrap/dist/js/bootstrap.bundle.min.js'
 
 export default {
 	data() {
@@ -107,12 +107,10 @@ export default {
 	},
 	watch:{
 		storeLoader(newState, oldState){
-			console.log(oldState);
 			if (newState === false){
 				setTimeout(() => {
 					this.loader.hide()
-					// this.changeLoading()
-				}, 1000);
+				}, 2000);
 			}
 		}
 	},
