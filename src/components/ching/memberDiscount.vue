@@ -7,7 +7,7 @@
       <hr />
       <div class="d-flex flex-wrap">
         <div class="mb-4  col-lg-4 col-6 p-2" v-for="i in myCoupons" :key="i.name">
-          <img :src="`/木木苑食材修圖/${i.image}.jpg`" class="card-img-top" alt="image error" />
+          <img :src="`./木木苑食材修圖/${i.image}.jpg`" class="card-img-top" alt="image error" />
           <div class="card-body p-2 bg-light">
             <h5 class="card-title fw-bolder mb-2">{{ i.name }}</h5>
             <p class="card-text mb-0">{{ i.description }}</p>

@@ -74,14 +74,14 @@ export default {
         storeNews(){
             this.news = this.storeNews
             this.newsCarousel()
+            if (this.newsLoader === false){
+                setTimeout(() => {
+                    this.loader.hide()
+                }, 2000);
+            }
         },
-        newsLoader(newState){
-            if (newState === false){
-				setTimeout(() => {
-					this.loader.hide()
-				}, 2000);
-			}
-        }
+        // newsLoader(newState){
+        // }
     },
     methods: {
         ...mapActions(windowStore, ['getNews']),

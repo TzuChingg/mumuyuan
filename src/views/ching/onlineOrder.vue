@@ -110,7 +110,6 @@ export default {
 			if (newState === false){
 				setTimeout(() => {
 					this.loader.hide()
-					// this.changeLoading()
 				}, 2000);
 			}
 		}
