@@ -129,7 +129,7 @@ methods:{
       docCookies.removeItem("token");
       docCookies.removeItem("identity");
       docCookies.removeItem("id");
-      window.location.href = "/"; 
+      window.location.href = "/mumuyuan/"; 
     },
 }, 
 
