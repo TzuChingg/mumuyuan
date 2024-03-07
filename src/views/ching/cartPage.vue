@@ -260,7 +260,7 @@
 <script>
 import cartStore from '@/stores/cartStore.js'
 import { mapActions, mapState } from 'pinia'
-import { docCookies } from '../../assets/cookie';
+import { docCookies } from '@/assets/cookie';
 export default {
   data() {
     return {
@@ -336,27 +336,25 @@ export default {
         let apiUseCoupon;
         let apiPatch;
         const apiPost = await this.$axios.post(`/orders`, data);
-        if (data.isMember === true ) {
-          if (this.couponName !== ''){
+        if (data.isMember === true) {
+          if (this.couponName !== '') {
             apiUseCoupon = await this.useCoupon(this.couponName, this.myIdentity);
           }
           apiPatch = await this.$axios.patch(`/users/${this.myIdentity}`, point);
         }
         if (apiPost.status === 201) {
 
-          // -------------預定寫發信--------------
           this.socket.send(
             JSON.stringify({
               mail: this.user.email,
               orderid: this.orderId
             })
           )
-          // ---------------------------
+
           this.$swal({
             icon: 'success',
             title: '訂單已送出',
-            text: '請確認出餐狀態',
-            timer: 3000
+            text: `訂單編號：「${this.orderId}」`,
           }).then(() => {
             window.location.href = '/mumuyuan/'
           });
@@ -382,8 +380,7 @@ export default {
         this.$swal({
           icon: 'error',
           title: '欄位未填寫完整',
-          text: '請再次檢查',
-          timer: 300000
+          text: '請再次檢查'
         });
       }
     },
@@ -429,7 +426,7 @@ export default {
       };
     });
     // 用.env
-    const ws_path =  import.meta.env.VITE_WS
+    const ws_path = import.meta.env.VITE_WS
     this.socket = new WebSocket(ws_path)
     this.socket.onopen = () => {
       console.log('WebSocket connection opened')

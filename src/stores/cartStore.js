@@ -1,7 +1,7 @@
 import axios from 'axios'
 import productsStore from './productsStore'
 import { defineStore } from 'pinia'
-const api =  import.meta.env.VITE_API
+const api = import.meta.env.VITE_API
 
 export default defineStore('', {
   // data
@@ -83,7 +83,7 @@ export default defineStore('', {
           this.information = res.data
         })
         .catch((err) => {
-          // console.log('沒有會員')
+          console.log('沒有會員')
         })
     }
   }

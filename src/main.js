@@ -45,8 +45,8 @@ import 'vue-loading-overlay/dist/css/index.css'
 import loaderComponent from '@/components/ching/loadingComponent.vue'
 
 //Vue sweetalert2
-import VueSweetalert2 from 'vue-sweetalert2';
-import 'sweetalert2/dist/sweetalert2.min.css';
+import VueSweetalert2 from 'vue-sweetalert2'
+import 'sweetalert2/dist/sweetalert2.min.css'
 //套件工具
 import VueApexCharts from 'vue3-apexcharts'
 import ApexCharts from 'apexcharts'
@@ -57,7 +57,7 @@ import App from './App.vue'
 const app = createApp(App)
 
 // 用.env
-const api =  import.meta.env.VITE_API
+const api = import.meta.env.VITE_API
 app.config.globalProperties.$axios = axios.create({
   baseURL: api
 })
@@ -70,16 +70,19 @@ app.component('VField', Field)
 app.component('VForm', Form)
 app.component('ErrorMessage', ErrorMessage)
 
-app.use(LoadingPlugin,{
-  backgroundColor: "#000",
-},
-{
-  default: h(loaderComponent)
-});
-app.use(VueApexCharts);
-app.use(VueAxios, axios);
-app.use(VueSweetalert2);
-app.use(createPinia());
-app.use(router);
+app.use(
+  LoadingPlugin,
+  {
+    backgroundColor: '#000'
+  },
+  {
+    default: h(loaderComponent)
+  }
+)
+app.use(VueApexCharts)
+app.use(VueAxios, axios)
+app.use(VueSweetalert2)
+app.use(createPinia())
+app.use(router)
 
 app.mount('#app')

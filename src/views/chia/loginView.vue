@@ -21,10 +21,11 @@ export default {
 	}
 }
 </script>
+
 <template>
 	<div class="row login mx-0">
-		<div class="signinContent overflow-hidden" ref="scene" data-friction-x="0.1" data-friction-y="0.1" data-scalar-x="25"
-			data-scalar-y="15">
+		<div class="signinContent overflow-hidden" ref="scene" data-friction-x="0.1" data-friction-y="0.1"
+			data-scalar-x="25" data-scalar-y="15">
 			<div class="w-100 h-100 position-absolute" data-depth="0.4">
 				<img class="position-absolute" style="top:60%;left:30%" src="/首頁圖片/title-illustration-left-brown.png"
 					alt="image error" />
@@ -77,10 +78,11 @@ export default {
 		</div>
 		<div class="position-absolute top-50 start-50 translate-middle col-md-6 px-3" style="max-width: 400px;">
 			<h2 class="fw-bolder text-center py-2 text-primary mb-4" style="letter-spacing: 2px;">{{ pageStatus }}</h2>
-				<router-view></router-view>
+			<router-view></router-view>
 		</div>
 	</div>
 </template>
+
 <style scoped lang="scss">
 .login {
 	cursor: default;

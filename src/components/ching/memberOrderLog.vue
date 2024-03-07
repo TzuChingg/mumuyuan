@@ -104,7 +104,7 @@
   </div>
 </template>
 <script>
-import { docCookies } from "../../assets/cookie.js";
+import { docCookies } from "@/assets/cookie.js";
 export default {
   data() {
     return {

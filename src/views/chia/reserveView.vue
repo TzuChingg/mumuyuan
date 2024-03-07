@@ -1,5 +1,5 @@
 <script>
-import { docCookies } from '../../assets/cookie'
+import { docCookies } from '@/assets/cookie'
 export default {
 	data() {
 		return {
@@ -215,6 +215,7 @@ export default {
 	}
 }
 </script>
+
 <template>
 	<div class="reserve container">
 		<div class="reserveContent col-lg-10 m-auto">
@@ -232,7 +233,7 @@ export default {
 						</div>
 						<div class="form-floating mb-1" style="height: 85px;">
 							<input type="number" min="1" max="10" class="form-control" id="reservepersonCount"
-								v-model="list.personCount" >
+								v-model="list.personCount">
 							<label for="reservepersonCount">預約人數(最多10位)</label>
 							<div v-if="list.personCount != ''">
 								<span v-if="regexStatus.personCount" class="text-success">✔</span>
@@ -310,6 +311,7 @@ export default {
 		</div>
 	</div>
 </template>
+
 <style scoped lang="scss">
 .reserve {
 	cursor: default;

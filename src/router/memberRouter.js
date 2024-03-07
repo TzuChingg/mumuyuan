@@ -9,22 +9,10 @@ export default [
     path: '/member',
     component: memberView,
     children: [
-      {
-        path: '',
-        component: () => import('../components/ching/memberCenter.vue')
-      },
-      {
-        path: 'orderlog',
-        component: () => import('../components/ching/memberOrderLog.vue')
-      },
-      {
-        path: 'discount',
-        component: () => import('../components/ching/memberDiscount.vue')
-      },
-      {
-        path: 'exchange',
-        component: () => import('../components/ching/memberExchange.vue')
-      }
+      { path: '', component: () => import('../components/ching/memberCenter.vue') },
+      { path: 'orderlog', component: () => import('../components/ching/memberOrderLog.vue') },
+      { path: 'discount', component: () => import('../components/ching/memberDiscount.vue') },
+      { path: 'exchange', component: () => import('../components/ching/memberExchange.vue') }
     ]
   },
   { path: '/onlineOrder', component: onlineOrder },
