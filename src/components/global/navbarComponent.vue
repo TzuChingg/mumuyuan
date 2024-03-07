@@ -136,7 +136,6 @@ export default {
           }
         }
       })
-
     }
   },
   methods: {
@@ -189,7 +188,6 @@ export default {
       })
   },
   beforeUnmount() {
-    // Close the WebSocket connection when the component is destroyed
     if (this.socket) {
       this.socket.close();
     }
@@ -204,7 +202,6 @@ export default {
   background-image: url('./首頁圖片/bg-shape.png');
   background-size: cover;
 }
-
 
 .nav-item {
   text-transform: uppercase;
@@ -287,6 +284,10 @@ export default {
   animation-duration: 4s;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
+}
+
+.categoryNav {
+  background: #d8d0ae;
 }
 
 @keyframes breath {

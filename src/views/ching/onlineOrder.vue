@@ -1,15 +1,8 @@
 <template>
 	<div class="container mb-5">
-		<div class="categoryNav row position-sticky sticky-top">
-			<div class="col-sm-12 d-flex flex-xl-column justify-content-xl-center align-items-sm-center py-3">
+		<div class="categoryNav position-sticky" style="z-index: 999;" :style="{ top: navHeight }">
+			<div class="d-flex flex-md-column justify-content-center align-items-center py-3 mx-auto">
 				<categoryComponent></categoryComponent>
-				<router-link to="/cartPage" class="text-decoration-none position-relative end-0 align-self-end">
-					<button class="btn btn-outline-primary border-0 justify-content-center d-flex align-items-center">
-						<i class="bi bi-cart fs-3 me-2"><span class="position-absolute fs-5">{{
-							cartNum }}</span></i>
-						<div class="fs-3">&nbsp;&nbsp;${{ cartsList.totalAmount }}</div>
-					</button>
-				</router-link>
 			</div>
 		</div>
 		<div class="row g-4 mt-2 " v-for="(productList, index) in storeProducts" :key="index" :id="'#' + productList[0]">
@@ -84,7 +77,7 @@ export default {
 	},
 	computed: {
 		...mapState(productsStore, ['storeProducts', 'storeLoader']), //['秘捲', ['干貝牛肉捲', '番茄牛肉捲']]
-		...mapState(cartStore, ['cartNum', 'cartsList'])
+		...mapState(cartStore, ['cartNum', 'cartsList']),
 	},
 	watch: {
 		storeLoader(newState, oldState) {
@@ -124,16 +117,16 @@ export default {
 				position: 'top-end',
 				showConfirmButton: false,
 				timerProgressBar: true,
-				timer: 1200,
-				width: '20em',
+				timer: 1000,
+				width: '300px',
 				padding: '0',
 				html: `
-				<div class="mb-2 w-100 py-1">
+				<div class="mb-2 w-100 py-1 h-100">
 					<div class="row g-0">
-						<div class="col-md-4">
+						<div class="col-4">
 							<img src="${product.image}" class="w-100" alt="image error">
 						</div>
-						<div class="col-md-8">
+						<div class="col-8">
 							<div class="card-body px-2">
 								<h5 class="card-title fw-bolder text-dark mb-1">${product.productName}</h5>
 								<p class="card-text">數量 : ${document.getElementById(product.id).value}</p>
@@ -159,21 +152,6 @@ input[type="number"] {
 
 .categoryNav {
 	background: #d8d0ae;
-
-	.btn-outline-primary:hover {
-		color: #f1eee9;
-		background: #d8d0ae;
-	}
 }
 
-.card-footer {
-	span {
-		cursor: default;
-	}
-
-	.cal:hover,
-	button:hover {
-		color: #f1eee9;
-	}
-}
 </style>
