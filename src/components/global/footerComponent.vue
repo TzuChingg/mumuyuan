@@ -9,17 +9,19 @@
           <li class="nav-item mx-2">
             <a class="nav-link fs-5 text-light text-decoration-none"
               href="https://www.instagram.com/explore/locations/109668478495672/-/"><img src="/首頁圖片/instagram.png"
-                alt="instagram連結"></a>
+                alt="instagram連結">
+            </a>
           </li>
           <li class="nav-item mx-2">
             <a class="nav-link fs-5 text-light text-decoration-none" href="https://www.facebook.com/mumuyuan2022/"><img
-                src="/首頁圖片/facebook.png" alt="facebook連結"></a>
+                src="/首頁圖片/facebook.png" alt="facebook連結">
+            </a>
           </li>
           <li class="nav-item mx-2">
             <a class="nav-link fs-5 text-light text-decoration-none"
               href="https://liff.line.me/1645278921-kWRPP32q/?accountId=960lyfwq"><img src="/首頁圖片/line.png" alt="line連結"
-                style="height: 48px; width: 48px;"></a>
-
+                style="height: 48px; width: 48px;">
+            </a>
           </li>
         </ul>
       </footer>
@@ -56,6 +58,3 @@ export default {
   }
 }
 </script>
-
-<style>
-</style>

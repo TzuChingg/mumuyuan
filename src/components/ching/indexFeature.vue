@@ -9,7 +9,6 @@
 		</div>
 	</div>
 	<div class="container bg-secondary py-3">
-		<!-- d-flex justify-content-center flex-wrap mb-5 -->
 		<div class="d-flex justify-content-center flex-wrap">
 			<div class="col-md-4 col-sm-6 col-12 feature position-relative">
 				<img class="w-100" src="/首頁圖片/feature1.png" alt="直火燒烤不油炸" />
@@ -49,12 +48,6 @@
 		</div>
 	</div>
 </template>
-
-<script>
-export default {
-
-}
-</script>
 
 <style lang="scss" scoped>
 .feature {

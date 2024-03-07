@@ -2,15 +2,6 @@
 	<div class="container-fluid p-0 position-relative overflow-hidden">
 		<div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-pause="false"
 			data-bs-wrap="true" data-bs-keyboard="false">
-			<!-- 控制項
-			<div class="carousel-indicators">
-					<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
-							class="active" aria-current="true" aria-label="Slide 1"></button>
-					<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-							aria-label="Slide 2"></button>
-					<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-							aria-label="Slide 3"></button>
-			</div> -->
 			<div class="carousel-inner" v-if="width > 576">
 				<div class="carousel-item active">
 					<div class="row p-0">
@@ -99,28 +90,10 @@
 </template>
 
 <script>
-import { Swiper, SwiperSlide } from "swiper/vue";
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-import { Autoplay, Pagination, Navigation } from "swiper/modules";
-
 import { mapActions, mapState } from 'pinia'
 import windowStore from '@/stores/windowStore.js'
-import bootstrapBundleMin from 'bootstrap/dist/js/bootstrap.bundle.min';
-export default {
-	data() {
-		return {
-			// modules: [Autoplay, Pagination, Navigation],
-			// 這邊是給 SwiperSlide 的 slidesPerView 判斷用的
 
-		}
-	},
-	components: {
-		// Swiper,
-		// SwiperSlide
-	},
+export default {
 	mounted() {
 		this.getWidth()
 	},

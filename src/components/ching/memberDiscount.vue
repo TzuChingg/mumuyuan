@@ -29,14 +29,8 @@ export default {
   methods: {
     async filterCoupons() {
       try {
-        // const getCoupons = await this.$axios.get('/coupons')
         const getUsers = await this.$axios.get(`/users/${docCookies.getItem('id')}`)
         this.myCoupons = getUsers.data.coupon
-        // console.log(splitCoupons);
-        // splitCoupons.forEach((iCoupons) => {
-        //   const findIndex = getCoupons.data.findIndex((every) => every.id === iCoupons - 0)
-        //   this.myCoupons.push(getCoupons.data[findIndex])
-        // })
       } catch (error) { console.log(error); }
     }
   },
