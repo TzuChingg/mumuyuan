@@ -2,13 +2,6 @@
   <div class="loader"></div>
 </template>
 
-<script>
-
-export default {
-
-}
-</script>
-
 <style lang="scss" scoped>
 @import '/src/assets/main.scss';
 .loader {

@@ -17,8 +17,6 @@
           <div class="carousel-inner">
             <div class="carousel-item row" v-for="(page, indexPage) in ratingList" :key="indexPage"
               :class="{ active: page[0] == true }">
-              
-              
               <div class="d-flex col-lg-12 col-md-6">
                 <div class="col-lg-4 col-md-12 rating-left-bg-image" v-for="(rating, indexUp) in page[1]"
                   :key="indexUp">
@@ -32,7 +30,6 @@
                     disabled v-model="rating.ScoreText"></textarea>
                 </div>
               </div>
-
               <div class="d-flex col-lg-12 col-md-6 justify-content-end mb-5">
                 <div class="col-lg-4 col-md-12 rating-right-bg-image" v-for="(rating, indexDown) in page[2]"
                   :key="indexDown">
@@ -80,7 +77,6 @@ export default {
           console.log('評價取得失敗');
         });
     },
-
   },
 }
 </script>
@@ -115,4 +111,5 @@ export default {
     resize: none;
     overflow: hidden;
   }
-}</style>
+}
+</style>

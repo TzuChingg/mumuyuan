@@ -36,7 +36,6 @@ export default {
             timer: 3000
           }).then(() => {
             this.$router.push('/');
-            // window.location.href = "/";
           });
       } else {
         this.$swal({
@@ -46,7 +45,6 @@ export default {
           timer: 3000
         }).then(() => {
           this.$router.push('/');
-          // window.location.href = "/";
         });
       }
     }
@@ -69,7 +67,6 @@ export default {
 
   },
   beforeUnmount() {
-    // Close the WebSocket connection when the component is destroyed
     if (this.socket) {
       this.socket.close()
     }

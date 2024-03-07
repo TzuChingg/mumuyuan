@@ -137,7 +137,6 @@ export default {
 
 .memberorder {
   
-
   button:hover {
     a {
       color: white;
@@ -172,7 +171,7 @@ export default {
     &:checked {
       ~label:after {
         content: '★';
-        color: $primary; // 使用你定义的 $primary 变量
+        color: $primary;
       }
     }
   }
@@ -189,7 +188,7 @@ export default {
 
       &:after {
         content: '★';
-        color: $primary; // Assuming you have a variable $primary defined
+        color: $primary;
       }
 
       ~label {

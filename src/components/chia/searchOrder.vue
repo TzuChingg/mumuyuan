@@ -16,7 +16,6 @@
                 <p class="mb-0 fw-bolder fs-6">{{ obj.day }}</p>
               </div>
             </div>
-      
         </div>
       </h2>
       <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne">
@@ -121,7 +120,6 @@
 </template>
 
 <script>
-import { Url } from 'url'
 
 export default {
   props: ['getResponse'],
@@ -235,7 +233,6 @@ export default {
     }
   },
   beforeUnmount() {
-    // Close the WebSocket connection when the component is destroyed
     if (this.socket) {
       this.socket.close()
     }
@@ -282,7 +279,6 @@ export default {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  // background: center cover no-repeat;
 }
 
 .textarea {
