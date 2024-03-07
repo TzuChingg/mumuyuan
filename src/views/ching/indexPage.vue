@@ -8,7 +8,6 @@
     <div class="container-fluid bg-secondary">
       <index-feature></index-feature>
     </div>
-
     <div class="container-fluid bg-primary" id="#FAQ" ref="FAQ">
       <index-faq></index-faq>
     </div>

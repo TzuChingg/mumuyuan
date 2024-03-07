@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import { docCookies } from '../../assets/cookie';
+import { docCookies } from '@/assets/cookie';
 export default {
   data() {
     return {

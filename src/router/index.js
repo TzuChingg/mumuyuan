@@ -19,11 +19,11 @@ const routes = [
   { path: '/', name: 'home', component: indexPage },
   { path: '/', name: 'FAQ', component: indexPage },
   { path: '/:pathMatch(.*)*', name: 'notFound', component: notFoundPage },
-   ...loginRouter ,
-   ...reserveRouter ,
-   ...searchRouter ,
-   ...backend ,
-   ...memberRouter ,
+  ...loginRouter,
+  ...reserveRouter,
+  ...searchRouter,
+  ...backend,
+  ...memberRouter
 ]
 
 const router = createRouter({

@@ -1,4 +1,4 @@
-<template >
+<template>
 	<div class="container mb-5">
 		<div class="categoryNav row position-sticky sticky-top">
 			<div class="col-sm-12 d-flex flex-xl-column justify-content-xl-center align-items-sm-center py-3">
@@ -11,21 +11,6 @@
 					</button>
 				</router-link>
 			</div>
-			<!-- <div aria-live="polite" aria-atomic="true" class="d-flex justify-content-end w-100">
-				<div class="toast-container position-absolute" ref="toast">
-					<div :id="item.toastId" class="toast bottom-50 start-100 " role="alert" aria-live="assertive" aria-atomic="true"
-						v-for="(item, index) in cartToastList" :key="index">
-						<div class="toast-header">
-							<strong class="me-auto">購物車</strong>
-							<small>Just now</small>
-							<button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-						</div>
-						<div class="toast-body" style="height: 4rem;">
-							已經 <strong>{{ item.product }}</strong> 加入購物車
-						</div>
-					</div>
-				</div>
-			</div> -->
 		</div>
 		<div class="row g-4 mt-2 " v-for="(productList, index) in storeProducts" :key="index" :id="'#' + productList[0]">
 			<h2 class="text-dark fw-bolder">{{ productList[0] }}</h2>
@@ -51,13 +36,10 @@
 							</div>
 						</div>
 						<div class="col-6 d-flex justify-content-end">
-							<button type="button" class="btn btn-outline-dark" @click="addToCart(product.id); addCartToastFn(product);">
+							<button type="button" class="btn btn-outline-dark"
+								@click="addToCart(product.id); addCartToastFn(product);">
 								加入購物車
 							</button>
-							<!-- <button type="button" class="btn btn-outline-dark"
-                                @click="addToCart(product.id); addCartToastFn(product.productName, product.productName);">
-                                加入購物車
-                            </button> -->
 						</div>
 					</div>
 				</div>
@@ -67,12 +49,11 @@
 </template>
 
 <script type="module">
-import { docCookies } from '../../assets/cookie'
+import { docCookies } from '@/assets/cookie'
 import productsStore from '@/stores/productsStore.js'
 import cartStore from '@/stores/cartStore.js'
 import categoryComponent from '@/components/ching/categoryComponent.vue'
 import { mapActions, mapState } from 'pinia'
-// import { Toast } from 'bootstrap/dist/js/bootstrap.bundle.min.js'
 
 export default {
 	data() {
@@ -105,9 +86,9 @@ export default {
 		...mapState(productsStore, ['storeProducts', 'storeLoader']), //['秘捲', ['干貝牛肉捲', '番茄牛肉捲']]
 		...mapState(cartStore, ['cartNum', 'cartsList'])
 	},
-	watch:{
-		storeLoader(newState, oldState){
-			if (newState === false){
+	watch: {
+		storeLoader(newState, oldState) {
+			if (newState === false) {
 				setTimeout(() => {
 					this.loader.hide()
 				}, 2000);
@@ -138,15 +119,6 @@ export default {
 			}
 		},
 		addCartToastFn(product) {
-			// const toastId = new Date().getTime()
-			// this.cartToastList.push({ toastId, product })
-			// // 等待渲染
-			// setTimeout(() => {
-			// 	const toastPath = document.getElementById(toastId) // 找toast
-			// 	const toast = new Toast(toastPath)
-			// 	toast.show() //顯示
-			// }, 100);
-
 			this.$swal({
 				toast: true,
 				position: 'top-end',

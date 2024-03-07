@@ -71,6 +71,7 @@ export default {
 	}
 }
 </script>
+
 <template>
 	<div class="search container">
 		<div class="searchContent col-lg-10 col-sm-12 mx-auto">
@@ -90,7 +91,6 @@ export default {
 						訂單
 					</label>
 				</div>
-
 			</div>
 			<div class="d-flex flex-column m-auto mb-5">
 				<div class="mb-3 col-lg-4 col-md-6 col-sm-12 fs-4" v-if="radioToggle === 'bookingfrom'">
@@ -117,6 +117,7 @@ export default {
 		</div>
 	</div>
 </template>
+
 <style scoped lang="scss">
 .search {
 	cursor: default;

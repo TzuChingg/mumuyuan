@@ -16,7 +16,6 @@
                 {{ content }}
               </p>
               <p>
-                <!-- <router-link to="/" @click.prevent="getCoupon" >按此領取優惠</router-link> -->
                 <a href="" @click.prevent="getCoupon">按此領取優惠</a>
               </p>
               <p>❕木木苑保有活動解釋權，造成不便敬請見諒❕</p>
@@ -34,14 +33,8 @@
                   <router-link :to="'/news/' + item.id">
                     <p class=" ms-2 fs-6">{{ item.newsTitle }}</p>
                   </router-link>
-
                 </li>
-
               </ul>
-              <!-- <p>
-                <a href="" class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0">鯖魚狂歡！買一送一</a>
-              </p> -->
-
             </div>
           </div>
           <div class="row justify-content-center">
@@ -57,21 +50,19 @@
   </div>
 </template>
 <script>
-import { docCookies } from '../../assets/cookie';
+import { docCookies } from '@/assets/cookie';
 export default {
   data() {
     return {
       news: {},
       userCoupon: [],
       otherNews: []
-
     }
   },
   mounted() {
     this.getNews()
     this.getOtherNews()
   },
-
   methods: {
     getNews() {
       this.$axios.get(`/news/${this.$route.params.id}`)
@@ -129,7 +120,6 @@ export default {
   },
   watch: {
     '$route.params.id'(newId) {
-      // 路由参数变化时执行的逻辑
       window.location.reload()
     },
   },
@@ -155,7 +145,6 @@ export default {
   }
 
   p {
-    // text-align: center;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;

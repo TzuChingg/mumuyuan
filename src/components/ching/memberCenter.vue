@@ -43,7 +43,7 @@
       <div class="mb-3 row">
         <label for="name" class="col-md-4 col-form-label">目前密碼：</label>
         <div class="col-md-8">
-          <input type="text" class="m-0 form-control" :value="userInfo.copyPassword" readonly />
+          <input type="text" class="m-0 form-control" v-model="currentPassword" />
         </div>
       </div>
       <div class="mb-3 row">
@@ -59,17 +59,20 @@
         </div>
       </div>
       <div class="buttonSave d-flex justify-content-center">
-        <button class="btn btn-primary" type="button" @click="setNewPassword" :disabled="checkPasswordEmpty">更改密碼</button>
+        <button class="btn btn-primary" type="button" @click="setNewPassword"
+          :disabled="checkPasswordEmpty">更改密碼</button>
       </div>
     </div>
   </div>
 </template>
+
 <script>
-import { docCookies } from '../../assets/cookie';
+import { docCookies } from '@/assets/cookie';
 
 export default {
   data() {
     return {
+      currentPassword: "",
       userInfo: {
         "email": "",
         "password": "",
@@ -110,6 +113,9 @@ export default {
     checkPasswordEmpty() {
       const samePassword = (this.userInfo.newPassword.trim() !== this.userInfo.dbCheckPassword.trim()) ? true : false;
       return (samePassword || this.userInfo.newPassword.trim() === '' || this.userInfo.dbCheckPassword.trim() === '') ? true : false;
+    },
+    checkCurrentPassword() {
+      return this.currentPassword.trim('') === this.userInfo.copyPassword ? false : true;
     }
   },
   methods: {
@@ -138,6 +144,14 @@ export default {
         })
     },
     setNewPassword() {
+      if (this.checkCurrentPassword) {
+        this.$swal({
+          icon: 'error',
+          title: '當前密碼錯誤',
+          text: '請重新輸入',
+        })
+        return;
+      }
       this.$axios.patch(`/users/${this.userInfo.id}`, {
         "password": this.userInfo.newPassword,
         "copyPassword": this.userInfo.newPassword
@@ -170,6 +184,7 @@ export default {
   }
 }
 </script>
+
 <style lang="scss" scoped>
 .membercenter {
 

@@ -1,23 +1,16 @@
 <script>
-
 //VUE3 CLI 默認導入模塊，所以不用加type="module"
 import { Transition } from 'vue'
 export default {
   data() {
     return {
       identity: 'user',
-      shopStatus:true,
+      shopStatus: true,
     }
   },
   components: {
-    Transition    
+    Transition
   },
-  // mounted(){
-  //   this.$axios.get("/shop")
-  //   .then(res=>{
-  //     this.shopStatus = res.data 
-  //   })
-  // }
 }
 </script>
 
@@ -29,7 +22,7 @@ export default {
         <transition name="fade" mode="out-in">
           <component :is="Component"></component>
         </transition>
-      </router-view>      
+      </router-view>
       <footerComponent v-if="identity === 'user'" />
     </div>
   </div>
@@ -47,17 +40,20 @@ export default {
 .fade-leave-to {
   opacity: 0;
 }
+
 .indexheigth {
   // min-height: 100vh;
   background: #d8d0ae;
 }
-img{
+
+img {
   height: 100vh;
   width: 100%;
   background-position: center center;
   background-size: cover;
 }
-img{
+
+img {
   height: 100vh;
   width: 100%;
   background-position: center center;
