@@ -8,7 +8,7 @@
 				<h2 class="mt-5 mb-5 text-center">抱歉，這個頁面不存在。</h2>
 			</div>
 			<div class="col-sm-7 d-flex justify-content-center align-content-center">
-				<button class="btn btn-lg btn-primary mb-5"><router-link to="/" class="text-light">回首頁</router-link></button>
+				<button class="btn btn-lg btn-primary mb-5"><router-link to="/" class="text-light text-decoration-none">回首頁</router-link></button>
 			</div>
 		</div>
 	</div>
