@@ -11,7 +11,7 @@
                   <table class="table mb-0 table-light">
                     <thead>
                       <tr class="text-center fs-5 fw-bolder">
-                        <td class="text-primary">取消</td>
+                        <td class="text-primary">刪除</td>
                         <td class="text-primary">名稱</td>
                         <td class="text-primary">數量</td>
                         <td class="text-primary">價格</td>

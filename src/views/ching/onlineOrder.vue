@@ -1,45 +1,40 @@
 <template>
 	<div class="container mb-5">
-		<div class="categoryNav row position-sticky sticky-top">
-			<div class="col-sm-12 d-flex flex-xl-column justify-content-xl-center align-items-sm-center py-3">
+		<div class="categoryNav position-fixed w-100 start-0" style="z-index: 999;">
+			<div class="d-flex flex-md-column justify-content-center align-items-center py-3 mx-auto">
 				<categoryComponent></categoryComponent>
-				<router-link to="/cartPage" class="text-decoration-none position-relative end-0 align-self-end">
-					<button class="btn btn-outline-primary border-0 justify-content-center d-flex align-items-center">
-						<i class="bi bi-cart fs-3 me-2"><span class="position-absolute fs-5">{{
-							cartNum }}</span></i>
-						<div class="fs-3">&nbsp;&nbsp;${{ cartsList.totalAmount }}</div>
-					</button>
-				</router-link>
 			</div>
 		</div>
-		<div class="row g-4 mt-2 " v-for="(productList, index) in storeProducts" :key="index" :id="'#' + productList[0]">
-			<h2 class="text-dark fw-bolder">{{ productList[0] }}</h2>
-			<hr class="m-0" />
-			<div class="col-sm-6 col-lg-4 col-xl-3" v-for="(product, index) in productList[1]" :key="index">
-				<div class="card mx-auto">
-					<img :src="product.image" class="card-img-top" :alt="product.productName" />
-					<div class="card-body" style="height: 8rem;">
-						<div class="title d-flex justify-content-between">
-							<h5 class="card-title">{{ product.productName }}</h5>
-							<span class="text-end">NT {{ product.price }}</span>
-						</div>
-						<p class="card-text fs-6">{{ product.description }}</p>
-					</div>
-					<div class="card-footer d-flex justify-content-around border-0 bg-white p-3">
-						<div class="col-6">
-							<div class="input-group">
-								<input type="button" class="cal btn btn-outline-dark" value="-" @click="decreaseBtn(product.id)" />
-								<input type="number" :id="product.id" name="quantity"
-									class="form-control input-number border-primary text-center p-0" value="1" min="1" max="100"
-									readonly="readonly" />
-								<input type="button" class="cal btn btn-outline-dark" value="+" @click="increaseBtn(product.id)" />
+		<div style="padding-top: 90px;">
+			<div class="row g-4 mt-2" v-for="(productList, index) in storeProducts" :key="index" :id="'#' + productList[0]">
+				<h2 class="text-dark fw-bolder">{{ productList[0] }}</h2>
+				<hr class="m-0" />
+				<div class="col-sm-6 col-lg-4 col-xl-3" v-for="(product, index) in productList[1]" :key="index">
+					<div class="card mx-auto">
+						<img :src="product.image" class="card-img-top" :alt="product.productName" />
+						<div class="card-body" style="height: 8rem;">
+							<div class="title d-flex justify-content-between">
+								<h5 class="card-title">{{ product.productName }}</h5>
+								<span class="text-end">NT {{ product.price }}</span>
 							</div>
+							<p class="card-text fs-6">{{ product.description }}</p>
 						</div>
-						<div class="col-6 d-flex justify-content-end">
-							<button type="button" class="btn btn-outline-dark"
-								@click="addToCart(product.id); addCartToastFn(product);">
-								加入購物車
-							</button>
+						<div class="card-footer d-flex justify-content-around border-0 bg-white p-3">
+							<div class="col-6">
+								<div class="input-group">
+									<input type="button" class="cal btn btn-outline-dark" value="-" @click="decreaseBtn(product.id)" />
+									<input type="number" :id="product.id" name="quantity"
+										class="form-control input-number border-primary text-center p-0" value="1" min="1" max="100"
+										readonly="readonly" />
+									<input type="button" class="cal btn btn-outline-dark" value="+" @click="increaseBtn(product.id)" />
+								</div>
+							</div>
+							<div class="col-6 d-flex justify-content-end">
+								<button type="button" class="btn btn-outline-dark"
+									@click="addToCart(product.id); addCartToastFn(product);">
+									加入購物車
+								</button>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -84,7 +79,7 @@ export default {
 	},
 	computed: {
 		...mapState(productsStore, ['storeProducts', 'storeLoader']), //['秘捲', ['干貝牛肉捲', '番茄牛肉捲']]
-		...mapState(cartStore, ['cartNum', 'cartsList'])
+		...mapState(cartStore, ['cartNum', 'cartsList']),
 	},
 	watch: {
 		storeLoader(newState, oldState) {
@@ -124,16 +119,16 @@ export default {
 				position: 'top-end',
 				showConfirmButton: false,
 				timerProgressBar: true,
-				timer: 1200,
-				width: '20em',
+				timer: 1000,
+				width: '300px',
 				padding: '0',
 				html: `
-				<div class="mb-2 w-100 py-1">
+				<div class="mb-2 w-100 py-1 h-100">
 					<div class="row g-0">
-						<div class="col-md-4">
+						<div class="col-4">
 							<img src="${product.image}" class="w-100" alt="image error">
 						</div>
-						<div class="col-md-8">
+						<div class="col-8">
 							<div class="card-body px-2">
 								<h5 class="card-title fw-bolder text-dark mb-1">${product.productName}</h5>
 								<p class="card-text">數量 : ${document.getElementById(product.id).value}</p>
@@ -159,21 +154,5 @@ input[type="number"] {
 
 .categoryNav {
 	background: #d8d0ae;
-
-	.btn-outline-primary:hover {
-		color: #f1eee9;
-		background: #d8d0ae;
-	}
-}
-
-.card-footer {
-	span {
-		cursor: default;
-	}
-
-	.cal:hover,
-	button:hover {
-		color: #f1eee9;
-	}
 }
 </style>
