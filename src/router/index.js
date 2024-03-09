@@ -36,10 +36,10 @@ const router = createRouter({
     } else if (to.hash) {
       const element = document.getElementById(to.hash)
       if (['#固定套餐', '#秘捲', '#肉品', '#海鮮', '#酒食', '#蔬菜', '#經典'].includes(to.hash)) {
-        return { el: element, top: 200, behavior: 'smooth' }
+        return { el: element, top: 210, behavior: 'smooth' }
       }
       if ('#FAQ' === to.hash) {
-        return { el: element, top: 0, behavior: 'smooth' }
+        return { el: element, top: 140, behavior: 'smooth' }
       }
     } else {
       return new Promise((resolve, reject) => {
