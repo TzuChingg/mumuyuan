@@ -42,7 +42,7 @@ export default {
   methods: {
     // 跳轉
     scrollToSection() {
-      this.$refs.FAQ.scrollIntoView({ behavior: 'smooth' })
+      this.$refs.FAQ.scrollIntoView({block: "center",  behavior: 'smooth' })
     }
   },
   components: {
