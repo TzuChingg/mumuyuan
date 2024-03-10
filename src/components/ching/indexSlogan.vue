@@ -66,18 +66,37 @@
 					</div>
 				</div>
 			</div>
-			<div class="fontSize position-absolute w-100 h-100 top-0" style="z-index: 100;">
+			<div class="fontSize position-absolute w-100 h-100 top-0" style="z-index: 100;" v-if="width > 576">
 				<div class="d-flex flex-sm-row flex-column justify-content-evenly align-items-center h-100">
+					<div class="slogan pe-none d-flex">
+						<div class="m-auto">
+							<p class="text-light">一手一串，如苑以嚐</p>
+							<p class="text-light">平價美食，種類多樣</p>
+						</div>
+					</div>
 					<div class="slogan pe-none d-flex">
 						<div class="m-auto">
 							<p class="text-light">獨家醬料，特製秘粉</p>
 							<p class="text-light">無煙純烤，絕不油炸</p>
 						</div>
 					</div>
+				</div>
+				<button type="button" class="slogan-btn btn btn-dark bg-light bg-opacity-75 position-absolute bottom-0 start-50">
+					<router-link to="/onlineOrder" class="text-black text-decoration-none"><strong>立即點餐</strong></router-link>
+				</button>
+			</div>
+			<div class="fontSize position-absolute w-100 h-100 top-0" style="z-index: 100;" v-else>
+				<div class="d-flex flex-sm-row flex-column justify-content-evenly align-items-center h-100">
 					<div class="slogan pe-none d-flex">
 						<div class="m-auto">
-							<p class="text-light">一手一串，如苑以嚐</p>
+							<p class="text-light">無煙純烤，絕不油炸</p>
+							<p class="text-light">獨家醬料，特製秘粉</p>
+						</div>
+					</div>
+					<div class="slogan pe-none d-flex">
+						<div class="m-auto">
 							<p class="text-light">平價美食，種類多樣</p>
+							<p class="text-light">一手一串，如苑以嚐</p>
 						</div>
 					</div>
 				</div>
