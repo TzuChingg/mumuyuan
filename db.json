@@ -812,7 +812,7 @@
       "address": "公益路666號",
       "price": 106,
       "userId": "3",
-      "status": 1,
+      "status": 3,
       "type": false,
       "tableware": true,
       "bags": true,
@@ -840,7 +840,7 @@
       ],
       "price": 45,
       "userId": "3",
-      "status": 1,
+      "status": 3,
       "type": "true",
       "tableware": "true",
       "bags": "true",
@@ -880,7 +880,7 @@
       ],
       "price": 148,
       "userId": "3",
-      "status": 1,
+      "status": 3,
       "type": "true",
       "tableware": "true",
       "bags": "true",
@@ -916,7 +916,7 @@
       "address": "台灣大道1000號",
       "price": 70,
       "userId": "1",
-      "status": 1,
+      "status": 3,
       "type": "true",
       "tableware": "true",
       "bags": "true",
@@ -951,7 +951,7 @@
       "address": "自取",
       "price": 135,
       "userId": "1",
-      "status": 1,
+      "status": 3,
       "type": "false",
       "tableware": "false",
       "bags": "false",
@@ -992,7 +992,7 @@
       "address": "自取",
       "price": 224,
       "userId": "1",
-      "status": 1,
+      "status": 3,
       "type": "false",
       "tableware": "false",
       "bags": "false",
@@ -1039,7 +1039,7 @@
       "address": "自取",
       "price": 652,
       "userId": "1",
-      "status": 1,
+      "status": 3,
       "type": "false",
       "tableware": "false",
       "bags": "false",
@@ -1074,7 +1074,7 @@
       "address": "市政北七路1段100號",
       "price": 140,
       "userId": "1",
-      "status": 1,
+      "status": 3,
       "type": "true",
       "tableware": "false",
       "bags": "false",
@@ -1265,7 +1265,7 @@
       "address": "自取",
       "price": 225,
       "userId": "6",
-      "status": 2,
+      "status": 3,
       "type": "false",
       "tableware": "false",
       "bags": "false",
@@ -1490,6 +1490,46 @@
       "userId": "6",
       "orderId": 19,
       "id": 5
+    },
+    {
+      "userId": "3",
+      "orderId": 7,
+      "id": 6
+    },
+    {
+      "userId": "3",
+      "orderId": 8,
+      "id": 7
+    },
+    {
+      "userId": "3",
+      "orderId": 9,
+      "id": 8
+    },
+    {
+      "userId": "1",
+      "orderId": 10,
+      "id": 9
+    },
+    {
+      "userId": "1",
+      "orderId": 11,
+      "id": 10
+    },
+    {
+      "userId": "1",
+      "orderId": 12,
+      "id": 11
+    },
+    {
+      "userId": "1",
+      "orderId": 13,
+      "id": 12
+    },
+    {
+      "userId": "1",
+      "orderId": 14,
+      "id": 13
     }
   ],
   "scores": [
