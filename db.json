@@ -83,16 +83,9 @@
       "copyPassword": "123456",
       "name": "Ching",
       "phone": "0912345678",
-      "identity": "user",
-      "point": 616,
+      "identity": "baduser",
+      "point": 619,
       "coupon": [
-        {
-          "id": 2,
-          "name": "折20塊",
-          "calc": "-20",
-          "image": "money",
-          "description": "沒有限制,每筆都能使用"
-        },
         {
           "id": 6,
           "name": "折30塊",
@@ -1277,6 +1270,42 @@
       "orderid": "202403030206",
       "score": "",
       "id": 19
+    },
+    {
+      "isMember": true,
+      "name": "Ching",
+      "phone": "0912345678",
+      "mail": "suger5769@gmail.com",
+      "day": "2024-03-11",
+      "product": [
+        {
+          "productName": "豬五花蔥捲",
+          "image": "./木木苑食材修圖/02.jpg",
+          "price": 58,
+          "quantity": 4
+        },
+        {
+          "productName": "剝皮辣椒豬捲",
+          "image": "./木木苑食材修圖/08.jpg",
+          "price": 45,
+          "quantity": 3
+        }
+      ],
+      "address": "自取",
+      "price": 367,
+      "userId": "6",
+      "status": 3,
+      "type": "false",
+      "tableware": "false",
+      "bags": "false",
+      "payment": "true",
+      "comment": "",
+      "pickTime": "01:16",
+      "flavor": "2",
+      "spicy": "2",
+      "orderid": "202403110116",
+      "score": "",
+      "id": 20
     }
   ],
   "news": [
@@ -1530,6 +1559,11 @@
       "userId": "1",
       "orderId": 14,
       "id": 13
+    },
+    {
+      "userId": "6",
+      "orderId": 20,
+      "id": 14
     }
   ],
   "scores": [

@@ -1,5 +1,5 @@
 import newsPage from '/src/views/ching/newsPage.vue'
-import memberView from '/src/views/ching/memberView.vue'
+import memberView from '/src/views/chia/memberView.vue'
 import onlineOrder from '/src/views/ching/onlineOrder.vue'
 import cart from '/src/views/ching/cartPage.vue'
 
@@ -9,10 +9,10 @@ export default [
     path: '/member',
     component: memberView,
     children: [
-      { path: '', component: () => import('../components/ching/memberCenter.vue') },
-      { path: 'orderlog', component: () => import('../components/ching/memberOrderLog.vue') },
-      { path: 'discount', component: () => import('../components/ching/memberDiscount.vue') },
-      { path: 'exchange', component: () => import('../components/ching/memberExchange.vue') }
+      { path: '', component: () => import('@/components/chia/memberCenter.vue') },
+      { path: 'orderlog', component: () => import('@/components/chia/memberOrderLog.vue') },
+      { path: 'discount', component: () => import('@/components/chia/memberDiscount.vue') },
+      { path: 'exchange', component: () => import('@/components/chia/memberExchange.vue') }
     ]
   },
   { path: '/onlineOrder', component: onlineOrder },

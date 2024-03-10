@@ -15,7 +15,6 @@ import indexPage from '/src/views/ching/indexPage.vue'
 import notFoundPage from '/src/views/ching/notFound.vue'
 
 const routes = [
-  //{ path: '/', component: IndexTest },
   { path: '/', name: 'home', component: indexPage },
   { path: '/', name: 'FAQ', component: indexPage },
   { path: '/:pathMatch(.*)*', name: 'notFound', component: notFoundPage },
