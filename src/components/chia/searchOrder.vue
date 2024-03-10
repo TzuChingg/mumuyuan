@@ -209,8 +209,8 @@ export default {
     })
     this.socket.onmessage = event => {
       const receivedData = JSON.parse(event.data)
-      if (ids.includes(receivedData.id)) {
-        this.status = receivedData.data
+      if (ids.includes(receivedData.num)) {
+        this.status = receivedData.status
       }
     }
     this.status = this.getResponse[0].status
