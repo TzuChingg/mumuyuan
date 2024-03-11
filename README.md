@@ -1,14 +1,17 @@
 # mumuyuan
 
-This template should help get you started developing with Vue 3 in Vite.
+<font size=5>2023 Vue 作品實戰冬季班  
+#5 - 木木苑串燒專門店</font>
 
-## Recommended IDE Setup
+* chia：
+  * 訂位、訂單/訂位查詢、會員中心
+* ching：
+  * 首頁、購物流程
+* eric：
+  * 後台功能、後端服務
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+<font size=3>備註：本地執行會使用到port 8080，8080已被佔去會執行不起來</font>
 
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
 
 ## Project Setup
 
