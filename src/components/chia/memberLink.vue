@@ -26,14 +26,14 @@ export default {
         text: '導覽至首頁',
         timer: 1500
       }).then(() => {
-        window.location.href = "/mumuyuan/";
+        window.location.href = "/";
       });
     }
   }
 }
 </script>
 <style lang="scss" scoped>
-@import '/src/assets/main.scss';
+@import '@/assets/main.scss';
 
 .btn-group-vertical{
   a:hover{

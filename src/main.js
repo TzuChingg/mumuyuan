@@ -15,8 +15,8 @@ import VueAxios from 'vue-axios'
 import router from './router'
 
 //全域組件
-import navbarComponent from './components/global/navbarComponent.vue'
-import footerComponent from './components/global/footerComponent.vue'
+import navbarComponent from '@/components/global/NavbarComponent.vue'
+import footerComponent from '@/components/global/FooterComponent.vue'
 
 // 引入 VeeValidate 元件跟功能
 import { Field, Form, ErrorMessage, defineRule, configure } from 'vee-validate'
@@ -42,7 +42,7 @@ setLocale('zh_TW')
 //Vue loading
 import { LoadingPlugin } from 'vue-loading-overlay'
 import 'vue-loading-overlay/dist/css/index.css'
-import loaderComponent from '@/components/ching/loadingComponent.vue'
+import LoaderComponent from '@/components/ching/LoadingComponent.vue'
 
 //Vue sweetalert2
 import VueSweetalert2 from 'vue-sweetalert2'
@@ -76,7 +76,7 @@ app.use(
     backgroundColor: '#000'
   },
   {
-    default: h(loaderComponent)
+    default: h(LoaderComponent)
   }
 )
 app.use(VueApexCharts)

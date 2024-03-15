@@ -33,7 +33,7 @@ export default {
 				time: '',
 				isCheck: false
 			},
-			ageinCheck: false // 送出前再次確認
+			ageinCheck: false
 		}
 	},
 	created() {
@@ -96,14 +96,14 @@ export default {
 		async goReserve() {
 			try {
 				const check = await this.$axios.get(`/bookingfrom?day=${this.list.day}&time=${this.list.time}`);
-				const count = this.maxPeople[this.list.time]; // 當天該時段最多用餐人數
-				const reduceCounnt = check.data.reduce((acc, cur) => { // 當天該時段已預定人數
+				const count = this.maxPeople[this.list.time]; 
+				const reduceCounnt = check.data.reduce((acc, cur) => {
 					return acc + cur["personCount"]
 				}, 0);
 				this.ageinCheck = (this.list.personCount - (count - reduceCounnt) <= 0) ? true : false;
 			} catch (error) {
 				this.ageinCheck = false;
-				console.log(error);
+				console.error(error);
 			}
 
 			if (this.allTrue || !this.ageinCheck) {

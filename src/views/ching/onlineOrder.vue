@@ -2,7 +2,7 @@
 	<div class="container mb-5">
 		<div class="categoryNav position-fixed w-100 start-0" style="z-index: 999;">
 			<div class="d-flex flex-md-column justify-content-center align-items-center py-3 mx-auto">
-				<categoryComponent></categoryComponent>
+				<CategoryComponent></CategoryComponent>
 			</div>
 		</div>
 		<div style="padding-top: 90px;">
@@ -47,7 +47,7 @@
 import { docCookies } from '@/assets/cookie'
 import productsStore from '@/stores/productsStore.js'
 import cartStore from '@/stores/cartStore.js'
-import categoryComponent from '@/components/ching/categoryComponent.vue'
+import CategoryComponent from '@/components/ching/CategoryComponent.vue'
 import { mapActions, mapState } from 'pinia'
 
 export default {
@@ -75,10 +75,9 @@ export default {
 	},
 	mounted() {
 		this.getProducts()
-
 	},
 	computed: {
-		...mapState(productsStore, ['storeProducts', 'storeLoader']), //['秘捲', ['干貝牛肉捲', '番茄牛肉捲']]
+		...mapState(productsStore, ['storeProducts', 'storeLoader']), 
 		...mapState(cartStore, ['cartNum', 'cartsList']),
 	},
 	watch: {
@@ -142,7 +141,7 @@ export default {
 		}
 	},
 	components: {
-		categoryComponent,
+		CategoryComponent,
 	}
 }
 </script>

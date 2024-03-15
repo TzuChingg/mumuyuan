@@ -1,8 +1,8 @@
-import reserveView from '../views/chia/reserveView.vue'
+import ReserveView from '@/views/chia/ReserveView.vue'
 
 export default [
   {
     path: '/reserve',
-    component: reserveView
+    component: ReserveView
   }
 ]

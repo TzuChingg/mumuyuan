@@ -71,7 +71,7 @@ export default {
                 text: '待跳轉至首頁',
                 timer: 2000
               }).then(() => {
-                window.location.href = "/mumuyuan/";
+                window.location.href = "/";
               });
             })
         } else {
@@ -81,7 +81,7 @@ export default {
             text: '請稍後再試',
             timer: 2000
           }).then(() => {
-            window.location.href = "/mumuyuan/";
+            window.location.href = "/";
           });
         }
       })

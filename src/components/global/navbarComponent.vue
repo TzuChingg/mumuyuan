@@ -147,7 +147,6 @@ export default {
   },
   mounted() {
     this.hasToken = docCookies.hasItem("token");
-    // 用.env
     const ws_path = import.meta.env.VITE_WS
     this.socket = new WebSocket(ws_path);
     let myId = docCookies.getItem("id")
@@ -196,7 +195,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import '/src/assets/main.scss';
+@import '@/assets/main.scss';
 
 .bg-image {
   background-image: url('./首頁圖片/bg-shape.png');

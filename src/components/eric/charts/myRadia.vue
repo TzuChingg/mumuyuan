@@ -56,7 +56,6 @@ mounted(){
           supper+=5;
         }
       })
-      console.log(lunch,dessert,dinner,supper)
       this.series[0] = lunch
       this.series[1] = dessert
       this.series[2] = dinner

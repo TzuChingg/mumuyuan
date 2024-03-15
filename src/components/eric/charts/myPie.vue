@@ -23,11 +23,11 @@ export default {
         
         plotOptions: {
             pie: {
-            customScale: 1, // 调整标签的位置，可以根据需要调整这个值
+            customScale: 1,
             }
         },
         theme: {
-            palette: 'palette3' // upto palette10
+            palette: 'palette3'
         },
         legend: {
             position: 'bottom'

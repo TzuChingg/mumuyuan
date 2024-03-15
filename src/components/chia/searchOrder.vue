@@ -200,7 +200,6 @@ export default {
     }
   },
   mounted() {
-    // 用.env
     const ws_path =  import.meta.env.VITE_WS
     this.socket = new WebSocket(ws_path)
     let ids = []

@@ -1,8 +1,8 @@
-import searchView from '../views/chia/searchView.vue'
+import SearchView from '@/views/chia/SearchView.vue'
 
 export default [
   {
     path: '/search',
-    component: searchView
+    component: SearchView
   }
 ]

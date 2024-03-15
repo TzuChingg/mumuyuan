@@ -329,12 +329,12 @@
 </template>
 
 <script>
-import selectList from '/src/components/eric/selectList.vue'
-import BackendFunctions from '/src/components/eric/BackendFunctions.vue'
+import SelectList from '@/components/eric/SelectList.vue'
+import BackendFunctions from '@/components/eric/BackendFunctions.vue'
 export default {
   components: {
     BackendFunctions,
-    selectList
+    SelectList
   },
   data() {
     return {
@@ -469,7 +469,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '/src/assets/main.scss';
+@import '@/assets/main.scss';
 
 .d-flex {
   background: $secondary;

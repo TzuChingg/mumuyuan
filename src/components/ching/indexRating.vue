@@ -68,13 +68,11 @@ export default {
           const temp = res.data
           const count = 6
           const len = parseInt(res.data.length / count)
-          // 滿6筆留言才會新的一頁
           for (let i = 0; i < len; i++) {
-            this.ratingList.push([i + 1, temp.slice(count * i, 3 + (count * i)), temp.slice(3 + (count * i), count * (i + 1))]) 
-            // [1, [0-2], [3-5]]  [第幾頁,  [前3個], [後3個]]
+            this.ratingList.push([i + 1, temp.slice(count * i, 3 + (count * i)), temp.slice(3 + (count * i), count * (i + 1))])
           }
-        }).catch((err) => {
-          console.log('評價取得失敗');
+        }).catch(() => {
+          console.error('評價取得失敗');
         });
     },
   },
@@ -82,7 +80,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '/src/assets/main.scss';
+@import '@/assets/main.scss';
 
 .rating-left-bg-image,
 .rating-right-bg-image{

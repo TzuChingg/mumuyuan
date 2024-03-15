@@ -1,13 +1,13 @@
-import loginView from '../views/chia/loginView.vue'
+import LoginView from '@/views/chia/LoginView.vue'
 
 export default [
   {
     path: '/login',
-    component: loginView,
+    component: LoginView,
     children: [
-      { path: '', component: () => import('../components/chia/loginComponent.vue') },
-      { path: 'signin', component: () => import('../components/chia/signinComponent.vue') },
-      { path: 'forget', component: () => import('../components/chia/forgetComponent.vue') }
+      { path: '', component: () => import('@/components/chia/LoginComponent.vue') },
+      { path: 'signin', component: () => import('@/components/chia/SigninComponent.vue') },
+      { path: 'forget', component: () => import('@/components/chia/ForgetComponent.vue') }
     ]
   }
 ]

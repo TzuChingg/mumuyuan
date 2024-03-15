@@ -24,17 +24,16 @@ export default {
           categories: [],
           
         },
-        // colors: ['#66DA26'],
         plotOptions: { 
           bar: {
             distributed: true,
           },
         },
-        dataLabels: {    //圓柱上的數字
+        dataLabels: {   
           enabled: false,
         },
         theme: {
-        palette: 'palette6' // upto palette10
+        palette: 'palette6'
       },
       },
 
