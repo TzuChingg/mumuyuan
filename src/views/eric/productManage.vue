@@ -445,12 +445,12 @@
 </template>
 
 <script>
-import selectList from '/src/components/eric/selectList.vue'
-import BackendFunctions from '/src/components/eric/BackendFunctions.vue'
+import SelectList from '@/components/eric/SelectList.vue'
+import BackendFunctions from '@/components/eric/BackendFunctions.vue'
 export default {
   components: {
     BackendFunctions,
-    selectList
+    SelectList
   },
   data() {
     return {
@@ -600,7 +600,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '/src/assets/main.scss';
+@import '@/assets/main.scss';
 
 .d-flex {
   background: $secondary;
@@ -616,7 +616,6 @@ export default {
 
 .main {
   flex: 1;
-  /* 让主要内容区域占据剩余的所有可用空间 */
   overflow-y: auto;
   width: 100%;
   transition:
@@ -633,7 +632,6 @@ export default {
 
   .main {
     width: calc(100vw - var(--sidebar-width));
-    /* margin-left: 0; */
   }
 }
 

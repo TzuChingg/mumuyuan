@@ -1,28 +1,28 @@
 <template>
   <div>
     <div class="bg-image bg-primary">
-      <index-slogan></index-slogan>
-      <index-news></index-news>
-      <index-rating></index-rating>
+      <Index-slogan></Index-slogan>
+      <Index-news></Index-news>
+      <Index-rating></Index-rating>
     </div>
     <div class="container-fluid bg-secondary">
-      <index-feature></index-feature>
+      <Index-feature></Index-feature>
     </div>
     <div class="container-fluid bg-primary" id="#FAQ" ref="FAQ">
-      <index-faq></index-faq>
+      <Index-faq></Index-faq>
     </div>
     <div class="container-fluid bg-secondary pb-5">
-      <index-address></index-address>
+      <Index-address></Index-address>
     </div>
   </div>
 </template>
 <script>
-import indexSlogan from '@/components/ching/indexSlogan.vue'
-import indexNews from '@/components/ching/indexNews.vue'
-import indexRating from '@/components/ching/indexRating.vue'
-import indexFeature from '@/components/ching/indexFeature.vue'
-import indexFaq from '@/components/ching/indexFAQ.vue'
-import indexAddress from '@/components/ching/indexAddress.vue'
+import IndexSlogan from '@/components/ching/IndexSlogan.vue'
+import IndexNews from '@/components/ching/IndexNews.vue'
+import IndexRating from '@/components/ching/IndexRating.vue'
+import IndexFeature from '@/components/ching/IndexFeature.vue'
+import IndexFaq from '@/components/ching/IndexFAQ.vue'
+import IndexAddress from '@/components/ching/IndexAddress.vue'
 
 export default {
   data() {
@@ -31,7 +31,6 @@ export default {
       loader: null
     }
   },
-  // 跳轉
   mounted() {
     if (this.$route.hash === '#FAQ') {
       setTimeout(() => {
@@ -40,18 +39,17 @@ export default {
     }
   },
   methods: {
-    // 跳轉
     scrollToSection() {
       this.$refs.FAQ.scrollIntoView({block: "center",  behavior: 'smooth' })
     }
   },
   components: {
-    indexSlogan,
-    indexNews,
-    indexRating,
-    indexFeature,
-    indexFaq,
-    indexAddress
+    IndexSlogan,
+    IndexNews,
+    IndexRating,
+    IndexFeature,
+    IndexFaq,
+    IndexAddress
   }
 }
 </script>

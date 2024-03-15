@@ -1,6 +1,6 @@
 <script>
-import searchOrder from "../../components/chia/searchOrder.vue";
-import searchSeat from "../../components/chia/searchSeat.vue";
+import SearchOrder from "@/components/chia/SearchOrder.vue";
+import SearchSeat from "@/components/chia/SearchSeat.vue";
 export default {
 	data() {
 		return {
@@ -55,8 +55,8 @@ export default {
 		}
 	},
 	components: {
-		searchOrder,
-		searchSeat
+		SearchOrder,
+		SearchSeat
 	},
 	watch: {
 		radioToggle(newValue, oldValue) {
@@ -111,8 +111,8 @@ export default {
 					@click="startSearch">查詢</button>
 			</div>
 			<div class="min-heigth">
-				<searchOrder v-if="showOrder" :getResponse="getResponse" />
-				<searchSeat v-if="showSeat" :getResponse="getResponse" />
+				<SearchOrder v-if="showOrder" :getResponse="getResponse" />
+				<SearchSeat v-if="showSeat" :getResponse="getResponse" />
 			</div>
 		</div>
 	</div>

@@ -2,7 +2,7 @@
 	<div class="container position-relative h-100">
 		<div class="row justify-content-center position-absolute top-50 start-50 translate-middle ">
 			<div class="col-sm-7 mt-5 d-flex justify-content-center">
-				<img src="/notFound.png" alt="" class="">
+				<img src="/notFound.png" alt="找不到網頁" >
 			</div>
 			<div class="col-sm-7">
 				<h2 class="mt-5 mb-5 text-center">抱歉，這個頁面不存在。</h2>

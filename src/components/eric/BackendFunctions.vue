@@ -132,7 +132,7 @@ export default {
 			docCookies.removeItem("token");
 			docCookies.removeItem("identity");
 			docCookies.removeItem("id");
-			window.location.href = "/mumuyuan/";
+			window.location.href = "/";
 		},
 	},
 	mounted() {
@@ -160,7 +160,7 @@ export default {
 
 
 <style scoped lang="scss">
-@import '/src/assets/main.scss';
+@import '@/assets/main.scss';
 
 .bg {
 	background: $secondary;

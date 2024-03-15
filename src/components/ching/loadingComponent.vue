@@ -3,7 +3,7 @@
 </template>
 
 <style lang="scss" scoped>
-@import '/src/assets/main.scss';
+@import '@/assets/main.scss';
 .loader {
   width: 120px;
   height: 22px;

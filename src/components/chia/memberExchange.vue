@@ -8,7 +8,7 @@
       <div class="d-flex flex-wrap">
         <!-- card 1 -->
         <div class="mb-4 col-lg-4 col-6 p-2" v-for="i in coupons" :key="i.name">
-          <img :src="`./木木苑食材修圖/${i.image}.jpg`" class="card-img-top" alt="image error" />
+          <img :src="`./木木苑食材修圖/${i.image}.jpg`" class="card-img-top" alt="折價券" />
           <div class="card-body p-2 bg-light">
             <h5 class="fw-bolder fs-5 text-dark mb-2">優惠方式 : {{ i.name }}</h5>
             <p class="text-start mb-3 text-dark" style="font-size:18px;font-weight:600">需求點數 : {{ i.point }} 點</p>

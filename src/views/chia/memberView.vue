@@ -17,7 +17,7 @@
   </div>
 </template>
 <script>
-import MemberLink from "@/components/chia/memberLink.vue";
+import MemberLink from "@/components/chia/MemberLink.vue";
 export default {
   components: {
     MemberLink

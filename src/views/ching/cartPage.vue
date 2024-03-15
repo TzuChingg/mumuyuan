@@ -356,7 +356,7 @@ export default {
             title: '訂單已送出',
             text: `訂單編號：「${this.orderId}」`,
           }).then(() => {
-            window.location.href = '/mumuyuan/'
+            window.location.href = '/'
           });
         }
       } catch (error) {
@@ -425,15 +425,10 @@ export default {
         quantity: item.quantity
       };
     });
-    // 用.env
     const ws_path = import.meta.env.VITE_WS
     this.socket = new WebSocket(ws_path)
-    this.socket.onopen = () => {
-      console.log('WebSocket connection opened')
-    }
   },
   beforeUnmount() {
-    // Close the WebSocket connection when the component is destroyed
     if (this.socket) {
       this.socket.close()
     }
@@ -446,9 +441,8 @@ export default {
 
     this.currentDate = `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
 
-    // 當前時間
     let hours = currentDate.getHours();
-    let minutes = currentDate.getMinutes() + 20; // 加20分鐘
+    let minutes = currentDate.getMinutes() + 20;
     if (minutes >= 60) {
       hours += 1;
       minutes -= 60;

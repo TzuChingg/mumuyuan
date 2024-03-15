@@ -73,23 +73,23 @@
 </template>
 
 <script>
-import BackendFunctions from '/src/components/eric/BackendFunctions.vue';
-import myLine from '/src/components/eric/charts/myLine.vue';
-import myBar from '/src/components/eric/charts/myBar.vue';
-import myPie from '/src/components/eric/charts/myPie.vue';
-import myRadia from '/src/components/eric/charts/myRadia.vue';
-import myRadiasm from '/src/components/eric/charts/myRadiasm.vue';
-import myHat from '/src/components/eric/charts/myHat.vue'
+import BackendFunctions from '@/components/eric/BackendFunctions.vue';
+import MyLine from '@/components/eric/charts/MyLine.vue';
+import MyBar from '@/components/eric/charts/MyBar.vue';
+import MyPie from '@/components/eric/charts/MyPie.vue';
+import MyRadia from '@/components/eric/charts/MyRadia.vue';
+import MyRadiasm from '@/components/eric/charts/MyRadiasm.vue';
+import MyHat from '@/components/eric/charts/MyHat.vue';
 export default {
 
   components: {
     BackendFunctions,
-    myLine,
-    myBar,
-    myPie,
-    myRadia,
-    myRadiasm,
-    myHat,
+    MyLine,
+    MyBar,
+    MyPie,
+    MyRadia,
+    MyRadiasm,
+    MyHat,
   },
   data() {
     return {
@@ -112,7 +112,7 @@ export default {
 
 
 <style lang="scss" scoped>
-@import '/src/assets/main.scss';
+@import '@/assets/main.scss';
 
 .d-flex {
   background: $secondary;
@@ -132,7 +132,6 @@ export default {
 
 .main {
   flex: 1;
-  /* 让主要内容区域占据剩余的所有可用空间 */
   overflow-y: auto;
   max-width: 100%;
   transition: width 0.5s, margin-left 0.5s;
@@ -147,7 +146,6 @@ export default {
 
   .main {
     width: calc(100vw - var(--sidebar-width));
-    /* margin-left: 0; */
   }
 }
 </style>

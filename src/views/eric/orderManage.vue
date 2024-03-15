@@ -5,7 +5,6 @@
     </aside>
     <transition name="fade" mode="out-in">
       <main v-if="select == 1" class="main container">
-        <!-- <WebSocketExample /> -->
         <div class="w-25 mt-5">
           <select-list :options="options" @updata="get" v-once></select-list>
         </div>
@@ -315,16 +314,13 @@
 <!--   -->
 
 <script>
-import WebSocketExample from '/src/components/eric/WebSocketExample.vue'
-import BackendFunctions from '/src/components/eric/BackendFunctions.vue'
-import selectList from '/src/components/eric/selectList.vue'
+import BackendFunctions from '@/components/eric/BackendFunctions.vue'
+import SelectList from '@/components/eric/SelectList.vue'
 export default {
   components: {
     BackendFunctions,
-    selectList
-    // WebSocketExample
+    SelectList
   },
-  //
   data() {
     return {
       order: [],
@@ -356,11 +352,11 @@ export default {
         .then((res) => {
           return this.$axios.patch(`/orders/${id}`, data)
         })
-        .then((res) => {
+        .then(() => {
           location.reload()
         })
         .catch((err) => {
-          console.log(err.response)
+          console.error(err.response)
         })
       this.socket.send(
         JSON.stringify({
@@ -384,10 +380,10 @@ export default {
       const loadingData = 3
       this.$axios
         .patch(`/orders/${id}`, data)
-        .then((res) => {
+        .then(() => {
           location.reload()
         })
-        .catch((err) => {})
+        .catch(() => {})
       this.socket.send(
         JSON.stringify({
           status: loadingData, //data 改成status
@@ -473,12 +469,8 @@ export default {
     })
     const ws_path = import.meta.env.VITE_WS
     this.socket = new WebSocket(ws_path)
-    this.socket.onopen = () => {
-      console.log('WebSocket connection opened')
-    }
   },
   beforeUnmount() {
-    // Close the WebSocket connection when the component is destroyed
     if (this.socket) {
       this.socket.close()
     }
@@ -487,7 +479,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '/src/assets/main.scss';
+@import '@/assets/main.scss';
 
 .d-flex {
   background: $secondary;

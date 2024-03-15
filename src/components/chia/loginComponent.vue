@@ -43,7 +43,6 @@ export default {
           ...this.userInput
         })
         .then(response => {
-          console.log(response);
           if (response.status === 200) {
             const { user, accessToken } = response.data
             document.cookie = `token=${accessToken};expires=${new Date().getTime() + 24 * 60 * 60 * 1000
@@ -57,7 +56,7 @@ export default {
               text: '導覽至首頁',
               timer: 1500
             }).then(() => {
-              window.location.href = "/mumuyuan/"
+              window.location.href = "/"
             });
           }
         })

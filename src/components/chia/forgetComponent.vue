@@ -55,14 +55,8 @@ export default {
     }
   },
   mounted() {
-    // 用.env
     const ws_path =  import.meta.env.VITE_WS
     this.socket = new WebSocket(ws_path)
-    this.socket.onopen = () => {
-      console.log('WebSocket connection opened')
-    }
-
-    //監聽socket是否成功寄件
     this.socket.addEventListener('message', this.handleMessage);
 
   },

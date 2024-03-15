@@ -11,13 +11,13 @@ import memberRouter from './memberRouter' //會員中心
 import backend from './backend'
 
 //主頁
-import indexPage from '/src/views/ching/indexPage.vue'
-import notFoundPage from '/src/views/ching/notFound.vue'
+import IndexPage from '/src/views/ching/IndexPage.vue'
+import NotFound from '/src/views/ching/NotFound.vue'
 
 const routes = [
-  { path: '/', name: 'home', component: indexPage },
-  { path: '/', name: 'FAQ', component: indexPage },
-  { path: '/:pathMatch(.*)*', name: 'notFound', component: notFoundPage },
+  { path: '/', name: 'home', component: IndexPage },
+  { path: '/', name: 'FAQ', component: IndexPage },
+  { path: '/:pathMatch(.*)*', name: 'notFound', component: NotFound },
   ...loginRouter,
   ...reserveRouter,
   ...searchRouter,
