@@ -1,11 +1,11 @@
 <template>
   <div class="d-flex">
-    <aside class="sidebar  border-5  pt-3 border-end d-flex bg-secondary flex-column ">
+    <aside class="sidebar border-5 pt-3 border-end d-flex bg-secondary flex-column">
       <BackendFunctions v-once></BackendFunctions>
     </aside>
-    <main class="main ">
-      <div class="container  mx-auto px-0 ">
-        <div class="row p-3 ">
+    <main class="main">
+      <div class="container mx-auto px-0 ">
+        <div class="row p-3">
           <div class="col-3">
             <div class="card shadow-sm h-100">
               <div class="card-body">
@@ -29,7 +29,7 @@
             </div>
             <div class="card shadow-sm mt-1">
               <div class="card-body text-end">
-                <h2 class="display-6 ">當日營業額</h2>
+                <h2 class="display-6">當日營業額</h2>
                 <p><span class="fs-3">NT$</span><span class="display-4 text-success">{{ todayTotal }}</span></p>
               </div>
             </div>
@@ -66,10 +66,8 @@
           </div>
         </div>
       </div>
-
     </main>
   </div>
-
 </template>
 
 <script>
@@ -81,7 +79,6 @@ import MyRadia from '@/components/eric/charts/MyRadia.vue';
 import MyRadiasm from '@/components/eric/charts/MyRadiasm.vue';
 import MyHat from '@/components/eric/charts/MyHat.vue';
 export default {
-
   components: {
     BackendFunctions,
     MyLine,
@@ -97,7 +94,6 @@ export default {
       todayOrder: 0
     }
   },
-
   mounted() {
     this.$axios.get('/orders')
       .then(res => {
@@ -109,7 +105,6 @@ export default {
   }
 };
 </script>
-
 
 <style lang="scss" scoped>
 @import '@/assets/main.scss';

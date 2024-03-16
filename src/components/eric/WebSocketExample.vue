@@ -13,7 +13,6 @@ export default {
   setup() {
     const connected = ref(false);
     const message = ref('');
-
     const ws = new WebSocket(ws_path);
 
     ws.onopen = () => {

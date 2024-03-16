@@ -4,6 +4,7 @@
 
 <style lang="scss" scoped>
 @import '@/assets/main.scss';
+
 .loader {
   width: 120px;
   height: 22px;
@@ -12,6 +13,7 @@
   border: 2px solid;
   position: relative;
 }
+
 .loader::before {
   content: "";
   position: absolute;
@@ -21,7 +23,10 @@
   background: currentColor;
   animation: l6 2s infinite;
 }
+
 @keyframes l6 {
-    100% {inset:0}
+  100% {
+    inset: 0
+  }
 }
 </style>

@@ -5,7 +5,8 @@
   </div>
   <div class="mb-4">
     <label for="mumuyuanPassword" class="form-label fw-bolder fs-5">密碼</label>
-    <input type="password" class="form-control" id="mumuyuanPassword" placeholder="請輸入密碼" v-model="userInput.password" />
+    <input type="password" class="form-control" id="mumuyuanPassword" placeholder="請輸入密碼"
+      v-model="userInput.password" />
     <div class="text-end pt-1">
       <router-link to="/login/forget" class="fotgetPassword">忘記密碼?</router-link>
     </div>

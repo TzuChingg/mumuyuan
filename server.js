@@ -117,7 +117,7 @@ wss.on('connection', function connection(ws) {
                   <img
                     src="cid:image_001"
                     class="card-img-top"
-                    alt="logo error"
+                    alt="店家圖示"
                   />
                   <div class="card-body">
                     <h5 class="card-title fw-bolder" style="letter-spacing: 1px; color: #a86a46">
@@ -216,7 +216,7 @@ wss.on('connection', function connection(ws) {
               <img
                 src="cid:image_001"
                 class="card-img-top"
-                alt="logo error"
+                alt="店家圖示"
               />
               <div class="card-body">
                 <h5 class="card-title fw-bolder" style="letter-spacing: 1px; color: #a86a46">

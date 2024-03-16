@@ -4,18 +4,18 @@
       <h2 class="accordion-header" id="headingOne">
         <div class="accordion-button collapsed col-12" data-bs-toggle="collapse" data-bs-target="#collapseOne"
           aria-expanded="true" aria-controls="collapseOne">
-            <div class="w-50">
-              <div class="row">
-                <p class="mb-1 fw-bolder text-dark fs-5" style="letter-spacing: 2px;">訂單編號</p>
-                <p class="mb-0 fw-bolder">{{ obj.orderid }}</p>
-              </div>
+          <div class="w-50">
+            <div class="row">
+              <p class="mb-1 fw-bolder text-dark fs-5" style="letter-spacing: 2px;">訂單編號</p>
+              <p class="mb-0 fw-bolder">{{ obj.orderid }}</p>
             </div>
-            <div class="w-50">
-              <div class="row">
-                <p class="mb-1 fw-bolder text-dark fs-5" style="letter-spacing: 2px;">日期</p>
-                <p class="mb-0 fw-bolder fs-6">{{ obj.day }}</p>
-              </div>
+          </div>
+          <div class="w-50">
+            <div class="row">
+              <p class="mb-1 fw-bolder text-dark fs-5" style="letter-spacing: 2px;">日期</p>
+              <p class="mb-0 fw-bolder fs-6">{{ obj.day }}</p>
             </div>
+          </div>
         </div>
       </h2>
       <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne">
@@ -38,7 +38,9 @@
             </thead>
             <tbody class="tbody-fs">
               <tr v-for="(food, index) in obj.product" :key="index">
-                <td class="col-1 col-sm-1"><div :style="{ backgroundImage:`url(${food.image})`}" class="product-image"></div></td>
+                <td class="col-1 col-sm-1">
+                  <div :style="{ backgroundImage: `url(${food.image})` }" class="product-image"></div>
+                </td>
                 <td class="col-5 col-sm-2 product-size">{{ food.productName }}</td>
                 <td class="col-3 col-sm-1 product-size">{{ food.quantity }}</td>
                 <td class="col-3 col-sm-1 product-size">{{ food.quantity * food.price }}</td>
@@ -200,7 +202,7 @@ export default {
     }
   },
   mounted() {
-    const ws_path =  import.meta.env.VITE_WS
+    const ws_path = import.meta.env.VITE_WS
     this.socket = new WebSocket(ws_path)
     let ids = []
     this.getResponse.forEach(id => {
@@ -272,7 +274,7 @@ export default {
   border: none;
 }
 
-.product-image{
+.product-image {
   width: 50px;
   height: 50px;
   background-position: center;
@@ -283,7 +285,6 @@ export default {
 .textarea {
   background: #fcfcb8;
 }
-
 
 .wait {
   width: 20%;
@@ -307,7 +308,8 @@ export default {
   .product-size {
     font-size: 24px;
   }
-  .product-image{
+
+  .product-image {
     width: 80px;
     height: 80px;
   }

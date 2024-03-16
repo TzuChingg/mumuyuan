@@ -9,7 +9,7 @@
               <hr />
               <div class="row news">
                 <div class="d-flex justify-content-center mb-5">
-                  <img :src="news.newsImage" alt="" />
+                  <img :src="news.newsImage" alt="消息圖片" />
                 </div>
               </div>
               <p v-for="(content, index) in news.newsContent" :key="index">
@@ -28,7 +28,7 @@
                   class="list-group-item d-flex align-items-center bg-transparent rounded-0 border-top-0 border-start-0 border-end-0  mb-2 mt-2"
                   style="border-bottom: 1px solid #A69F8A;" v-for="(item, index) in otherNews" :key="index">
                   <router-link :to="'/news/' + item.id">
-                    <img :src="item.newsImage" alt="" style="height: 50px;">
+                    <img :src="item.newsImage" alt="消息圖片" style="height: 50px;">
                   </router-link>
                   <router-link :to="'/news/' + item.id">
                     <p class=" ms-2 fs-6">{{ item.newsTitle }}</p>

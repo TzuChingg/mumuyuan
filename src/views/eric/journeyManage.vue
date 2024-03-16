@@ -9,12 +9,7 @@
           <div class="mt-3">
             <div class="row justify-content-between">
               <div class="col-2">
-                <button
-                  type="button"
-                  class="btn btn-primary"
-                  data-bs-toggle="modal"
-                  data-bs-target="#exampleModal"
-                >
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                   新增活動
                 </button>
               </div>
@@ -28,40 +23,24 @@
               <div class="card my-4 bg-light">
                 <div class="cardbody px-4">
                   <h5 class="text-center my-4 text-nowrap">{{ journey.title }}</h5>
-                  <select
-                    class="form-select mx-auto w-50 shadow-none my-2"
-                    aria-label="Default select example"
-                    v-model="journey.coupon"
-                  >
+                  <select class="form-select mx-auto w-50 shadow-none my-2" aria-label="Default select example"
+                    v-model="journey.coupon">
                     <option v-for="(coupon, index) in coupons" :key="index" :value="coupon.id">
                       {{ coupon.title }}
                     </option>
                   </select>
-                  <textarea
-                    id="title"
-                    placeholder="內容"
-                    class="px-4 form-control border-1 shadow-none w-100"
-                    style="height: 150px"
-                    v-model="journey.newsContent"
-                  ></textarea>
+                  <textarea id="title" placeholder="內容" class="px-4 form-control border-1 shadow-none w-100"
+                    style="height: 150px" v-model="journey.newsContent"></textarea>
                   <div class="row text-center align-items-center py-3">
                     <div class="col-6">
-                      <button
-                        type="button"
-                        class="btn btn-danger ms-6"
-                        data-bs-toggle="modal"
-                        :data-bs-target="'#goDown' + index"
-                      >
+                      <button type="button" class="btn btn-danger ms-6" data-bs-toggle="modal"
+                        :data-bs-target="'#goDown' + index">
                         下架
                       </button>
                     </div>
                     <div class="col-6">
-                      <button
-                        type="button"
-                        class="btn btn-primary me-6"
-                        data-bs-toggle="modal"
-                        :data-bs-target="'#update' + index"
-                      >
+                      <button type="button" class="btn btn-primary me-6" data-bs-toggle="modal"
+                        :data-bs-target="'#update' + index">
                         修改
                       </button>
                     </div>
@@ -69,15 +48,8 @@
                 </div>
               </div>
               <!-- model -->
-              <div
-                class="modal fade"
-                :id="'goDown' + index"
-                data-bs-backdrop="static"
-                data-bs-keyboard="false"
-                tabindex="-1"
-                aria-labelledby="staticBackdropLabel"
-                aria-hidden="true"
-              >
+              <div class="modal fade" :id="'goDown' + index" data-bs-backdrop="static" data-bs-keyboard="false"
+                tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 0
                 <div class="modal-dialog">
                   <div class="modal-content border-0">
@@ -86,12 +58,7 @@
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                         取消
                       </button>
-                      <button
-                        type="button"
-                        class="btn btn-primary"
-                        data-bs-dismiss="modal"
-                        @click="goDown(journey.id)"
-                      >
+                      <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="goDown(journey.id)">
                         確認
                       </button>
                     </div>
@@ -99,15 +66,8 @@
                 </div>
               </div>
               <!-- model -->
-              <div
-                class="modal fade"
-                :id="'update' + index"
-                data-bs-backdrop="static"
-                data-bs-keyboard="false"
-                tabindex="-1"
-                aria-labelledby="staticBackdropLabel"
-                aria-hidden="true"
-              >
+              <div class="modal fade" :id="'update' + index" data-bs-backdrop="static" data-bs-keyboard="false"
+                tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 0
                 <div class="modal-dialog">
                   <div class="modal-content border-0">
@@ -116,12 +76,8 @@
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                         取消
                       </button>
-                      <button
-                        type="button"
-                        class="btn btn-primary"
-                        data-bs-dismiss="modal"
-                        @click="update(journey.id, journey.coupon, journey.newsContent)"
-                      >
+                      <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                        @click="update(journey.id, journey.coupon, journey.newsContent)">
                         確認
                       </button>
                     </div>
@@ -137,13 +93,8 @@
               下一页
             </button>
           </div>
-          <div
-            class="modal fade"
-            id="exampleModal"
-            tabindex="-1"
-            aria-labelledby="exampleModalLabel"
-            aria-hidden="true"
-          >
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
@@ -153,43 +104,22 @@
                   <div class="card border-0 bg-secondary">
                     <div class="cardbody mt-4">
                       <div class="d-flex h-25 justify-content-center mt-3">
-                        <input
-                          class="form-control w-50"
-                          type="file"
-                          id="formFile"
-                          @change="uploadFile"
-                        />
+                        <input class="form-control w-50" type="file" id="formFile" @change="uploadFile" />
                       </div>
                       <div class="d-flex h-25 justify-content-center mt-5 mb-2">
                         <label for="title" class="fs-3 me-2">活動:</label>
-                        <input
-                          type="text"
-                          id="title"
-                          placeholder="活動名"
-                          class="form-control border-1 shadow-none w-50"
-                          v-model="dataForm.newsTitle"
-                        />
+                        <input type="text" id="title" placeholder="活動名" class="form-control border-1 shadow-none w-50"
+                          v-model="dataForm.newsTitle" />
                       </div>
                       <div class="d-flex h-25 justify-content-center mb-2">
                         <label for="title" class="fs-3 me-2">內容:</label>
-                        <textarea
-                          id="title"
-                          placeholder="內容"
-                          class="form-control border-1 shadow-none w-50"
-                          v-model="dataForm.newsContent"
-                        ></textarea>
+                        <textarea id="title" placeholder="內容" class="form-control border-1 shadow-none w-50"
+                          v-model="dataForm.newsContent"></textarea>
                       </div>
                       <div class="d-flex h-25 justify-content-center mt-3 mb-2">
-                        <select
-                          class="form-select w-50 shadow-none"
-                          aria-label="Default select example"
-                          v-model="dataForm.couponId"
-                        >
-                          <option
-                            v-for="(coupon, index) in coupons"
-                            :key="index"
-                            :value="coupon.id"
-                          >
+                        <select class="form-select w-50 shadow-none" aria-label="Default select example"
+                          v-model="dataForm.couponId">
+                          <option v-for="(coupon, index) in coupons" :key="index" :value="coupon.id">
                             {{ coupon.title }}
                           </option>
                         </select>
@@ -201,12 +131,7 @@
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                     關閉
                   </button>
-                  <button
-                    type="button"
-                    class="btn btn-primary"
-                    data-bs-dismiss="modal"
-                    @click="pushData()"
-                  >
+                  <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="pushData()">
                     新增
                   </button>
                 </div>
@@ -231,22 +156,14 @@
                   <h5 class="text-center mt-4 text-nowrap">{{ dj.title }}</h5>
                   <div class="row text-center align-items-center py-3">
                     <div class="col-6">
-                      <button
-                        type="button"
-                        class="btn btn-danger ms-6"
-                        data-bs-toggle="modal"
-                        :data-bs-target="'#goon' + index"
-                      >
+                      <button type="button" class="btn btn-danger ms-6" data-bs-toggle="modal"
+                        :data-bs-target="'#goon' + index">
                         上架
                       </button>
                     </div>
                     <div class="col-6">
-                      <button
-                        type="button"
-                        class="btn btn-danger me-6"
-                        data-bs-toggle="modal"
-                        :data-bs-target="'#del' + index"
-                      >
+                      <button type="button" class="btn btn-danger me-6" data-bs-toggle="modal"
+                        :data-bs-target="'#del' + index">
                         刪除
                       </button>
                     </div>
@@ -254,15 +171,8 @@
                 </div>
               </div>
               <!-- model -->
-              <div
-                class="modal fade"
-                :id="'goon' + index"
-                data-bs-backdrop="static"
-                data-bs-keyboard="false"
-                tabindex="-1"
-                aria-labelledby="staticBackdropLabel"
-                aria-hidden="true"
-              >
+              <div class="modal fade" :id="'goon' + index" data-bs-backdrop="static" data-bs-keyboard="false"
+                tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 0
                 <div class="modal-dialog">
                   <div class="modal-content border-0">
@@ -271,12 +181,7 @@
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                         取消
                       </button>
-                      <button
-                        type="button"
-                        class="btn btn-primary"
-                        data-bs-dismiss="modal"
-                        @click="goon(dj.id)"
-                      >
+                      <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="goon(dj.id)">
                         確認
                       </button>
                     </div>
@@ -284,15 +189,8 @@
                 </div>
               </div>
               <!-- model -->
-              <div
-                class="modal fade"
-                :id="'del' + index"
-                data-bs-backdrop="static"
-                data-bs-keyboard="false"
-                tabindex="-1"
-                aria-labelledby="staticBackdropLabel"
-                aria-hidden="true"
-              >
+              <div class="modal fade" :id="'del' + index" data-bs-backdrop="static" data-bs-keyboard="false"
+                tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 0
                 <div class="modal-dialog">
                   <div class="modal-content border-0">
@@ -301,12 +199,7 @@
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                         取消
                       </button>
-                      <button
-                        type="button"
-                        class="btn btn-primary"
-                        data-bs-dismiss="modal"
-                        @click="del(dj.id)"
-                      >
+                      <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="del(dj.id)">
                         確認
                       </button>
                     </div>

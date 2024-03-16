@@ -42,6 +42,7 @@ import { mapActions, mapState } from 'pinia'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Autoplay } from 'swiper/modules'
 import 'swiper/css'
+
 export default {
 	data() {
 		return {

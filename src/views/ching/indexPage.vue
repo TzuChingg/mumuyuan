@@ -40,7 +40,7 @@ export default {
   },
   methods: {
     scrollToSection() {
-      this.$refs.FAQ.scrollIntoView({block: "center",  behavior: 'smooth' })
+      this.$refs.FAQ.scrollIntoView({ block: "center", behavior: 'smooth' })
     }
   },
   components: {

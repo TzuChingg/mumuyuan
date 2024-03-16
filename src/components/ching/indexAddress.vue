@@ -10,7 +10,8 @@
 	</div>
 	<div class="container">
 		<div class="row">
-			<div class="address col-lg-5 col-12 bg-primary d-flex flex-wrap justify-content-center align-content-center p-2 m-0">
+			<div
+				class="address col-lg-5 col-12 bg-primary d-flex flex-wrap justify-content-center align-content-center p-2 m-0">
 				<div class="info">
 					<img class="mb-3" src="/首頁圖片/logo-sm.png" alt="木木苑logo" />
 					<p class="fs-4 text-light">店址：臺中市北屯區太原路三段500號</p>
@@ -26,10 +27,6 @@
 		</div>
 	</div>
 </template>
-
-<script>
-export default {}
-</script>
 
 <style lang="scss" scoped>
 .address {

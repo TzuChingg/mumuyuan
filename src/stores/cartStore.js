@@ -4,12 +4,10 @@ import { defineStore } from 'pinia'
 const api = import.meta.env.VITE_API
 
 export default defineStore('', {
-  // data
   state: () => ({
     cart: [],
     information: { coupon: [] }
   }),
-  // computed
   getters: {
     cartNum: ({ cart }) => {
       return cart.length
@@ -36,7 +34,6 @@ export default defineStore('', {
       return information
     }
   },
-  // method
   actions: {
     addToCart(productId) {
       const quantity = parseInt(document.getElementById(productId).value)
@@ -75,15 +72,14 @@ export default defineStore('', {
         return axios.patch(`${api}/users/${id}`, data)
       }
     },
-
     member(id) {
       axios
         .get(`${api}/users/${id}`)
         .then((res) => {
           this.information = res.data
         })
-        .catch((err) => {
-          console.log('沒有會員')
+        .catch(() => {
+          console.error('沒有會員')
         })
     }
   }

@@ -10,14 +10,8 @@
             <div class="col-8 mb-0 ms-2">
               <div class="d-flex h-50">
                 <label for="search"><i class="bi bi-search fs-4"></i></label>
-                <input
-                  type="search"
-                  placeholder="search"
-                  id="search"
-                  @input="currentDate"
-                  class="form-control border-0 shadow-none mt-2 fs-4 bg-secondary"
-                  v-model="search"
-                />
+                <input type="search" placeholder="search" id="search" @input="currentDate"
+                  class="form-control border-0 shadow-none mt-2 fs-4 bg-secondary" v-model="search" />
               </div>
             </div>
             <div class="col-2">
@@ -34,12 +28,8 @@
           <div v-if="this.filteredBookingList.length == 0" class="card">
             <h5 class="card-body fs-4">查無此訂位</h5>
           </div>
-          <div
-            class="card mb-2 shadow-sm w-100 bg-light"
-            :class="{ out: book.timeout }"
-            v-for="(book, index) in filteredBookingList"
-            :key="index"
-          >
+          <div class="card mb-2 shadow-sm w-100 bg-light" :class="{ out: book.timeout }"
+            v-for="(book, index) in filteredBookingList" :key="index">
             <div class="card-body">
               <div class="row">
                 <div class="col-4">
@@ -56,45 +46,24 @@
                 </div>
                 <div class="col">
                   <div v-if="book.timeout == false">
-                    <i
-                      class="fs-3 float-end mt-1 me-3"
-                      :class="book.CancelIcon"
-                      @mouseover="handleMouseOver(book.id)"
-                      @mouseleave="handleMouseLeave(book.id)"
-                      data-bs-toggle="modal"
-                      :data-bs-target="'#CancelModal' + index"
-                    ></i>
-                    <i
-                      class="fs-3 float-end mt-1 me-3"
-                      :class="{ timeout: book.timeout, [book.CheckIcon]: true }"
-                      @mouseover="handleMouseOver2(book.id)"
-                      @mouseleave="handleMouseLeave2(book.id)"
-                      data-bs-toggle="modal"
-                      :data-bs-target="'#checkModal' + index"
-                    ></i>
+                    <i class="fs-3 float-end mt-1 me-3" :class="book.CancelIcon" @mouseover="handleMouseOver(book.id)"
+                      @mouseleave="handleMouseLeave(book.id)" data-bs-toggle="modal"
+                      :data-bs-target="'#CancelModal' + index"></i>
+                    <i class="fs-3 float-end mt-1 me-3" :class="{ timeout: book.timeout, [book.CheckIcon]: true }"
+                      @mouseover="handleMouseOver2(book.id)" @mouseleave="handleMouseLeave2(book.id)"
+                      data-bs-toggle="modal" :data-bs-target="'#checkModal' + index"></i>
                   </div>
                   <div v-else>
-                    <i
-                      class="fs-3 float-end mt-1 me-3"
-                      :class="{ [book.CancelIcon]: true }"
-                      @mouseover="handleMouseOver(book.id)"
-                      @mouseleave="handleMouseLeave(book.id)"
-                      @click="Cancel(book.id)"
-                    ></i>
+                    <i class="fs-3 float-end mt-1 me-3" :class="{ [book.CancelIcon]: true }"
+                      @mouseover="handleMouseOver(book.id)" @mouseleave="handleMouseLeave(book.id)"
+                      @click="Cancel(book.id)"></i>
                   </div>
                 </div>
               </div>
             </div>
             <!-- model -->
-            <div
-              class="modal fade"
-              :id="'checkModal' + index"
-              data-bs-backdrop="static"
-              data-bs-keyboard="false"
-              tabindex="-1"
-              aria-labelledby="staticBackdropLabel"
-              aria-hidden="true"
-            >
+            <div class="modal fade" :id="'checkModal' + index" data-bs-backdrop="static" data-bs-keyboard="false"
+              tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
               0
               <div class="modal-dialog">
                 <div class="modal-content border-0">
@@ -103,12 +72,7 @@
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                       取消
                     </button>
-                    <button
-                      type="button"
-                      class="btn btn-primary"
-                      data-bs-dismiss="modal"
-                      @click="check(book.id)"
-                    >
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="check(book.id)">
                       確認
                     </button>
                   </div>
@@ -116,15 +80,8 @@
               </div>
             </div>
             <!-- model -->
-            <div
-              class="modal fade"
-              :id="'CancelModal' + index"
-              data-bs-backdrop="static"
-              data-bs-keyboard="false"
-              tabindex="-1"
-              aria-labelledby="staticBackdropLabel"
-              aria-hidden="true"
-            >
+            <div class="modal fade" :id="'CancelModal' + index" data-bs-backdrop="static" data-bs-keyboard="false"
+              tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
               0
               <div class="modal-dialog">
                 <div class="modal-content border-0">
@@ -133,12 +90,7 @@
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                       取消
                     </button>
-                    <button
-                      type="button"
-                      class="btn btn-primary"
-                      data-bs-dismiss="modal"
-                      @click="Cancel(book.id)"
-                    >
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="Cancel(book.id)">
                       確認
                     </button>
                   </div>
@@ -154,14 +106,8 @@
             <div class="col-8 mb-0 ms-2">
               <div class="d-flex h-50">
                 <label for="search"><i class="bi bi-search fs-4"></i></label>
-                <input
-                  type="search"
-                  placeholder="search"
-                  @input="filteredFinishBooking"
-                  id="search"
-                  class="form-control border-0 shadow-none mt-2 fs-4 bg-secondary"
-                  v-model="search"
-                />
+                <input type="search" placeholder="search" @input="filteredFinishBooking" id="search"
+                  class="form-control border-0 shadow-none mt-2 fs-4 bg-secondary" v-model="search" />
               </div>
             </div>
             <div class="col-2">
@@ -178,11 +124,8 @@
           <div v-if="this.filteredFinishBookingList.length == 0" class="card">
             <h5 class="card-body fs-4">查無此訂位</h5>
           </div>
-          <div
-            class="card mb-2 shadow-sm w-100 bg-light"
-            v-for="(finish, index) in filteredFinishBookingList"
-            :key="index"
-          >
+          <div class="card mb-2 shadow-sm w-100 bg-light" v-for="(finish, index) in filteredFinishBookingList"
+            :key="index">
             <div class="card-body">
               <div class="row">
                 <div class="col-4">

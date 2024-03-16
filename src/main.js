@@ -56,7 +56,6 @@ import App from './App.vue'
 
 const app = createApp(App)
 
-// 用.env
 const api = import.meta.env.VITE_API
 app.config.globalProperties.$axios = axios.create({
   baseURL: api
@@ -65,6 +64,7 @@ app.config.globalProperties.$ws = ws
 app.config.globalProperties.$apexcharts = ApexCharts
 app.component('navbarComponent', navbarComponent)
 app.component('footerComponent', footerComponent)
+
 // 掛載 Global 的 VeeValidate 元件
 app.component('VField', Field)
 app.component('VForm', Form)

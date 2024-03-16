@@ -2,10 +2,10 @@
 import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router'
 
 //Router
-import loginRouter from './loginRouter' //登入
-import reserveRouter from './reserveRouter' //訂位
-import searchRouter from './searchRouter' //查詢
-import memberRouter from './memberRouter' //會員中心
+import loginRouter from './loginRouter'
+import reserveRouter from './reserveRouter'
+import searchRouter from './searchRouter'
+import memberRouter from './memberRouter'
 
 //頁面
 import backend from './backend'

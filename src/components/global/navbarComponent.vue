@@ -6,7 +6,7 @@
           <nav class="navbar navbar-expand-lg navbar-light my-4 w-100">
             <div class="col-lg-4 col-6">
               <router-link to="/">
-                <img class="w-100" src="/首頁圖片/logo.png" alt="logo" />
+                <img class="w-100" src="/首頁圖片/logo.png" alt="返回首頁" />
               </router-link>
             </div>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -36,7 +36,7 @@
                       class="nav-link fs-5 text-light text-decoration-none">常見問題</router-link>
                     <div :class="{ 'breath': this.$route.hash === '#FAQ' }"></div>
                   </li>
-                  <li class="nav-item " v-if="hasToken">
+                  <li class="nav-item" v-if="hasToken">
                     <router-link :to="identityHref" class="nav-link fs-5 text-light text-decoration-none"><img
                         src="/首頁圖片/user.png" alt="會員中心"></router-link>
                     <div :class="{ 'breath': this.$route.path == '/memberCenter' }"></div>
@@ -44,18 +44,18 @@
                     <div :class="{ 'breath': this.$route.path == '/member/discount' }"></div>
                     <div :class="{ 'breath': this.$route.path == '/member/exchange' }"></div>
                   </li>
-                  <li class="nav-item " v-if="hasToken">
+                  <li class="nav-item" v-if="hasToken">
                     <button type="button" class="btn position-relative bg-transparent" ref="liveToastBtn" @click="show">
-                      <i class="bi bi-bell fs-2   text-white"></i>
+                      <i class="bi bi-bell fs-2 text-white"></i>
                       <span
-                        class="position-absolute top-25 start-75 translate-middle p-2 bg-danger border border-light rounded-circle "
+                        class="position-absolute top-25 start-75 translate-middle p-2 bg-danger border border-light rounded-circle"
                         :class="{ 'd-none': notice }"></span>
                     </button>
                     <div class="position-absolute top-60 end-30 p-3" style="z-index: 9999">
                       <div ref="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
                         <div class="toast-header">
                           <strong class="me-auto">通知紀錄</strong>
-                          <button type="button" class="btn-close  shadow-sm" data-bs-dismiss="toast"
+                          <button type="button" class="btn-close shadow-sm" data-bs-dismiss="toast"
                             aria-label="Close"></button>
                         </div>
                         <div v-if="news.length > 0" class="toast-body">
@@ -75,7 +75,6 @@
                     <div :class="{ 'breath': this.$route.path == '/login/forget' }"></div>
                     <div :class="{ 'breath': this.$route.path == '/login/signin' }"></div>
                   </li>
-
                 </ul>
               </div>
             </div>

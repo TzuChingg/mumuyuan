@@ -6,7 +6,6 @@
       <h5 class="fw-bolder px-2" style="letter-spacing: 1px;color: #d73e2dd4;">會員點數：{{ userInfo.point }} 點</h5>
       <hr />
       <div class="d-flex flex-wrap">
-        <!-- card 1 -->
         <div class="mb-4 col-lg-4 col-6 p-2" v-for="i in coupons" :key="i.name">
           <img :src="`./木木苑食材修圖/${i.image}.jpg`" class="card-img-top" alt="折價券" />
           <div class="card-body p-2 bg-light">
@@ -22,7 +21,6 @@
             </div>
           </div>
         </div>
-        <!-- card 1 end -->
       </div>
       <!-- Modal -->
       <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

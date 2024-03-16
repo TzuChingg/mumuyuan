@@ -77,7 +77,7 @@ export default {
 		this.getProducts()
 	},
 	computed: {
-		...mapState(productsStore, ['storeProducts', 'storeLoader']), 
+		...mapState(productsStore, ['storeProducts', 'storeLoader']),
 		...mapState(cartStore, ['cartNum', 'cartsList']),
 	},
 	watch: {
@@ -125,7 +125,7 @@ export default {
 				<div class="mb-2 w-100 py-1 h-100">
 					<div class="row g-0">
 						<div class="col-4">
-							<img src="${product.image}" class="w-100" alt="image error">
+							<img src="${product.image}" class="w-100" alt="商品圖示">
 						</div>
 						<div class="col-8">
 							<div class="card-body px-2">

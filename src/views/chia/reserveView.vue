@@ -3,14 +3,14 @@ import { docCookies } from '@/assets/cookie'
 export default {
 	data() {
 		return {
-			periods: [], //按紐時段
-			day: [], //抓取預定往後三天
-			maxPeople: { //每個時段最多20位(可更改)
+			periods: [],
+			day: [],
+			maxPeople: {
 				'11:00': 20, '12:00': 20, '13:00': 20, '14:00': 20, '15:00': 20,
 				'18:00': 20, '19:00': 20, '20:00': 20, '21:00': 20, '22:00': 20,
 				'23:00': 20, '00:00': 20, '01:00': 20, '02:00': 20, '03:00': 20
 			},
-			remainPeople: { //各時段預定人數
+			remainPeople: {
 				'11:00': 0, '12:00': 0, '13:00': 0, '14:00': 0, '15:00': 0,
 				'18:00': 0, '19:00': 0, '20:00': 0, '21:00': 0, '22:00': 0,
 				'23:00': 0, '00:00': 0, '01:00': 0, '02:00': 0, '03:00': 0
@@ -48,8 +48,8 @@ export default {
 			});
 			return
 		}
-		this.getReserveDay(); //抓往後3天
-		this.getPeriods(); //抓各時段
+		this.getReserveDay();
+		this.getPeriods();
 	},
 	methods: {
 		getReserveDay() {
@@ -197,9 +197,7 @@ export default {
 							response.data.reduce((acc, curr) => {
 								const time = curr.time;
 								const personCount = curr.personCount;
-
 								acc[time] = (acc[time] || 0) + personCount;
-
 								return acc;
 							}, this.remainPeople);
 						}
