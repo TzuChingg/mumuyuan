@@ -35,14 +35,12 @@ httpServer.listen(port, () => {
 
 wss.on('connection', function connection(ws) {
   ws.on('error', console.error)
-  console.log('WebSocket 連線成功')
 
   const uuid = uuidv4()
   ws.uuid = uuid
 
   ws.on('message', (message) => {
     const parsedMessage = JSON.parse(message)
-    console.log(parsedMessage);
     if (parsedMessage.email) {
       if (parsedMessage.email.length > 0 && parsedMessage.email.includes('@gmail.com')) {
         transporter
@@ -53,8 +51,8 @@ wss.on('connection', function connection(ws) {
             attachments: [
               {
                 filename: 'mumulogo.jpg',
-                path: 'https://drive.google.com/thumbnail?id=1bmLFoOtBjMTjbvX0ZJYB65WIlOd6yrm0', // 附件路徑
-                cid: 'image_001' //cid可被郵件使用
+                path: 'https://drive.google.com/thumbnail?id=1bmLFoOtBjMTjbvX0ZJYB65WIlOd6yrm0',
+                cid: 'image_001'
               }
             ],
             html: `
@@ -138,25 +136,25 @@ wss.on('connection', function connection(ws) {
             `
           })
           .then((info) => {
-            console.log(info);
             ws.send(JSON.stringify(info.response))
           })
           .catch(console.error)
       }
-    }else if(parsedMessage.mail){
-      if(parsedMessage.mail.length>0 && parsedMessage.mail.includes('@gmail.com')){
-        transporter.sendMail({
-          from: 'mumuyuan1234@gmail.com',
-          to: parsedMessage.mail,
-          subject: '你好這是你的訂單號碼 ',
-          attachments: [
-            {
-              filename: "mumulogo.jpg",
-              path: "https://drive.google.com/thumbnail?id=1bmLFoOtBjMTjbvX0ZJYB65WIlOd6yrm0", // 附件路徑
-              cid: "image_001", //cid可被郵件使用
-            },
-          ],
-          html: `
+    } else if (parsedMessage.mail) {
+      if (parsedMessage.mail.length > 0 && parsedMessage.mail.includes('@gmail.com')) {
+        transporter
+          .sendMail({
+            from: 'mumuyuan1234@gmail.com',
+            to: parsedMessage.mail,
+            subject: '你好這是你的訂單號碼 ',
+            attachments: [
+              {
+                filename: 'mumulogo.jpg',
+                path: 'https://drive.google.com/thumbnail?id=1bmLFoOtBjMTjbvX0ZJYB65WIlOd6yrm0',
+                cid: 'image_001'
+              }
+            ],
+            html: `
         <!doctype html>
         <html lang="en">
           <head>
@@ -235,9 +233,8 @@ wss.on('connection', function connection(ws) {
           </body>
         </html>
         `
-        }).then(info => {
-          console.log({ info });
-        }).catch(console.error);
+          })
+          .catch(console.error)
       }
     } else {
       sendAllUser(parsedMessage)
@@ -248,7 +245,7 @@ wss.on('connection', function connection(ws) {
 function sendAllUser(msg) {
   wss.clients.forEach(function (client) {
     if (client.readyState === WebSocket.OPEN && client.uuid !== msg.uuid) {
-      client.send(JSON.stringify(msg)) // Stringify the object before sending
+      client.send(JSON.stringify(msg))
     }
   })
 }

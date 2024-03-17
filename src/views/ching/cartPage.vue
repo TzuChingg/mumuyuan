@@ -1,6 +1,6 @@
 <template>
   <div class="container mb-5">
-    <h1 class="my-4 text-dark text-center me-2 fw-bolder" style="letter-spacing:2px">購物車{{ this.cartsList.length }}</h1>
+    <h1 class="my-4 text-dark text-center me-2 fw-bolder" style="letter-spacing:2px">購物車</h1>
     <div class="row justify-content-center">
       <div class="col-10">
         <VForm ref="form" v-slot="{ errors }">
@@ -308,7 +308,7 @@ export default {
       this.couponName = event.target.selectedOptions[0].textContent
     },
     async pushOrder() {
-      if (this.cartsList.length===0) {
+      if (this.cartsList.carts.length===0) {
         this.$swal({
           icon: 'error',
           title: '購物車為空',

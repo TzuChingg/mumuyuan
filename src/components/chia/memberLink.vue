@@ -23,8 +23,7 @@ export default {
       this.$swal({
         icon: 'success',
         title: '成功登出',
-        text: '導覽至首頁',
-        timer: 1500
+        text: '導覽至首頁'
       }).then(() => {
         window.location.href = "/";
       });
