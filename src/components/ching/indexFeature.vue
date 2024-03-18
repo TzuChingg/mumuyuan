@@ -89,10 +89,11 @@
 			font-size: 3rem;
 			margin-bottom: 0;
 		}
-		.featureText{
+
+		.featureText {
 			padding: 0 1rem;
 			font-size: 1.6rem;
-			letter-spacing:5px;
+			letter-spacing: 5px;
 		}
 	}
 }

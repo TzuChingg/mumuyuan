@@ -3,14 +3,12 @@ import { defineStore } from 'pinia'
 const api = import.meta.env.VITE_API
 
 export default defineStore('productsStore', {
-  // data
   state: () => ({
     products: [],
     categorires: [],
     sortedProducts: [],
     loader: true
   }),
-  // computed
   getters: {
     storeProducts: ({ products, categorires, sortedProducts, loading }) => {
       // 產品分類與篩選
@@ -21,7 +19,6 @@ export default defineStore('productsStore', {
       // 檢查產品有沒有空值，刪空值
       return sortedProducts.filter((item) => item[1].length !== 0)
     },
-    // 線上點餐的btn
     storeCategorires: ({ categorires, sortedProducts }) => {
       // 從刪去空值的產品列找分類
       return sortedProducts.filter((item) => item[1].length !== 0).map((el) => el[0])
@@ -30,7 +27,6 @@ export default defineStore('productsStore', {
       return loader
     }
   },
-  // method
   actions: {
     getProducts() {
       if (this.products.length == 0) {
@@ -45,7 +41,7 @@ export default defineStore('productsStore', {
             this.changeLoading()
           })
           .catch((err) => {
-            console.log(err.response)
+            console.error(err)
           })
       }
     },

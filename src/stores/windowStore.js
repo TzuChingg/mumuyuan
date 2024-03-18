@@ -33,8 +33,8 @@ export default defineStore('windowStore', {
           this.news = res.data
           this.changeLoading()
         })
-        .catch((err) => {
-          console.log('最新消息獲取失敗')
+        .catch(() => {
+          console.error('最新消息獲取失敗')
         })
     },
     changeLoading() {

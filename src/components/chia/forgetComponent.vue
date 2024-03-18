@@ -30,13 +30,13 @@ export default {
       const resStr = event.data.includes('OK');
       if (resStr) {
         this.$swal({
-            icon: 'success',
-            title: '密碼找回信件已寄出',
-            text: '請察看信箱',
-            timer: 3000
-          }).then(() => {
-            this.$router.push('/');
-          });
+          icon: 'success',
+          title: '密碼找回信件已寄出',
+          text: '請察看信箱',
+          timer: 3000
+        }).then(() => {
+          this.$router.push('/');
+        });
       } else {
         this.$swal({
           icon: 'error',
@@ -55,7 +55,7 @@ export default {
     }
   },
   mounted() {
-    const ws_path =  import.meta.env.VITE_WS
+    const ws_path = import.meta.env.VITE_WS
     this.socket = new WebSocket(ws_path)
     this.socket.addEventListener('message', this.handleMessage);
 

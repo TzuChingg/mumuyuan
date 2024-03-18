@@ -54,12 +54,8 @@
   </div>
 </template>
 
-<script>
-export default {}
-</script>
-
 <style lang="scss" scoped>
 .card-text {
-    color: #4F4F4F;
+  color: #4F4F4F;
 }
 </style>

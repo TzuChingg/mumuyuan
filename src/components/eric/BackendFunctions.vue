@@ -11,7 +11,7 @@
 		<div class="p-2 d-flex justify-content-center text-nowrap bg">
 			<strong class="text-nowrap ">木木苑後台系統</strong>
 		</div>
-		<div class="overflow-auto ">
+		<div class="overflow-auto">
 			<div v-for="(menu, index) in menuItems" :key="index">
 				<router-link v-if="!menu.subMenu" :to="menu.path" class="sidebar-link py-2" :class="{ active: menu.at }">
 					<div class="d-flex  justify-content-between px-4 ">
@@ -27,7 +27,7 @@
 							{{ menu.label }}
 						</p>
 						<div>
-							<i class="bi  text-dark" :class="menu.icon"></i>
+							<i class="bi text-dark" :class="menu.icon"></i>
 						</div>
 					</div>
 				</a>
@@ -41,8 +41,8 @@
 				</div>
 			</div>
 		</div>
-		<a href="#" class="mt-auto   text-nowrap sidebar-link">
-			<div class="ps-4 " @click="signOut">
+		<a href="#" class="mt-auto text-nowrap sidebar-link">
+			<div class="ps-4" @click="signOut">
 				登出
 			</div>
 		</a>
@@ -110,7 +110,6 @@ export default {
 			],
 			open: true,
 			myIdentity: ""
-
 		}
 	},
 	watch: {
@@ -149,7 +148,6 @@ export default {
 				})
 			}
 		});
-
 		this.myIdentity = docCookies.getItem("identity")
 		if (this.myIdentity != 'admin') {
 			this.signOut()
@@ -157,7 +155,6 @@ export default {
 	},
 }
 </script>
-
 
 <style scoped lang="scss">
 @import '@/assets/main.scss';
@@ -167,7 +164,6 @@ export default {
 }
 
 .sidebar-link {
-
 	color: rgb(2, 2, 1);
 	display: block;
 	text-decoration: none;

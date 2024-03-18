@@ -3,7 +3,7 @@
     <div class="container">
       <footer class="navbar navbar-expand-lg navbar-light py-4 justify-content-between align-items-center">
         <router-link class="col-md-4 col-sm-6 col-10 mx-auto" to="/">
-          <img class="w-100" src="/首頁圖片/logo-footer.png" alt="logo" />
+          <img class="w-100" src="/首頁圖片/logo-footer.png" alt="返回首頁" />
         </router-link>
         <ul class="navbar-nav flex-row col-md-8 col-sm-6 col-12 justify-content-center justify-content-sm-end my-2">
           <li class="nav-item mx-2">

@@ -100,7 +100,8 @@ export default {
         <ErrorMessage name="信箱" class="invalid-feedback"></ErrorMessage>
       </VForm>
     </div>
-    <button type="type" class="btn btn-dark d-block mx-auto w-100 pt-2 mb-3" @click="startSignin" :disabled="checkEmail">
+    <button type="type" class="btn btn-dark d-block mx-auto w-100 pt-2 mb-3" @click="startSignin"
+      :disabled="checkEmail">
       註冊
     </button>
     <router-link to="/login" class="btn btn-light d-block mx-auto w-100 pt-2 mb-3">返回</router-link>
@@ -142,5 +143,3 @@ export default {
     </VForm>
   </div>
 </template>
-<style lang="scss" scoped>
-</style>

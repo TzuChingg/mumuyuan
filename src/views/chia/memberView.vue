@@ -28,6 +28,7 @@ export default {
 .memberview-height {
   min-height: calc(100vh - 174px);
 }
+
 .border-rwd {
   border-right: 1px solid #dee2e6;
 }

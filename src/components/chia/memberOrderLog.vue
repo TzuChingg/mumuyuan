@@ -5,7 +5,6 @@
     <div class="col-12 mb-4">
       <h5 class="text-primary fw-bolder" style="letter-spacing: 1px;">歷史訂單</h5>
       <hr />
-      <!-- accordion -->
       <div class="accordion mb-4" v-for="(item, index) in finishOrder" :key="index" id="accordionExample">
         <div class="accordion-item">
           <h2 class="accordion-header" id="headingOne">
@@ -52,19 +51,15 @@
                     <input type="radio" name="star" :id="'score5' + index" value="5" data-bs-toggle="modal"
                       :data-bs-target="'#star' + index" v-model="star" />
                     <label class="star" :for="'score5' + index"></label>
-
                     <input type="radio" name="star" :id="'score4' + index" value="4" data-bs-toggle="modal"
                       :data-bs-target="'#star' + index" v-model="star" />
                     <label class="star" :for="'score4' + index"></label>
-
                     <input type="radio" name="star" :id="'score3' + index" value="3" data-bs-toggle="modal"
                       :data-bs-target="'#star' + index" v-model="star" />
                     <label class="star" :for="'score3' + index"></label>
-
                     <input type="radio" name="star" :id="'score2' + index" value="2" data-bs-toggle="modal"
                       :data-bs-target="'#star' + index" v-model="star" />
                     <label class="star" :for="'score2' + index"></label>
-
                     <input type="radio" name="star" :id="'score1' + index" value="1" data-bs-toggle="modal"
                       :data-bs-target="'#star' + index" v-model="star" />
                     <label class="star " :for="'score1' + index"></label>
@@ -74,10 +69,8 @@
                 <button class="btn btn-primary btn-sm  ">再次訂購</button>
               </div>
               <div v-if="item.score" class="col-12 d-flex justify-content-end">
-
                 <button class="btn btn-primary btn-sm  ">再次訂購</button>
               </div>
-              <!-- model -->
               <div class="modal fade" :id="'star' + index" data-bs-backdrop="static" data-bs-keyboard="false"
                 tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">0
                 <div class="modal-dialog">
@@ -99,7 +92,6 @@
           </div>
         </div>
       </div>
-      <!-- accordion End -->
     </div>
   </div>
 </template>

@@ -1,7 +1,7 @@
 <template>
 	<div class="container-fluid p-0 position-relative overflow-hidden">
-		<div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-pause="false"
-			data-bs-wrap="true" data-bs-keyboard="false">
+		<div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-bs-ride="carousel"
+			data-bs-pause="false" data-bs-wrap="true" data-bs-keyboard="false">
 			<div class="carousel-inner" v-if="width > 576">
 				<div class="carousel-item active">
 					<div class="row p-0">
@@ -81,7 +81,8 @@
 						</div>
 					</div>
 				</div>
-				<button type="button" class="slogan-btn btn btn-dark bg-light bg-opacity-75 position-absolute bottom-0 start-50">
+				<button type="button"
+					class="slogan-btn btn btn-dark bg-light bg-opacity-75 position-absolute bottom-0 start-50">
 					<router-link to="/onlineOrder" class="text-black text-decoration-none"><strong>立即點餐</strong></router-link>
 				</button>
 			</div>
@@ -100,7 +101,8 @@
 						</div>
 					</div>
 				</div>
-				<button type="button" class="slogan-btn btn btn-dark bg-light bg-opacity-75 position-absolute bottom-0 start-50">
+				<button type="button"
+					class="slogan-btn btn btn-dark bg-light bg-opacity-75 position-absolute bottom-0 start-50">
 					<router-link to="/onlineOrder" class="text-black text-decoration-none"><strong>立即點餐</strong></router-link>
 				</button>
 			</div>
@@ -195,10 +197,10 @@ export default {
 		font-size: 1.2rem;
 		writing-mode: inherit;
 	}
+
 	.slogan-btn {
 		font-size: 0.8rem;
 		transform: translate(-50%, -180px);
 	}
 }
-
 </style>

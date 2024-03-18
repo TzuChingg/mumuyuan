@@ -13,34 +13,21 @@
             <div class="accordion accordion-flush" :id="'accordionFlushExample' + index">
               <div class="accordion-item">
                 <h2 class="accordion-header" :id="'flush-heading' + index">
-                  <button
-                    class="accordion-button collapsed shadow-none"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    :data-bs-target="'#flush-collapseOne' + index"
-                    aria-expanded="false"
-                    :aria-controls="'flush-collapseOne' + index"
-                  >
+                  <button class="accordion-button collapsed shadow-none" type="button" data-bs-toggle="collapse"
+                    :data-bs-target="'#flush-collapseOne' + index" aria-expanded="false"
+                    :aria-controls="'flush-collapseOne' + index">
                     <strong class="me-5 fs-4">{{ order.name }}</strong>
-                    <span class="ms-5 mt-11 fs-4">手機:{{ order.phone }}</span
-                    ><span class="ms-5 mt-11 fs-4">日期:{{ order.day }}</span>
+                    <span class="ms-5 mt-11 fs-4">手機:{{ order.phone }}</span><span class="ms-5 mt-11 fs-4">日期:{{
+        order.day }}</span>
                   </button>
                 </h2>
-                <div
-                  :id="'flush-collapseOne' + index"
-                  class="accordion-collapse collapse"
-                  :aria-labelledby="'flush-heading' + index"
-                  :data-bs-parent="'#accordionFlushExample' + index"
-                >
+                <div :id="'flush-collapseOne' + index" class="accordion-collapse collapse"
+                  :aria-labelledby="'flush-heading' + index" :data-bs-parent="'#accordionFlushExample' + index">
                   <div class="accordion-body">
                     <div class="row row-cols-2">
                       <div class="col d-flex flex-wrap h-25">
                         <div class="row text-center h-25 w-100">
-                          <div
-                            class="col-4 fs-4 text-nowrap"
-                            v-for="(food, index) in order.product"
-                            :key="index"
-                          >
+                          <div class="col-4 fs-4 text-nowrap" v-for="(food, index) in order.product" :key="index">
                             {{ food }}
                           </div>
                         </div>
@@ -71,8 +58,7 @@
                             </tr>
                             <tr>
                               <td class="fs-5">
-                                <strong>預計取餐時間:</strong
-                                ><span class="text-danger">{{ order.time }}</span>
+                                <strong>預計取餐時間:</strong><span class="text-danger">{{ order.time }}</span>
                               </td>
                             </tr>
                             <tr>
@@ -88,20 +74,12 @@
                             </tr>
                           </tbody>
                           <tfoot>
-                            <button
-                              type="btn"
-                              class="btn btn-primary w-100 mb-1"
-                              data-bs-toggle="modal"
-                              :data-bs-target="'#ok' + index"
-                            >
+                            <button type="btn" class="btn btn-primary w-100 mb-1" data-bs-toggle="modal"
+                              :data-bs-target="'#ok' + index">
                               接受
                             </button>
-                            <button
-                              type="btn"
-                              class="btn btn-primary w-100 mt-1"
-                              data-bs-toggle="modal"
-                              :data-bs-target="'#reject' + index"
-                            >
+                            <button type="btn" class="btn btn-primary w-100 mt-1" data-bs-toggle="modal"
+                              :data-bs-target="'#reject' + index">
                               拒絕
                             </button>
                           </tfoot>
@@ -114,15 +92,8 @@
             </div>
 
             <!-- model -->
-            <div
-              class="modal fade"
-              :id="'ok' + index"
-              data-bs-backdrop="static"
-              data-bs-keyboard="false"
-              tabindex="-1"
-              aria-labelledby="staticBackdropLabel"
-              aria-hidden="true"
-            >
+            <div class="modal fade" :id="'ok' + index" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+              aria-labelledby="staticBackdropLabel" aria-hidden="true">
               0
               <div class="modal-dialog">
                 <div class="modal-content border-0">
@@ -131,12 +102,8 @@
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                       取消
                     </button>
-                    <button
-                      type="button"
-                      class="btn btn-primary"
-                      data-bs-dismiss="modal"
-                      @click="ok(order.id, order.userId, order.orderNum)"
-                    >
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                      @click="ok(order.id, order.userId, order.orderNum)">
                       確認
                     </button>
                   </div>
@@ -144,15 +111,8 @@
               </div>
             </div>
             <!-- model -->
-            <div
-              class="modal fade"
-              :id="'reject' + index"
-              data-bs-backdrop="static"
-              data-bs-keyboard="false"
-              tabindex="-1"
-              aria-labelledby="staticBackdropLabel"
-              aria-hidden="true"
-            >
+            <div class="modal fade" :id="'reject' + index" data-bs-backdrop="static" data-bs-keyboard="false"
+              tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
               0
               <div class="modal-dialog">
                 <div class="modal-content border-0">
@@ -161,12 +121,7 @@
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                       取消
                     </button>
-                    <button
-                      type="button"
-                      class="btn btn-primary"
-                      data-bs-dismiss="modal"
-                      @click="reject(order.id)"
-                    >
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="reject(order.id)">
                       確認
                     </button>
                   </div>
@@ -185,33 +140,21 @@
             <div class="accordion accordion-flush" id="accordionFlushExample">
               <div class="accordion-item">
                 <h2 class="accordion-header" :id="'flush-heading' + index">
-                  <button
-                    class="accordion-button collapsed shadow-none"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    :data-bs-target="'#flush-collapseOne' + index"
-                    aria-expanded="false"
-                    aria-controls="flush-collapseOne"
-                  >
+                  <button class="accordion-button collapsed shadow-none" type="button" data-bs-toggle="collapse"
+                    :data-bs-target="'#flush-collapseOne' + index" aria-expanded="false"
+                    aria-controls="flush-collapseOne">
                     <strong class="me-5 fs-4">{{ order.name }}</strong>
                     <span class="ms-5 mt-11 fs-4">手機:{{ order.phone }}</span>
                   </button>
                 </h2>
-                <div
-                  :id="'flush-collapseOne' + index"
-                  class="accordion-collapse collapse"
-                  :aria-labelledby="'flush-heading' + index"
-                  data-bs-parent="#accordionFlushExample"
-                >
+                <div :id="'flush-collapseOne' + index" class="accordion-collapse collapse"
+                  :aria-labelledby="'flush-heading' + index" data-bs-parent="#accordionFlushExample">
                   <div class="accordion-body">
                     <div class="row row-cols-2">
                       <div class="col d-flex flex-wrap h-25">
                         <div class="row row-cols-4 text-center h-25 w-100">
-                          <div
-                            class="col-4 fs-4 text-nowrap"
-                            v-for="(food, foodIndex) in order.product"
-                            :key="foodIndex"
-                          >
+                          <div class="col-4 fs-4 text-nowrap" v-for="(food, foodIndex) in order.product"
+                            :key="foodIndex">
                             {{ food }}
                           </div>
                         </div>
@@ -242,8 +185,7 @@
                             </tr>
                             <tr>
                               <td class="fs-5">
-                                <strong>預計取餐時間:</strong
-                                ><span class="text-danger">{{ order.time }}</span>
+                                <strong>預計取餐時間:</strong><span class="text-danger">{{ order.time }}</span>
                               </td>
                             </tr>
                             <tr>
@@ -259,12 +201,8 @@
                             </tr>
                           </tbody>
                           <tfoot>
-                            <button
-                              type="btn"
-                              class="btn btn-primary w-100 mt-1"
-                              data-bs-toggle="modal"
-                              :data-bs-target="'#finish' + index"
-                            >
+                            <button type="btn" class="btn btn-primary w-100 mt-1" data-bs-toggle="modal"
+                              :data-bs-target="'#finish' + index">
                               完成
                             </button>
                           </tfoot>
@@ -276,15 +214,8 @@
               </div>
             </div>
             <!-- model -->
-            <div
-              class="modal fade"
-              :id="'finish' + index"
-              data-bs-backdrop="static"
-              data-bs-keyboard="false"
-              tabindex="-1"
-              aria-labelledby="staticBackdropLabel"
-              aria-hidden="true"
-            >
+            <div class="modal fade" :id="'finish' + index" data-bs-backdrop="static" data-bs-keyboard="false"
+              tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
               0
               <div class="modal-dialog">
                 <div class="modal-content border-0">
@@ -293,12 +224,8 @@
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                       取消
                     </button>
-                    <button
-                      type="button"
-                      class="btn btn-primary"
-                      data-bs-dismiss="modal"
-                      @click="pushForCustomer(order.id, order.userId, order.orderNum)"
-                    >
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                      @click="pushForCustomer(order.id, order.userId, order.orderNum)">
                       確認
                     </button>
                   </div>
@@ -311,7 +238,6 @@
     </transition>
   </div>
 </template>
-<!--   -->
 
 <script>
 import BackendFunctions from '@/components/eric/BackendFunctions.vue'
@@ -360,8 +286,8 @@ export default {
         })
       this.socket.send(
         JSON.stringify({
-          status: loadingData, //data 改成status
-          num: orderid, //id 改成num
+          status: loadingData,
+          num: orderid,
           userId: userId
         })
       )
@@ -374,7 +300,6 @@ export default {
     get(data) {
       this.select = data
     },
-
     pushForCustomer(id, userId, orderid) {
       const data = { status: 3 }
       const loadingData = 3
@@ -383,17 +308,16 @@ export default {
         .then(() => {
           location.reload()
         })
-        .catch(() => {})
+        .catch(() => { })
       this.socket.send(
         JSON.stringify({
-          status: loadingData, //data 改成status
-          num: orderid, //id 改成num
+          status: loadingData,
+          num: orderid,
           userId: userId
         })
       )
     }
   },
-
   mounted() {
     this.$axios.get('/orders').then((res) => {
       res.data.forEach((element) => {
@@ -499,7 +423,6 @@ td {
 
 .main {
   flex: 1;
-  /* 让主要内容区域占据剩余的所有可用空间 */
   overflow-y: auto;
   width: 100%;
   transition:
@@ -516,14 +439,12 @@ td {
 
   .main {
     width: calc(100vw - var(--sidebar-width));
-    /* margin-left: 0; */
   }
 }
 
 .reduce-spacing td {
   margin: 0;
   padding: 0px;
-  /* 调整需要的内边距 */
 }
 
 .fade-enter-active,

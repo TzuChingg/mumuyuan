@@ -10,14 +10,8 @@
             <div class="col-8 mb-0 ms-2">
               <div class="d-flex h-50">
                 <label for="search"><i class="bi bi-search fs-4"></i></label>
-                <input
-                  type="search"
-                  placeholder="search"
-                  id="search"
-                  @input="filteredUser"
-                  class="form-control border-0 shadow-none mt-2 fs-4 bg-secondary"
-                  v-model="search"
-                />
+                <input type="search" placeholder="search" id="search" @input="filteredUser"
+                  class="form-control border-0 shadow-none mt-2 fs-4 bg-secondary" v-model="search" />
               </div>
             </div>
             <div class="col-2">
@@ -38,34 +32,20 @@
                   <td>查無此人</td>
                 </tr>
               </tbody>
-              <tbody
-                class="fs-4 text-nowrap"
-                v-for="(user, index) in filteredUsersList"
-                :key="index"
-              >
+              <tbody class="fs-4 text-nowrap" v-for="(user, index) in filteredUsersList" :key="index">
                 <tr>
                   <td>{{ user.name }}</td>
                   <td>手機:{{ user.phone }}</td>
                   <td class="text-end">
-                    <button
-                      class="btn btn-outline-primary me-5"
-                      data-bs-toggle="modal"
-                      :data-bs-target="'#goBad' + index"
-                    >
+                    <button class="btn btn-outline-primary me-5" data-bs-toggle="modal"
+                      :data-bs-target="'#goBad' + index">
                       黑名單
                     </button>
                   </td>
                 </tr>
                 <!-- model -->
-                <div
-                  class="modal fade"
-                  :id="'goBad' + index"
-                  data-bs-backdrop="static"
-                  data-bs-keyboard="false"
-                  tabindex="-1"
-                  aria-labelledby="staticBackdropLabel"
-                  aria-hidden="true"
-                >
+                <div class="modal fade" :id="'goBad' + index" data-bs-backdrop="static" data-bs-keyboard="false"
+                  tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                   0
                   <div class="modal-dialog">
                     <div class="modal-content border-0">
@@ -74,12 +54,7 @@
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                           取消
                         </button>
-                        <button
-                          type="button"
-                          class="btn btn-primary"
-                          data-bs-dismiss="modal"
-                          @click="goBad(user.id)"
-                        >
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="goBad(user.id)">
                           確認
                         </button>
                       </div>
@@ -97,14 +72,8 @@
             <div class="col-8 mb-0 ms-2">
               <div class="d-flex h-50">
                 <label for="search"><i class="bi bi-search fs-4"></i></label>
-                <input
-                  type="search"
-                  placeholder="search"
-                  id="search"
-                  @input="filteredBadUser"
-                  class="form-control border-0 shadow-none mt-2 fs-4 bg-secondary"
-                  v-model="search"
-                />
+                <input type="search" placeholder="search" id="search" @input="filteredBadUser"
+                  class="form-control border-0 shadow-none mt-2 fs-4 bg-secondary" v-model="search" />
               </div>
             </div>
             <div class="col-2">
@@ -125,34 +94,19 @@
                   <td>查無此人</td>
                 </tr>
               </tbody>
-              <tbody
-                class="fs-4 text-nowrap"
-                v-for="(user, index) in filteredBadUsersList"
-                :key="index"
-              >
+              <tbody class="fs-4 text-nowrap" v-for="(user, index) in filteredBadUsersList" :key="index">
                 <tr>
                   <td>{{ user.name }}</td>
                   <td>手機:{{ user.phone }}</td>
                   <td class="text-end">
-                    <button
-                      class="btn btn-primary me-5"
-                      data-bs-toggle="modal"
-                      :data-bs-target="'#goGood' + index"
-                    >
+                    <button class="btn btn-primary me-5" data-bs-toggle="modal" :data-bs-target="'#goGood' + index">
                       原諒你
                     </button>
                   </td>
                 </tr>
                 <!-- model -->
-                <div
-                  class="modal fade"
-                  :id="'goGood' + index"
-                  data-bs-backdrop="static"
-                  data-bs-keyboard="false"
-                  tabindex="-1"
-                  aria-labelledby="staticBackdropLabel"
-                  aria-hidden="true"
-                >
+                <div class="modal fade" :id="'goGood' + index" data-bs-backdrop="static" data-bs-keyboard="false"
+                  tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                   0
                   <div class="modal-dialog">
                     <div class="modal-content border-0">
@@ -161,12 +115,7 @@
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                           取消
                         </button>
-                        <button
-                          type="button"
-                          class="btn btn-primary"
-                          data-bs-dismiss="modal"
-                          @click="goGood(user.id)"
-                        >
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="goGood(user.id)">
                           確認
                         </button>
                       </div>
@@ -226,7 +175,6 @@ export default {
         }, 500)
       }
     },
-
     filteredBadUser() {
       if (this.search) {
         this.isLoading = true
@@ -244,7 +192,6 @@ export default {
         }, 500)
       }
     },
-
     goBad(id) {
       const data = { identity: 'baduser' }
       this.$axios.patch(`/users/${id}`, data).then(() => {
@@ -257,14 +204,10 @@ export default {
         location.reload()
       })
     },
-
     get(data) {
       this.select = data
     }
   },
-
-  computed: {},
-
   mounted() {
     this.$axios
       .get('/users')

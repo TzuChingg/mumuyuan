@@ -14,17 +14,17 @@
       <div class="mb-3 row">
         <label for="phone" class="col-md-4 col-form-label">手機：</label>
         <div class="col-md-8">
-          <input type="text" class="form-control" id="phone" v-model="userInfo.phone" readonly />
+          <input type="tel" class="form-control" id="phone" v-model="userInfo.phone" readonly />
         </div>
       </div>
       <div class="mb-3 row">
         <label for="email" class="col-md-4 col-form-label">信箱：</label>
         <div class="col-md-8">
-          <input type="text" class="form-control" id="email" v-model="userInfo.email" readonly />
+          <input type="email" class="form-control" id="email" v-model="userInfo.email" readonly />
         </div>
       </div>
       <div class="mb-3 row">
-        <label for="email" class="col-md-4 col-sm-3 col-4 col-form-label">會員點數：</label>
+        <label class="col-md-4 col-sm-3 col-4 col-form-label">會員點數：</label>
         <div class="col-md-8 col-sm-9 col-8">
           <p class="mt-2">
             <span>{{ userInfo.point }}</span>
@@ -164,10 +164,9 @@ export default {
               text: '請確認更新資訊',
               timer: 2000
             }).then(() => {
-              this.userInfo.copyPassword = this.userInfo.newPassword;
+              this.userInfo.copyPassword = this.userInfo.newPassword
               this.userInfo.newPassword = ''
               this.userInfo.dbCheckPassword = ''
-
             })
           }
         })

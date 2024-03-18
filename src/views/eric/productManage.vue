@@ -9,92 +9,38 @@
           <div class="mt-2">
             <div class="row justify-content-between">
               <div class="col-2">
-                <button
-                  type="button"
-                  class="btn btn-primary"
-                  data-bs-toggle="modal"
-                  data-bs-target="#exampleModal"
-                >
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                   新增商品
                 </button>
               </div>
               <div class="col-6">
                 <ul class="nav nav-pills">
                   <li class="nav-item mx-2">
-                    <input
-                      type="radio"
-                      class="btn-check"
-                      name="options"
-                      id="option1"
-                      :value="1"
-                      v-model="category"
-                    />
+                    <input type="radio" class="btn-check" name="options" id="option1" :value="1" v-model="category" />
                     <label class="btn btn-outline-primary" for="option1">固定套餐</label>
                   </li>
                   <li class="nav-item mx-2">
-                    <input
-                      type="radio"
-                      class="btn-check"
-                      name="options"
-                      id="option2"
-                      :value="2"
-                      v-model="category"
-                    />
+                    <input type="radio" class="btn-check" name="options" id="option2" :value="2" v-model="category" />
                     <label class="btn btn-outline-primary" for="option2">秘捲</label>
                   </li>
                   <li class="nav-item mx-2">
-                    <input
-                      type="radio"
-                      class="btn-check"
-                      name="options"
-                      id="option3"
-                      :value="3"
-                      v-model="category"
-                    />
+                    <input type="radio" class="btn-check" name="options" id="option3" :value="3" v-model="category" />
                     <label class="btn btn-outline-primary" for="option3">肉品</label>
                   </li>
                   <li class="nav-item mx-2">
-                    <input
-                      type="radio"
-                      class="btn-check"
-                      name="options"
-                      id="option4"
-                      :value="4"
-                      v-model="category"
-                    />
+                    <input type="radio" class="btn-check" name="options" id="option4" :value="4" v-model="category" />
                     <label class="btn btn-outline-primary" for="option4">海鮮</label>
                   </li>
                   <li class="nav-item mx-2">
-                    <input
-                      type="radio"
-                      class="btn-check"
-                      name="options"
-                      id="option5"
-                      :value="5"
-                      v-model="category"
-                    />
+                    <input type="radio" class="btn-check" name="options" id="option5" :value="5" v-model="category" />
                     <label class="btn btn-outline-primary" for="option5">酒食</label>
                   </li>
                   <li class="nav-item mx-2">
-                    <input
-                      type="radio"
-                      class="btn-check"
-                      name="options"
-                      id="option6"
-                      :value="6"
-                      v-model="category"
-                    />
+                    <input type="radio" class="btn-check" name="options" id="option6" :value="6" v-model="category" />
                     <label class="btn btn-outline-primary" for="option6">蔬菜</label>
                   </li>
                   <li class="nav-item mx-2">
-                    <input
-                      type="radio"
-                      class="btn-check"
-                      name="options"
-                      id="option7"
-                      :value="7"
-                      v-model="category"
-                    />
+                    <input type="radio" class="btn-check" name="options" id="option7" :value="7" v-model="category" />
                     <label class="btn btn-outline-primary" for="option7">經典</label>
                   </li>
                 </ul>
@@ -114,45 +60,27 @@
                       <label for="money" class="ms-1 text-nowrap">價錢:</label>
                     </div>
                     <div class="col-4">
-                      <input
-                        v-model="product.money"
-                        type="number"
-                        id="money"
-                        class="form-control shadow-none"
-                        :placeholder="product.money"
-                      />
+                      <input v-model="product.money" type="number" id="money" class="form-control shadow-none"
+                        :placeholder="product.money" />
                     </div>
                     <div class="col-2 fs-6">
                       <label for="count" class="ms-1 text-nowrap">庫存:</label>
                     </div>
                     <div class="col-4">
-                      <input
-                        v-model="product.count"
-                        type="number"
-                        id="count"
-                        class="form-control shadow-none"
-                        :placeholder="product.count"
-                      />
+                      <input v-model="product.count" type="number" id="count" class="form-control shadow-none"
+                        :placeholder="product.count" />
                     </div>
                   </div>
                   <div class="row text-center align-items-center py-3">
                     <div class="col-6">
-                      <button
-                        type="button"
-                        class="btn btn-danger ms-6"
-                        data-bs-toggle="modal"
-                        :data-bs-target="'#goDown' + index"
-                      >
+                      <button type="button" class="btn btn-danger ms-6" data-bs-toggle="modal"
+                        :data-bs-target="'#goDown' + index">
                         下架
                       </button>
                     </div>
                     <div class="col-6">
-                      <button
-                        type="button"
-                        class="btn btn-primary me-6"
-                        data-bs-toggle="modal"
-                        :data-bs-target="'#updatePrice' + index"
-                      >
+                      <button type="button" class="btn btn-primary me-6" data-bs-toggle="modal"
+                        :data-bs-target="'#updatePrice' + index">
                         修改
                       </button>
                     </div>
@@ -160,15 +88,8 @@
                 </div>
               </div>
               <!-- model -->
-              <div
-                class="modal fade"
-                :id="'goDown' + index"
-                data-bs-backdrop="static"
-                data-bs-keyboard="false"
-                tabindex="-1"
-                aria-labelledby="staticBackdropLabel"
-                aria-hidden="true"
-              >
+              <div class="modal fade" :id="'goDown' + index" data-bs-backdrop="static" data-bs-keyboard="false"
+                tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 0
                 <div class="modal-dialog">
                   <div class="modal-content border-0">
@@ -177,12 +98,7 @@
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                         取消
                       </button>
-                      <button
-                        type="button"
-                        class="btn btn-primary"
-                        data-bs-dismiss="modal"
-                        @click="goDown(product.id)"
-                      >
+                      <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="goDown(product.id)">
                         確認
                       </button>
                     </div>
@@ -190,15 +106,8 @@
                 </div>
               </div>
               <!-- model -->
-              <div
-                class="modal fade"
-                :id="'updatePrice' + index"
-                data-bs-backdrop="static"
-                data-bs-keyboard="false"
-                tabindex="-1"
-                aria-labelledby="staticBackdropLabel"
-                aria-hidden="true"
-              >
+              <div class="modal fade" :id="'updatePrice' + index" data-bs-backdrop="static" data-bs-keyboard="false"
+                tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 0
                 <div class="modal-dialog">
                   <div class="modal-content border-0">
@@ -207,12 +116,8 @@
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                         取消
                       </button>
-                      <button
-                        type="button"
-                        class="btn btn-primary"
-                        data-bs-dismiss="modal"
-                        @click="update(product.id, product.money, product.count, product.title)"
-                      >
+                      <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                        @click="update(product.id, product.money, product.count, product.title)">
                         確認
                       </button>
                     </div>
@@ -230,13 +135,7 @@
           </div>
         </div>
         <!-- Button trigger modal -->
-        <div
-          class="modal fade"
-          id="exampleModal"
-          tabindex="-1"
-          aria-labelledby="exampleModalLabel"
-          aria-hidden="true"
-        >
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content border-0">
               <div class="modal-header border-0">
@@ -247,59 +146,31 @@
                   <div class="card border-0">
                     <div class="cardbody bg-secondary">
                       <div class="d-flex h-25 justify-content-center mt-3">
-                        <input
-                          class="form-control w-50"
-                          type="file"
-                          id="formFile"
-                          @change="uploadFile"
-                        />
+                        <input class="form-control w-50" type="file" id="formFile" @change="uploadFile" />
                       </div>
                       <div class="d-flex h-25 justify-content-center mt-3 mb-2">
                         <label for="title" class="fs-3 me-2 form-label">品名:</label>
-                        <input
-                          type="text"
-                          id="title"
-                          placeholder="牛肉"
-                          class="form-control border-1 shadow-none w-50"
-                          v-model="dataForm.productName"
-                        />
+                        <input type="text" id="title" placeholder="牛肉" class="form-control border-1 shadow-none w-50"
+                          v-model="dataForm.productName" />
                       </div>
                       <div class="d-flex h-25 justify-content-center mb-2">
                         <label for="price" class="fs-3 me-2 form-label">價格:</label>
-                        <input
-                          type="text"
-                          id="price"
-                          placeholder="100"
-                          class="form-control border-1 shadow-none w-50"
-                          v-model="dataForm.price"
-                        />
+                        <input type="text" id="price" placeholder="100" class="form-control border-1 shadow-none w-50"
+                          v-model="dataForm.price" />
                       </div>
                       <div class="d-flex h-25 justify-content-center mb-2">
                         <label for="count" class="fs-3 me-2 form-label">庫存:</label>
-                        <input
-                          type="text"
-                          id="count"
-                          placeholder="100"
-                          class="form-control border-1 shadow-none w-50"
-                          v-model="dataForm.count"
-                        />
+                        <input type="text" id="count" placeholder="100" class="form-control border-1 shadow-none w-50"
+                          v-model="dataForm.count" />
                       </div>
                       <div class="d-flex h-25 justify-content-center mb-2">
                         <label for="description" class="fs-3 me-2 form-label">介紹:</label>
-                        <input
-                          type="text"
-                          id="description"
-                          placeholder="多汁"
-                          class="form-control border-1 shadow-none w-50"
-                          v-model="dataForm.description"
-                        />
+                        <input type="text" id="description" placeholder="多汁"
+                          class="form-control border-1 shadow-none w-50" v-model="dataForm.description" />
                       </div>
                       <div class="d-flex h-25 justify-content-center mt-3 mb-2">
-                        <select
-                          class="form-select w-50 shadow-none"
-                          aria-label="Default select example"
-                          v-model="dataForm.category"
-                        >
+                        <select class="form-select w-50 shadow-none" aria-label="Default select example"
+                          v-model="dataForm.category">
                           <option :value="1">固定套餐</option>
                           <option :value="2">秘捲</option>
                           <option :value="3">肉品</option>
@@ -317,12 +188,7 @@
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                   關閉
                 </button>
-                <button
-                  type="button"
-                  class="btn btn-primary"
-                  data-bs-dismiss="modal"
-                  @click="pushData()"
-                >
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="pushData()">
                   新增
                 </button>
               </div>
@@ -346,39 +212,23 @@
                   <h4 class="text-center mt-3">{{ down.title }}</h4>
                   <div class="row text-center align-items-center py-3">
                     <div class="col-6">
-                      <button
-                        type="button"
-                        class="btn btn-primary ms-6"
-                        data-bs-toggle="modal"
-                        :data-bs-target="'#goon' + index"
-                      >
+                      <button type="button" class="btn btn-primary ms-6" data-bs-toggle="modal"
+                        :data-bs-target="'#goon' + index">
                         上架
                       </button>
                     </div>
                     <div class="col-6">
-                      <button
-                        type="button"
-                        class="btn btn-danger me-6"
-                        data-bs-toggle="modal"
-                        :data-bs-target="'#del' + index"
-                      >
+                      <button type="button" class="btn btn-danger me-6" data-bs-toggle="modal"
+                        :data-bs-target="'#del' + index">
                         刪除
                       </button>
                     </div>
                   </div>
                 </div>
               </div>
-
               <!-- model -->
-              <div
-                class="modal fade"
-                :id="'goon' + index"
-                data-bs-backdrop="static"
-                data-bs-keyboard="false"
-                tabindex="-1"
-                aria-labelledby="staticBackdropLabel"
-                aria-hidden="true"
-              >
+              <div class="modal fade" :id="'goon' + index" data-bs-backdrop="static" data-bs-keyboard="false"
+                tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 0
                 <div class="modal-dialog">
                   <div class="modal-content border-0">
@@ -387,12 +237,7 @@
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                         取消
                       </button>
-                      <button
-                        type="button"
-                        class="btn btn-primary"
-                        data-bs-dismiss="modal"
-                        @click="goon(down.id)"
-                      >
+                      <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="goon(down.id)">
                         確認
                       </button>
                     </div>
@@ -400,15 +245,8 @@
                 </div>
               </div>
               <!-- model -->
-              <div
-                class="modal fade"
-                :id="'del' + index"
-                data-bs-backdrop="static"
-                data-bs-keyboard="false"
-                tabindex="-1"
-                aria-labelledby="staticBackdropLabel"
-                aria-hidden="true"
-              >
+              <div class="modal fade" :id="'del' + index" data-bs-backdrop="static" data-bs-keyboard="false"
+                tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 0
                 <div class="modal-dialog">
                   <div class="modal-content border-0">
@@ -417,12 +255,7 @@
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                         取消
                       </button>
-                      <button
-                        type="button"
-                        class="btn btn-primary"
-                        data-bs-dismiss="modal"
-                        @click="del(down.id)"
-                      >
+                      <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="del(down.id)">
                         確認
                       </button>
                     </div>
@@ -553,7 +386,6 @@ export default {
         price: parseFloat(money),
         count: parseInt(count)
       }
-
       const coupon = { calc: parseInt(-money) }
       this.$axios.get(`/coupons?name=${name}`).then((res) => {
         const itemId = res.data[0].id
@@ -568,7 +400,6 @@ export default {
       this.select = data
     }
   },
-
   mounted() {
     this.$axios
       .get('/products')

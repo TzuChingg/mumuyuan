@@ -308,6 +308,15 @@ export default {
       this.couponName = event.target.selectedOptions[0].textContent
     },
     async pushOrder() {
+      if (this.cartsList.carts.length===0) {
+        this.$swal({
+          icon: 'error',
+          title: '購物車為空',
+          text: '請加入商品'
+        })
+        return
+      }
+
       const data = {
         "isMember": this.myIdentity ? true : false,
         "name": this.user.name,
@@ -342,15 +351,14 @@ export default {
           }
           apiPatch = await this.$axios.patch(`/users/${this.myIdentity}`, point);
         }
-        if (apiPost.status === 201) {
 
+        if (apiPost.status === 201) {
           this.socket.send(
             JSON.stringify({
               mail: this.user.email,
               orderid: this.orderId
             })
           )
-
           this.$swal({
             icon: 'success',
             title: '訂單已送出',
