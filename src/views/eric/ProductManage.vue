@@ -138,35 +138,35 @@
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content border-0">
+              <VForm ref="addForm"  @submit="pushData()">
               <div class="modal-header border-0">
                 <h5 class="modal-title" id="exampleModalLabel">商品內容</h5>
               </div>
               <div class="modal-body bg-secondary">
-                <form>
                   <div class="card border-0">
                     <div class="cardbody bg-secondary">
                       <div class="d-flex h-25 justify-content-center mt-3">
-                        <input class="form-control w-50" type="file" id="formFile" @change="uploadFile" />
+                        <VField class="form-control w-50" type="file" id="formFile" name="圖片" @change="uploadFile"  rules="required"></VField>
+                        <ErrorMessage name="圖片" class="text-danger"></ErrorMessage>
                       </div>
                       <div class="d-flex h-25 justify-content-center mt-3 mb-2">
                         <label for="title" class="fs-3 me-2 form-label">品名:</label>
-                        <input type="text" id="title" placeholder="牛肉" class="form-control border-1 shadow-none w-50"
-                          v-model="dataForm.productName" />
-                      </div>
+                          <VField type="text" id="title" name="品名" placeholder="商品名稱" class="form-control border-1 shadow-none w-50" rules="required" v-model="dataForm.productName"></VField>
+                          <ErrorMessage name="品名" class="text-danger"></ErrorMessage>
+                        </div>
                       <div class="d-flex h-25 justify-content-center mb-2">
                         <label for="price" class="fs-3 me-2 form-label">價格:</label>
-                        <input type="text" id="price" placeholder="100" class="form-control border-1 shadow-none w-50"
-                          v-model="dataForm.price" />
+                          <VField type="text" id="price" name="價格"  class="form-control border-1 shadow-none w-50" rules="required|numeric" v-model="dataForm.price"></VField>
+                          <ErrorMessage name="價格" class="text-danger"></ErrorMessage>
                       </div>
                       <div class="d-flex h-25 justify-content-center mb-2">
                         <label for="count" class="fs-3 me-2 form-label">庫存:</label>
-                        <input type="text" id="count" placeholder="100" class="form-control border-1 shadow-none w-50"
-                          v-model="dataForm.count" />
+                          <VField type="text" id="count" name="庫存" class="form-control border-1 shadow-none w-50" rules="required|numeric" v-model="dataForm.count"></VField>
+                          <ErrorMessage name="庫存" class="text-danger"></ErrorMessage>
                       </div>
                       <div class="d-flex h-25 justify-content-center mb-2">
                         <label for="description" class="fs-3 me-2 form-label">介紹:</label>
-                        <input type="text" id="description" placeholder="多汁"
-                          class="form-control border-1 shadow-none w-50" v-model="dataForm.description" />
+                          <VField as="textarea"  id="description" name="介紹" class="form-control border-1 shadow-none w-50" v-model="dataForm.description" ></VField>
                       </div>
                       <div class="d-flex h-25 justify-content-center mt-3 mb-2">
                         <select class="form-select w-50 shadow-none" aria-label="Default select example"
@@ -182,16 +182,16 @@
                       </div>
                     </div>
                   </div>
-                </form>
-              </div>
-              <div class="modal-footer border-0">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                  關閉
-                </button>
-                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="pushData()">
-                  新增
-                </button>
-              </div>
+                </div>
+                <div class="modal-footer border-0">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    關閉
+                  </button>
+                  <button type="submit" class="btn btn-primary" >
+                    新增
+                  </button>
+                </div>
+              </VForm>
             </div>
           </div>
         </div>
@@ -266,7 +266,9 @@
           </div>
           <div class="d-flex justify-content-center h-25">
             <button class="btn btn-primary" @click="prevPage" :disabled="page === 1">上一页</button>
-            <strong class="fs-3 text-primary mx-3"> {{ page }} </strong>
+            <strong class="fs-3 text-primary mx-3" v-for="(item, index) in page" :key="index">{{
+        item
+      }}</strong>
             <button class="btn btn-primary" @click="nextPage" :disabled="thisPage.length < pg">
               下一页
             </button>
@@ -280,6 +282,8 @@
 <script>
 import SelectList from '@/components/eric/SelectList.vue'
 import BackendFunctions from '@/components/eric/BackendFunctions.vue'
+import { Modal } from 'bootstrap';
+let addModal = '';
 export default {
   components: {
     BackendFunctions,
@@ -308,8 +312,8 @@ export default {
         productName: '',
         category: 1,
         image: '',
-        count: 1,
-        price: '20',
+        count: '',
+        price: '',
         description: '',
         isLook: false
       }
@@ -362,7 +366,7 @@ export default {
     },
     uploadFile(event) {
       const file = event.target.files[0]
-      this.dataForm.image = file
+      this.dataForm.image = `./木木苑食材修圖/${file.name}`
     },
     goDown(id) {
       const data = { isLook: true }
@@ -395,12 +399,20 @@ export default {
     },
     pushData() {
       this.$axios.post('/products', this.dataForm)
+      .then(() => {
+        this.$refs.addForm.resetForm()
+        addModal.hide()
+        location.reload()
+      }).catch((err) => {
+        console.error(err)
+      });
     },
     get(data) {
       this.select = data
     }
   },
   mounted() {
+    addModal = new Modal(document.getElementById('exampleModal'))
     this.$axios
       .get('/products')
       .then((res) => {
