@@ -60,4 +60,5 @@ export default {
   background-size: cover;
   background-position: bottom;
 }
+
 </style>

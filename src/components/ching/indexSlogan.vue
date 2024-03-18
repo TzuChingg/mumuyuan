@@ -203,4 +203,5 @@ export default {
 		transform: translate(-50%, -180px);
 	}
 }
+
 </style>
