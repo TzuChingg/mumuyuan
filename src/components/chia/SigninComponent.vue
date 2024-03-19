@@ -81,7 +81,6 @@ export default {
             text: '請稍後再試',
             timer: 2000
           }).then(() => {
-            // window.location.href = "/";
             this.$router.push('/login/signin')
           });
         }
