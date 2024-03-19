@@ -364,7 +364,7 @@ export default {
             title: '訂單已送出',
             text: `訂單編號：「${this.orderId}」`,
           }).then(() => {
-            window.location.href = '/'
+            window.location.href = import.meta.env.VITE_BASE;
           });
         }
       } catch (error) {

@@ -136,7 +136,7 @@ export default {
 					text: '請稍後再試',
 					timer: 2000
 				}).then(() => {
-					window.location.href = "/";
+					window.location.href = import.meta.env.VITE_BASE;
 				});
 			})
 		}
