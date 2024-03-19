@@ -57,7 +57,7 @@ export default {
               text: '導覽至首頁',
               timer: 1500
             }).then(() => {
-              window.location.href = "/"
+              window.location.href = import.meta.env.VITE_BASE
             });
           }
         })
