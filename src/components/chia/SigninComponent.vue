@@ -71,7 +71,7 @@ export default {
                 text: '待跳轉至首頁',
                 timer: 2000
               }).then(() => {
-                window.location.href = "/";
+                this.$router.push('/')
               });
             })
         } else {
@@ -81,7 +81,8 @@ export default {
             text: '請稍後再試',
             timer: 2000
           }).then(() => {
-            window.location.href = "/";
+            // window.location.href = "/";
+            this.$router.push('/login/signin')
           });
         }
       })

@@ -364,7 +364,7 @@ export default {
             title: '訂單已送出',
             text: `訂單編號：「${this.orderId}」`,
           }).then(() => {
-            window.location.href = '/'
+            this.$router.push('/')
           });
         }
       } catch (error) {
