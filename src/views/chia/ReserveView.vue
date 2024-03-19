@@ -133,8 +133,11 @@ export default {
 				this.$swal({
 					icon: 'error',
 					title: '訂位失敗',
-					text: '請稍後再試'
-				})
+					text: '請稍後再試',
+					timer: 2000
+				}).then(() => {
+					window.location.href = import.meta.env.VITE_BASE;
+				});
 			})
 		}
 	},

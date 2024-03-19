@@ -25,7 +25,7 @@ export default {
         title: '成功登出',
         text: '導覽至首頁'
       }).then(() => {
-				this.$router.push('/')
+        window.location.href = import.meta.env.VITE_BASE
       });
     }
   }

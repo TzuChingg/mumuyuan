@@ -131,7 +131,7 @@ export default {
 			docCookies.removeItem("token");
 			docCookies.removeItem("identity");
 			docCookies.removeItem("id");
-			this.$router.push('/')
+			window.location.href = import.meta.env.VITE_BASE;
 		},
 	},
 	mounted() {
