@@ -80,7 +80,6 @@
                     :rules="{ regex: /^(09)[0-9]{8}$/, required: true, min: 10, max: 10, numeric: true }"></VField>
                   <ErrorMessage name="手機" class="invalid-feedback"></ErrorMessage>
                 </td>
-                <!-- rules="required|min:10|max:10|numeric" -->
               </tr>
               <tr class="align-middle">
                 <td class="col-3">

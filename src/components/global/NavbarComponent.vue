@@ -2,6 +2,7 @@
   <div class="sticky-top" style="z-index: 1000;" v-if="showNav">
     <div class="bg-image bg-primary">
       <div class="container">
+        <h1 class="position-absolute" style="z-index:-1;">木木苑串燒專門店mumuyuan</h1>
         <div class="row">
           <nav class="navbar navbar-expand-lg navbar-light my-4 w-100">
             <div class="col-lg-4 col-6">
