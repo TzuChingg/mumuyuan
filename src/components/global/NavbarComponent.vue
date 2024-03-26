@@ -99,7 +99,8 @@ export default {
       notice: true,
       newStatus: 0,
       orderId: 0,
-      news: []
+      news: [],
+      showToast: false
     }
   },
   computed: {
@@ -140,8 +141,14 @@ export default {
   methods: {
     show() {
       var toast = new Toast(this.$refs.liveToast)
+      if (this.showToast) {
+        toast.hide()
+        this.showToast = !this.showToast
+        return
+      }
       toast.show()
       this.notice = true
+      this.showToast = !this.showToast
     }
   },
   mounted() {
