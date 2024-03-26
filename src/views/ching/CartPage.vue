@@ -20,7 +20,7 @@
                     <tbody>
                       <tr v-for="(item, index) in cartsList.carts" :key="index">
                         <td class="text-center align-middle">
-                          <a @click.prevent="removeCartsListItem(item.id)" class="p-0"><i
+                          <a @click.prevent="deleteQuestion(item.id)" class="p-0"><i
                               class="bi bi-x-lg text-primary fs-4"></i></a>
                         </td>
                         <td class="fs-5 align-middle">
@@ -303,12 +303,28 @@ export default {
     ...mapActions(cartStore, ['decreaseQty']),
     ...mapActions(cartStore, ['member']),
     ...mapActions(cartStore, ['useCoupon']),
+    deleteQuestion(id) {
+      this.$swal.fire({
+        title: "確定要移除嗎?",
+        text: "此行為執行後將不能恢復",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "確定",
+        cancelButtonText: "取消"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.removeCartsListItem(id)
+        }
+      });
+    },
     handleCouponChange(event) {
       this.couponPrice = event.target.value;
       this.couponName = event.target.selectedOptions[0].textContent
     },
     async pushOrder() {
-      if (this.cartsList.carts.length===0) {
+      if (this.cartsList.carts.length === 0) {
         this.$swal({
           icon: 'error',
           title: '購物車為空',
