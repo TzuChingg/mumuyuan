@@ -9,7 +9,7 @@
               <hr />
               <div class="row news">
                 <div class="d-flex justify-content-center mb-5">
-                  <img :src="'/木木苑食材修圖large/' + news.newsImage" alt="消息圖片" />
+                  <img :src="`/木木苑食材修圖large/${news.newsImage}.jpg`" alt="消息圖片" />
                 </div>
               </div>
               <p v-for="(content, index) in news.newsContent" :key="index">
@@ -28,7 +28,7 @@
                   class="list-group-item d-flex align-items-center bg-transparent rounded-0 border-top-0 border-start-0 border-end-0  mb-2 mt-2"
                   style="border-bottom: 1px solid #A69F8A;" v-for="(item, index) in otherNews" :key="index">
                   <router-link :to="'/news/' + item.id">
-                    <img :src="item.newsImage.includes('首頁圖片') ? item.newsImage : '/木木苑食材修圖small/' + item.newsImage"
+                    <img :src="item.newsImage.includes('首頁圖片') ? item.newsImage : `/木木苑食材修圖small/${item.newsImage}.jpg`"
                       alt="消息圖片" style="height: 50px;">
                   </router-link>
                   <router-link :to="'/news/' + item.id">
@@ -94,7 +94,14 @@ export default {
               timer: 2000
             })
           } else {
-            this.userCoupon.push(parseInt(this.$route.params.id))
+            this.userCoupon.push({
+              "name": this.news.name,
+              "calc": "-1",
+              "image": this.news.newsImage,
+              "description": "沒有限制,每筆都能使用",
+              "id": new Date().getTime()
+            })
+
             this.$axios.patch(`/users/${docCookies.getItem("id")}`, {
               coupon: this.userCoupon
             })

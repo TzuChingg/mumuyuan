@@ -25,7 +25,8 @@
                         </td>
                         <td class="fs-5 align-middle">
                           <div class="ms-5 ps-4">
-                            <img :src="'/木木苑食材修圖small/'+item.product.image" :alt="item.product.productName" style="width: 60px" />
+                            <img :src="'/木木苑食材修圖small/' + item.product.image" :alt="item.product.productName"
+                              style="width: 60px" />
                             {{ item.product.productName }}
                           </div>
                         </td>
@@ -104,15 +105,17 @@
                 <td>
                   <div class="d-flex justify-content-end">
                     <template v-if="user.coupon == 0 || user.coupon == undefined">
-                      <select class="form-select border border-dark form-select-md" aria-label="coupon" id="coupon"
-                        @change="handleCouponChange" disabled>
-                        <option value="0" selected>尚未持有優惠券</option>
+                      <select class="form-select border border-dark form-select-md" aria-label="coupon" id="coupon">
+                        <option selected disabled>尚未持有優惠券</option>
                       </select>
                     </template>
                     <select v-else class="form-select border border-dark form-select-md" aria-label="coupon" id="coupon"
-                      @change="handleCouponChange">
-                      <option value="0">請選擇優惠券</option>
-                      <option v-for="(option, index) in user.coupon" :key="index" :value="option.calc">{{ option.name }}
+                      @change="handleCouponChange" v-model="selectedCoupon">
+                      <option value="請使用優惠券" selected disabled>請選擇優惠券</option>
+                      <option value="0">不使用</option>
+                      <option v-for="(option, index) in user.coupon" :key="index"
+                        :value="option.calc === '-1' ? option.image : option.calc">{{
+          option.name }}
                       </option>
                     </select>
                   </div>
@@ -283,6 +286,7 @@ export default {
       bags: "false",
       payment: "true",
       point: "",
+      selectedCoupon: '請使用優惠券'
     }
   },
   computed: {
@@ -299,11 +303,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions(cartStore, ['removeCartsListItem']),
-    ...mapActions(cartStore, ['increaseQty']),
-    ...mapActions(cartStore, ['decreaseQty']),
-    ...mapActions(cartStore, ['member']),
-    ...mapActions(cartStore, ['useCoupon']),
+    ...mapActions(cartStore, ['removeCartsListItem', 'increaseQty', 'decreaseQty', 'member', 'useCoupon', 'addToCart']),
     deleteQuestion(id) {
       this.$swal.fire({
         title: "確定要移除嗎?",
@@ -321,6 +321,13 @@ export default {
       });
     },
     handleCouponChange(event) {
+      if (event.target.value > 0) {
+        console.log(this.selectedCoupon);
+        this.addToCart(this.selectedCoupon - 0);
+        //優惠券商品加入pinia購物車
+        return
+      }
+
       this.couponPrice = event.target.value;
       this.couponName = event.target.selectedOptions[0].textContent
     },
@@ -417,6 +424,7 @@ export default {
       },
     },
     couponPrice(newPrice, oldPrice) {
+      if (newPrice > 0) return;
       this.total = this.total - parseInt(oldPrice) + parseInt(newPrice);
     },
     type(newValue, oldValue) {
