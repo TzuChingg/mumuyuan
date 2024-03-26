@@ -25,7 +25,7 @@
                         </td>
                         <td class="fs-5 align-middle">
                           <div class="ms-5 ps-4">
-                            <img :src="item.product.image" :alt="item.product.productName" style="width: 50px" />
+                            <img :src="'/木木苑食材修圖small/'+item.product.image" :alt="item.product.productName" style="width: 60px" />
                             {{ item.product.productName }}
                           </div>
                         </td>
