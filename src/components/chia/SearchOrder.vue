@@ -138,24 +138,24 @@ export default {
     spicy() {
       return level => {
         switch (level) {
-          case 1:
-            return '不辣'
-          case 2:
-            return '小辣'
-          default:
-            return '大辣'
+        case 1:
+          return '不辣'
+        case 2:
+          return '小辣'
+        default:
+          return '大辣'
         }
       }
     },
     flavor() {
       return level => {
         switch (level) {
-          case 1:
-            return '梅粉'
-          case 2:
-            return '秘粉'
-          default:
-            return '椒鹽'
+        case 1:
+          return '梅粉'
+        case 2:
+          return '秘粉'
+        default:
+          return '椒鹽'
         }
       }
     }

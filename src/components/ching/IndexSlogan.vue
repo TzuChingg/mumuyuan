@@ -115,15 +115,15 @@ import { mapActions, mapState } from 'pinia'
 import windowStore from '@/stores/windowStore.js'
 
 export default {
-	mounted() {
-		this.getWidth()
-	},
-	methods: {
-		...mapActions(windowStore, ['getWidth'])
-	},
-	computed: {
-		...mapState(windowStore, ['width'])
-	}
+  mounted() {
+    this.getWidth()
+  },
+  methods: {
+    ...mapActions(windowStore, ['getWidth'])
+  },
+  computed: {
+    ...mapState(windowStore, ['width'])
+  }
 }
 </script>
 

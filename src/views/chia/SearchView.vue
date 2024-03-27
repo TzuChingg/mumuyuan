@@ -2,72 +2,72 @@
 import SearchOrder from "@/components/chia/SearchOrder.vue";
 import SearchSeat from "@/components/chia/SearchSeat.vue";
 export default {
-	data() {
-		return {
-			userInput: {
-				phone: '',
-				mail: '',
-			},
-			orderNumber: '',
-			radioToggle: 'bookingfrom',
-			getResponse: [],
-		}
-	},
-	methods: {
-		startSearch() {
-			if (this.ctlOrderBtn) return;
-			this.$axios.get(`${this.axiosGetUrl}`)
-				.then((response) => {
-					if (response.status !== 200 || response.data.length === 0) {
-						this.$swal({
-							icon: 'error',
-							title: '查無訂位',
-							text: '請重新輸入',
-							timer: 2000
-						})
-					} else {
-						this.getResponse = response.data;
-					}
-				})
-		}
-	},
-	computed: {
-		ctlOrderBtn() {
-			return (this.radioToggle === 'bookingfrom') ?
-				(this.userInput.phone.trim() === '' || this.userInput.mail.trim() === '') ? true : false :
-				(this.orderNumber.trim() === '') ? true : false;
-		},
-		axiosGetUrl() {
-			return (this.radioToggle === "bookingfrom") ?
-				`/${this.radioToggle}?phone=${this.userInput.phone}&mail=${this.userInput.mail}` :
-				`/${this.radioToggle}?orderid=${this.orderNumber}`;
-		},
-		showOrder() {
-			return (this.radioToggle === 'orders' &&
+  data() {
+    return {
+      userInput: {
+        phone: '',
+        mail: '',
+      },
+      orderNumber: '',
+      radioToggle: 'bookingfrom',
+      getResponse: [],
+    }
+  },
+  methods: {
+    startSearch() {
+      if (this.ctlOrderBtn) return;
+      this.$axios.get(`${this.axiosGetUrl}`)
+        .then((response) => {
+          if (response.status !== 200 || response.data.length === 0) {
+            this.$swal({
+              icon: 'error',
+              title: '查無訂位',
+              text: '請重新輸入',
+              timer: 2000
+            })
+          } else {
+            this.getResponse = response.data;
+          }
+        })
+    }
+  },
+  computed: {
+    ctlOrderBtn() {
+      return (this.radioToggle === 'bookingfrom') ?
+        (this.userInput.phone.trim() === '' || this.userInput.mail.trim() === '') ? true : false :
+        (this.orderNumber.trim() === '') ? true : false;
+    },
+    axiosGetUrl() {
+      return (this.radioToggle === "bookingfrom") ?
+        `/${this.radioToggle}?phone=${this.userInput.phone}&mail=${this.userInput.mail}` :
+        `/${this.radioToggle}?orderid=${this.orderNumber}`;
+    },
+    showOrder() {
+      return (this.radioToggle === 'orders' &&
 				this.getResponse.length !== 0) ? true : false;
-		},
-		showSeat() {
-			return (this.userInput.phone.trim() !== '' &&
+    },
+    showSeat() {
+      return (this.userInput.phone.trim() !== '' &&
 				this.userInput.mail.trim() !== '' &&
 				this.radioToggle === 'bookingfrom' &&
 				this.getResponse.length !== 0) ? true : false;
-		}
-	},
-	components: {
-		SearchOrder,
-		SearchSeat
-	},
-	watch: {
-		radioToggle(newValue, oldValue) {
-			if (newValue === 'orders') {
-				this.userInput.phone = '';
-				this.userInput.mail = '';
-			} else {
-				this.orderNumber = '';
-			}
-			this.getResponse = [];
-		},
-	}
+    }
+  },
+  components: {
+    SearchOrder,
+    SearchSeat
+  },
+  watch: {
+    radioToggle(newValue) {
+      if (newValue === 'orders') {
+        this.userInput.phone = '';
+        this.userInput.mail = '';
+      } else {
+        this.orderNumber = '';
+      }
+      this.getResponse = [];
+    },
+  }
 }
 </script>
 

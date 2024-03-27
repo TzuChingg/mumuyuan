@@ -15,46 +15,11 @@
           "id": 1711471733410
         },
         {
-          "name": "番茄牛肉捲優惠券",
-          "calc": "-1",
-          "image": "09",
-          "description": "僅限現場點餐使用",
-          "id": 1711474450156
-        },
-        {
           "name": "折40塊",
           "calc": "-40",
           "image": "money",
           "description": "僅限線上訂餐使用",
           "id": 1711528161357
-        },
-        {
-          "name": "番茄牛肉捲優惠券",
-          "calc": "-1",
-          "image": "09",
-          "description": "僅限現場點餐使用",
-          "id": 1711528172955
-        },
-        {
-          "name": "番茄牛肉捲優惠券",
-          "calc": "-1",
-          "image": "09",
-          "description": "僅限現場點餐使用",
-          "id": 1711528174822
-        },
-        {
-          "name": "花椰菜優惠券",
-          "calc": "-1",
-          "image": "34",
-          "description": "僅限現場點餐使用",
-          "id": 1711528207932
-        },
-        {
-          "name": "花椰菜優惠券",
-          "calc": "-1",
-          "image": "34",
-          "description": "僅限現場點餐使用",
-          "id": 1711528209998
         }
       ],
       "identity": "user",
@@ -113,15 +78,7 @@
       "phone": "0912345678",
       "identity": "baduser",
       "point": 619,
-      "coupon": [
-        {
-          "id": 1,
-          "name": "折30塊",
-          "calc": "-30",
-          "image": "money",
-          "description": "僅限線上訂餐使用"
-        }
-      ],
+      "coupon": [],
       "id": 6
     }
   ],

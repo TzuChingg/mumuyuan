@@ -25,10 +25,10 @@ import productsStore from "@/stores/productsStore.js";
 import cartStore from "@/stores/cartStore.js";
 import { mapState } from 'pinia';
 export default {
-	computed: {
-		...mapState(productsStore, ['storeCategorires']),
-		...mapState(cartStore, ['cartNum', 'cartsList'])
-	},
+  computed: {
+    ...mapState(productsStore, ['storeCategorires']),
+    ...mapState(cartStore, ['cartNum', 'cartsList'])
+  },
 }
 </script>
 

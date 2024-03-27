@@ -359,14 +359,12 @@ export default {
 
       const point = { point: this.user.point + this.point }
       try {
-        let apiUseCoupon;
-        let apiPatch;
         const apiPost = await this.$axios.post(`/orders`, data);
         if (data.isMember === true) {
           if (this.couponName !== '') {
-            apiUseCoupon = await this.useCoupon(this.couponName, this.myIdentity);
+            this.useCoupon(this.couponName, this.myIdentity);
           }
-          apiPatch = await this.$axios.patch(`/users/${this.myIdentity}`, point);
+          this.$axios.patch(`/users/${this.myIdentity}`, point);
         }
 
         if (apiPost.status === 201) {
@@ -420,7 +418,7 @@ export default {
       if (newPrice > 0) return;
       this.total = this.total - parseInt(oldPrice) + parseInt(newPrice);
     },
-    type(newValue, oldValue) {
+    type(newValue) {
       this.address = newValue === 'true' ? '' : '自取';
     },
     'cartsList.carts': {
@@ -439,11 +437,11 @@ export default {
   },
   mounted() {
     if (this.cartsList.carts.length === 0) return
-    const getInfo = new Promise((resolve, reject) => {
+    const getInfo = new Promise(resolve => {
       this.myIdentity = docCookies.getItem("id")
       return resolve(this.member(this.myIdentity))
     })
-    getInfo.then((res) => {
+    getInfo.then(() => {
       this.user = { ...this.storeInformation }
       this.user.coupon = this.user.coupon.filter(i => i.description === '僅限線上訂餐使用' ? i : null)
       this.total = this.cartsList.totalAmount

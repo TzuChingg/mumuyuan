@@ -7,12 +7,12 @@
 
 <script>
 export default {
-	props: ['options'],
-	emits: ['updata'],
-	data() {
-		return {
-			selected: this.options[0].value
-		}
-	},
+  props: ['options'],
+  emits: ['updata'],
+  data() {
+    return {
+      selected: this.options[0].value
+    }
+  },
 };
 </script>

@@ -45,7 +45,7 @@ export default {
     }
   },
   watch: {
-    currentRoute(newRoute, oldRoute) {
+    currentRoute(newRoute) {
       this.showNav = ((docCookies.getItem("identity") === "admin") &&
         (newRoute.fullPath === '/order' ||
           newRoute.fullPath === '/memberMange' ||

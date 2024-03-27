@@ -275,7 +275,7 @@ export default {
       const loadingData = 2
       this.$axios
         .post('notice', data2)
-        .then((res) => {
+        .then(() => {
           return this.$axios.patch(`/orders/${id}`, data)
         })
         .then(() => {

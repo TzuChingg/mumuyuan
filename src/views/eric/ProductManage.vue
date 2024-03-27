@@ -399,13 +399,13 @@ export default {
     },
     pushData() {
       this.$axios.post('/products', this.dataForm)
-      .then(() => {
-        this.$refs.addForm.resetForm()
-        addModal.hide()
-        location.reload()
-      }).catch((err) => {
-        console.error(err)
-      });
+        .then(() => {
+          this.$refs.addForm.resetForm()
+          addModal.hide()
+          location.reload()
+        }).catch((err) => {
+          console.error(err)
+        });
     },
     get(data) {
       this.select = data

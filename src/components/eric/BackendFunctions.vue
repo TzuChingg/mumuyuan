@@ -53,106 +53,106 @@
 import { docCookies } from '@/assets/cookie';
 
 export default {
-	data() {
-		return {
-			menuItems: [
-				{
-					label: "訂單狀態",
-					expend: false,
-					path: '/order',
-					at: false,
-					icon: "bi-caret-left-fill",
-				},
-				{
-					label: "會員資料",
-					expend: false,
-					path: '/memberMange',
-					at: false,
-					icon: "bi-caret-left-fill"
-				},
-				{
-					label: "銷售統計",
-					expend: false,
-					path: '/sales',
-					at: false,
-					icon: "bi-caret-left-fill"
-				},
-				{
-					label: "編輯商品",
-					expend: false,
-					path: '/product',
-					at: false,
-					icon: "bi-caret-left-fill"
-				},
-				{
-					label: "訂位管理",
-					expend: false,
-					path: '/booking',
-					at: false,
-					icon: "bi-caret-left-fill"
-				},
-				{
-					label: "活動管理",
-					expend: false,
-					subMenu: [
-						{ title: '優惠券', path: '/discount', at: false },
-						{ title: '活動', path: '/journey', at: false },
-					],
-					icon: "bi-caret-left-fill"
-				},
-				{
-					label: "去首頁",
-					expend: false,
-					path: '/',
-					at: false,
-					icon: "bi-caret-left-fill"
-				},
-			],
-			open: true,
-			myIdentity: ""
-		}
-	},
-	watch: {
-		open() {
-			const data = { shopStatus: this.open };
-			this.$axios.patch("/shop", data)
-		}
-	},
-	methods: {
-		toggler(index) {
-			this.menuItems[index].expend = !this.menuItems[index].expend;
-			if (this.menuItems[index].expend) {
-				this.menuItems[index].icon = "bi-caret-down-fill"
-			} else {
-				this.menuItems[index].icon = "bi-caret-left-fill"
-			}
-		},
-		signOut() {
-			docCookies.removeItem("token");
-			docCookies.removeItem("identity");
-			docCookies.removeItem("id");
-			window.location.href = import.meta.env.VITE_BASE;
-		},
-	},
-	mounted() {
-		const url = this.$route.path
-		this.menuItems.forEach(item => {
-			if (url == item.path)
-				item.at = true
-		});
-		this.menuItems.forEach(item => {
-			if (item.subMenu) {
-				item.subMenu.forEach(item => {
-					if (url == item.path)
-						item.at = true
-				})
-			}
-		});
-		this.myIdentity = docCookies.getItem("identity")
-		if (this.myIdentity != 'admin') {
-			this.signOut()
-		}
-	},
+  data() {
+    return {
+      menuItems: [
+        {
+          label: "訂單狀態",
+          expend: false,
+          path: '/order',
+          at: false,
+          icon: "bi-caret-left-fill",
+        },
+        {
+          label: "會員資料",
+          expend: false,
+          path: '/memberMange',
+          at: false,
+          icon: "bi-caret-left-fill"
+        },
+        {
+          label: "銷售統計",
+          expend: false,
+          path: '/sales',
+          at: false,
+          icon: "bi-caret-left-fill"
+        },
+        {
+          label: "編輯商品",
+          expend: false,
+          path: '/product',
+          at: false,
+          icon: "bi-caret-left-fill"
+        },
+        {
+          label: "訂位管理",
+          expend: false,
+          path: '/booking',
+          at: false,
+          icon: "bi-caret-left-fill"
+        },
+        {
+          label: "活動管理",
+          expend: false,
+          subMenu: [
+            { title: '優惠券', path: '/discount', at: false },
+            { title: '活動', path: '/journey', at: false },
+          ],
+          icon: "bi-caret-left-fill"
+        },
+        {
+          label: "去首頁",
+          expend: false,
+          path: '/',
+          at: false,
+          icon: "bi-caret-left-fill"
+        },
+      ],
+      open: true,
+      myIdentity: ""
+    }
+  },
+  watch: {
+    open() {
+      const data = { shopStatus: this.open };
+      this.$axios.patch("/shop", data)
+    }
+  },
+  methods: {
+    toggler(index) {
+      this.menuItems[index].expend = !this.menuItems[index].expend;
+      if (this.menuItems[index].expend) {
+        this.menuItems[index].icon = "bi-caret-down-fill"
+      } else {
+        this.menuItems[index].icon = "bi-caret-left-fill"
+      }
+    },
+    signOut() {
+      docCookies.removeItem("token");
+      docCookies.removeItem("identity");
+      docCookies.removeItem("id");
+      window.location.href = import.meta.env.VITE_BASE;
+    },
+  },
+  mounted() {
+    const url = this.$route.path
+    this.menuItems.forEach(item => {
+      if (url == item.path)
+        item.at = true
+    });
+    this.menuItems.forEach(item => {
+      if (item.subMenu) {
+        item.subMenu.forEach(item => {
+          if (url == item.path)
+            item.at = true
+        })
+      }
+    });
+    this.myIdentity = docCookies.getItem("identity")
+    if (this.myIdentity != 'admin') {
+      this.signOut()
+    }
+  },
 }
 </script>
 

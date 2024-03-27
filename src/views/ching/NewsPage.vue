@@ -72,7 +72,7 @@ export default {
           this.news.newsContent = this.news.newsContent.split('\n')
         })
     },
-    getCoupon(name) {
+    getCoupon() {
       if (docCookies.getItem("id") == null) {
         this.$swal({
           icon: 'warning',
@@ -129,7 +129,7 @@ export default {
     },
   },
   watch: {
-    '$route.params.id'(newId) {
+    '$route.params.id'() {
       window.location.reload()
     },
   },

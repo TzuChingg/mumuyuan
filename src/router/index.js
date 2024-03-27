@@ -1,5 +1,5 @@
 //工具
-import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 
 //Router
 import loginRouter from './loginRouter'
@@ -41,7 +41,7 @@ const router = createRouter({
         return { el: element, top: 140, behavior: 'smooth' }
       }
     } else {
-      return new Promise((resolve, reject) => {
+      return new Promise((resolve) => {
         setTimeout(() => {
           resolve({ left: 0, top: 0, behavior: 'smooth' })
         }, 400)

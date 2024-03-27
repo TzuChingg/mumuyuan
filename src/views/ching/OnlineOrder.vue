@@ -51,77 +51,77 @@ import CategoryComponent from '@/components/ching/CategoryComponent.vue'
 import { mapActions, mapState } from 'pinia'
 
 export default {
-	data() {
-		return {
-			cartToastList: [],
-			loader: null
-		}
-	},
-	created() {
-		if (docCookies.getItem('identity') === 'baduser') {
-			this.$swal.fire({
-				icon: "warning",
-				title: "警告!!!",
-				text: "您目前處於黑名單，",
-				footer: '如有疑問請詢問相關人員，謝謝。'
-			}).then(() => {
-				this.$router.push('/')
-			});
-			return
-		}
-		if (this.storeLoader) {
-			this.loader = this.$loading.show()
-		}
-	},
-	mounted() {
-		this.getProducts()
-	},
-	computed: {
-		...mapState(productsStore, ['storeProducts', 'storeLoader']),
-		...mapState(cartStore, ['cartNum', 'cartsList']),
-	},
-	watch: {
-		storeLoader(newState, oldState) {
-			if (newState === false) {
-				setTimeout(() => {
-					this.loader.hide()
-				}, 2000);
-			}
-		}
-	},
-	methods: {
-		...mapActions(productsStore, ['getProducts', 'changeLoading']),
-		...mapActions(cartStore, ['addToCart']),
-		increaseBtn(id) {
-			const quantity = document.getElementById(id)
-			if (quantity.value >= 1 && quantity.value < 100) {
-				quantity.value++
-			} else if (quantity.value > 100) {
-				quantity.value = 100
-			} else if (quantity.value < 1) {
-				quantity.value = 1
-			}
-		},
-		decreaseBtn(id) {
-			const quantity = document.getElementById(id)
-			if (quantity.value > 1 && quantity.value <= 100) {
-				quantity.value--
-			} else if (quantity.value > 100) {
-				quantity.value = 100
-			} else if (quantity.value < 1) {
-				quantity.value = 1
-			}
-		},
-		addCartToastFn(product) {
-			this.$swal({
-				toast: true,
-				position: 'top-end',
-				showConfirmButton: false,
-				timerProgressBar: true,
-				timer: 1000,
-				width: '300px',
-				padding: '0',
-				html: `
+  data() {
+    return {
+      cartToastList: [],
+      loader: null
+    }
+  },
+  created() {
+    if (docCookies.getItem('identity') === 'baduser') {
+      this.$swal.fire({
+        icon: "warning",
+        title: "警告!!!",
+        text: "您目前處於黑名單，",
+        footer: '如有疑問請詢問相關人員，謝謝。'
+      }).then(() => {
+        this.$router.push('/')
+      });
+      return
+    }
+    if (this.storeLoader) {
+      this.loader = this.$loading.show()
+    }
+  },
+  mounted() {
+    this.getProducts()
+  },
+  computed: {
+    ...mapState(productsStore, ['storeProducts', 'storeLoader']),
+    ...mapState(cartStore, ['cartNum', 'cartsList']),
+  },
+  watch: {
+    storeLoader(newState) {
+      if (newState === false) {
+        setTimeout(() => {
+          this.loader.hide()
+        }, 2000);
+      }
+    }
+  },
+  methods: {
+    ...mapActions(productsStore, ['getProducts', 'changeLoading']),
+    ...mapActions(cartStore, ['addToCart']),
+    increaseBtn(id) {
+      const quantity = document.getElementById(id)
+      if (quantity.value >= 1 && quantity.value < 100) {
+        quantity.value++
+      } else if (quantity.value > 100) {
+        quantity.value = 100
+      } else if (quantity.value < 1) {
+        quantity.value = 1
+      }
+    },
+    decreaseBtn(id) {
+      const quantity = document.getElementById(id)
+      if (quantity.value > 1 && quantity.value <= 100) {
+        quantity.value--
+      } else if (quantity.value > 100) {
+        quantity.value = 100
+      } else if (quantity.value < 1) {
+        quantity.value = 1
+      }
+    },
+    addCartToastFn(product) {
+      this.$swal({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timerProgressBar: true,
+        timer: 1000,
+        width: '300px',
+        padding: '0',
+        html: `
 				<div class="mb-2 w-100 py-1 h-100">
 					<div class="row g-0">
 						<div class="col-4">
@@ -137,12 +137,12 @@ export default {
 					</div>
 				</div>
 				`
-			});
-		}
-	},
-	components: {
-		CategoryComponent,
-	}
+      });
+    }
+  },
+  components: {
+    CategoryComponent,
+  }
 }
 </script>
 
