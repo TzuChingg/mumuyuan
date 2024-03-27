@@ -113,8 +113,7 @@
                       @change="handleCouponChange" v-model="selectedCoupon">
                       <option value="請使用優惠券" selected disabled>請選擇優惠券</option>
                       <option value="0">不使用</option>
-                      <option v-for="(option, index) in user.coupon" :key="index"
-                        :value="option.calc">{{ option.name }}
+                      <option v-for="(option, index) in user.coupon" :key="index" :value="option.calc">{{ option.name }}
                       </option>
                     </select>
                   </div>

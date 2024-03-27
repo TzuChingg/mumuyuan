@@ -128,7 +128,6 @@ export default {
 @import '@/assets/main.scss';
 
 .memberorder {
-  
   button:hover {
     a {
       color: white;

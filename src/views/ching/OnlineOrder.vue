@@ -1,46 +1,46 @@
 <template>
-	<div class="container mb-5">
-		<div class="categoryNav position-fixed w-100 start-0" style="z-index: 999;">
-			<div class="d-flex flex-md-column justify-content-center align-items-center py-3 mx-auto">
-				<CategoryComponent></CategoryComponent>
-			</div>
-		</div>
-		<div style="padding-top: 90px;">
-			<div class="row g-4 mt-2" v-for="(productList, index) in storeProducts" :key="index" :id="'#' + productList[0]">
-				<h2 class="text-dark fw-bolder">{{ productList[0] }}</h2>
-				<hr class="m-0" />
-				<div class="col-sm-6 col-lg-4 col-xl-3" v-for="(product, index) in productList[1]" :key="index">
-					<div class="card mx-auto">
-						<img :src="'/木木苑食材修圖/' + product.image" class="card-img-top" :alt="product.productName" />
-						<div class="card-body" style="height: 8rem;">
-							<div class="title d-flex justify-content-between">
-								<h5 class="card-title">{{ product.productName }}</h5>
-								<span class="text-end">NT {{ product.price }}</span>
-							</div>
-							<p class="card-text fs-6">{{ product.description }}</p>
-						</div>
-						<div class="card-footer d-flex justify-content-around border-0 bg-white p-3">
-							<div class="col-6">
-								<div class="input-group">
-									<input type="button" class="cal btn btn-outline-dark" value="-" @click="decreaseBtn(product.id)" />
-									<input type="number" :id="product.id" name="quantity" :ref="`${product.id}`"
-										class="form-control input-number border-primary text-center p-0" value="1" min="1" max="100"
-										readonly="readonly" />
-									<input type="button" class="cal btn btn-outline-dark" value="+" @click="increaseBtn(product.id)" />
-								</div>
-							</div>
-							<div class="col-6 d-flex justify-content-end">
-								<button type="button" class="btn btn-outline-dark"
-									@click="addToCart(product.id, this.$refs[product.id][0].value - 0); addCartToastFn(product);">
-									加入購物車
-								</button>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+  <div class="container mb-5">
+    <div class="categoryNav position-fixed w-100 start-0" style="z-index: 999;">
+      <div class="d-flex flex-md-column justify-content-center align-items-center py-3 mx-auto">
+        <CategoryComponent></CategoryComponent>
+      </div>
+    </div>
+    <div style="padding-top: 90px;">
+      <div class="row g-4 mt-2" v-for="(productList, index) in storeProducts" :key="index" :id="'#' + productList[0]">
+        <h2 class="text-dark fw-bolder">{{ productList[0] }}</h2>
+        <hr class="m-0" />
+        <div class="col-sm-6 col-lg-4 col-xl-3" v-for="(product, index) in productList[1]" :key="index">
+          <div class="card mx-auto">
+            <img :src="'/木木苑食材修圖/' + product.image" class="card-img-top" :alt="product.productName" />
+            <div class="card-body" style="height: 8rem;">
+              <div class="title d-flex justify-content-between">
+                <h5 class="card-title">{{ product.productName }}</h5>
+                <span class="text-end">NT {{ product.price }}</span>
+              </div>
+              <p class="card-text fs-6">{{ product.description }}</p>
+            </div>
+            <div class="card-footer d-flex justify-content-around border-0 bg-white p-3">
+              <div class="col-6">
+                <div class="input-group">
+                  <input type="button" class="cal btn btn-outline-dark" value="-" @click="decreaseBtn(product.id)" />
+                  <input type="number" :id="product.id" name="quantity" :ref="`${product.id}`"
+                    class="form-control input-number border-primary text-center p-0" value="1" min="1" max="100"
+                    readonly="readonly" />
+                  <input type="button" class="cal btn btn-outline-dark" value="+" @click="increaseBtn(product.id)" />
+                </div>
+              </div>
+              <div class="col-6 d-flex justify-content-end">
+                <button type="button" class="btn btn-outline-dark"
+                  @click="addToCart(product.id, this.$refs[product.id][0].value - 0); addCartToastFn(product);">
+                  加入購物車
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script type="module">
@@ -148,10 +148,10 @@ export default {
 
 <style lang="scss" scoped>
 input[type="number"] {
-	cursor: default;
+  cursor: default;
 }
 
 .categoryNav {
-	background: #d8d0ae;
+  background: #d8d0ae;
 }
 </style>

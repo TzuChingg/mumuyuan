@@ -45,48 +45,48 @@ import { Autoplay } from 'swiper/modules'
 import 'swiper/css'
 
 export default {
-  data() {
-    return {
-      news: [],
-      newsPage: 1,
-      temp: [],
-      loader: null,
-      modules: [Autoplay],
-    }
-  },
-  created() {
-    if (this.newsLoader) {
-      this.loader = this.$loading.show()
-    }
-  },
-  mounted() {
-    this.getNews()
-  },
-  computed: {
-    ...mapState(windowStore, ['storeNews', 'newsLoader'])
-  },
-  watch: {
-    storeNews() {
-      this.news = this.storeNews
-      this.newsCarousel()
-      if (this.newsLoader === false) {
-        setTimeout(() => {
-          this.loader.hide()
-        }, 2000);
-      }
-    },
-  },
-  components: {
-    Swiper,
-    SwiperSlide
-  },
-  methods: {
-    ...mapActions(windowStore, ['getNews']),
-    newsCarousel() {
-      const newsCopy = JSON.parse(JSON.stringify(this.news));
-      this.temp = newsCopy;
-    }
-  },
+	data() {
+		return {
+			news: [],
+			newsPage: 1,
+			temp: [],
+			loader: null,
+			modules: [Autoplay],
+		}
+	},
+	created() {
+		if (this.newsLoader) {
+			this.loader = this.$loading.show()
+		}
+	},
+	mounted() {
+		this.getNews()
+	},
+	computed: {
+		...mapState(windowStore, ['storeNews', 'newsLoader'])
+	},
+	watch: {
+		storeNews() {
+			this.news = this.storeNews
+			this.newsCarousel()
+			if (this.newsLoader === false) {
+				setTimeout(() => {
+					this.loader.hide()
+				}, 2000);
+			}
+		},
+	},
+	components: {
+		Swiper,
+		SwiperSlide
+	},
+	methods: {
+		...mapActions(windowStore, ['getNews']),
+		newsCarousel() {
+			const newsCopy = JSON.parse(JSON.stringify(this.news));
+			this.temp = newsCopy;
+		}
+	},
 }
 </script>
 

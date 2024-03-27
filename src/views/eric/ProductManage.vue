@@ -138,35 +138,41 @@
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content border-0">
-              <VForm ref="addForm"  @submit="pushData()">
-              <div class="modal-header border-0">
-                <h5 class="modal-title" id="exampleModalLabel">商品內容</h5>
-              </div>
-              <div class="modal-body bg-secondary">
+              <VForm ref="addForm" @submit="pushData()">
+                <div class="modal-header border-0">
+                  <h5 class="modal-title" id="exampleModalLabel">商品內容</h5>
+                </div>
+                <div class="modal-body bg-secondary">
                   <div class="card border-0">
                     <div class="cardbody bg-secondary">
                       <div class="d-flex h-25 justify-content-center mt-3">
-                        <VField class="form-control w-50" type="file" id="formFile" name="圖片" @change="uploadFile"  rules="required"></VField>
+                        <VField class="form-control w-50" type="file" id="formFile" name="圖片" @change="uploadFile"
+                          rules="required"></VField>
                         <ErrorMessage name="圖片" class="text-danger"></ErrorMessage>
                       </div>
                       <div class="d-flex h-25 justify-content-center mt-3 mb-2">
                         <label for="title" class="fs-3 me-2 form-label">品名:</label>
-                          <VField type="text" id="title" name="品名" placeholder="商品名稱" class="form-control border-1 shadow-none w-50" rules="required" v-model="dataForm.productName"></VField>
-                          <ErrorMessage name="品名" class="text-danger"></ErrorMessage>
-                        </div>
+                        <VField type="text" id="title" name="品名" placeholder="商品名稱"
+                          class="form-control border-1 shadow-none w-50" rules="required"
+                          v-model="dataForm.productName"></VField>
+                        <ErrorMessage name="品名" class="text-danger"></ErrorMessage>
+                      </div>
                       <div class="d-flex h-25 justify-content-center mb-2">
                         <label for="price" class="fs-3 me-2 form-label">價格:</label>
-                          <VField type="text" id="price" name="價格"  class="form-control border-1 shadow-none w-50" rules="required|numeric" v-model="dataForm.price"></VField>
-                          <ErrorMessage name="價格" class="text-danger"></ErrorMessage>
+                        <VField type="text" id="price" name="價格" class="form-control border-1 shadow-none w-50"
+                          rules="required|numeric" v-model="dataForm.price"></VField>
+                        <ErrorMessage name="價格" class="text-danger"></ErrorMessage>
                       </div>
                       <div class="d-flex h-25 justify-content-center mb-2">
                         <label for="count" class="fs-3 me-2 form-label">庫存:</label>
-                          <VField type="text" id="count" name="庫存" class="form-control border-1 shadow-none w-50" rules="required|numeric" v-model="dataForm.count"></VField>
-                          <ErrorMessage name="庫存" class="text-danger"></ErrorMessage>
+                        <VField type="text" id="count" name="庫存" class="form-control border-1 shadow-none w-50"
+                          rules="required|numeric" v-model="dataForm.count"></VField>
+                        <ErrorMessage name="庫存" class="text-danger"></ErrorMessage>
                       </div>
                       <div class="d-flex h-25 justify-content-center mb-2">
                         <label for="description" class="fs-3 me-2 form-label">介紹:</label>
-                          <VField as="textarea"  id="description" name="介紹" class="form-control border-1 shadow-none w-50" v-model="dataForm.description" ></VField>
+                        <VField as="textarea" id="description" name="介紹" class="form-control border-1 shadow-none w-50"
+                          v-model="dataForm.description"></VField>
                       </div>
                       <div class="d-flex h-25 justify-content-center mt-3 mb-2">
                         <select class="form-select w-50 shadow-none" aria-label="Default select example"
@@ -187,7 +193,7 @@
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                     關閉
                   </button>
-                  <button type="submit" class="btn btn-primary" >
+                  <button type="submit" class="btn btn-primary">
                     新增
                   </button>
                 </div>

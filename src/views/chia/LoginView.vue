@@ -1,24 +1,23 @@
 <script>
 import Parallax from 'parallax-js'
 export default {
-  data() {
-    return {
-      parallax: null
-    }
-  },
-  computed: {
-    pageStatus() {
-      return {
-        '/login': '木木苑登入',
-        '/login/signin': '木木苑註冊',
-        '/login/forget': '密碼找回'
-      }[this.$route.path]
-    }
-  },
-  methods: {},
-  mounted() {
-    this.parallax = new Parallax(this.$refs.scene)
-  }
+	data() {
+		return {
+			parallax: null
+		}
+	},
+	computed: {
+		pageStatus() {
+			return {
+				'/login': '木木苑登入',
+				'/login/signin': '木木苑註冊',
+				'/login/forget': '密碼找回'
+			}[this.$route.path]
+		}
+	},
+	mounted() {
+		this.parallax = new Parallax(this.$refs.scene)
+	}
 }
 </script>
 

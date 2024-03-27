@@ -98,52 +98,61 @@
           <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <VForm @submit="pushData">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">折價券內容</h5>
-                </div>
-                <div class="modal-body bg-secondary">
-                  <div class="card border-0 bg-secondary">
-                    <div class="cardbody mt-4">
-                      <div class="d-flex h-25 justify-content-center mt-3">
-                        <VField class="form-control w-50" type="file" id="formFile" name="圖片" @change="uploadFile"  rules="required"></VField>
-                        <ErrorMessage name="圖片" class="text-danger"></ErrorMessage>
-                      </div>
-                      <div class="d-flex h-25 justify-content-center mt-5 mb-2">
-                        <label for="title" class="fs-3 me-2">券名:</label>
-                        <VField type="text" id="title" name="券名" placeholder="優惠券名稱" class="form-control border-1 shadow-none w-50" rules="required" v-model="dataForm.name"></VField>
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">折價券內容</h5>
+                  </div>
+                  <div class="modal-body bg-secondary">
+                    <div class="card border-0 bg-secondary">
+                      <div class="cardbody mt-4">
+                        <div class="d-flex h-25 justify-content-center mt-3">
+                          <VField class="form-control w-50" type="file" id="formFile" name="圖片" @change="uploadFile"
+                            rules="required"></VField>
+                          <ErrorMessage name="圖片" class="text-danger"></ErrorMessage>
+                        </div>
+                        <div class="d-flex h-25 justify-content-center mt-5 mb-2">
+                          <label for="title" class="fs-3 me-2">券名:</label>
+                          <VField type="text" id="title" name="券名" placeholder="優惠券名稱"
+                            class="form-control border-1 shadow-none w-50" rules="required" v-model="dataForm.name">
+                          </VField>
                           <ErrorMessage name="券名" class="text-danger"></ErrorMessage>
-                      </div>
-                      <div class="d-flex h-25 justify-content-center mb-2">
-                        <label for="point" class="fs-3 me-2">點數:</label>
-                        <VField type="text" id="point" name="點數" placeholder="點數" class="form-control border-1 shadow-none w-50" rules="required|numeric" v-model="dataForm.calc"></VField>
-                        <ErrorMessage name="點數" class="text-danger"></ErrorMessage>
-                      </div>
-                      <div class="d-flex h-25 justify-content-center mb-2">
-                        <label for="money" class="fs-3 me-2">折扣:</label>
-                          <VField type="text" id="money" name="折扣" placeholder="折抵金額"  class="form-control border-1 shadow-none w-50" rules="required|numeric" v-model="dataForm.point"></VField>
-                        <ErrorMessage name="折扣" class="text-danger"></ErrorMessage>
-                      </div>
-                      <div class="d-flex h-25 justify-content-center mb-2">
-                        <label for="de" class="fs-3 me-2">介紹:</label>
-                          <VField as="textarea" id="description" name="介紹" placeholder="內容"  class="form-control border-1 shadow-none w-50" rules="required" v-model="dataForm.description"></VField>
-                        <ErrorMessage name="介紹" class="text-danger"></ErrorMessage>
+                        </div>
+                        <div class="d-flex h-25 justify-content-center mb-2">
+                          <label for="point" class="fs-3 me-2">點數:</label>
+                          <VField type="text" id="point" name="點數" placeholder="點數"
+                            class="form-control border-1 shadow-none w-50" rules="required|numeric"
+                            v-model="dataForm.calc"></VField>
+                          <ErrorMessage name="點數" class="text-danger"></ErrorMessage>
+                        </div>
+                        <div class="d-flex h-25 justify-content-center mb-2">
+                          <label for="money" class="fs-3 me-2">折扣:</label>
+                          <VField type="text" id="money" name="折扣" placeholder="折抵金額"
+                            class="form-control border-1 shadow-none w-50" rules="required|numeric"
+                            v-model="dataForm.point"></VField>
+                          <ErrorMessage name="折扣" class="text-danger"></ErrorMessage>
+                        </div>
+                        <div class="d-flex h-25 justify-content-center mb-2">
+                          <label for="de" class="fs-3 me-2">介紹:</label>
+                          <VField as="textarea" id="description" name="介紹" placeholder="內容"
+                            class="form-control border-1 shadow-none w-50" rules="required"
+                            v-model="dataForm.description"></VField>
+                          <ErrorMessage name="介紹" class="text-danger"></ErrorMessage>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                    關閉
-                  </button>
-                  <button type="submit" class="btn btn-primary">
-                    新增
-                  </button>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                      關閉
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                      新增
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          </VForm>
+            </VForm>
           </div>
         </div>
       </main>
