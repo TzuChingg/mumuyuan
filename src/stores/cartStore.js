@@ -35,8 +35,7 @@ export default defineStore('', {
     }
   },
   actions: {
-    addToCart(productId) {
-      const quantity = parseInt(document.getElementById(productId).value)
+    addToCart(productId, quantity = 1) {
       const currentCart = this.cart.find((item) => item.productId === productId)
       if (currentCart) {
         currentCart.quantity += quantity
@@ -73,14 +72,17 @@ export default defineStore('', {
       }
     },
     member(id) {
-      axios
-        .get(`${api}/users/${id}`)
-        .then((res) => {
-          this.information = res.data
-        })
-        .catch(() => {
-          console.error('沒有會員')
-        })
+      return new Promise((resolve, reject) => {
+        axios
+          .get(`${api}/users/${id}`)
+          .then((res) => {
+            this.information = res.data
+            resolve(true)
+          })
+          .catch(() => {
+            reject('非會員')
+          })
+      })
     }
   }
 })

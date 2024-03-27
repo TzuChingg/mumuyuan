@@ -74,10 +74,10 @@ export default {
       this.choose = iChoose
     },
     confirm(getPoint) {
-      const { id, name, calc, image, description } = getPoint
+      const { name, calc, image, description } = getPoint
       const point = this.userInfo.point - getPoint.point
       let coupon = this.userInfo.coupon
-      coupon.push({ id, name, calc, image, description })
+      coupon.push({ name, calc, image, description, id: new Date().getTime() })
       this.$axios
         .patch(`/users/${this.userInfo.id}`, { point, coupon })
         .then((response) => {

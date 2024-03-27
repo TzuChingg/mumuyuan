@@ -117,22 +117,16 @@
                       </div>
                       <div class="d-flex h-25 justify-content-center mb-2">
                         <label for="point" class="fs-3 me-2">點數:</label>
-                        <!-- <input type="text" id="point" placeholder="100" class="form-control border-1 shadow-none w-50"
-                          v-model="dataForm.calc" /> -->
                         <VField type="text" id="point" name="點數" placeholder="點數" class="form-control border-1 shadow-none w-50" rules="required|numeric" v-model="dataForm.calc"></VField>
                         <ErrorMessage name="點數" class="text-danger"></ErrorMessage>
                       </div>
                       <div class="d-flex h-25 justify-content-center mb-2">
                         <label for="money" class="fs-3 me-2">折扣:</label>
-                        <!-- <input type="text" id="money" placeholder="100" class="form-control border-1 shadow-none w-50"
-                          v-model="dataForm.point" /> -->
                           <VField type="text" id="money" name="折扣" placeholder="折抵金額"  class="form-control border-1 shadow-none w-50" rules="required|numeric" v-model="dataForm.point"></VField>
                         <ErrorMessage name="折扣" class="text-danger"></ErrorMessage>
                       </div>
                       <div class="d-flex h-25 justify-content-center mb-2">
                         <label for="de" class="fs-3 me-2">介紹:</label>
-                        <!-- <input type="text" id="de" placeholder="" class="form-control border-1 shadow-none w-50"
-                          v-model="dataForm.description" /> -->
                           <VField as="textarea" id="description" name="介紹" placeholder="內容"  class="form-control border-1 shadow-none w-50" rules="required" v-model="dataForm.description"></VField>
                         <ErrorMessage name="介紹" class="text-danger"></ErrorMessage>
                       </div>

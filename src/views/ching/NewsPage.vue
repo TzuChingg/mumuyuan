@@ -4,12 +4,12 @@
       <div class="row justify-content-center">
         <div class="col-10">
           <div class="row">
-            <div class="col-9">
+            <div class="col-8">
               <h3>{{ news.newsTitle }}</h3>
               <hr />
               <div class="row news">
                 <div class="d-flex justify-content-center mb-5">
-                  <img :src="news.newsImage" alt="消息圖片" />
+                  <img :src="`/木木苑食材修圖large/${news.newsImage}.jpg`" alt="消息圖片" />
                 </div>
               </div>
               <p v-for="(content, index) in news.newsContent" :key="index">
@@ -20,7 +20,7 @@
               </p>
               <p>❕木木苑保有活動解釋權，造成不便敬請見諒❕</p>
             </div>
-            <div class="otherNews col-sm-3 mb-3 mx-auto">
+            <div class="otherNews mb-3 mx-auto col-4">
               <p class="otherNewsTitle fs-5 mt-3">其他消息</p>
               <hr class="mb-0 mt-0" />
               <ul class="list-group bg-transparent">
@@ -28,7 +28,8 @@
                   class="list-group-item d-flex align-items-center bg-transparent rounded-0 border-top-0 border-start-0 border-end-0  mb-2 mt-2"
                   style="border-bottom: 1px solid #A69F8A;" v-for="(item, index) in otherNews" :key="index">
                   <router-link :to="'/news/' + item.id">
-                    <img :src="item.newsImage" alt="消息圖片" style="height: 50px;">
+                    <img :src="item.newsImage.includes('首頁圖片') ? item.newsImage : `/木木苑食材修圖small/${item.newsImage}.jpg`"
+                      alt="消息圖片" style="height: 50px;">
                   </router-link>
                   <router-link :to="'/news/' + item.id">
                     <p class=" ms-2 fs-6">{{ item.newsTitle }}</p>
@@ -71,7 +72,7 @@ export default {
           this.news.newsContent = this.news.newsContent.split('\n')
         })
     },
-    getCoupon() {
+    getCoupon(name) {
       if (docCookies.getItem("id") == null) {
         this.$swal({
           icon: 'warning',
@@ -93,16 +94,25 @@ export default {
               timer: 2000
             })
           } else {
-            this.userCoupon.push(parseInt(this.$route.params.id))
+            this.userCoupon.push({
+              "name": this.news.name,
+              "calc": "-1",
+              "image": this.news.newsImage,
+              "description": "僅限現場點餐使用",
+              "id": new Date().getTime()
+            })
+
             this.$axios.patch(`/users/${docCookies.getItem("id")}`, {
               coupon: this.userCoupon
             })
-            this.$swal({
-              icon: 'success',
-              title: '加入優惠券成功',
-              text: '請查看個人優惠券',
-              timer: 2000
-            })
+              .then(() => {
+                this.$swal({
+                  icon: 'success',
+                  title: '加入優惠券成功',
+                  text: '請查看個人優惠券',
+                  timer: 2000
+                })
+              })
           }
         })
     },

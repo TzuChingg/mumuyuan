@@ -20,12 +20,13 @@
                     <tbody>
                       <tr v-for="(item, index) in cartsList.carts" :key="index">
                         <td class="text-center align-middle">
-                          <a @click.prevent="removeCartsListItem(item.id)" class="p-0"><i
+                          <a @click.prevent="deleteQuestion(item.id)" class="p-0"><i
                               class="bi bi-x-lg text-primary fs-4"></i></a>
                         </td>
                         <td class="fs-5 align-middle">
                           <div class="ms-5 ps-4">
-                            <img :src="item.product.image" :alt="item.product.productName" style="width: 50px" />
+                            <img :src="'/木木苑食材修圖small/' + item.product.image" :alt="item.product.productName"
+                              style="width: 60px" />
                             {{ item.product.productName }}
                           </div>
                         </td>
@@ -76,7 +77,8 @@
                 </td>
                 <td>
                   <VField id="tel" name="手機" type="tel" class="form-control" :class="{ 'is-invalid': errors['手機'] }"
-                    v-model="user.phone" placeholder="請輸入手機" rules="required|min:10|max:10|numeric"></VField>
+                    v-model="user.phone" placeholder="請輸入手機"
+                    :rules="{ regex: /^(09)[0-9]{8}$/, required: true, min: 10, max: 10, numeric: true }"></VField>
                   <ErrorMessage name="手機" class="invalid-feedback"></ErrorMessage>
                 </td>
               </tr>
@@ -103,15 +105,16 @@
                 <td>
                   <div class="d-flex justify-content-end">
                     <template v-if="user.coupon == 0 || user.coupon == undefined">
-                      <select class="form-select border border-dark form-select-md" aria-label="coupon" id="coupon"
-                        @change="handleCouponChange" disabled>
-                        <option value="0" selected>尚未持有優惠券</option>
+                      <select class="form-select border border-dark form-select-md" aria-label="coupon" id="coupon">
+                        <option selected disabled>尚未持有優惠券</option>
                       </select>
                     </template>
                     <select v-else class="form-select border border-dark form-select-md" aria-label="coupon" id="coupon"
-                      @change="handleCouponChange">
-                      <option value="0">請選擇優惠券</option>
-                      <option v-for="(option, index) in user.coupon" :key="index" :value="option.calc">{{ option.name }}
+                      @change="handleCouponChange" v-model="selectedCoupon">
+                      <option value="請使用優惠券" selected disabled>請選擇優惠券</option>
+                      <option value="0">不使用</option>
+                      <option v-for="(option, index) in user.coupon" :key="index"
+                        :value="option.calc">{{ option.name }}
                       </option>
                     </select>
                   </div>
@@ -282,6 +285,7 @@ export default {
       bags: "false",
       payment: "true",
       point: "",
+      selectedCoupon: '請使用優惠券'
     }
   },
   computed: {
@@ -298,17 +302,30 @@ export default {
     }
   },
   methods: {
-    ...mapActions(cartStore, ['removeCartsListItem']),
-    ...mapActions(cartStore, ['increaseQty']),
-    ...mapActions(cartStore, ['decreaseQty']),
-    ...mapActions(cartStore, ['member']),
-    ...mapActions(cartStore, ['useCoupon']),
+    ...mapActions(cartStore, ['removeCartsListItem', 'increaseQty', 'decreaseQty', 'member', 'useCoupon', 'addToCart']),
+    deleteQuestion(id) {
+      this.$swal.fire({
+        title: "確定要移除嗎?",
+        text: "此行為執行後將不能恢復",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "確定",
+        cancelButtonText: "取消"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.removeCartsListItem(id)
+        }
+      });
+    },
     handleCouponChange(event) {
+
       this.couponPrice = event.target.value;
       this.couponName = event.target.selectedOptions[0].textContent
     },
     async pushOrder() {
-      if (this.cartsList.carts.length===0) {
+      if (this.cartsList.carts.length === 0) {
         this.$swal({
           icon: 'error',
           title: '購物車為空',
@@ -400,6 +417,7 @@ export default {
       },
     },
     couponPrice(newPrice, oldPrice) {
+      if (newPrice > 0) return;
       this.total = this.total - parseInt(oldPrice) + parseInt(newPrice);
     },
     type(newValue, oldValue) {
@@ -420,21 +438,27 @@ export default {
 
   },
   mounted() {
-    this.myIdentity = docCookies.getItem("id")
-    this.member(this.myIdentity)
-    this.user = { ...this.storeInformation }
-    this.total = this.cartsList.totalAmount
-    this.point = this.cartsList.point
-    this.product = this.cartsList.carts.map(item => {
-      return {
-        productName: item.product.productName,
-        image: item.product.image,
-        price: item.product.price,
-        quantity: item.quantity
-      };
-    });
-    const ws_path = import.meta.env.VITE_WS
-    this.socket = new WebSocket(ws_path)
+    if (this.cartsList.carts.length === 0) return
+    const getInfo = new Promise((resolve, reject) => {
+      this.myIdentity = docCookies.getItem("id")
+      return resolve(this.member(this.myIdentity))
+    })
+    getInfo.then((res) => {
+      this.user = { ...this.storeInformation }
+      this.user.coupon = this.user.coupon.filter(i => i.description === '僅限線上訂餐使用' ? i : null)
+      this.total = this.cartsList.totalAmount
+      this.point = this.cartsList.point
+      this.product = this.cartsList.carts.map(item => {
+        return {
+          productName: item.product.productName,
+          image: item.product.image,
+          price: item.product.price,
+          quantity: item.quantity
+        };
+      });
+      const ws_path = import.meta.env.VITE_WS
+      this.socket = new WebSocket(ws_path)
+    }).catch(err => console.error(err))
   },
   beforeUnmount() {
     if (this.socket) {
@@ -442,24 +466,33 @@ export default {
     }
   },
   created() {
-    const currentDate = new Date();
-    const year = currentDate.getFullYear();
-    const month = currentDate.getMonth() + 1;
-    const day = currentDate.getDate();
+    if (this.cartsList.carts.length === 0) {
+      this.$swal.fire({
+        icon: "warning",
+        title: "購物車為空",
+        text: "請加入商品"
+      }).then(() => {
+        this.$router.push('/onlineOrder');
+      });
+    } else {
+      const currentDate = new Date();
+      const year = currentDate.getFullYear();
+      const month = currentDate.getMonth() + 1;
+      const day = currentDate.getDate();
+      this.currentDate = `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
 
-    this.currentDate = `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
-
-    let hours = currentDate.getHours();
-    let minutes = currentDate.getMinutes() + 20;
-    if (minutes >= 60) {
-      hours += 1;
-      minutes -= 60;
+      let hours = currentDate.getHours();
+      let minutes = currentDate.getMinutes() + 20;
+      if (minutes >= 60) {
+        hours += 1;
+        minutes -= 60;
+      }
+      if (hours >= 24) {
+        hours -= 24;
+      }
+      this.currentTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+      this.orderId = `${year}${month.toString().padStart(2, '0')}${day.toString().padStart(2, '0')}${hours.toString().padStart(2, '0')}${minutes.toString().padStart(2, '0')}`
     }
-    if (hours >= 24) {
-      hours -= 24;
-    }
-    this.currentTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
-    this.orderId = `${year}${month.toString().padStart(2, '0')}${day.toString().padStart(2, '0')}${hours.toString().padStart(2, '0')}${minutes.toString().padStart(2, '0')}`
   }
 }
 </script>
