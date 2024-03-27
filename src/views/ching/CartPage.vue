@@ -114,8 +114,7 @@
                       <option value="請使用優惠券" selected disabled>請選擇優惠券</option>
                       <option value="0">不使用</option>
                       <option v-for="(option, index) in user.coupon" :key="index"
-                        :value="option.calc === '-1' ? option.image : option.calc">{{
-          option.name }}
+                        :value="option.calc">{{ option.name }}
                       </option>
                     </select>
                   </div>
@@ -321,12 +320,6 @@ export default {
       });
     },
     handleCouponChange(event) {
-      if (event.target.value > 0) {
-        console.log(this.selectedCoupon);
-        this.addToCart(this.selectedCoupon - 0);
-        //優惠券商品加入pinia購物車
-        return
-      }
 
       this.couponPrice = event.target.value;
       this.couponName = event.target.selectedOptions[0].textContent
@@ -445,21 +438,27 @@ export default {
 
   },
   mounted() {
-    this.myIdentity = docCookies.getItem("id")
-    this.member(this.myIdentity)
-    this.user = { ...this.storeInformation }
-    this.total = this.cartsList.totalAmount
-    this.point = this.cartsList.point
-    this.product = this.cartsList.carts.map(item => {
-      return {
-        productName: item.product.productName,
-        image: item.product.image,
-        price: item.product.price,
-        quantity: item.quantity
-      };
-    });
-    const ws_path = import.meta.env.VITE_WS
-    this.socket = new WebSocket(ws_path)
+    if (this.cartsList.carts.length === 0) return
+    const getInfo = new Promise((resolve, reject) => {
+      this.myIdentity = docCookies.getItem("id")
+      return resolve(this.member(this.myIdentity))
+    })
+    getInfo.then((res) => {
+      this.user = { ...this.storeInformation }
+      this.user.coupon = this.user.coupon.filter(i => i.description === '僅限線上訂餐使用' ? i : null)
+      this.total = this.cartsList.totalAmount
+      this.point = this.cartsList.point
+      this.product = this.cartsList.carts.map(item => {
+        return {
+          productName: item.product.productName,
+          image: item.product.image,
+          price: item.product.price,
+          quantity: item.quantity
+        };
+      });
+      const ws_path = import.meta.env.VITE_WS
+      this.socket = new WebSocket(ws_path)
+    }).catch(err => console.error(err))
   },
   beforeUnmount() {
     if (this.socket) {
@@ -467,24 +466,33 @@ export default {
     }
   },
   created() {
-    const currentDate = new Date();
-    const year = currentDate.getFullYear();
-    const month = currentDate.getMonth() + 1;
-    const day = currentDate.getDate();
+    if (this.cartsList.carts.length === 0) {
+      this.$swal.fire({
+        icon: "warning",
+        title: "購物車為空",
+        text: "請加入商品"
+      }).then(() => {
+        this.$router.push('/onlineOrder');
+      });
+    } else {
+      const currentDate = new Date();
+      const year = currentDate.getFullYear();
+      const month = currentDate.getMonth() + 1;
+      const day = currentDate.getDate();
+      this.currentDate = `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
 
-    this.currentDate = `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
-
-    let hours = currentDate.getHours();
-    let minutes = currentDate.getMinutes() + 20;
-    if (minutes >= 60) {
-      hours += 1;
-      minutes -= 60;
+      let hours = currentDate.getHours();
+      let minutes = currentDate.getMinutes() + 20;
+      if (minutes >= 60) {
+        hours += 1;
+        minutes -= 60;
+      }
+      if (hours >= 24) {
+        hours -= 24;
+      }
+      this.currentTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+      this.orderId = `${year}${month.toString().padStart(2, '0')}${day.toString().padStart(2, '0')}${hours.toString().padStart(2, '0')}${minutes.toString().padStart(2, '0')}`
     }
-    if (hours >= 24) {
-      hours -= 24;
-    }
-    this.currentTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
-    this.orderId = `${year}${month.toString().padStart(2, '0')}${day.toString().padStart(2, '0')}${hours.toString().padStart(2, '0')}${minutes.toString().padStart(2, '0')}`
   }
 }
 </script>

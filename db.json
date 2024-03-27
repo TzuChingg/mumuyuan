@@ -8,36 +8,57 @@
       "phone": "0933333333",
       "coupon": [
         {
-          "id": 1711471733408,
-          "name": "折30塊",
-          "calc": "-30",
-          "image": "money",
-          "description": "沒有限制,每筆都能使用"
-        },
-        {
-          "id": 1711471733407,
-          "name": "折30塊",
-          "calc": "-30",
-          "image": "money",
-          "description": "沒有限制,每筆都能使用"
-        },
-        {
           "name": "折20塊",
           "calc": "-20",
           "image": "money",
-          "description": "沒有限制,每筆都能使用",
+          "description": "僅限線上訂餐使用",
           "id": 1711471733410
         },
         {
           "name": "番茄牛肉捲優惠券",
           "calc": "-1",
           "image": "09",
-          "description": "沒有限制,每筆都能使用",
+          "description": "僅限現場點餐使用",
           "id": 1711474450156
+        },
+        {
+          "name": "折40塊",
+          "calc": "-40",
+          "image": "money",
+          "description": "僅限線上訂餐使用",
+          "id": 1711528161357
+        },
+        {
+          "name": "番茄牛肉捲優惠券",
+          "calc": "-1",
+          "image": "09",
+          "description": "僅限現場點餐使用",
+          "id": 1711528172955
+        },
+        {
+          "name": "番茄牛肉捲優惠券",
+          "calc": "-1",
+          "image": "09",
+          "description": "僅限現場點餐使用",
+          "id": 1711528174822
+        },
+        {
+          "name": "花椰菜優惠券",
+          "calc": "-1",
+          "image": "34",
+          "description": "僅限現場點餐使用",
+          "id": 1711528207932
+        },
+        {
+          "name": "花椰菜優惠券",
+          "calc": "-1",
+          "image": "34",
+          "description": "僅限現場點餐使用",
+          "id": 1711528209998
         }
       ],
       "identity": "user",
-      "point": 4307,
+      "point": 4157,
       "id": 1
     },
     {
@@ -98,7 +119,7 @@
           "name": "折30塊",
           "calc": "-30",
           "image": "money",
-          "description": "沒有限制,每筆都能使用"
+          "description": "僅限線上訂餐使用"
         }
       ],
       "id": 6
@@ -1433,7 +1454,7 @@
       "image": "35",
       "point": "0",
       "isLook": false,
-      "description": "沒有限制,每筆都能使用",
+      "description": "僅限現場點餐使用",
       "id": 1
     },
     {
@@ -1442,7 +1463,7 @@
       "image": "money",
       "point": 50,
       "isLook": true,
-      "description": "沒有限制,每筆都能使用",
+      "description": "僅限線上訂餐使用",
       "id": 2
     },
     {
@@ -1451,7 +1472,7 @@
       "image": "28",
       "point": "0",
       "isLook": false,
-      "description": "沒有限制,每筆都能使用",
+      "description": "僅限現場點餐使用",
       "id": 3
     },
     {
@@ -1460,7 +1481,7 @@
       "image": "38",
       "point": "0",
       "isLook": false,
-      "description": "沒有限制,每筆都能使用",
+      "description": "僅限現場點餐使用",
       "id": 4
     },
     {
@@ -1469,7 +1490,7 @@
       "image": "14",
       "point": "0",
       "isLook": false,
-      "description": "沒有限制,每筆都能使用",
+      "description": "僅限現場點餐使用",
       "id": 5
     },
     {
@@ -1478,7 +1499,7 @@
       "image": "money",
       "point": 100,
       "isLook": true,
-      "description": "沒有限制,每筆都能使用",
+      "description": "僅限線上訂餐使用",
       "id": 6
     },
     {
@@ -1487,7 +1508,7 @@
       "image": "money",
       "point": 150,
       "isLook": true,
-      "description": "沒有限制,每筆都能使用",
+      "description": "僅限線上訂餐使用",
       "id": 7
     }
   ],

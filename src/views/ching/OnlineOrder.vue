@@ -11,7 +11,7 @@
 				<hr class="m-0" />
 				<div class="col-sm-6 col-lg-4 col-xl-3" v-for="(product, index) in productList[1]" :key="index">
 					<div class="card mx-auto">
-						<img :src="'/木木苑食材修圖/'+product.image" class="card-img-top" :alt="product.productName" />
+						<img :src="'/木木苑食材修圖/' + product.image" class="card-img-top" :alt="product.productName" />
 						<div class="card-body" style="height: 8rem;">
 							<div class="title d-flex justify-content-between">
 								<h5 class="card-title">{{ product.productName }}</h5>
@@ -23,7 +23,7 @@
 							<div class="col-6">
 								<div class="input-group">
 									<input type="button" class="cal btn btn-outline-dark" value="-" @click="decreaseBtn(product.id)" />
-									<input type="number" :id="product.id" name="quantity"
+									<input type="number" :id="product.id" name="quantity" :ref="`${product.id}`"
 										class="form-control input-number border-primary text-center p-0" value="1" min="1" max="100"
 										readonly="readonly" />
 									<input type="button" class="cal btn btn-outline-dark" value="+" @click="increaseBtn(product.id)" />
@@ -31,7 +31,7 @@
 							</div>
 							<div class="col-6 d-flex justify-content-end">
 								<button type="button" class="btn btn-outline-dark"
-									@click="addToCart(product.id); addCartToastFn(product);">
+									@click="addToCart(product.id, this.$refs[product.id][0].value - 0); addCartToastFn(product);">
 									加入購物車
 								</button>
 							</div>
@@ -113,9 +113,6 @@ export default {
 			}
 		},
 		addCartToastFn(product) {
-			// const iProduct = {...product}
-			// iProduct.image = iProduct.image.replace("木木苑食材修圖","木木苑食材修圖small")
-			// console.log(iProduct.image);
 			this.$swal({
 				toast: true,
 				position: 'top-end',

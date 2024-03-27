@@ -72,7 +72,7 @@ export default {
           this.news.newsContent = this.news.newsContent.split('\n')
         })
     },
-    getCoupon() {
+    getCoupon(name) {
       if (docCookies.getItem("id") == null) {
         this.$swal({
           icon: 'warning',
@@ -98,7 +98,7 @@ export default {
               "name": this.news.name,
               "calc": "-1",
               "image": this.news.newsImage,
-              "description": "沒有限制,每筆都能使用",
+              "description": "僅限現場點餐使用",
               "id": new Date().getTime()
             })
 
