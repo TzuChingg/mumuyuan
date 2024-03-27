@@ -1,0 +1,7 @@
+{
+  // 儲存自動修正 ESLint
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit",
+    "source.fixAll.eslint": "explicit"
+  }
+}
