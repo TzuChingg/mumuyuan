@@ -84,9 +84,8 @@ export default {
         return
       }
       this.$axios.get(`/users/${docCookies.getItem("id")}`)
-        .then((res) => {
-          this.userCoupon = res.data.coupon.filter(el => el !== '')
-          if (this.userCoupon.includes(parseInt(this.$route.params.id))) {
+        .then(() => {
+          if (this.userCoupon.find(item => item.id === this.news.couponId)) {
             this.$swal({
               icon: 'error',
               title: '已領過此優惠券',
@@ -94,12 +93,16 @@ export default {
               timer: 2000
             })
           } else {
+            const today = new Date()
+            let expiryDate = today.setDate(today.getDate() + 7)
+            expiryDate = new Date(expiryDate).toLocaleDateString()
             this.userCoupon.push({
               "name": this.news.name,
               "calc": "-1",
               "image": this.news.newsImage,
               "description": "僅限現場點餐使用",
-              "id": new Date().getTime()
+              "expiryDate": expiryDate,
+              "id": this.news.couponId
             })
 
             this.$axios.patch(`/users/${docCookies.getItem("id")}`, {

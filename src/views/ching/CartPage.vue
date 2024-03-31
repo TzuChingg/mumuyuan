@@ -1,6 +1,6 @@
 <template>
   <div class="container mb-5">
-    <h1 class="my-4 text-dark text-center me-2 fw-bolder" style="letter-spacing:2px">購物車</h1>
+    <h1 class="my-4 text-dark text-center me-2 fw-bolder" style="letter-spacing: 2px">購物車</h1>
     <div class="row justify-content-center">
       <div class="col-10">
         <VForm ref="form" v-slot="{ errors }">
@@ -113,7 +113,8 @@
                       @change="handleCouponChange" v-model="selectedCoupon">
                       <option value="請使用優惠券" selected disabled>請選擇優惠券</option>
                       <option value="0">不使用</option>
-                      <option v-for="(option, index) in user.coupon" :key="index" :value="option.calc">{{ option.name }}
+                      <option v-for="(option, index) in user.coupon" :key="index" :value="option.calc">
+                        {{ option.name }}
                       </option>
                     </select>
                   </div>
@@ -174,7 +175,9 @@
                         <label class="btn btn-outline-primary fs-5" for="selfPickup"> 自取 </label>
                         <VField name="取餐方式" type="radio" value="true" rules="required"
                           class="btn-check form-check-input border-primary" id="orderDelivery" v-model="type" />
-                        <label class="btn btn-outline-primary fs-5" for="orderDelivery"> 外送 </label>
+                        <label class="btn btn-outline-primary fs-5" for="orderDelivery">
+                          外送
+                        </label>
                       </div>
                     </div>
                     <ErrorMessage name="取餐方式" class="text-danger" />
@@ -195,10 +198,14 @@
                   <div class="btn-group w-100" role="group" aria-label="Basic radio toggle button group">
                     <VField name="附贈餐具" type="radio" value="false" rules="required"
                       class="btn-check form-check-input border-primary" id="noTableware" v-model="tableware" />
-                    <label class="btn btn-outline-primary fs-5 col-6" for="noTableware"> 不用 </label>
+                    <label class="btn btn-outline-primary fs-5 col-6" for="noTableware">
+                      不用
+                    </label>
                     <VField name="附贈餐具" type="radio" value="true" rules="required"
                       class="btn-check form-check-input border-primary" id="needTableware" v-model="tableware" />
-                    <label class="btn btn-outline-primary fs-5 col-6" for="needTableware"> 需要 </label>
+                    <label class="btn btn-outline-primary fs-5 col-6" for="needTableware">
+                      需要
+                    </label>
                     <ErrorMessage name="附贈餐具" class="text-danger" />
                   </div>
                 </td>
@@ -211,7 +218,9 @@
                       <label class="btn btn-outline-primary fs-5 col-6" for="noBags"> 不用 </label>
                       <VField name="提袋" type="radio" value="true" rules="required"
                         class="btn-check form-check-input border-primary" id="needBags" v-model="bags" />
-                      <label class="btn btn-outline-primary fs-5 col-6" for="needBags"> 需要 </label>
+                      <label class="btn btn-outline-primary fs-5 col-6" for="needBags">
+                        需要
+                      </label>
                     </div>
                   </div>
                 </td>
@@ -227,7 +236,9 @@
                       <label class="btn btn-outline-primary fs-5 col-6" for="cash"> 現金 </label>
                       <VField name="pay" type="radio" value="false" rules="required"
                         class="btn-check form-check-input border-primary" id="creditCard" v-model="payment" />
-                      <label class="btn btn-outline-primary fs-5 col-6" for="creditCard"> 線上付款 </label>
+                      <label class="btn btn-outline-primary fs-5 col-6" for="creditCard">
+                        線上付款
+                      </label>
                     </div>
                   </div>
                   <ErrorMessage name="pay" class="text-danger" />
@@ -237,7 +248,7 @@
                     <div class="text-center fs-5 w-25">備註</div>
                     <div class="btn-group w-75" role="group" aria-label="Basic radio toggle button group">
                       <textarea v-model="comment" name="comment" id="comment" class="w-100 p-2" rows="3"
-                        style="resize: none; "></textarea>
+                        style="resize: none"></textarea>
                     </div>
                   </div>
                 </td>
@@ -442,7 +453,18 @@ export default {
     })
     getInfo.then(() => {
       this.user = { ...this.storeInformation }
-      this.user.coupon = this.user.coupon.filter(i => i.description === '僅限線上訂餐使用' ? i : null)
+      const today = new Date().toLocaleDateString()
+      this.user.coupon = this.user.coupon.filter(i => {
+        let expiryDate = new Date(i.expiryDate)
+        if ((i.description === '僅限線上訂餐使用') & (expiryDate >= new Date(today))) {
+          return i
+        } else {
+          return null
+        }
+      }
+        // i.description === '僅限線上訂餐使用' ? i : null
+
+      )
       this.total = this.cartsList.totalAmount
       this.point = this.cartsList.point
       this.product = this.cartsList.carts.map(item => {
@@ -497,7 +519,7 @@ export default {
 <style lang="scss" scoped>
 td,
 span,
-input[type="number"] {
+input[type='number'] {
   cursor: default;
 }
 
