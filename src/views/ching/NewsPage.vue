@@ -84,7 +84,8 @@ export default {
         return
       }
       this.$axios.get(`/users/${docCookies.getItem("id")}`)
-        .then(() => {
+        .then((res) => {
+          this.userCoupon = res.data.coupon
           if (this.userCoupon.find(item => item.id === this.news.couponId)) {
             this.$swal({
               icon: 'error',
