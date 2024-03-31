@@ -15,7 +15,6 @@ export default {
 			}[this.$route.path]
 		}
 	},
-	methods: {},
 	mounted() {
 		this.parallax = new Parallax(this.$refs.scene)
 	}

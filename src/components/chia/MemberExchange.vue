@@ -77,7 +77,7 @@ export default {
       const { id, name, calc, image, description } = getPoint
       const point = this.userInfo.point - getPoint.point
       const today = new Date()
-      let expiryDate = today.setDate(today.getDate() + 7  )
+      let expiryDate = today.setDate(today.getDate() + 7)
       expiryDate = new Date(expiryDate).toLocaleDateString()
       let coupon = this.userInfo.coupon
       coupon.push({ name, calc, image, description, expiryDate, id })

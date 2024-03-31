@@ -10,7 +10,7 @@ export default defineStore('productsStore', {
     loader: true
   }),
   getters: {
-    storeProducts: ({ products, categorires, sortedProducts, loading }) => {
+    storeProducts: ({ products, categorires, sortedProducts }) => {
       // 產品分類與篩選
       // [分類, [產品]]
       categorires.forEach((item) => {
@@ -19,7 +19,7 @@ export default defineStore('productsStore', {
       // 檢查產品有沒有空值，刪空值
       return sortedProducts.filter((item) => item[1].length !== 0)
     },
-    storeCategorires: ({ categorires, sortedProducts }) => {
+    storeCategorires: ({ sortedProducts }) => {
       // 從刪去空值的產品列找分類
       return sortedProducts.filter((item) => item[1].length !== 0).map((el) => el[0])
     },

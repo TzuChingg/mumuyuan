@@ -72,7 +72,7 @@ export default {
           this.news.newsContent = this.news.newsContent.split('\n')
         })
     },
-    getCoupon(name) {
+    getCoupon() {
       if (docCookies.getItem("id") == null) {
         this.$swal({
           icon: 'warning',
@@ -84,7 +84,7 @@ export default {
         return
       }
       this.$axios.get(`/users/${docCookies.getItem("id")}`)
-        .then((res) => {
+        .then(() => {
           if (this.userCoupon.find(item => item.id === this.news.couponId)) {
             this.$swal({
               icon: 'error',
@@ -94,14 +94,14 @@ export default {
             })
           } else {
             const today = new Date()
-            let expiryDate = today.setDate(today.getDate() + 7  )
+            let expiryDate = today.setDate(today.getDate() + 7)
             expiryDate = new Date(expiryDate).toLocaleDateString()
             this.userCoupon.push({
               "name": this.news.name,
               "calc": "-1",
               "image": this.news.newsImage,
               "description": "僅限現場點餐使用",
-              "expiryDate":expiryDate,
+              "expiryDate": expiryDate,
               "id": this.news.couponId
             })
 
@@ -132,7 +132,7 @@ export default {
     },
   },
   watch: {
-    '$route.params.id'(newId) {
+    '$route.params.id'() {
       window.location.reload()
     },
   },

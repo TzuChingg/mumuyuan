@@ -97,7 +97,7 @@ export default {
   mounted() {
     this.$axios.get('/orders')
       .then(res => {
-        res.data.forEach((element, index) => {
+        res.data.forEach((element) => {
           this.todayTotal += element.price
           this.todayOrder++
         })

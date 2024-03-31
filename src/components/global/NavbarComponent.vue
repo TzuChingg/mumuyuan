@@ -110,7 +110,7 @@ export default {
     }
   },
   watch: {
-    currentRoute(newRoute, oldRoute) {
+    currentRoute(newRoute) {
       this.identityHref = (docCookies.getItem("identity") === "admin") ? "/order" : "/member";
       if (newRoute.fullPath === '/') {
         this.hasToken = docCookies.hasItem("token");

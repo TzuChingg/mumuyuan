@@ -42,7 +42,7 @@ export default {
       .then(res => {
         let use = []
         res.data.forEach(element => {
-          element.product.forEach((q, index) => {
+          element.product.forEach((q) => {
             if (!this.chartOptions.xaxis.categories.includes(q.productName)) {
               this.chartOptions.xaxis.categories.push(q.productName)
             }

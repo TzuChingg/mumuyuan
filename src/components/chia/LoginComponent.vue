@@ -46,10 +46,8 @@ export default {
         .then(response => {
           if (response.status === 200) {
             const { user, accessToken } = response.data
-            document.cookie = `token=${accessToken};expires=${new Date().getTime() + 24 * 60 * 60 * 1000
-              };`
-            document.cookie = `identity=${user.identity};expires=${new Date().getTime() + 24 * 60 * 60 * 1000
-              };`
+            document.cookie = `token=${accessToken};expires=${new Date().getTime() + 24 * 60 * 60 * 1000};`
+            document.cookie = `identity=${user.identity};expires=${new Date().getTime() + 24 * 60 * 60 * 1000};`
             document.cookie = `id=${user.id};expires=${new Date().getTime() + 24 * 60 * 60 * 1000};`
             this.$swal({
               icon: 'success',

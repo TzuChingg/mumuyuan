@@ -12,6 +12,6 @@ module.exports = {
     ecmaVersion: 'latest'
   },
   rules:{
-    "no-unused-vars": "off"
+    "no-unused-vars": 2, //開啟偵測 未使用的變數
   }
 }
