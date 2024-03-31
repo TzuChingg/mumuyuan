@@ -11,6 +11,7 @@
           <div class="card-body p-2 bg-light">
             <h5 class="card-title fw-bolder mb-2">{{ i.name }}</h5>
             <p class="card-text mb-0">{{ i.description }}</p>
+            <p class="card-text text-end text-danger mt-1 mb-0">使用期限到{{ i.expiryDate }}</p>
           </div>
         </div>
       </div>
@@ -30,7 +31,11 @@ export default {
     async filterCoupons() {
       try {
         const getUsers = await this.$axios.get(`/users/${docCookies.getItem('id')}`)
-        this.myCoupons = getUsers.data.coupon
+        const today = new Date().toLocaleDateString()
+        this.myCoupons = getUsers.data.coupon.filter(element => {
+          let expiryDate = new Date(element.expiryDate)
+          return expiryDate >= new Date(today)
+        })
       } catch (error) { console.error(error); }
     }
   },
