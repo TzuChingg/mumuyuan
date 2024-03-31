@@ -62,15 +62,23 @@
       "name": "Ching",
       "phone": "0912345678",
       "identity": "user",
-      "point": 92530,
+      "point": 92430,
       "coupon": [
         {
-          "name": "花椰菜優惠券",
+          "name": "青椒優惠券",
           "calc": "-1",
-          "image": "34",
+          "image": "35",
           "description": "僅限現場點餐使用",
-          "expiryDate": "2024/3/25",
-          "id": 5
+          "expiryDate": "2024/3/15",
+          "id": 1
+        },
+        {
+          "name": "帝王蟹味棒優惠券",
+          "calc": "-1",
+          "image": "33",
+          "description": "僅限現場點餐使用",
+          "expiryDate": "2024/3/27",
+          "id": 8
         },
         {
           "name": "折20塊",
@@ -81,28 +89,20 @@
           "id": 2
         },
         {
-          "name": "折30塊",
-          "calc": "-30",
+          "name": "折20塊",
+          "calc": "-20",
           "image": "money",
           "description": "僅限線上訂餐使用",
           "expiryDate": "2024/4/7",
-          "id": 6
+          "id": 2
         },
         {
-          "name": "折40塊",
-          "calc": "-40",
-          "image": "money",
-          "description": "僅限線上訂餐使用",
+          "name": "花椰菜優惠券",
+          "calc": "-1",
+          "image": "34",
+          "description": "僅限現場點餐使用",
           "expiryDate": "2024/4/15",
-          "id": 7
-        },
-        {
-          "name": "折40塊",
-          "calc": "-40",
-          "image": "money",
-          "description": "僅限線上訂餐使用",
-          "expiryDate": "2024/4/28",
-          "id": 7
+          "id": 5
         }
       ],
       "id": 6
