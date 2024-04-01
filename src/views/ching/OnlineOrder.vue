@@ -11,7 +11,7 @@
         <hr class="m-0" />
         <div class="col-sm-6 col-lg-4 col-xl-3" v-for="(product, index) in productList[1]" :key="index">
           <div class="card mx-auto">
-            <img :src="'/木木苑食材修圖/' + product.image" class="card-img-top" :alt="product.productName" />
+            <img :src="'./木木苑食材修圖/' + product.image" class="card-img-top" :alt="product.productName" />
             <div class="card-body" style="height: 8rem;">
               <div class="title d-flex justify-content-between">
                 <h5 class="card-title">{{ product.productName }}</h5>
@@ -125,7 +125,7 @@ export default {
 				<div class="mb-2 w-100 py-1 h-100">
 					<div class="row g-0">
 						<div class="col-4">
-							<img src="/木木苑食材修圖small/${product.image}" class="w-100" alt="商品圖示">
+							<img src="./木木苑食材修圖small/${product.image}" class="w-100" alt="商品圖示">
 						</div>
 						<div class="col-8">
 							<div class="card-body px-2">

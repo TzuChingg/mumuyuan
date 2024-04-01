@@ -25,7 +25,7 @@
                         </td>
                         <td class="fs-5 align-middle">
                           <div class="ms-5 ps-4">
-                            <img :src="'/木木苑食材修圖small/' + item.product.image" :alt="item.product.productName"
+                            <img :src="'./木木苑食材修圖small/' + item.product.image" :alt="item.product.productName"
                               style="width: 60px" />
                             {{ item.product.productName }}
                           </div>
@@ -441,9 +441,16 @@ export default {
           this.total += element.amount
           this.point = parseInt(this.total / 100)
         });
+        this.product = this.cartsList.carts.map(item => {
+          return {
+            productName: item.product.productName,
+            image: item.product.image,
+            price: item.product.price,
+            quantity: item.quantity
+          };
+        });
       },
     }
-
   },
   mounted() {
     if (this.cartsList.carts.length === 0) return
@@ -461,23 +468,24 @@ export default {
         } else {
           return null
         }
-      }
-        // i.description === '僅限線上訂餐使用' ? i : null
+      })
+    })
+      .catch(err => console.error(err))
+      .finally(() => {
+        this.total = this.cartsList.totalAmount
+        this.point = this.cartsList.point
+        this.product = this.cartsList.carts.map(item => {
+          return {
+            productName: item.product.productName,
+            image: item.product.image,
+            price: item.product.price,
+            quantity: item.quantity
+          };
+        });
 
-      )
-      this.total = this.cartsList.totalAmount
-      this.point = this.cartsList.point
-      this.product = this.cartsList.carts.map(item => {
-        return {
-          productName: item.product.productName,
-          image: item.product.image,
-          price: item.product.price,
-          quantity: item.quantity
-        };
-      });
-      const ws_path = import.meta.env.VITE_WS
-      this.socket = new WebSocket(ws_path)
-    }).catch(err => console.error(err))
+        const ws_path = import.meta.env.VITE_WS
+        this.socket = new WebSocket(ws_path)
+      })
   },
   beforeUnmount() {
     if (this.socket) {
