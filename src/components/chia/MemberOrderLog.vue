@@ -10,7 +10,7 @@
           <h2 class="accordion-header" id="headingOne">
             <button class="itemImg accordion-button collapsed" type="button" data-bs-toggle="collapse"
               :data-bs-target="'#index' + item.orderid" aria-expanded="false" :aria-controls="'index' + item.orderid">
-              <img src="\首頁圖片\title-illustration-left-brown.png" alt="左串燒icon" />
+              <img src="/首頁圖片/title-illustration-left-brown.png" alt="左串燒icon" />
               <div class="row ms-2">
                 <div class="col-12">{{ item.product.length }} 份餐點 ${{ item.price }} <span class="ms-5">已完成</span></div>
                 <div class="col-12">
