@@ -39,7 +39,7 @@
             <tbody class="tbody-fs">
               <tr v-for="(food, index) in obj.product" :key="index">
                 <td class="col-1 col-sm-1">
-                  <div :style="{ backgroundImage: `url(/木木苑食材修圖small/${food.image})` }" class="product-image"></div>
+                  <div :style="{ backgroundImage: `url(./木木苑食材修圖small/${food.image})` }" class="product-image"></div>
                 </td>
                 <td class="col-5 col-sm-2 product-size">{{ food.productName }}</td>
                 <td class="col-3 col-sm-1 product-size">{{ food.quantity }}</td>

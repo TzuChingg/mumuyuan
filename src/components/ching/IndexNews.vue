@@ -21,7 +21,7 @@
 					<SwiperSlide v-for="(page, index) in temp" :key="index">
 						<router-link :to="'/news/' + page.id" class="text-decoration-none d-block h-100">
 							<div class="card mx-auto" style="width: 85%;">
-								<img :src="page.newsImage.includes('首頁圖片') ? page.newsImage : `/木木苑食材修圖/${page.newsImage}.jpg`"
+								<img :src="page.newsImage.includes('首頁圖片') ? page.newsImage : `./木木苑食材修圖/${page.newsImage}.jpg`"
 									class="card-img-top" alt="最新消息" />
 								<div class="card-body">
 									<p class="card-text text-primary fw-bolder fs-4">{{ page.newsTitle }}</p>
