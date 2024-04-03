@@ -353,7 +353,7 @@ export default {
         "product": this.product,
         'address': this.address,
         "price": this.total,
-        "userId": this.myIdentity,
+        "userId": this.myIdentity ? this.myIdentity : 99999999,
         "status": 1,
         "type": this.type,
         "tableware": this.tableware,
