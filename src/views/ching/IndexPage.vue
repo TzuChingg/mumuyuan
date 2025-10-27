@@ -2,7 +2,7 @@
   <div>
     <div class="bg-image bg-primary">
       <Index-slogan></Index-slogan>
-      <Index-news></Index-news>
+      <!-- <Index-news></Index-news> -->
       <Index-rating></Index-rating>
     </div>
     <div class="container-fluid bg-secondary">
